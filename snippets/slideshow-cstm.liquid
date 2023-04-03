@@ -1,0 +1,301 @@
+{% comment %} Settings {% endcomment %}
+{% assign showNavDots = section.settings.showNavDots %}
+{% assign showNavArrows = section.settings.showNavArrows %}
+{% assign parallax = section.settings.parallax %}
+{% assign transition = section.settings.transition %}
+{% assign autoplay = section.settings.autoplay %}
+{% assign hover = true %}
+{% assign speed = 400 %}
+{% assign fadeMode = true %}
+{% if transition == 'slide' %}
+	{% assign fadeMode = false %}
+{% endif %}
+{% assign duration = section.settings.duration | times:1000 %}
+{% assign dots_position = section.settings.dots_position %}
+
+{% comment %} Check if Image Height setting is selected {% endcomment %}
+{% assign original_height = false %}
+{% if section.settings.slide_height == 'original-height' %}
+{% assign original_height = true %}
+{% endif %}
+
+<div style="position: relative;">
+    {% comment %} Section {% endcomment %}
+    <section class="row row-lg container-wrap hero hero-slider js-hero-slider {% if parallax %}hero--parallax{% endif %} {% if transition == 'zoom-out' %}hero--zoom-out{% endif %} hero--is-loading hero--dots-{{ dots_position }} {{ section.settings.slide_height }}" id="slideshow-module-{{ section.id }}" data-section-type="slideshow" data-slick="{ 'arrows':{{ showNavArrows }}, 'dots':{{ showNavDots }}, 'autoplay':{{ autoplay }}, 'dotsClass':'slick-dots hero-dots-row row row-lg', 'autoplaySpeed':{{duration}}, 'speed':{{ speed }}, 'adaptiveHeight':{{ original_height }}, 'pauseOnHover':{{ hover }}, 'fade':{{ fadeMode }}, 'infinite':true }" data-image-height="{{section.settings.slide_height}}">
+        {% for block in section.blocks %}
+            
+            {% comment %} Colors {% endcomment %}
+            
+            
+            {% assign color_style = block.settings.color_style %}
+            
+            {% assign bubble_color = block.settings.bubble_color %}
+            {% assign bubble_text_color = block.settings.bubble_text_color %}
+            {% comment %} Typography {% endcomment %}
+
+
+            {% comment %} Content {% endcomment %}
+            {% if block.settings.image %}
+            {% assign has_bg = true %}
+            {% else %}
+            {% assign has_bg = false %}
+            {% endif %}
+
+            {% assign counter = 1 %}
+
+            <div class="hero-slide js-slide hero-slide--style-{{ color_style }}" {{ block.shopify_attributes }} data-block="slide" data-slick-index="{{ forloop.index }}" data-style="{{ color_style }}">
+                <div class="bubbles bubbles-mobile" data-bubble-index="{{forloop.index}}" style="background-color: {{ block.settings.bubble_color }}; color:{{ block.settings.bubble_text_color }}">
+                    <span>{{block.settings.bubble_text}}</span>
+                </div>
+                <div class="teaser-swipe-mobile">
+                    <span><i class="icon-arrow-left" style="width:10px"></i><i class="icon-arrow-left" style="width:10px"></i><span style="padding-left:10px">swipe</span></span>
+                </div>
+                <div class="slide-inner">
+                    {%- if has_bg -%}
+                        {%- assign has_mobile_image = false -%}
+                        {%- unless block.settings.image_mobile == blank -%}
+                            {%- assign has_mobile_image = true -%}
+                        {%- endunless -%}
+
+                        {%- if original_height -%}
+                        <div class="slide-image-container {% if has_mobile_image %}slide-image--has-mobile{% endif %}">
+                            <div class="slide-image slide-image--desktop">
+                                {%- assign image = block.settings.image -%}
+                                {%- assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' -%}
+                                {% include 'theme-rias' %}
+                                <img 
+                                    class="lazyload fade-in"
+                                    data-src="{{ image_url_pattern }}"
+                                    data-widths= "[{{ image_widths }}]"
+                                    data-aspectratio="{{image.aspect_ratio }}"
+                                    data-sizes="auto"
+                                    alt="{{ image.alt | escape }}">
+                                    <noscript>
+                                    <img src="{{ image | img_url: '2048x' }}" alt="{{ image.alt | escape }}">
+                                    </noscript>
+                            </div>
+
+                            {%- if has_mobile_image -%}
+                                <div class="slide-image slide-image--mobile">
+                                    {%- assign image = block.settings.image_mobile -%}
+                                    {%- assign image_widths = '295,394,590,700,800,1000,1200,1500,1800,2000,2400' -%}
+                                    {% include 'theme-rias' %}
+                                    <img 
+                                        class="lazyload fade-in"
+                                        data-src="{{ image_url_pattern }}"
+                                        data-widths= "[{{ image_widths }}]"
+                                        data-aspectratio="{{image.aspect_ratio }}"
+                                        data-sizes="auto"
+                                        alt="{{ image.alt | escape }}">
+                                        <noscript>
+                                        <img src="{{ image | img_url: '2048x' }}" alt="{{ image.alt | escape }}">
+                                        </noscript>
+                                </div>
+                            {%- endif -%}
+                        </div>
+                        
+                        {%- else -%}
+                            <div class="slide-background-container {% if has_mobile_image %}slide-background--has-mobile{% endif %}">
+                                {%- assign image = block.settings.image -%}
+                                <div class="slide-background slide-background--desktop slide-background--{{ block.settings.image_position }} lazyload fade-in"
+                                    data-bgset="{% include 'bgset', image %}"
+                                    data-sizes="auto"
+                                    data-parent-fit="cover"
+                                >
+                                </div>
+                                <noscript>
+                                    <div class="slide-background slide-background--desktop slide-background--{{ block.settings.image_position }}"
+                                    style="background-image:url('{{ block.settings.image | img_url: '2048x' }}');"
+                                    ></div>
+                                </noscript>
+                                
+                                {%- if has_mobile_image -%}
+                                    {%- assign image = block.settings.image_mobile -%}
+                                    <div class="slide-background slide-background--mobile slide-background--{{ block.settings.image_position }} lazyload fade-in"
+                                        data-bgset="{% include 'bgset', image %}"
+                                        data-sizes="auto"
+                                        data-parent-fit="cover"
+                                    >
+                                    </div>
+                                    <noscript>
+                                        <div class="slide-background slide-background--mobile slide-background--{{ block.settings.image_position }}"
+                                        style="background-image:url('{{ block.settings.image | img_url: '2048x' }}');"
+                                        ></div>
+                                    </noscript>
+                                {%- endif -%}
+                            </div>
+                                
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if original_height -%}
+                            <div class="slide-image">
+                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                                <div class = "slide-image--blank">
+                                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                                </div>
+                            </div>
+                        {%- else -%}
+                            <div class="slide-background slide-background--placeholder">
+                            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                                <div class = "slide-background--blank">
+                                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                                </div>
+                            </div>
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+            </div>
+            {% assign counter = counter | plus:1 %}
+        {% endfor %}
+    </section>
+    <div class="teaser-bubbles-wrapper">
+        {% for block in section.blocks %}
+        <a href="{{block.settings.bubble_link}}">
+            <div class="bubbles bubbles-desktop" data-bubble-index="{{forloop.index | minus: 1}}" style="background-color: {{ block.settings.bubble_color }}; color:{{ block.settings.bubble_text_color }}">
+                <span>{{block.settings.bubble_text}}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="teaser-content-wrapper">
+        <div class="teaser-content__text">{{ section.settings.teaser_text }}</div>
+        <div class="cstm_border_left_cm">
+            <div class="cstm_border_hd_line"></div>
+        </div>
+    </div>
+    <div class="subheading-content-wrapper">
+        <span>{{ section.settings.teaser_sub_text }}</span>
+    </div>
+</div>
+<style>
+    .subheading-content-wrapper{
+        position: absolute;
+        z-index: 1;
+        bottom: 50px;
+        right: 35%;
+    }
+
+    .hero-slider {
+           max-height: 500px;
+        }
+    .teaser-swipe-mobile {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: calc(50% - 10px);
+        display: none;
+    }
+    .teaser-content-wrapper {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        top: 25%;
+    }
+    .teaser-content-wrapper .cstm_border_hd_line{
+        width: 75%;
+        border-bottom: 0.11em solid #000;
+        margin-bottom: 30px;
+    }
+
+    .teaser-content__text {
+        font-size: 35px;
+        width: 75%;
+    }
+    .teaser-bubbles-wrapper {
+        display: flex;
+        position: absolute;
+        flex-direction: row;
+        top: 65%;
+        right: 100px;
+        width: 50%;
+        z-index: 1;
+    }
+    .teaser-bubbles-wrapper .slick-slide {
+        width: 100px;
+        height: 100px;
+    }
+   
+    .bubbles {
+        width: {{ section.settings.bubble_width }}px !important;
+        height: {{ section.settings.bubble_width }}px !important;
+        border-radius:  {{ section.settings.bubble_width | divided_by: 2 }}px !important;
+        text-align: center;
+        margin-right: 15px;
+        transition: all .2s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .bubbles span {
+        opacity: 0;
+    }
+    .bubbles-mobile {
+        position: absolute;
+        z-index: 1;
+        bottom: {{ section.settings.bubble_width | divided_by: 2 }}px !important;
+        right: calc(50% - {{ section.settings.bubble_width }}px);
+        display: none;
+    }
+    .bubbles-desktop:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1); 
+    }
+    .bubbles-desktop:hover span {
+        opacity: 1;
+    }  
+    @media screen and (max-width: 1024px) {
+        .subheading-content-wrapper{
+            display: none;
+        }   
+        .bubbles-mobile {
+            display: block;
+        }
+        .teaser-swipe-mobile{
+            display: block !important;
+        }
+        .teaser-bubbles-wrapper{
+            display: none;
+        }
+        .slide-inner {
+            transform: rotate(-5deg);
+            box-shadow: -2px 2px 4px rgba(0,0,0,0.15);
+            height: 90% !important;
+        }
+        .hero-slide {
+            padding: 25px;
+            width: 50% !important;
+        }
+    }
+    @media screen and (max-width: 720px) {
+        .teaser-content-wrapper {
+            width: 87.5%;
+            margin: 25px 0 0 auto;
+            position: relative !important;
+        }
+        .hero-slide {
+            padding: 25px;
+            width: 100% !important;
+        }
+        .slide-inner {
+            transform: rotate(-5deg);
+            box-shadow: -2px 2px 4px rgba(0,0,0,0.15);
+            
+        }
+        .hero-slider {
+            height: 100vw !important;
+            min-height: 275px;
+        }
+    }
+   
+</style>
+{% if section.settings.show_arrow_down %}
+	<a href="#" class="hero-scroll-down js-scroll-down" title="{{ 'slideshow.scroll_down' | t }}"><span class="icon icon-arrow-down"></span></a>
+{% endif %}

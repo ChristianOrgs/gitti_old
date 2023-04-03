@@ -1,0 +1,64 @@
+{% capture captured_page %}
+{% section 'image-with-text'%}
+{% section 'icons-row' %}
+{% section 'cst_cta'%}
+
+<style>
+  .bodyWrap-spacer {
+    padding-top: 0 !important;
+}
+.cst_qwedcd {
+    text-align: center;
+    padding-bottom: 60px;
+    padding-top: 70px;
+    background-color: #fafafa;
+}
+section.cstm_section_first {
+    padding-bottom: 0;
+}
+a.cst_l1ban_textbtn
+{
+	background: transparent;
+    color: #000;
+    border: 1px solid #000;
+    min-height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+}
+a.cst_l1ban_textbtn:hover
+{
+	opacity: 0.8;
+    background: #000 !important;
+    color: #fff !important;
+}  
+  .icons-row__item img
+{
+	height: 190px;
+    width: 215px !important;
+}
+  .cstm_border_hd_line {
+    position: absolute;
+    right: 0;
+}
+.cm_img_back_section .icons-row-wrapper .icons-row__item .cstm_icon_text {
+    position: unset;
+    margin-top: -110px;
+}  
+@media only screen and (max-width: 767px)
+ {
+.cstm_section_first .row .gallery-slider {
+    height: 50vw !important;
+}
+.icons-row__item {
+    width: 100%;
+}
+   
+   
+   
+ }
+  </style>
+{% endcapture %}
+{% include 'password-protect' %}

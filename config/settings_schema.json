@@ -1,0 +1,925 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Clever",
+    "theme_version": "1.0.0",
+    "theme_author": "beeclever",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/themekit",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/themekit\/issues"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Set the Shops Favicon."
+      }
+    ]
+  },
+  {
+    "name": "Hreflang",
+    "settings": [
+      {
+        "type": "url",
+        "id": "hreflang_default",
+        "label": "hreflang default",
+        "info": "overwrites the x-defalut hreflang seo tag. Please add no trailing slash."
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Breakpoints"
+      },
+      {
+        "type": "range",
+        "id": "breakpoint_small",
+        "min": 700,
+        "max": 800,
+        "step": 1,
+        "unit": "px",
+        "label": "Breakpoint small",
+        "default": 750
+      },
+      {
+        "type": "range",
+        "id": "breakpoint_medium",
+        "min": 950,
+        "max": 1050,
+        "step": 1,
+        "unit": "px",
+        "label": "Breakpoint medium",
+        "default": 990
+      },
+      {
+        "type": "header",
+        "content": "Page"
+      },
+      {
+        "type": "range",
+        "id": "site_width",
+        "min": 1100,
+        "max": 1600,
+        "step": 10,
+        "unit": "px",
+        "label": "Page width",
+        "default": 1200
+      },
+      {
+        "type": "range",
+        "id": "site_gutter",
+        "min": 0,
+        "max": 130,
+        "step": 2,
+        "unit": "px",
+        "label": "Site Gutter",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "site_gutter_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Site Gutter mobile",
+        "default": 24
+      },
+      {
+        "type": "header",
+        "content": "Grid"
+      },
+      {
+        "type": "range",
+        "id": "grid_gap",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Grid gap",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "grid_gap_small",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Grid gap small",
+        "default": 24
+      },
+      {
+        "type": "header",
+        "content": "Spacing"
+      },
+      {
+        "type": "range",
+        "id": "spacing_xs",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing xs",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "spacing_s",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing s",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "spacing_m",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing m",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "spacing_l",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing l",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "spacing_xl",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing xl",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "spacing_xxl",
+        "min": 50,
+        "max": 150,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing xxl",
+        "default": 96
+      },
+      {
+        "type": "range",
+        "id": "spacing_xs_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing xs mobile",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "spacing_s_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing s mobile",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "spacing_m_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing m mobile",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "spacing_l_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing l mobile",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "spacing_xl_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing xl mobile",
+        "default": 48
+      },
+      {
+        "type": "range",
+        "id": "spacing_xxl_mobile",
+        "min": 20,
+        "max": 120,
+        "step": 1,
+        "unit": "px",
+        "label": "Spacing xxl mobile",
+        "default": 96
+      }
+    ]
+  },
+  {
+    "name": "Icons",
+    "settings": [
+      {
+        "type": "select",
+        "id": "expand_collapse",
+        "label": "Expand\/collapse icon",
+        "options": [
+          {
+            "value": "caret",
+            "label": "Caret"
+          },
+          {
+            "value": "chevron",
+            "label": "Chevron"
+          },
+          {
+            "value": "plus_minus",
+            "label": "plus - minus"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Font",
+        "default": "poppins_n7"
+      },
+      {
+        "type": "header",
+        "content": "Body text"
+      },
+      {
+        "type": "font_picker",
+        "id": "text_font",
+        "label": "Font",
+        "default": "poppins_n5"
+      },
+      {
+        "type": "header",
+        "content": "Font size"
+      },
+      {
+        "type": "range",
+        "id": "note_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Note",
+        "default": 14
+      },
+      {
+        "type": "range",
+        "id": "p_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "p",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "h6_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "h6",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "h5_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "h5",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "h4_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "h4",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "h3_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "h3",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "h2_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "h2",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "h1_size",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "h1",
+        "default": 48
+      }
+    ]
+  },
+  {
+    "name": "Color",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary",
+        "default": "#3a445d"
+      },
+      {
+        "type": "color",
+        "id": "color_on_primary",
+        "label": "On primary",
+        "default": "#fcfcfc"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary",
+        "default": "#C1666B"
+      },
+      {
+        "type": "color",
+        "id": "color_on_secondary",
+        "label": "On secondary",
+        "default": "#fcfcfc"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface",
+        "default": "#1f2532"
+      },
+      {
+        "type": "color",
+        "id": "color_on_surface",
+        "label": "On surface",
+        "default": "#fcfcfc"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#fcfcfc"
+      },
+      {
+        "type": "color",
+        "id": "color_on_background",
+        "label": "On background",
+        "default": "#1F2532"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Borders",
+        "default": "#C7C7C7"
+      },
+      {
+        "type": "color",
+        "id": "color_shadows",
+        "label": "Shadows",
+        "default": "#C7C7C7"
+      },
+      {
+        "type": "color",
+        "id": "color_images",
+        "label": "Images",
+        "default": "#fefefe"
+      },
+      {
+        "type": "header",
+        "content": "Relative discounts (PDP + PLP)"
+      },
+      {
+        "type": "color",
+        "id": "color_discount_pdp",
+        "label": "Discount color",
+        "default": "#d16262"
+      },
+      {
+        "type": "color",
+        "id": "color_price_pdp",
+        "label": "Price color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_compare_price_pdp",
+        "label": "Compare price color",
+        "default": "#A6A6A6"
+      },
+      {
+        "type": "color",
+        "id": "color_discount_badge_background",
+        "label": "Badge background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "range",
+        "id": "color_discount_badge_background_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%",
+        "label": "Badge opacity",
+        "default": 50
+      },
+      {
+        "type": "header",
+        "content": "Relative discounts (Cart)"
+      },
+      {
+        "type": "color",
+        "id": "color_discount_cart",
+        "label": "Discount color",
+        "default": "#d16262"
+      },
+      {
+        "type": "color",
+        "id": "color_price_cart",
+        "label": "Price color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_compare_price_cart",
+        "label": "Compare price color",
+        "default": "#A6A6A6"
+      },
+      {
+        "type": "header",
+        "content": "Grid item"
+      },
+      {
+        "type": "color",
+        "id": "sale_badge_color",
+        "label": "Sale badge color",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Features",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "black_grid_item",
+        "label": "Use black product grid item",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "swatch_creator",
+        "label": "Enable swatch creator",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "top_bar",
+        "label": "Enable top bar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar",
+        "label": "Enable announcment bar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "top_anchor",
+        "label": "Enable back to top anchor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_font_classes",
+        "label": "Add Custom Font Classes",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "disable_preview_bar",
+        "label": "Disable the shopify preview bar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "age_verification",
+        "label": "Enable age verification",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "Youtube"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter"
+      },
+      {
+        "type": "url",
+        "id": "social_pinterest",
+        "label": "Pinterest"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "add_to_cart_action",
+        "label": "Add to cart acrion",
+        "options": [
+          {
+            "value": "redirect",
+            "label": "Cart redirect"
+          },
+          {
+            "value": "notification",
+            "label": "Cart notification"
+          },
+          {
+            "value": "drawer",
+            "label": "Cart drawer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BC Free Gift",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Default settings"
+      },
+      {
+        "type": "select",
+        "id": "bc_fg_isLive",
+        "label": "go live",
+        "default": "false",
+        "options": [
+          {
+            "value": "false",
+            "label": "false"
+          },
+          {
+            "value": "true",
+            "label": "true"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "bc_fg_trigger_with_landingpage",
+        "label": "Trigger landingpage",
+        "info": "Give the gift exclusively when the user comes to the store via the defined landing page.",
+        "default": "true",
+        "options": [
+          {
+            "value": "false",
+            "label": "false"
+          },
+          {
+            "value": "true",
+            "label": "true"
+          },
+          {
+            "value": "visited",
+            "label": "visited"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Set Content"
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_title",
+        "label": "Banner title"
+      },
+      {
+        "type": "textarea",
+        "id": "bc_fg_content",
+        "label": "Banner text"
+      },
+      {
+        "type": "select",
+        "id": "bc_fg_set_alt_text",
+        "label": "Set alternate text",
+        "default": "true",
+        "options": [
+          {
+            "value": "false",
+            "label": "false"
+          },
+          {
+            "value": "true",
+            "label": "true"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_altPriceText",
+        "label": "Alternative price text in gift banner."
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_add_button_text",
+        "label": "Button text"
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_property_value",
+        "label": "Define property value"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "range",
+        "id": "bc_fg_grid_desktop",
+        "label": "Columns desktop",
+        "info": "Define maximum columns in gift banner for desktop version",
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "unit": "col",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "bc_fg_grid_mobile",
+        "label": "Columns mobile",
+        "info": "Define maximum columns in gift banner for mobile version",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "unit": "col",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "bc_fg_close_time",
+        "label": "Close time",
+        "info": "Define when the banner should be closed after adding the gift. Specification in milliseconds",
+        "min": 100,
+        "max": 1500,
+        "step": 100,
+        "unit": "ms",
+        "default": 1000
+      },
+      {
+        "type": "header",
+        "content": "LandingPage & Products",
+        "info": "Define the landingpage, the landingpage type and the collection that contains the gifts"
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_landingPage",
+        "label": "Landing page",
+        "info": "Define the landing page. Example: landing page is https:\/\/myshop.myshopify.com\/pages\/my-landingpage, just enter my-landingpage"
+      },
+      {
+        "type": "select",
+        "id": "bc_fg_landingPageType",
+        "label": "Landing page type",
+        "info": "Define the landing page type.",
+        "default": "collections",
+        "options": [
+          {
+            "value": "collections",
+            "label": "Collections"
+          },
+          {
+            "value": "pages",
+            "label": "Pages"
+          },
+          {
+            "value": "blogs",
+            "label": "Blogs"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_collection",
+        "label": "Gift collection",
+        "info": "Define a collection name that holds the product for the possible gift. Example: gift collection is https:\/\/myshop.myshopify.com\/collections\/free-gifts, just enter free gifts"
+      },
+      {
+        "type": "header",
+        "content": "Ttriggers",
+        "info": "Define the triggers to add a gift. Attention! Always transfer the values cart-price, tag-name and gift-collection also to the LineItem Sctipt."
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_cart_price",
+        "label": "Cart price",
+        "info": "Define the minimum cart value to add a gift. Example: Minimum value $45.00, enter 4500."
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_tag_name",
+        "label": "Tag name",
+        "info": "Define the tag name. Only products that have this tag will be set as valid gifts. Products that do not have this tag, but are in the same collection, will not be offered as a possible gift."
+      },
+      {
+        "type": "text",
+        "id": "bc_fg_cookie",
+        "label": "Cookie",
+        "info": "Define the cookie that serves as a trigger. This must be declared as essential when using a cookie consent tool. No user data will be collected. Validity period is limited to the session.",
+        "default": "bc_fg"
+      }
+    ]
+  },
+  {
+    "name": "PS Optimization",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "ps_optimization",
+        "label": "Activate Page Speed Optimization"
+      }
+    ]
+  },
+  {
+    "name": "BC IntersectionSections",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "bc_intersection_sections",
+        "label": "Activate dynamic section randering"
+      }
+    ]
+  },
+  {
+    "name": "Multi stage discount",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "multi_stage_discount",
+        "label": "Activate Multi stage discount"
+      }
+    ]
+  },
+  {
+    "name": "Images",
+    "settings": [
+      {
+        "type": "html",
+        "id": "image_sizes",
+        "label": "Sizes",
+        "info": "Defines the used srcset sizes breakpoints for loading image-sources device and viewport specific",
+        "default": "50,100,150,250,400,500,750,1000,1500,1920,2560,3440,4096,5120"
+      }
+    ]
+  },
+  {
+    "name": "Checkout Extras",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_checkout_message",
+        "label": "Enable checkout first 3 steps message",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "checkout_message",
+        "label": "Checkout Text Under Button"
+      },
+      {
+        "type": "liquid",
+        "id": "metafield_checkout_message",
+        "info": "If the metafield is not empty, it will take priority above the previous field.",
+        "label": "Metafield Checkout Text Under Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_confirmation_message",
+        "label": "Enable Confirmation Message",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "confirmation_message",
+        "label": "Confirmation Message"
+      },
+      {
+        "type": "liquid",
+        "id": "metafield_confirmation_message",
+        "info": "If the metafield is not empty, it will take priority above the previous field.",
+        "label": "Metafield Confirmation Message"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_checkout_coupon_warning_message",
+        "label": "Enable Coupon Warning Message",
+        "default": false,
+        "info": "This message will be shown if a coupon is used when Multi Stage Offers or Free Gifts are in the cart"
+      },
+      {
+        "type": "richtext",
+        "id": "checkout_coupon_warining_message",
+        "label": " Coupon Warning Message"
+      },
+      {
+        "type": "liquid",
+        "id": "metafield_checkout_coupon_warining_message",
+        "info": "If the metafield is not empty, it will take priority above the previous field.",
+        "label": "Metafield Coupon Warning Message"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_steps_customisations",
+        "label": "Enable pricing strikes in checkout",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "bc_discount_price_color",
+        "label": "Price Discount Color in Items",
+        "default": "#f06247"
+      }
+    ]
+  }
+]

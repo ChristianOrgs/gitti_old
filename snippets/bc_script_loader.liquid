@@ -1,0 +1,11 @@
+<script>
+    (function () {
+        var scripts = ['{{ "theme.js" | asset_url }}', '{{ "custom.js" | asset_url }}'];
+
+        scripts.forEach(function (src) {
+            var n = document.createElement('script');
+            n.src = src;
+            document.head.appendChild(n);
+        });
+    })();
+</script>

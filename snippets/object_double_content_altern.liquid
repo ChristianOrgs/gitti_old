@@ -1,0 +1,71 @@
+{% assign id = object.id %}
+<style>
+    #shopify-section-{{id}} .inner_grid > div > *:last-child{
+        padding-bottom: 0;
+    }
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        
+        #shopify-section-{{object.id}} .block_margin {
+        margin-left: 0px;
+        margin-right: 0px;
+
+        }
+        #shopify-section-{{id}} .inner_grid > div:not(.heading) > *:not(.image), #shopify-section-{{id}} .inner_grid > div.heading{
+            padding-left: {{settings.site_gutter_mobile}}px;
+            padding-right: {{settings.site_gutter_mobile}}px;
+        }
+        {% if object.settings.shift_images %}
+            #shopify-section-{{id}} .inner_grid > div.block_left > .image{
+                padding-left: {{settings.site_gutter_mobile}}px;
+                padding-right: 0;
+            }
+            #shopify-section-{{id}} .inner_grid > div.block_right > .image{
+                padding-right: {{settings.site_gutter_mobile}}px;
+                padding-left: 0;
+            }
+        {% endif %}
+        #shopify-section-{{id}} .inner_grid{
+            row-gap: 70px;
+        }
+    }
+
+     /* TABS */
+     {% if object.settings.tab_container != blank %}
+    .{{object.settings.tab_container | remove: " " | handleize}}_bc_tabs{
+      display:none;
+    }
+    {% endif %}
+    #shopify-section-{{object.id}} .bc_active_tab_info{
+      display: block;
+    }
+</style>
+<div class="double_content_alt spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}} {% if object.settings.tab_container != blank %}{{object.settings.tab | remove: " " | handleize}}_tab {{object.settings.tab_container | remove: " " | handleize}}_bc_tabs{% endif %}">
+    <div>
+                <div class="inner_grid grid col-2 small_col-1">
+                    <div class="block_left {% if change_images_on_mobile %}small_row-start-2{% endif %} flex col grid-item middle {{object.settings.image_position_left}} block_margin margin-right-{{object.settings.image_spacing_between_left}}">
+                        {% if object.settings.image_left != blank %}
+                        {% capture picture_left %}{%render 'image_croper', image: object.settings.image_left, shape: object.settings.image_shape_left, crop_position: object.settings.image_focal_point_left%}{% endcapture %}
+                        <div class="image flex col" style="width: {{object.settings.image_width_left}}%;">
+                            <img class="image" src="{{picture_left}}" style="width: 100%; object-fit: {{object.settings.image_fit_left}};">
+                        </div>
+                        {% endif %}
+                        {% if object.settings.text_left != blank %}
+                            <{{object.settings.text_tag}} class="text_pic_left {{object.settings.text_class}} spacing-top-s" style="align-self: center;">{{object.settings.text_left}}</{{object.settings.text_tag}}>    
+                        {% endif %}
+                        
+                    </div>
+                    <div class="block_right flex col grid-item middle {{object.settings.image_position_right}} block_margin margin-left-{{object.settings.image_spacing_between_right}}">
+                        {% if object.settings.image_right != blank %}
+                        {% capture picture_right %}{%render 'image_croper', image: object.settings.image_right, shape: object.settings.image_shape_right, crop_position: object.settings.image_focal_point_right%}{% endcapture %}
+                        <div class="image flex col" style="width: {{object.settings.image_width_right}}%;">
+                            <img class="image" src="{{picture_right}}" style="width: 100%; object-fit: {{object.settings.image_fit_right}};">
+                        </div>
+                        {% endif %}
+                        {% if object.settings.text_right != blank %}
+                            <{{object.settings.text_tag}} class="text_pic_right {{object.settings.text_class}} spacing-top-s" style="align-self: center;">{{object.settings.text_right}}</{{object.settings.text_tag}}>    
+                        {% endif %}
+                    </div>
+                </div>
+
+    </div>
+</div>

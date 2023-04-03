@@ -1,0 +1,34 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+{% capture captured_page %}
+{% include 'product-variantPopover' %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+	{% assign on_sale = true %}
+	{% assign on_sale_class = ' is-sale' %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% unless product.tags contains 'ausverkauft' %}
+	{% if product.available %}
+		{% assign sold_out = false %}
+	{% endif %}
+{% endunless %}
+<div itemscope itemtype="http://schema.org/Product">
+	<meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+	<meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+	
+		{% section 'product-template' %}
+		{% section 'related-products' %}
+
+	<span id="product-json" hidden>{{ product | json }}</span>
+</div>
+
+{% endcapture %}
+{% include 'password-protect' %}

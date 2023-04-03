@@ -1,0 +1,240 @@
+{
+  "sections": {
+    "product_template_bundle": {
+      "type": "product_template_mystery",
+      "blocks": {
+        "b0f26342-67c6-4b1b-a3f0-88119573517f": {
+          "type": "voucher",
+          "disabled": true,
+          "settings": {
+            "collections": [
+              "all-products"
+            ],
+            "products": [],
+            "full_width": true,
+            "background": "#f3f3f3",
+            "icon": "",
+            "text_richtext": "<p>Happy Women's Day! -20% mit dem Code*: <a href=\"#copy\" title=\"#copy\"><strong>POWER20<\/strong><\/a><\/p><p><a href=\"#TermsOfService\" title=\"#TermsOfService\"><span style=\"text-decoration:underline\">AGB<\/span><\/a><\/p>",
+            "text_liquid": "",
+            "terms_and_conditions": "voucher-tc"
+          }
+        },
+        "c57e6d2d-6728-47be-84ef-7cf1cdd3fbec": {
+          "type": "voucher",
+          "disabled": true,
+          "settings": {
+            "collections": [
+              "black-week-3"
+            ],
+            "products": [],
+            "full_width": true,
+            "background": "#cedacf",
+            "icon": "<svg fill=\"#000\" width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 107.87 135.08\"><g id=\"Ebene_2\" data-name=\"Ebene 2\"><path d=\"M94.16,58.21H82.37a14,14,0,0,0-15.92-23,13.68,13.68,0,0,0-5.38,6.46l-6.9,14.53L47.31,41.77a14,14,0,0,0-16-8.44A14,14,0,0,0,26,58.21H14.19a1.5,1.5,0,0,0-1.5,1.5v73.87a1.5,1.5,0,0,0,1.5,1.5h80a1.5,1.5,0,0,0,1.5-1.5V59.71A1.5,1.5,0,0,0,94.16,58.21Zm-40,3h7.7v70.87H46.49V61.21Zm9.67-18.34a10.85,10.85,0,0,1,4.24-5.13A11,11,0,0,1,74,36a10.69,10.69,0,0,1,2.37.26A11,11,0,0,1,73.58,58H73.4l-16.84.19ZM25.07,41.08A11,11,0,0,1,44.56,43l7.23,15.22L35,58h-.17a10.87,10.87,0,0,1-6.37-1.73A11,11,0,0,1,25.07,41.08ZM15.69,61.21h27.8v70.87H15.69Zm77,70.87H64.85V61.21H92.66Zm-36.89-113h-3V0h3Zm52.1,27v3H94.16v-3Zm-94.16,3H0v-3H13.71Zm12.05-22.8-9.89-9.89L18,14.27l9.89,9.89Zm58,1-2.12-2.12,9.69-9.7,2.12,2.13Z\"\/><\/g><\/svg>",
+            "text_richtext": "",
+            "text_liquid": "<p class=\"p1\">Lege mindestens zwei Sets deiner Wahl in den Warenkorb und füge den Code* <b>xxx<\/b> beim Bestellabschluss hinzu. Der Betrag vom günstigeren Set wird automatisch abgezogen.<\/p><br>\n<span style=\"font-size: 10px;line-height: 140%;padding-top: 10px;\">*Der Code kann nur einmal pro Bestellung verwendet werden und ist nicht mit anderen Rabattaktionen kombinierbar.<\/span>",
+            "terms_and_conditions": "voucher-tc"
+          }
+        }
+      },
+      "block_order": [
+        "b0f26342-67c6-4b1b-a3f0-88119573517f",
+        "c57e6d2d-6728-47be-84ef-7cf1cdd3fbec"
+      ],
+      "settings": {
+        "gallery_spacing": 2,
+        "slider_preview": 60,
+        "gallery_dot_outline": "#757575",
+        "gallery_dot_fill": "#ffffff",
+        "gallery_dot_fill_selected": "#757575",
+        "gallery_dot_opacity": 80,
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "title_tag": "h1",
+        "title_class": "h2",
+        "title_weight_class": "bold",
+        "price_tag": "p",
+        "price_class": "h4",
+        "price_weight_class": "bold",
+        "price_font_size": 20,
+        "shipping_note": "Lieferung in 3-5 Werktagen"
+      }
+    },
+    "4773ef8e-6150-4603-bbae-fce59874ba83": {
+      "type": "index_info_slider_makeup_product_template",
+      "disabled": true,
+      "blocks": {
+        "50b18dee-371d-4dfb-8737-9a64ed294e95": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil_1211x675_crop_center_c9582f85-b726-4716-9551-2d0ca86906fe.webp",
+            "heading_1": "Rizinusöl-Derivat",
+            "url_1": "",
+            "text_1": "<p>Feuchtigkeitsspendende und pflegende Eigenschaften für geschmeidige und gesünder aussehende Wimpern.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_eyelevel_ingredient_landigpage_square_SHEABUTTER_1211x1211_crop_center_1e7f04e4-a903-4546-a7fd-4f4e940f7456.jpg",
+            "heading_2": "Shea Butter",
+            "url_2": "",
+            "text_2": "<p>Zeichnet sich besonders durch ihre reizlindernden und entzündungshemmenden Eigenschaften aus.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Vegane Wachse",
+            "url_3": "",
+            "text_3": "<p>Sorgt für eine cremige und langanhaltende Textur, die sich leicht auftragen lässt.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "50b18dee-371d-4dfb-8737-9a64ed294e95"
+      ],
+      "settings": {
+        "no_image": false,
+        "background_color": "rgba(0,0,0,0)",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "3 Superpower Inhaltsstoffe.",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "block_heading_spacing_bottom": "xs",
+        "block_heading_tag": "p",
+        "block_heading_class": "h2",
+        "block_heading_weight_class": "bold",
+        "block_text_spacing_bottom": "xs",
+        "block_text_tag": "p",
+        "block_text_class": "h4",
+        "block_text_weight_class": "",
+        "image_shape": "sixteen_by_nine",
+        "image_fit": "contain",
+        "image_focal_point": ""
+      }
+    },
+    "product_video": {
+      "type": "product_video",
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-4",
+        "layout_mobile": "small_row-start-1",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "product_instagram": {
+      "type": "product_instagram",
+      "blocks": {
+        "98bc8b54-f7af-4b03-a365-f99f898b0cbc": {
+          "type": "post",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRLpb147_pb150-2.jpg"
+          }
+        },
+        "5c228299-3caf-4a68-ad67-a79ccaaebe89": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_0269-min_1_-min.jpg"
+          }
+        },
+        "fea805bc-c4dd-479f-8072-c0af39ca0b37": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IRL_pb_119_1_f7c0cabd-80b4-42d7-88b6-3b7a2c20b099.jpg"
+          }
+        },
+        "262d1088-8780-4417-a357-5fb7a8f290be": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRL_pb145-2_6951f1fe-0839-46b3-b28c-192f7ec29e50.jpg"
+          }
+        },
+        "1f4fefee-5015-4bfa-b0df-1bded25a04c7": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_2243_2_-min.jpg"
+          }
+        },
+        "0aa5510e-dab7-4253-af7d-125279cc8a74": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRLpb148_pb149-1.jpg"
+          }
+        },
+        "e002ad7d-7dc4-47d1-b15f-c12ebe006986": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_2259_1.jpg"
+          }
+        },
+        "11a8c6a0-76ed-4591-97f2-089a44d125d2": {
+          "type": "post",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "98bc8b54-f7af-4b03-a365-f99f898b0cbc",
+        "5c228299-3caf-4a68-ad67-a79ccaaebe89",
+        "fea805bc-c4dd-479f-8072-c0af39ca0b37",
+        "262d1088-8780-4417-a357-5fb7a8f290be",
+        "1f4fefee-5015-4bfa-b0df-1bded25a04c7",
+        "0aa5510e-dab7-4253-af7d-125279cc8a74",
+        "e002ad7d-7dc4-47d1-b15f-c12ebe006986",
+        "11a8c6a0-76ed-4591-97f2-089a44d125d2"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xl",
+        "spacing_bottom": "xl",
+        "heading": "@gittibeauty community - in real life.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "cover"
+      }
+    },
+    "product_recommended_products": {
+      "type": "product_recommended_products",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Das könnte dir auch gefallen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_reviews": {
+      "type": "product_reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product_template_bundle",
+    "4773ef8e-6150-4603-bbae-fce59874ba83",
+    "product_video",
+    "product_instagram",
+    "product_recommended_products",
+    "product_reviews"
+  ]
+}

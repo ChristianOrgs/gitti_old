@@ -1,0 +1,58 @@
+{% assign id = section.id %}
+{% assign enabled_payment = enabled_payment_types | split: ',' %}
+
+<style>
+    #shopify-section-{{id}} .payment_wrapper{
+        border: 1px solid #E8E8E8;
+    }
+    #shopify-section-{{id}} .custom_grid_gap{
+        grid-gap: 40px;
+    }
+    #shopify-section-{{id}} .paymen_icon{
+        max-width: 100px;
+    }
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{id}} .custom_grid_gap{
+            grid-gap: 24px;
+        }
+        {% if mobile_cols != blank %}
+        #shopify-section-{{id}} .payment_grid{
+            grid-template-columns: repeat({{mobile_cols}}, 1fr);
+        }
+        {% endif %}
+    }
+</style>
+
+<div class="flex col">
+    {% if pos == 'top' %}<p class="spacing-bottom-s">{{title}}</p>{% endif %}
+    <div class="grid payment_grid custom_grid_gap {% if cols != blank %} col-{{cols}} {% else %}{% if pos == 'left' %} col-{{enabled_payment.size | plus:  1 }} {% else %} col-{{enabled_payment.size}} {% endif %}{% endif %}">
+        {% if pos == 'left' %}
+            <div class="grid-item paymen_icon flex col middle">
+                <p class="p">{{title}}</p>
+            </div>
+        {% endif %}
+        {% for type in enabled_payment %}
+            {% if type == 'visa' or type == 'paypal' or type == 'amazon' or type == 'apple_pay' or type == 'master' or type == 'ideal' or type == 'bancontact' %}
+                <style>
+                    #shopify-section-{{id}} .{{type}}.payment_wrapper > title + path{
+                        display: none;
+                    }
+                </style>
+            {% endif %}
+            {% if type == 'klarna' %}
+                <style>
+                    #shopify-section-{{id}} .{{type}}.payment_wrapper > g > path:first-child, #shopify-section-{{id}} .{{type}}.payment_wrapper > g > path:nth-child(2){
+                        fill: white;
+                    }
+                    #shopify-section-{{id}} .{{type}}.payment_wrapper > g > path:nth-child(3){
+                        fill: rgb(255, 179, 199)
+                    }
+                </style>
+            {% endif %}
+            <div class="grid-item paymen_icon flex col">
+                {% assign classes = type | append: ' payment_wrapper icon container' %}
+                    {{ type | payment_type_svg_tag: classes }}
+            </div>
+        {% endfor %}
+    </div>
+</div>

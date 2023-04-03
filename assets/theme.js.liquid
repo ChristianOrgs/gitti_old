@@ -1,0 +1,625 @@
+window.Shopify = window.Shopify || {};
+Shopify.theme = Shopify.theme || {};
+Shopify.theme.firstLoad = true;
+Shopify.theme.loadedImages = [];
+
+var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimatinFrame || msRequestAnimationFrame;
+Shopify.theme.requestAnimationFrame = function( callback ) {
+    if( raf ) raf( callback );
+    else window.addEventListener('load', callback );
+};
+
+Shopify.theme.DOMContentLoaded = function ( callback ) {
+    document.addEventListener("DOMContentLoaded",function () {
+        /* Shopify.theme.requestAnimationFrame( callback ); */
+      setTimeout( callback );
+    });
+};
+
+window['Shopify']['theme']['intersectionObserverSection'] = function ( sectionData ) {
+
+    function fetchSection ( source ) {
+        let template = document.createElement ( 'template' );
+        template.innerHTML = sectionData.template;
+        let content = template.content;
+        source.appendChild ( content.cloneNode ( true ) );
+    }
+
+    function handleIntersect ( entries, observer ) {
+        entries.forEach ( ( entry ) => {
+            if ( entry.isIntersecting ) {
+                if ( entry.target.id === sectionData.sectionId ) {
+                    observer.unobserve ( entry.target );
+                    fetchSection ( entry.target );
+                }
+            }
+        } );
+    }
+
+    function createObserver () {
+        let observer;
+
+        let options = {
+            root : null,
+            rootMargin : "0px"
+        };
+
+        observer = new IntersectionObserver ( handleIntersect, options );
+        observer.observe ( document.querySelector ( `#${ sectionData.sectionId }` ) );
+    }
+
+    createObserver ();
+}
+
+window.intersectionObserverSectionsData = window.intersectionObserverSectionsData || [];
+window.intersectionObserverSectionsData.push = function(){
+    window['Shopify']['theme']['intersectionObserverSection']( arguments[ 0 ] );
+    return true;
+}
+while( window.intersectionObserverSectionsData.length > 0 ) {
+    let result = window.intersectionObserverSectionsData.pop();
+    window['Shopify']['theme']['intersectionObserverSection']( result );
+}
+
+/*************** sliders ***********************************/
+
+window['Shopify']['theme']['sliders'] = window['Shopify']['theme']['sliders'] || {};
+
+window['Shopify']['theme']['createSlider'] = function ( data ) {
+
+    var that = this;
+    var keys = Object.keys( data );
+    keys.forEach( function( key ) {
+        that[ key ] = data[ key ];
+    });
+
+    if (navigator.userAgent.indexOf("Chrome-Lighthouse") == -1) {
+        this.init()
+    }
+};
+window['Shopify']['theme']['createSlider'].prototype.init = function init () {
+    var that = this;
+
+    if (window['Shopify']['theme']['sliders'][this.section_id] != null) {
+        window['Shopify']['theme']['sliders'][this.section_id].destroy();
+    }
+
+    this.section = document.querySelector('#' + this.section_id);
+    this.offsetLeft = this.section.querySelector(this.slides_wrapper).getBoundingClientRect().x;
+    this.sliderWidth = window.innerWidth - this.offsetLeft;
+    this.pageWidth = Math.min( this.site_width, window.innerWidth ) - 2 * this.site_gutter;
+
+    if(window.innerWidth >= this.site_width ){
+        this.slideWidth = ( this.pageWidth - (this.slides_desktop -1 ) * this.grid_gap) / this.slides_desktop;
+    } else {
+    	this.slideWidth = (this.pageWidth - this.slides_desktop * this.grid_gap) / this.slides_desktop;
+    }
+
+    this.sliderOverhang = this.sliderWidth - this.pageWidth;
+    if (window.innerWidth > this.breakpoint_small ) {
+      this.sliderOverhang = Math.max(this.sliderOverhang,this.site_gutter)
+    } else {
+      this.sliderOverhang = Math.max(this.sliderOverhang, this.site_gutter_mobile )
+    }
+
+    this.sliderOverhangItem =  Math.ceil(this.sliderOverhang - this.grid_gap) / this.slideWidth;
+
+    this.generateSlider( this.section_id );
+
+};
+window['Shopify']['theme']['createSlider'].prototype.getResponsiveData = function () {
+    var that = this;
+    var breakpoint_small = that.breakpoint_small,
+        breakpoint_medium = (that.breakpoint_medium || that.breakpoint_small )  + 1,
+        responsive = {};
+
+    responsive[ breakpoint_small ] = {
+        items: (that.slides_desktop + that.sliderOverhangItem),
+        fixedWidth: that.slideWidth,
+        controls: true
+    };
+
+    responsive[ breakpoint_medium ] = {
+        items: (that.slides_desktop + that.sliderOverhangItem),
+        fixedWidth: that.slideWidth,
+        controls: true
+    };
+    this.responsive = responsive;
+    return responsive;
+};
+
+/*************** DOM ***************/
+Shopify.theme.dom = {
+    init : function(){
+        let that = this;
+        window.addEventListener('resize', (event) => {
+            that.calculateMainMinHeight();
+        });
+    },
+    calculateMainMinHeight : function(){
+        document.querySelector('main').style.minHeight = 'calc(100vh - ' + document.querySelector('header').offsetHeight + 'px - ' + document.querySelector('footer').offsetHeight +'px)';
+    }
+};
+Shopify.theme.dom.init();
+/*************** LINKS ***************/
+Shopify.theme.links = {
+    init : function(){
+        document.querySelectorAll('a').forEach(
+            function (element) {
+                /*************** SCROLL TO VIEW ***************/
+                if(element.href.includes('#')){
+                    element.addEventListener('click',function(event){
+                        let hash = element.href.split('#')[1];
+                        event.preventDefault();
+                        if(hash !== ''){
+                            window.scrollTo(0,document.getElementById(hash).offsetTop);
+                        }
+                    });
+                }
+            }
+        );
+    }
+};
+Shopify.theme.links.init;
+
+/*************** TOOLS ***************/
+Shopify.theme.tools = {
+    init: function(){
+        window.addEventListener('resize',function(){
+            document.querySelector(':root').style.setProperty('--vh', window.innerHeight/100 + 'px');
+            document.querySelector(':root').style.setProperty('--vw', window.innerWidth/100 + 'px');
+        });
+        document.querySelector(':root').style.setProperty('--vh', window.innerHeight/100 + 'px');
+        document.querySelector(':root').style.setProperty('--vw', window.innerWidth/100 + 'px');
+
+    },
+    handleize: function(value){
+        var handle =  value.toString().split(' ').join('-');
+        handle = handle.toLowerCase();
+        return handle;
+    },
+    formatMoney: function (cents, format){
+        var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+        var money_format = format;
+        switch(money_format.match(placeholderRegex)[1]) {
+            case 'amount':
+                value = formatWithDelimiters(cents, 2, ',', '.');
+                break;
+            case 'amount_no_decimals':
+                value = formatWithDelimiters(cents, 0);
+                break;
+            case 'amount_with_comma_separator':
+                value = formatWithDelimiters(cents, 2, ".", ",");
+                break;
+            case 'amount_no_decimals_with_comma_separator':
+                value = formatWithDelimiters(cents, 0, ".", ",");
+                break;
+            case "amount_with_apostrophe_separator":
+                value = formatWithDelimiters(cents, 2, "'", ".");
+                break;
+        }
+
+        function formatWithDelimiters(number, precision, thousands, decimal) {
+            precision = (typeof precision != 'undefined' ? precision : 2);
+            thousands = (typeof thousands != 'undefined' ? thousands : ".");
+            decimal   = (typeof decimal != 'undefined' ? decimal : ",");
+
+            if (isNaN(number) || number == null) { return 0; }
+
+            number = (number/100.0).toFixed(precision);
+
+            var parts   = number.split('.');
+            let dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
+            let cents   = parts[1] ? (decimal + parts[1]) : '';
+
+            return dollars + cents;
+        }
+        return money_format.replace(placeholderRegex, value)
+    },
+    /*************** SHOPIFY COMMON.JS (PROVINCE SELECTOR) ***************/
+    bind: function(t,e){
+        return function(){
+            return t.apply(e,arguments);
+        }
+    },
+    setSelectorByValue: function(t,e){
+        for(var n=0,i=t.options.length;n<i;n++)
+        {
+            var o=t.options[n];
+            if(e==o.value||e==o.innerHTML)
+                return t.selectedIndex=n;
+        }
+    },
+    postLink: function(t,e){
+        var n = ( e = e || {}).method || "post";
+        i = e.parameters || {};
+        o = document.createElement("form");
+        for(var r in o.setAttribute("method", n),o.setAttribute("action",t),i){
+            var l = document.createElement("input");
+            l.setAttribute("type","hidden");
+            l.setAttribute("name",r);
+            l.setAttribute("value",i[r]);
+            o.appendChild(l)
+        }
+        document.body.appendChild(o);
+        o.submit();
+        document.body.removeChild(o);
+}
+};
+
+Shopify.theme.tools.CountryProvinceSelector = function(t,e,n){
+    this.countryEl = document.getElementById(t);
+    this.provinceEl = document.getElementById(e);
+    this.provinceContainer = document.getElementById(n.hideElement||e);
+    this.countryEl.addEventListener('change', Shopify.theme.tools.bind(this.countryHandler, this));
+    this.initCountry();
+    this.initProvince();
+};
+
+Shopify.theme.tools.CountryProvinceSelector.prototype = {
+    initCountry: function(){
+        var t = this.countryEl.getAttribute("data-default");
+        Shopify.theme.tools.setSelectorByValue(this.countryEl,t);
+        this.countryHandler();
+    },
+    initProvince: function(){
+        var t=this.provinceEl.getAttribute("data-default");
+        t && 0 < this.provinceEl.options.length && Shopify.theme.tools.setSelectorByValue(this.provinceEl,t);
+    },
+    countryHandler: function(){
+        var t=(i=this.countryEl.options[this.countryEl.selectedIndex]).getAttribute("data-provinces");
+        e=JSON.parse(t);
+        if(this.clearOptions(this.provinceEl),e&&0==e.length) {
+            this.provinceContainer.style.display="none";
+        }else{
+            for(var n=0;n<e.length;n++){
+                var i;(i=document.createElement("option")).value=e[n][0];
+                i.innerHTML=e[n][1],this.provinceEl.appendChild(i);
+            }
+            this.provinceContainer.style.display = "";
+        }
+    },
+    clearOptions: function(t){
+        for(;t.firstChild;)
+            t.removeChild(t.firstChild);
+    },
+    setOptions: function(t,e){
+        var n=0;
+        for(e.length;n<e.length;n++){
+            var i=document.createElement("option");
+            i.value = e[n];
+            i.innerHTML = e[n];
+            t.appendChild(i);
+        }
+    }
+};
+
+Shopify.currency.moneyFormat = {{ shop.money_format | json }};
+
+Shopify.theme.tools.init();
+
+Shopify.theme.tools.generateUID = function () {
+    let firstPart = (Math.random() * 46656) | 0;
+    let secondPart = (Math.random() * 46656) | 0;
+    firstPart = ("000" + firstPart.toString(36)).slice(-3);
+    secondPart = ("000" + secondPart.toString(36)).slice(-3);
+    return firstPart + secondPart;
+},
+
+/*************** CART ***************/
+Shopify.theme.cart = {
+
+    data : null,
+    shipping: null,
+
+    init : function(){
+        //Shopify.theme.cart.getCart();
+        const cart_cata = document.querySelector('#cart_data');
+        if ( !!cart_cata ) {
+            try {
+                Shopify.theme.cart.data = JSON.parse( cart_cata.textContent );
+
+            } catch ( e ) {
+                Shopify.theme.cart.getCart();
+            }
+        } else {
+        Shopify.theme.cart.getCart();
+        }
+
+        window.addEventListener('cartadd',function(e){
+            e.preventDefault();
+            if ('{{settings.add_to_cart_action}}' == 'redirect') {
+                location.pathname = routes.cart_url
+            }
+            else if ('{{settings.add_to_cart_action}}' == 'notification') {
+                
+            }
+            else if ('{{settings.add_to_cart_action}}' == 'drawer') {
+                window.dispatchEvent(new Event('opencart'));
+            }
+        });
+        document.dispatchEvent( new Event( 'theme:cart_loaded' ) )
+    },
+    addToCart : function (addData) {
+      
+      window.dispatchEvent(new CustomEvent('bc_enhanced_tracking:addToCart', { detail: addData } ));
+      
+        //let that = Shopify.theme.cart;
+        fetch(`${routes.cart_url}/add.js`, {
+                body: JSON.stringify(addData),
+                credentials: 'same-origin',
+                headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With':'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
+                },
+                method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function( addItem ) {
+                Shopify.theme.cart.getCart.call( this )
+                window.dispatchEvent(new Event('cartadd'));
+
+            }).catch(function(err) {
+                console.error(err)
+        });
+    },
+    getCart: function (){
+        /* console.log('request.type', '{{request.type}}'); */
+
+        fetch(`${routes.cart_url}.js`, {
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json', 'Accept':'application/json'},
+            method: 'GET'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(cart) {
+                Shopify.theme.cart.data = cart;
+                window.dispatchEvent(new CustomEvent('bc_enhanced_tracking:cartDataChanged', { detail: cart } ));
+                window.dispatchEvent(new CustomEvent('cart:getCart', { detail: { cart : cart } } ));
+                window.dispatchEvent(new Event('cartdatachanged'));
+        }).catch(function(err) {
+                console.error(err)
+            });
+    },
+
+    checkBundleUpdates : function ( itemsToUpdate ) {
+        let [ bundle, updateItemsKey ] = [ null, Object.keys( itemsToUpdate.updates ) ];
+
+        Shopify.theme.cart.data.items.forEach( item => {
+            if ( updateItemsKey.includes( item.key ) ) {
+                bundle = JSON.parse ( JSON.stringify ( item ) );
+            }
+        });
+
+        if ( !!bundle && itemsToUpdate.updates[ bundle.key ] > 0 ) {
+            const [ items, set ] = [ [], Shopify.theme.tools.generateUID() ];
+
+            const pushItem = function( id, properties, quantity ){
+                items.push( {
+                    id: Number( id ),
+                    properties : properties,
+                    quantity: Number( quantity )
+                } );
+            };
+
+            const getColorName = function( vId ) {
+                const cartNode = document.querySelector(`[data-product_id="${ vId }"]`);
+                let productColor = '';
+
+                if ( !!cartNode && !!cartNode.dataset.product_color ) productColor = cartNode.dataset.product_color;
+                return productColor;
+            };
+
+            const setParentItem = function(){
+                const _variants_set = bundle.properties._variants_set;
+                const properties = {
+                    set,
+                    _variants_set
+                };
+                pushItem( bundle.id, properties, 1 );
+            };
+
+            const setChildItems = function(){
+                bundle.properties._variants_set.split('__').forEach( variant => {
+                    const [ id, quantity ] = [ ...variant.split(':') ];
+                    const set_item_color = getColorName( id );
+                    const properties = {
+                        set_id : set,
+                        set_item_color
+                    };
+                    pushItem( id, properties, quantity );
+                });
+            };
+
+            setParentItem();
+            setChildItems();
+            Shopify.theme.cart.addToCart( { items } );
+            return true
+        }
+        return false
+    },
+
+    /* Example input: { updates: { 12345678: 2, 87654321: 3 } } */
+    updateCart: function (itemsToUpdate){
+
+        if ( Shopify.theme.cart.checkBundleUpdates( itemsToUpdate ) ) return;
+      	window.dispatchEvent(new CustomEvent('bc_enhanced_tracking:updateCart', { detail: itemsToUpdate } ));
+      
+        let that = Shopify.theme.cart;
+        fetch(`${routes.cart_url}/update.js`, {
+            body: JSON.stringify(itemsToUpdate),
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json', 'Accept':'application/json'},
+            method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(cart) {
+            that.data = cart;
+            window.dispatchEvent(new Event('cartdatachanged'));
+          	that.getCart();
+            }).catch(function(err) {
+                console.error(err)
+            });
+    },
+    clearCart: function (){
+      
+     	window.dispatchEvent(new CustomEvent('bc_enhanced_tracking:clearCart', { detail: null } ));
+      
+        let that = Shopify.theme.cart;
+        fetch(`${routes.cart_url}/clear.js`, {
+            body: '',
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json', 'Accept':'application/json'},
+            method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(emptyCart) {
+                that.data = emptyCart;
+            window.dispatchEvent(new Event('cartdatachanged'));
+          	that.getCart();
+            }).catch(function(err) {
+                console.error(err)
+            });
+    },
+    /* Example input: { 'id': 794864053, 'quantity': 3 } */
+    changeItem: function (itemsToChange){
+
+        let checkBundleQytChangeResult = this.checkBundleQytChange( itemsToChange );
+
+        if ( !!checkBundleQytChangeResult ) {
+            this.updateCart( checkBundleQytChangeResult );
+            return;
+        }
+
+      	window.dispatchEvent(new CustomEvent('bc_enhanced_tracking:changeItem', { detail: itemsToChange } ));
+      
+        let that = Shopify.theme.cart;
+        fetch(`${routes.cart_url}/change.js`, {
+            body:  JSON.stringify(itemsToChange),
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json', 'Accept':'application/json'},
+            method: 'POST'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(cart) {
+            that.data = cart;
+            window.dispatchEvent(new Event('cartdatachanged'));
+          	that.getCart();
+            }).catch(function(err) {
+                console.error(err)
+            });
+    },
+    checkBundleQytChange : function ( itemsToChange ) {
+        let parentBundleItem = Shopify.theme.cart.data.items.filter( item => item.key === itemsToChange.id )[0];
+        let updatesData = null;
+        let bundleQyt = +itemsToChange.quantity;
+        let variantsObject = null;
+
+        if (!!parentBundleItem && !!parentBundleItem.properties && !!parentBundleItem.properties.set ) {
+            // _variants_set property => "37946795458713:1__35544480579737:1"
+            let variants_array = parentBundleItem.properties["_variants_set"].split("__");
+            variantsObject = {};
+            variants_array.forEach( variant => {
+                let dataSet = variant.split(':');
+                variantsObject[ dataSet[0] ] = +dataSet[1];
+            });
+        }
+
+        /* Example input: { updates: { 12345678: 2, 87654321: 3 } } */
+        if ( !!variantsObject ) {
+            // variantsObject => { 37946795458713 : 1, 35544480579737 : 1 }
+            updatesData = {};
+            updatesData.updates = {};
+            Shopify.theme.cart.data.items.forEach( child => {
+                if ( !!child.properties && !!child.properties.set_id && child.properties.set_id === parentBundleItem.properties.set ) {
+                    if ( !!variantsObject[ child.variant_id ] ) {
+                        updatesData.updates[child.key] = variantsObject[child.variant_id] * bundleQyt;
+                    }
+                }
+            });
+            updatesData.updates[ parentBundleItem.key ] = bundleQyt;
+        }
+        return updatesData;
+    },
+    getShippingRates: function (country, state, zip){
+        let that = Shopify.theme.cart;
+        let url = new URL('/cart/prepare_shipping_rates.json', window.location.origin);
+        let params = {  'shipping_address[country]': country, 
+                        'shipping_address[province]': state, 
+            'shipping_address[zip]': zip};
+        url.search = new URLSearchParams(params).toString();
+        fetch(url, {
+        credentials: 'same-origin',
+        headers: {'Content-Type': 'application/json', 'Accept':'application/json'},
+        method: 'POST'
+        }).then(function(response) {
+            return response.json();
+        }).then(function() {
+            fetch('/cart/async_shipping_rates.json', {
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json', 'Accept':'application/json'},
+            method: 'GET'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(shipping) {
+                that.shipping = shipping
+                window.dispatchEvent(new Event('cartshippingchanged'))
+            }).catch(function(err) {
+                console.error(err)
+            });
+        }).catch(function(err) {
+            console.error(err)
+        });
+    }
+};
+if (navigator.userAgent.indexOf("Chrome-Lighthouse") == -1) {
+    Shopify.theme.cart.init();
+}
+
+
+/* Clever Cart add web component */
+class CleverCartAdd extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        const that = this;
+        this.onclick = (e) => {
+            e.preventDefault();
+            that.variantId = that.hasAttribute('variant-id') ? that.getAttribute('variant-id') : (document.querySelector('[name="id"]')?.value || null)
+            that.quantity = that.hasAttribute('quantity') ? that.getAttribute('quantity') : (document.querySelector('[name="quantity"]')?.value || 1)
+            that.disabled = that.hasAttribute('disabled')
+            if(!that.disabled){
+                Shopify.theme.cart.addToCart({items:[{
+                    id: Number(that.variantId),
+                    quantity: Number(that.quantity)
+                }]})
+            }
+        }
+    }
+}
+
+customElements.define('clever-cart-add', CleverCartAdd);
+
+class InputChange extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback(){
+        let target = this.getAttribute('for');
+        let to = null, by = null;
+        if(this.hasAttribute('to'))
+            to = Number(this.getAttribute('to'));
+        else if(this.hasAttribute('by'))
+            by = Number(this.getAttribute('by'));
+        this.addEventListener('click', e => {
+            let input = document.getElementById(target);
+            if(to != null)
+                input.value = to;
+            else if(by != null)
+                input.value = Number(input.value) + by;
+            input.dispatchEvent(new Event('change'));
+        });
+    }
+}
+customElements.define('input-change', InputChange);

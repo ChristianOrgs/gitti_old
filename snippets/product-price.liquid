@@ -1,0 +1,12 @@
+<div class="product-price" data-price="{{ product.price }}">
+	<div class="sale" {% unless on_sale %}style="display: none;"{% endunless %}>
+	    <strike class="product-compare-price">{{ product.compare_at_price | money }}</strike>&nbsp;
+	    <span class="product-sale-price" itemprop="price">{{ product.price | money }}</span>
+  	</div>
+	<div class="product-normal-price" itemprop="price" {% if on_sale %}style="display: none;"{% endif %}>{{ product.price | money }}</div>
+	{% if no_vat == true %}
+		<small class="product-preizauszeichnung">zzgl. <a href="/policies/shipping-policy">Versand</a></small>
+	{% else %}
+		<small class="product-preizauszeichnung">inkl. gesenkter MwSt., zzgl. <a href="/policies/shipping-policy">Versand</a></small>
+	{% endif %} 
+</div>

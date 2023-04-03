@@ -1,0 +1,203 @@
+
+<style>
+  #shopify-section-{{object.id}} .grid-item-back{
+    position:relative;
+    z-index: 1;
+  } 
+  #shopify-section-{{object.id}} .grid-item-front{
+    position:relative;
+    z-index: 2;
+  }
+  #shopify-section-{{object.id}} clever-slider.overhanging_slider::before{
+    background-color: white;
+  }
+</style>
+
+{% assign uid = "now" | date: "%6N" %}
+<div class="overhanging_slider_page-width spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+  <div class="grid col-12 small_col-1 grid-gap">
+    <div class="grid-item grid-item-front medium-up_col-span-5 flex col middle left ">
+      <{{object.settings.heading_tag}} class="{{object.settings.heading_class}} {{object.settings.heading_weight_class}} spacing-bottom-xs"> {{object.settings.heading}} </{{object.settings.heading_tag}}>
+        <{{object.settings.richtext_tag}} class="{{object.settings.richtext_class}} {{object.settings.richtext_weight_class}} spacing-bottom-s"> {{object.settings.richtext}} </{{object.settings.richtext_tag}}>
+      <a href="{{object.settings.button_link}}" class="btn {{object.settings.button_class}}">{{object.settings.button_label}}</a>
+    </div>
+{% if object.settings.image_group_2 != blank or object.settings.image_group_1 != blank  %}
+<clever-slider class="slider-wrapper1 overhanging_slider grid-item grid-item-back  medium-up_col-start-7 medium-up_col-span-6 is-relative "
+options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+
+{% if object.settings.auto_play_shop_the_look == false %}
+<cs-prev class="slider_nav slider_prev is-absolute only_large">
+  {% render 'icon', icon: 'chevron-left' %}
+</cs-prev>
+{% endif %}
+<cs-track>
+    <cs-slides class="items-1 {% if object.settings.image_group_2 != blank %}  inner-wrapper1 {% endif %}">
+      {% for shop_the_look_image in object.settings %}
+      {% if shop_the_look_image contains 'image_group_' %}
+      {% assign products_shop_image = object.settings[shop_the_look_image]   %}
+      <cs-slide id={{uid}} class="slide1 {% if forloop.first %} active {% endif %}"  data-faq-group-name ="{{products_shop_image}}">
+      {% render 'image_element', image: products_shop_image, image_shape: object.settings.image_shape, fit: object.settings.image_fit %}
+
+    </cs-slide>
+    {% endif %}
+    {% endfor %}
+    </cs-slides>
+</cs-track>
+{% if object.settings.auto_play_shop_the_look == false%}
+<cs-next class="slider_nav slider_next is-absolute only_large">
+  {% render 'icon', icon: 'chevron-right' %}
+</cs-next>
+{% endif %}
+</clever-slider>
+
+
+</div>
+<{{object.settings.products_heading_tag}} class="{{object.settings.products_heading_class}} {{object.settings.products_heading_weight_class}} spacing-top-s spacing-bottom-s"> {{object.settings.products_heading}} </{{object.settings.products_heading_tag}}>
+{% endif %}
+
+
+
+{% if object.settings.shop_the_look_product_group_1 != blank or object.settings.shop_the_look_product_group_2 != blank %}
+<clever-slider class=" slider_wrapper overhanging_slider grid-item grid-item-back medium-up_col-start-7 medium-up_col-span-6 is-relative"
+options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+<cs-prev class="slider_nav slider_prev is-absolute only_large">
+    {% render 'icon', icon: 'chevron-left' %}
+</cs-prev>
+<cs-track>
+    <cs-slides class="slides_wrapper items-3 medium_items-3 small_items-custom gap">
+      {% for shop_the_look_product in object.settings %}
+      {% if shop_the_look_product contains 'image_group_' %}
+        {% assign products_shop_image = object.settings[shop_the_look_product] %}
+      {% endif %}
+      {% if shop_the_look_product contains 'shop_the_look_product_group_' %}
+      {% assign products_shop = object.settings[shop_the_look_product] | split: ','  %}
+      {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+      {% for pp in products_shop %}
+        <cs-slide id="{{products_shop_image}}" class="{{products_shop_image}} shop">
+      {% render 'product_grid_item' product: all_products[pp], sizes: sizes  %}
+    </cs-slide>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    </cs-slides>
+
+</cs-track>
+<cs-next class="slider_nav slider_next is-absolute only_large">
+    {% render 'icon', icon: 'chevron-right' %}
+</cs-next>
+</clever-slider>
+
+{% unless object.settings.image_group_2 != blank and object.settings.image_group_1 != blank %}
+</div>
+{% endunless %}
+{% endif %}
+
+</div>
+ 
+{% if object.id != blank %}
+  {% assign section_id = object.id %}
+{% else %}
+  {% assign min = 100000000 %}
+  {% assign max = 999999999 %}
+  {% assign diff = max | minus: min %}
+  {% assign section_id = "now" | date: "%N" | modulo: diff | plus: min %}
+{% endif %}
+<style>
+    #shopify-section-{{object.id}}{
+        overflow-x: hidden;
+    }
+
+     #shopify-section-{{object.id}} .slider-wrapper1 {
+
+         overflow: hidden;
+     }
+
+     #shopify-section-{{object.id}} .inner-wrapper1 {
+         /*     width: 500%;
+                  height: 100%;
+                  /* position: relative;
+                  left: -100%;*/
+     }
+
+     #shopify-section-{{object.id}} .slide1 {
+         width: calc(100% / 5);
+         justify-content: center;
+         align-items: center;
+         font-size: 100px;
+         font-weight: 700;
+         float: left;
+     }
+
+     #shopify-section-{{object.id}} .slider_next1 {
+         right: 9%;
+     }
+
+     @media (max-width: {{settings.breakpoint_small}}px) {
+         #shopify-section-{{object.id}} .slider_next1 {
+             right: 7%;
+         }
+     }
+ </style>
+ {%- comment -%}
+ <script>
+     window.onload = () => {
+         let menu_elements_shop_load = document.querySelectorAll('.slide1');
+         let image_elements_shop_load = document.querySelectorAll('.slides_wrapper .shop');
+         menu_elements_shop_load.forEach(menu_element_shop => {
+             let titleValue = menu_element_shop.dataset.faqGroupName;
+             image_elements_shop_load.forEach(image_element => {
+                 if (image_element.classList.contains(titleValue)) {
+
+
+                     image_element.style.display = "none";
+
+
+                 } else {
+
+                     image_element.style.display = "inline-flex";
+
+                 }
+             });
+         });
+
+         var inWrap = $('.inner-wrapper1'),
+
+         $slide = $('.slide1');
+
+
+       {% if object.settings.auto_play_shop_the_look %}
+
+         function slideNext() {
+             inWrap.animate({left: '-200%'}, 200, function () {
+                 inWrap.css('left', '-100%');
+
+                 $('.slide1').last().after($('.slide1').first());
+
+             });
+
+             let menu_elements_shop = document.querySelectorAll('.slide1');
+             let image_elements_shop_load = document.querySelectorAll('.slides_wrapper .shop');
+
+             menu_elements_shop.forEach(menu_element_shop => {
+                 let titleValue = menu_element_shop.dataset.faqGroupName;
+                 image_elements_shop_load.forEach(menu_element_shop => {
+                     if (menu_element_shop.classList.contains(titleValue)) {
+                         menu_element_shop.classList.add("show");
+
+                         menu_element_shop.style.display = "inline-flex";
+
+                     } else {
+                         menu_element_shop.classList.remove("show");
+                         menu_element_shop.style.display = "none";
+                     }
+                 });
+             });
+
+         }
+
+         //Enabling auto scroll
+         sliderInterval = setInterval(slideNext, {{ object.settings.slider_speed }});
+       {% endif %}
+     };
+ </script>
+ {%- endcomment -%}

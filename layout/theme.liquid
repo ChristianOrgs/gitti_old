@@ -1,0 +1,241 @@
+{% comment %}ly_liquid_scripts_begin{% endcomment %}{% capture ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}<!doctype html>
+<html lang="en"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{%- assign language_code = '_' | append: request.locale.iso_code -%}{%- if '_ar_he_fa_ur' contains language_code -%} dir="rtl" {%- endif -%}{% comment %}ly_dir_replace_end{% endcomment %}>
+<head>{% render "load-metafields" %}
+  <style>
+    body {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" media="print" onload="this.media='all';">
+  <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all';">
+  {% if settings.custom_font_classes and request.design_mode == false %}
+    {% capture font_styles %}{% section 'font_styles' %}{% endcapture %}
+    {{ font_styles | remove: '<div id="shopify-section-font_styles" class="shopify-section">' | remove: '</div>' }}
+  {% elsif request.design_mode %}
+    {% section 'font_styles' %}
+  {% endif %}
+  
+  {% render 'geolizr-init' %}
+  <title>{{ page_title }}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="{{ page_description | escape }}">
+  <meta name="facebook-domain-verification" content="g72dxteoi2iwpi89efcsg8ijjtucnx" /> 
+  {% render 'noindex_canonical' %}
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1">
+  {% render 'seo_global' %}
+  {% render 'elevar-head' %}
+  <script id="cart_data" type="application/json">{{ cart | json }}</script>
+  {% capture _ %}{% section "ps_optimization" %}{% endcapture %}{% if request.design_mode %}{{  _  }}{% else %}{{ _ | remove: '<div id="shopify-section-ps_optimization" class="shopify-section">' | remove: '</div>' }}{% endif %}
+  <!-- Content for head -->
+  {%- capture content_for_header_validation -%}{{ content_for_header }}{%- endcapture -%}
+  {% render 'content_for_header', hreflang_default: settings.hreflang_default %}
+  <!-- Content for head end -->
+  {% if template contains 'collection' or template contains 'blog' %}
+    {{ 'https://cdn.shopify.com/s/files/1/0382/4185/files/ajaxinate.js?937' | script_tag }}
+  {% endif %}
+  {% comment %}ly_dir_styles_begin{% endcomment %}{%- assign language_code = '_' | append: request.locale.iso_code -%}{%- if '_ar_he_fa_ur' contains language_code -%}<link rel="preload" href="{{ 'ly-rtl.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">{%- endif -%}{% comment %}ly_dir_styles_end{% endcomment %}
+  {% render 'set_localization_to_cart' %}
+{% render 'gsf-conversion-pixels' %}
+</head>
+  <body class="{{ template | replace: '.', ' ' | truncatewords: 1, '' }} " id="{{ page_title | handle }}">
+{% render 'gdpr_and_gtm'%}
+{% render 'elevar-body-end' %}
+{% render 'clever_slider_css' %}
+{% unless settings.ps_optimization %}
+  <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
+{% endunless %}
+{% if settings.top_bar %}
+  {% section 'top_bar' %}
+{% endif %}
+{% if settings.announcement_bar %}
+  {% section 'announcement_bar' %}
+{% endif %}
+{% if settings.top_anchor %}
+{% comment %}{% section 'top_anchor' %}{% endcomment %}
+{% endif %}
+<header>
+  {% section 'header_gitti' %}
+  {% if settings.add_to_cart_action == 'drawer' %}
+    {% section 'global_cart_drawer' %}
+  {% endif %}
+</header>
+{% if request.page_type == 'collection' %}
+  <input hidden type="radio" name="image-view" id="default-view" checked>
+  <input hidden type="radio" name="image-view" id="alternate-view">  
+{% endif %}
+<main role="main">
+  {% unless request.page_type == 'index' %}
+    {% render 'breadcrumbs' %}
+  {% endunless %}
+  {{ content_for_layout }}
+  {% section 'global_seo_content' %}
+  {% section 'global_newsletter' %}
+  {% section 'global_payment' %}
+  {% render 'judgeme_core' %}
+</main>
+<footer>
+  {% section 'footer' %}
+</footer>
+{% if settings.swatch_creator %}
+  {% section 'swatch_creator' %}
+{% endif %}
+{% if settings.age_verification %}
+  {% section 'age_verification_overlay' %}
+{% endif %}
+{% section 'multi_stage_offers' %}
+<script>
+  window.shopUrl = '{{ request.origin }}';
+  window.routes = {
+    account_addresses_url: '{{ routes.account_addresses_url }}',
+    account_login_url: '{{ routes.account_login_url }}',
+    account_logout_url: '{{ routes.account_logout_url }}',
+    account_recover_url: '{{ routes.account_recover_url }}',
+    account_register_url: '{{ routes.account_register_url }}',
+    account_url: '{{ routes.account_url }}',
+    all_products_collection_url: '{{ routes.all_products_collection_url }}',
+    cart_add_url: '{{ routes.cart_add_url }}',
+    cart_change_url: '{{ routes.cart_change_url }}',
+    cart_update_url: '{{ routes.cart_update_url }}',
+    cart_url: '{{ routes.cart_url }}',
+    cart_clear_url: '{{ routes.cart_clear_url }}',
+    collections_url: '{{ routes.collections_url }}',
+    predictive_search_url: '{{ routes.predictive_search_url }}',
+    product_recommendations_url: '{{ routes.product_recommendations_url }}',
+    root_url: '{{ routes.root_url }}',
+    search_url: '{{ routes.search_url }}'
+  };
+</script>  
+{% render 'bc_script_loader' %}<template id="appRenders_linkster">
+  <script src="//trck.linkster.co/trck/etms/eatms.js?campaign_id=110" defer></script>
+</template>
+{% if request.page_type == 'product' %}
+  {%- render 'judgeme_core' -%}
+{% endif %}
+<template id="appRenders_instafeeds">
+  <script>
+    var interval = setInterval( function (){
+      if( (Array.prototype.filter.call(document.scripts, l => l.src.includes('section-feed')).length > 0) ) {
+        var count = 0;
+        if(!!Shopify.theme.sliders['shopify-section-16195194444af62c6a'] && count < 3 ) {
+          Shopify.theme.sliders['shopify-section-16195194444af62c6a'].rebuild();
+          count++;
+        }
+        clearInterval( interval );
+      }
+    }, 200 );
+  </script>
+</template>
+{% if request.path contains 'contact' or  request.path contains 'kontakt' %}
+  {%- render 'dixa-widget' -%}
+{% endif %}
+<template id="appRenders_klaviyo">
+  <script>
+    var n = document.createElement('script');
+    n.async = true;
+    document.body.appendChild( n );
+    n.onload = function(){
+      var interval = setInterval(function() {
+        var klaviyo = window.klaviyo || [];
+        if(!!klaviyo.init) {
+          console.log('klaviyo init found');
+          klaviyo.init({
+            account: "VWE5RB",
+            platform: "shopify"
+          });
+          klaviyo.enable("backinstock",{
+            trigger: {
+              product_page_text: "Benachrichtigt mich",
+              product_page_class: "btn",
+              product_page_text_align: "center",
+              product_page_margin: "0px",
+              replace_anchor: false,
+              include_on_tags: 'notify',
+              exclude_on_tags: 'bis-hidden'
+            },
+            modal: {
+              headline: "{product_name}",
+              body_content: "Trage dich ein und wir schreiben dir wenn das Produkt wieder verfügbar ist.",
+              email_field_label: "E-Mail",
+              button_label: "Benachrichtigt mich",
+              subscription_success_label: "Das hat geklappt. Wir schreiben dir sobald das Produkt wieder verfügbar ist.",
+              footer_content: '',
+              additional_styles: ".klaviyo-bis-close button.btn.btn-success.btn-lg.col-xs-12 {font-family: sans-serif;background-color: #333333;color: #ffffff;border-color: #333333;}.klaviyo-bis-close p {font-family: sans-serif;}",
+              drop_background_color: "#000",
+              background_color: "#fff",
+              text_color: "#222",
+              button_text_color: "#ffffff",
+              button_background_color: "#333333",
+              close_button_color: "#ccc",
+              error_background_color: "#fcd6d7",
+              error_text_color: "#C72E2F",
+              success_background_color: "#d3efcd",
+              success_text_color: "#1B9500"
+            }
+          });
+          clearInterval( interval );
+        } else {
+          console.log('klaviyo init not found');
+        }
+      }, 200);
+    }
+    n.src = 'https://a.klaviyo.com/media/js/onsite/onsite.js';
+  </script>
+</template>
+<script>
+  (function(){
+    setTimeout(function(){
+      var appRenders = document.querySelectorAll('[id^="appRenders"]');
+      appRenders.forEach(function( app ){
+        var clone = document.importNode(app.content, true);
+        document.body.appendChild( clone );
+      });
+    },10000)
+  })();
+</script>
+{% comment %} start smile.io Einbindung {% endcomment %}
+{%- capture smile_io_template -%}
+  {% include 'smile-initializer' %}
+{%- endcapture -%}
+{% if request.path contains '/pages/warum-gitti' or request.path contains '/account' %}
+  {{ smile_io_template }}
+{% endif %}
+<script>
+  (function(){
+    if ( window.location.pathname.includes('/pages/warum-gitti') || window.location.pathname.includes('/account') ) {
+      let src = window.smile_io_script_src;
+      let script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      document.head.appendChild(script);
+      sessionStorage.setItem( 'smile_io_src', src );
+      sessionStorage.setItem( 'smile_io_template', '{% if smile_io_template != '' and smile_io_template contains 'Liquid error' == false %}{{ smile_io_template }}{% endif %}')
+    }
+  })();
+</script>
+{% comment %} ende smile.io Einbindung {% endcomment %}
+{% render 'bc_free_gift__script'%}
+{% render 'clever_slider_js' %}
+{% render 'geolizr-redirect' %}
+<style>
+  .jdgm-rev__title {font-family: 'Poppins';}
+</style>
+<!-- langify-v2-scripts-begin -->{% comment %}ly_liquid_scripts_begin{% endcomment %}{% endcapture %}{% render 'ly-liquid-scripts' content: ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}{% comment %}ly_core_scripts_begin{% endcomment %}{% render 'ly-core-scripts' %}{% comment %}ly_core_scripts_end{% endcomment %}{% comment %}ly_switcher_factory_begin{% endcomment %}{% render 'ly-switcher-factory' %}{% comment %}ly_switcher_factory_end{% endcomment %}<!-- langify-v2-scripts-end -->{% render 'geolizr-popup' %}
+{% render "bc_banner" %}</body>
+</html>
+  
+  <script>
+  
+  if( window.location.href.includes("/de/"))
+  {
+  var urlParams = new URLSearchParams(window.location.search);
+      var token = urlParams.get('judgeme_token')
+      var follow_up_token = urlParams.get('judgeme_follow_up_token')
+      if (token || follow_up_token) {
+  window.location.href = window.location.href.replaceAll('/de/','/');
+      }
+  }
+  </script>

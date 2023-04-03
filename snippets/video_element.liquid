@@ -1,0 +1,7 @@
+<div class="video-wrapper {{shape}} {{fit}} ">
+    <video playsinline="true" {% if autoplay %} autoplay loop muted {% else %} controls {% endif %} >
+        {% for source in video.sources %}
+            <source src="{{source.url}}" type="{{source.mime_type}}">
+        {% endfor %}
+    </video>
+</div>

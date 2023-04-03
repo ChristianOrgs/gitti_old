@@ -1,0 +1,161 @@
+{% if settings.enable_steps_customisations %}
+<style>
+    .bc__price_discounted .order-summary__emphasis {
+        color: {{ settings.bc_discount_price_color }};
+    }
+
+    del.order-summary__small-text.skeleton-while-loading--sm {
+        font-size: 1em;
+    }
+</style>
+
+{% assign vat_multiplier = 1.000 %}
+{% assign order_original_total = 0.000 %}
+<script id="bc_cart_prices_json" type="application/json">
+    {
+        "line_items": [
+            {% for line_item in checkout.line_items %}
+            {
+                "variant_id": "{{ line_item.variant_id }}",
+                {%- if line_item.original_line_price != line_item.final_line_price -%}
+                    {% assign final_compare_at_price = line_item.variant.compare_at_price | times: line_item.quantity %}
+                    {% if final_compare_at_price > line_item.final_line_price %}
+                        "final_line_price": "{{ line_item.final_line_price | times: vat_multiplier | money_with_currency }}",
+                        "final_compare_at_price": "{{ final_compare_at_price | times: vat_multiplier | money_with_currency }}",
+                        {% if line_item.properties["set_id"] == blank %}{% assign order_original_total = order_original_total | plus: final_compare_at_price %}{% endif %}
+                        {% assign discount_percentage = final_compare_at_price | minus: line_item.final_line_price | times: 100.000 | divided_by: final_compare_at_price %}
+                        "percentage_discount": "-{{ discount_percentage | round }}%"
+                    {% else %}
+                        "final_line_price": "{{ line_item.final_line_price | times: vat_multiplier | money_with_currency }}",
+                        "original_line_price": "{{ line_item.original_line_price | times: vat_multiplier | money_with_currency }}",
+                        {% if line_item.properties["set_id"] == blank %}{% assign order_original_total = order_original_total | plus: line_item.original_line_price %}{% endif %}
+                        {% assign discount_percentage = line_item.original_line_price | minus: line_item.final_line_price | times: 100.000 | divided_by: line_item.original_line_price %}
+                        "percentage_discount": "-{{ discount_percentage | round }}%"
+                    {% endif %}
+                {%- else -%}
+                    {% assign final_compare_at_price = line_item.variant.compare_at_price | times: line_item.quantity %}
+                    {% if final_compare_at_price > line_item.final_line_price %}
+                        "final_line_price": "{{ line_item.final_line_price | times: vat_multiplier | money_with_currency }}",
+                        "final_compare_at_price": "{{ final_compare_at_price | times: vat_multiplier | money_with_currency }}",
+                        {% if line_item.properties["set_id"] == blank %}{% assign order_original_total = order_original_total | plus: final_compare_at_price %}{% endif %}
+                        {% assign discount_percentage = final_compare_at_price | minus: line_item.final_line_price | times: 100.000 | divided_by: final_compare_at_price %}
+                        "percentage_discount": "-{{ discount_percentage | round }}%"
+                    {% else %}
+                        "final_line_price": "{{ line_item.final_line_price | times: vat_multiplier | money_with_currency }}"
+                        {% if line_item.properties["set_id"] == blank %}{% assign order_original_total = order_original_total | plus: line_item.final_line_price %}{% endif %}
+                    {% endif %}
+                {%- endif -%}
+            }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+        ],
+        "order_original_total": "{% if order_original_total > checkout.line_items_subtotal_price %}{{ order_original_total | money_with_currency }}{% else %}0{% endif %}",
+        "discount_original_order_subtotal": "{{ checkout.line_items_subtotal_price | money_with_currency }}"
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        setCompareAtPricing();
+    });
+
+    document.addEventListener('page:change', function() {
+        changeSetCompareAtPricing();
+    });
+
+    {% assign vat_multiplier = 1.000 %}
+    function setCompareAtPricing() {
+        if (document.querySelector(`[data-order-summary-section="line-items"] .product`) == null) {
+            return false;
+        }
+
+        let order_original_total = JSON.parse(document.querySelector("#bc_cart_prices_json").textContent)['order_original_total'];
+        let line_items_json = JSON.parse(document.querySelector("#bc_cart_prices_json").textContent)['line_items'];
+
+        let discount_prices_template = `
+            <del class="order-summary__small-text skeleton-while-loading--sm">[[original_price]]</del><br>
+            <span class="order-summary__emphasis skeleton-while-loading">[[discounted_price]]</span><br>
+            <span class="order-summary__emphasis skeleton-while-loading" style="display:none;">[[percentage_discount]]</span>
+        `;
+
+        document.querySelectorAll(`[data-order-summary-section="line-items"] .product`).forEach((line_item_element, index) => {
+            if (line_item_element.style.display !== "none" && line_items_json[index].variant_id === line_item_element.dataset.variantId && line_items_json[index].original_line_price !== undefined) {
+                let new_line_item_discount = discount_prices_template.replace("[[discounted_price]]", line_items_json[index].final_line_price);
+                new_line_item_discount = new_line_item_discount.replace("[[original_price]]", line_items_json[index].original_line_price);
+                new_line_item_discount = new_line_item_discount.replace("[[percentage_discount]]", line_items_json[index].percentage_discount);
+                line_item_element.querySelector(".product__price").innerHTML = new_line_item_discount;
+                line_item_element.querySelector(".product__price").classList.add("bc__price_discounted");
+            } else if (line_item_element.style.display !== "none" && line_items_json[index].variant_id === line_item_element.dataset.variantId && line_items_json[index].final_compare_at_price !== undefined) {
+                let new_line_item_discount = discount_prices_template.replace("[[discounted_price]]", line_items_json[index].final_line_price);
+                new_line_item_discount = new_line_item_discount.replace("[[original_price]]", line_items_json[index].final_compare_at_price);
+                new_line_item_discount = new_line_item_discount.replace("[[percentage_discount]]", line_items_json[index].percentage_discount);
+                line_item_element.querySelector(".product__price").innerHTML = new_line_item_discount;
+                line_item_element.querySelector(".product__price").classList.add("bc__price_discounted");
+            }
+        });
+
+        if (typeof order_original_total != 'undefined' && order_original_total !== "0") {
+            let parser = new DOMParser();
+            let subtotal_sum_price_element = parser.parseFromString(`<del class="order-summary__small-text skeleton-while-loading" data-checkout-subtotal-price-target="6426" style="margin-right: 10px;">${order_original_total}</del>`, 'text/html').querySelector("del");
+            let subtotal_amount_element = document.querySelector(".total-line--subtotal .total-line__price");
+            subtotal_amount_element.prepend(subtotal_sum_price_element);
+        }
+    }
+
+    function changeSetCompareAtPricing() {
+        if (document.querySelector(`[data-order-summary-section="line-items"] .product`) == null) {
+            return false;
+        }
+
+        document.querySelector(`.product-table`).style.opacity = 0.3;
+
+        fetch(window.location.href).then(function (response) {
+            // The API call was successful!
+            return response.text();
+        }).then(function (html) {
+
+            // Convert the HTML string into a document object
+            var parser = new DOMParser();
+            //debugger;
+            var doc = parser.parseFromString(html, 'text/html');
+            var line_items_json = JSON.parse(doc.querySelector("#bc_cart_prices_json").textContent)['line_items'];
+            let order_original_total = JSON.parse(doc.querySelector("#bc_cart_prices_json").textContent)['order_original_total'];
+
+            let discount_prices_template = `
+                <del class="order-summary__small-text skeleton-while-loading--sm">[[original_price]]</del><br>
+                <span class="order-summary__emphasis skeleton-while-loading">[[discounted_price]]</span><br>
+                <span class="order-summary__emphasis skeleton-while-loading"  style="display:none;">[[percentage_discount]]</span>
+            `;
+
+            document.querySelectorAll(`[data-order-summary-section="line-items"] .product`).forEach((line_item_element, index) => {
+                if (line_item_element.style.display !== "none" && line_items_json[index].variant_id === line_item_element.dataset.variantId && line_items_json[index].original_line_price !== undefined) {
+                    let new_line_item_discount = discount_prices_template.replace("[[discounted_price]]", line_items_json[index].final_line_price);
+                    new_line_item_discount = new_line_item_discount.replace("[[original_price]]", line_items_json[index].original_line_price);
+                    new_line_item_discount = new_line_item_discount.replace("[[percentage_discount]]", line_items_json[index].percentage_discount);
+                    line_item_element.querySelector(".product__price").innerHTML = new_line_item_discount;
+                    line_item_element.querySelector(".product__price").classList.add("bc__price_discounted");
+                } else if (line_item_element.style.display !== "none" && line_items_json[index].variant_id === line_item_element.dataset.variantId && line_items_json[index].final_compare_at_price !== undefined) {
+                    let new_line_item_discount = discount_prices_template.replace("[[discounted_price]]", line_items_json[index].final_line_price);
+                    new_line_item_discount = new_line_item_discount.replace("[[original_price]]", line_items_json[index].final_compare_at_price);
+                    new_line_item_discount = new_line_item_discount.replace("[[percentage_discount]]", line_items_json[index].percentage_discount);
+                    line_item_element.querySelector(".product__price").innerHTML = new_line_item_discount;
+                    line_item_element.querySelector(".product__price").classList.add("bc__price_discounted");
+                }
+            });
+
+            document.querySelector(`.product-table`).style.opacity = 1;
+
+            if (typeof order_original_total != 'undefined' && order_original_total !== "0") {
+                let subtotal_sum_price_element = parser.parseFromString(`<del class="order-summary__small-text skeleton-while-loading" data-checkout-subtotal-price-target="6426" style="margin-right: 10px;">${order_original_total}</del>`, 'text/html').querySelector("del");
+                let subtotal_amount_element = document.querySelector(".total-line--subtotal .total-line__price");
+                subtotal_amount_element.prepend(subtotal_sum_price_element);
+            }
+        }).catch(function (err) {
+            // There was an error
+            console.warn('Something went wrong.', err);
+
+            document.querySelector(`.product-table`).style.opacity = 1;
+        });
+
+    }
+</script>
+{% endif %}

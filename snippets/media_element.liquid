@@ -1,0 +1,8 @@
+{% case media.media_type %}
+    {% when 'image' %}
+        {% render 'image_element', image: media, image_shape:shape, fit:fit, sizes:sizes %}
+    {% when 'video' %}
+        {% render 'video_element', video: media, shape:shape, fit:fit, autoplay:true, sizes:sizes  %}
+    {% when 'model' %}
+        {% render 'model_element', model: media, shape:shape, fit:fit, sizes:sizes %}
+{% endcase %}

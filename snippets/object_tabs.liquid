@@ -1,0 +1,164 @@
+<style>
+    #shopify-section-{{section.id}} {
+        overflow: hidden;
+    }
+    #shopify-section-{{object.id}},
+    #shopify-section-{{object.id}} clever-slider.overhanging_slider::before{
+        background-color:{{object.settings.background_color}};
+
+    }
+    
+    #shopify-section-{{object.id}} .bc_active_tab .tab_title{
+        font-weight: 700;
+        border-bottom: 2px solid black;
+        display: inline-block;
+    }
+
+    
+
+    #shopify-section-{{object.id}} .bc-tab{
+        cursor: pointer; 
+        width: 25%; 
+        
+        border: 0px; 
+        border-right: 2px; 
+        border-color: #f3f3f3; 
+        border-style: solid;
+    }
+    #shopify-section-{{object.id}} .bc-tab:last-of-type{
+        border-right: 0px;
+    }
+    @media (max-width: {{settings.breakpoint_medium}}px){
+        #shopify-section-{{object.id}} .bc-tab{
+            width: 100%;
+            margin:initial;
+        }
+    }
+    @media only screen and (max-width:{{settings.breakpoint_small}}px){
+        #shopify-section-{{object.id}} .small_items-custom cs-slide{
+            flex: 0 0 45%;
+        }
+    }
+</style>
+
+{% assign tabs_with_space= object.settings.name_of_tabs | split: ", " %}
+{% assign  tabnames_without_space = object.settings.name_of_tabs | remove: " " %}
+{% assign tabs = tabnames_without_space | split:"," %}
+
+<div class="spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+        <div class="only_large flex row middle center wrap text-align-center tabs_{{tabs_container}}">
+                {% for tab in tabs %}
+                    <div class="{{tabs_container}}_{{tab | handleize}} {% if forloop.index == 1%} bc_active_tab {% endif %} bc-tab" onClick="press{{tab | handleize}}_desktop(event)" ><div class="tab_title {{tab | handleize}}_child"><p class="{{tab | handleize}}_child">{{tabs_with_space[forloop.index0]}}</p></div></div>
+                
+                    <script>
+                        function press{{ tab | handleize }}_desktop(e) {
+
+                            let old_active_tabs = document.querySelectorAll('#shopify-section-{{ object.id }} .bc_active_tab');
+                            let new_active_tabs = document.querySelectorAll('#shopify-section-{{ object.id }} .{{ tabs_container }}_{{ tab | handleize }}');
+                            let old_active_tabs_info = document.querySelectorAll(".bc_active_tab_info.{{ object.settings.tab_container | handleize }}_bc_tabs");
+                            let new_active_tabs_info = document.querySelectorAll(".{{ tab | handleize }}_tab.{{ object.settings.tab_container | handleize }}_bc_tabs");
+
+
+                            old_active_tabs[0].classList.toggle('bc_active_tab');
+                            old_active_tabs[1].classList.toggle('bc_active_tab');
+
+
+                            new_active_tabs[0].classList.toggle('bc_active_tab');
+                            new_active_tabs[1].classList.toggle('bc_active_tab');
+
+                            let length_old = old_active_tabs_info.length;
+
+                            for (let i = 0; i < length_old; i++) {
+                                old_active_tabs_info[i].classList.toggle("bc_active_tab_info");
+                            }
+                            let length_new = new_active_tabs_info.length
+                            for (let i = 0; i < length_new; i++) {
+                                new_active_tabs_info[i].classList.toggle("bc_active_tab_info");
+                            }
+                        }
+                    </script>
+                {% endfor %}
+                <script>
+                    document.addEventListener("DOMContentLoaded", function (event) {
+
+                        if (document.querySelectorAll(".{{ tabs[0] | handleize }}_tab").length > 0) {
+                            let first_active_tabs_info = document.querySelectorAll(".{{ tabs[0] | handleize }}_tab.{{ object.settings.tab_container | remove: ' ' | handleize }}_bc_tabs");
+
+                            let length_new = first_active_tabs_info.length;
+
+                            for (let i = 0; i < length_new; i++) {
+                                if ((first_active_tabs_info[i].classList.contains('bc_active_tab_info')) == false) {
+                                    first_active_tabs_info[i].classList.toggle("bc_active_tab_info");
+                                }
+                            }
+                        }
+                    });
+                </script>
+    
+    </div>
+
+
+    <clever-slider class="overhanging_slider only_medium-down"
+        options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+        <cs-track>
+            <cs-slides class="text-align-center tabs_{{tabs_container}} items-3 medium_items-2 small_items-custom gap">
+                    {% for tab in tabs %}
+                    <cs-slide class="slide_content">
+                        <div class="{{tabs_container}}_{{tab | handleize}} {% if forloop.index == 1%} bc_active_tab {% endif %} bc-tab" onClick="press{{tab | handleize}}_mobile(event)" >
+                            <div class="tab_title {{tab | handleize}}_child">
+                                <p class="{{tab | handleize}}_child">{{tabs_with_space[forloop.index0]}}</p>
+                            </div>
+                        </div>
+                        <script>
+                            function press{{ tab | handleize }}_mobile(e) {
+
+                                let old_active_tabs = document.querySelectorAll('#shopify-section-{{ object.id }} .bc_active_tab');
+                                let new_active_tabs = document.querySelectorAll('#shopify-section-{{ object.id }} .{{ tabs_container }}_{{ tab | handleize }}');
+                                let old_active_tabs_info = document.querySelectorAll(".bc_active_tab_info.{{ object.settings.tab_container | handleize }}_bc_tabs");
+                                let new_active_tabs_info = document.querySelectorAll(".{{ tab | handleize }}_tab.{{ object.settings.tab_container | handleize }}_bc_tabs");
+
+
+                                old_active_tabs[0].classList.toggle('bc_active_tab');
+                                old_active_tabs[1].classList.toggle('bc_active_tab');
+
+
+                                new_active_tabs[0].classList.toggle('bc_active_tab');
+                                new_active_tabs[1].classList.toggle('bc_active_tab');
+
+
+                                let length_old = old_active_tabs_info.length;
+
+                                for (let i = 0; i < length_old; i++) {
+                                    old_active_tabs_info[i].classList.toggle("bc_active_tab_info");
+                                }
+
+                                let length_new = new_active_tabs_info.length;
+
+                                for (let i = 0; i < length_new; i++) {
+                                    new_active_tabs_info[i].classList.toggle("bc_active_tab_info");
+                                }
+                            }
+                        </script>
+                    </cs-slide>
+                    {% endfor %}
+            </cs-slides>
+        </cs-track>
+    </clever-slider>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            if (document.querySelectorAll(".{{ tabs[0] | handleize }}_tab").length > 0) {
+                let first_active_tabs_info = document.querySelectorAll(".{{ tabs[0] | handleize }}_tab.{{ object.settings.tab_container | remove: ' ' | handleize }}_bc_tabs");
+
+                let length_new = first_active_tabs_info.length;
+
+                for (let i = 0; i < length_new; i++) {
+                    if ((first_active_tabs_info[i].classList.contains('bc_active_tab_info')) == false) {
+                        first_active_tabs_info[i].classList.toggle("bc_active_tab_info");
+                    }
+                }
+            }
+        });
+    </script>
+
+</div>

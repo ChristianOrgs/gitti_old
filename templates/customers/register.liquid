@@ -1,0 +1,84 @@
+<!-- /templates/customers/register.liquid -->
+<div class="page-width spacing-top-l spacing-bottom-l">
+        <div class="flex col center middle">
+
+      
+            <div class="grid col-1 row-gap">
+      
+              <h1 class="text-align-center">{{ 'customer.register.title' | t }}</h1>
+      
+             
+              {% form 'create_customer' %}
+                <div class="form_wrapper grid col-1 row-gap-small">
+                {% if form.posted_successfully? %}
+                <p> {{ 'customer.recover_password.success' | t }}</p>
+                {% endif %}
+
+                {%- if form.errors -%}
+                <div class="form-message form-message--error">
+                    <h2 class="" tabindex="-1" data-form-status>
+                        {{ 'contact.form.error_heading' | t }}</h2>
+                    {{ form.errors | default_errors }}
+                </div>
+                {%- endif -%}
+      
+                <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }}</label>
+                <input type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
+      
+                <label for="{{ formId }}-LastName">{{ 'customer.register.last_name' | t }}</label>
+                <input type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name">
+      
+                <label for="{{ formId }}-email">{{ 'customer.register.email' | t }}</label>
+                <input
+                  type="email"
+                  name="customer[email]"
+                  id="{{ formId }}-email"
+                  class="{% if form.errors contains 'email' %} input--error{% endif %}"
+                  {% if form.email %} value="{{ form.email }}"{% endif %}
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  aria-required="true"
+                  {%- if form.errors contains 'email' -%}
+                    class="input--error"
+                    aria-invalid="true"
+                    aria-describedby="{{ formId }}-email-error"
+                  {%- endif -%}
+                >
+                {%- if form.errors contains 'email' -%}
+                  <span id="{{ formId }}-email-error" class="input-error-message">
+                    <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                    {% include 'icon-error' %}
+                    <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                  </span>
+                {%- endif -%}
+      
+                <label for="{{ formId }}-password">{{ 'customer.register.password' | t }}</label>
+                <input
+                  type="password"
+                  name="customer[password]"
+                  id="{{ formId }}-password"
+                  class="{% if form.errors contains 'password' %} input--error{% endif %}"
+                  aria-required="true"
+                  {%- if form.errors contains 'password' -%}
+                    class="input--error"
+                    aria-invalid="true"
+                    aria-describedby="{{ formId }}-password-error"
+                  {%- endif -%}
+                >
+                {%- if form.errors contains 'password' -%}
+                  <span id="{{ formId}}-password-error" class="input-error-message">
+                    {% include 'icon-error' %}
+                    <span>{{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</span>
+                  </span>
+                {%- endif -%}
+      
+                  <button type="submit" class="btn btn--primary text-align-center">{{ 'customer.register.submit' | t }}</button>
+                  
+              </div>
+              {% endform %}
+            </div>
+   
+        </div>
+      </div>
+      

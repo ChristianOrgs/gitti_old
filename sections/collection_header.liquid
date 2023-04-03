@@ -1,0 +1,430 @@
+<style>
+    #shopify-section-{{section.id}} .flex.row.middle{
+        align-items: baseline;
+    }
+    @media only screen and (max-width:{{settings.breakpoint_medium}}px){
+        #shopify-section-{{section.id}} .collection_header_image{
+           margin: 0 -{{settings.site_gutter}}px;
+        }
+		#shopify-section-{{section.id}} > div{
+			padding-top:8px;
+		 }
+    }
+    @media only screen and (max-width:{{settings.breakpoint_small}}px){
+        #shopify-section-{{section.id}} .collection_header_image{
+           margin: 0 -{{settings.site_gutter_mobile}}px;
+        }
+        #shopify-section-{{section.id}} .picture-wrapper {
+            max-height: {{section.settings.collection_image_size_mobile}}% ;
+        }
+        #shopify-section-{{section.id}} .text-grid-item {
+            margin-top: calc(-100% + {{section.settings.collection_image_size_mobile}}% + 16px) ;
+        } 
+		/*
+		#shopify-section-{{section.id}} .{{section.settings.heading_class}}.{{section.settings.heading_weight_class}} {
+		    width: min-content;
+		}
+		*/
+    }	
+
+</style>
+
+	
+
+<div class="section-spacing-side spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}} ">
+    <div class="grid col-10 medium-down_col-1 grid-gap">
+		
+        <div class="grid-item col-span-{% if collection.image %}{{section.settings.collection_image_size | minus: 10 | replace: "-", "" }}{% else %}10{% endif %} medium-down_col-span-1 flex col {{section.settings.heading_align}} middle {% if section.settings.hide_text_mobile %} only_medium-up{% endif %}">
+        	<div class="flex row middle ">
+				{% if collection.metafields.collection.parent_collection.value != blank %}
+					<a keep-filter href="{{ collections[collection.metafields.collection.parent_collection.value].url }}" class="flex collection-back spacing-right-xs">
+						{% render 'icon', icon: 'chevron-left' %}
+					</a>  
+				{% else %}
+					<div onclick="window.history.back()" class="only_small spacing-top-s spacing-right-s ">
+						{% render 'icon', icon:'chevron-left' %} 
+					</div>		  
+				{% endif %}
+				{% assign coldesc = collection.description | strip_html %}
+               <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} {% if coldesc != blank %}spacing-bottom-s{% endif %}"> {{collection.title}} </{{section.settings.heading_tag}}>
+            </div> 
+			{% if collection.description != blank %}
+				<{{section.settings.richtext_tag}} class="{{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} {% if collection.description != blank %}spacing-bottom-s{% endif %}"> {{collection.description}} </{{section.settings.richtext_tag}}>
+			{% endif %}
+		</div>
+        {% if collection.image %}
+            <div class="grid-item col-span-{{section.settings.collection_image_size}} medium-down_col-span-1 medium-down_row-start-1 collection_header_image">
+				{% assign large =  section.settings.collection_image_size | times: 10.0  %}
+				{% capture sizes %}{% render 'image_sizes', small:100, medium_up:large , page_width: true, percentage:true %}{% endcapture %}
+                {% render 'image_element', image: collection.image, image_shape: 'sixteen_by_nine', fit: 'cover', sizes:sizes %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Collection header",
+  "settings": [
+	{
+	  "type": "checkbox",
+	  "id": "hide_text_mobile",
+	  "label": "Hide text on mobile",
+	  "default": true
+	},
+	{
+	  "type": "header",
+	  "content": "Layout"
+	},
+	{
+	  "type": "select",
+	  "id": "spacing_top",
+	  "label": "Spacing top",
+	  "default": "xs",
+	  "options": [
+		{
+			"value": "none",
+			"label": "none"
+		},
+		{
+		  "value": "xs",
+		  "label": "xs"
+		},
+		{
+		  "value": "s",
+		  "label": "s"
+		},
+		{
+		  "value": "m",
+		  "label": "m"
+		},
+		{
+		  "value": "l",
+		  "label": "l"
+		},
+		{
+		  "value": "xl",
+		  "label": "xl"
+		},
+		{
+		  "value": "xxl",
+		  "label": "xxl"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "spacing_bottom",
+	  "label": "Spacing bottom",
+	  "default": "xs",
+	  "options": [
+		{
+			"value": "none",
+			"label": "none"
+		},
+		{
+		  "value": "xs",
+		  "label": "xs"
+		},
+		{
+		  "value": "s",
+		  "label": "s"
+		},
+		{
+		  "value": "m",
+		  "label": "m"
+		},
+		{
+		  "value": "l",
+		  "label": "l"
+		},
+		{
+		  "value": "xl",
+		  "label": "xl"
+		},
+		{
+		  "value": "xxl",
+		  "label": "xxl"
+		}
+	  ]
+	},
+	{
+	  "type": "header",
+	  "content": "Heading"
+	},
+	{
+	  "type": "select",
+	  "id": "heading_tag",
+	  "label": "Html tag",
+	  "default": "p",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "small",
+		  "label": "small"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "heading_class",
+	  "label": "Font class",
+	  "default": "h4",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "note",
+		  "label": "note"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "heading_weight_class",
+	  "label": "Weight class",
+	  "default": "",
+	  "options": [
+		{
+		  "value": "bold",
+		  "label": "bold"
+		},
+		{
+		  "value": "",
+		  "label": "normal"
+		}
+	  ]
+	},
+	{
+		"type": "select",
+		"id": "heading_align",
+		"label": "Align",
+		"options": [
+		  {
+			"value": "left",
+			"label": "left"
+		  },
+		  {
+			"value": "center",
+			"label": "center"
+		  }
+		]
+	},
+	{
+	  "type": "header",
+	  "content": "Richtext"
+	},
+	{
+	  "type": "select",
+	  "id": "richtext_tag",
+	  "label": "Html tag",
+	  "default": "p",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "small",
+		  "label": "small"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "richtext_class",
+	  "label": "Font class",
+	  "default": "note",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "note",
+		  "label": "note"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "richtext_weight_class",
+	  "label": "Weight class",
+	  "options": [
+		{
+		  "value": "bold",
+		  "label": "bold"
+		},
+		{
+		  "value": "",
+		  "label": "normal"
+		}
+	  ]
+	},
+	{
+	  "type": "header",
+	  "content": "Collection Image Size"
+	},
+	{
+	  "type": "select",
+	  "id": "collection_image_size",
+	  "label": "Change the Collection image Size",
+	  "default": "6",
+	  "options": [
+		{
+		  "value": "3",
+		  "label": "XS"
+		},
+		{
+		  "value": "4",
+		  "label": "S"
+		},
+		{
+		  "value": "5",
+		  "label": "M"
+		},
+		{
+		  "value": "6",
+		  "label": "L"
+		},
+		{
+		  "value": "7",
+		  "label": "XL"
+		},
+		{
+		  "value": "8",
+		  "label": "XXL"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "collection_image_size_mobile",
+	  "label": "Change the Collection image Size in Mobile View",
+	  "default": "100",
+	  "options": [
+		{
+		  "value": "70",
+		  "label": "S"
+		},
+		{
+		  "value": "80",
+		  "label": "M"
+		},
+		{
+		  "value": "90",
+		  "label": "L"
+		},
+		{
+		  "value": "100",
+		  "label": "XL"
+		}
+	  ]
+	}
+  ],
+  "blocks": [
+  ]
+}
+{% endschema %}

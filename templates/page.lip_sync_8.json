@@ -1,0 +1,259 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "2db1ee76-686d-4c81-9138-bed104a2ab56": {
+      "type": "index_hero_slideshow_v2",
+      "blocks": {
+        "template--17238728179980__2db1ee76-686d-4c81-9138-bed104a2ab56-167706187635bc3d43-0": {
+          "type": "slide",
+          "settings": {
+            "text_color": "#3a3a3a",
+            "border_color": "#111111",
+            "arrow_color": "#ffffff",
+            "overlay_width": 50,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "media_type": "image",
+            "video_url": "",
+            "image_fit": "cover",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Veniam enim mollit amet ut mollit.",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "",
+            "spacing_bottom_heading": "xs",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn btn--white",
+            "spacing_bottom_button": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "template--17238728179980__2db1ee76-686d-4c81-9138-bed104a2ab56-167706187635bc3d43-0"
+      ],
+      "settings": {
+        "show_section": "both",
+        "section_height": 60,
+        "use_natural_height": true,
+        "section_height_mobile": 80,
+        "use_natural_height_mobile": true,
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "spacing_top_mobile": "xs",
+        "spacing_bottom_mobile": "xs",
+        "enable_autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "73544351-fdae-4714-ab61-08cedf2f8b3a": {
+      "type": "index_image_with_text_blocks",
+      "disabled": true,
+      "blocks": {
+        "3e1fb880-98e8-485d-bc76-ff5a40e9724c": {
+          "type": "image",
+          "settings": {
+            "image_shape": "square",
+            "image_fit": "contain"
+          }
+        }
+      },
+      "block_order": [
+        "3e1fb880-98e8-485d-bc76-ff5a40e9724c"
+      ],
+      "settings": {
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "mobile_layout_revert": false,
+        "dislocated": false
+      }
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "6ff93ec6-1e46-4655-a435-482a64bf589d": {
+          "type": "products",
+          "disabled": true,
+          "settings": {
+            "spacing_top": "xl",
+            "spacing_bottom": "l",
+            "heading": "All-time favourites.",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "Unsere gitti Klassiker, Community Lieblinge und bestselling Beauty Innovationen.",
+            "richtext_tag": "p",
+            "richtext_class": "h5",
+            "richtext_weight_class": "bold",
+            "button_label": "shop all",
+            "button_class": "btn--tertiary",
+            "collection": "bestseller",
+            "style": "slider"
+          }
+        },
+        "7ffc0f41-ebb1-4ddd-b83f-805bc889eec8": {
+          "type": "products",
+          "disabled": true,
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "l",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "h3",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "h1",
+            "richtext_weight_class": "",
+            "button_label": "shop all",
+            "button_class": "btn--tertiary",
+            "collection": "nail-polish-sets",
+            "style": "grid"
+          }
+        },
+        "031a8b11-c5e3-44bf-bd5a-efca1d07104a": {
+          "type": "image_text_alt",
+          "disabled": true,
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": true,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_birthday-min.jpg",
+            "image_link": "",
+            "image_width": 100,
+            "image_shape": "",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Glitzer-Nagellfarben.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "41f1fea5-17b0-497a-92ff-5810e5b52e3b": {
+          "type": "products",
+          "disabled": true,
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "h1",
+            "richtext_weight_class": "",
+            "button_label": "",
+            "button_class": "btn--tertiary",
+            "collection": "glitzer-nagelfarben",
+            "style": "grid"
+          }
+        },
+        "2d02afa9-2ade-4638-be80-6c49b6d1f1f9": {
+          "type": "image_hero_page",
+          "settings": {
+            "show_section": "both",
+            "section_height": 65,
+            "full_width_image_hero": true,
+            "use_natural_height": true,
+            "section_height_mobile": 100,
+            "use_natural_height_mobile": true,
+            "overlay_width": 50,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_landingpage_half_header_spring_pre-sale-2.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/test_c413ce0b-6f19-4607-9f32-84bf2b5cd6e7.png",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "",
+            "tag_preheading_image_hero": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn",
+            "spacing_bottom_button": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "6ff93ec6-1e46-4655-a435-482a64bf589d",
+        "7ffc0f41-ebb1-4ddd-b83f-805bc889eec8",
+        "031a8b11-c5e3-44bf-bd5a-efca1d07104a",
+        "41f1fea5-17b0-497a-92ff-5810e5b52e3b",
+        "2d02afa9-2ade-4638-be80-6c49b6d1f1f9"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "2db1ee76-686d-4c81-9138-bed104a2ab56",
+    "73544351-fdae-4714-ab61-08cedf2f8b3a",
+    "page-lip-sync-sections-template"
+  ]
+}

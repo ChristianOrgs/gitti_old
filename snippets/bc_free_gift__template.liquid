@@ -1,0 +1,103 @@
+<style>
+    .bc_gift-wrapper {
+        position: fixed;
+        background-color: #00000042;
+        z-index: 24000;
+        padding-left: calc(15px/1.333333);
+        padding-top: calc(15px/1.333333);
+        padding-bottom: calc(15px/1.333333);
+        top: 0;
+    }
+    .bc_gift-wrapper.hidden {
+        max-width: 1px;
+        max-height: 1px;
+        display: none;
+    }
+    .bc_gift-wrapper.visible {
+        max-height: 100%;
+        min-height: 100%;
+        display: unset;
+        z-index: 2147483647;
+        padding: unset;
+        margin: unset;
+        padding-top: 12px;
+        width: 100%;
+    }
+    .bc_gift-wrapper .wrapper {
+        position: relative;
+        margin: auto;
+        background-color: #fff;
+        width: fit-content;
+        overflow: auto;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 1137px;
+    }
+    .bc_gift-wrapper .gift-wrapper {
+
+    }
+    #shopify-section-header .bc_gift-wrapper.visible div.wrapper > div.gift-wrapper > div.inline.center {
+        height: 100%;
+    }
+    .bc_gift-wrapper .c-gray {
+        text-align: left;
+        padding: 18px;
+    }
+    #shopify-section-header > div > div.js-collectionGrid.collectionGrid-row.row.inline.row-lg.bc_gift-wrapper.visible > div.wrapper > div.gift-wrapper > div > div {
+        min-height: 100%;
+        display: grid;
+    }
+    .bc_gift-wrapper .collectionBlock > div {
+        vertical-align: bottom;
+        display: grid;
+        align-content: end;
+    }
+    .bc_gift-wrapper form {
+        text-align: left;
+    }
+    .bc_gift-wrapper form .productForm-submit {
+        width: 100%
+    }
+    .bc_gift-wrapper .row.inline {
+        width: unset;
+    }
+    .bc_gift-wrapper .closer {
+        position: absolute;
+        right: 0;
+        padding: 1rem;
+        font-size: 10rem;
+        top: 0;
+        cursor: pointer;
+    }
+    .bc_gift-wrapper .flex.col.bottom {
+        width: 100%;
+    }
+    body div.bc_gift-wrapper .collectionBlock h4 {
+        text-align: left;
+        margin: unset;
+    }
+    .bc_gift-wrapper .end {
+        justify-content: flex-end;
+
+    }
+
+    .cart-product-remove {
+        cursor: pointer;
+    }
+</style>
+
+<div class="grid grid-gap bc_gift-wrapper hidden" style="display:none;">
+    <div class="wrapper page-width spacing-top-xs spacing-bottom-xl">
+        <div class="closer">
+            <i class="clever_icon icon-close">
+                {% render 'icon', icon: 'close' %}
+            </i>
+        </div>
+        <div class="title-wrapper h2 bold spacing-bottom-s"></div>
+        <p class="p  spacing-bottom-s">
+            <span class="text-wrapper"></span>
+        </p>
+        <div class="gift-wrapper grid col-{{ settings.bc_fg_grid_desktop }} medium-down_col-{{ settings.bc_fg_grid_mobile }} grid-gap"></div>
+    </div>
+</div>

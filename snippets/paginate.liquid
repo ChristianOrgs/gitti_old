@@ -1,0 +1,46 @@
+{% assign page_select = '' %}
+{% assign page_numbers = '' %}
+{% assign page_t = 'general.pagination.page' | t %}
+{% assign of_t = 'general.pagination.of' | t %}
+{% assign current_page = '' | append: page_t | append: '&nbsp;' | append: paginate.current_page | append: '&nbsp;' | append: of_t | append: '&nbsp;'| append: paginate.pages %}
+{% for part in paginate.parts %}
+    {% assign page_select = page_select | append: page_t | append: '&nbsp;' | append: forloop.index | append: '&nbsp;' | append: of_t | append: '&nbsp;'| append: paginate.pages %}
+    {% assign page_numbers = page_numbers | append: forloop.index %}
+    {% unless forloop.last %}
+        {% assign page_select = page_select | append: ',' %}
+        {% assign page_numbers = page_numbers | append: ',' %}
+    {% endunless %}
+{% endfor %}
+{% assign page_select = page_select | split: ',' %}
+{% assign page_numbers = page_numbers | split: ',' %}
+
+<div id="pagination" class="flex row center middle spacing-top-m">
+    <div class="pagination_wrapper flex row between middle ">
+        <a href="{{ paginate.previous.url }}" class="pagination_arrow spacing-s {% unless paginate.previous.is_link %}disabled{% endunless %}"  >{% render 'icon', icon:'chevron-left' %}</a>
+        <div class="pagination_select spacing-left-l spacing-right-l spacing-top-xs spacing-bottom-xs">
+            {% render 'select', option_name:'page_selector', option_values:page_numbers, selected_value:current_page, option_value_names:page_select %}
+        </div>
+        <a href="{{ paginate.next.url }}" class="pagination_arrow spacing-s {% unless paginate.next.is_link %}disabled{% endunless %}" >{% render 'icon', icon:'chevron-right' %}</a>
+    </div>
+</div>
+
+<script>
+    document.querySelector('#page_selector').addEventListener('selectChanged', function(){
+        location.search = modifySearchParameter('page', this.value)
+    })
+
+    function modifySearchParameter(parameter, value){
+        let search_parameters = decodeURIComponent(location.search).split('&');
+        if(search_parameters == null || search_parameters == ''){
+            return parameter+'='+value
+        }
+        if(search_parameters.find(item => item.split('=')[0] == parameter)) {
+            search_parameters.find(item => item.split('=')[0] == parameter).split('=')[1] = value;
+            return search_parameters.join('&');
+        }
+        else{
+            search_parameters.push(parameter+'='+value);
+            return search_parameters.join('&');
+        }
+    }
+</script>

@@ -1,0 +1,119 @@
+{% assign id = section.id %}
+
+<style>
+    #shopify-section-{{id}} .tab_toggle{
+        width: 10px;
+        height: 10px;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        transform-origin: center;
+        transform: translate(-50%, 60%) rotate(45deg);
+        transition: 0.3s transform ease;
+    }
+    #shopify-section-{{id}} .tab_content{
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0;
+        transition: 0.3s opacity ease;
+    }
+    #shopify-section-{{id}} .tab_title{
+        cursor: pointer;
+    }
+    #shopify-section-{{id}} .tab_title Tab{
+        font-weight: normal;
+    }
+    #shopify-section-{{id}} .active .tab_toggle{
+        transform: translate(-50%, 120%) rotate(225deg);
+    }
+    #shopify-section-{{id}} .active .tab_content{
+        display: flex;
+        opacity: 1;
+        height: unset;
+        padding: 16px 0;
+    }  
+    #shopify-section-{{id}} .active .tab_title Tab{
+        font-weight: bold;
+    }
+    #shopify-section-{{id}} .product_tabs ul{
+        margin-left: 20px;
+    }
+    #shopify-section-{{id}} .product_tabs ul li{
+        list-style-type: disc;
+    }
+</style>
+
+<div class="flex col product_tabs">
+    {%- assign product_id = product.id %}
+    {%- liquid
+        assign tabs = product.metafields['product'].tabs
+        assign count = 0
+
+        for tab in tabs
+            assign count = count | plus: 1
+        endfor
+
+        if count == 1
+
+            assign jsplit = tabs | replace: '"},{"', '@@' | replace: '[{"', '{' |  replace: '"}]', '}'
+            assign jsplit = jsplit | replace: '{"'
+            assign jsplit = jsplit | replace: '"}' | replace: '}'
+            assign jsplit = jsplit | split: '@@'
+
+            assign title = ''
+            assign html = ''
+
+            for json in jsplit
+                assign splitByComma = json | split: '","'
+                for comma in splitByComma
+                    assign splitByDots = comma | split: '":"'
+
+                    if splitByDots[0] contains 'title'
+                        assign title = splitByDots[1]
+                    elsif splitByDots[0] contains 'html'
+                        assign html = splitByDots[1]
+                    endif
+                endfor
+
+                echo '<div class="tabs tab-' | append: forloop.index0
+                unless forloop.last
+                    echo ' spacing-bottom-l'
+                endunless
+                echo '">'
+                echo '<div onclick="openTab_'| append: product_id  | append: '(Number(' | append: "'" | append: forloop.index0 | append:"'" | append: '))" class="tab_title flex row between"><Tab>' | append: title | append: '</Tab><div class="tab_toggle"></div></div>'
+                echo '<div class="tab_content flex col">' | append: html | append: '</div>'
+                echo '</div>'
+            endfor
+        else
+            for tab in product.metafields['product'].tabs
+                echo '<div class="tabs tab-' | append: forloop.index0
+                unless forloop.last
+                    echo ' spacing-bottom-l'
+                endunless
+                echo '">'
+                echo '<div onclick="openTab_'| append: product_id  | append: '(Number(' | append: "'" | append: forloop.index0 | append:"'" | append: '))" class="tab_title flex row between"><Tab>' | append: tab.title | append: '</Tab><div class="tab_toggle"></div></div>'
+                echo '<div class="tab_content flex col">' | append: tab.html | append: '</div>'
+                echo '</div>'
+            endfor
+        endif
+    -%}
+
+</div>
+
+<script>
+    function openTab_{{product_id}}(index){
+
+       // let tab = document.querySelector('#shopify-section-{{id}} .product_tabs .tab-'+index).classList.toggle('active');
+        let elements = document.querySelectorAll('#shopify-section-{{id}} .product_tabs .tabs');
+        elements.forEach(element => {
+        if(element.classList.contains('tab-'+index))
+        {
+            element.classList.toggle('active');
+            element.classList.remove("closed");
+        } else {
+           element.classList.remove("active");
+           element.classList.add("closed");
+        }
+        });
+    }
+</script>

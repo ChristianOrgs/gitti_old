@@ -1,0 +1,321 @@
+{%- comment -%}
+  Autor: André Neder
+  Include Snippits: -
+  Text Description: Create Swatches in Customizer 
+  Category: Tools
+  Tags: Color Swatches
+{%- endcomment -%}
+
+<!-- sections/swatch_creator.liquid -->
+{% capture swatch_active %}
+content: '';
+border: 1px solid #333333;
+width: calc(100% + 10px);
+height:calc(100% + 10px);
+position: absolute;
+margin:-5px;
+left:0;
+top:0;
+border-radius:{{section.settings.border_radius}}%;
+{% endcapture %}
+
+
+{% if section.settings.show_swatch_preview and routes.design_mode %}
+
+<style>
+    #shopify-section-{{section.id}} .swatch_preview_background{
+        position: fixed;
+        top:0;
+        left:0;
+        width:100vw;
+        height:100vh;
+        min-height: -webkit-fill-available;
+        backdrop-filter: blur(10px);
+        background-color:#0008;
+        z-index:1000;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #shopify-section-{{section.id}} .swatch_preview_overlay{
+        padding:20px;
+        border-radius:20px;
+        background-color:white;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 0 5px 5px #0002;
+        text-align: center;
+    }
+    #shopify-section-{{section.id}} .created_by{
+        text-align: center;
+        font-size:10px;
+        padding-top:10px;
+    }
+    #shopify-section-{{section.id}} .created_by a{
+        cursor:pointer;
+    }
+    #shopify-section-{{section.id}} .divider{
+        width:100%;
+        border-bottom:1px solid #0004;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .swatch_preview{
+        display: grid;
+        grid-template-columns: repeat({{section.blocks | size | at_most: 10 }},minmax(0, 1fr));
+        grid-gap:5px;
+    }
+    @media only screen and (max-width:768px){
+        #shopify-section-{{section.id}} .swatch_preview_overlay{
+            padding:20px;
+            width:100vw;
+            border-radius:20px;
+            background-color:white;
+            align-self: flex-end;
+            display:flex;
+            flex-direction: column;
+            box-shadow: 0 0 5px 5px #0002;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+</style>
+
+<div class="swatch_preview_background" data-section-type="editor"
+data-section-id="{{ section.id }}">
+    <div class="swatch_preview_overlay">
+        <h3>Swatch Creator</h3>
+        <div class="divider"></div>
+            <div class="swatch_preview">
+                {% for block in section.blocks %}
+                    <input class="swatch" type="radio" name="swatch_preview-{{section.id}}" id="swatch_preview-{{block.id}}">
+                    {% assign label_for = 'swatch_preview-' | append: block.id %}
+                    {% render 'swatch', label_for:label_for, value: block.settings.title %}
+                {% endfor %}
+            </div>
+        <div class="divider"></div>
+        <p class="created_by">Swatch Creator by <a href="https://www.beeclever.shop">beeclever</a></p>
+    </div>
+</div>  
+   
+{% endif %}     
+
+<style>
+.swatch {
+    width:100%;
+    font-size:0;
+    position: relative;
+    border:5px solid white;
+    border-radius:{{section.settings.border_radius}}%;
+}
+.swatch::before{
+    display:block;
+    content:'';
+    padding-bottom:100%;
+}
+input.swatch {
+    display:none;
+}
+input.swatch:checked + .swatch::after{
+    {{swatch_active}}
+}
+@media (hover: hover) {
+    .swatch:hover::after{
+        {{swatch_active}}
+    }
+}
+{% for block in section.blocks %}
+    {% capture swatch_css %}
+        {% if block.type == 'color_swatch' %}
+            background-color:{{block.settings.color}};
+        {% elsif block.type == 'gradient_swatch' %}
+            background: {{block.settings.color}};
+            background: -webkit-linear-gradient({{block.settings.angle}}deg, {{block.settings.color}}, {{block.settings.color_gradient}}); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient({{block.settings.angle}}deg, {{block.settings.color}}, {{block.settings.color_gradient}});
+        {% elsif block.type == 'split_color_swatch' %}
+            background: {{block.settings.color_1}};
+            background: -webkit-linear-gradient({{block.settings.angle}}deg, {{block.settings.color_1}} 0%, {{block.settings.color_1}} 50%, {{block.settings.color_2}} 50%, {{block.settings.color_2}} 100%);; /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient({{block.settings.angle}}deg, {{block.settings.color_1}} 0%, {{block.settings.color_1}} 50%, {{block.settings.color_2}} 50%, {{block.settings.color_2}} 100%);
+        {% elsif block.type == 'advanced_gradient_swatch' %}
+            background: {{block.settings.fallback_color}};
+            background: {{block.settings.gradient_css | default: block.settings.fallback_color }};
+        {% elsif block.type == 'image_swatch' %}
+            {% if block.settings.image != blank %}
+                background-image: url('{{block.settings.image | img_url: "50x50"}}');
+                background-position: 50% 50%;
+                background-size:cover;
+                background-repeat:no-repeat;
+            {% endif %}
+        {% endif %}
+    {% endcapture %}
+    {% assign swatch_handle = block.settings.title | handleize %}
+    .swatch-{{swatch_handle}}{
+        {{swatch_css}}
+    }
+    {% if section.settings.swatch_class != blank %}
+        .{{section.settings.swatch_class}}{{swatch_handle}}{
+            {{swatch_css}}
+        }
+    {% endif %}
+{% endfor %}
+</style>
+
+{% schema %}
+{
+  "name": "Swatch Creator",
+  
+  "settings": [
+    {
+        "type": "paragraph",
+        "content": "Use this section to create custom color swatches. Add a block and set it to your desired typ."
+    },
+    {
+        "type": "text",
+        "id": "swatch_class",
+        "label": "Swatch Class",
+        "info": "Overwrite existing swatches. Only required when used outside of this theme."
+    },
+    {
+        "type": "checkbox",
+        "id": "show_swatch_preview",
+        "label": "Show preview window",
+        "default": false,
+        "info": "Set to true to preview all created swatches."
+    },
+    {
+        "type": "range",
+        "id": "border_radius",
+        "label": "Border radius",
+        "unit": "%",
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "default": 50,
+        "info": "Change the shape of the swatches."
+    }
+  ],
+  "blocks": [
+    {
+        "type": "color_swatch",
+        "name": "Color",
+        "settings":[
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Option value",
+                "info": "Set this to the exact name of the option. "
+            },    
+            {
+                "type": "color",
+                "id": "color",
+                "label": "Color"
+            }
+        ]
+    },
+    {
+        "type": "gradient_swatch",
+        "name": "Gradient",
+        "settings":[
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Option value",
+                "info": "Set this to the exact name of the option. "
+            },    
+            {
+                "type": "color",
+                "id": "color",
+                "label": "Color"
+            },
+            {
+                "type": "color",
+                "id": "color_gradient",
+                "label": "Color gradient"
+            },
+            {
+                "type": "range",
+                "id": "angle",
+                "label": "Angle",
+                "unit": "deg",
+                "min": 0,
+                "max": 180,
+                "step": 2,
+                "default": 90
+            }
+        ]
+    },
+    {
+        "type": "image_swatch",
+        "name": "Image",
+        "settings":[
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Option value"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    },
+    {
+        "type": "advanced_gradient_swatch",
+        "name": "Advanced gradient",
+        "settings":[
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Option value",
+                "info": "Set this to the exact name of the option. "
+            },   
+            {
+                "type": "color",
+                "id": "fallback_color",
+                "label": "Fallback color"
+            }, 
+            {
+                "type": "textarea",
+                "id": "gradient_css",
+                "label": "Gradient css",
+                "info": "Create a css gradient using a generator like: [cssgradient.io](https://cssgradient.io/)"
+            }   
+        ]
+    },
+    {
+        "type": "split_color_swatch",
+        "name": "Split color",
+        "settings":[
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Option value",
+                "info": "Set this to the exact name of the option. "
+            },    
+            {
+                "type": "color",
+                "id": "color_1",
+                "label": "Color 1"
+            },
+            {
+                "type": "color",
+                "id": "color_2",
+                "label": "Color 2"
+            },
+            {
+                "type": "range",
+                "id": "angle",
+                "label": "Angle",
+                "unit": "deg",
+                "min": 0,
+                "max": 180,
+                "step": 2,
+                "default": 90
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}

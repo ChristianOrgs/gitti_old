@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "f6a120f6-6d4f-4cd2-978e-4ef6af5bf3b0": {
+          "type": "heading",
+          "settings": {
+            "title": "Verfolge deine Bestellung.",
+            "class": "h1",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "b0e8d9c9-17f3-4303-95c1-97e806b6f2d9": {
+          "type": "heading",
+          "settings": {
+            "title": "Du willst wissen, wo dein gerade Paket ist? Wir können dir helfen! Teile uns einfach die Details mit, damit wir deine Bestellung finden können.",
+            "class": "h4",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "f5785599-0fc2-47d4-9348-766da08682d4": {
+          "type": "html_content",
+          "settings": {
+            "custom_html": "<iframe id=\"iframe\" frameborder=\"0\" allow-downloads=\"\" style=\"width: 100%; min-height: 800px; height: 100%\" src=\"https:\/\/ssp.alaiko.com\/gitticonsciousbeauty\/tracking\"><\/iframe>",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "b40a9fab-05a7-41ef-9387-b5cf5667dc77": {
+          "type": "products",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "heading": "Most wanted.",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "h1",
+            "richtext_weight_class": "bold",
+            "button_label": "shop all",
+            "button_class": "btn--tertiary",
+            "collection": "bestseller"
+          }
+        }
+      },
+      "block_order": [
+        "f6a120f6-6d4f-4cd2-978e-4ef6af5bf3b0",
+        "b0e8d9c9-17f3-4303-95c1-97e806b6f2d9",
+        "f5785599-0fc2-47d4-9348-766da08682d4",
+        "b40a9fab-05a7-41ef-9387-b5cf5667dc77"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page-lip-sync-sections-template"
+  ]
+}

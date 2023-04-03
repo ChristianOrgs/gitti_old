@@ -1,0 +1,57 @@
+{% if settings.enable_checkout_coupon_warning_message %}
+  {% capture checkoutCouponAlertMessage %}
+    <div class="checkout-coupon-message">
+      {% if settings.metafield_checkout_coupon_warining_message %}
+        {{ settings.metafield_checkout_coupon_warining_message }}
+      {% else %}
+        {{ settings.checkout_coupon_warining_message }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+{% endif %}
+{% assign mso_fg_present = false %}
+{% for line_item in checkout.line_items %}
+  <!-- line_item.properties {{ line_item.properties | json }} -->
+  {% for property in line_item.properties %}
+    {% if property.first == '_free_gift' and property.last == true %}
+      <!-- mso_fg_present set as true -->
+      {% assign mso_fg_present = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if mso_fg_present %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    {% if settings.enable_checkout_coupon_warning_message and mso_fg_present %}
+      if (Shopify.Checkout.step === "shipping_method" || Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "contact_information") {
+          setMessageForCouponCode()
+      }
+    {% endif %}
+  });
+
+  document.addEventListener('page:change', function () {
+    {% if settings.enable_checkout_coupon_warning_message and mso_fg_present %}
+      if (Shopify.Checkout.step === "shipping_method" || Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "contact_information") {
+          setMessageForCouponCode()
+      }
+    {% endif %}
+  });
+
+  function setMessageForCouponCode() {
+      if (document.querySelector(".checkout-coupon-message") === null) {
+          var xmlString = '{{ checkoutCouponAlertMessage | strip_newlines }}';
+          var doc = new DOMParser().parseFromString(xmlString, "text/html");
+          var referenceNode = document.querySelector(".order-summary__section--discount")
+          referenceNode.parentNode.insertBefore(doc.body.firstChild, referenceNode.nextSibling);
+      }
+      if (document.querySelector(".order-summary__section--discount #checkout_reduction_code") != null) {
+          document.querySelector(".order-summary__section--discount #checkout_reduction_code").setAttribute("disabled", "disabled");
+      }
+      document.querySelector(".order-summary__section--discount .field__input-btn").classList.add("disabled");
+      document.querySelector(".order-summary__section--discount .field__input-btn").setAttribute("disabled", "disabled");
+  }
+</script>

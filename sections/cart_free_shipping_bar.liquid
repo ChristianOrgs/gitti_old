@@ -1,0 +1,248 @@
+{% for block in section.blocks %}
+  {% capture markets_content %}
+      {% assign id = section.id %}
+      {% capture placeholder %}__price_for_free_shipping__{% endcapture %}
+      {% assign left_for_free_shipping = block.settings.free_shipping_price | times: 100 | minus: cart.total_price %}
+      {% assign left_for_free_shipping_price = block.settings.free_shipping_price | times: 100 | minus: cart.total_price | money %}
+      {% if left_for_free_shipping < 0 %}
+          {% assign left_for_free_shipping = blank %}
+          {% assign left_for_free_shipping_price = blank %}
+      {% endif %}
+      {% assign progress_percentage = 50.0 %}
+      {% if left_for_free_shipping != blank %}
+          {% assign free_shipping_price_cents = block.settings.free_shipping_price | times: 100.0 %}
+          {% assign progress_percentage = cart.total_price | divided_by: free_shipping_price_cents | times: 100 %}
+      {% else %}
+          {% assign progress_percentage = 100.0 %}
+      {% endif %}
+      <style>
+          #shopify-section-{{id}}{
+              background-color: {{section.settings.color_background}};
+              color: {{section.settings.color_text}};
+          }
+          #shopify-section-{{id}} .max_width{
+              width: 100%;
+              max-width: {{section.settings.bar_width | append: 'px'}}
+          }
+          #shopify-section-{{id}} .progress_bar{
+              background-color: {{section.settings.color_bar_back}};
+              height: 8px;
+              border-radius: 4px;
+              overflow: hidden;
+          }
+          #shopify-section-{{id}} .progress_bar > .before{
+              display: none;
+          }
+          #shopify-section-{{id}} .progress_bar > .after{
+              position: absolute;
+              height: 100%;
+              top: 0;
+              left: 0;
+              background-color: {{section.settings.color_bar_front}};
+              width: {{progress_percentage | round | append: '%'}};
+              border-radius: 4px;
+          }
+          @media (max-width: {{settings.breakpoint_small}}px) {
+              #shopify-section-{{id}}{
+                  background-color: {{section.settings.color_background_mobile}};
+                  color: {{section.settings.color_text_mobile}};
+              }
+              #shopify-section-{{id}} .progress_bar{
+                background-color: {{section.settings.color_bar_back_mobile}};
+              }
+              #shopify-section-{{id}} .progress_bar > .before{
+                  display: block;
+                  position: absolute;
+                  height: 100%;
+                  top: 0;
+                  right: 0;
+                  background-color: {{section.settings.color_bar_back_mobile}};
+                  width: calc({{100 | minus: progress_percentage | round | append: '%'}} + 8px);
+                  border-radius: 4px;
+              }
+              #shopify-section-{{id}} .progress_bar > .after{
+                  position: absolute;
+                  height: 100%;
+                  top: 0;
+                  left: 0;
+                  background-color: {{section.settings.color_bar_front_mobile}};
+                  border-radius: 4px;
+                  width: {{progress_percentage | round | append: '%'}};
+              }
+          }
+          {}
+      </style>
+      <section class="page-width flex col center middle spacing-top-m spacing-bottom-m">
+          <div class="flex col max_width">
+              <div class="flex row center spacing-bottom-s shipping_note_bar"><p class="h4 text-align-center">
+                  {% if left_for_free_shipping != blank %}
+                      {{ block.settings.text | replace: placeholder, left_for_free_shipping_price }}
+                  {% else %}
+                      {{ block.settings.text_free }}
+                  {% endif %}
+              </p></div>
+              <div class="flex row is-relative progress_bar"><div class="before"></div><div class="after"></div></div>
+          </div>
+      </section>
+
+      <script>
+          function updateFreeShipping(){
+              console.log('cart data changed')
+              let cart_total = Shopify.theme.cart.data.total_price;
+              let free_shipping_price = Number('{{ block.settings.free_shipping_price | times: 100.0 }}');
+
+              let shipping_note = document.querySelector('#shopify-section-{{id}} .shipping_note_bar p');
+              let progressbar_before =  document.querySelector('#shopify-section-{{id}} .progress_bar > .before');
+              let progressbar_after =  document.querySelector('#shopify-section-{{id}} .progress_bar > .after');
+              let text = "";
+
+              if(free_shipping_price - cart_total > 0){
+                  progressbar_before.style = "width: calc("+Math.round((1.0 - (cart_total) / free_shipping_price) * 100.0)+"% + 8px);";
+                  progressbar_after.style = "width: "+Math.round(((cart_total) / free_shipping_price) * 100.0)+"%;";
+                  text = '{{block.settings.text}}';
+                  text = text.replaceAll('{{placeholder}}', Shopify.theme.tools.formatMoney(free_shipping_price - cart_total, '{{shop.money_format}}'));
+                  shipping_note.innerHTML = text;
+              }
+              else{
+                  progressbar_before.style = "width: 0;";
+                  progressbar_after.style = "width: 100%;";
+                  shipping_note.innerHTML = '{{block.settings.text_free}}';
+              }
+          }
+          window.addEventListener('cartdatachanged', updateFreeShipping);
+      </script>    
+  {% endcapture %}
+  {% assign markets_whitelist = block.settings.whitelist | upcase | remove: ' ' | split: ',' %}
+  {% assign markets_blacklist = block.settings.blacklist | upcase | remove: ' ' | split: ',' %}
+  {% render 'contextualize', 
+      whitelist: markets_whitelist, 
+      blacklist: markets_blacklist,
+      content: markets_content,
+      id: block.id %}     
+{% endfor %}
+           
+
+{% schema %}
+{
+  "name": "Free Shipping Bar",
+  "settings": [
+    {
+      "type": "range",
+      "id": "bar_width",
+      "label": "Maximal Bar Width",
+      "unit": "px",
+      "min": 200,
+      "max": 1000,
+      "step": 20,
+      "default": 500
+    },
+    {
+      "type": "header",
+      "content": "Desktop Styling"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#FFF"
+    },
+    {
+      "type": "color",
+      "id": "color_bar_back",
+      "label": "Progression Bar Back",
+      "default": "#FFF"
+    },
+    {
+      "type": "color",
+      "id": "color_bar_front",
+      "label": "Progression Bar Front",
+      "default": "#333"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Styling"
+    },
+    {
+      "type": "color",
+      "id": "color_background_mobile",
+      "label": "Background",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "color_text_mobile",
+      "label": "Text",
+      "default": "#FFF"
+    },
+    {
+      "type": "color",
+      "id": "color_bar_back_mobile",
+      "label": "Progression Bar Back Mobile",
+      "default": "#FFF"
+    },
+    {
+      "type": "color",
+      "id": "color_bar_front_mobile",
+      "label": "Progression Bar Front Mobile",
+      "default": "#333"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shipping_bar",
+      "name": "Shipping Bar",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Markets"
+        },
+        {
+          "type": "paragraph",
+          "content": "You can set up markets [here](\/admin\/settings\/markets)."
+        },
+        {
+          "type": "textarea",
+          "id": "whitelist",
+          "label": "Whitelist",
+          "info": "Define countries in which this section should appear. Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+        },
+        {
+          "type": "textarea",
+          "id": "blacklist",
+          "label": "Blacklist",
+          "info": "Define countries in which this section should not appear.  Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+        },
+        {
+          "type": "header",
+          "content": "Settings"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Shipping Text",
+          "default": "You are __price_for_free_shipping__ away from free shipping!",
+          "info": "The Placeholder for the specific price is defined as __price_for_free_shipping__"
+        },
+        {
+          "type": "textarea",
+          "id": "text_free",
+          "label": "Shipping Text Free",
+          "default": "You qualified for free shipping"
+        },
+        {
+          "type": "number",
+          "id": "free_shipping_price",
+          "label": "Free shipping Price",
+          "default": 50
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

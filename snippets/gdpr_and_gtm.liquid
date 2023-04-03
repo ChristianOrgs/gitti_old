@@ -1,0 +1,113 @@
+{% assign gtm_id = 'GTM-NMTQ2Q8' %}
+
+<!-- Google Tag Manager -->
+<script defer>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.defer = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', '{{ gtm_id }}');</script>
+<!-- End Google Tag Manager -->
+
+<script>
+    (function () {
+
+        window.dataLayer = window.dataLayer || [];
+        window.GDPR_LC = window.GDPR_LC || {};
+        window.GDPR_LC.Cookies = window.GDPR_LC.Cookies || {};
+
+        var KEYS = {
+            'LOCALSTORAGE_KEY' : "GDPR_legal_cookie",
+            'SELECTORS' : {
+                'BANNER_WRAPPER' : '#banner-wrapper',
+                'ALL_ACCEPT' : '#all_accept',
+                'ESSENTIAL_ACCEPT' : '#essential_accept',
+                'SAVE' : '.btn-manage__save'
+            },
+            'CONSENT_GIVEN' : 'ConsentGiven',
+            'CONSENT_CHANGE' : 'ConsentChanged',
+            'HAS_CONSENT' : false,
+            'TIMEOUT' : 200
+        }
+
+        function getDataLayerEvent ( event ) {
+            if ( !KEYS.HAS_CONSENT ) {
+                return KEYS.CONSENT_GIVEN;
+            }
+            return KEYS.CONSENT_CHANGE;
+        }
+
+        function generateDataLayer ( event, CookieDataObj, consent ) {
+            var data = {};
+
+            if ( consent === null ) {
+                setTimeout( function () {
+                    data.event = getDataLayerEvent ( event );
+
+                    Object.keys ( CookieDataObj ).forEach ( function ( cookieName ) {
+                        data[cookieName] = CookieDataObj[cookieName].userSetting;
+                    } );
+
+                    window.dataLayer.push ( data );
+                } , KEYS.TIMEOUT )
+            } else if( consent === 'localStorage' ){
+                data.event = KEYS.CONSENT_GIVEN;
+
+                Object.keys ( CookieDataObj ).forEach ( function ( cookieName ) {
+                    data[cookieName] = CookieDataObj[cookieName].userSetting;
+                } );
+
+                window.dataLayer.push ( data );
+            } else {
+                data.event = getDataLayerEvent ( event );
+
+                Object.keys ( CookieDataObj ).forEach ( function ( cookieName ) {
+                    data[cookieName] = consent;
+                } );
+
+                window.dataLayer.push ( data );
+            }
+        }
+
+        function setLocalStorageData () {
+            var cookieDataStr = localStorage[KEYS.LOCALSTORAGE_KEY];
+            if ( cookieDataStr ) {
+                KEYS.HAS_CONSENT = true;
+                var cookieDataObj = JSON.parse ( cookieDataStr );
+                generateDataLayer ( null, cookieDataObj, 'localStorage' );
+            } else {
+
+            }
+        }
+
+        document.addEventListener ( 'DOMContentLoaded', function () {
+            var gdprBanner = document.querySelector ( KEYS.SELECTORS.BANNER_WRAPPER );
+            if ( !!gdprBanner ) {
+                var allAccept = gdprBanner.querySelector ( KEYS.SELECTORS.ALL_ACCEPT );
+                var essentiellAccept = gdprBanner.querySelector ( KEYS.SELECTORS.ESSENTIAL_ACCEPT );
+                var save = gdprBanner.querySelector ( KEYS.SELECTORS.SAVE );
+
+                function setEvents ( nodes ) {
+                    nodes.forEach ( function ( node ) {
+                        if ( !!node ) {
+                            node.addEventListener ( 'click', function ( event ) {
+                                var consent = event.target === allAccept ? true : ( event.target === essentiellAccept ? false : null )
+                                generateDataLayer ( event, window.GDPR_LC.Cookies.list, consent )
+                            } );
+                        }
+                    } )
+                }
+
+                setEvents ( [allAccept, essentiellAccept, save] );
+            }
+        } )
+        setLocalStorageData ()
+    }) ();
+</script>

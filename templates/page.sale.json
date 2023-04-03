@@ -1,0 +1,123 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "c7fc3314-17b8-4607-883f-508e7b04698d": {
+      "type": "index_image_with_text",
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-2",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/gitti_shop_menu_shopall_2.jpg",
+        "image_shape": "sixteen_by_nine",
+        "image_fit": "contain",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading": "Sale.",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext": "<p>Aktuell gibt es keine Produkte im Angebot. Abonniere jetzt den gitti Newsletter und werde informiert, sobald der nächste Sale startet und erhalte schon jetzt <strong>15% Rabatt für deine nächste Bestellung:<\/strong><\/p>",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "16613383914d99f403": {
+      "type": "index_instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "1661338396770c362d": {
+      "type": "maestrooo-instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 2,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": true,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "16613410688f3ec6fb": {
+      "type": "index_featured_logos",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": ""
+      }
+    },
+    "1661341074db54f817": {
+      "type": "double_logo",
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c7fc3314-17b8-4607-883f-508e7b04698d",
+    "16613383914d99f403",
+    "1661338396770c362d",
+    "16613410688f3ec6fb",
+    "1661341074db54f817"
+  ]
+}

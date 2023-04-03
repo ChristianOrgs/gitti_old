@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[14],{84:function(n,e,t){"use strict";t.r(e);var l=t(0),i=t.n(l);!function(){var n=i()(".js-carousel-slider");if(0===n.length)return!1;null==n.data("flickity")&&t.e(33).then(t.t.bind(null,57,7)).then((function(){n.flickity({cellSelector:".js-slide",cellAlign:"center",watchCSS:!0,prevNextButtons:!1,pageDots:!1})}))}()}}]);

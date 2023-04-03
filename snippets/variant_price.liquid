@@ -1,0 +1,5 @@
+{% if variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+    <div class="flex"><p class="{{class}} price" data-product-price >{{variant.price | money }}</p><p class="{{class}} compare_at_price" data-product-compare-at-price>{{variant.compare_at_price | money }}</p></div>
+{% else %}
+    <p class="{{class}} price">{{variant.price | money }}</p>
+{% endif %}

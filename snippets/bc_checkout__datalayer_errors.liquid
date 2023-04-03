@@ -1,0 +1,116 @@
+{% assign gtm_id = 'GTM-NMTQ2Q8' %}
+{% assign ua_id = 'UA-150759995-1' %}
+<!-- Google Tag Manager -->
+<script defer>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', '{{ gtm_id }}');
+</script>
+<!-- End Google Tag Manager -->
+
+<script>
+  if(window['GoogleAnalyticsObject'] === undefined ){
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ ua_id }}', 'auto');
+  }
+
+  var testMode = false,
+      prefix = '_testMode';
+
+  function CheckoutInit () {
+
+      if ( Shopify && Shopify.Checkout && Shopify.Checkout.step  ) {
+          checkout();
+      }
+
+      function checkout () {
+          var errorWellMessageElement = document.querySelector(".notice.notice--error");
+          var errorCouponMessageElement = document.querySelector(".order-summary__section--discount #error-for-reduction_code");
+
+          function checkoutSendDataLayerPush( data ) {
+              {% comment %}
+              ga ( 'send', {
+                  event: "sh_error_checkout",
+                  hitType : 'event',
+                  eventAction : data.eventAction,
+                  eventLabel : data.eventLabel,
+                  eventBodyMessage: data.eventBodyMessage,
+                  eventMarket: data.eventMarket
+              } );
+              {% endcomment %}
+
+              window.dataLayer.push ( {
+                  event: "sh_error_checkout",
+                  sh_error: {
+                      hitType : 'sh_error_checkout',
+                      eventAction : data.eventAction,
+                      eventLabel : data.eventLabel,
+                      eventBodyMessage: data.eventBodyMessage,
+                      eventMarket: data.eventMarket
+                  }
+              } );
+          }
+
+          function checkForErrors() {
+              if (errorWellMessageElement != null && !errorWellMessageElement.classList.contains("hidden")) {
+                  //alert(`Error Triggered errorWellMessageElement`);
+                  let data_sent = {
+                      eventAction: 'Error well found.',
+                      eventLabel: Shopify.Checkout.step,
+                      eventBodyMessage: errorWellMessageElement.querySelector(".notice__text").textContent,
+                      eventMarket: Shopify.Checkout.locale
+                  };
+                  console.log("sent data", data_sent)
+                  checkoutSendDataLayerPush( data_sent );
+              }
+
+              if (errorCouponMessageElement != null) {
+                  //alert(`Error Triggered errorCouponMessageElement`);
+                  let data_sent = {
+                      eventAction: 'Error voucher found.',
+                      eventLabel: Shopify.Checkout.step,
+                      eventBodyMessage: errorCouponMessageElement.textContent,
+                      eventMarket: Shopify.Checkout.locale
+                  };
+                  console.log("sent data", data_sent)
+                  checkoutSendDataLayerPush( data_sent );
+              }
+
+          }
+
+          checkForErrors();
+
+          //checkoutSetGa( { eventAction: 'checkout step 1 loaded', eventLabel: 'contact_information' } );
+      }
+
+  }
+  document.addEventListener('page:load', CheckoutInit );
+  document.addEventListener('page:change', CheckoutInit );
+</script>
+{% render 'gdpr_and_gtm'%}
+
+{% comment %}
+<div class=“step” data-step=“review” data-last-step=“true”>
+    <div class=“notice notice--error default-background” data-banner=“true” role=“alert” tabindex=“-1”
+         aria-atomic=“true” aria-live=“polite”>
+        <svg class=“icon-svg icon-svg--size-24 notice__icon” aria-hidden=“true” focusable=“false”>
+            <use xlink:href=“#error”></use>
+        </svg>
+        <div class=“notice__content”><p class=“notice__text”>Deine Zahlung konnte nicht verarbeitet werden, da dein
+                Gesamtbestellwert sich geändert hat. Überprüfe deinen Gesamtbestellwert und versuche es erneut.</p>
+        </div>
+    </div>
+</div>
+{% endcomment %}

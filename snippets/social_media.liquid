@@ -1,0 +1,69 @@
+
+<style>
+.social_media-item{
+    padding:4px 0;
+}
+.social_media-link .clever_icon{
+    margin-right:8px;
+}
+</style>
+
+{% if direction == 'col' %}
+   {% assign hide_text = false %}
+{% else %}
+    {% assign hide_text = true %}  
+{% endif %}
+
+
+<ul class="social_media flex {{direction}}">
+    {% if settings.social_instagram != blank %}
+        <li class="social_media-item">
+            <a href="{{settings.social_instagram}}" class="social_media-link flex row">
+                {% render 'icon',icon:'instagram' %}
+                {% unless hide_text %}
+                    <span>Instagram</span>                   
+                {% endunless %}
+            </a>
+        </li>
+    {% endif %}
+    {% if settings.social_facebook != blank %}
+        <li class="social_media-item">
+            <a href="{{settings.social_facebook}}" class="social_media-link flex row">
+                {% render 'icon',icon:'facebook' %}
+                {% unless hide_text %}
+                    <span>Facebook</span>
+                {% endunless %}
+            </a>
+        </li>
+    {% endif %}
+    {% if settings.social_youtube != blank %}
+        <li class="social_media-item">
+            <a href="{{settings.social_youtube}}" class="social_media-link flex row">
+                {% render 'icon',icon:'youtube' %}
+                {% unless hide_text %}
+                    <span>Youtube</span>
+                {% endunless %}
+            </a>
+        </li>
+    {% endif %}
+    {% if settings.social_twitter != blank %}
+        <li class="social_media-item">
+            <a href="{{settings.social_twitter}}" class="social_media-link flex row">
+                {% render 'icon',icon:'twitter' %}
+                {% unless hide_text %}
+                    <span>Twitter</span>
+                {% endunless %}
+            </a>
+        </li>
+    {% endif %}
+    {% if settings.social_pinterest != blank %}
+        <li class="social_media-item">
+            <a href="{{settings.social_pinterest}}" class="social_media-link flex row">
+                {% render 'icon',icon:'pinterest' %}
+                {% unless hide_text %}
+                    <span>Pinterest</span>
+                {% endunless %}
+            </a>
+        </li>
+    {% endif %}
+</ul>

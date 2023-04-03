@@ -1,0 +1,91 @@
+{%- comment -%}
+    NEW VERSION, include at given time
+<div class="grid col-6 swatch_gap spacing-bottom-s"> 
+    <div class="grid-item col-span-6 flex row">
+        <p class="p">{{ 'tags.color' | t  }}: &nbsp; </p><p class="p bold">{%- render 'product_color', product:product, get:'name' -%}</p>
+    </div>
+    {% for sibling in product.metafields.product.siblings.value limit: 5 %}
+            <a href="{{sibling.url}}" class="grid-item swatch-grid-item flex col center {% unless sibling.available %}OOS{% endunless %}" >
+                {% if sibling.handle == product.handle %}
+                    <input hidden type="checkbox" class="swatch" checked >
+                {% endif %}
+                {% capture bg %}
+                    {% if sibling.metafields.swatch.color.value != blank %}
+                        url('https:{{sibling.metafields.swatch.color.value | image_url: width: 100 }}')
+                    {% else %}
+                        {{sibling.metafields.swatch.hex.value}}
+                    {% endif %}
+                {% endcapture %}
+                <div class="swatch sibling_swatch-{{sibling.metafields.swatch.type.value | handleize }} current" style="--swatch-background:{{-bg | strip -}};"></div>
+                <p class="p">{{sibling.metafields.swatch.number.value}}</p>
+            </a>
+    {% endfor %}
+</div> 
+{%- endcomment -%}
+ 
+{% assign new_sibling_count = product.metafields.siblings | size %}
+{% assign old_sibling_products = product.metafields.product.sibling_products | split: ','   %}
+
+{% if new_sibling_count > 1 %}
+   {% assign siblings = null | sort  %}
+   {% assign sibling_count = new_sibling_count %}
+   {% if product.metafields.siblings.sibling_0.value != blank %}
+       {% assign first_sibling_index = 0 %}
+       {% assign last_sibling_index = sibling_count | minus: 1 %}
+   {% else %}
+       {% assign first_sibling_index = 1 %}
+       {% assign last_sibling_index = last_sibling_index  %}
+   {% endif %}
+   {% for i in (first_sibling_index..sibling_count) %}
+       {% assign sibling_key = 'sibling_' | append: i %}
+       {% assign sibling = product.metafields.siblings[sibling_key].value | sort %}
+       {% assign siblings = siblings | concat: sibling %}
+   {% endfor %}
+   <div class="grid col-6 swatch_gap spacing-bottom-s"> 
+       <div class="grid-item col-span-6 flex row">
+           <p class="p">{% if product.metafields.bundle.type.value == 'product' %}{{ 'tags.product' | t  }}{% else %}{{ 'tags.color' | t  }}{% endif %}: &nbsp; </p><p class="p bold">{{ product.metafields.swatch.name.value }}</p>
+       </div>
+       {% for sibling_product in siblings limit: 5 %} 
+           {% if sibling_product != blank %}
+               {% capture color_no_handle %}{%- render 'product_color', product:sibling_product, get:'no' -%}{% endcapture %}
+               {% if color_no_handle contains '-' %}
+                   {% assign color_no_handle_no = color_no_handle | split: '-' | last %}
+               {% else %}
+                   {% assign color_no_handle_no = color_no_handle %}
+               {% endif %}
+               <a href="{{sibling_product.url}}" class="grid-item swatch-grid-item flex col center {% unless sibling_product.available %}OOS{% endunless %}" >
+                   {% if product.handle == sibling_product.handle %}
+                       <input hidden type="checkbox" class="swatch" checked >
+                   {% endif %}
+                   <div class="swatch swatch-{{color_no_handle | handleize }}"></div>
+                   <p class="p">{{color_no_handle_no}}</p>
+               </a>
+           {% endif %}
+       {% endfor %}
+   </div>  
+{% elsif old_sibling_products != blank %}
+   {% assign old_sibling_products = old_sibling_products | join: ',' | append: ',' | append: product.handle | split: ',' | sort  %}
+   <div class="grid col-6 swatch_gap spacing-bottom-s"> 
+       <div class="grid-item col-span-6 flex row">
+           <p class="p">{% if product.metafields.bundle.type.value == 'product' %}{{ 'tags.product' | t  }}{% else %}{{ 'tags.color' | t  }}{% endif %}: &nbsp; </p><p class="p bold">{%- render 'product_color', product:product, get:'name' -%}</p>
+       </div>
+       {% for item in old_sibling_products limit: 5 %}
+           {% assign sibling_product = all_products[item] %}
+           {% if sibling_product != blank %}
+               {% capture color_no_handle %}{%- render 'product_color', product:sibling_product, get:'no' -%}{% endcapture %}
+               {% if color_no_handle contains '-' %}
+                   {% assign color_no_handle_no = color_no_handle | split: '-' | last %}
+               {% else %}
+                   {% assign color_no_handle_no = color_no_handle %}
+               {% endif %}
+               <a href="{{sibling_product.url}}" class="grid-item swatch-grid-item flex col center {% unless sibling_product.available %}OOS{% endunless %}" >
+                   {% if product.handle == sibling_product.handle %}
+                       <input hidden type="checkbox" class="swatch" checked >
+                   {% endif %}
+                   <div class="swatch swatch-{{color_no_handle | handleize }}"></div>
+                   <p class="p">{{color_no_handle_no}}</p>
+               </a>
+           {% endif %}
+       {% endfor %}
+   </div>  
+{% endif %}

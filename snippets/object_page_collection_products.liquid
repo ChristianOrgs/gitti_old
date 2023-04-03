@@ -1,0 +1,54 @@
+
+<style>
+    #shopify-section-{{object.id}}{
+        overflow: hidden;
+    }
+    #shopify-section-{{object.id}} clever-slider.overhanging_slider::before{
+      background-color:#ffffff;
+    }
+    @media only screen and (max-width:{{settings.breakpoint_small}}px){
+        #shopify-section-{{object.id}} .small_items-custom cs-slide{
+            flex: 0 0 45%;
+        }
+    }
+</style>
+<div class="page-width spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+    <div class="grid-item flex col left container">
+        <{{object.settings.heading_tag}} class="{{object.settings.heading_class}} {{object.settings.heading_weight_class}} spacing-bottom-xs"> {{object.settings.heading}} </{{object.settings.heading_tag}}>
+        <div class="flex row middle between container spacing-bottom-s">
+            <{{object.settings.richtext_tag}} class="{{object.settings.richtext_class}} {{object.settings.richtext_weight_class}}"> {{object.settings.richtext}} </{{object.settings.richtext_tag}}>
+            <a href="{{collections[object.settings.collection].url}}" class="btn {{object.settings.button_class}}">{{object.settings.button_label}}</a>
+        </div>
+    </div>
+    {% if object.settings.style == "slider" %}
+    <clever-slider class="overhanging_slider" 
+        options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+        <cs-prev class="slider_nav slider_prev is-absolute only_large">
+            {% render 'icon', icon: 'chevron-left' %}
+        </cs-prev>
+        <cs-track>
+            <cs-slides class="items-4 medium_items-3 small_items-custom gap">
+                {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+                {% for product in collections[object.settings.collection].products %}
+                    <cs-slide>
+                        {% render 'product_grid_item' product: product, sizes: sizes %}
+                    </cs-slide>
+                {% endfor %}
+            </cs-slides>
+        </cs-track>
+        <cs-next class="slider_nav slider_next is-absolute only_large">
+            {% render 'icon', icon: 'chevron-right' %}
+        </cs-next>
+    </clever-slider>
+    {% else %}
+    <div class="grid col-4 small_col-2 col-gap row-gap">
+        {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+        {% for product in collections[object.settings.collection].products %}
+        <div class="grid-item">
+            {% render 'product_grid_item' product: product, sizes: sizes %}
+        </div>
+        {% endfor %}
+    </div>     
+    {% endif %} 
+</div>
+

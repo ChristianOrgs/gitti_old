@@ -1,0 +1,309 @@
+{% assign id = section.id %}
+
+<style>
+  #shopify-section-{{id}} {
+      border-top: 4px solid {{settings.color_border}};
+      border-bottom: 4px solid {{settings.color_border}};
+  }
+  #shopify-section-{{id}} .newsletter_email{
+      text-align: left;
+  }
+  @media only screen and (max-width: {{settings.breakpoint_small}}px){
+      #shopify-section-{{id}} .small_no-spacing-right{
+          padding-right: 0;
+          padding-bottom: 16px;
+      }
+      /* delete padding on mobile*/
+      #shopify-section-{{id}} form.needsclick{
+          padding-left: 0px;
+          padding-right: 0px;
+          max-width: initial;
+      }
+      #shopify-section-{{id}} form.needsclick div div{
+          padding-left: 0px;
+          padding-right: 0px;
+      }
+  }
+  }
+</style>
+
+<section class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+  {% for block in section.blocks %}
+    {%- capture markets_content -%}
+      <div class="grid col-2 grid-gap small_col-1">
+        <div class="grid-item flex col middle spacing-right-xl small_no-spacing-right">
+          <{{ block.settings.title_tag }} class="{{block.settings.title_class}} {{block.settings.title_weight_class}}">
+            {{- block.settings.title -}}
+          </{{ block.settings.title_tag }}>
+          <div class="flex col">
+            {{ block.settings.text }}
+          </div>
+        </div>
+        <div class="grid-item flex col middle">
+          {% assign klaviyo_form = block.settings.klaviyo_id %}
+          {% if klaviyo_form != blank %}
+            <div class="klaviyo-form-{{klaviyo_form}}"></div>
+          {% else %}
+            {% form 'customer' %}
+              {{ form.errors | default_errors }}
+              {% if form.posted_successfully? %}
+                <p class="form--success">Newsletter erfolgreich abonniert</p>
+              {% else %}
+                <div class="grid col-3 grid-gap">
+                  <label for="ContactEmail" class="hidden">E-mail</label>
+                  <input
+                    class="grid-item col-span-2 newsletter_email btn btn--secondary"
+                    type="email"
+                    id="ContactEmail"
+                    name="contact[email]"
+                    value="{% if customer %}{{ customer.email }}{% endif %}"
+                    placeholder="Deine E-Mail Adresse"
+                    autocorrect="off"
+                    autocapitalize="off"
+                  >
+                  <input class="grid-item submit btn btn--primary" type="submit" value="Anmelden">
+                  <div class="grid-item col-span-3 flex col">
+                    <p class="note">{{ block.settings.newsletter_note }}</p>
+                  </div>
+                </div>
+              {% endif %}
+            {% endform %}
+          {% endif %}
+        </div>
+      </div>
+    {%- endcapture -%}
+    {% assign markets_whitelist = block.settings.whitelist | upcase | remove: ' ' | split: ',' %}
+    {% assign markets_blacklist = block.settings.blacklist | upcase | remove: ' ' | split: ',' %}
+    {% render 'contextualize',
+      whitelist: markets_whitelist,
+      blacklist: markets_blacklist,
+      content: markets_content,
+      id: block.id
+    %}
+  {% endfor %}
+</section>
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing top",
+      "options": [
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing bottom",
+      "options": [
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Markets"
+        },
+        {
+          "type": "paragraph",
+          "content": "You can set up markets [here](\/admin\/settings\/markets)."
+        },
+        {
+          "type": "textarea",
+          "id": "whitelist",
+          "label": "Whitelist",
+          "info": "Define countries in which this section should appear. Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+        },
+        {
+          "type": "textarea",
+          "id": "blacklist",
+          "label": "Blacklist",
+          "info": "Define countries in which this section should not appear.  Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "klaviyo_id",
+          "label": "Klaviyo Form ID",
+          "default": "WgNr9k"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "gitti Conscious Beauty News."
+        },
+        {
+          "type": "select",
+          "id": "title_tag",
+          "label": "Html tag",
+          "default": "p",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "small",
+              "label": "small"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "title_class",
+          "label": "Font class",
+          "default": "h2",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "title_weight_class",
+          "label": "Weight class",
+          "default": "bold",
+          "options": [
+            {
+              "value": "bold",
+              "label": "bold"
+            },
+            {
+              "value": "",
+              "label": "normal"
+            }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Abonniere unseren Newsletter und wir schenken dir 15% bei deiner nächsten Bestellung.<\/p>"
+        },
+        {
+          "type": "textarea",
+          "id": "newsletter_note",
+          "label": "Newsletter Small Note",
+          "default": "Informationen zur Datenverarbeitung finden Sie in unseren Datenschutzbestimmungen. Sie können sich jederzeit vom Newsletter abmelden."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

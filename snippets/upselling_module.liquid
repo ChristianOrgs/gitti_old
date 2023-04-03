@@ -1,0 +1,110 @@
+<style>
+    #shopify-section-{{id}} hr{
+        height: 2px;
+        background-color: #e8e8e8;
+        width: 100%;
+        margin: 30px 0;
+        border: none;
+    }
+
+    #shopify-section-{{section.id}} .upselling_module .grid-gap {
+        gap: 16px;
+    }
+
+    @media screen and (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{section.id}} .upselling_module .grid-gap {
+            gap: 16px;
+        }
+    }
+</style>
+
+{% if product.metafields.upselling.upselling_module != blank %}
+{% assign upselling_title = '' %}
+{% assign upselling_text = '' %}
+{% assign upselling_product_handle = '' %}
+    {%- liquid
+        assign data = product.metafields.upselling.upselling_module
+
+		if data.upselling_title == blank
+        	assign test = data
+
+        	assign object_data = data | strip_newlines | remove: '["{"' | remove: '\n' | replace: '\"', '"'
+            assign object_data = object_data | replace: '","', '@,@'            
+            assign object_data = object_data | replace: '", "', '@,@'
+
+            assign object_data = object_data | replace: '":"', '@:@'
+            assign object_data = object_data | remove: '{"' | replace: '"}' | split: '@,@'
+            
+            for object in object_data
+                assign _object = object | split: '@:@'
+                assign key = _object[0]
+                assign value = _object[1]
+
+                if key == 'upselling_title'
+                    assign upselling_title = value
+                elsif key == 'upselling_text'
+                    assign upselling_text = value
+                elsif key == 'upselling_product_handle'
+                    assign upselling_product_handle = value
+                endif
+
+            endfor
+        else
+            assign upselling_title = product.metafields.upselling.upselling_module.upselling_title
+            assign upselling_text = product.metafields.upselling.upselling_module.upselling_text
+            assign upselling_product_handle = product.metafields.upselling.upselling_module.upselling_product_handle
+        endif
+    -%}
+	{% assign upselling_product = all_products[upselling_product_handle] %}
+	{% if upselling_product.available %}
+    <div class="upselling_module spacing-top-s">
+        <hr>
+        <p class="h4 bold spacing-bottom-xs"> {{upselling_title}} </p>
+        <p class="p spacing-bottom-xs"> {{upselling_text}} </p>
+        
+        <div class="upsell_item">
+            <div class="grid col-5 row-3 grid-gap">
+                <div class="grid-item col-span-2 row-span-3 flex col bottom">
+                    {% render 'image_element', image: upselling_product.featured_image, aspect_ratio: 0.66666, fit: 'cover', sizes:'150px' %}
+                </div>
+                <div class="grid-item col-start-3 row-start-2 col-span-3">
+                    <p class="">{{upselling_product.title}}</p>
+                    <div class="spacing-top-xs">
+                        <p class="product_price">
+                            <span>{{upselling_product.price | money }}</span>
+                            {% if upselling_product.compare_at_price %}
+                            <span class="compare_at_price">{{upselling_product.compare_at_price | money }}</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="grid-item col-start-3 row-start-3 col-span-3 flex col bottom">
+                    {% if upselling_product.metafields.bundle != blank %}
+                    <a href="{{upselling_product.url}}" class="btn btn--secondary btn--full">
+                        {{ 'products.product.choose_set' | t }}
+                    </a>
+                    {% else %}
+                    <button class="btn btn--secondary btn--full" data-upselling-add-to-cart>    
+                        {{ 'products.product.add_to_cart' | t }}
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>  
+	{% endif %}
+{% endif %}
+
+<script>
+    document.querySelectorAll('[data-upselling-add-to-cart]').forEach(upsell_atc => {
+        upsell_atc.addEventListener('click', function (e) {
+            e.preventDefault();
+            Shopify.theme.cart.addToCart({
+                "items": [{
+                    "quantity": 1,
+                    'id': Number('{{ upselling_product.selected_or_first_available_variant.id }}')
+                }]
+            });
+        })
+    });
+</script>

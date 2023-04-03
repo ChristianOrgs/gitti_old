@@ -1,0 +1,578 @@
+{% capture section_content %}
+    <style>
+        #shopify-section-{{section.id}} {
+            overflow: hidden;
+        }
+
+        /* add 1px bottom spacing to show box shadow */
+        #shopify-section-{{section.id}} .spacing-bottom-none{
+            padding-bottom: 1px;
+        }
+
+        #shopify-section-{{section.id}} .tags .sales {
+            background-color: #d16262;
+        }
+
+        #shopify-section-{{section.id}} clever-slider.overhanging_slider::before {
+            background-color: #ffffff;
+        }
+
+        #shopify-section-{{section.id}} .featured_collection-content{
+            margin-inline: 0px;
+        }
+        #shopify-section-{{section.id}} .featured_collection_label{
+            padding: 16px 10px;
+            font-size: 16px;
+            line-height: 18px;
+        }
+        #shopify-section-{{section.id}} .featured_collection_label:only-of-type{
+            display:none;
+        }
+        @media only screen and (max-width: {{settings.breakpoint_small}}px) {
+            #shopify-section-{{section.id}} .small_items-custom cs-slide {
+                flex: 0 0 45%;
+            }
+            #shopify-section-{{section.id}} .featured_collection-content{
+                margin-inline: 0px;
+            }
+            #shopify-section-{{section.id}} .featured_collection_label{
+                font-size: 14px;
+                line-height: 16px;
+            }
+         
+        }
+        #shopify-section-{{section.id}} .no-page-width{
+            padding-inline:0;
+            margin-inline: -1px;
+        }
+    </style>
+
+    <div class="no-page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+        <div class="grid-item flex col center container">
+            <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-{{section.settings.spacing_bottom_heading}}"> {{section.settings.heading}} </{{section.settings.heading_tag}}>
+        </div>
+        {% for block in section.blocks %}
+            <input hidden type="radio" name="FeaturedCollections-{{section.id}}" id="FeaturedCollection-{{block.id}}" {% if forloop.first %}checked{% endif %}>
+        {% endfor %}  
+        <div class="flex row center">
+        {% for block in section.blocks %}
+            <label class="featured_collection_label" for="FeaturedCollection-{{block.id}}">
+                {% case block.type %}
+                    {% when 'product-list' %}
+                        {{ block.settings.title }}
+                    {% when 'collection' %}
+                        {{ block.settings.title | default: block.settings.collection.title }}
+                {% endcase %}
+                
+            </label>
+            <style>
+                #FeaturedCollection-{{block.id}}:not(:checked) ~ #FeaturedCollection-{{block.id}}-content{
+                    display:none;
+                }
+                #FeaturedCollection-{{block.id}}:checked ~ div label[for="FeaturedCollection-{{block.id}}"]{
+                    text-decoration: underline;
+                }
+            </style>
+        {% endfor %}    
+        </div>
+        {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'product-list' %}
+                    {% assign products = block.settings.product_list %}
+                {% when 'collection' %}
+                    {% assign products = block.settings.collection.products %}
+            {% endcase %}
+            {% capture button %}
+                {% if section.settings.button_label != blank %}
+                    <div class="flex row middle center container spacing-top-m">
+                        {% case block.type %}
+                            {% when 'product-list' %}
+                                <a href="{{ block.settings.link }}" class="btn {{section.settings.button_class}}">{{section.settings.button_label}}</a>
+                            {% when 'collection' %}
+                                <a href="{{ block.settings.link | default: block.settings.collection.url }}" class="btn {{section.settings.button_class}}">{{section.settings.button_label}}</a>
+                        {% endcase %}
+                    </div>  
+                {% endif %}
+                 
+            {% endcapture %}
+            <div id="FeaturedCollection-{{block.id}}-content" class="flex col featured_collection-content">
+                {% case section.settings.style %}
+                    {% when 'grid' %}
+                        {% assign limit = 8 %}
+                        <div class="grid col-4 small_col-2">
+                            {% for product in products limit: limit %}
+                                <div class="grid-item">
+                                    {% render 'product_grid_item' product: product, sizes: sizes, btn_class: section.settings.product_button_class , btn_class_mobile: section.settings.product_button_class_mobile %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {{ button }}
+                    {% when 'slider' %}
+                        <script type="module">
+                            document.querySelector('label[for="FeaturedCollection-{{block.id}}"]').addEventListener('click', (e) => {
+                                if(!!document.querySelector('#FeaturedCollection-{{block.id}}-content clever-slider')){
+                                    setTimeout(() => {
+                                        document.querySelector('#FeaturedCollection-{{block.id}}-content clever-slider').rebuild()
+                                    }, 100 )
+                                }
+                            })
+                        </script>
+                        <clever-slider  class="overhanging_slider" options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+                            {% comment %} <cs-prev class="slider_nav slider_prev is-absolute only_large">
+                                {% render 'icon', icon: 'chevron-left' %}
+                            </cs-prev> {% endcomment %}
+                            <cs-track>
+                                <cs-slides class="items-4 medium_items-3 small_items-custom gap">
+                                    {% for product in products limit: limit %}
+                                        <cs-slide>
+                                            {% render 'product_grid_item' product: product, sizes: sizes, btn_class: section.settings.product_button_class , btn_class_mobile: section.settings.product_button_class_mobile, hide_second_image: true %}
+                                        </cs-slide>
+                                    {% endfor %}
+                                </cs-slides>
+                            </cs-track>
+                            {% comment %} <cs-next class="slider_nav slider_next is-absolute only_large">
+                                {% render 'icon', icon: 'chevron-right' %}
+                            </cs-next> {% endcomment %}
+                        </clever-slider>   
+                        {{ button }}
+                {% endcase %}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endcapture %}
+{% if settings.bc_intersection_sections %}
+    <script>
+        window.intersectionObserverSectionsData = window.intersectionObserverSectionsData || [];
+        window.intersectionObserverSectionsData.push( {
+            template : `{{ section_content }}`,
+            sectionId : 'shopify-section-{{section.id}}',
+        } );
+    </script>
+{% else %}
+    {{ section_content }}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Carousel",
+  "max_blocks": 3,
+  "settings": [
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "none",
+                "label": "none"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "none",
+                "label": "none"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Our best sellers"
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom_heading",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "none",
+                "label": "none"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "textarea",
+        "id": "richtext",
+        "label": "Richtext",
+        "default": "Lorem ipsum dolor sit amet bijsed dotsuenfre i queri rimeter dejar thise lavorus "
+    },
+    {
+        "type": "select",
+        "id": "richtext_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label",
+        "default": "shop all"
+    },
+    {
+        "type": "text",
+        "id": "button_class",
+        "label": "Button class",
+        "default": "btn--tertiary",
+        "placeholder": "btn--primary"
+    }, 
+    {
+        "type": "collection_list",
+        "id": "collections",
+        "label": "Collections"
+    },
+    {
+        "type":"header",
+        "content":"Product grid item"
+    },
+	{
+        "type": "text",
+        "id": "product_button_class",
+        "label": "Button class",
+        "default": "btn--primary"
+    },
+	{
+        "type": "text",
+        "id": "product_button_class_mobile",
+        "label": "Button class mobile",
+        "default": "btn--secondary"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+          {
+             "value": "grid",
+             "label": "Grid"
+          },
+          {
+            "value": "slider",
+            "label": "Slider"
+         }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+        "type": "product-list",
+        "name": "Product List",
+        "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "product_list",
+              "id": "product_list",
+              "label": "Product List"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+            }
+        ]
+    },
+    {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "info": "Defaults to the collection title."
+            },
+            {
+              "type": "collection",
+              "id": "collection",
+              "label": "Collection"
+            },
+            {
+                "type": "url",
+                "id": "link",
+                "label": "Link",
+                "info": "Defaults to the collection link."
+            }
+        ]
+    }
+  ],
+  "presets": [
+      {
+          "category": "Collection",
+          "name":"Product Carousel"
+      }
+  ]
+}
+{% endschema %}

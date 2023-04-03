@@ -1,0 +1,43 @@
+{% if object.settings.custom_css != blank %}
+    <style>
+        #shopify-section-{{object.id}} .clever_icon, #shopify-section-{{object.id}} .clever_icon svg{
+            height:40px;
+            width:40px;
+        }
+        #shopify-section-{{object.id}} .clever_icon.icon-shop_rating, #shopify-section-{{object.id}} .clever_icon.icon-shop_rating svg{
+            width:108px;
+        }
+
+        {{object.settings.custom_css}}
+    </style>
+{% endif %}
+
+<div class="spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+
+
+    <div class="flex row between center">
+            
+        {% for link_icon in object.settings %}
+        {% if link_icon contains 'triple_usp_link_' %}
+        {% assign links = object.settings[link_icon] %}  
+        {% endif %}
+        {% if link_icon contains 'triple_usp_icon_' %}
+        {% assign icons = object.settings[link_icon] %}     
+        {% endif %}
+        {% if link_icon contains 'triple_usp_text_' %}
+        {% assign texts = object.settings[link_icon] %}  
+        {% endif %}
+
+        {% if link_icon contains 'triple_usp_text_' %}
+        <a href="{{links}}">
+            <div class="flex col top center">
+                {% render 'icon' icon: icons %}
+                <{{object.settings.tag}} class="{{object.settings.class}} {{object.settings.weight_class}} spacing-xs text-align-center">
+                {{texts}}
+                </{{object.settings.tag}}>
+            </div>
+         </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

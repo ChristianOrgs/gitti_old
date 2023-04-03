@@ -1,0 +1,56 @@
+
+<div class="cst_qwedcd">
+  <a href="{{ section.settings.l1banner_btn_link }}"  class="cst_l1ban_textbtn">
+    <span>{{ section.settings.l1banner_btn_text }}</span>
+  </a>
+</div>
+{% schema %}
+ {
+  "name": "CTA",
+  "class": "index-section index-banner-grid",
+  "settings": [
+    {
+      "type": "select",
+      "id": "display",
+      "label": "Display on",
+      "options": [
+        {
+          "value": "",
+          "label": "Desktop & Mobile"
+        },
+        {
+          "value": "show-for-large",
+          "label": "Desktop only"
+        },
+        {
+          "value": "hide-for-large",
+          "label": "Mobile only"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "l1banner_btn_text",
+	  "label":"Button Text"
+    },
+    {
+      "type": "url",
+      "id": "l1banner_btn_link",
+	  "label":"Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banners",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

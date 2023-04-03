@@ -1,0 +1,282 @@
+<div class="container flex col {{section.settings.text_align}} page-width medium-up_spacing-top-{{section.settings.spacing_top}} medium-up_spacing-bottom-{{section.settings.spacing_bottom}}  small_spacing-top-{{section.settings.spacing_top_mobile}}  small_spacing-bottom-{{section.settings.spacing_bottom_mobile}}">
+    <{{section.settings.tag}} class="{{section.settings.class}} {{section.settings.weight_class}} text-align-{{section.settings.text_align}}">{{section.settings.textarea}}</{{section.settings.tag}}>
+</div>
+{% schema %}
+   {
+       "name": "Text Section",
+       "settings": [
+           {
+            "type": "textarea",
+            "id": "textarea",
+            "label": "Text"
+           },
+           {
+            "type": "select",
+            "id": "tag",
+            "label": "Tag",
+            "default": "h3",
+            "options": [
+                
+                {
+                    "value": "h1",
+                    "label": "h1"
+                },
+                {
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "p",
+                    "label": "p"
+                },
+                {
+                    "value": "note",
+                    "label": "note"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "class",
+            "label": "Font class",
+            "default": "h2",
+            "options": [
+                {
+                    "value": "h0",
+                    "label": "h0"
+                },
+                {
+                    "value": "h1",
+                    "label": "h1"
+                },
+                {
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "p",
+                    "label": "p"
+                },
+                {
+                    "value": "note",
+                    "label": "note"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "weight_class",
+            "label": "Weight class heading",
+            "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+          ]
+        },
+           {
+               "type": "select",
+               "id": "text_align",
+               "label": "Alignment",
+               "options": [
+                   {
+                       "value": "center",
+                       "label": "center"
+                   },
+                   {
+                       "value": "left",
+                       "label": "left"
+                   },
+                   {
+                       "value": "right",
+                       "label": "right"
+                   }
+               ],
+               "default": "center"
+           },
+           {
+               "type": "select",
+               "id": "spacing_top",
+               "label": "Spacing top",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           },
+           {
+               "type": "select",
+               "id": "spacing_bottom",
+               "label": "Spacing bottom",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           },
+           {
+               "type": "select",
+               "id": "spacing_top_mobile",
+               "label": "Spacing top mobile",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           },
+           {
+               "type": "select",
+               "id": "spacing_bottom_mobile",
+               "label": "Spacing bottom mobile",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           }
+       ],
+       "presets": [
+           {
+               "name": "Text section",
+               "blocks": [
+               ]
+           }
+       ]
+   }
+{% endschema %}

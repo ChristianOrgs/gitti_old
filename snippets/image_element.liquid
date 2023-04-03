@@ -1,0 +1,240 @@
+{%- comment -%}
+    Developer: Benedikt Krieger
+    Title: Picture Element
+    Parameters:
+        required:
+            image -> image source displayed on desktop and tablet/mobile if not defined
+            fit -> object-fit of image [contain, cover]
+            aspect_ratio -> aspect_ratio is the result of width/height defined as float [auto, specific Value, blank lets the image inherit the height] 
+            sizes -> values in vw or px units [single value, comma-seperated values in descending order]
+        optional:
+            lazyload -> true for lazyloading or false for eager loading, default true
+            crop -> default is 'center' available values 'left' 'right' 'top' 'bottom';
+            crop_tablet -> default is 'center' available values 'left' 'right' 'top' 'bottom';
+            crop_mobile -> default is 'center' available values 'left' 'right' 'top' 'bottom';
+            image_tablet -> image source displayed for tablet
+            image_mobile -> image source displayed for mobile
+            aspect_ratio_tablet -> aspect_ratio-tablet
+            aspect_ratio_mobile -> aspect_ratio-mobile
+            fit_tablet -> object-fit tablet
+            fit_mobile -> object-fit mobile
+            format -> jpg, pjpg, default jpg
+            alt -> alt attribute, default image.alt
+            background -> custom background color, default 'transparent'
+            placeholder -> shopify placeholder string, default 'image'
+{%- endcomment -%}
+
+{%- comment -%}Aspect ratio lookup{%- endcomment -%}
+{% assign circle = '' %}
+{% if aspect_ratio == blank %}
+    {% case image_shape %}
+        {% when 'square' %}
+            {% assign aspect_ratio = 1 %}
+        {% when 'circle' %}
+            {% assign aspect_ratio = 1 %}
+            {% assign circle = 'circle' %}
+        {% when 'two_by_three' %}
+            {% assign aspect_ratio = 2.0 | divided_by: 3 %}
+        {% when 'four_by_three' %}
+            {% assign aspect_ratio = 4.0 | divided_by: 3 %}
+        {% when 'three_by_four' %}
+            {% assign aspect_ratio = 3.0 | divided_by: 4 %}
+        {% when 'four_by_five' %}
+            {% assign aspect_ratio = 4.0| divided_by: 5 %}
+        {% when 'sixteen_by_nine' %}
+            {% assign aspect_ratio = 16.0 | divided_by: 9 %}
+        {% else %}
+            {% assign aspect_ratio = 'auto' %}
+    {% endcase %}    
+{% endif %}
+
+{%- liquid
+    
+    assign background = background | default: settings.color_images
+    assign widths = settings.image_sizes | split: ','
+    assign lazyload = lazyload | default: true, allow_false: true
+    assign format = format
+    assign crop = crop | default: 'center'
+    assign crop_tablet = crop_tablet | default: 'center'
+    assign crop_mobile = crop_mobile | default: 'center'
+    assign fit = fit | default: 'contain'
+    assign fit_tablet = fit_tablet | default: fit 
+    assign fit_mobile = fit_mobile | default: fit_tablet 
+    assign fade_in = fade_in | default: true, allow_false: true
+    assign aspect_ratio_tablet = aspect_ratio_tablet | default: aspect_ratio
+    assign aspect_ratio_mobile = aspect_ratio_mobile | default: aspect_ratio_tablet
+    assign image_filename = image.src | split: '/' | last
+    assign alt = alt | default: image.alt | default: image_filename
+    assign placeholder = placeholder | default: 'image'
+
+    if image != blank
+        assign srcset = blank
+        assign first_src = true
+        for width in widths
+            assign widthNum = width | times: 1
+            if image_tablet != blank and widthNum < settings.breakpoint_medium
+                continue
+            elsif image_mobile != blank and widthNum < settings.breakpoint_small
+                continue
+            endif
+            unless first_src
+                assign srcset = srcset | append: ','
+            endunless
+            assign first_src = false
+            assign image_url = blank
+            if fit == 'cover' and aspect_ratio != blank and aspect_ratio != 'auto'
+                assign aspect_ratio = aspect_ratio | times: 1.0
+                assign height = width | times: 1.0 | divided_by: aspect_ratio | ceil
+                assign image_url = image | image_url: width: widthNum, height: height, crop: crop | append: ' ' | append: widthNum | append: 'w'
+            else
+                assign image_url = image | image_url: width: widthNum | append: ' ' | append: widthNum | append: 'w'
+            endif
+            assign srcset = srcset | append: image_url
+            if image.width < widthNum
+                break
+            endif
+        endfor
+    endif
+    if image_tablet != blank
+        assign srcset_tablet = blank
+        assign first_src = true
+        for width in widths
+            assign widthNum = width | times: 1
+            if image_mobile != blank and widthNum < settings.breakpoint_small
+                continue
+            endif
+            unless first_src
+                assign srcset_tablet = srcset_tablet | append: ','
+            endunless
+            assign first_src = false
+            assign image_url = blank
+            if fit_tablet == 'cover' and aspect_ratio_tablet != blank and aspect_ratio_tablet != 'auto'
+                assign aspect_ratio_tablet = aspect_ratio_tablet | times: 1.0
+                assign height = width | times: 1.0 | divided_by: aspect_ratio_tablet | ceil
+                assign image_url = image_tablet | image_url: width: widthNum, height: height, crop: crop_tablet | append: ' ' | append: widthNum | append: 'w'
+            else
+                assign image_url = image_tablet | image_url: width: widthNum | append: ' ' | append: widthNum | append: 'w'
+            endif
+            assign srcset_tablet = srcset_tablet | append: image_url
+            if image_tablet.width < widthNum 
+                break
+            endif
+        endfor
+    endif
+    if image_mobile != blank
+        assign srcset_mobile = blank
+        for width in widths
+            assign widthNum = width | times: 1
+            assign image_url = blank
+            unless forloop.first
+                assign srcset_mobile = srcset_mobile | append: ','
+            endunless
+            if fit_mobile == 'cover' and aspect_ratio_mobile != blank and aspect_ratio_mobile != 'auto'
+                assign aspect_ratio_mobile = aspect_ratio_mobile | times: 1.0
+                assign height = width | times: 1.0 | divided_by: aspect_ratio_mobile | ceil
+                assign image_url = image_mobile | image_url: width: widthNum, height: height, crop: crop_mobile | append: ' ' | append: widthNum | append: 'w'
+            else
+                assign image_url = image_mobile | image_url: width: widthNum | append: ' ' | append: widthNum | append: 'w'
+            endif
+            assign srcset_mobile = srcset_mobile | append: image_url
+            if image_mobile.width < widthNum or widthNum > 2000
+                break
+            endif
+        endfor
+    endif
+    assign aspect_ratio_final = blank
+    if aspect_ratio != blank
+        if aspect_ratio == 'auto'
+            assign aspect_ratio_final = image.aspect_ratio | times: 1.0
+        else
+            assign aspect_ratio_final = aspect_ratio | times: 1.0
+        endif
+        assign aspect_ratio_final = 100.0 | divided_by: aspect_ratio_final | append: '%'
+    endif
+    assign aspect_ratio_tablet_final = blank
+    if aspect_ratio_tablet != blank
+        if aspect_ratio_tablet == 'auto'
+            if image_tablet != blank
+                assign aspect_ratio_tablet_final = image_tablet.aspect_ratio | times: 1.0
+            endif
+        else
+            assign aspect_ratio_tablet_final = aspect_ratio_tablet | times: 1.0
+        endif
+        if aspect_ratio_tablet_final != blank
+            assign aspect_ratio_tablet_final = 100.0 | divided_by: aspect_ratio_tablet_final | append: '%'
+        endif
+    endif
+    assign aspect_ratio_mobile_final = blank
+    if aspect_ratio_mobile != blank
+        if aspect_ratio_mobile == 'auto'
+            if image_mobile != blank
+                assign aspect_ratio_mobile_final = image_mobile.aspect_ratio | times: 1.0
+            endif
+        else
+            assign aspect_ratio_mobile_final = aspect_ratio_mobile | times: 1.0
+        endif
+        if aspect_ratio_mobile_final != blank
+            assign aspect_ratio_mobile_final = 100.0 | divided_by: aspect_ratio_mobile_final | append: '%'
+        endif
+    endif
+    echo '<div class="picture-wrapper ' | append: circle | append: ' '
+            if aspect_ratio_final != blank or aspect_ratio_tablet_final != blank or aspect_ratio_mobile_final != blank
+                echo 'is-relative '
+            endif
+            echo 'flex col" style="'
+                if aspect_ratio_final != blank
+                    echo '--aspect-ratio: ' | append: aspect_ratio_final | append: '; '
+                endif
+                if aspect_ratio_tablet_final != blank
+                    echo '--aspect-ratio-tablet: ' | append: aspect_ratio_tablet_final | append: '; '
+                endif
+                if aspect_ratio_mobile_final != blank
+                    echo '--aspect-ratio-mobile: ' | append: aspect_ratio_mobile_final | append: '; '
+                endif
+            echo '">'
+        echo '<picture class="flex col'
+            if aspect_ratio_final != blank or aspect_ratio_tablet_final != blank or aspect_ratio_mobile_final != blank
+                echo ' is-absolute'
+            endif
+            echo ' container ' | append: fit 
+            if fit_tablet != blank
+                echo fit_tablet | prepend: ' ' | append: '_tablet'
+            endif
+            if fit_mobile != blank
+                echo fit_mobile | prepend: ' ' | append: '_mobile'
+            endif
+            echo '">'
+            if image != blank
+                if image_mobile != blank
+                    echo '<source media="(max-width: ' | append: settings.breakpoint_small | append: 'px)" srcset="' | append: srcset_mobile | strip | append: '" '
+                        if sizes != blank
+                            echo 'sizes="' | append: sizes | append: '"'
+                        endif
+                        echo '>'
+                endif
+                if image_tablet != blank
+                    echo '<source media="(max-width: ' | append: settings.breakpoint_medium | append: 'px)" srcset="' | append: srcset_tablet | strip | append: '" '
+                        if sizes != blank
+                            echo 'sizes="' | append: sizes | append: '"'
+                        endif
+                        echo '>'
+                endif
+                echo '<source srcset="' | append: srcset | strip | append: '" '
+                        if sizes != blank
+                            echo 'sizes="' | append: sizes | append: '"'
+                        endif
+                        echo '>'
+                echo '<img alt="' | append: alt | append: '" width=' | append: image.width | append: ' height=' | append: image.height | append: ' class="container" '
+                    if lazyload
+                        echo'loading="lazy"'
+                    endif
+                    if background
+                        echo 'style="background-color: ' | append: background | append: ';"'
+                    endif
+                    echo '>' 
+            else
+                echo placeholder | placeholder_svg_tag: 'container placeholder-svg'
+            endif
+        echo '</picture>'
+    echo '</div>'
+-%}

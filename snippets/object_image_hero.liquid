@@ -1,0 +1,80 @@
+
+<style>
+    {% if object.settings.overlay_header %}
+        main{
+            margin-top:-109px;
+        }
+    {% endif %}
+    
+    #shopify-section-{{object.id}} .bee-image-with-text-overlay-wrapper{
+        position: relative;
+        overflow: hidden;
+        height: {{object.settings.section_height}}vh;
+    }
+    #shopify-section-{{object.id}} .bee-image-with-text-overlay-image{
+        position: absolute;
+        width: 100%;
+        top:0;
+        height: {{object.settings.section_height}}vh;
+    }
+    #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay{
+        position: absolute;
+        width: 100%;
+        top:0;
+        height: {{object.settings.section_height}}vh;
+    }
+    #shopify-section-{{object.id}} .slider_wrapper{
+        height:100%;
+    }
+    #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay > div{
+        height:100%;
+    }
+    #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay > div > div{
+        width:{{object.settings.overlay_width}}%;
+    }
+    #shopify-section-{{object.id}} {
+        color:{{object.settings.text_color}};
+    }  
+    #shopify-section-{{object.id}} p{
+        color:{{object.settings.text_color}};
+    } 
+    #shopify-section-{{object.id}} .button_wrapper p{
+        color:{{object.settings.button_text_color}};
+    }  
+    @media (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay > div > div{
+            width:{{object.settings.overlay_width_mobile}}%;
+        }
+    }
+</style>
+
+{% capture sizes %}{% render 'image_sizes', small:1, medium_up:1, page_width: false %}{% endcapture %}
+<div class="bee-image-with-text-overlay-wrapper" >
+    {% if object.settings.button_label != blank %}<a href="{{object.settings.button_link}}">{% endif %}
+        <div class="bee-image-with-text-overlay-image" >
+                {% render 'image_element',  image: object.settings.image, image_mobile: object.settings.image_mobile, fit: object.settings.image_fit, sizes:sizes %}  
+        </div>
+        <div class="bee-image-with-text-overlay-overlay
+        {% if object.settings.background_type == 'banner' %} page-width{% endif %}">
+            <div class="page-width section-spacing flex col {{object.settings.overlay_position_v}} {{object.settings.overlay_position_h}}">
+                {%- comment -%}Text element snippet{%- endcomment -%}
+                <div class="flex col {{object.settings.text_align}} middle">
+                    {% if object.settings.preheading != blank %}
+                        <p class="{{object.settings.class_preheading}} spacing-bottom-{{object.settings.spacing_bottom_preheading}} text-align-{{object.settings.text_align}}">{{ object.settings.preheading | escape }}</p>
+                    {% endif %}
+                    {% if object.settings.heading != blank %}
+                        <h3 class="{{object.settings.class_heading}} {{object.settings.weight_class_heading}} spacing-bottom-{{object.settings.spacing_bottom_heading}} text-align-{{object.settings.text_align}}">{{ object.settings.heading | escape }}</h3>
+                    {% endif %}
+                    {% if object.settings.text != blank %}
+                        <div class="spacing-bottom-{{object.settings.spacing_bottom_richtext}} text-align-{{object.settings.text_align}}">{{ object.settings.text }}</div>
+                    {% endif %}
+                    {% if object.settings.button_label != blank and object.settings.button_link != blank %}
+                    <div class="button_wrapper flex spacing-bottom-{{object.settings.spacing_bottom_button}}">
+                        <p class="{{object.settings.button_class}}" >{{object.settings.button_label}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% if object.settings.button_label != blank %}</a>{% endif %}
+</div>

@@ -1,0 +1,92 @@
+{%- comment -%}
+    Developer: Benedikt Krieger
+    Title: Image Sizes
+    Parameters:
+        small -> mobile image size in (100 / value)vw
+        medium -> tablet image size in (100 / value)vw
+        medium_up -> tablet and above in (100 / value)vw
+        medium_down -> tablet and below in (100 / value)vw
+        large -> desktop image size in (100 / value)vw
+        page_width -> should be set true when the image won't grow relative to the viewport after reaching the page-width, default true
+        percentage -> values in percentage instead of grid fractions, default false
+{%- endcomment -%}
+{% liquid 
+    assign page_width = page_width | default: true, allow_false: true
+    assign percentage = percentage | default: false, allow_false: true
+    if percentage
+        assign percentage_decimal = value
+        assign site_gutter_mobile = settings.site_gutter_mobile 
+        assign site_gutter_mobile = settings.site_gutter_mobile 
+    else
+    endif
+    
+    assign sizes = blank
+    if small != blank 
+        if percentage
+            assign site_gutter_mobile = small | divided_by: 100.0 | times: settings.site_gutter_mobile 
+            assign small_sizes = small | append: 'vw'
+        else
+            assign site_gutter_mobile = settings.site_gutter_mobile | divided_by: small 
+            assign small_sizes = 100.0 | divided_by: small | append: 'vw'
+        endif
+        if page_width
+            assign small_sizes = 'calc(' | append: small_sizes | append: ' - ' | append: site_gutter_mobile | append: 'px - ' | append: site_gutter_mobile | append: 'px)'
+        endif
+        assign small_sizes =  "(max-width: " | append: settings.breakpoint_small | append: "px) " | append: small_sizes
+        if sizes != blank
+            assign sizes = sizes | append: ',' | append : small_sizes
+        else
+            assign sizes = sizes | append : small_sizes
+        endif
+    endif
+    if medium != blank or medium_down != blank
+        if medium_down != blank
+            assign medium = medium_down
+        endif
+        if percentage
+            assign site_gutter = medium | divided_by: 100.0 | times: settings.site_gutter 
+            assign medium_sizes = medium | append: 'vw'
+        else
+            assign site_gutter = settings.site_gutter | divided_by: medium 
+            assign medium_sizes = 100.0 | divided_by: medium | append: 'vw'
+        endif
+        if page_width
+            assign medium_sizes = 'calc(' | append: medium_sizes | append: ' - ' | append: site_gutter | append: 'px - ' | append: site_gutter | append: 'px)'
+        endif
+        assign medium_sizes = "(max-width: " | append: settings.breakpoint_medium | append: "px) " | append: medium_sizes
+        if sizes != blank
+            assign sizes = sizes | append: ',' | append : medium_sizes
+        else
+            assign sizes = sizes | append : medium_sizes
+        endif
+    endif
+    if large != blank or medium_up != blank or all != blank
+        if all != blank
+            assign large = all
+        endif
+        if medium_up != blank
+            assign large = medium_up
+        endif
+        if percentage
+            assign site_gutter = large | divided_by: 100.0 | times: settings.site_gutter 
+            assign large_sizes = large
+        else
+            assign site_gutter = settings.site_gutter | divided_by: large 
+            assign large_sizes = 100.0 | divided_by: large
+        endif
+        if page_width
+            assign large_sizes_relative = large_sizes | append: 'vw' | prepend: 'calc(' | append: ' - ' | append: site_gutter | append: 'px - ' | append: site_gutter | append: 'px)'
+            assign large_sizes = large_sizes | divided_by: 100.0
+            assign large_sizes_absolute = settings.site_width | minus: settings.site_gutter | minus: settings.site_gutter | times: large_sizes | append: 'px'
+            assign large_sizes = "(max-width: " | append: settings.site_width | append: "px) " | append: large_sizes_relative | append: ', ' | append: large_sizes_absolute
+        else
+            assign large_sizes = large_sizes | append: 'vw'
+        endif
+        if sizes != blank
+            assign sizes = sizes | append: ',' | append : large_sizes
+        else
+            assign sizes = sizes | append : large_sizes
+        endif
+    endif
+    echo sizes
+%}

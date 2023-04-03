@@ -1,0 +1,1591 @@
+{
+  "sections": {
+    "164927171810ac8a3d": {
+      "type": "video_cta",
+      "disabled": true,
+      "settings": {
+        "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/gitti_SHOP_homepageheader_mobile_birthday-small.mp4?v=1649691573",
+        "ignore_page_width": true,
+        "video_controls": false,
+        "video_fit": "contain",
+        "height_video": 60,
+        "desktop_spacing_top": "xs",
+        "desktop_spacing_bottom": "xs",
+        "desktop_item_align": "left",
+        "desktop_overlay_position_text": "center",
+        "desktop_button_item_align": "left",
+        "hide_in_desktop": true,
+        "video_fit_mobile": "contain",
+        "mobile_height_video": 40,
+        "mobile_spacing_top": "xs",
+        "mobile_spacing_bottom": "xs",
+        "mobile_item_align": "left",
+        "mobile_button_item_align": "left",
+        "hide_in_mobile": false,
+        "preheading": "Happy Birthday.",
+        "preheading_weight_class": "",
+        "preheading_tag": "p",
+        "class_preheading": "h4",
+        "preheading_spacing_bottom": "xs",
+        "preheading_color": "#3a3a3a",
+        "heading": "3 Jahre wir, bis zu -30% für dich.",
+        "heading_weight_class": "bold",
+        "heading_class": "h1",
+        "heading_tag": "h2",
+        "spacing_bottom_heading": "xs",
+        "heading_color": "#000000",
+        "text": "<p>Lasst uns das gemeinsam feiern. Wir schenken dir bis zu -30% auf unser gesamtes Sortiment.<\/p>",
+        "text_tag": "p",
+        "text_spacing_bottom": "m",
+        "text_color": "#000000",
+        "button_label": "Zur Aktion",
+        "button_link": "shopify:\/\/collections\/gitti-birthday",
+        "button_class": "btn--primary btn",
+        "button_backgroundcolor": "#000000",
+        "button_color": "#ffffff"
+      }
+    },
+    "01c6e56e-351a-4486-8ded-73e0f7b9bc7f": {
+      "type": "index_hero_slideshow_v2",
+      "blocks": {
+        "56885795-63d5-4fff-891e-0040e2b7c3e4": {
+          "type": "slide",
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 50,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_spring23_launch.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_spring23_launch.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Spring Kollektion '23.",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "shopify:\/\/pages\/spring-collection",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "aa386314-1ce3-4fd8-9308-9b189f21690b": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 100,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_womensday23.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_womensday23.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Women's Day 2023.",
+            "tag_heading": "h2",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "s",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "shopify:\/\/pages\/womens-day",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "b5b2a36e-658e-4e51-9ee3-e41200383e14": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 100,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_womensday23.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_womensday23.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Women's Day: -20%",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "shopify:\/\/collections\/all-products",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "152614b9-1eb2-464b-9028-7903426ab0ad": {
+          "type": "slide",
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 100,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_quick-dry.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_quick-dry.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Quick-Dry Maniküre.",
+            "tag_heading": "h2",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "shopify:\/\/pages\/quick-dry-manikure",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "35a2e0eb-6830-4b4f-ab8d-80f1b9a2dc10": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "text_color": "#111111",
+            "border_color": "#111111",
+            "arrow_color": "#111111",
+            "overlay_width": 50,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_nails-5_241258a4-2b6a-435a-b172-131c198d4b33.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_NAILS-3_3ff2263f-bd8e-427c-b175-5bafc7a8f5ea.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Nagellack-Sets",
+            "tag_heading": "h2",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "s",
+            "button_label": "Jetzt shopppen",
+            "button_link": "shopify:\/\/collections\/nail-polish-sets",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "997b18a4-e07f-41eb-b180-f3d8349d0934": {
+          "type": "slide",
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 100,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_serum-launch-2.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_serum-launch.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Neu: Seren Kollektion.",
+            "tag_heading": "h2",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "https:\/\/www.gitticonsciousbeauty.com\/pages\/gitti-skin-care-routine",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "dc997d0e-6e41-4b56-bf6f-490121602de2": {
+          "type": "slide",
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 100,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_berlinbrow-1_253b0f9e-a4b7-4b2e-a01f-76410c55b333.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_berlinbrow-2_524d6633-151d-4f9e-bfcc-eec16cebaf0c.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "Berlin Brow Kollektion.",
+            "tag_heading": "h2",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "s",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "shopify:\/\/pages\/berlin-brow-collection",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "719835e8-f9c2-4fd6-ba1b-ad191a4c7e5f": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "text_color": "#000000",
+            "border_color": "#111111",
+            "arrow_color": "#000000",
+            "overlay_width": 100,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "bottom",
+            "overlay_position_h": "center",
+            "text_align": "center",
+            "media_type": "image",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_desktop_skincare-4_921d7d06-7fad-407b-ac99-95e128c24376.jpg",
+            "video_url": "",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_hero_slide_mobile_skincare-1.jpg",
+            "video_url_mobile": "",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "heading": "gitti Skin Routine.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "s",
+            "button_label": "Jetzt Shoppen",
+            "button_link": "shopify:\/\/collections\/skincare",
+            "button_class": "btn btn--black",
+            "spacing_bottom_button": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "56885795-63d5-4fff-891e-0040e2b7c3e4",
+        "aa386314-1ce3-4fd8-9308-9b189f21690b",
+        "b5b2a36e-658e-4e51-9ee3-e41200383e14",
+        "152614b9-1eb2-464b-9028-7903426ab0ad",
+        "35a2e0eb-6830-4b4f-ab8d-80f1b9a2dc10",
+        "997b18a4-e07f-41eb-b180-f3d8349d0934",
+        "dc997d0e-6e41-4b56-bf6f-490121602de2",
+        "719835e8-f9c2-4fd6-ba1b-ad191a4c7e5f"
+      ],
+      "custom_css": [],
+      "settings": {
+        "show_section": "both",
+        "section_height": 100,
+        "use_natural_height": false,
+        "section_height_mobile": 100,
+        "use_natural_height_mobile": false,
+        "spacing_top": "s",
+        "spacing_bottom": "s",
+        "spacing_top_mobile": "s",
+        "spacing_bottom_mobile": "s",
+        "enable_autoplay": true,
+        "autoplay_speed": 4
+      }
+    },
+    "16150246794f0d190a": {
+      "type": "index_hero_slideshow",
+      "disabled": true,
+      "blocks": {
+        "bf31438b-ef02-4c4a-8d01-2ea05fba2d14": {
+          "type": "slide",
+          "settings": {
+            "overlay_width": 30,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_Homepage_Banner_Desktop_valentines.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_valentines-2.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "It’s self-love season.",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "V-Day Sale.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Entdecke deine Favoriten und spare 20% mit dem Code: LOVE20.<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "Jetzt shoppen",
+            "button_link": "shopify:\/\/collections\/all-products",
+            "button_class": "btn btn--primary",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "ba6e1ae2-7992-4287-b140-3db47a84d899": {
+          "type": "slide",
+          "settings": {
+            "overlay_width": 35,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/Hero_Banner_1900_x_726_eb6be1a6-31f4-40fd-8207-13475ccdc583.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/Hero_Banner_1772_x1181_c9c646e6-bb5a-48f9-9736-0baecb251e90.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "Dein gitti look.",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Conscious Beauty Sets.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Kreiere deinen individuellen Look mit unseren Nagellack-, Make-Up &amp; Hautpflege-Sets.<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "Jetzt shoppen",
+            "button_link": "shopify:\/\/collections\/sets",
+            "button_class": "btn btn--primary",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "050ce502-c0e7-42d2-9079-53c93d56477c": {
+          "type": "slide",
+          "settings": {
+            "overlay_width": 30,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/SHOP_HP_Banner_Desktop_Brow-Collection-v2.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_brow-collection.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "Neu.",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Berlin Brow Kollektion.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Kreiere deinen individuellen Augenbrauen-Look.<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "Jetzt shoppen",
+            "button_link": "shopify:\/\/pages\/berlin-brow-collection",
+            "button_class": "btn btn--primary",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "76864f38-e762-4ca9-8cb4-59414b5431b5": {
+          "type": "slide",
+          "settings": {
+            "overlay_width": 30,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "middle",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_desktop_skincare_fullcollection-2.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_skincare_allproducts-1.jpg",
+            "image_fit_mobile": "contain",
+            "mobile_wrapper": false,
+            "preheading": "Neu.",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Hautpflege Routine.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Unsere natürliche, multifunktionale und wirksame Routine für alle Hauttypen ist da!<\/p>",
+            "spacing_bottom_richtext": "s",
+            "text_color": "#000000",
+            "button_label": "Jetzt entdecken",
+            "button_link": "shopify:\/\/collections\/skincare",
+            "button_class": "btn--primary btn",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "d5a40b91-942b-4054-a3e0-3cb00ec6ddb6": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "overlay_width": 30,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_Homepage_Banner_Desktop_best-of-22_1.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_best-of-22_1.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "Das war unser 2022.",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Best of '22 Collection.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Fünf Worte, fünf Farben: Zuversicht, Herausforderung, Wandel, Fröhlichkeit und Liebe.<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "Jetzt shoppen",
+            "button_link": "shopify:\/\/pages\/best-of-22-collection",
+            "button_class": "btn btn--primary",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "7dc643c5-5904-462e-888a-5ed50378a0d2": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "overlay_width": 30,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_HP_Banner_Desktop_glitters-1_1.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_glitters-4.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "Neu.",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "The Glitter Collection.",
+            "tag_heading": "h1",
+            "class_heading": "h1",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Unsere funkelnden Bestseller sind zurück inklusive zwei neuer Farben.<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#000000",
+            "button_label": "Jetzt shoppen",
+            "button_link": "shopify:\/\/pages\/glitter-collection",
+            "button_class": "btn--primary btn",
+            "spacing_bottom_button": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "bf31438b-ef02-4c4a-8d01-2ea05fba2d14",
+        "ba6e1ae2-7992-4287-b140-3db47a84d899",
+        "050ce502-c0e7-42d2-9079-53c93d56477c",
+        "76864f38-e762-4ca9-8cb4-59414b5431b5",
+        "d5a40b91-942b-4054-a3e0-3cb00ec6ddb6",
+        "7dc643c5-5904-462e-888a-5ed50378a0d2"
+      ],
+      "settings": {
+        "show_section": "both",
+        "section_height": 60,
+        "use_natural_height": true,
+        "section_height_mobile": 45,
+        "use_natural_height_mobile": false,
+        "navigation_style": "dot",
+        "enable_autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "c0d86be1-b776-465e-8c43-cdbf2afe21aa": {
+      "type": "index_triple_usp_v2",
+      "settings": {
+        "spacing_top": "m",
+        "spacing_bottom": "m",
+        "tag": "p",
+        "class": "p",
+        "weight_class": "",
+        "icon_size": 20,
+        "link_1": "",
+        "icon_1": "check-mark",
+        "html_icon_1": "",
+        "text_1": "Vegan & PETA-zertifiziert",
+        "link_2": "",
+        "icon_2": "check-mark",
+        "html_icon_2": "",
+        "text_2": "Innovative Formeln",
+        "link_3": "",
+        "icon_3": "check-mark",
+        "html_icon_3": "",
+        "text_3": "Nachhaltige Verpackungen"
+      }
+    },
+    "1615814327c950309d": {
+      "type": "index_triple_usp",
+      "disabled": true,
+      "settings": {
+        "spacing_top": "m",
+        "spacing_bottom": "l",
+        "tag": "p",
+        "class": "p",
+        "weight_class": "",
+        "link_1": "https:\/\/www.gitticonsciousbeauty.de\/pages\/produktformeln",
+        "icon_1": "vegan_v",
+        "text_1": "Vegan <br>& PETA-zertifiziert",
+        "link_2": "https:\/\/www.gitticonsciousbeauty.de\/pages\/produktformeln",
+        "icon_2": "innovative_formulas",
+        "text_2": "Innovative Formeln <br> natürlichen Ursprungs",
+        "link_3": "https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit",
+        "icon_3": "sustainable_packaging",
+        "text_3": "Nachhaltige <br> Verpackungen",
+        "custom_css": "#shopify-section-1615814327c950309d{\nborder-bottom: 4px solid #E8E8E8;\n}"
+      }
+    },
+    "0ea721ac-a6db-4e38-83e6-c6f51ca9f643": {
+      "type": "index_featured_collections_v2",
+      "blocks": {
+        "548010bf-a5e4-47dd-93fa-949aa95801bd": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_promo-banner_nails-spring.jpg",
+            "text": "Nagellack.",
+            "url": "shopify:\/\/collections\/nail-polish",
+            "tag_text": "h3",
+            "font_class": "h3",
+            "weight_class": "bold",
+            "text_color": "#000000",
+            "text_align": "center",
+            "spacing_bottom": "xs"
+          }
+        },
+        "2e4463a9-e107-4aa8-aeac-3ee72bdae914": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_category_sets-2.jpg",
+            "text": "Sets.",
+            "url": "shopify:\/\/collections\/sets",
+            "tag_text": "h3",
+            "font_class": "h3",
+            "weight_class": "bold",
+            "text_color": "#000000",
+            "text_align": "center",
+            "spacing_bottom": "xs"
+          }
+        },
+        "54351257-052d-46f1-a5ef-9e9be28840e5": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_category_makeup-6.jpg",
+            "text": "Make-Up.",
+            "url": "shopify:\/\/collections\/makeup",
+            "tag_text": "h3",
+            "font_class": "h3",
+            "weight_class": "bold",
+            "text_color": "#000000",
+            "text_align": "center",
+            "spacing_bottom": "xs"
+          }
+        },
+        "e982700f-09eb-4b85-9cc5-aab0623277ba": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_category_skincare-1.jpg",
+            "text": "Hautpflege.",
+            "url": "shopify:\/\/collections\/skincare",
+            "tag_text": "h3",
+            "font_class": "h3",
+            "weight_class": "bold",
+            "text_color": "#000000",
+            "text_align": "center",
+            "spacing_bottom": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "548010bf-a5e4-47dd-93fa-949aa95801bd",
+        "2e4463a9-e107-4aa8-aeac-3ee72bdae914",
+        "54351257-052d-46f1-a5ef-9e9be28840e5",
+        "e982700f-09eb-4b85-9cc5-aab0623277ba"
+      ],
+      "settings": {
+        "hide_desktop": false,
+        "hide_mobile": false,
+        "heading": "Kategorien.",
+        "text": "",
+        "spacing_top": "xs",
+        "spacing_bottom": "none",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "text_align": "center",
+        "image_shape": "three_by_four",
+        "image_shape_mobile": "three_by_four",
+        "background_color": "#ffffff",
+        "border_color": "#111111",
+        "border_style": "full",
+        "show_titles_mobile": true
+      }
+    },
+    "1619081393036ee962": {
+      "type": "index_featured_collections",
+      "disabled": true,
+      "blocks": {
+        "0449318f-9ec7-44b6-9769-9767865516ee": {
+          "type": "collection",
+          "settings": {
+            "collection": "nail-care",
+            "image": "shopify:\/\/shop_images\/gitti_shop_category_pictures_nails_pb126_multicolour.jpg"
+          }
+        },
+        "c2011fa1-4ed1-4e7c-be08-52ef9ccfa909": {
+          "type": "collection",
+          "settings": {
+            "collection": "makeup",
+            "image": "shopify:\/\/shop_images\/gitti_shop_category_pictures_makeup_lipsync01.jpg"
+          }
+        },
+        "2d13fa35-aa73-4ab7-9a3c-d5cea4b2dfe9": {
+          "type": "collection",
+          "settings": {
+            "collection": "skincare",
+            "image": "shopify:\/\/shop_images\/gitti_shop_category_pictures_skincare_handmask.jpg"
+          }
+        },
+        "74e45c2b-16f1-4456-87e7-f1825da82e0a": {
+          "type": "collection",
+          "settings": {
+            "collection": "sets",
+            "image": "shopify:\/\/shop_images\/gitti_shop_category_pictures_sets-1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "0449318f-9ec7-44b6-9769-9767865516ee",
+        "c2011fa1-4ed1-4e7c-be08-52ef9ccfa909",
+        "2d13fa35-aa73-4ab7-9a3c-d5cea4b2dfe9",
+        "74e45c2b-16f1-4456-87e7-f1825da82e0a"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xl",
+        "spacing_bottom": "xl",
+        "heading": "Entdecke die Produktkategorien.",
+        "text": "",
+        "hide_desktop": false,
+        "hide_mobile": false,
+        "collection_button_class": "btn--secondary"
+      }
+    },
+    "b39ce060-c43d-46a3-8c27-f79849188b59": {
+      "type": "index_image_with_text",
+      "disabled": true,
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "#cedacf",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-1",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/Nagelpflege.jpg",
+        "image_shape": "sixteen_by_nine",
+        "image_fit": "contain",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading": "November Specials.",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "h2",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "<p>Jede November-Woche schenken wir dir ein neues Angebot zum Kennenlernen unserer gitti-Produkte.<br\/><strong>Melde dich jetzt für unseren Newsletter an & werde über alle November Specials informiert:<\/strong><\/p>",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "139641b7-7e04-4837-ba1f-4c6e27612d91": {
+      "type": "custom_html",
+      "disabled": true,
+      "blocks": {
+        "45840081-e2cf-4bd8-8438-86d202857b8b": {
+          "type": "html",
+          "settings": {
+            "html": "<div class=\"klaviyo-form-QRsU7u\"><\/div>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        },
+        "e2cd8580-1d10-4e22-9fc8-044530b10552": {
+          "type": "html",
+          "settings": {
+            "html": "<style>\ndiv#shopify-section-template--16167142785292__139641b7-7e04-4837-ba1f-4c6e27612d91 {\nbackground-color: #cedacf;\n}\n\n@media only screen and (min-width: 769px) {\n#shopify-section-template--16167142785292__66b96086-f3e8-4282-b9e9-c22763e7378b .page-width.section-spacing {\npadding-bottom: 20px;\n}\ndiv#shopify-section-template--16167142785292__139641b7-7e04-4837-ba1f-4c6e27612d91 {\nbackground-color: #cedacf;\npadding-bottom: 70px;\n}\n}\n<\/style>",
+            "spacing_left_right": false,
+            "page_width": true
+          }
+        },
+        "1a047600-f32d-48c7-8d1d-2b5ccbeef613": {
+          "type": "html",
+          "disabled": true,
+          "settings": {
+            "html": "<div><\/div>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "45840081-e2cf-4bd8-8438-86d202857b8b",
+        "e2cd8580-1d10-4e22-9fc8-044530b10552",
+        "1a047600-f32d-48c7-8d1d-2b5ccbeef613"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": ""
+      }
+    },
+    "1625723472593aa8d6": {
+      "type": "index_featured_collection",
+      "blocks": {
+        "f5c394c7-1672-4057-9684-8444732fc2cb": {
+          "type": "collection",
+          "settings": {
+            "title": "Neuheiten",
+            "collection": "new-in",
+            "link": "shopify:\/\/collections\/new-in"
+          }
+        },
+        "e52c97f8-8efd-4f06-aaf4-0b1f38c3972f": {
+          "type": "collection",
+          "settings": {
+            "title": "Bestseller",
+            "collection": "bestsellers",
+            "link": "shopify:\/\/collections\/bestsellers"
+          }
+        },
+        "a953ea42-47fb-4f7b-a252-80fa0ea0d52c": {
+          "type": "product-list",
+          "settings": {
+            "title": "Trendfarben",
+            "product_list": [
+              "gitti-no-132-lavender",
+              "gitti-no-118-raspberry-red",
+              "gitti-no-131-bright-red",
+              "gitti-no-130-soft-beige",
+              "gitti-no-114-pink-sheen",
+              "gitti-no-142-afterglow"
+            ],
+            "link": "shopify:\/\/collections\/nail-polish"
+          }
+        }
+      },
+      "block_order": [
+        "f5c394c7-1672-4057-9684-8444732fc2cb",
+        "e52c97f8-8efd-4f06-aaf4-0b1f38c3972f",
+        "a953ea42-47fb-4f7b-a252-80fa0ea0d52c"
+      ],
+      "custom_css": [
+        ".in-view {margin-right: 0px;}"
+      ],
+      "settings": {
+        "spacing_top": "m",
+        "spacing_bottom": "s",
+        "heading": "Besonders beliebt.",
+        "spacing_bottom_heading": "none",
+        "heading_tag": "h2",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "Mehr Produkte",
+        "button_class": "btn--tertiary",
+        "collections": [
+          "new-in"
+        ],
+        "product_button_class": "btn--primary",
+        "product_button_class_mobile": "btn--secondary",
+        "style": "slider"
+      }
+    },
+    "54e2d5df-efdc-46d3-9a33-45b7dc86623a": {
+      "type": "index_featured_logos_v2",
+      "blocks": {
+        "bfe65f99-4a57-48f9-8766-4f4452522599": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg width=\"100%\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 195.4 50\" style=\"enable-background:new 0 0 195.4 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M195.5,48.6c0,0.1,0,0.1,0,0.3h-0.7c-11.2,0-22.4,0-33.5,0c-0.3,0-0.8-0.2-0.8-0.3c0-0.5,0.5-0.3,0.7-0.3c1,0,2.1,0,3.2,0\n\t\tV2h-8.5v0.8c0,12.2,0,24.3,0,36.5c0,0.8-0.1,1.7-0.4,2.4c-2.1,5-5.9,7.7-11.2,8.2c-4.5,0.4-8.8-0.3-12.8-2.4\n\t\tc-3-1.6-5.1-3.9-5.8-7.3c-0.2-0.9-0.3-1.9-0.3-2.8c0-11.5-0.1-23-0.1-34.6c0-0.3,0-0.6,0-0.9h-2.4c-0.6,0-1.2,0-1.9,0\n\t\tc-0.2,0-0.3-0.2-0.5-0.3c0.2-0.1,0.3-0.2,0.5-0.2c2.4,0,4.9,0,7.3,0h9.2c0.3,0,0.7-0.1,0.5,0.5h-4.7c0,0.3,0,0.5,0,0.7\n\t\tc0,12.7,0.1,25.4,0.1,38c0,4.7,3.4,8.3,8,8.6c3.3,0.3,6.3-0.3,9.1-2.3c2.3-1.6,3.7-3.8,4.6-6.5c0.1-0.2,0.1-0.5,0.1-0.7\n\t\tc0-12.4,0-24.8,0-37.3V1.9h-0.7c-1.4,0-2.9,0-4.3,0c-0.1,0-0.3-0.2-0.4-0.3c0.1-0.1,0.3-0.2,0.4-0.3c0.1,0,0.3,0,0.4,0h43.9v17.2\n\t\tc-0.1,0-0.1,0-0.2,0.1c-0.1-0.2-0.2-0.4-0.2-0.5c-0.4-2.1-0.6-4.2-1.1-6.2c-0.9-3.5-2.8-6.4-6.1-8.1c-2.3-1.2-4.8-1.8-7.4-1.9\n\t\tc-2.1-0.1-4.3,0-6.4,0.1c-0.1,0-0.2,0-0.3,0v22c0.9,0,1.7,0,2.6,0c1.4,0,2.8-0.3,4.1-0.8c2.1-0.9,3.1-2.7,3.7-4.8\n\t\tc0.2-0.9,0.4-1.9,0.6-2.9c0-0.2,0.1-0.3,0.1-0.5c0.1,0,0.1,0,0.2,0c0,0.2,0.1,0.3,0.1,0.5c0,6.1,0,12.1,0,18.2\n\t\tc0,0.2-0.1,0.3-0.2,0.5c-0.1-0.2-0.2-0.3-0.2-0.5c-0.2-0.9-0.3-1.9-0.6-2.8c-1.1-4.7-5.2-6.5-8.8-6.3c-0.5,0-1,0.1-1.5,0.1v23.5\n\t\tc0,0,0.1,0.1,0.1,0.1c2.8,0,5.6,0.2,8.4-0.1c6.6-0.9,10.9-4.7,12.9-11c0.6-2,0.9-4,0.9-6.1c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.2,0.3,0.3,0.3,0.5C195.5,36.9,195.5,42.8,195.5,48.6z M73.1,40.2c-2.1,3.3-4.8,6-8.4,7.8c-6.9,3.4-15.1,2-20.6-3.4\n\t\tc-3.7-3.6-5.8-8.1-7-13c-0.6-2.4-0.9-4.8-0.9-7.9c0.1-5.2,2.1-10.5,5.7-15.1c2.4-3.1,5.3-5.5,9-7C56.3-0.6,61.4,0,66.2,3\n\t\tc7,4.5,11,11.1,11.7,19.4C78.5,28.8,76.6,34.7,73.1,40.2z M69.1,24.7c0-4-0.2-7.8-0.9-11.6c-0.6-2.9-1.4-5.7-3.1-8.2\n\t\tc-3.5-5.1-10.4-5.1-13.9-2.2c-1.6,1.3-2.7,3-3.5,4.9c-1.8,4.2-2.4,8.6-2.5,13.1c-0.2,4.7-0.1,9.3,0.4,13.9c0.3,2.8,0.7,5.5,1.8,8.2\n\t\tc1.2,3.1,3.2,5.5,6.6,6.2c1.2,0.3,2.5,0.4,3.8,0.3c3.3-0.1,5.9-1.6,7.7-4.4c1.3-2.1,2-4.4,2.5-6.8C68.9,33.6,69,29.1,69.1,24.7z\n\t\t M122.7,28.9h-15.9c-0.2,0.5,0.1,0.6,0.5,0.6c1.2,0,2.4,0,3.6,0v0.8c0,3.8,0,7.7,0,11.5c0,2.1-0.8,3.8-2.3,5.1\n\t\tc-2.9,2.5-6.3,3-9.9,2c-2.4-0.7-3.9-2.5-4.9-4.6c-1.5-3-2.2-6.3-2.5-9.6c-0.7-7.1-0.7-14.2,0.2-21.3c0.4-2.8,1-5.6,2.3-8.1\n\t\tc2-4.1,5.1-5.5,9.5-4.3c3,0.8,5.3,2.5,7.2,4.9c2.5,3.2,3.9,6.8,4.8,10.7c0.1,0.2,0.1,0.4,0.2,0.6c0.1,0,0.1,0,0.2,0V0\n\t\tc-0.2,0.1-0.3,0.2-0.3,0.3c-1.3,2-3.8,2.8-6,1.9c-1.3-0.5-2.6-1-4-1.4c-3.5-1.1-7-0.9-10.2,0.9C87.2,6.2,83,13.2,82,22.1\n\t\tc-0.6,5.4,0.4,10.6,2.7,15.6c2,4.4,4.9,8,9.3,10.3c2.9,1.5,6,2.2,9.2,1.7c1.7-0.3,3.4-1,5-1.6c1.8-0.6,3.5-1.3,5.3-1.7\n\t\tc2.2-0.5,4.2,0.4,4.9,2.4c0,0.1,0.2,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0V29.5c1.2,0,2.4,0,3.5,0C122.8,29.5,122.8,29.5,122.7,28.9z\n\t\t M41.1,1.4c-2.2,0-4.3,0-6.5,0h-2.2V2h4.4c-3.7,11.4-7.4,22.6-11.1,33.9c0,0-0.1,0-0.1,0C21.5,24.6,17.3,13.3,13.1,2h4.3\n\t\tc0.2-0.6-0.2-0.6-0.5-0.6c-5.5,0-10.9,0-16.4,0c-0.2,0-0.3,0-0.5,0V2c1.5,0,2.9,0,4.3,0c0.5,0,0.7,0.2,0.9,0.6\n\t\tC10.8,18,16.3,33.3,21.9,48.7c0.1,0.2,0.2,0.4,0.3,0.7c0.1-0.3,0.2-0.5,0.2-0.7C27.4,33.4,32.3,18,37.3,2.6C37.4,2.1,37.6,2,38.1,2\n\t\tc1.2,0,2.4,0,3.5,0C41.8,1.4,41.5,1.4,41.1,1.4z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"gitti ist DIE Nagellack-Innovation aus Berlin. Die Lacke sind nicht nur vegan und frei von Schadstoffen, sondern pflegen die Nägel obendrein.\"<br>"
+          }
+        },
+        "ed1bc586-6516-4ede-a240-8999b82810b6": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg width=\"100%\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 220.8 50.3\" style=\"enable-background:new 0 0 220.8 50.3;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M127.9,1.2c0,0.1,0,0.2,0,0.3v47.3c0,0.8,0,0.8-0.8,0.8c-2.7,0-5.4,0-8.2,0c-0.4,0-0.6-0.1-0.6-0.6c0-10.5,0-21.1,0.1-31.6\n\t\tc0-2.8,0.2-5.5,0.3-8.3c0-0.5,0-1,0-1.5l-0.1,0c-0.2,1.2-0.4,2.5-0.5,3.7c-0.7,5-1.5,10.1-2.6,15.1c-1.6,7.4-3.1,14.9-4.7,22.4\n\t\tc-0.2,0.9-0.2,0.9-1,0.9c-1.6,0-3.3,0-4.9,0c-0.4,0-0.5-0.1-0.6-0.5c-1.9-9.4-3.8-18.7-5.6-28.1c-0.5-2.8-0.9-5.6-1.3-8.3\n\t\tc-0.2-1.7-0.4-3.5-0.6-4.8c0.1,13.6,0.1,27.6,0.2,41.7h-8V0.8c0.2,0,0.4,0,0.5,0c4.2,0,8.4,0,12.6,0c0.4,0,0.6,0.1,0.7,0.6\n\t\tc1,5.9,2.1,11.8,3.2,17.6c0.5,2.6,0.9,5.2,1.3,7.9c0.3,2,0.4,4,0.6,6.1c0.1,0.7,0.1,1.4,0.3,2c0.1-0.6,0.1-1.2,0.2-1.8\n\t\tc0.4-3.2,0.7-6.5,1.3-9.7c1.5-7.5,3.1-14.9,4.6-22.3c0.1-0.3,0.2-0.4,0.5-0.4c4.2,0,8.4,0,12.6,0C127.8,0.7,127.9,0.8,127.9,1.2z\n\t\t M220.7,49.5c-0.2,0-0.4,0-0.6,0c-3.1,0-6.3,0-9.4,0c-0.4,0-0.5-0.1-0.7-0.5c-1.7-6.1-3.5-12.1-5.2-18.2c-0.1-0.4-0.2-0.5-0.7-0.5\n\t\tc-0.9,0-1.7,0-2.7,0v19.2h-9.7V0.8c0.2,0,0.4,0,0.5,0c5.1,0,10.1,0,15.2,0.1c1.3,0,2.7,0.2,4,0.5c2.9,0.7,4.8,2.8,6.3,5.3\n\t\tc1.5,2.6,2,5.5,2,8.5c0,2.6-0.3,5.2-1.3,7.6c-0.9,2.3-2.5,4.1-4.6,5.3c-0.4,0.3-0.5,0.5-0.3,0.9c2.3,6.7,4.7,13.3,7,20\n\t\tC220.6,49.1,220.7,49.3,220.7,49.5z M209.3,11.6c-0.5-1.6-1.6-2.7-3.2-3.1c-0.6-0.1-1.2-0.2-1.7-0.2c-0.9,0-1.8,0-2.8,0v13.9\n\t\tc1.3,0,2.6,0.1,3.8,0c2-0.2,3.3-1.4,3.9-3.2C210,16.6,210.1,14.1,209.3,11.6z M160,24.1c-0.1,5.5-0.2,9.6-1.2,13.7\n\t\tc-0.6,2.7-1.6,5.3-3.3,7.5c-2.1,2.8-4.9,4.3-8.3,4.8c-2.7,0.4-5.3,0.2-7.8-0.7c-2.6-0.9-4.6-2.6-6-4.9c-1.6-2.8-2.5-5.8-3.1-8.9\n\t\tc-1-5.3-1-10.7-0.7-16.1c0.2-3.7,0.8-7.4,2.3-10.9c1.2-2.9,3-5.4,5.8-6.9c2.5-1.4,5.3-1.8,8.1-1.6c2,0.1,3.9,0.5,5.6,1.5\n\t\tc2.8,1.5,4.6,3.9,5.9,6.8c1.2,2.8,1.8,5.7,2.1,8.6C159.8,19.8,159.9,22.6,160,24.1z M149.5,24c-0.1-2.6-0.3-6.2-0.6-9.8\n\t\tc-0.1-1.3-0.5-2.6-1.1-3.8c-1.1-2.2-4.7-2.5-6.1-0.2c-0.6,1-1,2-1.1,3.1c-0.2,2-0.5,4.1-0.5,6.2c-0.1,5.4-0.3,10.8,0.3,16.2\n\t\tc0.2,1.3,0.4,2.7,1,3.9c0.5,1,1.1,1.7,2.2,1.9c2.3,0.5,4.2-0.2,4.8-2.7c0.4-1.5,0.6-3,0.7-4.6C149.3,31.2,149.3,28.1,149.5,24z\n\t\t M29.8,23.8c-4.6,0-9.2,0-13.8,0c-0.4,0-0.5,0.2-0.5,0.5c0,2.3,0,4.6,0,6.9c0,0.2,0,0.4,0,0.6h0.6c1.6,0,3.3,0,4.9,0\n\t\tc0.2,0,0.5,0,0.5,0.3c-0.1,2.1-0.2,4.2-0.9,6.1c-0.8,2.2-2,3.2-4.4,3.2c-1.9,0.1-3.4-0.7-4.3-2.4c-0.4-0.8-0.7-1.6-0.9-2.5\n\t\tc-0.7-2.8-0.8-5.6-0.8-8.5c0-3.7,0.1-7.4,0.3-11.2c0.1-1.6,0.4-3.2,0.8-4.7c0.6-2.4,2-3.5,4.4-3.6c2-0.1,3.5,0.6,4.4,2.4\n\t\tc0.3,0.6,0.5,1.2,0.7,1.8c0.4,1.6,0.7,3.3,1,5c0.1,0,0.2,0,0.4,0c2.4-0.4,4.8-0.9,7.3-1.3c0.5-0.1,0.5-0.3,0.5-0.7\n\t\tc-0.3-2.4-0.7-4.8-1.5-7.1c-1.1-2.8-2.6-5.3-5.2-7c-1.9-1.2-4-1.8-6.3-1.9C13.2-0.2,9.8,0.7,6.9,3.3c-2,1.8-3.3,4.1-4.3,6.6\n\t\tc-1.7,4.3-2.3,8.8-2.4,13.3c-0.1,3.6,0,7.2,0.5,10.8C1,37,1.7,39.8,2.9,42.5c1.4,3,3.4,5.4,6.6,6.7c2.2,0.9,4.5,1.2,6.9,1\n\t\tc3.1-0.2,5.5-1.6,7.1-4.2c0.3-0.6,0.7-1.2,1-1.8c0.1-0.1,0.2-0.3,0.3-0.5c0.1,0.3,0.1,0.4,0.1,0.6c0.3,1.6,0.7,3.2,1,4.9\n\t\tc0.1,0.3,0.2,0.4,0.5,0.4c1.1,0,2.3,0,3.4,0c0.1,0,0.3,0,0.4-0.1V23.9C30,23.8,29.9,23.8,29.8,23.8z M189.5,0.7c-2.4,0-4.8,0-7.3,0\n\t\tc-0.2,0-0.4,0-0.6,0v0.7c0,6,0,12,0,18.1c0,5,0,10-0.1,14.9c0,1.4-0.2,2.9-0.7,4.2c-0.5,1.4-1.5,2.3-3,2.5c-0.5,0.1-1,0.1-1.5,0.1\n\t\tc-2.1-0.1-3.4-1-4-3c-0.5-1.5-0.6-3.1-0.6-4.6c0-8.9,0-17.9,0-26.8c0-1.9,0-3.8,0-5.7c0-0.4-0.1-0.5-0.5-0.5c-3,0-6,0-9.1,0\n\t\tc-0.3,0-0.5,0.1-0.5,0.5c0,11.4,0,22.8,0.1,34.2c0,2.4,0.4,4.8,1.2,7.2c1.2,3.6,3.5,6,7.1,7c3.5,1,7.1,1,10.6,0.2\n\t\tc2.6-0.6,4.8-1.9,6.4-4.1c1.3-1.8,1.9-3.8,2.3-5.9c0.5-2.8,0.6-5.6,0.6-8.4c0-10,0-20,0-30.1C190.1,0.8,190,0.7,189.5,0.7z\n\t\t M88.2,49.6h-0.7c-2.9,0-5.8,0-8.7,0c-0.6,0-0.7-0.2-0.8-0.7c-0.6-3.2-1.2-6.4-1.8-9.5c0-0.1,0-0.2-0.1-0.3h-9.7\n\t\tc-0.2,1.2-0.4,2.3-0.6,3.5c-0.4,2.2-0.8,4.5-1.2,6.7c0,0.1-0.2,0.3-0.4,0.3c-2.8,0-5.6,0-8.4,0c0,0-0.1,0-0.2-0.1\n\t\tc0-0.1,0-0.3,0.1-0.5c3.3-14.4,6.6-28.8,9.9-43.1c0.4-1.6,0.7-3.1,1-4.7c0.1-0.4,0.2-0.5,0.7-0.5c3.1,0,6.2,0,9.3,0\n\t\tc0.4,0,0.5,0.1,0.6,0.5c2.8,12.2,5.5,24.4,8.3,36.6c0.9,3.8,1.7,7.5,2.6,11.3C88.2,49.2,88.2,49.4,88.2,49.6z M75.1,31.1\n\t\tc0-0.2,0-0.3-0.1-0.5c-0.7-3.1-1.3-6.3-2-9.4c-0.5-2.2-0.9-4.5-1.3-6.7c-0.2-1.4-0.3-2.9-0.4-4.3c-0.9,7-2.6,13.9-3.8,20.9H75.1z\n\t\t M54.3,41.1c0-0.1,0-0.3,0-0.5H41.9V0.7h-0.7c-2.9,0-5.7,0-8.6,0c-0.7,0-0.7,0-0.7,0.7v15.9c0,10.5,0,21.1,0,31.6\n\t\tc0,0.4,0,0.7,0.6,0.7c7.1,0,14.2,0,21.3,0c0.4,0,0.5-0.1,0.5-0.5C54.3,46.4,54.3,43.7,54.3,41.1z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Hier kommt die Beauty-Revolution, auf die die Welt gewartet hat!\"<br>"
+          }
+        },
+        "1f2e8ac8-77d1-4e2c-854e-3429fb799611": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg width=\"100%\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 161.8 50\" style=\"enable-background:new 0 0 161.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M53.6,46.8c-0.7,0.8-1.7,0.6-2.1-0.4c-0.1-0.4-0.2-0.7-0.3-1.1c-0.2-2.4-0.3-4.8-0.4-7.2c-0.2-2.6-0.3-5.1-0.5-7.7\n\t\tc-0.3-2.7-2.5-4.7-5.1-5.2c-0.1,0-0.2-0.1-0.5-0.3c2.7,0,4.3-1.6,5.3-3.6c2.4-5.1,2.8-10.4,0.6-15.7c-1.4-3.3-3.9-5.2-7.7-5\n\t\tc-2.5,0.1-5,0-7.5,0c-0.4,0-0.7,0-1.1,0c-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.5,0,1,0,1.6,0v47.3h-2.3\n\t\tc0,0.1-0.1,0.1-0.1,0.2c0.2,0.1,0.3,0.4,0.5,0.4c2.8,0,5.6,0,8.4,0c0.2,0,0.3-0.2,0.5-0.4c0-0.1-0.1-0.2-0.1-0.2h-2V25.4\n\t\tc2.7-0.1,3.5,0.2,4.3,2.5c0.6,1.7,1,3.6,1.1,5.4c0.2,3.1,0.2,6.2,0.3,9.2c0.1,1.9,0.3,3.8,1.4,5.5c0.9,1.4,2.1,1.9,3.5,1.5\n\t\tc1.3-0.4,2.8-2.3,2.8-3.6C54,46.3,53.8,46.5,53.6,46.8z M44.2,23.6c-1,0.9-2.1,1.2-3.4,1.2V1.3c2.4-0.3,3.4,0.2,4.5,2.3\n\t\tc1.1,2.1,1.7,4.3,1.9,6.6c0.3,3.5,0,6.9-1,10.3C45.7,21.7,45.2,22.8,44.2,23.6z M20.8,25.4c-0.6,0-1.3,0-2,0v24.1\n\t\tc-0.1,0-0.1,0-0.2,0c-0.1-0.2-0.2-0.4-0.2-0.6c-0.1-0.5-0.2-1-0.4-1.4c-0.4-1-1.3-1.3-2.2-0.8c-0.4,0.2-0.7,0.5-1.1,0.8\n\t\tc-0.4,0.4-0.8,0.8-1.3,1.1c-1.8,1.6-3.5,1.8-5.7,0.6c-1.6-0.9-2.7-2.3-3.6-3.9c-1.6-2.9-2.5-6.1-3.1-9.3C0.1,31-0.3,25.9,0.2,20.7\n\t\tc0.5-5.2,1.4-10.2,3.7-14.9c0.8-1.7,1.8-3.3,3.3-4.5C8.3,0.5,9.4,0,10.8,0c1.1,0,2,0.5,2.7,1.3C13.8,1.7,14,2,14.3,2.3\n\t\tc0.8,0.7,1.8,0.5,2.2-0.5c0.2-0.4,0.3-0.9,0.4-1.3c0.1,0,0.1,0,0.2,0c0.2,5.6,0.5,11.2,0.7,16.8c-0.1,0-0.2,0-0.2,0\n\t\tc-0.1-0.7-0.3-1.5-0.4-2.2c-0.5-3.2-1.1-6.4-2.2-9.5c-0.4-1-0.9-2-1.4-2.9c-0.2-0.4-0.6-0.8-1-1.2C11.2,0,9.9,0.2,8.9,1.9\n\t\tC7.9,3.7,7.4,5.7,7,7.8C5.8,14.3,5.3,21,5.4,27.6c0.1,4.7,0.4,9.4,1.3,14c0.4,1.8,0.9,3.5,1.5,5.2c0.2,0.6,0.6,1.1,1,1.6\n\t\tc1.1,1.2,2.5,1.2,3.3-0.2c0.6-1.1,1-2.3,1.3-3.5c0.3-1.2,0.3-2.4,0.3-3.6c0-5,0-10,0-15c0-0.2,0-0.4,0-0.7c-0.6,0-1.2,0-1.9,0\n\t\tc-0.4,0-0.6-0.1-0.4-0.6h9.4C21.4,25.2,21.3,25.4,20.8,25.4z M110.3,48.9c0,0.1,0,0.1-0.1,0.2H93.2c3.9-16,7.7-31.9,11.6-47.9\n\t\tc-2,0-3.9-0.1-5.9,0c-1,0-1.8,0.7-2.4,1.5c-1.5,1.9-2.1,4.1-2.3,6.4c-0.2,1.7-0.1,3.4-0.2,5.2c0,0.2-0.2,0.4-0.2,0.5\n\t\tc-0.1-0.2-0.2-0.4-0.2-0.5c0-4.4,0-8.7,0-13.1c0-0.1,0-0.3,0-0.4h16.6c-4,16-8,31.9-11.9,47.8c0.2,0,0.4,0,0.6,0\n\t\tc1.4,0,2.8-0.1,4.2,0c2.8,0.1,4.6-1.3,5.7-3.8c0.9-1.9,1-3.9,1.1-5.9c0-1.1,0-2.3,0-3.4c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.1,0.3,0.3,0.3,0.4C110.3,40,110.3,44.5,110.3,48.9z M83.6,48.6c-0.3-0.1-0.5,0-0.8,0c-0.5,0.1-0.6-0.1-0.7-0.6\n\t\tc-1-6.1-2.1-12.2-3.2-18.3c-1.3-7.7-2.7-15.4-4-23.1c-0.4-2.1-0.7-4.1-1.1-6.2h-0.1c-3,16.1-6,32.1-9.1,48.3c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,3,0,4.4,0c0.4,0,0.5-0.1,0.4-0.6h-2.3c0.8-4.5,1.6-8.8,2.4-13.2\n\t\tc0-0.2,0.4-0.4,0.6-0.4c1.2,0,2.4,0,3.6,0h2.9c0.8,4.5,1.6,9,2.4,13.6h-1.9c-0.2,0.6,0.1,0.6,0.5,0.6c2.6,0,5.1,0,7.7,0\n\t\tc0.2,0,0.4-0.2,0.6-0.3C84,48.8,83.8,48.7,83.6,48.6z M68.1,34.4c1.1-6.2,2.3-12.4,3.4-18.5c0,0,0.1,0,0.1,0\n\t\tc1.1,6.2,2.1,12.3,3.2,18.5H68.1z M161.4,48.6c-0.2,0-0.5,0-0.7,0c-0.6,0.1-0.8-0.2-0.9-0.7c-1-6.1-2.1-12.2-3.2-18.3\n\t\tc-1.5-8.5-2.9-17-4.4-25.5c-0.2-1.2-0.4-2.5-0.7-3.7c0,0-0.1,0-0.1,0c-3,16.1-6,32.1-9.1,48.2c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,2.9,0,4.4,0c0.2,0,0.3-0.2,0.5-0.3c-0.2-0.1-0.3-0.3-0.5-0.3\n\t\tc-0.6,0-1.3,0-1.9,0c0-0.2,0-0.3,0-0.5c0.8-4.2,1.5-8.5,2.3-12.7c0.1-0.4,0.3-0.4,0.6-0.4c1.7,0,3.3,0,5,0h1.5\n\t\tc0.8,4.6,1.6,9,2.4,13.6c-0.5,0-1,0-1.4,0c-0.2,0-0.4,0.2-0.5,0.3c0.2,0.1,0.4,0.3,0.6,0.3c2,0,4,0,6,0h2.2\n\t\tC161.8,48.6,161.8,48.6,161.4,48.6z M145.7,34.4c1.2-6.2,2.3-12.4,3.4-18.6c0,0,0.1,0,0.1,0c1.1,6.2,2.1,12.4,3.2,18.6H145.7z\n\t\t M131.3,48.6c0.1,0.4,0.1,0.6-0.3,0.6c-2.7,0-5.4,0-8.2,0c-0.4,0-0.5-0.2-0.4-0.6h2V1.3c-0.5,0-1.1,0-1.6,0c-0.2,0-0.3-0.2-0.4-0.3\n\t\tc0.1-0.1,0.3-0.3,0.4-0.3c2.7,0,5.4,0,8.2,0c0.2,0,0.3,0.2,0.5,0.3c0,0.1-0.1,0.1-0.1,0.2h-2.1v47.4H131.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "\"Mit ihrer veganen und schadstofffreien Nagellackbrand gitti hat Gründerin Jennifer Baum-Minkus voll ins Schwarze getroffen.\""
+          }
+        },
+        "ff21240b-b2b8-4224-920e-426b31e45370": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg width=\"100%\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 144.8 50\" style=\"enable-background:new 0 0 144.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M144.8,0.6c-0.7,1.9-1.3,3.8-2.1,5.6c-0.1,0-0.3-0.1-0.4-0.1c0.1-0.7,0.2-1.4,0.3-2c0.1-2-0.6-3-2.6-3.1\n\t\tc-2.1-0.1-4.3-0.1-6.4,0c-0.3,0-0.7,0.3-0.8,0.5c-1.1,2.9-2.1,5.9-3.2,8.8c-0.1,0.2-0.1,0.5-0.2,0.7c3.9,1,6.3-0.7,7.7-4.2\n\t\tc0.1,0.1,0.3,0.3,0.4,0.4c-1.2,3.2-2.3,6.5-3.5,9.7c-0.1,0-0.3-0.1-0.4-0.1c0.1-0.7,0.3-1.5,0.3-2.2c0.1-1.6-0.8-2.5-2.3-2.7\n\t\tl-0.2,0c-2.3-0.1-2.3-0.1-3.1,2c-1,2.9-2.1,5.7-3.1,8.6c-0.1,0.4-0.3,0.8-0.4,1.2c2.9,0,5.8,0.2,8.5-0.1c1.2-0.2,2.5-1.3,3.5-2.2\n\t\tc0.8-0.8,1.4-1.9,2.1-2.8c0.2-0.3,0.4-0.6,0.7-0.9c0.1,0.1,0.2,0.1,0.4,0.2c-0.3,1-0.7,2.1-1.1,3.1c-0.4,1.1-0.6,2.7-1.4,3.2\n\t\tc-0.8,0.6-2.3,0.2-3.5,0.2c-4.6,0-9.3,0-13.9,0c-0.4,0-0.8-0.1-1.3-0.1c0-0.2,0-0.3,0-0.5c0.9,0,1.8,0.1,2.6,0\n\t\tc0.4,0,0.9-0.4,1.1-0.7c2.6-7.2,5.2-14.3,7.8-21.5c0-0.1,0-0.2,0.1-0.5c-2.3,0-4.6,0-6.9,0c-0.3,0-0.6,0.4-0.7,0.7\n\t\tc-2.6,7.2-5.2,14.4-7.8,21.6c0,0.1,0,0.2,0,0.5h3.5c0,0.1,0,0.3,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0.1,2.6,0\n\t\tc0.4,0,1-0.2,1.1-0.5c1.3-3.5,2.6-7,3.9-10.8h-3.3c-2.1,0-4.3,0-6.4,0c-0.4,0-1,0.2-1.1,0.5c-1.3,3.5-2.6,7-3.9,10.8h3.7\n\t\tc0,0.1,0,0.3,0,0.4h-9.6c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0,2.6,0c0.7,0,1-0.2,1.2-0.8c2.6-7.2,5.2-14.3,7.7-21.5c0-0.1,0-0.2,0-0.4\n\t\th-3.8c-0.7,1.9-1.5,4-2.2,6.1c-0.1,0-0.3-0.1-0.4-0.1c0-0.3,0-0.6,0-0.8c0.7-5.3-1.3-5.4-5.6-5.3c-0.3,0-0.7,0.4-0.8,0.6\n\t\tc-2.6,7.3-5.2,14.6-7.9,21.9c0,0,0,0.1,0.1,0.3h3.4c0,0.1,0,0.2,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.8,0.1,2.6,0\n\t\tc0.4-0.1,1-0.4,1.2-0.8c2.6-7.2,5.2-14.3,7.8-21.5c0-0.1,0-0.2,0-0.3c-5.3-1.2-7.8,2.2-10,6.2L81.5,7c0-0.2,0-0.4,0-0.5\n\t\tc0.6-1.8,1.2-3.5,1.9-5.3c0.1-0.3,0.7-0.7,1-0.7c6.2,0,12.4,0,18.7,0c2.9,0,5.8,0,8.8,0c0.4,0,0.9,0,1.3,0c0,0.2,0,0.3,0,0.5\n\t\tc-0.9,0-1.7-0.1-2.6,0c-0.4,0-1,0.4-1.1,0.7c-1.3,3.3-2.4,6.6-3.7,10.2h2.9c2.3,0,4.5,0,6.8,0c0.7,0,1-0.2,1.3-0.9\n\t\tc1.1-3.3,2.3-6.5,3.6-10h-3.7c0-0.1,0-0.3,0-0.4H144.8z M58.8,0.6C58,2.8,57.2,5,56.5,7.2c-0.1,0-0.3-0.1-0.4-0.1\n\t\tc0.1-0.9,0.2-1.8,0.2-2.7c0-2.2-0.7-3.1-2.9-3.4c-3.2-0.4-3.2-0.4-4.3,2.5c-2.3,6.3-4.5,12.6-6.8,18.9c-0.1,0.3-0.2,0.7-0.4,1.3\n\t\th3.6c0,0.1,0,0.3,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0,2.6,0c0.7,0,1-0.2,1.3-0.9c2.5-7,5-14,7.6-21.1\n\t\tc0.1-0.2,0.1-0.5,0.2-0.7c-5.4-1.2-7.8,2.3-10.1,6.2C37.1,7.2,37,7.1,36.8,7c0.7-1.9,1.4-3.9,2.1-6c-1,0-1.9-0.1-2.8,0.1\n\t\tc-0.3,0.1-0.7,0.7-0.8,1.1c-2.6,7.1-5.1,14.2-7.6,21.3c-0.1,0.4-0.3,0.8-0.5,1.2c-0.1,0-0.2,0-0.3,0c-1.7-7.3-3.3-14.7-5.1-22.4\n\t\tc-2.6,7.3-5.1,14.3-7.7,21.5H18C17.2,24.4,2,24.6,0.2,24.1c0-0.1,0-0.2,0-0.4c0.8,0,1.7,0.1,2.5-0.1c0.4-0.1,1-0.4,1.2-0.8\n\t\tC6.4,15.8,9,8.6,11.6,1.4c0-0.1,0-0.2,0-0.4H8.1c0-0.1,0-0.3,0-0.4c0.4,0,0.7-0.1,1.1-0.1c4.5,0,8.9,0,13.4,0\n\t\tc0.9,0,1.3,0.3,1.5,1.2c1.3,5.4,2.7,10.7,4.1,16.1c0.1,0.4,0.2,0.7,0.4,1.4C30.8,12.9,32.9,7,35,0.9h-3.6c0-0.1,0-0.2,0-0.3H58.8z\n\t\t M21.6,0.9c-2.2,0-4.2,0-6.2,0c-0.9,0-1.2,0.3-1.5,1.1C11.6,8.4,9.3,14.9,7,21.3c-0.3,0.8-0.5,1.5-0.8,2.4c2.3,0,4.5,0,6.7,0\n\t\tc0.3,0,0.8-0.5,1-0.9c1-2.6,1.9-5.3,2.9-8C18.3,10.3,19.9,5.7,21.6,0.9z M66.5,23.8c-1,0.4-2.1,0.7-3.3,0.8c-4.2,0.5-7.2-2.1-8-6.7\n\t\tc-0.2-0.9-0.2-1.8-0.3-2.7C55,9.1,59.6,2.7,65.4,0.6c5.2-1.9,9.5,0.7,10.4,6.4C76.9,13.9,73,21.1,66.5,23.8z M73.3,6.4\n\t\tc0-0.7-0.1-1.1-0.1-1.6c-0.4-2.9-2-4.3-5-4.2c-2.1,0.1-3.7,1.2-5,2.7c-2.5,2.7-3.8,6-4.7,9.5c-0.7,2.6-1.3,5.2-0.8,7.9\n\t\tc0.4,2.2,1.9,3.3,4.1,3.5c2.6,0.2,4.5-1,6.1-2.8C71.5,16.9,72.8,11.7,73.3,6.4z M63.8,38.3c-0.1,3.1-1.5,6.5-4.6,9.1\n\t\tc-4.1,3.6-9.9,3.3-13.8-0.6c-5.1-5.1-4.9-13.8,0.4-18.7c4.7-4.4,10.8-4,14.9,1C62.7,31.4,63.8,34.3,63.8,38.3z M60.5,37.8\n\t\tc-0.2-2.9-0.4-5.8-1.8-8.5c-1.3-2.5-3.3-3.7-6.1-3.7c-2.8,0.1-4.6,1.4-5.8,3.8c-1.3,2.5-1.7,5.2-1.7,7.9c0,3.2,0.3,6.3,2,9.1\n\t\tc2.5,4.1,8.8,4.1,11.4,0.1C60.1,43.8,60.3,40.8,60.5,37.8z M21.7,40.6h-9.3c0,0.1,0,0.2,0,0.4h4c0,1.3,0.1,2.4,0,3.4\n\t\tc-0.2,2.4-1.8,4.4-4.1,4.9c-2.9,0.7-5.8-0.3-7-2.9c-0.9-1.9-1.4-4.1-1.6-6.2C3.3,36.7,3.4,33.3,4.6,30c0.8-2,2.1-3.6,4.3-4.2\n\t\tc4-1.1,7.5,0.9,8.7,4.9c0.2,0.5,0.3,1.1,0.5,1.6c0.1,0,0.2,0,0.3-0.1v-7c-1.5,1.7-2.7,0.8-4.1,0.3c-3.6-1.3-6.9-0.7-9.8,1.9\n\t\tC1,30.7-0.4,34.7,0.1,39.2c0.8,6.9,7.5,13.9,16.1,9.2c1-0.5,1.9-0.8,3,0.3V41c0.9-0.1,1.7-0.1,2.5-0.2L21.7,40.6z M79,37.3\n\t\tc-0.8-0.5-1.7-0.7-2.5-1c-2-0.7-4.1-1.3-6.1-2.1c-2.1-0.9-2.8-2.3-2.5-4.7c0.2-1.7,1.5-3.1,3.3-3.6c3.5-1,6.6,0.7,7.9,4.3\n\t\tc0.2,0.6,0.4,1.1,0.6,1.7c0.1,0,0.2,0,0.3-0.1v-6c-1,1.1-1.9,0.6-2.9,0.1c-3.5-1.5-7.1-1-9.4,1.4c-3.1,3.2-2.3,7.6,1.6,9.5\n\t\tc0.9,0.4,1.9,0.7,2.9,1.1c1.5,0.5,3.1,0.9,4.5,1.5c2.3,1,3.3,2.9,3,5.5c-0.3,2.3-1.9,4.1-4.2,4.4c-1.4,0.2-2.9,0.2-4.2,0\n\t\tc-3.1-0.6-4.4-2.9-5.2-5.6c-0.1-0.4-0.3-0.8-0.4-1.3c-0.1,0-0.2,0.1-0.3,0.1v6.8c1-0.1,1.9-0.2,2.7-0.1c2.1,0.2,4.3,0.7,6.4,0.8\n\t\tc3.2,0.1,5.5-1.6,6.9-4.4C82.9,42.3,82,39.1,79,37.3z M39.6,44.4c-0.8,1.8-1.8,3.7-3.8,4c-2.7,0.5-5.5,0.4-8.3,0.6V26.3\n\t\tc1.2-0.1,2.4-0.1,3.6-0.2c0-0.1,0-0.2,0-0.3H20.9c0,0.1,0,0.3,0,0.4h3.7c0,7.5,0,14.8,0,22.1c0,0.3-0.5,0.7-0.8,0.7\n\t\tc-0.9,0.1-1.8,0-2.7,0c0,0.1,0,0.2,0,0.4h19.7v-7.2C40.1,42.9,39.9,43.7,39.6,44.4z M97.9,37.3c-0.8-0.5-1.7-0.7-2.5-1\n\t\tc-2-0.7-4.1-1.3-6.1-2.1c-2.1-0.9-2.7-2.3-2.5-4.7c0.2-1.7,1.5-3.1,3.3-3.6c3.5-1,6.6,0.7,7.9,4.3c0.2,0.6,0.4,1.1,0.6,1.7\n\t\tc0.1,0,0.2,0,0.3-0.1v-6c-1,1.1-1.9,0.6-2.9,0.1c-3.5-1.5-7.1-1-9.4,1.4c-3.1,3.2-2.3,7.6,1.6,9.5c0.9,0.4,1.9,0.7,2.9,1.1\n\t\tc1.5,0.5,3.1,0.9,4.5,1.5c2.3,1,3.3,2.9,3,5.5c-0.3,2.3-1.9,4.1-4.2,4.4c-1.4,0.2-2.9,0.2-4.2,0c-3.1-0.6-4.4-2.9-5.2-5.6\n\t\tc-0.1-0.4-0.3-0.8-0.4-1.3c-0.1,0-0.2,0.1-0.3,0.1v6.8c1-0.1,1.9-0.2,2.7-0.1c2.1,0.2,4.3,0.7,6.4,0.8c3.2,0.1,5.5-1.6,6.9-4.4\n\t\tC101.8,42.3,100.9,39.1,97.9,37.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Ich habe den Ton Sage jetzt seit etwa drei Wochen auf meinen Zehen und er ist überhaupt nicht abgeplatzt.\"<br>"
+          }
+        }
+      },
+      "block_order": [
+        "bfe65f99-4a57-48f9-8766-4f4452522599",
+        "ed1bc586-6516-4ede-a240-8999b82810b6",
+        "1f2e8ac8-77d1-4e2c-854e-3429fb799611",
+        "ff21240b-b2b8-4224-920e-426b31e45370"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "enable_autoplay": true,
+        "autoplay_speed": 4,
+        "heading": "",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "text_align": "center"
+      }
+    },
+    "16190163623e68a7ff": {
+      "type": "index_featured_logos",
+      "disabled": true,
+      "blocks": {
+        "238721d9-0b5e-4e0b-b168-572dc7e1fe36": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 195.4 50\" style=\"enable-background:new 0 0 195.4 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M195.5,48.6c0,0.1,0,0.1,0,0.3h-0.7c-11.2,0-22.4,0-33.5,0c-0.3,0-0.8-0.2-0.8-0.3c0-0.5,0.5-0.3,0.7-0.3c1,0,2.1,0,3.2,0\n\t\tV2h-8.5v0.8c0,12.2,0,24.3,0,36.5c0,0.8-0.1,1.7-0.4,2.4c-2.1,5-5.9,7.7-11.2,8.2c-4.5,0.4-8.8-0.3-12.8-2.4\n\t\tc-3-1.6-5.1-3.9-5.8-7.3c-0.2-0.9-0.3-1.9-0.3-2.8c0-11.5-0.1-23-0.1-34.6c0-0.3,0-0.6,0-0.9h-2.4c-0.6,0-1.2,0-1.9,0\n\t\tc-0.2,0-0.3-0.2-0.5-0.3c0.2-0.1,0.3-0.2,0.5-0.2c2.4,0,4.9,0,7.3,0h9.2c0.3,0,0.7-0.1,0.5,0.5h-4.7c0,0.3,0,0.5,0,0.7\n\t\tc0,12.7,0.1,25.4,0.1,38c0,4.7,3.4,8.3,8,8.6c3.3,0.3,6.3-0.3,9.1-2.3c2.3-1.6,3.7-3.8,4.6-6.5c0.1-0.2,0.1-0.5,0.1-0.7\n\t\tc0-12.4,0-24.8,0-37.3V1.9h-0.7c-1.4,0-2.9,0-4.3,0c-0.1,0-0.3-0.2-0.4-0.3c0.1-0.1,0.3-0.2,0.4-0.3c0.1,0,0.3,0,0.4,0h43.9v17.2\n\t\tc-0.1,0-0.1,0-0.2,0.1c-0.1-0.2-0.2-0.4-0.2-0.5c-0.4-2.1-0.6-4.2-1.1-6.2c-0.9-3.5-2.8-6.4-6.1-8.1c-2.3-1.2-4.8-1.8-7.4-1.9\n\t\tc-2.1-0.1-4.3,0-6.4,0.1c-0.1,0-0.2,0-0.3,0v22c0.9,0,1.7,0,2.6,0c1.4,0,2.8-0.3,4.1-0.8c2.1-0.9,3.1-2.7,3.7-4.8\n\t\tc0.2-0.9,0.4-1.9,0.6-2.9c0-0.2,0.1-0.3,0.1-0.5c0.1,0,0.1,0,0.2,0c0,0.2,0.1,0.3,0.1,0.5c0,6.1,0,12.1,0,18.2\n\t\tc0,0.2-0.1,0.3-0.2,0.5c-0.1-0.2-0.2-0.3-0.2-0.5c-0.2-0.9-0.3-1.9-0.6-2.8c-1.1-4.7-5.2-6.5-8.8-6.3c-0.5,0-1,0.1-1.5,0.1v23.5\n\t\tc0,0,0.1,0.1,0.1,0.1c2.8,0,5.6,0.2,8.4-0.1c6.6-0.9,10.9-4.7,12.9-11c0.6-2,0.9-4,0.9-6.1c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.2,0.3,0.3,0.3,0.5C195.5,36.9,195.5,42.8,195.5,48.6z M73.1,40.2c-2.1,3.3-4.8,6-8.4,7.8c-6.9,3.4-15.1,2-20.6-3.4\n\t\tc-3.7-3.6-5.8-8.1-7-13c-0.6-2.4-0.9-4.8-0.9-7.9c0.1-5.2,2.1-10.5,5.7-15.1c2.4-3.1,5.3-5.5,9-7C56.3-0.6,61.4,0,66.2,3\n\t\tc7,4.5,11,11.1,11.7,19.4C78.5,28.8,76.6,34.7,73.1,40.2z M69.1,24.7c0-4-0.2-7.8-0.9-11.6c-0.6-2.9-1.4-5.7-3.1-8.2\n\t\tc-3.5-5.1-10.4-5.1-13.9-2.2c-1.6,1.3-2.7,3-3.5,4.9c-1.8,4.2-2.4,8.6-2.5,13.1c-0.2,4.7-0.1,9.3,0.4,13.9c0.3,2.8,0.7,5.5,1.8,8.2\n\t\tc1.2,3.1,3.2,5.5,6.6,6.2c1.2,0.3,2.5,0.4,3.8,0.3c3.3-0.1,5.9-1.6,7.7-4.4c1.3-2.1,2-4.4,2.5-6.8C68.9,33.6,69,29.1,69.1,24.7z\n\t\t M122.7,28.9h-15.9c-0.2,0.5,0.1,0.6,0.5,0.6c1.2,0,2.4,0,3.6,0v0.8c0,3.8,0,7.7,0,11.5c0,2.1-0.8,3.8-2.3,5.1\n\t\tc-2.9,2.5-6.3,3-9.9,2c-2.4-0.7-3.9-2.5-4.9-4.6c-1.5-3-2.2-6.3-2.5-9.6c-0.7-7.1-0.7-14.2,0.2-21.3c0.4-2.8,1-5.6,2.3-8.1\n\t\tc2-4.1,5.1-5.5,9.5-4.3c3,0.8,5.3,2.5,7.2,4.9c2.5,3.2,3.9,6.8,4.8,10.7c0.1,0.2,0.1,0.4,0.2,0.6c0.1,0,0.1,0,0.2,0V0\n\t\tc-0.2,0.1-0.3,0.2-0.3,0.3c-1.3,2-3.8,2.8-6,1.9c-1.3-0.5-2.6-1-4-1.4c-3.5-1.1-7-0.9-10.2,0.9C87.2,6.2,83,13.2,82,22.1\n\t\tc-0.6,5.4,0.4,10.6,2.7,15.6c2,4.4,4.9,8,9.3,10.3c2.9,1.5,6,2.2,9.2,1.7c1.7-0.3,3.4-1,5-1.6c1.8-0.6,3.5-1.3,5.3-1.7\n\t\tc2.2-0.5,4.2,0.4,4.9,2.4c0,0.1,0.2,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0V29.5c1.2,0,2.4,0,3.5,0C122.8,29.5,122.8,29.5,122.7,28.9z\n\t\t M41.1,1.4c-2.2,0-4.3,0-6.5,0h-2.2V2h4.4c-3.7,11.4-7.4,22.6-11.1,33.9c0,0-0.1,0-0.1,0C21.5,24.6,17.3,13.3,13.1,2h4.3\n\t\tc0.2-0.6-0.2-0.6-0.5-0.6c-5.5,0-10.9,0-16.4,0c-0.2,0-0.3,0-0.5,0V2c1.5,0,2.9,0,4.3,0c0.5,0,0.7,0.2,0.9,0.6\n\t\tC10.8,18,16.3,33.3,21.9,48.7c0.1,0.2,0.2,0.4,0.3,0.7c0.1-0.3,0.2-0.5,0.2-0.7C27.4,33.4,32.3,18,37.3,2.6C37.4,2.1,37.6,2,38.1,2\n\t\tc1.2,0,2.4,0,3.5,0C41.8,1.4,41.5,1.4,41.1,1.4z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"gitti ist DIE Nagellack-Innovation aus Berlin. Die Lacke des jungen Labels sind nicht nur vegan und frei von Schadstoffen, sondern pflegen die Nägel obendrein.\"<br>"
+          }
+        },
+        "c055cc0a-8181-40b0-b09e-bf7e8437337c": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 220.8 50.3\" style=\"enable-background:new 0 0 220.8 50.3;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M127.9,1.2c0,0.1,0,0.2,0,0.3v47.3c0,0.8,0,0.8-0.8,0.8c-2.7,0-5.4,0-8.2,0c-0.4,0-0.6-0.1-0.6-0.6c0-10.5,0-21.1,0.1-31.6\n\t\tc0-2.8,0.2-5.5,0.3-8.3c0-0.5,0-1,0-1.5l-0.1,0c-0.2,1.2-0.4,2.5-0.5,3.7c-0.7,5-1.5,10.1-2.6,15.1c-1.6,7.4-3.1,14.9-4.7,22.4\n\t\tc-0.2,0.9-0.2,0.9-1,0.9c-1.6,0-3.3,0-4.9,0c-0.4,0-0.5-0.1-0.6-0.5c-1.9-9.4-3.8-18.7-5.6-28.1c-0.5-2.8-0.9-5.6-1.3-8.3\n\t\tc-0.2-1.7-0.4-3.5-0.6-4.8c0.1,13.6,0.1,27.6,0.2,41.7h-8V0.8c0.2,0,0.4,0,0.5,0c4.2,0,8.4,0,12.6,0c0.4,0,0.6,0.1,0.7,0.6\n\t\tc1,5.9,2.1,11.8,3.2,17.6c0.5,2.6,0.9,5.2,1.3,7.9c0.3,2,0.4,4,0.6,6.1c0.1,0.7,0.1,1.4,0.3,2c0.1-0.6,0.1-1.2,0.2-1.8\n\t\tc0.4-3.2,0.7-6.5,1.3-9.7c1.5-7.5,3.1-14.9,4.6-22.3c0.1-0.3,0.2-0.4,0.5-0.4c4.2,0,8.4,0,12.6,0C127.8,0.7,127.9,0.8,127.9,1.2z\n\t\t M220.7,49.5c-0.2,0-0.4,0-0.6,0c-3.1,0-6.3,0-9.4,0c-0.4,0-0.5-0.1-0.7-0.5c-1.7-6.1-3.5-12.1-5.2-18.2c-0.1-0.4-0.2-0.5-0.7-0.5\n\t\tc-0.9,0-1.7,0-2.7,0v19.2h-9.7V0.8c0.2,0,0.4,0,0.5,0c5.1,0,10.1,0,15.2,0.1c1.3,0,2.7,0.2,4,0.5c2.9,0.7,4.8,2.8,6.3,5.3\n\t\tc1.5,2.6,2,5.5,2,8.5c0,2.6-0.3,5.2-1.3,7.6c-0.9,2.3-2.5,4.1-4.6,5.3c-0.4,0.3-0.5,0.5-0.3,0.9c2.3,6.7,4.7,13.3,7,20\n\t\tC220.6,49.1,220.7,49.3,220.7,49.5z M209.3,11.6c-0.5-1.6-1.6-2.7-3.2-3.1c-0.6-0.1-1.2-0.2-1.7-0.2c-0.9,0-1.8,0-2.8,0v13.9\n\t\tc1.3,0,2.6,0.1,3.8,0c2-0.2,3.3-1.4,3.9-3.2C210,16.6,210.1,14.1,209.3,11.6z M160,24.1c-0.1,5.5-0.2,9.6-1.2,13.7\n\t\tc-0.6,2.7-1.6,5.3-3.3,7.5c-2.1,2.8-4.9,4.3-8.3,4.8c-2.7,0.4-5.3,0.2-7.8-0.7c-2.6-0.9-4.6-2.6-6-4.9c-1.6-2.8-2.5-5.8-3.1-8.9\n\t\tc-1-5.3-1-10.7-0.7-16.1c0.2-3.7,0.8-7.4,2.3-10.9c1.2-2.9,3-5.4,5.8-6.9c2.5-1.4,5.3-1.8,8.1-1.6c2,0.1,3.9,0.5,5.6,1.5\n\t\tc2.8,1.5,4.6,3.9,5.9,6.8c1.2,2.8,1.8,5.7,2.1,8.6C159.8,19.8,159.9,22.6,160,24.1z M149.5,24c-0.1-2.6-0.3-6.2-0.6-9.8\n\t\tc-0.1-1.3-0.5-2.6-1.1-3.8c-1.1-2.2-4.7-2.5-6.1-0.2c-0.6,1-1,2-1.1,3.1c-0.2,2-0.5,4.1-0.5,6.2c-0.1,5.4-0.3,10.8,0.3,16.2\n\t\tc0.2,1.3,0.4,2.7,1,3.9c0.5,1,1.1,1.7,2.2,1.9c2.3,0.5,4.2-0.2,4.8-2.7c0.4-1.5,0.6-3,0.7-4.6C149.3,31.2,149.3,28.1,149.5,24z\n\t\t M29.8,23.8c-4.6,0-9.2,0-13.8,0c-0.4,0-0.5,0.2-0.5,0.5c0,2.3,0,4.6,0,6.9c0,0.2,0,0.4,0,0.6h0.6c1.6,0,3.3,0,4.9,0\n\t\tc0.2,0,0.5,0,0.5,0.3c-0.1,2.1-0.2,4.2-0.9,6.1c-0.8,2.2-2,3.2-4.4,3.2c-1.9,0.1-3.4-0.7-4.3-2.4c-0.4-0.8-0.7-1.6-0.9-2.5\n\t\tc-0.7-2.8-0.8-5.6-0.8-8.5c0-3.7,0.1-7.4,0.3-11.2c0.1-1.6,0.4-3.2,0.8-4.7c0.6-2.4,2-3.5,4.4-3.6c2-0.1,3.5,0.6,4.4,2.4\n\t\tc0.3,0.6,0.5,1.2,0.7,1.8c0.4,1.6,0.7,3.3,1,5c0.1,0,0.2,0,0.4,0c2.4-0.4,4.8-0.9,7.3-1.3c0.5-0.1,0.5-0.3,0.5-0.7\n\t\tc-0.3-2.4-0.7-4.8-1.5-7.1c-1.1-2.8-2.6-5.3-5.2-7c-1.9-1.2-4-1.8-6.3-1.9C13.2-0.2,9.8,0.7,6.9,3.3c-2,1.8-3.3,4.1-4.3,6.6\n\t\tc-1.7,4.3-2.3,8.8-2.4,13.3c-0.1,3.6,0,7.2,0.5,10.8C1,37,1.7,39.8,2.9,42.5c1.4,3,3.4,5.4,6.6,6.7c2.2,0.9,4.5,1.2,6.9,1\n\t\tc3.1-0.2,5.5-1.6,7.1-4.2c0.3-0.6,0.7-1.2,1-1.8c0.1-0.1,0.2-0.3,0.3-0.5c0.1,0.3,0.1,0.4,0.1,0.6c0.3,1.6,0.7,3.2,1,4.9\n\t\tc0.1,0.3,0.2,0.4,0.5,0.4c1.1,0,2.3,0,3.4,0c0.1,0,0.3,0,0.4-0.1V23.9C30,23.8,29.9,23.8,29.8,23.8z M189.5,0.7c-2.4,0-4.8,0-7.3,0\n\t\tc-0.2,0-0.4,0-0.6,0v0.7c0,6,0,12,0,18.1c0,5,0,10-0.1,14.9c0,1.4-0.2,2.9-0.7,4.2c-0.5,1.4-1.5,2.3-3,2.5c-0.5,0.1-1,0.1-1.5,0.1\n\t\tc-2.1-0.1-3.4-1-4-3c-0.5-1.5-0.6-3.1-0.6-4.6c0-8.9,0-17.9,0-26.8c0-1.9,0-3.8,0-5.7c0-0.4-0.1-0.5-0.5-0.5c-3,0-6,0-9.1,0\n\t\tc-0.3,0-0.5,0.1-0.5,0.5c0,11.4,0,22.8,0.1,34.2c0,2.4,0.4,4.8,1.2,7.2c1.2,3.6,3.5,6,7.1,7c3.5,1,7.1,1,10.6,0.2\n\t\tc2.6-0.6,4.8-1.9,6.4-4.1c1.3-1.8,1.9-3.8,2.3-5.9c0.5-2.8,0.6-5.6,0.6-8.4c0-10,0-20,0-30.1C190.1,0.8,190,0.7,189.5,0.7z\n\t\t M88.2,49.6h-0.7c-2.9,0-5.8,0-8.7,0c-0.6,0-0.7-0.2-0.8-0.7c-0.6-3.2-1.2-6.4-1.8-9.5c0-0.1,0-0.2-0.1-0.3h-9.7\n\t\tc-0.2,1.2-0.4,2.3-0.6,3.5c-0.4,2.2-0.8,4.5-1.2,6.7c0,0.1-0.2,0.3-0.4,0.3c-2.8,0-5.6,0-8.4,0c0,0-0.1,0-0.2-0.1\n\t\tc0-0.1,0-0.3,0.1-0.5c3.3-14.4,6.6-28.8,9.9-43.1c0.4-1.6,0.7-3.1,1-4.7c0.1-0.4,0.2-0.5,0.7-0.5c3.1,0,6.2,0,9.3,0\n\t\tc0.4,0,0.5,0.1,0.6,0.5c2.8,12.2,5.5,24.4,8.3,36.6c0.9,3.8,1.7,7.5,2.6,11.3C88.2,49.2,88.2,49.4,88.2,49.6z M75.1,31.1\n\t\tc0-0.2,0-0.3-0.1-0.5c-0.7-3.1-1.3-6.3-2-9.4c-0.5-2.2-0.9-4.5-1.3-6.7c-0.2-1.4-0.3-2.9-0.4-4.3c-0.9,7-2.6,13.9-3.8,20.9H75.1z\n\t\t M54.3,41.1c0-0.1,0-0.3,0-0.5H41.9V0.7h-0.7c-2.9,0-5.7,0-8.6,0c-0.7,0-0.7,0-0.7,0.7v15.9c0,10.5,0,21.1,0,31.6\n\t\tc0,0.4,0,0.7,0.6,0.7c7.1,0,14.2,0,21.3,0c0.4,0,0.5-0.1,0.5-0.5C54.3,46.4,54.3,43.7,54.3,41.1z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Hier kommt die Beauty-Revolution, auf die die Welt gewartet hat!\"<br>"
+          }
+        },
+        "088bfd9d-e324-4aa7-951b-50b6aab73f65": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 161.8 50\" style=\"enable-background:new 0 0 161.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M53.6,46.8c-0.7,0.8-1.7,0.6-2.1-0.4c-0.1-0.4-0.2-0.7-0.3-1.1c-0.2-2.4-0.3-4.8-0.4-7.2c-0.2-2.6-0.3-5.1-0.5-7.7\n\t\tc-0.3-2.7-2.5-4.7-5.1-5.2c-0.1,0-0.2-0.1-0.5-0.3c2.7,0,4.3-1.6,5.3-3.6c2.4-5.1,2.8-10.4,0.6-15.7c-1.4-3.3-3.9-5.2-7.7-5\n\t\tc-2.5,0.1-5,0-7.5,0c-0.4,0-0.7,0-1.1,0c-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.5,0,1,0,1.6,0v47.3h-2.3\n\t\tc0,0.1-0.1,0.1-0.1,0.2c0.2,0.1,0.3,0.4,0.5,0.4c2.8,0,5.6,0,8.4,0c0.2,0,0.3-0.2,0.5-0.4c0-0.1-0.1-0.2-0.1-0.2h-2V25.4\n\t\tc2.7-0.1,3.5,0.2,4.3,2.5c0.6,1.7,1,3.6,1.1,5.4c0.2,3.1,0.2,6.2,0.3,9.2c0.1,1.9,0.3,3.8,1.4,5.5c0.9,1.4,2.1,1.9,3.5,1.5\n\t\tc1.3-0.4,2.8-2.3,2.8-3.6C54,46.3,53.8,46.5,53.6,46.8z M44.2,23.6c-1,0.9-2.1,1.2-3.4,1.2V1.3c2.4-0.3,3.4,0.2,4.5,2.3\n\t\tc1.1,2.1,1.7,4.3,1.9,6.6c0.3,3.5,0,6.9-1,10.3C45.7,21.7,45.2,22.8,44.2,23.6z M20.8,25.4c-0.6,0-1.3,0-2,0v24.1\n\t\tc-0.1,0-0.1,0-0.2,0c-0.1-0.2-0.2-0.4-0.2-0.6c-0.1-0.5-0.2-1-0.4-1.4c-0.4-1-1.3-1.3-2.2-0.8c-0.4,0.2-0.7,0.5-1.1,0.8\n\t\tc-0.4,0.4-0.8,0.8-1.3,1.1c-1.8,1.6-3.5,1.8-5.7,0.6c-1.6-0.9-2.7-2.3-3.6-3.9c-1.6-2.9-2.5-6.1-3.1-9.3C0.1,31-0.3,25.9,0.2,20.7\n\t\tc0.5-5.2,1.4-10.2,3.7-14.9c0.8-1.7,1.8-3.3,3.3-4.5C8.3,0.5,9.4,0,10.8,0c1.1,0,2,0.5,2.7,1.3C13.8,1.7,14,2,14.3,2.3\n\t\tc0.8,0.7,1.8,0.5,2.2-0.5c0.2-0.4,0.3-0.9,0.4-1.3c0.1,0,0.1,0,0.2,0c0.2,5.6,0.5,11.2,0.7,16.8c-0.1,0-0.2,0-0.2,0\n\t\tc-0.1-0.7-0.3-1.5-0.4-2.2c-0.5-3.2-1.1-6.4-2.2-9.5c-0.4-1-0.9-2-1.4-2.9c-0.2-0.4-0.6-0.8-1-1.2C11.2,0,9.9,0.2,8.9,1.9\n\t\tC7.9,3.7,7.4,5.7,7,7.8C5.8,14.3,5.3,21,5.4,27.6c0.1,4.7,0.4,9.4,1.3,14c0.4,1.8,0.9,3.5,1.5,5.2c0.2,0.6,0.6,1.1,1,1.6\n\t\tc1.1,1.2,2.5,1.2,3.3-0.2c0.6-1.1,1-2.3,1.3-3.5c0.3-1.2,0.3-2.4,0.3-3.6c0-5,0-10,0-15c0-0.2,0-0.4,0-0.7c-0.6,0-1.2,0-1.9,0\n\t\tc-0.4,0-0.6-0.1-0.4-0.6h9.4C21.4,25.2,21.3,25.4,20.8,25.4z M110.3,48.9c0,0.1,0,0.1-0.1,0.2H93.2c3.9-16,7.7-31.9,11.6-47.9\n\t\tc-2,0-3.9-0.1-5.9,0c-1,0-1.8,0.7-2.4,1.5c-1.5,1.9-2.1,4.1-2.3,6.4c-0.2,1.7-0.1,3.4-0.2,5.2c0,0.2-0.2,0.4-0.2,0.5\n\t\tc-0.1-0.2-0.2-0.4-0.2-0.5c0-4.4,0-8.7,0-13.1c0-0.1,0-0.3,0-0.4h16.6c-4,16-8,31.9-11.9,47.8c0.2,0,0.4,0,0.6,0\n\t\tc1.4,0,2.8-0.1,4.2,0c2.8,0.1,4.6-1.3,5.7-3.8c0.9-1.9,1-3.9,1.1-5.9c0-1.1,0-2.3,0-3.4c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.1,0.3,0.3,0.3,0.4C110.3,40,110.3,44.5,110.3,48.9z M83.6,48.6c-0.3-0.1-0.5,0-0.8,0c-0.5,0.1-0.6-0.1-0.7-0.6\n\t\tc-1-6.1-2.1-12.2-3.2-18.3c-1.3-7.7-2.7-15.4-4-23.1c-0.4-2.1-0.7-4.1-1.1-6.2h-0.1c-3,16.1-6,32.1-9.1,48.3c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,3,0,4.4,0c0.4,0,0.5-0.1,0.4-0.6h-2.3c0.8-4.5,1.6-8.8,2.4-13.2\n\t\tc0-0.2,0.4-0.4,0.6-0.4c1.2,0,2.4,0,3.6,0h2.9c0.8,4.5,1.6,9,2.4,13.6h-1.9c-0.2,0.6,0.1,0.6,0.5,0.6c2.6,0,5.1,0,7.7,0\n\t\tc0.2,0,0.4-0.2,0.6-0.3C84,48.8,83.8,48.7,83.6,48.6z M68.1,34.4c1.1-6.2,2.3-12.4,3.4-18.5c0,0,0.1,0,0.1,0\n\t\tc1.1,6.2,2.1,12.3,3.2,18.5H68.1z M161.4,48.6c-0.2,0-0.5,0-0.7,0c-0.6,0.1-0.8-0.2-0.9-0.7c-1-6.1-2.1-12.2-3.2-18.3\n\t\tc-1.5-8.5-2.9-17-4.4-25.5c-0.2-1.2-0.4-2.5-0.7-3.7c0,0-0.1,0-0.1,0c-3,16.1-6,32.1-9.1,48.2c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,2.9,0,4.4,0c0.2,0,0.3-0.2,0.5-0.3c-0.2-0.1-0.3-0.3-0.5-0.3\n\t\tc-0.6,0-1.3,0-1.9,0c0-0.2,0-0.3,0-0.5c0.8-4.2,1.5-8.5,2.3-12.7c0.1-0.4,0.3-0.4,0.6-0.4c1.7,0,3.3,0,5,0h1.5\n\t\tc0.8,4.6,1.6,9,2.4,13.6c-0.5,0-1,0-1.4,0c-0.2,0-0.4,0.2-0.5,0.3c0.2,0.1,0.4,0.3,0.6,0.3c2,0,4,0,6,0h2.2\n\t\tC161.8,48.6,161.8,48.6,161.4,48.6z M145.7,34.4c1.2-6.2,2.3-12.4,3.4-18.6c0,0,0.1,0,0.1,0c1.1,6.2,2.1,12.4,3.2,18.6H145.7z\n\t\t M131.3,48.6c0.1,0.4,0.1,0.6-0.3,0.6c-2.7,0-5.4,0-8.2,0c-0.4,0-0.5-0.2-0.4-0.6h2V1.3c-0.5,0-1.1,0-1.6,0c-0.2,0-0.3-0.2-0.4-0.3\n\t\tc0.1-0.1,0.3-0.3,0.4-0.3c2.7,0,5.4,0,8.2,0c0.2,0,0.3,0.2,0.5,0.3c0,0.1-0.1,0.1-0.1,0.2h-2.1v47.4H131.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Mit ihrer veganen und schadstofffreien Nagellackbrand gitti hat Gründerin Jennifer Baum-Minkus voll ins Schwarze getroffen.\"<br>"
+          }
+        },
+        "620917a2-274a-48bf-bae8-e1f6be4a42b8": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 144.8 50\" style=\"enable-background:new 0 0 144.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M144.8,0.6c-0.7,1.9-1.3,3.8-2.1,5.6c-0.1,0-0.3-0.1-0.4-0.1c0.1-0.7,0.2-1.4,0.3-2c0.1-2-0.6-3-2.6-3.1\n\t\tc-2.1-0.1-4.3-0.1-6.4,0c-0.3,0-0.7,0.3-0.8,0.5c-1.1,2.9-2.1,5.9-3.2,8.8c-0.1,0.2-0.1,0.5-0.2,0.7c3.9,1,6.3-0.7,7.7-4.2\n\t\tc0.1,0.1,0.3,0.3,0.4,0.4c-1.2,3.2-2.3,6.5-3.5,9.7c-0.1,0-0.3-0.1-0.4-0.1c0.1-0.7,0.3-1.5,0.3-2.2c0.1-1.6-0.8-2.5-2.3-2.7\n\t\tl-0.2,0c-2.3-0.1-2.3-0.1-3.1,2c-1,2.9-2.1,5.7-3.1,8.6c-0.1,0.4-0.3,0.8-0.4,1.2c2.9,0,5.8,0.2,8.5-0.1c1.2-0.2,2.5-1.3,3.5-2.2\n\t\tc0.8-0.8,1.4-1.9,2.1-2.8c0.2-0.3,0.4-0.6,0.7-0.9c0.1,0.1,0.2,0.1,0.4,0.2c-0.3,1-0.7,2.1-1.1,3.1c-0.4,1.1-0.6,2.7-1.4,3.2\n\t\tc-0.8,0.6-2.3,0.2-3.5,0.2c-4.6,0-9.3,0-13.9,0c-0.4,0-0.8-0.1-1.3-0.1c0-0.2,0-0.3,0-0.5c0.9,0,1.8,0.1,2.6,0\n\t\tc0.4,0,0.9-0.4,1.1-0.7c2.6-7.2,5.2-14.3,7.8-21.5c0-0.1,0-0.2,0.1-0.5c-2.3,0-4.6,0-6.9,0c-0.3,0-0.6,0.4-0.7,0.7\n\t\tc-2.6,7.2-5.2,14.4-7.8,21.6c0,0.1,0,0.2,0,0.5h3.5c0,0.1,0,0.3,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0.1,2.6,0\n\t\tc0.4,0,1-0.2,1.1-0.5c1.3-3.5,2.6-7,3.9-10.8h-3.3c-2.1,0-4.3,0-6.4,0c-0.4,0-1,0.2-1.1,0.5c-1.3,3.5-2.6,7-3.9,10.8h3.7\n\t\tc0,0.1,0,0.3,0,0.4h-9.6c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0,2.6,0c0.7,0,1-0.2,1.2-0.8c2.6-7.2,5.2-14.3,7.7-21.5c0-0.1,0-0.2,0-0.4\n\t\th-3.8c-0.7,1.9-1.5,4-2.2,6.1c-0.1,0-0.3-0.1-0.4-0.1c0-0.3,0-0.6,0-0.8c0.7-5.3-1.3-5.4-5.6-5.3c-0.3,0-0.7,0.4-0.8,0.6\n\t\tc-2.6,7.3-5.2,14.6-7.9,21.9c0,0,0,0.1,0.1,0.3h3.4c0,0.1,0,0.2,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.8,0.1,2.6,0\n\t\tc0.4-0.1,1-0.4,1.2-0.8c2.6-7.2,5.2-14.3,7.8-21.5c0-0.1,0-0.2,0-0.3c-5.3-1.2-7.8,2.2-10,6.2L81.5,7c0-0.2,0-0.4,0-0.5\n\t\tc0.6-1.8,1.2-3.5,1.9-5.3c0.1-0.3,0.7-0.7,1-0.7c6.2,0,12.4,0,18.7,0c2.9,0,5.8,0,8.8,0c0.4,0,0.9,0,1.3,0c0,0.2,0,0.3,0,0.5\n\t\tc-0.9,0-1.7-0.1-2.6,0c-0.4,0-1,0.4-1.1,0.7c-1.3,3.3-2.4,6.6-3.7,10.2h2.9c2.3,0,4.5,0,6.8,0c0.7,0,1-0.2,1.3-0.9\n\t\tc1.1-3.3,2.3-6.5,3.6-10h-3.7c0-0.1,0-0.3,0-0.4H144.8z M58.8,0.6C58,2.8,57.2,5,56.5,7.2c-0.1,0-0.3-0.1-0.4-0.1\n\t\tc0.1-0.9,0.2-1.8,0.2-2.7c0-2.2-0.7-3.1-2.9-3.4c-3.2-0.4-3.2-0.4-4.3,2.5c-2.3,6.3-4.5,12.6-6.8,18.9c-0.1,0.3-0.2,0.7-0.4,1.3\n\t\th3.6c0,0.1,0,0.3,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0,2.6,0c0.7,0,1-0.2,1.3-0.9c2.5-7,5-14,7.6-21.1\n\t\tc0.1-0.2,0.1-0.5,0.2-0.7c-5.4-1.2-7.8,2.3-10.1,6.2C37.1,7.2,37,7.1,36.8,7c0.7-1.9,1.4-3.9,2.1-6c-1,0-1.9-0.1-2.8,0.1\n\t\tc-0.3,0.1-0.7,0.7-0.8,1.1c-2.6,7.1-5.1,14.2-7.6,21.3c-0.1,0.4-0.3,0.8-0.5,1.2c-0.1,0-0.2,0-0.3,0c-1.7-7.3-3.3-14.7-5.1-22.4\n\t\tc-2.6,7.3-5.1,14.3-7.7,21.5H18C17.2,24.4,2,24.6,0.2,24.1c0-0.1,0-0.2,0-0.4c0.8,0,1.7,0.1,2.5-0.1c0.4-0.1,1-0.4,1.2-0.8\n\t\tC6.4,15.8,9,8.6,11.6,1.4c0-0.1,0-0.2,0-0.4H8.1c0-0.1,0-0.3,0-0.4c0.4,0,0.7-0.1,1.1-0.1c4.5,0,8.9,0,13.4,0\n\t\tc0.9,0,1.3,0.3,1.5,1.2c1.3,5.4,2.7,10.7,4.1,16.1c0.1,0.4,0.2,0.7,0.4,1.4C30.8,12.9,32.9,7,35,0.9h-3.6c0-0.1,0-0.2,0-0.3H58.8z\n\t\t M21.6,0.9c-2.2,0-4.2,0-6.2,0c-0.9,0-1.2,0.3-1.5,1.1C11.6,8.4,9.3,14.9,7,21.3c-0.3,0.8-0.5,1.5-0.8,2.4c2.3,0,4.5,0,6.7,0\n\t\tc0.3,0,0.8-0.5,1-0.9c1-2.6,1.9-5.3,2.9-8C18.3,10.3,19.9,5.7,21.6,0.9z M66.5,23.8c-1,0.4-2.1,0.7-3.3,0.8c-4.2,0.5-7.2-2.1-8-6.7\n\t\tc-0.2-0.9-0.2-1.8-0.3-2.7C55,9.1,59.6,2.7,65.4,0.6c5.2-1.9,9.5,0.7,10.4,6.4C76.9,13.9,73,21.1,66.5,23.8z M73.3,6.4\n\t\tc0-0.7-0.1-1.1-0.1-1.6c-0.4-2.9-2-4.3-5-4.2c-2.1,0.1-3.7,1.2-5,2.7c-2.5,2.7-3.8,6-4.7,9.5c-0.7,2.6-1.3,5.2-0.8,7.9\n\t\tc0.4,2.2,1.9,3.3,4.1,3.5c2.6,0.2,4.5-1,6.1-2.8C71.5,16.9,72.8,11.7,73.3,6.4z M63.8,38.3c-0.1,3.1-1.5,6.5-4.6,9.1\n\t\tc-4.1,3.6-9.9,3.3-13.8-0.6c-5.1-5.1-4.9-13.8,0.4-18.7c4.7-4.4,10.8-4,14.9,1C62.7,31.4,63.8,34.3,63.8,38.3z M60.5,37.8\n\t\tc-0.2-2.9-0.4-5.8-1.8-8.5c-1.3-2.5-3.3-3.7-6.1-3.7c-2.8,0.1-4.6,1.4-5.8,3.8c-1.3,2.5-1.7,5.2-1.7,7.9c0,3.2,0.3,6.3,2,9.1\n\t\tc2.5,4.1,8.8,4.1,11.4,0.1C60.1,43.8,60.3,40.8,60.5,37.8z M21.7,40.6h-9.3c0,0.1,0,0.2,0,0.4h4c0,1.3,0.1,2.4,0,3.4\n\t\tc-0.2,2.4-1.8,4.4-4.1,4.9c-2.9,0.7-5.8-0.3-7-2.9c-0.9-1.9-1.4-4.1-1.6-6.2C3.3,36.7,3.4,33.3,4.6,30c0.8-2,2.1-3.6,4.3-4.2\n\t\tc4-1.1,7.5,0.9,8.7,4.9c0.2,0.5,0.3,1.1,0.5,1.6c0.1,0,0.2,0,0.3-0.1v-7c-1.5,1.7-2.7,0.8-4.1,0.3c-3.6-1.3-6.9-0.7-9.8,1.9\n\t\tC1,30.7-0.4,34.7,0.1,39.2c0.8,6.9,7.5,13.9,16.1,9.2c1-0.5,1.9-0.8,3,0.3V41c0.9-0.1,1.7-0.1,2.5-0.2L21.7,40.6z M79,37.3\n\t\tc-0.8-0.5-1.7-0.7-2.5-1c-2-0.7-4.1-1.3-6.1-2.1c-2.1-0.9-2.8-2.3-2.5-4.7c0.2-1.7,1.5-3.1,3.3-3.6c3.5-1,6.6,0.7,7.9,4.3\n\t\tc0.2,0.6,0.4,1.1,0.6,1.7c0.1,0,0.2,0,0.3-0.1v-6c-1,1.1-1.9,0.6-2.9,0.1c-3.5-1.5-7.1-1-9.4,1.4c-3.1,3.2-2.3,7.6,1.6,9.5\n\t\tc0.9,0.4,1.9,0.7,2.9,1.1c1.5,0.5,3.1,0.9,4.5,1.5c2.3,1,3.3,2.9,3,5.5c-0.3,2.3-1.9,4.1-4.2,4.4c-1.4,0.2-2.9,0.2-4.2,0\n\t\tc-3.1-0.6-4.4-2.9-5.2-5.6c-0.1-0.4-0.3-0.8-0.4-1.3c-0.1,0-0.2,0.1-0.3,0.1v6.8c1-0.1,1.9-0.2,2.7-0.1c2.1,0.2,4.3,0.7,6.4,0.8\n\t\tc3.2,0.1,5.5-1.6,6.9-4.4C82.9,42.3,82,39.1,79,37.3z M39.6,44.4c-0.8,1.8-1.8,3.7-3.8,4c-2.7,0.5-5.5,0.4-8.3,0.6V26.3\n\t\tc1.2-0.1,2.4-0.1,3.6-0.2c0-0.1,0-0.2,0-0.3H20.9c0,0.1,0,0.3,0,0.4h3.7c0,7.5,0,14.8,0,22.1c0,0.3-0.5,0.7-0.8,0.7\n\t\tc-0.9,0.1-1.8,0-2.7,0c0,0.1,0,0.2,0,0.4h19.7v-7.2C40.1,42.9,39.9,43.7,39.6,44.4z M97.9,37.3c-0.8-0.5-1.7-0.7-2.5-1\n\t\tc-2-0.7-4.1-1.3-6.1-2.1c-2.1-0.9-2.7-2.3-2.5-4.7c0.2-1.7,1.5-3.1,3.3-3.6c3.5-1,6.6,0.7,7.9,4.3c0.2,0.6,0.4,1.1,0.6,1.7\n\t\tc0.1,0,0.2,0,0.3-0.1v-6c-1,1.1-1.9,0.6-2.9,0.1c-3.5-1.5-7.1-1-9.4,1.4c-3.1,3.2-2.3,7.6,1.6,9.5c0.9,0.4,1.9,0.7,2.9,1.1\n\t\tc1.5,0.5,3.1,0.9,4.5,1.5c2.3,1,3.3,2.9,3,5.5c-0.3,2.3-1.9,4.1-4.2,4.4c-1.4,0.2-2.9,0.2-4.2,0c-3.1-0.6-4.4-2.9-5.2-5.6\n\t\tc-0.1-0.4-0.3-0.8-0.4-1.3c-0.1,0-0.2,0.1-0.3,0.1v6.8c1-0.1,1.9-0.2,2.7-0.1c2.1,0.2,4.3,0.7,6.4,0.8c3.2,0.1,5.5-1.6,6.9-4.4\n\t\tC101.8,42.3,100.9,39.1,97.9,37.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Ich habe den Ton Sage jetzt seit etwa drei Wochen auf meinen Zehen und er ist überhaupt nicht abgeplatzt.\"<br>"
+          }
+        },
+        "426bb3c5-180f-4735-a293-7ebcda0c9724": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 124.6 50\" style=\"enable-background:new 0 0 124.6 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M3.8,49.2H0v0.7h21V36.7h-0.6c0,0,0,7.7-2.6,10.1c-2.2,2.2-4.4,2.3-8.1,2.3V24.7c0,0,2.6-0.2,3.8,1.1\n\t\tc1.9,1.9,2.2,4.4,2.2,7.9h0.7V15h-0.7c0,3.5-0.2,6-2.2,7.9c-1.2,1.2-3.8,1.1-3.8,1.1V0.7c3.7,0,5.4,0.2,7.6,2.3\n\t\tc2.5,2.5,2.6,10.1,2.6,10.1h0.6V0H0v0.7h3.8V49.2z M44.9,0.7v48.5c3.7,0,6-0.2,8.1-2.3c2.5-2.5,2.6-10.1,2.6-10.1h0.6V50h-21v-0.7\n\t\th3.8V0.7h-3.8V0h13.2v0.7H44.9z M78.7,0.7v48.5c3.7,0,6-0.2,8.1-2.3c2.5-2.5,2.6-10.1,2.6-10.1H90V50h-21v-0.7h3.8V0.7h-3.8V0h13.2\n\t\tv0.7H78.7z M107.4,49.2h-3.8v0.7h21V36.7H124c0,0,0,7.7-2.6,10.1c-2.2,2.2-4.4,2.3-8.1,2.3V24.7c0,0,2.6-0.2,3.8,1.1\n\t\tc1.9,1.9,2.2,4.4,2.2,7.9h0.7V15h-0.7c0,3.5-0.2,6-2.2,7.9c-1.2,1.2-3.8,1.1-3.8,1.1V0.7c3.7,0,5.4,0.2,7.6,2.3\n\t\tc2.5,2.5,2.6,10.1,2.6,10.1h0.6V0h-20.5v0.7h3.8V49.2z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"The nail polish label Gitti has teamed up with the fashion brand Ivy & Oak to launch the most beautiful nail polish of the season - and of course put the focus on the trend color 2020: red.\"<br>"
+          }
+        },
+        "88be9e47-76e7-4c35-8d26-1b132cf68316": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 181.8 50\" style=\"enable-background:new 0 0 181.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M36.6,27.1c-0.7-2.1-2.1-3.6-3.9-4.8c-2.6-1.7-5.5-2.6-8.5-3.2c-0.1,0-0.2-0.1-0.5-0.1c0.8-0.1,1.4-0.2,2-0.4\n\t\tc2.1-0.5,4.2-1.2,5.9-2.7c2.7-2.3,3.3-6.1,1.4-9c-0.8-1.2-1.9-2.1-3.2-2.8c-3.4-1.9-7.1-2.7-10.9-2.7C13,1.2,7,1.3,1.1,1.3\n\t\tc-0.2,0-0.6,0.1-0.6,0.2c0,0.4,0.4,0.2,0.6,0.2c1.1,0,2.2,0,3.3,0v36.8H3.9c-1.1,0-2.3,0-3.5,0c-0.1,0-0.3,0.1-0.4,0.2\n\t\tc0.1,0.1,0.3,0.1,0.4,0.2c0.1,0,0.2,0,0.3,0c7.8,0,15.5,0,23.3,0c0.9,0,1.8,0,2.6-0.2c2.6-0.4,5-1.3,7.1-3\n\t\tC36.6,33.6,37.7,30.3,36.6,27.1z M15.9,2.3c0-0.6,0-0.6,0.6-0.6c0.9,0,1.8,0,2.6,0.1C20.8,2,21.8,3,22.6,4.3c0.7,1.3,1,2.7,1.1,4.2\n\t\tc0.2,2.2,0.2,4.3-0.4,6.5c-0.2,0.5-0.4,1.1-0.7,1.6c-0.7,1.3-1.9,2-3.4,2c-1.1,0-2.1,0-3.3,0V2.3z M24.9,32.6\n\t\tc-0.2,1.5-0.7,2.9-1.7,4.1c-0.9,1.2-2.1,1.8-3.6,1.8c-1.2,0-2.4,0-3.7,0V19C16,19,16,19,16,19c1.3,0,2.6-0.1,3.9,0\n\t\tc1.5,0.1,2.5,1,3.3,2.3c1,1.5,1.4,3.2,1.7,4.9C25.2,28.3,25.3,30.5,24.9,32.6z M154.4,35.3c0,1-0.5,1.9-1.2,2.6\n\t\tc-1.8,1.9-4.1,2.6-6.6,2c-1.1-0.2-2.1-0.6-3.1-1.2c-2.7-1.5-4-3.9-4-6.9c0-6.3,0-12.6,0-18.9v-0.7h-5.8c0,0.2,0,0.4,0,0.5\n\t\tc0,7.4,0,14.9,0,22.3c0,0.7,0.1,1.4,0.5,2c0.6,1,1.8,1,2.3,0c0.3-0.5,0.5-1.2,0.5-1.8c0.1-1.8,0-3.6,0-5.4c0-0.1,0-0.2,0-0.3\n\t\tc0.1-0.1,0.2-0.2,0.2-0.4c0.1,0.1,0.2,0.2,0.2,0.3c0,1.6,0,3.2,0,4.8c0,0.4,0,0.9,0,1.3c-0.2,1.3-0.9,2.4-2,3.1\n\t\tc-2.1,1.5-4.4,1.7-6.8,1c-3-0.9-5.1-2.8-5.8-6c-0.1-0.6-0.2-1.3-0.2-2c0-6.3,0-12.6,0-18.8v-0.7h-3c-0.1-0.3,0-0.4,0.3-0.4\n\t\tc0.8,0,1.5,0,2.3,0c0.3,0,0.6-0.1,0.8-0.3c3.4-2.8,6.8-5.5,10.2-8.3c0.1-0.1,0.2-0.2,0.4-0.3v8.9c0.2,0,0.4,0,0.6,0\n\t\tc1.6,0,3.2,0,4.8,0c0.3,0,0.6-0.1,0.8-0.3c3.4-2.8,6.8-5.5,10.2-8.3c0.1-0.1,0.2-0.2,0.4-0.3v9h1.2c0.8,0,1.6,0,2.4,0\n\t\tc0.3,0,0.4,0.1,0.3,0.4h-3.8c0,0.2,0,0.4,0,0.5c0,7.5,0,14.9,0,22.4c0,0.7,0.1,1.4,0.6,2c0.6,0.9,1.7,0.9,2.3,0\n\t\tc0.4-0.6,0.5-1.2,0.5-1.9c0-1.8,0-3.6,0-5.4c0-0.1,0-0.2,0-0.3c0-0.1,0.1-0.2,0.2-0.3c0.1,0.1,0.2,0.2,0.2,0.3c0,0.9,0,1.9,0,2.8\n\t\tC154.4,33.2,154.4,34.2,154.4,35.3z M104.7,35.7c-0.4-2.1-1.4-3.9-3.3-5c-1.5-0.9-3.2-1.6-4.9-1.9c-2.7-0.5-5.4-0.3-8.1-0.3\n\t\tc-1.6,0-3.1,0.1-4.7,0.1c-0.7,0-1.3-0.2-1.9-0.5c-0.9-0.4-1.3-1.6-0.9-2.3c0.4-0.8,1.7-1.4,2.5-1c3.2,1.2,6.5,1.6,9.9,0.8\n\t\tc2-0.5,4-1.1,5.7-2.4c1.6-1.3,2.5-2.9,2.4-5c-0.1-2-1.1-3.5-2.6-4.7c-1.7-1.3-3.6-2.1-5.6-2.5c-0.9-0.2-1.2-0.7-1.4-1.4\n\t\tc0-0.1-0.1-0.2-0.1-0.3c-0.2-1-0.2-2,0.3-2.9c0.3-0.6,0.7-1,1.4-1.1c-0.5,0.8-0.7,1.7-0.5,2.6c0.4,2.1,2.2,3.5,4.4,3.4\n\t\tc1.9-0.1,3.5-1.6,3.7-3.4c0.2-2-1-3.9-3-4.3c-1.5-0.3-3-0.1-4.4,0.7c-1.9,1-2.7,2.8-2.3,5c0.1,0.5,0.3,0.9,0.4,1.4c-1,0-2,0-3,0\n\t\tc-2,0.1-3.9,0.4-5.7,1.2c-2,0.9-3.7,2.2-4.6,4.3c-0.8,1.7-0.7,3.4,0.4,5c0.9,1.2,1.9,2.1,3.1,2.9c0.1,0.1,0.3,0.2,0.4,0.3\n\t\tc-0.9,0.5-1.9,1-2.7,1.6c-1.4,0.9-2.4,2.1-2.8,3.8c-0.5,2.6,0.7,5.4,3.1,6.8c0.8,0.5,1.6,0.8,2.5,1.3c-0.1,0-0.3,0.1-0.4,0.1\n\t\tc-1.3,0.3-2.6,0.7-3.7,1.4c-0.9,0.6-1.6,1.4-1.9,2.5c-0.5,2.1,0.2,3.7,1.7,5.1c1.1,1,2.4,1.6,3.7,2.1c2.8,0.9,5.6,1.2,8.5,1\n\t\tc2.7-0.2,5.3-0.7,7.7-1.8C103.8,45.7,105.7,40.8,104.7,35.7z M87.2,14.1c0-0.6,0.3-1.3,0.6-1.9c0.9-1.6,3.2-1.6,4.2-0.1\n\t\tc0.4,0.7,0.6,1.5,0.6,2.3c0,1.3,0,2.6,0,4h0c0,1.3,0,2.5,0,3.8c0,0.8-0.2,1.5-0.7,2.2c-1,1.4-3,1.4-4,0c-0.5-0.6-0.8-1.4-0.8-2.2\n\t\tC87.1,19.5,87.1,16.8,87.2,14.1z M98.1,47.1c-1.2,1-2.7,1.5-4.3,1.9c-2.4,0.5-4.8,0.7-7.2,0.4c-1.1-0.1-2.1-0.4-3.1-0.9\n\t\tc-2.1-1.1-3.1-2.8-3.2-5.1c-0.1-1.3,0.1-2.5,0.7-3.6c0.2-0.4,0.5-0.7,0.8-1.1c0.5-0.5,1.1-0.8,1.9-0.7c1.1,0.1,2.2,0,3.3,0v0\n\t\tc2,0,3.9,0,5.9,0c1.6,0,3.1,0.5,4.5,1.3C100.5,41,100.8,44.8,98.1,47.1z M166.3,25h15.6c0-1.1,0-2.1,0-3.1c-0.1-4-1.9-7-5.2-9.1\n\t\tc-2.9-1.8-6-2.1-9.3-1.6c-7.7,1.1-13.2,8-12.6,15.7c0.3,4.3,2.3,7.6,5.9,10c3.5,2.3,7.4,3.1,11.5,2.5c4.3-0.6,7.3-2.9,8.9-7\n\t\tc0.4-1.1,0.6-2.2,0.7-3.3c-0.4-0.1-0.6-0.1-0.6,0.3c0,0.1,0,0.2,0,0.4c-0.4,3.1-1.8,5.6-4.3,7.4c-2.5,1.9-5.6,1.5-7.7,0.2\n\t\tc-1.9-1.2-2.7-3.1-2.8-5.2c-0.1-2.3,0-4.6,0-6.8C166.2,25.3,166.2,25.2,166.3,25z M166.3,16.3c0-1.1,0.2-2.1,0.6-3.1\n\t\tc0.4-1.3,1.4-1.8,2.7-1.7c0.8,0.1,1.4,0.6,1.8,1.3c0.6,1.1,0.7,2.4,0.7,3.6c0,2.6,0,5.2,0,7.8c0,0.1,0,0.2,0,0.3h-5.7\n\t\tc0-0.1,0-0.3,0-0.4C166.2,21.5,166.2,18.9,166.3,16.3z M61.5,17.2c-0.3,2-2.2,3.7-4.2,3.9c-1.3,0.2-2.5-0.1-3.6-0.8\n\t\tc-2.5-1.7-3.2-5.1-0.2-7.4c0.2-0.2,0.5-0.3,0.8-0.5c-1.7,0.1-3.4,1.7-3.5,3.4c0,0.4,0,0.7,0,1.1c0,6.9,0,13.9,0,20.8v0.7H54\n\t\tc0.1,0.3,0.1,0.4-0.2,0.4c-0.3,0-0.6,0-0.9,0H37.4c-0.1,0-0.3,0-0.4,0c-0.1,0-0.2-0.1-0.3-0.2c0.1-0.1,0.2-0.2,0.3-0.2\n\t\tc0.9,0,1.7,0,2.6,0h0.5V12.1h-0.9c-0.7,0-1.4,0-2.1,0c-0.1,0-0.2-0.1-0.3-0.2c0.1-0.1,0.2-0.2,0.3-0.2c0.1,0,0.2,0,0.2,0\n\t\tc4.3,0,8.5,0,12.8,0c0.5,0,0.6,0.2,0.6,0.6c0,0.7,0,1.3,0,2c1.4-3,6.1-3.6,8.1-2.5C60.8,12.8,61.9,14.9,61.5,17.2z M77.5,38.6\n\t\tc0,0.1-0.1,0.2-0.2,0.2c-0.1,0-0.2,0-0.2,0c-5.5,0-11,0-16.5,0c-0.1,0-0.2,0-0.3,0c-0.1-0.3,0-0.4,0.3-0.4c0.8,0,1.6,0,2.5,0h0.5\n\t\tV12.1h-3.3c-0.1-0.3,0-0.4,0.3-0.4c0.8,0,1.5,0,2.3,0h11.2v26.7h2.8c0.1,0,0.3,0,0.4,0C77.4,38.5,77.5,38.6,77.5,38.6z M120.7,38.9\n\t\th-15.2c-0.1-0.3-0.1-0.4,0.2-0.4c0.4,0,0.7,0,1.1,0V12.1h-2c-0.4,0-0.7,0-1.1,0c-0.1,0-0.2-0.1-0.3-0.2c0.1-0.1,0.2-0.1,0.3-0.2\n\t\tc0,0,0.1,0,0.1,0c4.3,0,8.7,0,13,0c0.1,0,0.2,0,0.4,0v26.7c1,0,2,0,3,0C120.6,38.4,120.8,38.5,120.7,38.9z M73.9,6.6\n\t\tc-0.6,2-2.1,3.2-4.1,3.6c-0.4,0.1-0.8,0.1-1,0.1c-1.9,0-3.3-0.7-4.4-2c-1.7-2-1.6-4.8,0.3-6.7c2.1-2.2,5.8-2.2,7.9-0.1\n\t\tC73.9,3,74.5,4.7,73.9,6.6z M116,8.6c-2.1,2.2-5.8,2.3-8,0.1c-1.4-1.4-1.9-3-1.3-4.9c0.6-2,2-3.2,3.9-3.7c0.5-0.1,0.9-0.1,1.4-0.2\n\t\tc1.7,0.1,3.1,0.7,4.2,1.9C117.8,3.9,117.8,6.8,116,8.6z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Good color. You can breathe easy!\"<br>"
+          }
+        }
+      },
+      "block_order": [
+        "238721d9-0b5e-4e0b-b168-572dc7e1fe36",
+        "c055cc0a-8181-40b0-b09e-bf7e8437337c",
+        "088bfd9d-e324-4aa7-951b-50b6aab73f65",
+        "620917a2-274a-48bf-bae8-e1f6be4a42b8",
+        "426bb3c5-180f-4735-a293-7ebcda0c9724",
+        "88be9e47-76e7-4c35-8d26-1b132cf68316"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xl",
+        "spacing_bottom": "m",
+        "heading": "Loved by.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "3727a0f4-8b74-4518-9400-ea1ca1e7b5a5": {
+      "type": "index_featured_collections_v2",
+      "blocks": {
+        "90a9a9ba-88c3-42cd-9952-9c5ae2067692": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_category_2-block_Ingredients_plant-2.jpg",
+            "text": "Inhaltsstoffe.",
+            "url": "shopify:\/\/pages\/sustainability",
+            "tag_text": "h3",
+            "font_class": "h3",
+            "weight_class": "bold",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "spacing_bottom": "s"
+          }
+        },
+        "75cb8fe7-b51d-4356-9ab9-947dbd244f95": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_category_2-block_Jenni.jpg",
+            "text": "Über uns.",
+            "url": "shopify:\/\/pages\/about-us",
+            "tag_text": "h3",
+            "font_class": "h3",
+            "weight_class": "bold",
+            "text_color": "#ffffff",
+            "text_align": "center",
+            "spacing_bottom": "s"
+          }
+        }
+      },
+      "block_order": [
+        "90a9a9ba-88c3-42cd-9952-9c5ae2067692",
+        "75cb8fe7-b51d-4356-9ab9-947dbd244f95"
+      ],
+      "settings": {
+        "hide_desktop": false,
+        "hide_mobile": false,
+        "heading": "",
+        "text": "",
+        "spacing_top": "none",
+        "spacing_bottom": "s",
+        "columns_desktop": 2,
+        "columns_mobile": 2,
+        "text_align": "center",
+        "image_shape": "square",
+        "image_shape_mobile": "square",
+        "background_color": "",
+        "border_color": "#111111",
+        "border_style": "full",
+        "show_titles_mobile": true
+      }
+    },
+    "86afce37-5ccc-4e86-8335-b180f3afd819": {
+      "type": "index_review_quotes",
+      "blocks": {
+        "template--17156278649100__86afce37-5ccc-4e86-8335-b180f3afd819-1674069021c46d0cd0-0": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_text": "<p>Ich bin begeistert von den Produkten! Nie hat Nagellack besser gehalten. Meine Nägel verfärben sich nicht, wirklich klasse!<\/p>",
+            "tag_text": "p",
+            "class_text": "p",
+            "weight_class_text": "",
+            "review_author": "Lisa Wuepper",
+            "tag_author": "p",
+            "class_author": "small",
+            "weight_class_author": "italic"
+          }
+        },
+        "d9d844f9-761b-4e48-bb5d-7364758b137d": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_text": "<p>Bei mir haben die Farben mit top&base coat 5 Tage perfekt gehalten. Was soll ich noch mehr dazu sagen.. Ich bin HAPPY<\/p>",
+            "tag_text": "p",
+            "class_text": "p",
+            "weight_class_text": "",
+            "review_author": "P.A.",
+            "tag_author": "p",
+            "class_author": "small",
+            "weight_class_author": "italic"
+          }
+        },
+        "15152914-b29f-4e6b-bcb9-b2ba3ce81c17": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_text": "<p>Als Allergikern mit empfindlichen Lidrändern habe ich jetzt mein Produkt gefunden. Brennt nicht, reizt null, macht schöne Wimpern, ist leicht zu entfernen.<\/p>",
+            "tag_text": "p",
+            "class_text": "p",
+            "weight_class_text": "",
+            "review_author": "Tinachristia",
+            "tag_author": "p",
+            "class_author": "small",
+            "weight_class_author": "italic"
+          }
+        },
+        "534d9d3d-152d-4c1e-a5d0-4f3f3ea2729c": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_text": "<p>Ich habe sehr empfindliche Haut und neige zu Rötungen und Flecken wenn ich etwas nicht vertrage. Das Serum wird sofort aufgesaugt, ist wohltuend und hinterlässt ein pflegendes Gefühl.<\/p>",
+            "tag_text": "p",
+            "class_text": "p",
+            "weight_class_text": "",
+            "review_author": "S.K.",
+            "tag_author": "p",
+            "class_author": "small",
+            "weight_class_author": "italic"
+          }
+        },
+        "9ac17553-183c-4e5b-ae5e-3c5c97844f11": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "review_text": "<p>Die Farben sind toll und intensiv. Es reicht vollkommen, die Farbe nur einmal aufzutragen. Und der Pinsel ist perfekt - mit dem gelingt ein sauberes Lackieren auch wenn es mal schnell gehen muss.<\/p>",
+            "tag_text": "p",
+            "class_text": "p",
+            "weight_class_text": "",
+            "review_author": "Julia",
+            "tag_author": "p",
+            "class_author": "small",
+            "weight_class_author": "italic"
+          }
+        }
+      },
+      "block_order": [
+        "template--17156278649100__86afce37-5ccc-4e86-8335-b180f3afd819-1674069021c46d0cd0-0",
+        "d9d844f9-761b-4e48-bb5d-7364758b137d",
+        "15152914-b29f-4e6b-bcb9-b2ba3ce81c17",
+        "534d9d3d-152d-4c1e-a5d0-4f3f3ea2729c",
+        "9ac17553-183c-4e5b-ae5e-3c5c97844f11"
+      ],
+      "settings": {
+        "heading": "Community Feedback",
+        "tag_heading": "h2",
+        "class_heading": "h2",
+        "weight_class_heading": "bold",
+        "text_align": "center",
+        "spacing_bottom_heading": "s",
+        "spacing_top": "m",
+        "spacing_bottom": "m",
+        "spacing_top_mobile": "s",
+        "spacing_bottom_mobile": "s",
+        "border_color": "#111111",
+        "enable_autoplay": false,
+        "autoplay_speed": 4,
+        "note_size": 14,
+        "tag_note": "h3"
+      }
+    },
+    "1615825012bd73d1ef": {
+      "type": "index_image_with_text",
+      "disabled": true,
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "#f3f3f3",
+        "spacing_top": "m",
+        "spacing_bottom": "s",
+        "layout": "medium-up_col-start-2",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/BrandCampaign_Jenni_1to1.jpg",
+        "image_shape": "square",
+        "image_fit": "cover",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading": "For the ones changing the world.",
+        "heading_spacing_bottom": "s",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "<p>Wir glauben, dass Conscious Beauty die Zukunft ist. Es geht darum, zu zeigen, wer du wirklich bist, wofür du stehst und wie du handelst. Schönheit ist die Energie, die du ausstrahlst, wenn du deine Einzigartigkeit feierst.<\/p>",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "Über uns",
+        "button_link": "shopify:\/\/pages\/ueber-uns",
+        "button_class": "btn btn--tertiary"
+      }
+    },
+    "161908504166d6496f": {
+      "type": "index_why_gitti",
+      "disabled": true,
+      "blocks": {
+        "f9718754-60f8-4b13-bf18-8cb8ee56d29e": {
+          "type": "icon_with_text",
+          "disabled": true,
+          "settings": {
+            "link": "https:\/\/www.gitticonsciousbeauty.de\/pages\/produktformeln",
+            "icon": "innovative_formulas",
+            "heading": "Innovative Formeln",
+            "text": "Innovation ist das, was uns antreibt. Anstatt bestehende Produkte besser zu machen, beginnen wir mit einem leeren Blatt und kreieren neue und nachhaltige Schönheitsprodukte."
+          }
+        },
+        "1b927ea2-fbdd-47d6-9c28-98e657328d28": {
+          "type": "icon_with_text",
+          "disabled": true,
+          "settings": {
+            "link": "https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit",
+            "icon": "natural_ingredients",
+            "heading": "Natürliche Inhaltsstoffe",
+            "text": "Bei der Entwicklung unserer Rezepturen gehen wir bewusst vor: Wir vermeiden synthetische und potenziell schädliche Inhaltsstoffe und ersetzen sie durch natürliche Alternativen."
+          }
+        },
+        "f5b52887-4418-424b-a6f5-5df634a1b0bb": {
+          "type": "icon_with_text",
+          "settings": {
+            "link": "https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit",
+            "icon": "sustainable_packaging",
+            "heading": "Nachhaltige Verpackung",
+            "text": "Nachhaltige Verpackungen sind für uns genauso wichtig wie gute Zutaten. Unsere Produkte werden in Verpackungen mit minimaler Umweltbelastung geliefert, gemäß unserer nachhaltigen Politik: reduzieren, wiederverwenden, recyceln."
+          }
+        },
+        "c67d28e8-207a-4441-b2bd-b1ef92c4265d": {
+          "type": "icon_with_text",
+          "settings": {
+            "link": "https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit",
+            "icon": "peta_1",
+            "heading": "Vegan & umweltfreundlich",
+            "text": "Wir kümmern uns um Tiere und unsere Umwelt. Unsere Produkte sind 100% vegan, mit minimalen ökologischen Auswirkungen und unter fairen Bedingungen in der EU produziert. Alle gitti-Produkte werden CO2-neutral verschickt."
+          }
+        }
+      },
+      "block_order": [
+        "f9718754-60f8-4b13-bf18-8cb8ee56d29e",
+        "1b927ea2-fbdd-47d6-9c28-98e657328d28",
+        "f5b52887-4418-424b-a6f5-5df634a1b0bb",
+        "c67d28e8-207a-4441-b2bd-b1ef92c4265d"
+      ],
+      "settings": {
+        "spacing_top": "s",
+        "spacing_bottom": "s",
+        "heading": "Unser Versprechen.",
+        "text": "",
+        "link": "shopify:\/\/pages\/warum-gitti",
+        "label": "Warum gitti?",
+        "color_background": "#f3f3f3"
+      }
+    },
+    "164701474209972baf": {
+      "type": "index_featured_product",
+      "disabled": true,
+      "settings": {
+        "background_color": "",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "add_to_cart_btn": true,
+        "add_to_cart_btn_mo": true,
+        "more_btn_mo": true,
+        "sub_heading": "",
+        "tag_sub_heading": "h3",
+        "class_sub_heading": "h2",
+        "weight_class_sub_heading": "bold",
+        "spacing_bottom_sub_heading": "xs",
+        "product": "gutschein"
+      }
+    },
+    "166438264806e402e7": {
+      "type": "maestrooo-instagram",
+      "settings": {
+        "background_color": "#ffffff",
+        "spacing_top": "s",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram.",
+        "heading_tag": "h2",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 3,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": false,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "165210262878933e97": {
+      "type": "double_logo",
+      "blocks": {
+        "83087e0b-49b8-4a8d-8570-0a03beccfd5a": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PETA_Approved_VGATP_BW_v2_72_1_1.jpg"
+          }
+        },
+        "acea75c7-cdf0-4b8e-86e6-6176ed0ece6d": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/planetly.badge_klimaneutral-blue.png"
+          }
+        }
+      },
+      "block_order": [
+        "83087e0b-49b8-4a8d-8570-0a03beccfd5a",
+        "acea75c7-cdf0-4b8e-86e6-6176ed0ece6d"
+      ],
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs"
+      }
+    },
+    "16161049922c353319": {
+      "type": "index_community_testimonials",
+      "disabled": true,
+      "blocks": {
+        "d02cb2f5-9241-41f9-a3ff-768ba84e86b1": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DSC07206_1.jpg",
+            "richtext": "<p>Mascaras mit sauberer Formel gibt es. Aber eine mit sauberer Formel, die tolle Wimpern macht UND sich nicht unterm Auge abstempelt obwohl sie wasserlöslich ist, darauf hat die Welt (oder auch einfach nur ich) gewartet! ;-)<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/accounts\/login\/\" target=\"_blank\" title=\"Schminktante\"><strong>Anja @schminktante<br\/><\/strong><\/a>Make-up Artist & Bloggerin<\/p>"
+          }
+        },
+        "a6bf6b31-6073-4747-9e8b-83f7711cf607": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Kate_kategelinsky_-_Visionist_03_-_1_1.jpg",
+            "richtext": "<p>Den inneren Glow nach außen tragen – kann ich mit diesem Produkt. Meine Augen, Wangen und Lippen leuchten. Liebe es!<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/instagram.com\/kategelinsky\" target=\"_blank\" title=\"Kate Gelinsky \"><strong>Kate @Kategelinsky<\/strong><\/a><strong><br\/><\/strong>Influencer<\/p>"
+          }
+        },
+        "4700c495-7fd2-4b75-b42e-20694331640a": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Denise_frlordnung_-_everyblush_02_-_visionist_02_-_Eye_Level_01_-_Lip_Sync___-2.jpg",
+            "richtext": "<p>Der Everyblush hat eine zarte und schöne Textur und ist wahnsinnig ergiebig. Man benötigt wirklich nur zwei kleine Tropfen und schon hat man eine unglaubliche Frische ins Gesicht gezaubert. It's magic :-)<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/marisol_prada\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/marisol_prada\/\"><strong>Denise @frlordnung<\/strong><br\/><\/a>Mom & Professional Organizer<\/p>"
+          }
+        },
+        "afa0c522-f4a0-4af7-84df-0054fd05165f": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Jo_Portrait.jpg",
+            "richtext": "<p>Die gitti Farben sind für mich nicht mehr wegzudenken. Meine Nägel zu lackieren ist für mich zu einer therapeutischen Beschäftigung geworden. Ich liebe es, denn das einfache Auftragen ist für mich ein echter Verwöhnmoment.<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/joannalawrencia\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/joannalawrencia\/\"><strong>Joanna <br\/><\/strong><\/a>Joanna, Nail Art Enthusiast<\/p>"
+          }
+        },
+        "b3a6f3d6-9f43-498e-b825-41f4c2f57b89": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/FIONA_EBCINOGLU_WEBSITE_TESTIMONIAL_GITTI.jpg",
+            "richtext": "<p>Ich liebe gitti, da nicht nur die Farben total schön sind, sondern auch wirklich gut und lange halten. Mit gitti muss ich mir keine Sorgen machen, dass meine Nägel nach drei Tagen schon wieder ungepflegt aussehen.<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/fionaebc\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/fionaebc\/\">Fiona <br\/><\/a> community.<\/p>"
+          }
+        },
+        "5b7e6c5b-4e4d-4d77-a101-257047cfb7a9": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CHIARA_BERCKHAHN_WEBISTE_TESTIMONIAL_GITTI.jpg",
+            "richtext": "<p>Ich bin ein großer Fan von den leuchtend-frischen Farben von gitti, die sofort bessere Laune machen. Das Beste: Alle Produkte basieren auf natürlichen Inhaltsstoffen und sind vegan hergestellt, das ist für mich ausschlaggebend.<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/chiaraschiara\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/chiaraschiara\/\"><strong>Chiara<\/strong><br\/><\/a>Chiara, Musikfan<\/p>"
+          }
+        },
+        "c125ea07-f619-4e7a-97bf-7e0218353420": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hellopippa_350x350_crop_center_afc83bea-7626-417e-ac8e-b8e51f491ee7.jpg",
+            "richtext": "<p>Ich liebe die wasserbasierten gitti Nagelfarben, weil ich als hochsensibler Mensch mit starken Gerüchen nicht so gut zurecht komme - die gitti Nagelfarben sind da für mich die perfekte Lösung für (m)eine empfindliche Nase.<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/hellopippa\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/hellopippa\/\"><strong>Angie<br\/><\/strong><\/a>Yogi, Vegan, Fair Fashion<\/p>"
+          }
+        },
+        "e3b728f4-1f01-492b-a799-386b07a493e9": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/image_350x350_crop_center_216cb1c6-ecc1-4719-918e-d05a41f8e2eb.jpg",
+            "richtext": "<p>gitti bedeutet für mich ganzheitliches Denken. gitti vereint für mich Nachhaltigkeit und Style. gitti bringt den Farbklecks in mein Leben.<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/marisol_prada\/\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/marisol_prada\/\"><strong>Marisol<\/strong><br\/><\/a>Hair & Makeup Artist<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "d02cb2f5-9241-41f9-a3ff-768ba84e86b1",
+        "a6bf6b31-6073-4747-9e8b-83f7711cf607",
+        "4700c495-7fd2-4b75-b42e-20694331640a",
+        "afa0c522-f4a0-4af7-84df-0054fd05165f",
+        "b3a6f3d6-9f43-498e-b825-41f4c2f57b89",
+        "5b7e6c5b-4e4d-4d77-a101-257047cfb7a9",
+        "c125ea07-f619-4e7a-97bf-7e0218353420",
+        "e3b728f4-1f01-492b-a799-386b07a493e9"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "block_color": "#ffffff",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "heading": "Community Feedback.",
+        "main_heading_spacing_top": "",
+        "main_heading_spacing_bottom": "s",
+        "main_heading_tag": "p",
+        "main_heading_class": "h2",
+        "main_heading_weight_class": "bold",
+        "richtext": "<p><\/p>",
+        "spacing_bottom": "",
+        "spacing_top": "",
+        "block_spacing": "m",
+        "block_margin": "s",
+        "image_shape": "circle",
+        "image_fit": "cover"
+      }
+    },
+    "163310419119a4b422": {
+      "type": "index_shop_the_look",
+      "disabled": true,
+      "blocks": {
+        "ff9580c3-83f7-4e57-b066-66e8378b0c3e": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-160-caramel-fudge"
+          }
+        },
+        "d484086b-946d-4b79-bdff-f026d493e847": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-161-macaroon-cream"
+          }
+        },
+        "2c417310-5d7c-4a84-aab7-c5627db9240f": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-162-avocado-green"
+          }
+        },
+        "3087bfd0-c22d-4ef2-aa12-516ac9766700": {
+          "type": "product",
+          "settings": {
+            "product": "fall-into-autumn-duo"
+          }
+        },
+        "228bba5d-8d6a-499a-86f9-bf51c7d5f22f": {
+          "type": "product",
+          "settings": {
+            "product": "autumn-essentials"
+          }
+        },
+        "9bc64163-4562-453a-b087-8842c96212e2": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-113-rust-red-old"
+          }
+        },
+        "0b61e842-988e-46e8-ad2a-efa0e1f94c80": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-124-silky-sand"
+          }
+        },
+        "29f6edce-ed51-43b5-b893-208c4b31975e": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-145-burnt-cinammon"
+          }
+        },
+        "be187a53-b440-45db-97bc-0e9eba227b64": {
+          "type": "product",
+          "settings": {
+            "product": "gitti-no-150-forest-green-archive"
+          }
+        }
+      },
+      "block_order": [
+        "ff9580c3-83f7-4e57-b066-66e8378b0c3e",
+        "d484086b-946d-4b79-bdff-f026d493e847",
+        "2c417310-5d7c-4a84-aab7-c5627db9240f",
+        "3087bfd0-c22d-4ef2-aa12-516ac9766700",
+        "228bba5d-8d6a-499a-86f9-bf51c7d5f22f",
+        "9bc64163-4562-453a-b087-8842c96212e2",
+        "0b61e842-988e-46e8-ad2a-efa0e1f94c80",
+        "29f6edce-ed51-43b5-b893-208c4b31975e",
+        "be187a53-b440-45db-97bc-0e9eba227b64"
+      ],
+      "settings": {
+        "spacing_top": "m",
+        "spacing_bottom": "xl",
+        "heading": "Shop the Autumn Collection look.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Entdecke unseren vier neuen pflanzenbasierte Nagelfarben für kreative Autumn-Looks:",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "Jetzt entdecken",
+        "button_link": "shopify:\/\/pages\/autumn-collection",
+        "button_class": "btn btn--tertiary",
+        "products_heading": "",
+        "products_heading_tag": "p",
+        "products_heading_class": "h4",
+        "products_heading_weight_class": "",
+        "image": "shopify:\/\/shop_images\/SHOP_IRL_Shop_the_look.jpg",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "66b96086-f3e8-4282-b9e9-c22763e7378b": {
+      "type": "index_image_with_text_blocks",
+      "disabled": true,
+      "blocks": {
+        "5df4a78b-fae0-4193-b102-13233e6a3fcf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_menu_shopall_4.jpg",
+            "image_shape": "sixteen_by_nine",
+            "image_fit": "contain"
+          }
+        },
+        "ba1c6365-379b-4913-bf14-0da53da0db93": {
+          "type": "text",
+          "settings": {
+            "text_align": "left",
+            "vertical_align": "middle",
+            "heading": "November Specials.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "h2",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "richtext": "<p>Jede November-Woche schenken wir dir ein neues Angebot zum Kennenlernen unserer gitti-Produkte.<\/p>",
+            "richtext_splitted": "<p><strong>Melde dich jetzt für unseren Newsletter an & werde über alle November Specials informiert: <\/strong><\/p>",
+            "richtext_spacing_bottom": "s",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn--tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "5df4a78b-fae0-4193-b102-13233e6a3fcf",
+        "ba1c6365-379b-4913-bf14-0da53da0db93"
+      ],
+      "settings": {
+        "background_color": "#cedacf",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "mobile_layout_revert": false,
+        "dislocated": false
+      }
+    },
+    "161606700347e4fd10": {
+      "type": "index_featured_collection",
+      "disabled": true,
+      "settings": {
+        "spacing_top": "xl",
+        "spacing_bottom": "xl",
+        "heading": "Unsere Bestseller.",
+        "spacing_bottom_heading": "none",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Entdecke die Favoriten unserer Community.",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "jetzt entdecken",
+        "button_class": "btn--tertiary",
+        "collections": [],
+        "product_button_class": "btn--primary",
+        "product_button_class_mobile": "btn--secondary",
+        "style": "grid"
+      }
+    }
+  },
+  "order": [
+    "164927171810ac8a3d",
+    "01c6e56e-351a-4486-8ded-73e0f7b9bc7f",
+    "16150246794f0d190a",
+    "c0d86be1-b776-465e-8c43-cdbf2afe21aa",
+    "1615814327c950309d",
+    "0ea721ac-a6db-4e38-83e6-c6f51ca9f643",
+    "1619081393036ee962",
+    "b39ce060-c43d-46a3-8c27-f79849188b59",
+    "139641b7-7e04-4837-ba1f-4c6e27612d91",
+    "1625723472593aa8d6",
+    "54e2d5df-efdc-46d3-9a33-45b7dc86623a",
+    "16190163623e68a7ff",
+    "3727a0f4-8b74-4518-9400-ea1ca1e7b5a5",
+    "86afce37-5ccc-4e86-8335-b180f3afd819",
+    "1615825012bd73d1ef",
+    "161908504166d6496f",
+    "164701474209972baf",
+    "166438264806e402e7",
+    "165210262878933e97",
+    "16161049922c353319",
+    "163310419119a4b422",
+    "66b96086-f3e8-4282-b9e9-c22763e7378b",
+    "161606700347e4fd10"
+  ]
+}

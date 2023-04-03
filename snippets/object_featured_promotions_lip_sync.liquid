@@ -1,0 +1,208 @@
+{% assign overlay_opacity =  section.settings.overlay_opacity | divided_by: 100.0 %}
+<style>
+
+
+
+@media (min-width:750px){
+    #shopify-section-{{section.id}} #mobile {
+        display: none;
+    }
+    
+    #shopify-section-{{section.id}} .featured_promotion_content{
+    position: absolute;
+  /*  width: 100%;
+    height:100%; */
+    left:0;
+    top:0;
+    background-color: {{section.settings.overlay_color | color_modify: 'alpha', overlay_opacity }};
+}
+#shopify-section-{{section.id}} .featured_promotion_overlay{
+    padding: 20px;
+    width: 100%;
+    height:100%;
+}
+#shopify-section-{{section.id}} .featured_promotion{
+    overflow: hidden;
+    
+}
+{% if section.settings.overlay_on_hover %}
+    #shopify-section-{{section.id}} .featured_promotion_content{
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    #shopify-section-{{section.id}} .featured_promotion_overlay{
+        transform: translateY(50%);
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    #shopify-section-{{section.id}} .featured_promotion_content:hover{
+        opacity: 1;
+    }
+    #shopify-section-{{section.id}} .featured_promotion_content:hover .featured_promotion_overlay{
+        transform: translateY(0);
+        opacity: 1;
+    }
+{% endif %}
+{% if section.settings.zoom_on_hover %}
+    #shopify-section-{{section.id}} .featured_promotion .image-wrapper{
+        transition: transform 0.3s;
+    }
+    #shopify-section-{{section.id}} .featured_promotion:hover .image-wrapper{
+        transform:scale(1.2);
+    }
+{% endif %}
+#shopify-section-{{section.id}} .featured_promotion_overlay i{
+    font-size:{{section.settings.icon_size}};
+}
+}
+
+@media (max-width:750px){
+    #shopify-section-{{section.id}} #desktop  {
+        display: none;
+      
+    }
+
+    #shopify-section-{{section.id}} .featured_promotion_overlay  {
+    transform: translateX(8%) translateY(170%);
+    position: relative;
+    z-index: 1;
+    }
+
+    #tns1-mw {
+    margin-left: -31px;
+    }
+}
+
+
+</style>
+
+<div class="container1 bee_sectionly_featured_promotions section-spacing" data-section-type="editor"
+data-section-id="{{ object.id }}" >
+    <div class="">
+        {% if object.settings.title != blank %}
+            <p class="h2 text-align-{{object.settings.text_align_featured}} spacing-bottom-s">{{ object.settings.title | escape }}</p>
+        {% endif %}
+    </div>
+
+    <div id='desktop' class="{{object.settings.section_width}} grid col-{{object.settings.columns}} small_col-{{object.settings.columns_mobile}} {{object.settings.row_gap}} {{object.settings.col_gap}}">
+
+        {% for featured in object.settings %}
+            {% if featured contains 'featured_image_' %}
+                {% assign images = object.settings[featured] %}  
+            {% endif %}
+            {% if featured contains 'featured_preheading_' %}
+                {% assign preheadings = object.settings[featured] %}     
+            {% endif %}
+            {% if featured contains 'featured_heading_' %}
+                {% assign headings = object.settings[featured] %}  
+            {% endif %}
+            {% if featured contains 'featured_promotions_vertical_align_' %}
+                {% assign vertical_aligns = object.settings[featured] %}  
+            {% endif %}
+            {% if featured contains 'featured_promotions_text_align_' %}
+                {% assign text_aligns = object.settings[featured] %}  
+            {% endif %}
+            {% if featured contains 'featured_button_label_' %}
+                {% assign button_labels = object.settings[featured] %}  
+            {% endif %}
+            {% if featured contains 'featured_button_link_' %}
+                {% assign button_links = object.settings[featured] %}  
+            {% endif %}
+            {% if featured contains 'featured_button_class_' %}
+                {% assign button_classes = object.settings[featured] %}  
+            {% endif %}
+
+        {% if featured contains 'featured_preheading_' %}
+        <div class="featured_promotion is-relative" id="featured_promotion_{{object.id}}">
+            <a {% if  button_links != blank %} href="{{button_links}}" {% endif %}>
+                {% capture sizes %}{% render 'image_sizes', small:object.settings.columns_mobile, medium_up:object.settings.columns, page_width: true %}{% endcapture %}
+               {% render 'image_element', image: images,  fit: 'cover', clickable: button_links  , image_shape: object.settings.image_shape, sizes:sizes %}  
+               <div class="featured_promotion_content container">
+                   <div class="featured_promotion_overlay flex col {{text_aligns}} {{vertical_aligns}} container">
+                       {% if preheadings != blank %}
+                           <p class="text-align-{{text_aligns}} spacing-bottom-xs">{{ preheadings | escape }}</p>
+                       {% endif %}
+                       {% if headings != blank %}
+                           <h3 class="text-align-{{text_aligns}} spacing-bottom-xs">{{ headings | escape }}</h3>
+                       {% endif %}
+                       {% if button_labels != blank and button_links != blank %}
+                           <a href="{{button_links}}" class="{{button_classes}}">{{button_labels}}</a>
+                       {% endif %}
+                   </div>
+               </div>
+           </a>
+         </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+    <div id = 'mobile' class="page-width overhanging_slider_page-width">
+        <div class="slider_wrapper is-relative">
+
+            
+            <div class="slides_wrapper">
+
+        {% for featured in object.settings %}
+        {% if featured contains 'featured_image_' %}
+        {% assign images = object.settings[featured] %}  
+        {% endif %}
+        {% if featured contains 'featured_preheading_' %}
+        {% assign preheadings = object.settings[featured] %}     
+        {% endif %}
+        {% if featured contains 'featured_heading_' %}
+        {% assign headings = object.settings[featured] %}  
+        {% endif %}
+        {% if featured contains 'featured_promotions_vertical_align_' %}
+        {% assign vertical_aligns = object.settings[featured] %}  
+        {% endif %}
+        {% if featured contains 'featured_promotions_text_align_' %}
+        {% assign text_aligns = object.settings[featured] %}  
+        {% endif %}
+        {% if featured contains 'featured_button_label_' %}
+        {% assign button_labels = object.settings[featured] %}  
+        {% endif %}
+        {% if featured contains 'featured_button_link_' %}
+        {% assign button_links = object.settings[featured] %}  
+        {% endif %}
+        {% if featured contains 'featured_button_class_' %}
+        {% assign button_classes = object.settings[featured] %}  
+        {% endif %}
+
+        {% if featured contains 'featured_preheading_' %}
+
+         <div class="slide_wrapper">
+           
+            <div class="featured_promotion_overlay flex col {{text_aligns}} {{vertical_aligns}}">
+            {% if preheadings != blank %}
+                           <p class="text-align-{{text_aligns}} spacing-bottom-xs">{{ preheadings | escape }}</p>
+                       {% endif %}
+                       {% if headings != blank %}
+                           <h3 class="text-align-{{text_aligns}} spacing-bottom-xs">{{ headings | escape }}</h3>
+                       {% endif %}
+                       {% if button_labels != blank and button_links != blank %}
+                           <a href="{{button_links}}" class="{{button_classes}}">{{button_labels}}</a>
+                       {% endif %}
+                    </div>
+                    <a href="{{button_links}}">
+             {% render 'image_element', image: images,  fit: 'cover', clickable: button_links  , image_shape: object.settings.image_shape %}  
+            </a>
+         </div>
+  
+         {% endif %}
+        {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+    
+</div>

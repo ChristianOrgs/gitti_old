@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type" : "Organization",
+  "name" : {{ shop.name | json }},
+  "url" : "{{ shop.url }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ routes.search_url }}?q={search_term}",
+    "query-input": "required name=search_term"
+  },
+  "sameAs" : [
+    {%- if settings.social_twitter -%}
+      "{{-settings.social_twitter-}}"{%- if settings.social_facebook -%},{%- endif -%}
+    {%- endif -%}
+    {%- if settings.social_facebook -%}
+      "{{-settings.social_facebook-}}"{%- if settings.social_instagram -%},{%- endif -%}
+    {%- endif -%}
+    {%- if settings.social_instagram -%}
+      "{{-settings.social_instagram-}}"{%- if settings.social_pinterest -%},{%- endif -%}
+    {%- endif -%}
+    {%- if settings.social_pinterest -%}
+      "{{-settings.social_pinterest-}}"{%- if settings.social_youtube -%},{%- endif -%}
+    {%- endif -%}
+    {%- if settings.social_youtube -%}
+      "{{-settings.social_youtube-}}"
+    {%- endif -%}
+  ]
+}
+</script>

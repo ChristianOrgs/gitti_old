@@ -1,0 +1,269 @@
+{% render 'triple_usp_v2', section: section %}
+
+{% schema %}
+{
+  "name": "NEW Triple USP",
+  "settings": [
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "none",
+                "label": "no spacing"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "none",
+                "label": "no spacing"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "tag",
+        "label": "Html tag",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "icon_size",
+        "min": 10,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Icon size",
+        "default": 20
+    },
+    {
+        "type": "header",
+        "content": "USP 1"
+    },
+    {
+        "type": "url",
+        "id": "link_1",
+        "label": "Link"
+    },
+    {
+        "type": "text",
+        "id": "icon_1",
+        "label": "Icon",
+        "info": "Select the icon by the name defined in snippets/icon.liquid"
+    },
+    {
+        "type": "html",
+        "id": "html_icon_1",
+        "label": "Custom Icon",
+        "info": "Will be preferred over the icon by name"
+    },
+    {
+        "type": "text",
+        "id": "text_1",
+        "label": "Text"
+    },
+    {
+        "type": "header",
+        "content": "USP 2"
+    },
+    {
+        "type": "url",
+        "id": "link_2",
+        "label": "Link"
+    },
+    {
+        "type": "text",
+        "id": "icon_2",
+        "label": "Icon",
+        "info": "Select the icon by the name defined in snippets/icon.liquid"
+    },
+    {
+        "type": "html",
+        "id": "html_icon_2",
+        "label": "Custom Icon",
+        "info": "Will be preferred over the icon by name"
+    },
+    {
+        "type": "text",
+        "id": "text_2",
+        "label": "Text"
+    },
+    {
+        "type": "header",
+        "content": "USP 3"
+    },
+    {
+        "type": "url",
+        "id": "link_3",
+        "label": "Link"
+    },
+    {
+        "type": "text",
+        "id": "icon_3",
+        "label": "Icon",
+        "info": "Select the icon by the name defined in snippets/icon.liquid"
+    },
+    {
+        "type": "html",
+        "id": "html_icon_3",
+        "label": "Custom Icon",
+        "info": "Will be preferred over the icon by name"
+    },
+    {
+        "type": "text",
+        "id": "text_3",
+        "label": "Text"
+    }
+  ],
+  "blocks": [
+    
+  ],
+  "presets": [
+      {
+          "category": "Promotion",
+          "name":"NEW Triple USP"
+      }
+  ]
+}
+{% endschema %}

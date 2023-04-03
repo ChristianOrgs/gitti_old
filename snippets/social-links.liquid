@@ -1,0 +1,87 @@
+<style>
+  .container-social-links{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+   }
+   .black-bubble {
+    color: white;
+    background-color: black;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .icon-pinterest::before {
+    padding-left: 3px;
+   }
+</style>
+
+<ul class="social-links container-social-links">
+{% if settings.twitter_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.twitter_url}}" target="_blank">
+            <span class="icon-twitter black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.twitter' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.facebook_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.facebook_url}}" target="_blank">
+            <span class="icon-facebook black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.facebook' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.instagram_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.instagram_url}}" target="_blank">
+            <span class="icon-instagram black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.instagram' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.googleplus_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.googleplus_url}}" target="_blank">
+            <span class="icon-googleplus black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.googleplus' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.pinterest_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.pinterest_url}}" target="_blank">
+            <span class="icon-pinterest black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.pinterest' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.youtube_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.youtube_url}}" target="_blank">
+            <span class="icon-youtube black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.youtube' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.tumblr_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.tumblr_url}}" target="_blank">
+            <span class="icon-tumblr black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.tumblr' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+{% if settings.rss_url != '' %}
+    <li class="footer-link footer-link-social">
+        <a href="{{settings.rss_url}}" target="_blank">
+            <span class="icon-rss black-bubble"></span>
+            <span class="fallback-text">{{ 'general.footer.rss' | t }}</span>
+        </a>
+    </li>
+{% endif %}
+</ul>

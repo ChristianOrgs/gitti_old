@@ -1,0 +1,460 @@
+<div>
+    <div class="page-width">
+        <div class="page_title bold spacing-bottom-{{section.settings.heading_spacing_bottom}}">
+            <a href="{{section.settings.link_back}}"><div style="display: inline;">{% render 'icon' icon: 'chevron-left' %}</div></a>
+            <{{section.settings.heading_tag}} class="{{section.settings.heading_weight_class}} {{section.settings.heading_class}}" style="display: inline;">{{page.title}}</{{section.settings.heading_tag}}>
+        </div>
+        <div class="page_content spacing-bottom-{{section.settings.text_spacing_bottom}}">
+        <p class="">{{page.content | remove: "<p>" | remove: "</p>"}}</p>
+        </div>
+    </div>
+
+    {% if section.settings.show_application_info %}
+    <div class="border_line only_small spacing-bottom-{{section.settings.subheading_spacing_bottom}}" style="height: 0px; width: 100%; border: 0px solid #E8E8E8; border-top-width: 1px;"></div>
+
+    <div class="page-width">
+        
+            <div class="page_info_subtitle bold">
+                <{{section.settings.subheading_tag}} class="spacing-bottom-{{section.settings.subheading_spacing_bottom}} {{section.settings.subheading_weight_class}} {{section.settings.subheading_class}}">{{section.settings.title_appli_info}}</{{section.settings.subheading_tag}}>
+            </div>
+            <div class="page_info_text">
+                <{{section.settings.text_tag}} class="spacing-bottom-{{section.settings.text_spacing_bottom}} {{section.settings.text_weight_class}} {{section.settings.text_class}}">{{section.settings.text_appli_info | remove: '<p>' | remove: '</p>'}}</{{section.settings.text_tag}}>
+            </div>
+        
+    </div>
+    {% endif %}
+</div>
+<style>
+    #shopify-section-{{section.id}} .page_title .clever_icon {
+        display: inline;
+    }
+    #shopify-section-{{section.id}} p a {
+        text-decoration: underline;
+    }
+</style>
+{% schema %}
+{
+    "name": "Page Section",
+  "settings": [
+  {
+      "type": "text",
+      "id": "link_back",
+      "label": "link to jobs page"
+  },
+  {
+      "type": "checkbox",
+      "id": "show_application_info",
+      "label": "Show generical application information",
+      "default": true
+  },
+  {
+      "type": "text",
+      "id": "title_appli_info",
+      "label": "Subtitle for Application info",
+      "default": "lorem ipsum"
+  },
+  {
+      "type": "richtext",
+      "id": "text_appli_info",
+      "label": "Text for Application info",
+      "default": "<p>lorem ipsum</p>"
+  },
+  {
+      "type": "header",
+      "content": "title"
+  },
+  {
+    "type": "select",
+    "id": "heading_spacing_bottom",
+    "label": "Spacing bottom",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "heading_tag",
+    "label": "Html tag",
+    "default": "p",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "small",
+            "label": "small"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "heading_class",
+    "label": "Font class",
+    "default": "h2",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "note",
+            "label": "note"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "heading_weight_class",
+    "label": "Weight class",
+    "default": "bold",
+    "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+    ]
+  },
+  {
+      "type": "header",
+      "content": "subheading"
+  },
+  {
+    "type": "select",
+    "id": "subheading_spacing_bottom",
+    "label": "Spacing bottom",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "subheading_tag",
+    "label": "Html tag",
+    "default": "p",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "small",
+            "label": "small"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "subheading_class",
+    "label": "Font class",
+    "default": "h2",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "note",
+            "label": "note"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "subheading_weight_class",
+    "label": "Weight class",
+    "default": "bold",
+    "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+    ]
+  },
+  {
+      "type": "header",
+      "content": "text"
+  },
+  {
+    "type": "select",
+    "id": "text_spacing_bottom",
+    "label": "Spacing bottom",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "text_tag",
+    "label": "Html tag",
+    "default": "p",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "small",
+            "label": "small"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "text_class",
+    "label": "Font class",
+    "default": "h2",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "note",
+            "label": "note"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "text_weight_class",
+    "label": "Weight class",
+    "default": "bold",
+    "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+    ]
+  }
+  ]
+}
+{% endschema %}

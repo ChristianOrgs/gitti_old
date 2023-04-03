@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "search_template": {
+      "type": "search_template",
+      "settings": {
+        "paginate_by": 48
+      }
+    }
+  },
+  "order": [
+    "search_template"
+  ]
+}

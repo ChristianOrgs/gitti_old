@@ -1,0 +1,211 @@
+{% include 'slideshow-cstm' %}
+{% comment %} Schema {% endcomment %}
+{% schema %}
+{
+	"name": "Slideshow Redesign",
+	"max_blocks": 6,
+    "class": "section-slideshow header--full",
+	"settings": [
+	{
+		"type": "checkbox",
+		"id": "showNavDots",
+		"label": "Show slide navigation dots",
+		"default": true
+	},
+	{
+		"type": "checkbox",
+		"id": "showNavArrows",
+		"label": "Show slide navigation arrows",
+		"default": true
+	},
+	{
+		"type": "checkbox",
+		"id": "autoplay",
+		"label": "Autoplay slideshow",
+		"default": false
+	},
+	{
+		"type": "checkbox",
+		"id": "parallax",
+		"label": "Add parallax effects",
+		"default": false
+	},
+	{
+		"type": "select",
+		"id": "transition",
+		"label": "Transition style",
+		"default": "slide",
+		"options": [
+			{ "label": "Slide", "value": "slide" },
+			{ "label": "Fade", "value": "fade" },
+			{ "label": "Zoom out", "value": "zoom-out" }
+		]
+	},
+	{
+		"type": "range",
+		"id": "duration",
+		"min": 2,
+		"max": 5,
+		"step": 1,
+		"unit": "sec",
+		"label": "Change slides every",
+		"default": 4
+	},
+	{
+		"type": "select",
+		"id": "dots_position",
+		"label": "Dots position",
+		"default": "center",
+		"options": [
+			{ "label": "Left", "value": "left" },
+			{ "label": "Center", "value": "center" },
+			{ "label": "Right", "value": "right" }
+		]
+	},
+	{
+		"type": "select",
+		"id": "slide_height",
+		"label": "Slide height",
+		"default": "one-hundred-height-hero",
+		"options": [
+			{
+				"value": "one-hundred-height-hero",
+				"label": "Full screen height"
+			},
+			{
+				"value": "original-height",
+				"label": "Image height"
+			},
+			{
+				"value": "seven-fifty-height-hero",
+				"label": "750px"
+			},
+			{
+				"value": "sixty-fifty-height-hero",
+				"label": "650px"
+			},
+			{
+				"value": "five-fifty-height-hero ",
+				"label": "550px"
+			},
+			{
+				"value": "four-fifty-height-hero",
+				"label": "450px"
+			}
+		]
+	},
+	{
+		"type": "checkbox",
+		"id": "show_arrow_down",
+		"label": "Show arrow down",
+		"default": false
+	},
+	{
+		"type": "text",
+		"id": "teaser_text",
+		"label": "Teaser heading text"
+	},
+	{
+		"type": "text",
+		"id": "teaser_sub_text",
+		"label": "Teaser subheading text"
+	},
+    {
+        "type": "text",
+        "id": "bubble_width",
+        "label": "Bubble Width (px)",
+        "default": "100"
+    }
+	],
+	"blocks": [
+	{
+		"type": "image",
+		"name": "Slide",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Image desktop"
+			},
+			{
+				"type": "image_picker",
+				"id": "image_mobile",
+				"label": "Image mobile",
+				"info": "Desktop image will be used if not set"
+			},
+			{
+				"type": "select",
+				"id": "image_position",
+				"label": "Image position",
+				"default": "center-center",
+				"options": [
+					{ "label": "Top", "value": "top-center" },
+					{ "label": "Right", "value": "right-center" },
+					{ "label": "Center", "value": "center-center" },
+					{ "label": "Left", "value": "left-center" },
+					{ "label": "Bottom", "value": "bottom-center" }
+				]
+			},
+			{
+				"type": "select",
+				"id": "color_style",
+				"label": "Color",
+				"default": "white",
+				"options": [
+					{
+						"value": "white",
+						"label": "Light"
+					},
+					{
+						"value": "black",
+						"label": "Dark"
+					}
+				]
+			},
+            {
+				"type": "header",
+				"content": "Bubble Setup"
+            },
+            {
+                "type": "color",
+                "id": "bubble_color",
+                "label": "Bubble Color"
+            },
+            {
+                "type": "color",
+                "id": "bubble_text_color",
+                "label": "Text Color"
+            },
+            {
+                "type": "text",
+                "id": "bubble_text",
+                "label": "Bubble Text"
+			},
+			{
+				"type": "url",
+				"id": "bubble_link",
+				"label": "Bubble Link"
+			}
+		]
+	}
+	],
+	"presets": [
+		{
+			"name": "Slideshow Redesign",
+			"category": "image",
+			"settings": {
+			"showNavArrows": "true",
+			"autoplay": true
+			},
+			"blocks": [
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

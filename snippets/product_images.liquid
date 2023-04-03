@@ -1,0 +1,325 @@
+{% assign id = section.id %}
+
+<style>
+    #shopify-section-{{id}} .product-carousel-item{
+        width: 100%;
+        height: auto;
+        padding-bottom: 16px;
+        cursor: pointer;
+    }
+    #shopify-section-{{id}} .overflow-scroll{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        top: 0;
+        left: 0;
+    }
+    #shopify-section-{{id}} .grid-gap-small{
+        gap:16px;
+    }
+    #shopify-section-{{id}} .nav_product_images::-webkit-scrollbar{
+        display: none;
+    }
+    #shopify-section-{{id}} .nav_product_images{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #shopify-section-{{id}} .product_images{
+        overflow: hidden;
+    }
+    #shopify-section-{{id}} .product-carousel-item{
+        cursor: pointer;
+    }
+    #shopify-section-{{id}} .product-carousel-item:focus{
+        outline: none;
+    }
+    #shopify-section-{{id}} .product_image_overlay{
+        pointer-events: none;
+        top: 0;
+    }
+    #shopify-section-{{id}} .product_image_overlay .wishlist_icon{
+        pointer-events: auto;
+    }
+    #shopify-section-{{id}} .product_image_overlay .clever_icon{
+        width:28px;
+    }
+    #shopify-section-{{id}} .product_image_overlay .clever_icon svg{
+        width: 100%;
+        height: auto;
+    }
+    #shopify-section-{{id}} .zoom{
+        cursor: pointer;
+        pointer-events: auto;
+    }
+    #shopify-section-{{id}} .zoom .minus{
+        display: none;
+    }
+    #shopify-section-{{id}} .zoom.active .plus{
+        display: none;
+    }
+    #shopify-section-{{id}} .zoom.active .minus{
+        display: flex;
+    }
+    #shopify-section-{{id}} cs-nav {
+            display: none;
+    }
+    @media only screen and (max-width: {{settings.breakpoint_medium}}px){
+        #shopify-section-{{id}} .is-relative-mobile{
+            position: relative;
+        }
+        #shopify-section-{{id}} .slider_prev, #shopify-section-{{id}} .slider_next{
+            width: 5%;
+            border-bottom: 1.5px solid black;
+            border-left: 1.5px solid black;
+            top: 50%;
+            cursor: pointer;
+            transform-origin: center;
+        }
+        #shopify-section-{{id}} .slider_prev::after, #shopify-section-{{id}} .slider_next::after{
+            content: '';
+            display: flex;
+            width: 100%;
+            padding-bottom: 100%;
+        }
+        #shopify-section-{{id}} .slider_prev:focus, #shopify-section-{{id}} .slider_next:focus{
+            outline: none;
+        }
+        #shopify-section-{{id}} .slider_prev{
+            left: 5%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        #shopify-section-{{id}} .slider_next{
+            right: 5%;
+            transform: translateY(-50%) rotate(-135deg);
+        }
+        #shopify-section-{{id}} .zoom{
+            display: none;
+        }
+        
+    }
+  
+    {% if style == "dots" %}
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{id}} .product_images {
+            width: 100vw;
+            margin-left: -24px;
+        }
+        #shopify-section-{{id}} cs-nav {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            gap: 7px;
+            margin-bottom: 24px;
+            margin-left: 24px
+        }
+        {% if preview != blank %}
+        #shopify-section-{{id}} cs-slide {
+            display: flex;
+            flex: 0 0 {{preview}}%;
+        }
+        {% else %}
+        #shopify-section-{{id}} cs-slide {
+            display: flex;
+            flex: 0 0 75%;
+        }
+        {% endif %}
+        
+        {% if gap != blank %}
+        #shopify-section-{{id}} cs-slides.small_gap {
+            gap: {{gap}}px;
+        }
+        {% else %}
+        #shopify-section-{{id}} cs-slides.small_gap {
+            gap: 12px;
+        }
+        {% endif %}
+        #shopify-section-{{id}} cs-prev,  #shopify-section-{{id}} cs-next{
+            display: none;
+        }
+        #shopify-section-{{id}} .slider_nav_item {
+            height: 8px;
+            width: 8px;
+            background-color: {{fill_color}};
+            border: 1px solid {{outline}};
+            border-radius: 50%;
+        }
+        #shopify-section-{{id}} .is-selected {
+          
+        }
+    }
+    {% endif %}
+</style>
+
+{% assign video_item_indices = '[' %}
+
+<div class="grid col-6 grid-gap-small">
+    <div class="flex col container is-relative only_large">
+        <div class="flex col is-absolute container overflow-scroll nav_product_images">
+            {% for media in product.media %}
+                <div id="thumbnail-{{forloop.index}}" class="product-carousel-item flex col">
+                    {% render 'image_element',  image: media.preview_image, fit: 'cover', image_shape: 'two_by_three', sizes:'100px' %}
+                </div>
+                <script>
+                    document.querySelector('#thumbnail-{{forloop.index}}').addEventListener('click',()=>{
+                        document.querySelectorAll('clever-slider')[2].embla.scrollTo({{forloop.index0}})
+                    })
+                </script>
+            {% endfor %}
+        </div>
+    </div>
+
+    <clever-slider id="product-images" class="product_images grid-item col-span-5 container medium-down_col-span-6"
+        options-large="{'loop':true,'align':'start','containScroll':'trimSnaps' }">
+        
+        <cs-prev class="slider_prev is-absolute only_medium-down">
+        </cs-prev>
+
+        <cs-track>
+            <cs-slides  class="items-1 small_gap">
+            {% capture sizes %}{% render 'image_sizes', small:1, medium:2, large:2 , page_width: true %}{% endcapture %}
+            {% for media in product.media %}
+                    <cs-slide>
+                    {% case media.media_type %}
+                        {% when 'image' %}
+                            {% render 'image_element', image: media, fit: 'cover', image_shape: 'two_by_three', sizes:sizes %}
+                        {% when 'video' %}
+                            {% assign video_item_indices = video_item_indices | append: forloop.index0 | append: ', ' %}
+                            {% render 'video_element', video: media, fit: 'cover', shape: 'two_by_three', autoplay: true %}
+                    {% endcase %}
+                    </cs-slide>
+            {% endfor %}
+            {% assign video_item_indices = video_item_indices | remove_last: ',' | append: ']' %}
+            </cs-slides>
+            
+        </cs-track>
+        
+        <cs-next class="slider_next is-absolute only_medium-down">
+        </cs-next>
+        <div class="product_image_overlay is-absolute container flex col between">
+            <div class="flex row between spacing-m">
+                <div class="flex col badge">
+                    {% render 'product_badge', product:product, pdp: true %}
+                </div>
+                {% comment %}
+                <div class="flex col wishlist_icon">
+                    {% render 'icon' icon: 'heart', color: '#000'%}
+                </div>
+                {% endcomment %}
+            </div>
+            <div class="flex row spacing-m">
+                <div class="flex col zoom">
+                    <div class="plus flex col center middle">
+                        {% render 'icon' icon: 'plus', color: '#000'%}
+                    </div>
+                    <div class="minus flex col center middle">
+                        {% render 'icon' icon: 'minus', color: '#000'%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if style == "dots" %}
+            <cs-nav></cs-nav>    
+        {% endif %}
+       
+    </clever-slider>
+</div>
+
+{% if product.images.size > 1 %}
+    <script type="module">
+        let imageZoom = 2.0;
+        let Zoomactive = false;
+
+        function zoomImage(e){
+            let x = e.clientX;
+            let y = e.clientY;
+            let activeImageContainer = document.querySelector('#shopify-section-{{id}} .is-selected img');
+            if(activeImageContainer != undefined){
+                let activeImage = activeImageContainer.getBoundingClientRect();
+                let width = activeImage.width;
+                let height = activeImage.height;
+                let relativeX = ((x-activeImage.x)/width)*100.0;
+                let relativeY = ((y-activeImage.y)/height)*100.0;
+                let relativeTranslation = 100 / imageZoom;
+                activeImageContainer.style = 'transform: translate('+((relativeX-relativeTranslation)*-1.0)+'%, '+((relativeY-relativeTranslation)*-1.0)+'%) scale('+imageZoom+');';
+            }
+        }
+
+        function backToDefault(){
+            let activeImageContainer = document.querySelector('#shopify-section-{{id}} .is-selected img');
+            if(activeImageContainer != undefined){
+                document.querySelector('#shopify-section-{{id}} .is-selected img').style = 'transition: transform 0.2s ease; transform: translate(0, 0) scale(1.0);';
+            }
+        }
+
+        document.querySelector('#shopify-section-{{id}} .zoom').addEventListener('click', 
+            function(){
+                if(Zoomactive){
+                    backToDefault();
+                    Zoomactive = false;
+                    document.querySelector('#shopify-section-{{id}} .product_images').removeEventListener('mousemove', zoomImage);
+                    document.querySelector('#shopify-section-{{id}} .zoom').classList.remove('active');
+                }else{
+                    Zoomactive = true;
+                    let activeImageContainer = document.querySelector('#shopify-section-{{id}} .is-selected img');
+                    if(activeImageContainer != undefined){
+                        let activeImage = activeImageContainer.getBoundingClientRect();
+                        let width = activeImage.width;
+                        let height = activeImage.height;
+                        let relativeX = 50.0;
+                        let relativeY = 50.0;
+                        let relativeTranslation = 100 / imageZoom;
+                        activeImageContainer.style = 'transition: transform 0.2s ease; transform: translate('+((relativeX-relativeTranslation)*-1.0)+'%, '+((relativeY-relativeTranslation)*-1.0)+'%) scale('+imageZoom+');';
+                        document.dispatchEvent(new Event('beeperfectsize'));
+                        document.querySelector('#shopify-section-{{id}} .zoom').classList.add('active');
+                        document.querySelector('#shopify-section-{{id}} .product_images').addEventListener('mousemove', zoomImage);
+                    }
+                }
+            }
+        );
+        let customizedFunction = function (info, eventName) {
+            let current_slide_video = false;
+            video_indices.forEach(video_index => {
+                if(video_index == info.index)
+                    current_slide_video = true;
+            });
+            if(current_slide_video){
+                document.querySelector('#shopify-section-{{id}} .zoom').classList.add('hidden');
+            }else{
+                document.querySelector('#shopify-section-{{id}} .zoom').classList.remove('hidden');
+            }
+        }
+
+        {% if style =="dots" %}
+        //mark first slider-nav-item as active 
+        let first_dot = document.querySelector('.slider_nav_item');
+        if (first_dot !== null) {
+            first_dot.classList.add('is-selected');
+        }
+        
+        var slider_container = document.querySelector('#product-images');
+        if (slider_container !== null) {
+            let temp_div = document.createElement('div');
+            temp_div.classList.add('only_small');
+            let first_slide = slider_container.querySelector('cs-slide').innerHTML;
+            temp_div.insertAdjacentHTML('beforeend', first_slide);
+            slider_container.embla.on('select', () => {
+                let width = slider_container.querySelector('cs-slide').getBoundingClientRect().width;
+                temp_div.firstChild.nextSibling.style.width = width + "px";
+                let last_node = slider_container.embla.slideNodes().length - 1;
+                let scrollSnap = slider_container.embla.selectedScrollSnap();
+                console.log(last_node, scrollSnap);
+                if (scrollSnap == last_node && window.innerWidth <= {{settings.breakpoint_small}}) {
+                    console.log(window.innerWidth, {{settings.breakpoint_small}});
+                    slider_container.querySelector('cs-slides').appendChild(temp_div);
+                }
+                else if (slider_container.querySelector('cs-slides').contains(temp_div) ){
+                    slider_container.querySelector('cs-slides').removeChild(temp_div);
+                }
+            });
+        }
+       
+        {% endif %}
+
+    </script>
+{% endif %}

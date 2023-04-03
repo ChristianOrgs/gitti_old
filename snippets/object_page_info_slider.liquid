@@ -1,0 +1,129 @@
+{%- style %}
+    #shopify-section-{{object.id}},
+    #shopify-section-{{object.id}} clever-slider.overhanging_slider::before{
+        background-color:{{object.settings.background_color}};
+    }
+    #shopify-section-{{object.id}} .grid.gap{
+        gap:16px;
+    }
+    @media only screen and (max-width:{{settings.breakpoint_small}}px){
+        #shopify-section-{{object.id}} .small_items-custom cs-slide{
+            flex: 0 0 80%;
+        }
+        #shopify-section-{{object.id}} .gap cs-slide{
+            margin-right: 16px;
+        }
+        
+    }
+{%- endstyle -%}
+
+{% for i in (1..6) %}
+    {% capture image_id %}image_{{i}}{% endcapture %}
+    {% capture heading_id %}heading_{{i}}{% endcapture %}
+    {% capture text_id %}text_{{i}}{% endcapture %}
+    {% if object.settings[heading_id] == blank %}
+        {% if object.settings[text_id] == blank %}
+            {% if object.settings[image_id] == blank %}
+                {% capture _ %}{% increment zeroblocks %}{% endcapture %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% if forloop.last %}
+        {% if zeroblocks > 1 %}
+            {% assign gridcolumns = 2 %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+<div class="spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+    <div class="flex col left">
+        <{{object.settings.heading_tag}} class="{{object.settings.heading_class}} {{object.settings.heading_weight_class}} spacing-bottom-xs"> {{object.settings.heading}} </{{object.settings.heading_tag}}>
+        <{{object.settings.richtext_tag}} class="{{object.settings.richtext_class}} {{object.settings.richtext_weight_class}} spacing-bottom-s"> {{object.settings.richtext}} </{{object.settings.richtext_tag}}>
+    </div>
+    <clever-slider class="overhanging_slider only_medium-down" 
+        options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+        <cs-prev class="slider_nav slider_prev is-absolute only_large">
+            {% render 'icon', icon: 'chevron-left' %}
+        </cs-prev>
+        <cs-track>
+            <cs-slides class="items-3 medium_items-2 small_items-custom gap">
+                {% for i in (1..6) %}
+                    {% capture image_id %}image_{{i}}{% endcapture %}
+                    {% capture heading_id %}heading_{{i}}{% endcapture %}
+                    {% capture text_id %}text_{{i}}{% endcapture %}
+                    {% unless object.settings[heading_id] == blank and object.settings[text_id] == blank and object.settings[image_id] == blank %}
+                        <cs-slide>
+                            <div class="content_container" style="background-color: white; height: 100%;">
+                                {% unless object.settings.no_image %}
+                                <div class="upper_part spacing-m">
+                                    <div class="image flex col center middle">
+                                        {% if object.settings[image_id] != blank %}
+                                            {% capture picture %}{%render 'image_croper', image: object.settings[image_id], shape: object.settings.image_shape, crop_position: object.settings.image_focal_point%}{% endcapture %}
+                                            <img class="image" src="{{picture}}" style="width: 100%; object-fit: {{object.settings.image_fit}};">
+                                        {% else %}
+                                            {% render 'image_element' %}  
+                                        {% endif %}
+                                        
+                                    </div>
+                                </div>
+                                {% endunless %}
+                                <div class="bottom-part spacing-left-m spacing-right-m spacing-bottom-m {% if object.settings.no_image %}spacing-m{% endif %}">
+                                    {% if object.settings[heading_id] != blank %}
+                                    <{{object.settings.block_heading_tag}} class="{{object.settings.block_heading_class}} {{object.settings.block_heading_weight_class}} spacing-bottom-{{object.settings.block_heading_spacing_bottom}} text-align-{{object.settings.text_align}}">{{ object.settings[heading_id] | escape }}</{{object.settings.block_heading_tag}}>
+                                    {% endif %}
+                                    {% if object.settings[text_id] != blank %}
+                                    <{{object.settings.block_text_tag}} class="{{object.settings.block_text_class}} {{object.settings.block_text_weight_class}} spacing-bottom-{{object.settings.block_text_spacing_bottom}} text-align-{{object.settings.text_align}}">{{ object.settings[text_id] | remove: '<p>' | remove: '</p>' }}</{{object.settings.block_text_tag}}>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </cs-slide>    
+                    {% endunless %}
+                {% endfor %}
+            </cs-slides>
+        </cs-track>
+        <cs-next class="slider_nav slider_next is-absolute only_large">
+            {% render 'icon', icon: 'chevron-right' %}
+        </cs-next>
+    </clever-slider>
+
+    <div class="only_large">      
+        <div class="grid {% if gridcolumns == 2 %}col-4{% else %}col-3{% endif %} gap">
+            {% for i in (1..6) %}
+                {% capture image_id %}image_{{i}}{% endcapture %}
+                {% capture heading_id %}heading_{{i}}{% endcapture %}
+                {% capture text_id %}text_{{i}}{% endcapture %}
+                {% if object.settings[heading_id] == blank %}
+                    {% if object.settings[text_id] == blank %}
+                        {% if object.settings[image_id] == blank %}
+                            {% continue %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                <div class="content_container grid-item " style="background-color: white;">
+                    {% unless object.settings.no_image %}
+                    <div class="upper_part spacing-m">
+                        <div class="image flex col center middle">
+                            {% if object.settings[image_id] != blank %}
+                                {% capture picture %}{%render 'image_croper', image: object.settings[image_id], shape: object.settings.image_shape, crop_position: object.settings.image_focal_point%}{% endcapture %}
+                                <img class="image" src="{{picture}}" style="width: 100%; object-fit: {{object.settings.image_fit}};">
+                            {% else %}
+                            {% render 'image_element' %}  
+                                {% endif %}
+                            
+                        </div>
+                    </div>
+                    {% endunless %}
+                    <div class="bottom-part spacing-left-m spacing-right-m {% if object.settings.no_image %}spacing-m{% endif %}">
+                        {% if object.settings[heading_id] != blank %}
+                            <{{object.settings.block_heading_tag}} class="{{object.settings.block_heading_class}} {{object.settings.block_heading_weight_class}} spacing-bottom-{{object.settings.block_heading_spacing_bottom}} text-align-{{object.settings.text_align}}">{{ object.settings[heading_id] | escape }}</{{object.settings.block_heading_tag}}>
+                        {% endif %}
+                        {% if object.settings[text_id] != blank %}
+                            <{{object.settings.block_text_tag}} class="{{object.settings.block_text_class}} {{object.settings.block_text_weight_class}} spacing-bottom-{{object.settings.block_text_spacing_bottom}} text-align-{{object.settings.text_align}}">{{ object.settings[text_id] | remove: '<p>' | remove: '</p>' }}</{{object.settings.block_text_tag}}>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+

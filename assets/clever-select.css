@@ -1,0 +1,68 @@
+:host{
+    display:flex;
+    flex-direction:column;
+    position: relative;
+    margin-bottom:16px;
+}
+svg{
+    width: 18px;
+    transform:rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+button.open svg{
+    transform:rotate(90deg);
+}
+button{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    padding: 9px 16px;
+    background-color: #fff;
+    border: 1px solid black;
+    cursor:pointer;
+}
+output{
+    display: block;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    font-family: 'Apercu Pro Regular';
+    font-size:18px;
+}
+ul{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    bottom:0;
+    left:0;
+    box-sizing: border-box;
+    transform:translateY(calc(100% + 5px));
+    margin:0;
+    padding:0;
+    width:100%;
+    border: 1px solid black;
+    list-style: none;
+    max-height:200px;
+    overflow: auto;
+}
+ul > li{
+    padding:  9px 16px;
+    box-sizing:border-box;
+    width: 100%;
+    background-color: #fff;
+    cursor:pointer;
+    font-family: 'Apercu Pro Regular';
+    font-size:18px;
+}
+ul > li:not([disabled]):hover{
+    background-color:lightgray;
+}
+ul > li[disabled]{
+    color:lightgray;
+    cursor:not-allowed;
+}
+ul.hidden{
+    visibility:hidden;
+    pointer-events:none;
+}

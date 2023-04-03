@@ -1,0 +1,299 @@
+{% assign gtm_id = 'GTM-NMTQ2Q8' %}
+{% assign ua_id = 'UA-150759995-1' %}
+
+
+
+{% if request.page_type != "" %}
+
+  <!-- Google Tag Manager -->
+  <script defer>(function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', '{{ gtm_id }}');</script>
+  <!-- End Google Tag Manager -->
+
+  <script>
+
+
+    if(window['GoogleAnalyticsObject'] === undefined ){
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ ua_id }}', 'auto');
+    }
+
+    var testMode = false,
+            prefix = '_testMode';
+
+    function getEventCategory ( category ) {
+      return testMode ? category + prefix : category;
+    }
+
+    function GA ( data ) {
+      ga ( 'send', {
+        hitType : 'event',
+        eventCategory : getEventCategory( 'Custom_events cart' ),
+        eventAction : data.eventAction,
+        eventLabel : data.eventLabel,
+        transport : 'beacon'
+      } );
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      window.addEventListener('bc_enhanced_tracking:addToCart', function( addData ) {
+        console.log('bc_enhanced_tracking:cartadd', addData.detail );
+        GA( { eventAction : 'Add to cart', eventLabel : JSON.stringify(addData.detail.items) });
+      });
+
+      window.addEventListener('bc_enhanced_tracking:updateCart', function( addData ) {
+        console.log('bc_enhanced_tracking:updateCart', addData.detail );
+        GA ( { eventAction : 'Update cart', eventLabel : JSON.stringify(addData.detail) } );
+      });
+
+
+      window.addEventListener('bc_enhanced_tracking:clearCart', function( addData ) {
+        console.log('bc_enhanced_tracking:clearCart', addData.detail )
+        GA ( { eventAction : 'Clear cart', eventLabel : null } );
+      });
+
+      window.addEventListener('bc_enhanced_tracking:changeItem', function( addData ) {
+        console.log('bc_enhanced_tracking:changeItem', addData.detail )
+        GA ( { eventAction : 'Change item in cart', eventLabel : JSON.stringify(addData.detail) } );
+      });
+
+      if ( "{{ request.page_type }}" === "cart" ) initCheckout();
+
+    });
+
+    function initCheckout ( event = null ) {
+      console.log("initCheckout", true )
+
+      var checkoutForm = document.querySelector('form input[name="checkout"]').closest('form');
+      var cartData;
+      var dataSet = {};
+      /**
+       * AOV => Warenkorbwert
+       * ACI => Durchschnitt Warenkorb items
+       * PCI => Anzahl Produkte im Warenkorb
+       * FS => free shipping
+       * PC => Product Categories
+       * SP => has specific product in Cart
+       */
+      var [ AOV, ACI, PCI, FS, PC, SP ] = [];
+      var specific_product_variant_id = 35031755686041;
+
+      window.addEventListener('bc_enhanced_tracking:cartDataChanged', function( cart ){
+
+        cartData = cart.detail;
+        dataSet["total_price"] = cartData.total_price;
+        dataSet["count_items"] = cartData.item_count;
+        dataSet["count_products"] = cartData.items.length;
+        //dataSet["free_shipping"] = cartData.total_price >= document.querySelector('form[action="/cart"] div.progressBar').dataset.threshold;
+        dataSet["product_categories"] = [];
+        dataSet["specific_product_included"] = false;
+
+        cartData.items.forEach(function ( item ) {
+          if ( dataSet["product_categories"].includes( item.product_type ) === false ) dataSet["product_categories"].push( item.product_type );
+          dataSet["specific_product_included"] = dataSet["specific_product_included"] ? true : dataSet["specific_product_included"] === specific_product_variant_id;
+        });
+
+        checkoutForm.addEventListener ( 'submit', function () {
+          ga ( 'send', {
+            hitType : 'event',
+            eventCategory : 'Custom_events cart' + testMode ? prefix : '',
+            eventAction : 'init checkout',
+            eventLabel : JSON.stringify( dataSet ),
+            transport : 'beacon'
+          } );
+        } );
+      });
+    }
+    document.addEventListener('showCart', initCheckout );
+  </script>
+{% else %}
+
+  <script>
+
+    if(window['GoogleAnalyticsObject'] === undefined ){
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ ua_id }}', 'auto');
+    }
+
+    var testMode = false,
+            prefix = '_testMode';
+
+    function init () {
+
+      if ( Shopify && Shopify.Checkout && Shopify.Checkout.step  ) {
+        checkout();
+      }
+
+      function getEventCategory ( category ) {
+        return testMode ? category + prefix : category;
+      }
+
+      function GA ( data ) {
+        ga ( 'send', {
+          hitType : 'event',
+          eventCategory : getEventCategory(data.eventCategory),
+          eventAction : data.eventAction,
+          eventLabel : data.eventLabel,
+          transport : 'beacon'
+        } );
+      }
+
+      function checkout () {
+        var payments = ['ShopifyPay', 'GooglePay', 'PayPalPay', 'amazonPay'],
+                buttonContinue = document.querySelector('#continue_button'),
+                reductionForms = Array.from(document.querySelectorAll('div[data-reduction-form="update"] form')),
+                inputs = Array.from(document.querySelectorAll('form.edit_checkout[data-customer-information-form="true"] input[id]')),
+                errorInputs = Array.from(document.querySelectorAll('form.edit_checkout[data-customer-information-form="true"] input[aria-describedby^="error-for"]')),
+                hasChange = false,
+                checkboxMarketing = document.querySelector('#checkout_buyer_accepts_marketing'),
+                shippingMethodsInputs = Array.from(document.querySelectorAll('div[data-shipping-methods=""] input')),
+                loginLink = document.querySelector('a[href^="https://www.gitticonsciousbeauty.de/account/login?checkout_url="]');
+
+        function checkoutSetGa( data ) {
+          GA({
+            eventCategory : 'Custom_events checkout',
+            eventAction : data.eventAction,
+            eventLabel : data.eventLabel
+          });
+        }
+
+        function contact_information (  ) {
+          errorInFilds();
+          userInputsInCustomerForm();
+          clickToLogin();
+          expressPayments();
+
+          buttonContinue.addEventListener('click', function () {
+            checkoutReductionCode();
+            marketingIsChecked();
+          });
+
+          checkoutSetGa( { eventAction: 'checkout step 1 loaded', eventLabel: 'contact_information' } );
+        }
+
+        function shipping_method () {
+          buttonContinue.addEventListener('click', function () {
+            checkoutReductionCode();
+            sendShippingMethod();
+          });
+          checkoutSetGa( { eventAction: 'checkout step 2 loaded', eventLabel: 'shipping_method' } );
+        }
+
+        // send added reduction code
+        function checkoutReductionCode (  ) {
+          reductionForms.forEach( function ( form ) {
+            var input = form.querySelector('#checkout_reduction_code');
+            if ( input !== null ) {
+              form.addEventListener('submit', function () {
+                checkoutSetGa( { eventAction: 'add reduction code', eventLabel: input.value } );
+              });
+            }
+          });
+        }
+
+        // send user accept marketing
+        function marketingIsChecked () {
+          if ( checkboxMarketing !== null ) {
+            checkoutSetGa( { eventAction: 'accept marketing', eventLabel: !!checkboxMarketing.checked } );
+          }
+        }
+
+        // send express Payment
+        function expressPayments () {
+          var interval = setInterval( function(){
+            var expressPaymentsButtons = Array.from( document.querySelectorAll('.dynamic-checkout__buttons li') );
+
+            if ( expressPaymentsButtons.length > 0 ) {
+              expressPaymentsButtons.forEach( function ( paymentButton, index ) {
+                paymentButton.firstChild.addEventListener('click', function () {
+
+                  var expressCheckoutId = null;
+
+                  if ( paymentButton.firstChild.dataset.testid ) {
+                    expressCheckoutId = paymentButton.firstChild.dataset.testid;
+                  } else {
+                    expressCheckoutId = paymentButton.firstChild.title;
+                  }
+
+                  checkoutSetGa( { eventAction: 'express checkout', eventLabel: expressCheckoutId } );
+                });
+              });
+              clearInterval( interval );
+            }
+          }, 100 );
+        }
+
+        // send user set address form
+        function userInputsInCustomerForm () {
+          inputs.forEach( function ( input ) {
+            input.addEventListener('change', function () {
+              if ( hasChange === false ) {
+                checkoutSetGa( { eventAction: 'input user data', eventLabel: true } );
+                hasChange = true;
+              }
+            });
+          });
+        }
+
+        // send when user click login in to the checkout
+        function clickToLogin () {
+          if ( loginLink !== null ) {
+            loginLink.addEventListener('click', function () {
+              checkoutSetGa( { eventAction: 'click to login', eventLabel: true } );
+            });
+          }
+        }
+
+        // send errors by customer address form
+        function errorInFilds () {
+          var errorFields = [];
+          errorInputs.forEach( function( input ){
+            errorFields.push( input.getAttribute('name').replace('checkout[shipping_address][', '' ).replace(']', '') );
+          });
+          if ( errorFields.length > 0 ) {
+            checkoutSetGa( { eventAction: 'validation errors', eventLabel: errorFields } );
+          }
+        }
+
+        // send shipping method
+        function sendShippingMethod () {
+          shippingMethodsInputs.forEach( function( input ){
+            var shippingMethod = input.getAttribute('data-checkout-shipping-rate');
+            checkoutSetGa( { eventAction: 'shipping method', eventLabel: shippingMethod } );
+          });
+        }
+
+        switch ( Shopify.Checkout.step ) {
+          case "contact_information":
+            contact_information();
+            break;
+          case "shipping_method":
+            shipping_method();
+            break;
+        }
+      }
+
+    }
+    document.addEventListener('page:load', init );
+    document.addEventListener('page:change', init );
+  </script>
+{% endif %}
+{% render 'gdpr_and_gtm'%}

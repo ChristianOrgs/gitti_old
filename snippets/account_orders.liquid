@@ -1,0 +1,234 @@
+{% assign id = section.id %}
+
+<style>
+    #shopify-section-{{id}} #orders .item_image{
+        flex: 1;
+        max-width: 200px;
+        min-width: 100px;
+    }
+    #shopify-section-{{id}} #orders .item_info{
+        flex: 3;
+    }
+    #shopify-section-{{id}} #orders .bold{
+        font-weight: bold;
+    }
+    #shopify-section-{{id}} #orders .order{
+        background-color: white;
+    }
+    #shopify-section-{{id}} #orders .order:not(:last-child){
+        margin-bottom: 24px;
+    }
+    #shopify-section-{{id}} #orders .line_item{
+
+    }
+    #shopify-section-{{id}} #orders .line_item:not(:last-child){
+        margin-bottom: 15px;
+    }
+    #shopify-section-{{id}} #orders .quantity{
+        top: 10px;
+        right: 10px;
+        background-color: #4a4a4a;
+        color: white;
+        width: 30px;
+        height: 30px;
+    }
+    #shopify-section-{{id}} #orders .btn{
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+    #shopify-section-{{id}} #orders .btn:first-child{
+        margin-right: 15px;
+    }
+    #shopify-section-{{id}} #orders .address{
+        flex: 1;
+    }
+    #shopify-section-{{id}} #orders .address:last-child{
+        border-left: 1px solid #f5f5f5;
+    }
+    #shopify-section-{{id}} #orders .addresses{
+        border-bottom: 1px solid #f5f5f5;
+    }
+    #shopify-section-{{id}} #orders .price-overview{
+        border-bottom: 1px solid #f5f5f5;
+    }
+    #shopify-section-{{id}} #orders .order_details.is-relative{
+        overflow: hidden;
+        height: 0;
+        transition: 0.3s height ease;
+    }
+    #shopify-section-{{id}} #orders .order_details .is-absolute{
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{id}} #orders .order_buttons{
+            align-items: stretch;
+        }
+        #shopify-section-{{id}} #orders .order_buttons .show_details_button{
+            width: 100%;
+            margin: 0;
+        }
+        #shopify-section-{{id}} #orders .text-align-right{
+            text-align: left;
+        }
+        #shopify-section-{{id}} #orders .quantity{
+            top: unset;
+            right: 0px;
+            bottom: 0px;
+        }
+    }
+        
+</style>
+
+<div id="orders" class="account_tab flex col">
+    {% for order in customer.orders %}
+        <div class="view flex col order spacing-m">
+            <div class="flex row between spacing-bottom-xs small_col">
+                <p class="flex small_flex small_col"><span class="bold">Bestellung:&nbsp;</span><span> {{order.name}}</span></p>
+                <p class="text-align-right flex small_flex small_col"><span class="bold">Gesamtsumme:&nbsp;</span><span> {{order.total_price | money}}</span></p>
+            </div>
+            <div class="flex col spacing-bottom-s">
+                <div class="flex row between spacing-bottom-xs small_col">
+                    {% assign dateOrder = order.created_at | date: "%d. %b %y"%}
+                    {% assign dateOrder = dateOrder | replace: 'Mar', 'Mär' | replace: 'May', 'Mai' | replace: 'Oct', 'Okt' %}
+                    <p class="flex small_flex small_col"><span class="bold">Datum:&nbsp;</span><span> {{dateOrder}}</span></p>
+                    <p class="text-align-right flex small_flex small_col"><span class="bold">Anzahl der Produkte:&nbsp;</span><span> {{order.line_items.size}}</span></p>
+                </div>
+                <div class="flex row between small_col">
+                    <p class="flex small_flex small_col"><span class="bold">Versandstatus:&nbsp;</span>{{order.fulfillment_status_label}}</p>
+                    <p class="text-align-right flex small_flex small_col"><span class="bold">Zahlungsstatus:&nbsp;</span><span> {{order.financial_status_label}}</span></p>
+                </div>
+            </div>
+            <div class="flex col spacing-bottom-s">
+                {% for item in order.line_items %}
+                    {% if item.properties.size == 0 or item.properties.set != blank %}
+                        <div class="flex row line_item">
+                            <div class="flex col item_image center middle is-relative">
+                                {% render 'image_element',  image: item.image, fit: 'contain', image_shape: 'square' %}
+                                <div class="quantity is-absolute flex col center middle text-align-center">
+                                    <p>{{item.quantity}}</p>
+                                </div>
+                            </div>
+                            <div class="flex col around item_info spacing-m">
+                                <p class="h6">{{item.title}}</p>
+                                <p>{{item.final_line_price | money }}</p>
+                                {% if item.fulfillment.tracking_number != blank %}
+                                    <p><span class="bold">Trackingnummer:</span> {{item.fulfillment.tracking_number}}</p>
+                                {% else %}
+                                    <p><span class="bold">Trackingnummer:</span> --- </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="flex row right small_col small_center order_buttons">
+                <button class="btn btn--secondary show_details_button" onclick="toggleDetails({{forloop.index0}})">
+                    {{'customer.orders.show_details' | t }}
+                </button>
+                {% if block.settings.reorder_btn %}
+                    <div class="only_small spacing-bottom-m"></div>
+                    {% assign available = true %}
+                    {%- capture line_item_json -%}
+                        {
+                            'items': [
+                            {%- for line_item in order.line_items  -%}
+                                {%- if line_item.variant.available and line_item.variant.inventory_quantity >= line_item.quantity -%}
+                                    {
+                                        'id': {{line_item.variant_id}},
+                                        'quantity': {{line_item.quantity}},
+                                        'properties': {
+                                            {%- for property in line_item.properties %}
+                                                '{{property | first}}': '{{property | last}}'{%- unless forloop.last -%},{%- endunless -%}
+                                            {%- endfor -%}
+                                        }
+                                    }{% unless forloop.last %},{%- endunless -%}
+                                {%- else -%}
+                                    {%- assign available = false -%}
+                                    {%- break -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+                            ]
+                        }
+                    {%- endcapture -%}
+                    
+                        <button class="btn btn--primary repeat_order_button" onclick="repeatOrder({{line_item_json}})">
+                            {{'customer.orders.reorder' | t }}
+                        </button>
+                {% endif %}
+            </div>
+            <div class="flex col order_details is-relative">
+                <div class="flex col is-absolute spacing-top-s">
+                    <div class="flex row addresses">
+                        <div class="flex col address spacing-bottom-xs">
+                            <p class="h5">{{'customer.order.shipping_address' | t }}</p>
+                            {{order.shipping_address | format_address }}
+                        </div>
+                        <div class="flex col address spacing-left-s spacing-bottom-xs">
+                            <p class="h5">{{'customer.order.billing_address' | t }}</p>
+                            {{order.billing_address | format_address }}
+                        </div>
+                    </div>
+                    <div class="flex col spacing-top-xs">
+                        <div class="flex col price-overview spacing-bottom-xs">
+                            <p class="h5">Kostenaufteilung</p>
+                            <div class="flex row between address"><p>Zwischensumme</p><p>{{order.subtotal_price | money}}</p></div>
+                            {% for discount_application in order.discount_applications %}
+                                {% unless discount_application.title contains "Set" %}
+                                    <div class="flex row between"><p>Rabattcode: {{discount_application.title}}</p><p>{{discount_application.total_allocated_amount | times: -1 | money}}</p></div>
+                                {% endunless %}
+                            {% endfor %}
+                            {% for tax_line in order.tax_lines %}
+                                <div class="flex row between"><p>Steuer: {{ tax_line.title }}</p><p>{{ tax_line.price | money }} ({{ tax_line.rate | times: 100 }}%)</p></div>
+                            {% endfor %}
+                            <div class="flex row between">
+                                <p>Versand & Bearbeitung</p>
+                                <p>{{order.shipping_price | money}}</p>
+                            </div>
+                        </div>
+                        <div class="flex col spacing-top-xs">
+                            <div class="flex row between">
+                                <p>Gesamtumme</p>
+                                <p>{{order.total_price | money}}</p>
+                            </div>
+                            <div class="flex row between">
+                                <p >Zahlungsart</p>
+                                <p>{{ order.transactions[0].gateway }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        {% else %}
+        <div class="container flex col middle center">
+           <p class="p text-align-center">{{ 'customer.orders.none' | t }}</p> 
+        </div>
+        
+    {% endfor %}
+</div>
+
+<script>
+    function toggleDetails(orderIndex){
+        let order = document.querySelectorAll('#shopify-section-{{id}} #orders .order')[orderIndex];
+        let order_details_wrapper = order.querySelector('.order_details');
+        let order_details = order.querySelector('.order_details > .is-absolute');
+        let show_details_button = order.querySelector('.show_details_button');
+        if(order_details_wrapper.classList.contains('active')){
+            order_details_wrapper.style = '';
+            order_details_wrapper.classList.remove('active');
+            show_details_button.innerHTML = "{{'customer.orders.show_details' | t }}"
+        }else{
+            order_details_wrapper.style = 'height: '+order_details.getBoundingClientRect().height+'px;'
+            order_details_wrapper.classList.add('active');
+            show_details_button.innerHTML = "{{'customer.orders.hide_details' | t }}"
+        }
+    }
+
+    function repeatOrder(orderJson){
+        console.log(orderJson);
+        Shopify.theme.cart.addToCart(orderJson);
+    }
+</script>

@@ -1,0 +1,39 @@
+<div id="notify-popup">
+  <div class="icon-close"></div>
+  {% form 'customer' %}
+  {% assign notify_main_text = settings.notify_main_text %}
+  {% if notify_main_text != blank %}
+    <label for="contact[email]"><div class="notify-popup__text">{{ notify_main_text }}</div></label>
+  {% endif %}
+  <div class="js-signUp-form signUp-form">
+    <input type="hidden" name="contact[tags]" value="newsletter"/>
+    <div class="inputGroup mc-field-group">
+      <input class="signUp-input required email" type="email" name="contact[email]" id="notify_me_email" placeholder="{{ 'general.newsletter_signup.email_placeholder' | t }}">
+      <input type="hidden"  name="contact[first_name]" value="Newsletter" />
+      <input type="hidden"  name="contact[last_name]" value="Subscriber" />
+      <span class="signUp-mailIcon icon-mail"></span>
+      <button type="button" class="signUp-submit icon-arrow-right" name="subscribe" id="notify_me_submit"></button>
+    </div>
+  </div>
+  <input type="hidden" name="customer[accepts_marketing]" checked="checked" />
+  {% if form.posted_successfully? %}
+    <div class="signUp-confirmation p">{{ 'general.newsletter_signup.success_message' | t }}</div>
+  {% elsif form.errors %}
+    {{ form.errors | default_errors }}
+  {% endif %}
+{% endform %}
+
+<script>
+  function setMailSubscribe(productID, variantID){          
+          var emailString = document.getElementById('notify_me_email').value;
+				  var subscribeForm = $('#notify-popup #contact_form')[0];
+				  if(emailString !== ""){
+					{% if settings.notify_include_app %}
+					  BIS.create(emailString, variantID, productID);
+					{% endif %}
+					subscribeForm.submit();
+				  }
+				}
+</script>
+</div>
+<div id="notify-overlay"></div>

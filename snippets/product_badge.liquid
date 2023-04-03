@@ -1,0 +1,19 @@
+{%- assign current_lang = 'tags.lang' | t | append: '|' -%}
+{%- for tag in product.tags -%}
+<!--{{tag}}-->
+    {%- if tag contains current_lang -%}
+        {% assign lang_split = tag | split: '|' | last %}
+        {% assign tag_split = lang_split | split: '_' %}
+        {% if tag_split.first == 'badge' %}
+            <div class="tags">
+                <p class="{% if pdp %} bestseller_tag_product {% else %} bestseller_tag {% endif %}">{{tag_split.last }}</p>
+            </div>
+        {% endif %}
+        {% if tag_split.first == 'sale' %}
+            <div class="tags">
+                <p class="{% if pdp %} sale_tag_product {% else %} sale_tag {% endif %}">{{tag_split.last }}</p>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endfor %} 
+

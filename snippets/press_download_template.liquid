@@ -1,0 +1,228 @@
+{%- unless heading == blank and subheading == blank and text == blank and section.blocks.size == 0 -%}
+  <div class="faq-section faq-section-content">
+    {%- unless heading == blank and subheading == blank and text == blank -%}
+      <div class="page-title">
+        <div class="container">
+            {%- if heading != blank -%}
+              <h1 class="page-title__heading">{{ heading }}</h1>
+            {%- endif -%}
+
+            {%- if subheading != blank -%}
+              <h4 class="page-title__subheading subheading-text">{{ subheading }}</h4>
+            {%- endif -%}
+
+          {%- if text != blank -%}
+            <div class="text-content">
+                {{ text }}
+            </div>
+            {%- endif -%}
+        </div>
+      </div>
+    {% endunless %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="faq-content">
+        <div class="container">
+          <div class="flex row between">
+            
+            <div class = "faq-menu">
+
+              <{{section.settings.tag_header_menu}} class = "{{section.settings.class_header_menu}} {{section.settings.weight_class_header_menu}}">{{section.settings.titleMenu}}</{{section.settings.tag_header_menu}}>
+              {% for block in section.blocks %}
+                {% if block.type == 'header' %}
+                {% assign titleHeader = block.settings.header %}  
+                    <li class = "faq-menu__element {{titleHeader | handle}}{% if forloop.first %} active{% endif %}" data-faq-group-name = {{titleHeader | handle}}>
+                      <{{section.settings.tag_menu_topics}} class = "faq-menu__item-topic {{section.settings.class_menu_topics}} {{section.settings.weight_class_menu_topics}}">{{ titleHeader }}</{{section.settings.tag_menu_topics}}>
+                      {% render 'icon', icon: 'chevron-right' %}
+                    </li>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <ul class = "faq-list">
+
+              {% for block in section.blocks %}
+                {% if block.type == 'header' %}
+                {% assign titleHeader = block.settings.header %}  
+                <div class = "subContainer {{titleHeader | handle}}{% if forloop.first %} show{% endif %}">
+                  <{{section.settings.tag_header_faq_list}} class = "{{section.settings.class_header_faq_list}} {{section.settings.weight_class_header_faq_list}} spacing-bottom-{{section.settings.spacing_bottom_header}}">{{ titleHeader }}</{{section.settings.tag_header_faq_list}}>
+                    
+                    {% for block in section.blocks %}
+                      {% if block.type == 'question' %}
+                        {% assign headerQuestion = block.settings.headerQuestion %}
+                          {% if titleHeader == headerQuestion %}
+
+                            {% assign question = block.settings.title %}
+                            {% assign answer = block.settings.answer %}
+
+                            {% unless question == blank %}
+                            <a href='{{block.settings.link}}'>
+                              <li class = "faq-list__item spacing-bottom-{{section.settings.spacing_bottom_questionWrapper}}" {{block.shopify_attributes}}>
+                               
+                               <{{section.settings.tag_questions}} class = "download_link {{section.settings.class_questions}} {{section.settings.weight_class_questions}} spacing-bottom-{{section.settings.spacing_bottom_question}}"><u>Download</u></{{section.settings.tag_questions}}>
+                                
+
+                                <{{section.settings.tag_questions}} class = "faq-list__item-question is-relative {{section.settings.class_questions}} {{section.settings.weight_class_questions}} spacing-bottom-{{section.settings.spacing_bottom_question}}">{{ question }}</{{section.settings.tag_questions}}>
+                                
+
+
+                                
+                              </li>
+                              </a>
+                            {% endunless %}
+
+                          {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+              {% endfor %}
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    {% else %}
+      {% if is_faq_template %}
+        <div class="faq-content">
+          <div class="container">
+            <div class="flex row between">
+              <ul class="faq-list">
+                {% for i in (1..3) %}
+                <li class="faq-list__item" {{ block.shopify_attributes }}>
+                  <h2 class="faq-list__item-question">{{ 'onboarding.faq_question' | t }}</h2>
+                  <div class="faq-list__item-answer"><p>{{ 'onboarding.faq_answer' | t }}</p></div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endunless %}
+
+<style>
+  #shopify-section-{{section.id}} .faq-section .faq-menu { 
+    width: 28%;
+    border: 1px solid #a6a6a6;
+    padding: 30px;
+  }
+  #shopify-section-{{section.id}} .faq-section .faq-menu h2{ 
+    padding: 20px 0;
+    color: #333333;
+  }
+  #shopify-section-{{section.id}} .faq-section .faq-menu .faq-menu__item-topic { 
+    padding: 8px 30px 8px 0px;
+    color: #333333;
+    cursor: pointer;
+  }
+  #shopify-section-{{section.id}} .faq-menu .clever_icon {
+    cursor: pointer;
+  }
+  #shopify-section-{{section.id}} .faq-section .faq-list { 
+    width: 62%;
+    margin: initial;
+  }
+  #shopify-section-{{section.id}} .faq-section .faq-list .subContainer { 
+    display: none;
+  }
+  #shopify-section-{{section.id}} .faq-section .faq-list .faq-list__item-question { 
+    color: #3a3b3d;
+    padding-right: 20px;
+    z-index: 1;
+  }
+  #shopify-section-{{section.id}} .active .faq-menu__item-topic{
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  #shopify-section-{{section.id}} .faq-section .faq-list .show{
+    display: block;
+  }
+  #shopify-section-{{section.id}} .faq-menu li {
+    list-style-type: none;
+  }
+  #shopify-section-{{section.id}} .faq-menu__element {
+      display: flex;
+      justify-content: space-between;
+  }
+  #shopify-section-{{section.id}} .faq-menu__element p {
+      flex: 0 1 93%;
+  }
+  #shopify-section-{{section.id}} .faq-menu__element i {
+    flex: 0 1 5%;
+  }
+  #shopify-section-{{section.id}} .faq-list__item {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid #D7DAE0;
+    margin-bottom: 30px;
+  }
+  #shopify-section-{{section.id}} .faq-list__item .download_link {
+    position: absolute;
+    right: 0;
+  }
+  #shopify-section-{{section.id}} .faq-list__item .faq-list__item-answer {
+    display: none;
+  }
+  #shopify-section-{{section.id}} .faq-list__item .faq-list__item-answer.elementVisible {
+    display: block;
+  }
+  @media(max-width: {{settings.breakpoint_small}}px) {
+    #shopify-section-{{section.id}} .faq-section .row {
+        flex-direction: column-reverse;
+    }
+    #shopify-section-{{section.id}} .faq-section .faq-menu { 
+      width: 100%;
+      border: none;
+      border-top: 1px solid #e4e4e4;
+      padding: 30px 0;
+    }
+    #shopify-section-{{section.id}} .faq-section .faq-menu h2{
+      display: none;
+    }
+    #shopify-section-{{section.id}} .faq-section .subContainer h2{ 
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    #shopify-section-{{section.id}} .faq-section .faq-list { 
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    #shopify-section-{{section.id}} .faq-section .faq-list .faq-list__item { 
+      border: none;
+      margin-bottom: 0;
+    }
+}
+</style>
+
+<script>
+  let menu_elements = document.querySelectorAll('#shopify-section-{{section.id}} .faq-section .faq-menu .faq-menu__element');
+  let question_elements = document.querySelectorAll('#shopify-section-{{section.id}} .faq-section .faq-list .subContainer');
+  menu_elements.forEach(menu_element => {
+
+    menu_element.addEventListener("click", function(){
+      let titleValue = menu_element.dataset.faqGroupName;
+      
+      question_elements.forEach(question_element => {
+        if(question_element.classList.contains(titleValue)) {
+          question_element.classList.add("show");
+        } else {
+          question_element.classList.remove("show");
+        }
+      });
+
+      menu_elements.forEach(menu_element => {
+        if(menu_element.classList.contains(titleValue)) {
+          menu_element.classList.add("active");
+        } else {
+          menu_element.classList.remove("active");
+        }
+      });
+    });
+  });
+
+  
+
+  </script>

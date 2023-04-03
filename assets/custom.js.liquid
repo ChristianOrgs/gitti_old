@@ -1,0 +1,112 @@
+{% comment %}
+Use for global custom scripting.
+{% endcomment %}
+
+// {{ request.page_type   }}
+
+  {% if request.page_type == 'product' %}
+    document.addEventListener('DOMContentLoaded', refreshJudgeme);
+    window.addEventListener('refreshjudgeme', refreshJudgeme);
+    let jdgmCalls = 0;
+    function refreshJudgeme(){
+      console.log('judgeme loading');
+      if (typeof jdgm !== 'undefined' && typeof jdgm.batchRenderBadges === 'function') {
+        var data;
+        data = Array.prototype.slice.call(document.querySelectorAll('.jdgm-badge-placeholder')).map(function (element) {
+
+          var hash = {};
+          hash['productHandle'] = element.dataset.handle;
+          hash['badgePlaceholder'] = '.jdgm-badge-placeholder[data-handle="' + element.dataset.handle + '"]';
+          return hash;
+        });
+        jdgm.batchRenderBadges(data);
+      }else if(jdgmCalls < 100){
+        setTimeout(refreshJudgeme, 250);
+      }else{
+        console.log('jdgm failed!')
+      }
+      jdgmCalls++;
+    }
+  {% endif %}
+
+
+class ProductGridItemVariantChange extends HTMLElement {
+  constructor() {
+      super();
+  }
+  connectedCallback() {
+      const that = this;
+      this.productHandle = this.getAttribute('product-handle')
+      if(this.hasAttribute('collection-handle')){
+        this.collectionHandle = this.getAttribute('collection-handle')
+        this.collectionPath = `${window.routes.collections_url}/` +this.collectionHandle
+      }
+      else{
+        this.collectionPath = ''
+      }
+      this.gridItem = this.getAttribute('grid-item')
+      this.onclick = (e) => {
+        e.preventDefault()
+        fetch(that.collectionPath+'/products/'+that.productHandle+'?view=grid-item')
+        .then(response => response.text())
+        .then(text => {
+            let newNode = document.createElement('div');
+            newNode.innerHTML = text.trim();
+            newNode = newNode.querySelector('.product_grid_item');
+            document.querySelectorAll('.product_grid_item-'+that.gridItem).forEach(node => {
+              node.replaceWith(newNode);
+            })
+        })
+        
+      }
+  }
+}
+
+customElements.define('product-grid-item-variant-change', ProductGridItemVariantChange);
+
+class ToggleClassOnParentNode extends HTMLElement {
+  constructor() {
+      super();
+  }
+  connectedCallback() {
+      const that = this;
+      this.parentClass = this.getAttribute('parent-class')
+      
+      this.onclick = (e) => {
+        e.preventDefault()
+        that.parentNode.classList.toggle(that.parentClass)
+      }
+  }
+}
+
+customElements.define('toggle-parent-class', ToggleClassOnParentNode);
+
+async function checkProps(property_updates){
+  if(property_updates.size > 0){
+    for (const [key, value] of property_updates) {
+      const response = await fetch(window.Shopify.routes.root + 'cart/change.js', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({"id": key, "quantity": value.quantity, "properties": value.properties})});
+      console.log('set compare_at_price_property for '+key);
+    }
+  }
+}
+function setCompareAtPriceProp(){
+  fetch('{{routes.root_url}}?section_id=check_cart_properties')
+  .then(response => response.text())
+  .then(data => {
+    let div = document.createElement('div');
+    div.innerHTML = data.trim();
+    let clean_response = div.querySelector('script').innerHTML;
+    const property_updates_json = JSON.parse(clean_response);
+    const property_updates = new Map(Object.entries(property_updates_json));
+    if(!window.lastCartPropertyUpdate || (JSON.stringify(window.lastCartPropertyUpdate) !== JSON.stringify(property_updates_json))){
+      console.log('update cart properties: ')
+      if(property_updates.size > 0){
+        console.log(property_updates_json)
+      }
+      checkProps(property_updates);
+    }
+    window.lastCartPropertyUpdate = property_updates_json
+  });
+}
+window.addEventListener('cartadd', setCompareAtPriceProp);
+window.addEventListener('cartdatachanged', setCompareAtPriceProp);

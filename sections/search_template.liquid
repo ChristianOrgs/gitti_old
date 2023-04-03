@@ -1,0 +1,57 @@
+{% paginate search.results by section.settings.paginate_by %}
+<div class="page-width section-spacing">
+  {% comment %}comment
+  <form action="/{{ routes.search_url }}" method="get" role="search">
+    <div class="grid col-8 col-gap-small  medium-down_col-4">
+      <div class="grid-item col-span-7 medium-down_col-span-3">
+        <input style="width:100%;" type="search" name="q" value="{{ search.terms | escape }}">
+      </div>
+
+      <div class="grid-item">
+        <button type="submit" class="btn btn--primary">{{ 'general.search.placeholder' | t }}</button>
+      </div>
+    </div>
+  </form>
+  {% endcomment %}
+  <h1 class="h1 bold spacing-bottom-xl">
+    {{'general.search.results_for' | t }}&nbsp;&lsquo;{{ search.terms }}&rsquo;
+  </h1>
+    <div class="grid col-4 grid-gap small_col-2">
+    {% if search.performed %}
+        {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+        {% for item in search.results %}
+            {% render 'product_grid_item', product:item, sizes: sizes %}
+        {% else %}
+        <p>{{ 'general.search.no_result_found' | t }}<p>
+        {% endfor %}
+    {% endif %}  
+    </div>
+  
+
+  {% if paginate.pages > 1 %}
+    {% render 'paginate', paginate:paginate %}
+  {% endif %}
+
+</div>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": [
+    {
+        "type": "range",
+        "id": "paginate_by",
+        "label": "Paginate by",
+        "min": 4,
+        "max": 48,
+        "step": 4,
+        "default": 8
+    }
+  ],
+  "blocks": [
+    
+  ]
+}
+{% endschema %}
+

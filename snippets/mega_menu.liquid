@@ -1,0 +1,114 @@
+<style>
+.mega_menu.level-0{
+    height:100%;
+    display:flex;
+    flex-direction:row;
+}
+.mega_menu-item.level-0{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    padding:8px 16px;
+}
+.mega_menu-item.level-1  .menu_item-link{
+    padding: 8px 0;
+}
+.mega_menu-item.level-0 > .menu_item-link{
+    text-align: center;
+    width:100%;
+}
+.mega_menu-submenu.level-0{
+    transition: opacity 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+    opacity:0;
+    position: absolute;
+    left:50%;
+    bottom:0;
+    width:100vw;
+    transform: translate(-50vw,100%);
+    background-color:{{background_color}};
+    color:{{color}};
+}
+.mega_menu-item.level-0:hover > .mega_menu-submenu.level-0{
+    visibility: visible;
+    pointer-events: all;
+    opacity:1;
+}
+.mega_menu-background{
+    height: -moz-available;      
+    height: -webkit-fill-available; 
+    height: fill-available;
+    position: absolute;
+    width: 100vw;
+    background: #0005;
+    background: linear-gradient(0deg, #0000 0%, #0005 100%);
+    pointer-events: none;
+}
+.mega_menu-item.level-1{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding:16px 0px;
+}
+</style>
+
+{% if level == blank %}
+    {% assign level = 0 %}
+{% endif %}
+
+<ul class="mega_menu level-0">
+    {% for link in linklist.links %}
+        <li class="mega_menu-item level-0 {% if link.active %} active {% endif %}{% if link.levels > 0 and levels > 1 %} has_menu {% endif %}">
+            <a class="menu_item-link {% if level == 1 %}h6{% endif %}" href="{{link.url}}">{{link.title}}</a>
+            <div class="mega_menu-submenu level-0">
+                {% assign has_blocks = false %}
+                <div class="page-width grid col-{{columns}} col-gap">
+                    {% for block in blocks %}
+                        {% assign item_handle = block.settings.item_title | handleize %}
+                        {% if item_handle == link.handle %}
+                            <div id="mega_menu_block-{{block.id}}" class="mega_menu-item level-1 grid-item col-start-{{block.settings.column}} col-span-{{block.settings.column_span}}">
+                                {% case block.type %}
+                                    {% when 'menu' %}
+                                        {% assign has_blocks = true %}
+                                        {% assign block_linklist = linklists[block.settings.menu] %}
+                                        {% if block.settings.image != blank %}
+                                            {% render 'image_element',image:block.settings.image, fit:'cover', image_shape:block.settings.image_shape %}
+                                        {% endif %}
+                                        <h6 class="menu_item-link h6">{{block_linklist.title}}</h6>
+                                        {% render 'menu', linklist:block_linklist, orientation:'vertical' %}
+                                    {% when 'featured_image' %}
+                                        {% assign has_blocks = true %}
+                                        {% render 'image_element',image:block.settings.image, fit:'cover', image_shape:block.settings.image_shape %}
+                                    {% when 'social_media' %}
+                                        {% assign has_blocks = true %}
+                                        <h6 class="menu_item-link h6">{{block.settings.title}}</h6>
+                                        {% render 'social_media',direction:block.settings.direction %}
+                                    {% when 'featured_collection' %}
+                                        {% assign has_blocks = true %}
+                                        {% assign featured_collection = collections[block.settings.collection] %}
+                                        <a href="{{featured_collection.url}}">
+                                            {% render 'image_element',image:featured_collection.image, fit:'cover', image_shape:block.settings.image_shape %}
+                                            <h6 class="menu_item-link h6">{{featured_collection.title}}</h6>
+                                        </a>
+                                    {% when 'featured_product' %}
+                                        {% assign has_blocks = true %}
+                                        {% assign featured_product = all_products[block.settings.product] %}
+                                        <a href="{{featured_product.url}}">
+                                            {% render 'image_element',image:featured_product.images[0], fit:'cover', image_shape:block.settings.image_shape %}
+                                            <h6 class="menu_item-link h6">{{featured_product.title}}</h6>
+                                            {% render 'product_price',product:featured_product %}
+                                        </a>
+                                {% endcase %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% if has_blocks %}
+                    <div class="mega_menu-background"></div>
+                {% endif %}
+            </div>    
+        </li>
+    {% endfor %}
+</ul>

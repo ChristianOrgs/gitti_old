@@ -1,0 +1,3 @@
+{% layout none %}
+{% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+{% render 'product_grid_item', product: product, sizes: sizes %}

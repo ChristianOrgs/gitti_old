@@ -1,0 +1,505 @@
+{
+  "sections": {
+    "page_content": {
+      "type": "page_content",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template-13": {
+      "type": "page-lip-sync-sections-template-13",
+      "blocks": {
+        "8a718ea3-605a-47b8-b14f-21eff1f94ce2": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "page_width": "page-width",
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "l",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "xs",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_landingpage_header_communitycollection22-1.jpg",
+            "image_link": "",
+            "image_width": 100,
+            "image_shape": "sixteen_by_nine",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "sixteen_by_nine",
+            "image_fit_mobile": "contain",
+            "image_focal_point_mobile": "right",
+            "image_position_mobile": "end",
+            "preheading": "NEU",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Limited Community Collection.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "h1",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "text": "<p>Diesen Sommer feiern wir die die Lieblingsfarben unserer #gittifamily.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "m",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "Jetzt shoppen",
+            "button_link": "\/pages\/community-collection#colors",
+            "button_class": "btn--primary btn"
+          }
+        },
+        "51a27c8b-1eb7-417c-bbea-cb2b0d88b14e": {
+          "type": "html_content",
+          "disabled": true,
+          "settings": {
+            "custom_html": "<br>\n<div class=\"klaviyo-form-UaeyfM\"><\/div>\n<br>",
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "b02b934e-4850-4619-9274-5245e8924c16": {
+          "type": "video_page",
+          "disabled": true,
+          "settings": {
+            "video_url": "",
+            "page_width": "",
+            "video_controls": false,
+            "video_fit": "contain",
+            "height_video": 60,
+            "desktop_spacing_top": "xs",
+            "desktop_spacing_bottom": "xs",
+            "desktop_item_align": "left",
+            "desktop_overlay_position_text": "center",
+            "desktop_button_item_align": "left",
+            "hide_in_desktop": false,
+            "video_fit_mobile": "cover",
+            "mobile_height_video": 60,
+            "mobile_spacing_top": "xs",
+            "mobile_spacing_bottom": "xs",
+            "mobile_item_align": "left",
+            "mobile_button_item_align": "left",
+            "hide_in_mobile": false,
+            "preheading": "Cillum est eiusmod aliqua labore esse quis.",
+            "preheading_weight_class": "",
+            "preheading_tag": "p",
+            "class_preheading": "h4",
+            "preheading_spacing_bottom": "xs",
+            "preheading_color": "#3a3a3a",
+            "heading": "Veniam enim mollit amet ut mollit.",
+            "heading_weight_class": "",
+            "heading_class": "h4",
+            "heading_tag": "p",
+            "spacing_bottom_heading": "xs",
+            "heading_color": "#3a3a3a",
+            "text": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+            "text_tag": "p",
+            "text_spacing_bottom": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn",
+            "button_backgroundcolor": "#000000",
+            "button_color": "#3a3a3a"
+          }
+        },
+        "d1b33abf-9304-4827-acff-3c0292267bf6": {
+          "type": "triple_usp",
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "s",
+            "spacing_bottom": "xs",
+            "tag": "p",
+            "class": "p",
+            "weight_class": "",
+            "triple_usp_link_1": "",
+            "triple_usp_icon_1": "vegan_v",
+            "triple_usp_text_1": "Vegan & PETA-zertifiziert",
+            "triple_usp_link_2": "",
+            "triple_usp_icon_2": "extra_long_hold",
+            "triple_usp_text_2": "Besonders langanhaltend – bis zu 7 Tage",
+            "triple_usp_link_3": "",
+            "triple_usp_icon_3": "natural_ingredients",
+            "triple_usp_text_3": "82% pflanzenbasiert",
+            "custom_css": "#shopify-section-d1b33abf-9304-4827-acff-3c0292267bf6{\nbackground-color: #f6f6f6;"
+          }
+        },
+        "da7315eb-fd01-498b-8db7-86c56cc2f1b0": {
+          "type": "html_content",
+          "settings": {
+            "custom_html": "<div id=\"colors\"><\/div>",
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "9e2ea6a8-8c65-4cd3-a886-e65a3f061374": {
+          "type": "products",
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "l",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "note",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "h1",
+            "richtext_weight_class": "bold",
+            "button_label": "",
+            "button_class": "btn--tertiary",
+            "collection": "community-collection-1",
+            "style": "grid"
+          }
+        },
+        "668f56c0-dd0a-41aa-a59f-6e84884cabaf": {
+          "type": "feature_product",
+          "disabled": true,
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "gitti-no-155-soft-coral"
+          }
+        },
+        "35ce4fff-a474-453a-887e-66d3908f011a": {
+          "type": "feature_product",
+          "disabled": true,
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "gitti-no-156-pool-position"
+          }
+        },
+        "e2b4bbc0-7c3d-44fe-92c7-66727f05fae9": {
+          "type": "feature_product",
+          "disabled": true,
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "gitti-no-157-iced-coconut"
+          }
+        },
+        "4b86952b-ae44-41a1-a8ef-b2da334044b3": {
+          "type": "feature_product",
+          "disabled": true,
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "gitti-no-158-olive-oil"
+          }
+        },
+        "b79168fd-e5af-4d11-ad54-cac429f3dbf1": {
+          "type": "feature_product",
+          "disabled": true,
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "community-duo-set"
+          }
+        },
+        "56f2e5e5-62ea-4d2f-90d4-e626aa156059": {
+          "type": "feature_product",
+          "disabled": true,
+          "settings": {
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "community-collection-set"
+          }
+        },
+        "467141fa-8ead-4d04-a934-d0b240397ede": {
+          "type": "video_page",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/d3b0c003e2e244c5be7a882733097078.mp4",
+            "page_width": "page-width",
+            "video_controls": false,
+            "video_fit": "contain",
+            "height_video": 60,
+            "desktop_spacing_top": "xs",
+            "desktop_spacing_bottom": "xs",
+            "desktop_item_align": "left",
+            "desktop_overlay_position_text": "center",
+            "desktop_button_item_align": "left",
+            "hide_in_desktop": false,
+            "video_fit_mobile": "cover",
+            "mobile_height_video": 80,
+            "mobile_spacing_top": "xs",
+            "mobile_spacing_bottom": "xs",
+            "mobile_item_align": "left",
+            "mobile_button_item_align": "left",
+            "hide_in_mobile": false,
+            "preheading": "",
+            "preheading_weight_class": "",
+            "preheading_tag": "p",
+            "class_preheading": "h4",
+            "preheading_spacing_bottom": "xs",
+            "preheading_color": "#3a3a3a",
+            "heading": "Community power.",
+            "heading_weight_class": "bold",
+            "heading_class": "h2",
+            "heading_tag": "h2",
+            "spacing_bottom_heading": "xs",
+            "heading_color": "#3a3a3a",
+            "text": "<p>Ihr - unsere Community - habt euch diese ganz bestimmten Farben sehnlichst gewünscht und uns so zu unserer neuen Limited Community Collection inspiriert. Taucht ein in die sanft-verträumte und doch intensive Farbwelt. <\/p>",
+            "text_tag": "p",
+            "text_spacing_bottom": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn",
+            "button_backgroundcolor": "#000000",
+            "button_color": "#3a3a3a"
+          }
+        },
+        "446e8d31-b19e-49c2-a457-2aa0ba222721": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": true,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "page_width": "page-width",
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "m",
+            "spacing_top": "m",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "center",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_landingpage_collage_mobile_communitycollection22-2.jpg",
+            "image_link": "\/products\/community-collection-set",
+            "image_width": 100,
+            "image_shape": "",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "be02fdda-663e-4186-8b84-5daddd40cc92": {
+          "type": "gallery",
+          "settings": {
+            "background_color": "#ffffff",
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "l",
+            "heading": "@gittibeauty community - in real life.",
+            "heading_tag": "h2",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "image_shape": "square",
+            "image_fit": "contain",
+            "image_id1": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_set_duo-1.jpg",
+            "image_id2": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_158-1.jpg",
+            "image_id3": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_set_collection-2.jpg",
+            "image_id4": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_156-5.jpg",
+            "image_id5": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_157-7.jpg",
+            "image_id6": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_set_duo-3_1.jpg",
+            "image_id7": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_157-1.jpg",
+            "image_id8": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_155-3.jpg"
+          }
+        },
+        "0900bcc9-0b3f-442b-88ef-5ee8d879f064": {
+          "type": "html_content",
+          "settings": {
+            "custom_html": "<a href=\"\/collections\/nagellack\"><button style=\"display:block;margin-right:auto;margin-left:auto;\" class=\"btn btn--secondary\">Mehr Nagellack entdecken<\/button><\/a>",
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "324d6ad7-07d7-4402-950f-82abbccca71d": {
+          "type": "html_content",
+          "disabled": true,
+          "settings": {
+            "custom_html": "<p class=\"p\">*Der Gutschein-Code ist gültig bis Donnerstag, 30. Juni 2022 um 8:00 Uhr. Er kann nur einmal pro Kunde verwendet werden und ist nicht mit anderen Rabattaktionen kombinierbar.<\/p>",
+            "page_width": "page-width",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        }
+      },
+      "block_order": [
+        "8a718ea3-605a-47b8-b14f-21eff1f94ce2",
+        "51a27c8b-1eb7-417c-bbea-cb2b0d88b14e",
+        "b02b934e-4850-4619-9274-5245e8924c16",
+        "d1b33abf-9304-4827-acff-3c0292267bf6",
+        "da7315eb-fd01-498b-8db7-86c56cc2f1b0",
+        "9e2ea6a8-8c65-4cd3-a886-e65a3f061374",
+        "668f56c0-dd0a-41aa-a59f-6e84884cabaf",
+        "35ce4fff-a474-453a-887e-66d3908f011a",
+        "e2b4bbc0-7c3d-44fe-92c7-66727f05fae9",
+        "4b86952b-ae44-41a1-a8ef-b2da334044b3",
+        "b79168fd-e5af-4d11-ad54-cac429f3dbf1",
+        "56f2e5e5-62ea-4d2f-90d4-e626aa156059",
+        "467141fa-8ead-4d04-a934-d0b240397ede",
+        "446e8d31-b19e-49c2-a457-2aa0ba222721",
+        "be02fdda-663e-4186-8b84-5daddd40cc92",
+        "0900bcc9-0b3f-442b-88ef-5ee8d879f064",
+        "324d6ad7-07d7-4402-950f-82abbccca71d"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    },
+    "16520942943bfeada3": {
+      "type": "index_featured_logos",
+      "blocks": {
+        "2ec16959-a8c1-4653-94ec-e7e8214727c7": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 195.4 50\" style=\"enable-background:new 0 0 195.4 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M195.5,48.6c0,0.1,0,0.1,0,0.3h-0.7c-11.2,0-22.4,0-33.5,0c-0.3,0-0.8-0.2-0.8-0.3c0-0.5,0.5-0.3,0.7-0.3c1,0,2.1,0,3.2,0\n\t\tV2h-8.5v0.8c0,12.2,0,24.3,0,36.5c0,0.8-0.1,1.7-0.4,2.4c-2.1,5-5.9,7.7-11.2,8.2c-4.5,0.4-8.8-0.3-12.8-2.4\n\t\tc-3-1.6-5.1-3.9-5.8-7.3c-0.2-0.9-0.3-1.9-0.3-2.8c0-11.5-0.1-23-0.1-34.6c0-0.3,0-0.6,0-0.9h-2.4c-0.6,0-1.2,0-1.9,0\n\t\tc-0.2,0-0.3-0.2-0.5-0.3c0.2-0.1,0.3-0.2,0.5-0.2c2.4,0,4.9,0,7.3,0h9.2c0.3,0,0.7-0.1,0.5,0.5h-4.7c0,0.3,0,0.5,0,0.7\n\t\tc0,12.7,0.1,25.4,0.1,38c0,4.7,3.4,8.3,8,8.6c3.3,0.3,6.3-0.3,9.1-2.3c2.3-1.6,3.7-3.8,4.6-6.5c0.1-0.2,0.1-0.5,0.1-0.7\n\t\tc0-12.4,0-24.8,0-37.3V1.9h-0.7c-1.4,0-2.9,0-4.3,0c-0.1,0-0.3-0.2-0.4-0.3c0.1-0.1,0.3-0.2,0.4-0.3c0.1,0,0.3,0,0.4,0h43.9v17.2\n\t\tc-0.1,0-0.1,0-0.2,0.1c-0.1-0.2-0.2-0.4-0.2-0.5c-0.4-2.1-0.6-4.2-1.1-6.2c-0.9-3.5-2.8-6.4-6.1-8.1c-2.3-1.2-4.8-1.8-7.4-1.9\n\t\tc-2.1-0.1-4.3,0-6.4,0.1c-0.1,0-0.2,0-0.3,0v22c0.9,0,1.7,0,2.6,0c1.4,0,2.8-0.3,4.1-0.8c2.1-0.9,3.1-2.7,3.7-4.8\n\t\tc0.2-0.9,0.4-1.9,0.6-2.9c0-0.2,0.1-0.3,0.1-0.5c0.1,0,0.1,0,0.2,0c0,0.2,0.1,0.3,0.1,0.5c0,6.1,0,12.1,0,18.2\n\t\tc0,0.2-0.1,0.3-0.2,0.5c-0.1-0.2-0.2-0.3-0.2-0.5c-0.2-0.9-0.3-1.9-0.6-2.8c-1.1-4.7-5.2-6.5-8.8-6.3c-0.5,0-1,0.1-1.5,0.1v23.5\n\t\tc0,0,0.1,0.1,0.1,0.1c2.8,0,5.6,0.2,8.4-0.1c6.6-0.9,10.9-4.7,12.9-11c0.6-2,0.9-4,0.9-6.1c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.2,0.3,0.3,0.3,0.5C195.5,36.9,195.5,42.8,195.5,48.6z M73.1,40.2c-2.1,3.3-4.8,6-8.4,7.8c-6.9,3.4-15.1,2-20.6-3.4\n\t\tc-3.7-3.6-5.8-8.1-7-13c-0.6-2.4-0.9-4.8-0.9-7.9c0.1-5.2,2.1-10.5,5.7-15.1c2.4-3.1,5.3-5.5,9-7C56.3-0.6,61.4,0,66.2,3\n\t\tc7,4.5,11,11.1,11.7,19.4C78.5,28.8,76.6,34.7,73.1,40.2z M69.1,24.7c0-4-0.2-7.8-0.9-11.6c-0.6-2.9-1.4-5.7-3.1-8.2\n\t\tc-3.5-5.1-10.4-5.1-13.9-2.2c-1.6,1.3-2.7,3-3.5,4.9c-1.8,4.2-2.4,8.6-2.5,13.1c-0.2,4.7-0.1,9.3,0.4,13.9c0.3,2.8,0.7,5.5,1.8,8.2\n\t\tc1.2,3.1,3.2,5.5,6.6,6.2c1.2,0.3,2.5,0.4,3.8,0.3c3.3-0.1,5.9-1.6,7.7-4.4c1.3-2.1,2-4.4,2.5-6.8C68.9,33.6,69,29.1,69.1,24.7z\n\t\t M122.7,28.9h-15.9c-0.2,0.5,0.1,0.6,0.5,0.6c1.2,0,2.4,0,3.6,0v0.8c0,3.8,0,7.7,0,11.5c0,2.1-0.8,3.8-2.3,5.1\n\t\tc-2.9,2.5-6.3,3-9.9,2c-2.4-0.7-3.9-2.5-4.9-4.6c-1.5-3-2.2-6.3-2.5-9.6c-0.7-7.1-0.7-14.2,0.2-21.3c0.4-2.8,1-5.6,2.3-8.1\n\t\tc2-4.1,5.1-5.5,9.5-4.3c3,0.8,5.3,2.5,7.2,4.9c2.5,3.2,3.9,6.8,4.8,10.7c0.1,0.2,0.1,0.4,0.2,0.6c0.1,0,0.1,0,0.2,0V0\n\t\tc-0.2,0.1-0.3,0.2-0.3,0.3c-1.3,2-3.8,2.8-6,1.9c-1.3-0.5-2.6-1-4-1.4c-3.5-1.1-7-0.9-10.2,0.9C87.2,6.2,83,13.2,82,22.1\n\t\tc-0.6,5.4,0.4,10.6,2.7,15.6c2,4.4,4.9,8,9.3,10.3c2.9,1.5,6,2.2,9.2,1.7c1.7-0.3,3.4-1,5-1.6c1.8-0.6,3.5-1.3,5.3-1.7\n\t\tc2.2-0.5,4.2,0.4,4.9,2.4c0,0.1,0.2,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0V29.5c1.2,0,2.4,0,3.5,0C122.8,29.5,122.8,29.5,122.7,28.9z\n\t\t M41.1,1.4c-2.2,0-4.3,0-6.5,0h-2.2V2h4.4c-3.7,11.4-7.4,22.6-11.1,33.9c0,0-0.1,0-0.1,0C21.5,24.6,17.3,13.3,13.1,2h4.3\n\t\tc0.2-0.6-0.2-0.6-0.5-0.6c-5.5,0-10.9,0-16.4,0c-0.2,0-0.3,0-0.5,0V2c1.5,0,2.9,0,4.3,0c0.5,0,0.7,0.2,0.9,0.6\n\t\tC10.8,18,16.3,33.3,21.9,48.7c0.1,0.2,0.2,0.4,0.3,0.7c0.1-0.3,0.2-0.5,0.2-0.7C27.4,33.4,32.3,18,37.3,2.6C37.4,2.1,37.6,2,38.1,2\n\t\tc1.2,0,2.4,0,3.5,0C41.8,1.4,41.5,1.4,41.1,1.4z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"gitti ist DIE Nagellack-Innovation aus Berlin. Die Lacke des jungen Labels sind nicht nur vegan und frei von Schadstoffen, sondern pflegen die Nägel obendrein.\"<br>"
+          }
+        },
+        "9ea16866-d3bf-4fa3-85cd-aeb0d86588d6": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 220.8 50.3\" style=\"enable-background:new 0 0 220.8 50.3;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M127.9,1.2c0,0.1,0,0.2,0,0.3v47.3c0,0.8,0,0.8-0.8,0.8c-2.7,0-5.4,0-8.2,0c-0.4,0-0.6-0.1-0.6-0.6c0-10.5,0-21.1,0.1-31.6\n\t\tc0-2.8,0.2-5.5,0.3-8.3c0-0.5,0-1,0-1.5l-0.1,0c-0.2,1.2-0.4,2.5-0.5,3.7c-0.7,5-1.5,10.1-2.6,15.1c-1.6,7.4-3.1,14.9-4.7,22.4\n\t\tc-0.2,0.9-0.2,0.9-1,0.9c-1.6,0-3.3,0-4.9,0c-0.4,0-0.5-0.1-0.6-0.5c-1.9-9.4-3.8-18.7-5.6-28.1c-0.5-2.8-0.9-5.6-1.3-8.3\n\t\tc-0.2-1.7-0.4-3.5-0.6-4.8c0.1,13.6,0.1,27.6,0.2,41.7h-8V0.8c0.2,0,0.4,0,0.5,0c4.2,0,8.4,0,12.6,0c0.4,0,0.6,0.1,0.7,0.6\n\t\tc1,5.9,2.1,11.8,3.2,17.6c0.5,2.6,0.9,5.2,1.3,7.9c0.3,2,0.4,4,0.6,6.1c0.1,0.7,0.1,1.4,0.3,2c0.1-0.6,0.1-1.2,0.2-1.8\n\t\tc0.4-3.2,0.7-6.5,1.3-9.7c1.5-7.5,3.1-14.9,4.6-22.3c0.1-0.3,0.2-0.4,0.5-0.4c4.2,0,8.4,0,12.6,0C127.8,0.7,127.9,0.8,127.9,1.2z\n\t\t M220.7,49.5c-0.2,0-0.4,0-0.6,0c-3.1,0-6.3,0-9.4,0c-0.4,0-0.5-0.1-0.7-0.5c-1.7-6.1-3.5-12.1-5.2-18.2c-0.1-0.4-0.2-0.5-0.7-0.5\n\t\tc-0.9,0-1.7,0-2.7,0v19.2h-9.7V0.8c0.2,0,0.4,0,0.5,0c5.1,0,10.1,0,15.2,0.1c1.3,0,2.7,0.2,4,0.5c2.9,0.7,4.8,2.8,6.3,5.3\n\t\tc1.5,2.6,2,5.5,2,8.5c0,2.6-0.3,5.2-1.3,7.6c-0.9,2.3-2.5,4.1-4.6,5.3c-0.4,0.3-0.5,0.5-0.3,0.9c2.3,6.7,4.7,13.3,7,20\n\t\tC220.6,49.1,220.7,49.3,220.7,49.5z M209.3,11.6c-0.5-1.6-1.6-2.7-3.2-3.1c-0.6-0.1-1.2-0.2-1.7-0.2c-0.9,0-1.8,0-2.8,0v13.9\n\t\tc1.3,0,2.6,0.1,3.8,0c2-0.2,3.3-1.4,3.9-3.2C210,16.6,210.1,14.1,209.3,11.6z M160,24.1c-0.1,5.5-0.2,9.6-1.2,13.7\n\t\tc-0.6,2.7-1.6,5.3-3.3,7.5c-2.1,2.8-4.9,4.3-8.3,4.8c-2.7,0.4-5.3,0.2-7.8-0.7c-2.6-0.9-4.6-2.6-6-4.9c-1.6-2.8-2.5-5.8-3.1-8.9\n\t\tc-1-5.3-1-10.7-0.7-16.1c0.2-3.7,0.8-7.4,2.3-10.9c1.2-2.9,3-5.4,5.8-6.9c2.5-1.4,5.3-1.8,8.1-1.6c2,0.1,3.9,0.5,5.6,1.5\n\t\tc2.8,1.5,4.6,3.9,5.9,6.8c1.2,2.8,1.8,5.7,2.1,8.6C159.8,19.8,159.9,22.6,160,24.1z M149.5,24c-0.1-2.6-0.3-6.2-0.6-9.8\n\t\tc-0.1-1.3-0.5-2.6-1.1-3.8c-1.1-2.2-4.7-2.5-6.1-0.2c-0.6,1-1,2-1.1,3.1c-0.2,2-0.5,4.1-0.5,6.2c-0.1,5.4-0.3,10.8,0.3,16.2\n\t\tc0.2,1.3,0.4,2.7,1,3.9c0.5,1,1.1,1.7,2.2,1.9c2.3,0.5,4.2-0.2,4.8-2.7c0.4-1.5,0.6-3,0.7-4.6C149.3,31.2,149.3,28.1,149.5,24z\n\t\t M29.8,23.8c-4.6,0-9.2,0-13.8,0c-0.4,0-0.5,0.2-0.5,0.5c0,2.3,0,4.6,0,6.9c0,0.2,0,0.4,0,0.6h0.6c1.6,0,3.3,0,4.9,0\n\t\tc0.2,0,0.5,0,0.5,0.3c-0.1,2.1-0.2,4.2-0.9,6.1c-0.8,2.2-2,3.2-4.4,3.2c-1.9,0.1-3.4-0.7-4.3-2.4c-0.4-0.8-0.7-1.6-0.9-2.5\n\t\tc-0.7-2.8-0.8-5.6-0.8-8.5c0-3.7,0.1-7.4,0.3-11.2c0.1-1.6,0.4-3.2,0.8-4.7c0.6-2.4,2-3.5,4.4-3.6c2-0.1,3.5,0.6,4.4,2.4\n\t\tc0.3,0.6,0.5,1.2,0.7,1.8c0.4,1.6,0.7,3.3,1,5c0.1,0,0.2,0,0.4,0c2.4-0.4,4.8-0.9,7.3-1.3c0.5-0.1,0.5-0.3,0.5-0.7\n\t\tc-0.3-2.4-0.7-4.8-1.5-7.1c-1.1-2.8-2.6-5.3-5.2-7c-1.9-1.2-4-1.8-6.3-1.9C13.2-0.2,9.8,0.7,6.9,3.3c-2,1.8-3.3,4.1-4.3,6.6\n\t\tc-1.7,4.3-2.3,8.8-2.4,13.3c-0.1,3.6,0,7.2,0.5,10.8C1,37,1.7,39.8,2.9,42.5c1.4,3,3.4,5.4,6.6,6.7c2.2,0.9,4.5,1.2,6.9,1\n\t\tc3.1-0.2,5.5-1.6,7.1-4.2c0.3-0.6,0.7-1.2,1-1.8c0.1-0.1,0.2-0.3,0.3-0.5c0.1,0.3,0.1,0.4,0.1,0.6c0.3,1.6,0.7,3.2,1,4.9\n\t\tc0.1,0.3,0.2,0.4,0.5,0.4c1.1,0,2.3,0,3.4,0c0.1,0,0.3,0,0.4-0.1V23.9C30,23.8,29.9,23.8,29.8,23.8z M189.5,0.7c-2.4,0-4.8,0-7.3,0\n\t\tc-0.2,0-0.4,0-0.6,0v0.7c0,6,0,12,0,18.1c0,5,0,10-0.1,14.9c0,1.4-0.2,2.9-0.7,4.2c-0.5,1.4-1.5,2.3-3,2.5c-0.5,0.1-1,0.1-1.5,0.1\n\t\tc-2.1-0.1-3.4-1-4-3c-0.5-1.5-0.6-3.1-0.6-4.6c0-8.9,0-17.9,0-26.8c0-1.9,0-3.8,0-5.7c0-0.4-0.1-0.5-0.5-0.5c-3,0-6,0-9.1,0\n\t\tc-0.3,0-0.5,0.1-0.5,0.5c0,11.4,0,22.8,0.1,34.2c0,2.4,0.4,4.8,1.2,7.2c1.2,3.6,3.5,6,7.1,7c3.5,1,7.1,1,10.6,0.2\n\t\tc2.6-0.6,4.8-1.9,6.4-4.1c1.3-1.8,1.9-3.8,2.3-5.9c0.5-2.8,0.6-5.6,0.6-8.4c0-10,0-20,0-30.1C190.1,0.8,190,0.7,189.5,0.7z\n\t\t M88.2,49.6h-0.7c-2.9,0-5.8,0-8.7,0c-0.6,0-0.7-0.2-0.8-0.7c-0.6-3.2-1.2-6.4-1.8-9.5c0-0.1,0-0.2-0.1-0.3h-9.7\n\t\tc-0.2,1.2-0.4,2.3-0.6,3.5c-0.4,2.2-0.8,4.5-1.2,6.7c0,0.1-0.2,0.3-0.4,0.3c-2.8,0-5.6,0-8.4,0c0,0-0.1,0-0.2-0.1\n\t\tc0-0.1,0-0.3,0.1-0.5c3.3-14.4,6.6-28.8,9.9-43.1c0.4-1.6,0.7-3.1,1-4.7c0.1-0.4,0.2-0.5,0.7-0.5c3.1,0,6.2,0,9.3,0\n\t\tc0.4,0,0.5,0.1,0.6,0.5c2.8,12.2,5.5,24.4,8.3,36.6c0.9,3.8,1.7,7.5,2.6,11.3C88.2,49.2,88.2,49.4,88.2,49.6z M75.1,31.1\n\t\tc0-0.2,0-0.3-0.1-0.5c-0.7-3.1-1.3-6.3-2-9.4c-0.5-2.2-0.9-4.5-1.3-6.7c-0.2-1.4-0.3-2.9-0.4-4.3c-0.9,7-2.6,13.9-3.8,20.9H75.1z\n\t\t M54.3,41.1c0-0.1,0-0.3,0-0.5H41.9V0.7h-0.7c-2.9,0-5.7,0-8.6,0c-0.7,0-0.7,0-0.7,0.7v15.9c0,10.5,0,21.1,0,31.6\n\t\tc0,0.4,0,0.7,0.6,0.7c7.1,0,14.2,0,21.3,0c0.4,0,0.5-0.1,0.5-0.5C54.3,46.4,54.3,43.7,54.3,41.1z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Hier kommt die Beauty-Revolution, auf die die Welt gewartet hat!\"<br>"
+          }
+        },
+        "2010302a-f01e-45a7-92ab-af784eb32777": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 161.8 50\" style=\"enable-background:new 0 0 161.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M53.6,46.8c-0.7,0.8-1.7,0.6-2.1-0.4c-0.1-0.4-0.2-0.7-0.3-1.1c-0.2-2.4-0.3-4.8-0.4-7.2c-0.2-2.6-0.3-5.1-0.5-7.7\n\t\tc-0.3-2.7-2.5-4.7-5.1-5.2c-0.1,0-0.2-0.1-0.5-0.3c2.7,0,4.3-1.6,5.3-3.6c2.4-5.1,2.8-10.4,0.6-15.7c-1.4-3.3-3.9-5.2-7.7-5\n\t\tc-2.5,0.1-5,0-7.5,0c-0.4,0-0.7,0-1.1,0c-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.5,0,1,0,1.6,0v47.3h-2.3\n\t\tc0,0.1-0.1,0.1-0.1,0.2c0.2,0.1,0.3,0.4,0.5,0.4c2.8,0,5.6,0,8.4,0c0.2,0,0.3-0.2,0.5-0.4c0-0.1-0.1-0.2-0.1-0.2h-2V25.4\n\t\tc2.7-0.1,3.5,0.2,4.3,2.5c0.6,1.7,1,3.6,1.1,5.4c0.2,3.1,0.2,6.2,0.3,9.2c0.1,1.9,0.3,3.8,1.4,5.5c0.9,1.4,2.1,1.9,3.5,1.5\n\t\tc1.3-0.4,2.8-2.3,2.8-3.6C54,46.3,53.8,46.5,53.6,46.8z M44.2,23.6c-1,0.9-2.1,1.2-3.4,1.2V1.3c2.4-0.3,3.4,0.2,4.5,2.3\n\t\tc1.1,2.1,1.7,4.3,1.9,6.6c0.3,3.5,0,6.9-1,10.3C45.7,21.7,45.2,22.8,44.2,23.6z M20.8,25.4c-0.6,0-1.3,0-2,0v24.1\n\t\tc-0.1,0-0.1,0-0.2,0c-0.1-0.2-0.2-0.4-0.2-0.6c-0.1-0.5-0.2-1-0.4-1.4c-0.4-1-1.3-1.3-2.2-0.8c-0.4,0.2-0.7,0.5-1.1,0.8\n\t\tc-0.4,0.4-0.8,0.8-1.3,1.1c-1.8,1.6-3.5,1.8-5.7,0.6c-1.6-0.9-2.7-2.3-3.6-3.9c-1.6-2.9-2.5-6.1-3.1-9.3C0.1,31-0.3,25.9,0.2,20.7\n\t\tc0.5-5.2,1.4-10.2,3.7-14.9c0.8-1.7,1.8-3.3,3.3-4.5C8.3,0.5,9.4,0,10.8,0c1.1,0,2,0.5,2.7,1.3C13.8,1.7,14,2,14.3,2.3\n\t\tc0.8,0.7,1.8,0.5,2.2-0.5c0.2-0.4,0.3-0.9,0.4-1.3c0.1,0,0.1,0,0.2,0c0.2,5.6,0.5,11.2,0.7,16.8c-0.1,0-0.2,0-0.2,0\n\t\tc-0.1-0.7-0.3-1.5-0.4-2.2c-0.5-3.2-1.1-6.4-2.2-9.5c-0.4-1-0.9-2-1.4-2.9c-0.2-0.4-0.6-0.8-1-1.2C11.2,0,9.9,0.2,8.9,1.9\n\t\tC7.9,3.7,7.4,5.7,7,7.8C5.8,14.3,5.3,21,5.4,27.6c0.1,4.7,0.4,9.4,1.3,14c0.4,1.8,0.9,3.5,1.5,5.2c0.2,0.6,0.6,1.1,1,1.6\n\t\tc1.1,1.2,2.5,1.2,3.3-0.2c0.6-1.1,1-2.3,1.3-3.5c0.3-1.2,0.3-2.4,0.3-3.6c0-5,0-10,0-15c0-0.2,0-0.4,0-0.7c-0.6,0-1.2,0-1.9,0\n\t\tc-0.4,0-0.6-0.1-0.4-0.6h9.4C21.4,25.2,21.3,25.4,20.8,25.4z M110.3,48.9c0,0.1,0,0.1-0.1,0.2H93.2c3.9-16,7.7-31.9,11.6-47.9\n\t\tc-2,0-3.9-0.1-5.9,0c-1,0-1.8,0.7-2.4,1.5c-1.5,1.9-2.1,4.1-2.3,6.4c-0.2,1.7-0.1,3.4-0.2,5.2c0,0.2-0.2,0.4-0.2,0.5\n\t\tc-0.1-0.2-0.2-0.4-0.2-0.5c0-4.4,0-8.7,0-13.1c0-0.1,0-0.3,0-0.4h16.6c-4,16-8,31.9-11.9,47.8c0.2,0,0.4,0,0.6,0\n\t\tc1.4,0,2.8-0.1,4.2,0c2.8,0.1,4.6-1.3,5.7-3.8c0.9-1.9,1-3.9,1.1-5.9c0-1.1,0-2.3,0-3.4c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.1,0.3,0.3,0.3,0.4C110.3,40,110.3,44.5,110.3,48.9z M83.6,48.6c-0.3-0.1-0.5,0-0.8,0c-0.5,0.1-0.6-0.1-0.7-0.6\n\t\tc-1-6.1-2.1-12.2-3.2-18.3c-1.3-7.7-2.7-15.4-4-23.1c-0.4-2.1-0.7-4.1-1.1-6.2h-0.1c-3,16.1-6,32.1-9.1,48.3c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,3,0,4.4,0c0.4,0,0.5-0.1,0.4-0.6h-2.3c0.8-4.5,1.6-8.8,2.4-13.2\n\t\tc0-0.2,0.4-0.4,0.6-0.4c1.2,0,2.4,0,3.6,0h2.9c0.8,4.5,1.6,9,2.4,13.6h-1.9c-0.2,0.6,0.1,0.6,0.5,0.6c2.6,0,5.1,0,7.7,0\n\t\tc0.2,0,0.4-0.2,0.6-0.3C84,48.8,83.8,48.7,83.6,48.6z M68.1,34.4c1.1-6.2,2.3-12.4,3.4-18.5c0,0,0.1,0,0.1,0\n\t\tc1.1,6.2,2.1,12.3,3.2,18.5H68.1z M161.4,48.6c-0.2,0-0.5,0-0.7,0c-0.6,0.1-0.8-0.2-0.9-0.7c-1-6.1-2.1-12.2-3.2-18.3\n\t\tc-1.5-8.5-2.9-17-4.4-25.5c-0.2-1.2-0.4-2.5-0.7-3.7c0,0-0.1,0-0.1,0c-3,16.1-6,32.1-9.1,48.2c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,2.9,0,4.4,0c0.2,0,0.3-0.2,0.5-0.3c-0.2-0.1-0.3-0.3-0.5-0.3\n\t\tc-0.6,0-1.3,0-1.9,0c0-0.2,0-0.3,0-0.5c0.8-4.2,1.5-8.5,2.3-12.7c0.1-0.4,0.3-0.4,0.6-0.4c1.7,0,3.3,0,5,0h1.5\n\t\tc0.8,4.6,1.6,9,2.4,13.6c-0.5,0-1,0-1.4,0c-0.2,0-0.4,0.2-0.5,0.3c0.2,0.1,0.4,0.3,0.6,0.3c2,0,4,0,6,0h2.2\n\t\tC161.8,48.6,161.8,48.6,161.4,48.6z M145.7,34.4c1.2-6.2,2.3-12.4,3.4-18.6c0,0,0.1,0,0.1,0c1.1,6.2,2.1,12.4,3.2,18.6H145.7z\n\t\t M131.3,48.6c0.1,0.4,0.1,0.6-0.3,0.6c-2.7,0-5.4,0-8.2,0c-0.4,0-0.5-0.2-0.4-0.6h2V1.3c-0.5,0-1.1,0-1.6,0c-0.2,0-0.3-0.2-0.4-0.3\n\t\tc0.1-0.1,0.3-0.3,0.4-0.3c2.7,0,5.4,0,8.2,0c0.2,0,0.3,0.2,0.5,0.3c0,0.1-0.1,0.1-0.1,0.2h-2.1v47.4H131.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Mit ihrer veganen und schadstofffreien Nagellackbrand gitti hat Gründerin Jennifer Baum-Minkus voll ins Schwarze getroffen.\"<br>"
+          }
+        },
+        "7c55a396-9496-43e0-b55e-6561a2533415": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 144.8 50\" style=\"enable-background:new 0 0 144.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M144.8,0.6c-0.7,1.9-1.3,3.8-2.1,5.6c-0.1,0-0.3-0.1-0.4-0.1c0.1-0.7,0.2-1.4,0.3-2c0.1-2-0.6-3-2.6-3.1\n\t\tc-2.1-0.1-4.3-0.1-6.4,0c-0.3,0-0.7,0.3-0.8,0.5c-1.1,2.9-2.1,5.9-3.2,8.8c-0.1,0.2-0.1,0.5-0.2,0.7c3.9,1,6.3-0.7,7.7-4.2\n\t\tc0.1,0.1,0.3,0.3,0.4,0.4c-1.2,3.2-2.3,6.5-3.5,9.7c-0.1,0-0.3-0.1-0.4-0.1c0.1-0.7,0.3-1.5,0.3-2.2c0.1-1.6-0.8-2.5-2.3-2.7\n\t\tl-0.2,0c-2.3-0.1-2.3-0.1-3.1,2c-1,2.9-2.1,5.7-3.1,8.6c-0.1,0.4-0.3,0.8-0.4,1.2c2.9,0,5.8,0.2,8.5-0.1c1.2-0.2,2.5-1.3,3.5-2.2\n\t\tc0.8-0.8,1.4-1.9,2.1-2.8c0.2-0.3,0.4-0.6,0.7-0.9c0.1,0.1,0.2,0.1,0.4,0.2c-0.3,1-0.7,2.1-1.1,3.1c-0.4,1.1-0.6,2.7-1.4,3.2\n\t\tc-0.8,0.6-2.3,0.2-3.5,0.2c-4.6,0-9.3,0-13.9,0c-0.4,0-0.8-0.1-1.3-0.1c0-0.2,0-0.3,0-0.5c0.9,0,1.8,0.1,2.6,0\n\t\tc0.4,0,0.9-0.4,1.1-0.7c2.6-7.2,5.2-14.3,7.8-21.5c0-0.1,0-0.2,0.1-0.5c-2.3,0-4.6,0-6.9,0c-0.3,0-0.6,0.4-0.7,0.7\n\t\tc-2.6,7.2-5.2,14.4-7.8,21.6c0,0.1,0,0.2,0,0.5h3.5c0,0.1,0,0.3,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0.1,2.6,0\n\t\tc0.4,0,1-0.2,1.1-0.5c1.3-3.5,2.6-7,3.9-10.8h-3.3c-2.1,0-4.3,0-6.4,0c-0.4,0-1,0.2-1.1,0.5c-1.3,3.5-2.6,7-3.9,10.8h3.7\n\t\tc0,0.1,0,0.3,0,0.4h-9.6c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0,2.6,0c0.7,0,1-0.2,1.2-0.8c2.6-7.2,5.2-14.3,7.7-21.5c0-0.1,0-0.2,0-0.4\n\t\th-3.8c-0.7,1.9-1.5,4-2.2,6.1c-0.1,0-0.3-0.1-0.4-0.1c0-0.3,0-0.6,0-0.8c0.7-5.3-1.3-5.4-5.6-5.3c-0.3,0-0.7,0.4-0.8,0.6\n\t\tc-2.6,7.3-5.2,14.6-7.9,21.9c0,0,0,0.1,0.1,0.3h3.4c0,0.1,0,0.2,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.8,0.1,2.6,0\n\t\tc0.4-0.1,1-0.4,1.2-0.8c2.6-7.2,5.2-14.3,7.8-21.5c0-0.1,0-0.2,0-0.3c-5.3-1.2-7.8,2.2-10,6.2L81.5,7c0-0.2,0-0.4,0-0.5\n\t\tc0.6-1.8,1.2-3.5,1.9-5.3c0.1-0.3,0.7-0.7,1-0.7c6.2,0,12.4,0,18.7,0c2.9,0,5.8,0,8.8,0c0.4,0,0.9,0,1.3,0c0,0.2,0,0.3,0,0.5\n\t\tc-0.9,0-1.7-0.1-2.6,0c-0.4,0-1,0.4-1.1,0.7c-1.3,3.3-2.4,6.6-3.7,10.2h2.9c2.3,0,4.5,0,6.8,0c0.7,0,1-0.2,1.3-0.9\n\t\tc1.1-3.3,2.3-6.5,3.6-10h-3.7c0-0.1,0-0.3,0-0.4H144.8z M58.8,0.6C58,2.8,57.2,5,56.5,7.2c-0.1,0-0.3-0.1-0.4-0.1\n\t\tc0.1-0.9,0.2-1.8,0.2-2.7c0-2.2-0.7-3.1-2.9-3.4c-3.2-0.4-3.2-0.4-4.3,2.5c-2.3,6.3-4.5,12.6-6.8,18.9c-0.1,0.3-0.2,0.7-0.4,1.3\n\t\th3.6c0,0.1,0,0.3,0,0.4h-9.7c0-0.1,0-0.3,0-0.4c0.9,0,1.7,0,2.6,0c0.7,0,1-0.2,1.3-0.9c2.5-7,5-14,7.6-21.1\n\t\tc0.1-0.2,0.1-0.5,0.2-0.7c-5.4-1.2-7.8,2.3-10.1,6.2C37.1,7.2,37,7.1,36.8,7c0.7-1.9,1.4-3.9,2.1-6c-1,0-1.9-0.1-2.8,0.1\n\t\tc-0.3,0.1-0.7,0.7-0.8,1.1c-2.6,7.1-5.1,14.2-7.6,21.3c-0.1,0.4-0.3,0.8-0.5,1.2c-0.1,0-0.2,0-0.3,0c-1.7-7.3-3.3-14.7-5.1-22.4\n\t\tc-2.6,7.3-5.1,14.3-7.7,21.5H18C17.2,24.4,2,24.6,0.2,24.1c0-0.1,0-0.2,0-0.4c0.8,0,1.7,0.1,2.5-0.1c0.4-0.1,1-0.4,1.2-0.8\n\t\tC6.4,15.8,9,8.6,11.6,1.4c0-0.1,0-0.2,0-0.4H8.1c0-0.1,0-0.3,0-0.4c0.4,0,0.7-0.1,1.1-0.1c4.5,0,8.9,0,13.4,0\n\t\tc0.9,0,1.3,0.3,1.5,1.2c1.3,5.4,2.7,10.7,4.1,16.1c0.1,0.4,0.2,0.7,0.4,1.4C30.8,12.9,32.9,7,35,0.9h-3.6c0-0.1,0-0.2,0-0.3H58.8z\n\t\t M21.6,0.9c-2.2,0-4.2,0-6.2,0c-0.9,0-1.2,0.3-1.5,1.1C11.6,8.4,9.3,14.9,7,21.3c-0.3,0.8-0.5,1.5-0.8,2.4c2.3,0,4.5,0,6.7,0\n\t\tc0.3,0,0.8-0.5,1-0.9c1-2.6,1.9-5.3,2.9-8C18.3,10.3,19.9,5.7,21.6,0.9z M66.5,23.8c-1,0.4-2.1,0.7-3.3,0.8c-4.2,0.5-7.2-2.1-8-6.7\n\t\tc-0.2-0.9-0.2-1.8-0.3-2.7C55,9.1,59.6,2.7,65.4,0.6c5.2-1.9,9.5,0.7,10.4,6.4C76.9,13.9,73,21.1,66.5,23.8z M73.3,6.4\n\t\tc0-0.7-0.1-1.1-0.1-1.6c-0.4-2.9-2-4.3-5-4.2c-2.1,0.1-3.7,1.2-5,2.7c-2.5,2.7-3.8,6-4.7,9.5c-0.7,2.6-1.3,5.2-0.8,7.9\n\t\tc0.4,2.2,1.9,3.3,4.1,3.5c2.6,0.2,4.5-1,6.1-2.8C71.5,16.9,72.8,11.7,73.3,6.4z M63.8,38.3c-0.1,3.1-1.5,6.5-4.6,9.1\n\t\tc-4.1,3.6-9.9,3.3-13.8-0.6c-5.1-5.1-4.9-13.8,0.4-18.7c4.7-4.4,10.8-4,14.9,1C62.7,31.4,63.8,34.3,63.8,38.3z M60.5,37.8\n\t\tc-0.2-2.9-0.4-5.8-1.8-8.5c-1.3-2.5-3.3-3.7-6.1-3.7c-2.8,0.1-4.6,1.4-5.8,3.8c-1.3,2.5-1.7,5.2-1.7,7.9c0,3.2,0.3,6.3,2,9.1\n\t\tc2.5,4.1,8.8,4.1,11.4,0.1C60.1,43.8,60.3,40.8,60.5,37.8z M21.7,40.6h-9.3c0,0.1,0,0.2,0,0.4h4c0,1.3,0.1,2.4,0,3.4\n\t\tc-0.2,2.4-1.8,4.4-4.1,4.9c-2.9,0.7-5.8-0.3-7-2.9c-0.9-1.9-1.4-4.1-1.6-6.2C3.3,36.7,3.4,33.3,4.6,30c0.8-2,2.1-3.6,4.3-4.2\n\t\tc4-1.1,7.5,0.9,8.7,4.9c0.2,0.5,0.3,1.1,0.5,1.6c0.1,0,0.2,0,0.3-0.1v-7c-1.5,1.7-2.7,0.8-4.1,0.3c-3.6-1.3-6.9-0.7-9.8,1.9\n\t\tC1,30.7-0.4,34.7,0.1,39.2c0.8,6.9,7.5,13.9,16.1,9.2c1-0.5,1.9-0.8,3,0.3V41c0.9-0.1,1.7-0.1,2.5-0.2L21.7,40.6z M79,37.3\n\t\tc-0.8-0.5-1.7-0.7-2.5-1c-2-0.7-4.1-1.3-6.1-2.1c-2.1-0.9-2.8-2.3-2.5-4.7c0.2-1.7,1.5-3.1,3.3-3.6c3.5-1,6.6,0.7,7.9,4.3\n\t\tc0.2,0.6,0.4,1.1,0.6,1.7c0.1,0,0.2,0,0.3-0.1v-6c-1,1.1-1.9,0.6-2.9,0.1c-3.5-1.5-7.1-1-9.4,1.4c-3.1,3.2-2.3,7.6,1.6,9.5\n\t\tc0.9,0.4,1.9,0.7,2.9,1.1c1.5,0.5,3.1,0.9,4.5,1.5c2.3,1,3.3,2.9,3,5.5c-0.3,2.3-1.9,4.1-4.2,4.4c-1.4,0.2-2.9,0.2-4.2,0\n\t\tc-3.1-0.6-4.4-2.9-5.2-5.6c-0.1-0.4-0.3-0.8-0.4-1.3c-0.1,0-0.2,0.1-0.3,0.1v6.8c1-0.1,1.9-0.2,2.7-0.1c2.1,0.2,4.3,0.7,6.4,0.8\n\t\tc3.2,0.1,5.5-1.6,6.9-4.4C82.9,42.3,82,39.1,79,37.3z M39.6,44.4c-0.8,1.8-1.8,3.7-3.8,4c-2.7,0.5-5.5,0.4-8.3,0.6V26.3\n\t\tc1.2-0.1,2.4-0.1,3.6-0.2c0-0.1,0-0.2,0-0.3H20.9c0,0.1,0,0.3,0,0.4h3.7c0,7.5,0,14.8,0,22.1c0,0.3-0.5,0.7-0.8,0.7\n\t\tc-0.9,0.1-1.8,0-2.7,0c0,0.1,0,0.2,0,0.4h19.7v-7.2C40.1,42.9,39.9,43.7,39.6,44.4z M97.9,37.3c-0.8-0.5-1.7-0.7-2.5-1\n\t\tc-2-0.7-4.1-1.3-6.1-2.1c-2.1-0.9-2.7-2.3-2.5-4.7c0.2-1.7,1.5-3.1,3.3-3.6c3.5-1,6.6,0.7,7.9,4.3c0.2,0.6,0.4,1.1,0.6,1.7\n\t\tc0.1,0,0.2,0,0.3-0.1v-6c-1,1.1-1.9,0.6-2.9,0.1c-3.5-1.5-7.1-1-9.4,1.4c-3.1,3.2-2.3,7.6,1.6,9.5c0.9,0.4,1.9,0.7,2.9,1.1\n\t\tc1.5,0.5,3.1,0.9,4.5,1.5c2.3,1,3.3,2.9,3,5.5c-0.3,2.3-1.9,4.1-4.2,4.4c-1.4,0.2-2.9,0.2-4.2,0c-3.1-0.6-4.4-2.9-5.2-5.6\n\t\tc-0.1-0.4-0.3-0.8-0.4-1.3c-0.1,0-0.2,0.1-0.3,0.1v6.8c1-0.1,1.9-0.2,2.7-0.1c2.1,0.2,4.3,0.7,6.4,0.8c3.2,0.1,5.5-1.6,6.9-4.4\n\t\tC101.8,42.3,100.9,39.1,97.9,37.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Ich habe den Ton Sage jetzt seit etwa drei Wochen auf meinen Zehen und er ist überhaupt nicht abgeplatzt.\"<br>"
+          }
+        }
+      },
+      "block_order": [
+        "2ec16959-a8c1-4653-94ec-e7e8214727c7",
+        "9ea16866-d3bf-4fa3-85cd-aeb0d86588d6",
+        "2010302a-f01e-45a7-92ab-af784eb32777",
+        "7c55a396-9496-43e0-b55e-6561a2533415"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Loved by.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "1652094298b7cbc0e0": {
+      "type": "double_logo",
+      "blocks": {
+        "bc389629-dc90-4fee-bcf4-792d6102f8cf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PETA_Approved_VGATP_BW_v2_72_1_1.jpg"
+          }
+        },
+        "0a513391-28a7-43ec-85a8-fc2f7754fe2b": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/planetly.badge_klimaneutralplus-blue_1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "bc389629-dc90-4fee-bcf4-792d6102f8cf",
+        "0a513391-28a7-43ec-85a8-fc2f7754fe2b"
+      ],
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs"
+      }
+    }
+  },
+  "order": [
+    "page_content",
+    "page-lip-sync-sections-template-13",
+    "16520942943bfeada3",
+    "1652094298b7cbc0e0"
+  ]
+}

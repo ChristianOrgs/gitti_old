@@ -1,0 +1,8 @@
+{% if hreflang_default != blank %}
+    {%- capture content_for_header_string -%}{{ content_for_header }}{%- endcapture -%}
+    {% assign old_hreflang = '<link rel="alternate" hreflang="x-default" href="https://' | append: shop.domain %}
+    {% assign new_hreflang = '<link rel="alternate" hreflang="x-default" href="' | append: hreflang_default %}
+    {{ content_for_header_string | replace: old_hreflang, new_hreflang }}
+{% else %}
+    {{ content_for_header }}
+{% endif %}

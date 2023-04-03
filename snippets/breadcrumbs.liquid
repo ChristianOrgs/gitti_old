@@ -1,0 +1,77 @@
+
+{% assign prev_arrow = '&laquo;' %}
+{% assign next_arrow = '&raquo' %}
+{% capture divider %}
+    <div class="spacing-left-xs spacing-right-xs">
+        {% render 'icon', icon:'chevron-right' %} 
+    </div>
+{% endcapture %}
+{% assign prev_text = 'Previous' %}
+{% assign next_text = 'Next' %}
+
+
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+{% comment %}comment
+{% if template.name ==  'product' %}
+        {% if collection %}
+            {% if collection.previous_product %}
+                {% assign previous_product_link = collection.previous_product %}
+            {% endif %}
+            {% if collection.next_product %}
+                {% assign next_product_link = collection.next_product %}
+            {% endif %}
+            <nav class="page-width flex row between">
+                <a href="{{previous_product_link}}">{{prev_arrow}} {{prev_text}}</a>
+                <a href="{{next_product_link}}">{{next_text}} {{next_arrow}}</a>
+            </nav>
+        {% endif %}
+    {% endif %}
+    {% endcomment %}    
+    
+        
+    
+    <nav class="section-spacing-side flex row middle spacing-top-xs spacing-bottom-xs {% if request.page_type != 'collection' %}only_medium-up{% endif %}" role="navigation" aria-label="breadcrumbs">
+        {% unless template.name ==  'collection' and collection.handle %}
+            <note href="{{routes.root_url}}" title="Home">Home</note>
+        {% endunless %}
+      {% if template.name ==  'page' %}
+          <note>{{divider}}</note>
+          <note>{{ page.title }}</note>
+      {% elsif template.name ==  'product' %}
+          {% if collection.url %}
+          <note>{{divider}}</note>
+          {{ collection.title | link_to: collection.url }}
+          {% endif %}
+          <note>{{divider}}</note>
+          <note>{{ product.title | strip_html }}</note>
+      {% elsif template.name ==  'collection' and collection.handle %}
+          {% comment %} <note>{{divider}}</note>
+          {% if current_tags %}
+          {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+          {{ collection.title | link_to: url }}
+          <note>{{divider}}</note>
+          <note>{{ current_tags | join: " + " }}</note>
+          {% else %}
+          <note>{{ collection.title }}</note>
+          {% endif %} {% endcomment %}
+          {% render 'collection-breadcrumbs' %}
+      {% elsif template == 'blog' %}
+          <note>{{divider}}</note>
+          {% if current_tags %}
+          {{ blog.title | link_to: blog.url }}
+          <note>{{divider}}</note>
+          <note>{{ current_tags | join: " + " }}</note>
+          {% else %}
+          <note>{{ blog.title }}</note>
+          {% endif %}
+      {% elsif template == 'article' %}
+          <note>{{divider}}</note>
+          {{ blog.title | link_to: blog.url }}
+          <note>{{divider}}</note>
+          <note>{{ article.title }}</note>
+      {% else %}
+        <note>{{divider}}</note>
+        <note>{{ page_title }}</note>
+      {% endif %}
+    </nav>
+{% endunless %}

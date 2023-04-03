@@ -1,0 +1,314 @@
+<html>
+<head>
+    <style>
+        h1 {
+            padding: 5px;
+            font-size: 20px;
+            height: 20px;
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            color: #000000 !important;
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: #2c0aff;
+        }
+
+    </style>
+    <script>
+        // fallback for IE
+        if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
+            document.write('<script src="https://polyfill.io/v3/polyfill.min.js?features=URLSearchParams%2CString.prototype.startsWith"><\/script>');
+
+        function closePopup(url) {
+            parent.postMessage(("undefined" === typeof url) ? "GeolizrClosePopup" : "GeolizrClosePopup=>" + url, document.referrer);
+        }
+
+        function redirectPopup(url) {
+            parent.postMessage(("undefined" === typeof url) ? "GeolizrRedirect" : "GeolizrRedirect=>" + url, document.referrer);
+        }
+
+        function geolizrDispatchEvent(name, parameter) {
+            parent.postMessage("GeolizrDispatchEvent=>" + JSON.stringify({'name': name, parameter:parameter}), document.referrer);
+        }
+
+        async function checkUrl(url, async) {
+            if(typeof async == "undefined") async = false;
+            return new Promise(function(resolve, reject) {
+                UrlExists(url, 0, function(ok, error) {
+                    if(ok) {
+                        resolve(url);
+                    } else {
+                        reject(error)
+                    }
+                }, async);
+            });
+        }
+
+        function UrlExists(url, index, callback, async) {
+            let request;
+            if(window.XMLHttpRequest)
+                request = new XMLHttpRequest();
+            else
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            if(typeof async == "undefined") async = false;
+            request.open('GET', url, async);
+            request.send();
+            let checkStatus = function(request) {
+                if (request.status !== 404) {
+                    callback(true, index)
+                } else {
+                    callback(false, request.status);
+                }
+            }
+            if(async) {
+                request.onreadystatechange = function(status) {
+                    checkStatus(request);
+                }
+            } else {
+                checkStatus(request);
+            }
+        }
+
+        function hasUrlPlaceholder(targetUrl) {
+            if(typeof targetUrl !== "undefined" && targetUrl != null) {
+                return targetUrl.indexOf('%path%') > -1 || targetUrl.indexOf('%path_without_locale%') > -1;
+            }
+
+            return targetUrl;
+        }
+
+        function replaceUrlPlaceholder(targetUrl) {
+            if(hasUrlPlaceholder(targetUrl)) {
+                let linkParameter = false;
+                const linkParameterArray = targetUrl.split("?");
+                if(linkParameterArray.length > 1) {
+                    targetUrl = linkParameterArray[0];
+                    linkParameter = new URLSearchParams(linkParameterArray[1]);
+                }
+
+                const tmpAnchor = document.createElement('a');
+                tmpAnchor.href = document.referrer;
+
+                let path = location.href.match(/.*path=(.*)/) ? '/' + location.href.match(/.*path=(.*)/)[1] : "/";
+                let path_without_locale = path;
+
+                let rootUrl = location.href.match(/rootUrl=(\/\w*)/) ? location.href.match(/rootUrl=(\/\w*)/)[1] : "/";
+                if(rootUrl !== "/") {
+                    const locale = rootUrl.replace(/^\//, "") + "\\/?";
+                    path_without_locale = path.replace(new RegExp(locale), "");
+                }
+
+                targetUrl = targetUrl.replace(/[\/]?%path%/, path);
+                targetUrl = targetUrl.replace(/[\/]?%path_without_locale%/, path_without_locale);
+
+                if(linkParameter) {
+                    if(targetUrl.indexOf("?") !== -1) {
+                        const newLinkParameterArray = targetUrl.split("?");
+                        const newLinkParameter = new URLSearchParams(newLinkParameterArray[1]);
+                        linkParameter.forEach(function(value, key) {
+                            newLinkParameter.delete(key);
+                            newLinkParameter.append(key, value);
+                        });
+                        const url = newLinkParameterArray[0].replace(/\/\/$/gm, "/");
+                        targetUrl = url + "?" + newLinkParameter;
+                    } else {
+                        targetUrl = targetUrl.replace(/\/\/$/gm, "/") + "?" + linkParameter;
+                    }
+                }
+            }
+
+            return targetUrl;
+        }
+
+        function parsePathLinks() {
+            const tmpAnchor = document.createElement('a');
+            tmpAnchor.href = document.referrer;
+            let referrer = tmpAnchor.host;
+            if(referrer.indexOf(":") > 0) {
+                const referrerPortSplit = referrer.split(":");
+                referrer = referrerPortSplit[0];
+            }
+            const links = document.getElementsByClassName('path-link');
+            for(let i = 0; i < links.length; i++) {
+                const link = links[i];
+
+                const path = document.referrer.replace(tmpAnchor.protocol + '//' + referrer, '');
+                let linkHref = ""
+                if(link.href !== "") {
+                    linkHref = link.getAttribute('href');
+                } else {
+                    linkHref = link.getAttribute('data-href');
+                }
+
+                const baseLinkUrl = linkHref;
+                const check404 = link.getAttribute('data-check404') === "true";
+                const asMethod = link.getAttribute('data-as-method') === "true";
+                const withClose = link.getAttribute('data-with-close') === "true";
+                const eventName = link.getAttribute('data-event');
+
+                const targetUrl = replaceUrlPlaceholder(baseLinkUrl);
+                if(link.href !== "") {
+                    link.href = targetUrl;
+                } else {
+                    link.setAttribute('data-href', targetUrl);
+                }
+                link.target = "_parent";
+
+                if(asMethod) {
+                    if(eventName !== null) {
+                        let parameter = {};
+                        try {
+                            parameter = JSON.parse(link.getAttribute('data-event-parameter'));
+                        } catch(e) { console.log(e); }
+                        parameter.targetUrl = targetUrl;
+                        link.onclick = function(event) { event.stopPropagation(); geolizrDispatchEvent(eventName, parameter); return false; };
+                    } else if(withClose) {
+                        link.onclick = function(event) { event.stopPropagation(); closePopup(this.href); };
+                    } else {
+                        link.onclick = function(event) { event.stopPropagation(); redirectPopup(this.href); };
+                    }
+                }
+
+                if(check404) {
+                    UrlExists(link.href, i, function(url, i) {
+                        const link = links[i];
+                        link.href = url;
+                    });
+                }
+            }
+        }
+
+        function lyChangeLanguage(lycode) {
+            parent.postMessage( "GeolizrLyChangeLanguage=>" + lycode, document.referrer );
+        }
+
+        function getElementsByClassName(node,classname) {
+            if (node.getElementsByClassName) { // use native implementation if available
+                return node.getElementsByClassName(classname);
+            } else {
+                return (function getElementsByClass(searchClass,node) {
+                    if ( node == null )
+                        node = document;
+                    const classElements = [],
+                        els = node.getElementsByTagName("*"),
+                        elsLen = els.length,
+                        pattern = new RegExp("(^|\\s)" + searchClass + "(\\s|$)");
+                    let i, j;
+
+                    for (i = 0, j = 0; i < elsLen; i++) {
+                        if ( pattern.test(els[i].className) ) {
+                            classElements[j] = els[i];
+                            j++;
+                        }
+                    }
+                    return classElements;
+                })(classname, node);
+            }
+        }
+
+        function getGeodata(name, def) {
+            if(def === null) def = "";
+            if(geoData[name]) {
+                return geoData[name]
+            } else {
+                return def;
+            }
+        }
+
+        var geoData = {};
+
+        // Create IE + others compatible event handler
+        const eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        const eventCatcher = window[eventMethod];
+        const messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+        // Listen to message from child window
+        eventCatcher(messageEvent,function(e) {
+            const data = e.data || "";
+            if(data.startsWith("GeolizrData") === true) {
+                e.preventDefault();
+
+                const dataArray = data.split("=>");
+                geoData = JSON.parse(dataArray[1]);
+
+                const elements = getElementsByClassName(document, 'geolizr');
+                for(let a = 0; a < elements.length; a++) {
+                    const element = elements[a];
+                    const result = getGeodata(element.attributes['data-geolizr'].value);
+                    element.innerHTML = result;
+                }
+            }
+        },false);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.getElementsByClassName('path-link');
+            if(links.length > 0) parsePathLinks();
+
+            let queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            urlParams.forEach(function(text, id) {
+                let e = document.getElementById(id);
+                e ? e.innerHTML = text : null;
+            })
+        });
+
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet" />
+<style type="text/css">body {
+padding: 0;
+}
+</style>
+<div style="display: flex;
+                height: 100%;">
+<div id="image" style="flex: 2;
+             background-image: url('https://cdn.shopify.com/s/files/1/0267/5625/1836/files/Geo-Popup-Image.png?v=1626256171');
+            background-size: cover;">&nbsp;</div>
+
+<div id="content" style="display: flex;
+            flex: 3;
+            padding: 20px;
+            flex-direction: column !important;
+            justify-content: center !important;">
+<h1 style="font-size: 20px;
+                    height: auto;
+                    margin: 6px !important;">Please choose your location.</h1>
+
+<div>
+<p style="margin: 11px;">This way, we can provide an optimal experience for you.</p>
+</div>
+
+<div>
+<form id="form1" style="margin: 25px 10px 10px 10px;"><select name="countries" style="background-color: #fff;
+                                                     width: 100%;
+                                                     padding: 9px;
+                                                     border: 1px solid #000"><option disabled="disabled" selected="selected" value="">choose your location</option><option value="https://www.gitticonsciousbeauty.de/">Germany</option><option value="https://www.gitticonsciousbeauty.de/">Austria</option><option value="https://www.gitticonsciousbeauty.de/">Switzerland</option><option value="https://www.gitticonsciousbeauty.com/">Czech Republic</option><option value="https://www.gitticonsciousbeauty.com/">Belgium</option><option value="https://www.gitticonsciousbeauty.com/">Denmark</option><option value="https://www.gitticonsciousbeauty.com/">France</option><option value="https://www.gitticonsciousbeauty.com/">Hungary</option><option value="https://www.gitticonsciousbeauty.com/">Italy</option><option value="https://www.gitticonsciousbeauty.de/">Liechtenstein</option><option value="https://www.gitticonsciousbeauty.com/">Luxembourg</option><option value="https://www.gitticonsciousbeauty.com/">Netherlands</option><option value="https://www.gitticonsciousbeauty.com/">Sweden</option><option value="https://www.gitticonsciousbeauty.com/">Norway</option> </select>
+
+<div id="button"><a href="http://www.gitticonsciousbeauty.com"><input name="submit" onclick="myFunc(event)" style="  
+            margin-top: 20px;
+            border: none;
+            color: #fff !important;
+            background-color: #000;
+            padding: 10px 25px;" type="button" value="Go" /></a></div>
+</form>
+</div>
+</div>
+</div>
+<script>
+    function myFunc(event) {
+        setTimeout(function(){
+            var formValue = event.target.closest("form").querySelector('select').value;
+            geolizrDispatchEvent("geolizr_location_message", formValue);
+        }, 50);
+    }
+</script>
+</body>
+</html>

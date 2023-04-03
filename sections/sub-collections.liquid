@@ -1,0 +1,35 @@
+ {%- comment -%}Sub collections{%- endcomment -%}
+ {% if collection.metafields.collection.sub_collections.value != blank %}
+    <div class="section-spacing-side">
+        <div class="flex row center small_row small_left sub-collections">
+            {% assign title_overwrites = collection.metafields.collection.sub_collections_overwrites.value | split: ',' %}
+            {% for sub_collection_handle in collection.metafields.collection.sub_collections.value %}
+                {% assign sub_collection = collections[sub_collection_handle] %}
+                {% assign title = sub_collection.title %}
+                {% if title_overwrites[forloop.index0] != blank %}
+                    {% assign title = title_overwrites[forloop.index0] %}
+                {% endif %}
+                <a keep-filter href="{{sub_collection.url}}" class="flex sub-collection-link">{{title}}</a>
+            {% endfor %}
+        </div>
+    </div>
+        
+ {% endif %}
+
+{% schema %}
+{
+  "name": "Subcollections",
+  "settings": [
+
+  ],
+  "blocks": [
+    
+  ],
+  "presets": [
+     {
+         "name": "Subcollections"
+     }
+  ],
+"templates": ["collection"]
+}
+{% endschema %}

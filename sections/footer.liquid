@@ -1,0 +1,923 @@
+
+{% case section.settings.footer_primary %}
+{% when 'primary' %}
+    {% assign background_color_1 = settings.color_primary %}
+    {% assign color_1 = settings.color_on_primary %}
+{% when 'secondary' %}
+    {% assign background_color_1 = settings.color_secondary %}
+    {% assign color_1 = settings.color_on_secondary %}
+{% when 'surface' %}
+    {% assign background_color_1 = settings.color_surface %}
+    {% assign color_1 = settings.color_on_surface %}
+{% when 'background' %}
+    {% assign background_color_1 = settings.color_background %}
+    {% assign color_1 = settings.color_on_background %}
+{% endcase %}
+
+{% case section.settings.footer_secondary %}
+{% when 'primary' %}
+    {% assign background_color_2 = settings.color_primary %}
+    {% assign color_2 = settings.color_on_primary %}
+{% when 'secondary' %}
+    {% assign background_color_2 = settings.color_secondary %}
+    {% assign color_2 = settings.color_on_secondary %}
+{% when 'surface' %}
+    {% assign background_color_2 = settings.color_surface %}
+    {% assign color_2 = settings.color_on_surface %}
+{% when 'background' %}
+    {% assign background_color_2 = settings.color_background %}
+    {% assign color_2 = settings.color_on_background %}
+{% endcase %}
+
+{%- style -%}
+    #shopify-section-{{section.id}}{
+        width: 100%;
+        align-self: flex-end;  
+    }
+    #footer{
+        background-color:{{background_color_1}};
+        color:{{color_1}};
+    }
+    .payment_icon_list{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+    #shopify-section-{{section.id}} ._menu.level-0{
+        padding-top:24px;
+    }
+    #shopify-section-{{section.id}} ._menu-item.spacing-bottom-s.spacing-top-s 
+    {
+        padding-top:0;
+        padding-bottom:24px;
+    }
+{%- endstyle -%}
+
+{% capture tab_toggle_icon %}
+    {% if settings.expand_collapse == 'caret' %}
+        <span class="icon_open">{% render 'icon', icon: 'caret', color:color_1, style:"transform:rotate(0deg)" %}</span>
+        <span class="icon_closed">{% render 'icon', icon: 'caret', color:color_1, style:"transform:rotate(180deg)" %}</span>
+    {% elsif settings.expand_collapse == 'chevron' %}
+        <span class="icon_open">{% render 'icon', icon: 'chevron-up', color:color_1, style:"" %}</span>
+        <span class="icon_closed">{% render 'icon', icon: 'chevron-down', color:color_1, style:"" %}</span>
+    {% elsif settings.expand_collapse == 'plus-minus' %}
+        <span class="icon_open">{% render 'icon', icon: 'minus', color:color_1 %}</span>
+        <span class="icon_closed">{% render 'icon', icon: 'plus', color:color_1 %}</span>
+    {% endif %}
+{% endcapture %}
+<div id="footer" data-section-type="editor"
+data-section-id="{{ section.id }}">
+    <div class="page-width section-spacing" style="padding-top: 48px;">
+           <div class="grid small_col-1 col-{{section.settings.columns}} col-gap">
+               <style>
+                   #footer .section-spacing{
+                           padding-bottom: 32px;
+                                            
+                        }
+                    @media (max-width: {{settings.breakpoint_small}}px) {
+                        #footer .section-spacing{
+                           padding-bottom: 0px;
+                                            
+                        }
+                    }
+               </style>
+               {% for block in section.blocks %}
+                    <style>
+                        
+                        #footer_block-{{block.id}}{
+                            {% unless block.type == 'payment_icons' %}
+                                font-size:{{block.settings.font_size}}px;
+
+                            {% endunless %}
+                            margin-bottom:{{block.settings.spacing_bottom}}px;
+                        }
+
+                        /*Border for open menus*/
+                        @media (max-width: {{settings.breakpoint_small}}px) {
+                        #footer_block-{{block.id}} .footer_menu-content{
+                            {% if block.type != 'social_icons' %}
+                                                border-bottom-color: {{settings.color_border}};
+                                                border-width: 0;
+                                                border-bottom-width: 1px;
+                                                border-style: groove;
+                                                {% endif %}
+                                            }
+                                            
+                        }
+
+                        {}
+                    </style>
+                    <div id="footer_block-{{block.id}}" class="grid-item small_col-span-1 col-span-{{block.settings.col_span}} flex row {{block.settings.align}}">
+                        {% if block.type == 'payment_icons' %}
+                                <ul class="payment_icon_list">
+                                    {% assign enabled_payment_types = block.settings.enabled_payment_types | remove: ' ' | split: ',' %}
+                                    {% for type in enabled_payment_types %}
+                                        <li class="payment_icon">
+                                            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                                        </li>
+                                    {%- endfor -%}
+                                </ul>
+                            {% elsif block.type == 'powered_by_link' %}
+                                {% unless block.settings.alternative_label %}
+                                    {{ powered_by_link }}
+                                {% else %}
+                                    <a  href="{{block.settings.alternative_link}}">{{block.settings.alternative_label}}</a>
+                                {% endunless %} 
+                            {% elsif block.type == 'copyright' %}
+                                <p > © {{ 'now' | date: "%Y" }}&nbsp; <a href="{{ routes.root_url }}">{{shop.name}}</a></p>
+                            {% elsif block.type == 'menu' %}
+                                <style>
+                                    #footer_block-{{block.id}}{
+                                        display:flex;
+                                        flex-direction:column;
+                                    }
+                                    #footer_block-{{block.id}} .icon_closed{
+                                        display:none;
+                                    }
+                                    #footer_block-{{block.id}} .icon_open{
+                                        display:none;
+                                    }
+                                    label[for="footer_menu-{{block.id}}"]{
+                                        display:flex;
+                                        justify-content: space-between;
+                                        padding: 10px 0;
+                                    }
+                                @media (max-width: {{settings.breakpoint_small}}px) {
+                                    #footer_menu-{{block.id}}:not(:checked) ~ .footer_menu-content{
+                                        display:none;
+                                    }
+                                    #footer_menu-{{block.id}}:not(:checked) ~ label[for="footer_menu-{{block.id}}"] .icon_closed{
+                                        display:block;
+                                    }
+                                    #footer_menu-{{block.id}}:checked ~ label[for="footer_menu-{{block.id}}"] .icon_open{
+                                        display:block;
+                                    }
+                                }
+                                </style>
+                                <input class="hidden" type="checkbox" id="footer_menu-{{block.id}}">
+                                {% unless block.settings.title == blank %}
+                                   <label class="p bold" for="footer_menu-{{block.id}}">{{block.settings.title}}{{tab_toggle_icon}}</label> 
+                                {% endunless %}
+                                <div class="footer_menu-content">
+                                    {% render 'menu', linklist: linklists[block.settings.menu], style:'vertical' %}
+                                </div>
+                            {% elsif block.type == 'social_icons' %}
+                                <div class="flex {{block.settings.direction}} {{block.settings.align}} stretch">
+                                    <style>
+                                            #footer_block-{{block.id}}{
+                                                display:flex;
+                                                flex-direction:column;
+                                            }
+                                            #footer_block-{{block.id}} .icon_closed{
+                                                display:none;
+                                            }
+                                            #footer_block-{{block.id}} .icon_open{
+                                                display:none;
+                                            }
+                                            label[for="footer_menu-{{block.id}}"]{
+                                                display:flex;
+                                                justify-content: space-between;
+                                                padding: 10px 0;
+                                            }
+                                            #footer_block-{{block.id}} svg{
+                                                width: fit-content;
+                                            }
+                                        
+ 
+                                       
+                                        /* social icon alignment row fixes */
+                                        #footer_block-{{block.id}} .flex.row{
+                                                flex-wrap: wrap;
+                                            }
+                                            #footer_block-{{block.id}} .social_media{
+                                                
+                                                align-items: center;
+                                                display: grid;
+                                                justify-content: center;
+                                                grid-template-columns: repeat(4, minmax(0, 1fr));
+                                            }
+                                            #footer_block-{{block.id}} .social_media-item{
+                                                margin-right: 8px;
+                                                align-items: center;
+                                                display: flex;
+                                                justify-content: center;
+                                            }
+                                            #footer_block-{{block.id}} .clever_icon{
+                                                margin-right: initial;
+                                            }
+                                            #footer_block-{{block.id}} label{
+                                                {% if block.settings.direction == 'row' %}width: 100%{% endif %}
+                                            }
+                                                
+                                            /*  Breakpoint fixes  */
+                                            @media (max-width: {{settings.breakpoint_small}}px) {
+                                            #footer_block-{{block.id}}{
+                                                margin-top: 32px;
+                                                margin-bottom: 24px;
+                                            }
+                                            #footer_menu-{{block.id}}:not(:checked) ~ .footer_menu-content{
+                                                display:none;
+                                            }
+                                            #footer_menu-{{block.id}}:not(:checked) ~ label[for="footer_menu-{{block.id}}"] .icon_closed{
+                                                display:none;
+                                            }
+                                            #footer_menu-{{block.id}}:checked ~ label[for="footer_menu-{{block.id}}"] .icon_open{
+                                                display:none;
+                                            }
+                                            
+                                            #footer_block-{{block.id}} .social_media-item{
+                                                margin-right: 24px;
+                                            }
+                                            #footer_block-{{block.id}} .social_media{
+                                                display: flex;
+                                            }
+                                            
+                                        }
+                                        #footer_block-{{block.id}} .clever_icon{
+                                                width: 18px;
+                                                
+                                        }
+
+
+
+                                    </style>
+                                    <input class="hidden" type="checkbox" id="footer_menu-{{block.id}}">
+                                    {% unless block.settings.title == blank %}
+                                        <label class="p bold" for="footer_menu-{{block.id}}">{{block.settings.title}}{{tab_toggle_icon}}</label> 
+                                    {% endunless %}
+                                    <div class="footer_menu-content_social_icons">
+                                        {% render 'social_media',direction: block.settings.direction %}
+                                    </div>
+                                </div>
+                            {% elsif block.type == 'newsletter' %}
+
+                            {% elsif block.type == 'logo' %}
+                            {% assign max_width = 'max-width:' | append: block.settings.max_width | append: 'px;' %}
+                            {% if block.settings.svg != blank %}
+                               <div class="spacing-bottom-l" style="{{max_width}}">
+                                    {{block.settings.svg}}
+                                </div>     
+                            {% endif %}
+                                
+                                
+                            {% elsif block.type == 'custom_text' %}
+                                <style>
+                                    #footer_block-{{block.id}}{
+                                        display:flex;
+                                        justify-content: flex-start;
+                                        flex-direction:column;
+                                    }
+                                    #footer_block-{{block.id}} .icon_closed{
+                                        display:none;
+                                    }
+                                    #footer_block-{{block.id}} .icon_open{
+                                        display:none;
+                                    }
+                                    
+                                    label[for="footer_custom_text-{{block.id}}"]{
+                                        display:flex;
+                                        justify-content: space-between;
+                                        padding: 10px 0;
+                                    }
+                                    #footer_block-{{block.id}} .hide_on_desktop{
+                                        display:none;
+                                    }
+                                @media (max-width: {{settings.breakpoint_small}}px) {
+                                   
+                                    #footer_custom_text-{{block.id}}:not(:checked) ~ .footer_custom_text-content{
+                                        display:block;
+                                    }
+                                    #footer_custom_text-{{block.id}}:not(:checked) ~ label[for="footer_custom_text-{{block.id}}"] .icon_closed{
+                                        display:block;
+                                    }
+                                    #footer_custom_text-{{block.id}}:checked ~ label[for="footer_custom_text-{{block.id}}"] .icon_open{
+                                        display:block;
+                                    }
+                                    #footer_block-{{block.id}}  .hide_on_desktop{
+                                        display:inline;
+                                    }
+                                    #footer_custom_text-{{block.id}}:not(:checked) ~  .hide_on_mobile{
+                                        display:none;
+                                    }
+                                    
+                                    
+                                }
+                                </style>
+                                <input class="hidden" type="checkbox" id="footer_custom_text-{{block.id}}">
+                                {% unless block.settings.title == blank %}
+                                   <label class="p bold" for="footer_custom_text-{{block.id}}">{{block.settings.title}}{{tab_toggle_icon}}</label> 
+                                {% endunless %}
+                                <div class="{% unless block.settings.show_on_mobile %}hide_on_mobile {% endunless %} {% unless block.settings.show_on_desktop %}hide_on_desktop {% endunless %}footer_custom_text-content ">
+                                        {{block.settings.text}}
+                                </div>
+                            <div class="flex row">
+                                <span class="{% unless block.settings.show_on_mobile %}hide_on_mobile {% endunless %} {% unless block.settings.show_on_desktop %}hide_on_desktop {% endunless %}footer_custom_text-content spacing-right-m" >
+                                    {{block.settings.link_one}}
+                                </span>
+                                <span class="{% unless block.settings.show_on_mobile %}hide_on_mobile {% endunless %} {% unless block.settings.show_on_desktop %}hide_on_desktop {% endunless %}footer_custom_text-content spacing-right-m" >
+                                    {{block.settings.link_two}}
+                                </span>
+                                <span class="{% unless block.settings.show_on_mobile %}hide_on_mobile {% endunless %} {% unless block.settings.show_on_desktop %}hide_on_desktop {% endunless %}footer_custom_text-content spacing-right-m" >
+                                    {{block.settings.link_three}}
+                                </span>
+                            </div>
+                                
+                            {% endif %}
+                    </div>
+               {% endfor %}
+           </div>
+    </div>    
+</div>
+
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+        {
+            "type": "range",
+            "id": "columns",
+            "label": "Columns",
+            "min": 1,
+            "max": 6,
+            "step": 1,
+            "default": 5
+        },
+        {
+            "type": "header",
+            "content": "Color"
+        },
+        {
+            "type": "select",
+            "id": "footer_primary",
+            "label": "Color primary",
+            "options": [
+                {
+                    "value": "primary",
+                    "label": "primary"
+                },
+                {
+                    "value": "secondary",
+                    "label": "secondary"
+                },
+                {
+                    "value": "surface",
+                    "label": "surface"
+                },
+                {
+                    "value": "background",
+                    "label": "background"
+                }
+            ],
+            "default": "surface"
+        },
+        {
+            "type": "select",
+            "id": "footer_secondary",
+            "label": "Color secondary",
+            "options": [
+                {
+                    "value": "primary",
+                    "label": "primary"
+                },
+                {
+                    "value": "secondary",
+                    "label": "secondary"
+                },
+                {
+                    "value": "surface",
+                    "label": "surface"
+                },
+                {
+                    "value": "background",
+                    "label": "background"
+                }
+            ],
+            "default": "background"
+        }
+    ],
+    "blocks":[
+        {
+            "type": "payment_icons",
+            "name":"Payment icons",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 5
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                },
+                {
+                    "type": "textarea",
+                    "id": "enabled_payment_types",
+                    "label": "Enabled payment types",
+                    "default": "american_express,apple_pay,bitcoin,google_pay,klarna,maestro,master,paypal,shopify_pay,sofort,visa",
+                    "info": "https://shopify.dev/tutorials/customize-theme-add-credit-card-icons"
+                }
+            ]
+        },
+        {
+            "type": "powered_by_link",
+            "name":"Powered by link",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 5
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "select",
+                    "id": "font",
+                    "label": "Font",
+                    "options": [
+                        {
+                            "value": "heading",
+                            "label": "Heading font"
+                        },
+                        {
+                            "value": "text",
+                            "label": "Text font"
+                        }
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "font_size",
+                    "label": "Font size",
+                    "unit": "px",
+                    "min": 5,
+                    "max": 50,
+                    "step": 1,
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                },
+                {
+                    "type": "text",
+                    "id": "alternative_label",
+                    "label": "Alternative label",
+                    "default": "Ecommerce by Beeclever",
+                    "placeholder": "Powered by Shopify"
+                },
+                {
+                    "type": "url",
+                    "id": "alternative_link",
+                    "label": "Alternative link"
+                }
+            ]
+        },
+        {
+            "type": "copyright",
+            "name":"Copyright",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 5
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "select",
+                    "id": "font",
+                    "label": "Font",
+                    "options": [
+                        {
+                            "value": "heading",
+                            "label": "Heading font"
+                        },
+                        {
+                            "value": "text",
+                            "label": "Text font"
+                        }
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "font_size",
+                    "label": "Font size",
+                    "unit": "px",
+                    "min": 5,
+                    "max": 50,
+                    "step": 1,
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                }
+            ]
+        },
+        {
+            "type": "menu",
+            "name":"Menu",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu",
+                    "label": "Menu"
+                },
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 1
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "left"
+                },
+                {
+                    "type": "select",
+                    "id": "font",
+                    "label": "Font",
+                    "options": [
+                        {
+                            "value": "heading",
+                            "label": "Heading font"
+                        },
+                        {
+                            "value": "text",
+                            "label": "Text font"
+                        }
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "font_size",
+                    "label": "Font size",
+                    "unit": "px",
+                    "min": 5,
+                    "max": 50,
+                    "step": 1,
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                }
+            ]
+        },
+        {
+            "type": "custom_text",
+            "name":"Text",
+            "settings": [
+                {
+                        "type": "checkbox",
+                        "id": "show_on_mobile",
+                        "label": "Show on mobile",
+                        "default": true
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_on_desktop",
+                    "label": "Show on desktop",
+                    "default": true
+            },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "<p>Aute in adipisicing in fugiat nisi nisi ad.</p>"
+                },
+                {
+                    "type": "richtext",
+                    "id": "link_one",
+                    "label": "Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "link_two",
+                    "label": "Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "link_three",
+                    "label": "Text"
+                },
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 1
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "select",
+                    "id": "font",
+                    "label": "Font",
+                    "options": [
+                        {
+                            "value": "heading",
+                            "label": "Heading font"
+                        },
+                        {
+                            "value": "text",
+                            "label": "Text font"
+                        }
+                    ]
+                },
+                {
+                    "type": "range",
+                    "id": "font_size",
+                    "label": "Font size",
+                    "unit": "px",
+                    "min": 5,
+                    "max": 50,
+                    "step": 1,
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                }
+            ]
+        },
+        {
+            "type": "logo",
+            "name": "Logo",
+            "settings": [
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 5
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "html",
+                    "id": "svg",
+                    "label": "SVG"
+                },
+                {
+                    "type": "range",
+                    "id": "max_width",
+                    "label": "Max width",
+                    "unit":"px",
+                    "min": 10,
+                    "max": 1000,
+                    "step": 10,
+                    "default": 30
+                }
+            ]
+        },
+        {
+            "type": "social_icons",
+            "name": "Social icons",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Follow us on"
+                },
+                {
+                    "type": "range",
+                    "id": "col_span",
+                    "label": "Columns",
+                    "min": 1,
+                    "max": 6,
+                    "step": 1,
+                    "default": 5
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Spacing bottom",
+                    "unit": "px",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "default": 8
+                },
+                {
+                    "type": "select",
+                    "id": "align",
+                    "label": "Align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ],
+                    "default": "center"
+                },
+                {
+                    "type": "select",
+                    "id": "direction",
+                    "label": "Direction",
+                    "options": [
+                        {
+                            "value": "col",
+                            "label": "Column"
+                        },
+                        {
+                            "value": "row",
+                            "label": "Row"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+  }
+  {% endschema %}

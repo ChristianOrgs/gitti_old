@@ -1,0 +1,22 @@
+{% assign unique_id = "now" | date: "%6N"  %}
+
+<div class="rocker" id="rocker-{{ name | handleize }}{{ unique_id }}">
+    <div class="rocker_minus">
+        {% render 'icon',icon: 'minus' %}
+    </div>
+    <div class="rocker_input">
+        <input type="text" name="{{ name | handleize }}" id="rocker_input-{{ name | handleize }}{{ unique_id }}" value="{{default}}" >
+    </div>
+    <div class="rocker_plus">
+        {% render 'icon',icon: 'plus' %}    
+    </div>
+</div>
+<script>
+document.querySelector('#rocker-{{ name | handleize }}{{ unique_id }} > .rocker_minus').addEventListener('click',function(){
+    document.querySelector('#rocker_input-{{ name | handleize }}{{ unique_id }}').value = Math.max(parseInt(document.querySelector('#rocker_input-{{ name | handleize }}{{ unique_id }}').value) - 1, parseInt('{{ min | default: 0 }}'))
+})
+document.querySelector('#rocker-{{ name | handleize }}{{ unique_id }} > .rocker_plus').addEventListener('click',function(){
+    document.querySelector('#rocker_input-{{ name | handleize }}{{ unique_id }}').value = Math.min(parseInt(document.querySelector('#rocker_input-{{ name | handleize }}{{ unique_id }}').value) + 1, parseInt('{{ max | default: 1000 }}'))
+})
+
+</script>

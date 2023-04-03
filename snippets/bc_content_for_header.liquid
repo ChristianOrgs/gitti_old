@@ -1,0 +1,150 @@
+{%- capture prefetch_preconnect_urls -%}
+"https://gdpr-legal-cookie.beeclever.app", 
+"https://cdn.shopify.com", 
+"https://fonts.shopifycdn.com", 
+"https://cdn.shopify.com", 
+"https://ajax.googleapis.com", 
+"https://shop.app", "https://script.hotjar.com", 
+"https://cdn.judge.me", 
+"https://d3ithgl79uu5su.cloudfront.net", 
+"https://www.googletagmanager.com", 
+"https://www.google-analytics.com"
+{%- endcapture -%}
+
+
+{%- capture preload_scripts -%}
+"https://gdpr-legal-cookie.beeclever.app/get-script.php?shop=gittiberlin.myshopify.com",
+"{{ "theme.js" | asset_url }}",
+"{{ "custom.js" | asset_url }}"
+{%- endcapture -%}
+
+
+{%- capture load_scripts_with_delay -%}
+"https:\/\/gdpr-legal-cookie.beeclever.app\/get-script.php?shop=gittiberlin.myshopify.com",
+"\/\/app.backinstock.org\/widget\/20546_1587883345.js?v=5\u0026shop=gittiberlin.myshopify.com",
+"https:\/\/ecommplugins-scripts.trustpilot.com\/v2.1\/js\/header.min.js?settings=eyJrZXkiOiJ4blU5QjZvU2N6Y3ZmQTBlIn0=\u0026shop=gittiberlin.myshopify.com",
+"https:\/\/ecommplugins-trustboxsettings.trustpilot.com\/gittiberlin.myshopify.com.js?settings=1601390348124\u0026shop=gittiberlin.myshopify.com",
+"https:\/\/widget.trustpilot.com\/bootstrap\/v5\/tp.widget.sync.bootstrap.min.js?shop=gittiberlin.myshopify.com",
+"https:\/\/d3ithgl79uu5su.cloudfront.net\/section-feed.js?shop=gittiberlin.myshopify.com",
+"https:\/\/static.klaviyo.com\/onsite\/js\/klaviyo.js?company_id=VWE5RB\u0026shop=gittiberlin.myshopify.com",
+"https:\/\/cdn.shopify.com\/shopifycloud\/privacy-banner\/storefront-banner.js?shop=gittiberlin.myshopify.com",
+"https:\/\/chimpstatic.com\/mcjs-connected\/js\/users\/0aefa394919091efe0e3739e9\/b01a63fba6478bacca1158e84.js?shop=gittiberlin.myshopify.com",
+"https:\/\/js.smile.io\/v1\/smile-shopify.js?shop=gittiberlin.myshopify.com",
+"https:\/\/geolocation-recommendations.shopifycloud.com\/locale_bar\/script.js?shop=gittiberlin.myshopify.com",
+"https:\/\/d3g420rgevyqxw.cloudfront.net\/cffOrderifyLoader_min.js?shop=gittiberlin.myshopify.com"
+{%- endcapture -%}
+
+{% if request.page_type != 'product'%}
+  {%- capture load_scripts_with_delay -%}
+  {{- load_scripts_with_delay -}},"https:\/\/cdn.judge.me\/assets\/installed.js?shop=gittiberlin.myshopify.com", "\/\/productreviews.shopifycdn.com\/assets\/v4\/spr.js?shop=gittiberlin.myshopify.com"
+  {%- endcapture -%}
+{% endif %}
+
+
+{%- capture preload_fonts -%}
+"https://cdn.shopify.com/s/files/1/0556/1362/0429/files/ApercuPro-Regular.woff2?v=1616689632",
+"https://cdn.shopify.com/s/files/1/0155/4943/1908/t/186/assets/ApercuPro-Bold.woff2?v=22745722010397228151651737748"
+{%- endcapture -%}
+
+
+{%- capture preload_css -%}
+"{{ "theme.css" | asset_url }}"
+{%- endcapture -%}
+
+
+{%- capture preload_css_defer -%}
+"{{ "custom.css" | asset_url }}"
+{%- endcapture -%}
+
+
+{%- capture preload_image -%}
+{%- endcapture -%}
+
+<!-- content_for_header start -->
+{%- liquid 
+	assign prefetch_preconnect_urls_array = prefetch_preconnect_urls | strip_newlines | remove :" " | split: ','
+	for script in prefetch_preconnect_urls_array
+    	if script
+          	echo '<link rel="dns-prefetch" href=' | append: script | append: '>'
+        endif
+	endfor
+    
+    for script in prefetch_preconnect_urls_array
+    	if script
+          	echo '<link rel="preconnect" href=' | append: script | append: '>'
+        endif
+	endfor
+
+  	assign preload_scripts_array = preload_scripts | strip_newlines | remove :" " | split: ','
+ 	for script in preload_scripts_array 
+    	if script
+        	echo '<link rel="preload" href=' | append: script | append: ' as="script">'
+        endif
+ 	endfor
+    
+    echo '<script src="https://gdpr-legal-cookie.beeclever.app/get-script.php?shop=gittiberlin.myshopify.com"></script>'
+    
+	assign load_scripts_with_delay_array = load_scripts_with_delay | strip_newlines | remove :" " | split: ',' 
+	assign scripts_for_push_to_body = "" 
+    for script in load_scripts_with_delay_array
+        if new_content_for_header contains script
+            assign new_content_for_header = new_content_for_header | replace: script, "bc#replace"
+            
+            assign scripts_for_push_to_body = scripts_for_push_to_body | append: script
+            unless forloop.last
+                assign scripts_for_push_to_body = scripts_for_push_to_body | append: ','
+            endunless
+        endif
+    endfor
+    
+    assign new_content_for_header = new_content_for_header | remove: "bc#replace," | remove: "bc#replace" | remove: 'previewBarInjector.init();'
+    
+    assign preload_fonts_array = preload_fonts | strip_newlines | remove :" " | split: ','
+    for script in preload_fonts_array
+        echo '<link rel="preload" href=' | append: script | append: ' as="font" crossorigin>'
+    endfor
+
+	assign preload_css_array = preload_css | strip_newlines | remove :" " | split: ','
+ 	for css in preload_css_array 
+    	echo '<link rel="preload" href=' | append: css | append: ' as="style">'
+ 	endfor
+
+	assign preload_css_defer_array = preload_css_defer | strip_newlines | remove :" " | split: ','
+    for css in preload_css_defer_array
+        echo '<link rel="preload" href=' | append: css | append: ' as="style" onload="' |append: "this.rel='stylesheet'" | append: '">'
+    endfor
+
+    assign preload_image_array = preload_image | strip_newlines | remove :" " | split: ','
+    for image in preload_image_array
+        echo '<link rel="preload" href=' | append: image | append: ' as="image">'
+    endfor
+    
+    echo new_content_for_header
+-%}
+<!-- content_for_header end -->
+
+
+  {% if template contains 'product' %}
+	<link rel="preload" as="image" href="{{ product.media.first | img_url: 'master' }}" imagesrcset="{{ product.media.first | img_url: '400x' }} 400w, {{ product.media.first | img_url: '800x' }} 800w, {{ product.media.first | img_url: '1600x' }} 1600w" imagesizes="50vw">
+  {% endif %}
+
+<script>
+    (function(){
+
+        var scripts_for_push_to_body = [{{ scripts_for_push_to_body | default: "" }}];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var scripts_for_push_to_body = [{{ scripts_for_push_to_body | default: "" }}];
+            scripts_for_push_to_body.forEach(function ( src ) {
+              	if( !src.includes('dpr-legal-cookie.beeclever.app')) {
+                 	setTimeout(function () {
+                        var n = document.createElement('script');
+                        n.src = src;
+                        n.async = true;
+                        document.body.appendChild( n );
+                    }, 7800 );
+                 };
+            });
+        });
+    })();
+</script>

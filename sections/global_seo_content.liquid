@@ -1,0 +1,495 @@
+<style>
+    #shopify-section-{{section.id}} .seo_content_block ul{
+        padding-left:20px;
+    }
+    #shopify-section-{{section.id}} .seo_content_block ul li{
+        list-style: disc;
+    }
+    #shopify-section-{{section.id}} .seo_divider{
+        width:100%;
+        border-top:1px solid #E8E8E8;
+    }
+</style>
+
+{% assign seo = blank %}
+
+{% case request.page_type %}
+    {% when 'index' %}
+        {% assign seo = shop.metafields.seo %}
+    {% when 'collection' %}
+        {% assign seo = collection.metafields.seo %}
+    {% when 'page' %}
+        {% assign seo = page.metafields.seo %}
+    {% when 'product' %}
+        {% assign seo = product.metafields.seo %}
+    {% when 'blog' %}
+        {% assign seo = blog.metafields.seo %}
+    {% when 'article' %}
+        {% assign seo = article.metafields.seo %}
+{% endcase %}
+{% if seo != blank %}
+    <div class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+        <div class="grid col-2 grid-gap small_col-1">
+            {% for block in section.blocks %}
+                <div class="grid-item col-span-{{block.settings.col_span}} col-start-{{block.settings.col_start}} row-span-{{block.settings.row_span}} small_col-span-1 small_col-start-1 small_row-span-1 seo_content_block">
+                    {% case block.type %}
+                    {% when 'seo_text' %}
+                        {% if block.settings.title != blank %}
+                                <{{block.settings.tag}} class="{{block.settings.class}} {{block.settings.weight_class}} spacing-bottom-{{block.settings.spacing_bottom}}">
+                                    {{ seo[block.settings.title] }}
+                                </{{block.settings.tag}}>                  
+                        {% endif %}
+                    {% when 'seo_image' %}
+                            {% assign image_name = seo[block.settings.title] %}
+                            {% if image_name != blank %}
+                                {% render 'image_element', image_url: image_name, image_shape: block.settings.image_shape, fit: 'cover' %} 
+                            {% endif %}
+                        {% when 'seo_divider' %}
+                            <div class="seo_divider spacing-bottom-{{block.settings.spacing_bottom}}"></div>
+                    {% endcase %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>  
+{% endif %}
+
+
+
+
+{% schema %}
+{
+  "name": "Seo Content",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    } 
+  ],
+  "blocks": [
+    {
+        "type": "seo_divider",
+        "name": "Divider",
+        "settings": [
+            {
+                "type": "select",
+                "id": "col_start",
+                "label": "Col start",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "col_span",
+                "label": "Col span",
+                "options": [
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "row_span",
+                "label": "Row span",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "spacing_bottom",
+                "label": "Spacing bottom",
+                "options": [
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+            } 
+        ]
+    },
+    {
+        "type": "seo_text",
+        "name": "Text",
+        "settings": [
+            {
+                "type": "select",
+                "id": "col_start",
+                "label": "Col start",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "col_span",
+                "label": "Col span",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "row_span",
+                "label": "Row span",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "spacing_bottom",
+                "label": "Spacing bottom",
+                "options": [
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+            }, 
+            {
+                "type": "select",
+                "id": "tag",
+                "label": "Html tag",
+                "default": "p",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    },
+                    {
+                        "value": "small",
+                        "label": "small"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "class",
+                "label": "Font class",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    },
+                    {
+                        "value": "note",
+                        "label": "note"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "weight_class",
+                "label": "Weight class",
+                "options": [
+                    {
+                        "value": "bold",
+                        "label": "bold"
+                    },
+                    {
+                        "value": "",
+                        "label": "normal"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Key",
+                "info": "Enter the metafield key you want to display. Leave empty to hide the block. The namespace must be set to 'seo'.",
+                "placeholder": "seo_key"
+            }
+        ]
+    },
+    {
+        "type": "seo_image",
+        "name": "Image",
+        "settings": [
+            {
+                "type": "select",
+                "id": "col_start",
+                "label": "Col start",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "col_span",
+                "label": "Col span",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "row_span",
+                "label": "Row span",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "spacing_bottom",
+                "label": "Spacing bottom",
+                "options": [
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "image_shape",
+                "label": "Image shape",
+                "options": [
+                    {
+                        "value": "two_by_three",
+                        "label": "2:3"
+                    },
+                    {
+                        "value": "square",
+                        "label": "1:1"
+                    },
+                    {
+                        "value": "sixteen_by_nine",
+                        "label": "16:9"
+                    }
+                ],
+                "default": "sixteen_by_nine"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Key",
+                "info": "Enter the metafield key you want to display. Leave empty to hide the block. The namespace must be set to 'seo'. The metafield content needs to be an image url.",
+                "placeholder": "seo_key"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,99 @@
+function CleverSelect() {
+    return Reflect.construct(HTMLElement, [], this.constructor);
+}
+
+CleverSelect.prototype = Object.create(HTMLElement.prototype);
+CleverSelect.prototype.constructor = CleverSelect;
+Object.setPrototypeOf(CleverSelect, HTMLElement);
+
+CleverSelect.prototype.connectedCallback = function() {
+    this.init()
+    this.closeDropdown()
+};
+
+CleverSelect.prototype.toggleDropdown = function() {
+
+    this.shadow_list.classList.toggle('hidden');
+    this.shadow_button.classList.toggle('open');
+};
+
+CleverSelect.prototype.closeDropdown = function() {
+    this.shadow_list.classList.add('hidden');
+    this.shadow_button.classList.remove('open');
+};
+
+CleverSelect.prototype.init = function() {
+    var that = this;
+
+    this.observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            that.renderShadowDOM();
+        });
+    });
+
+    this.observer_config = { attributes: true, childList: true, characterData: true, subtree: true };
+
+    this.shadow_root = this.attachShadow({ mode: 'open' });
+
+    this.renderShadowDOM();
+
+};
+
+CleverSelect.prototype.renderShadowDOM = function(){
+    var that = this;
+    this.options = this.querySelectorAll('option');
+    
+    this.observer.disconnect();
+    
+    this.shadow_root.innerHTML = `
+        <link rel="stylesheet" href="{{ 'clever-select.css' | asset_url }}">
+        <button class="open"><output></output><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20"><path d="M14 20.001a.994.994 0 01-.747-.336l-8-9a.999.999 0 010-1.328l8-9a1 1 0 011.494 1.328l-7.41 8.336 7.41 8.336A.998.998 0 0114 20.001z"></path></svg></button>
+        <ul class="">
+        </ul>
+    `;
+    this.shadow_button = this.shadow_root.querySelector('button');
+    this.shadow_output = this.shadow_root.querySelector('output');
+    this.shadow_list = this.shadow_root.querySelector('ul')
+    this.options.forEach(option => {
+        var li = document.createElement('li');
+        li.innerHTML = option.innerHTML;
+        if(option.hasAttribute('disabled')){
+            li.setAttribute('disabled','')
+        }
+        else{
+            li.addEventListener('click',function(){
+                that.shadow_output.innerHTML =  option.innerHTML;
+                that.setAttribute("value", option.getAttribute('value'))
+                that.options.forEach(o => {
+                    o.removeAttribute('selected');
+                })
+                option.setAttribute('selected','')
+                that.closeDropdown();
+                that.dispatchEvent(new Event('change'))
+            })
+        }
+        if(option.hasAttribute('selected')){
+            that.shadow_output.innerHTML =  option.innerHTML;
+            that.setAttribute("value", option.getAttribute('value'))
+        }
+        that.shadow_list.appendChild(li)
+    })
+
+    this.shadow_button.addEventListener('click',function(){
+        that.toggleDropdown();
+    })
+
+    document.body.addEventListener('click',function(e){
+        if(!that.shadow_root.contains(e.composedPath()[0])){
+            that.closeDropdown();
+        }
+    })
+
+    this.observer.observe(that, that.observer_config);
+}
+
+CleverSelect.prototype.disconnectedCallback = function() {
+    this.observer.disconnect();
+}
+
+customElements.define('clever-select', CleverSelect);

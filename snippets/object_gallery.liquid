@@ -1,0 +1,41 @@
+{%- style %}
+    #shopify-section-{{object.id}},
+    #shopify-section-{{section.id}} clever-slider.overhanging_slider::before{
+        background-color:{{object.settings.background_color}};
+    }
+    
+    @media only screen and (max-width:{{settings.breakpoint_small}}px){
+        #shopify-section-{{section.id}} .small_items-custom cs-slide{
+            flex: 0 0 80%;
+        }
+    }
+{%- endstyle -%}
+
+<div class=" spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+    <div class="flex col left">
+        <{{object.settings.heading_tag}} class="{{object.settings.heading_class}} {{object.settings.heading_weight_class}} spacing-bottom-xs"> {{object.settings.heading}} </{{object.settings.heading_tag}}>
+        <{{object.settings.richtext_tag}} class="{{object.settings.richtext_class}} {{object.settings.richtext_weight_class}} spacing-bottom-s"> {{object.settings.richtext}} </{{object.settings.richtext_tag}}>
+    </div>
+    <clever-slider class="overhanging_slider" 
+        options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+        <cs-prev class="slider_nav slider_prev is-absolute only_large">
+            {% render 'icon', icon: 'chevron-left' %}
+        </cs-prev>
+        <cs-track>
+            <cs-slides class="items-3 medium_items-2 small_items-custom gap">
+                {% capture sizes %}{% render 'image_sizes', small:2, medium_up:3, page_width: true %}{% endcapture %}
+                {% for setting in object.settings %}
+                    {% capture setting_name %}{{setting}}{% endcapture %}
+                    {% if setting_name contains 'image_id' %}
+                        <cs-slide>
+                            {% render 'image_element', image: object.settings[setting_name], image_shape: object.settings.image_shape, fit: object.settings.image_fit, sizes:sizes %} 
+                        </cs-slide>
+                    {% endif %}
+                {% endfor %}
+            </cs-slides>
+        </cs-track>
+        <cs-next class="slider_nav slider_next is-absolute only_large">
+            {% render 'icon', icon: 'chevron-right' %}
+        </cs-next>
+    </clever-slider>
+</div>

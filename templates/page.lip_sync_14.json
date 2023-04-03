@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "page-lip-sync-sections-template"
+  ]
+}

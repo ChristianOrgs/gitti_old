@@ -1,0 +1,62 @@
+<style>
+    #shopify-section-{{object.id}} .gitti_item_wrapper{
+        border: 1px solid #A6A6A6;
+    }
+    #shopify-section-{{object.id}} .clever_icon, #shopify-section-{{object.id}} .clever_icon svg{
+        width:35px;
+        height:30px;
+    }
+    #shopify-section-{{object.id}} .why-gitti {
+        background-color: {{object.settings.color_background}};
+    }
+
+    #shopify-section-{{object.id}} {
+        background-color: {{object.settings.color_background_full_width}};
+    }
+
+</style>
+<div class="why-gitti spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+    <div class="grid col-6 grid-gap small_col-1 medium_col-2">
+        <div class="grid-item container medium-up_col-span-2 flex col middle left">
+            <p class="h2 bold">
+                {{object.settings.heading}}
+            </p>
+            <p class="p">
+                {{object.settings.text}}
+            </p>
+            <div class="spacing-top-m">
+                <a href="{{object.settings.link}}" class="btn btn--tertiary">{{object.settings.label}}</a>    
+            </div>
+            
+        </div>
+
+        {% for why_gitti in object.settings %}
+        {% if why_gitti contains 'why_gitti_link_' %}
+        {% assign links = object.settings[why_gitti] %}  
+        {% endif %}
+        {% if why_gitti contains 'why_gitti_icon_' %}
+        {% assign icons = object.settings[why_gitti] %}     
+        {% endif %}
+        {% if why_gitti contains 'why_gitti_text_' %}
+        {% assign texts = object.settings[why_gitti] %}  
+        {% endif %}
+        {% if why_gitti contains 'why_gitti_heading_' %}
+        {% assign headings = object.settings[why_gitti] %}  
+        {% endif %}
+
+        {% if why_gitti contains 'why_gitti_text_' %}
+        <div class="grid-item container">
+            <{% if links != blank %}a href="{{links}}"{% else %}div{% endif %} div class="gitti_item_wrapper container flex col left spacing-left-s spacing-right-s spacing-top-m spacing-bottom-m">
+               {% render 'icon', icon: icons %}
+               <p class="spacing-top-s h6 bold">
+                   {{headings}}
+               </p>
+               <p   class="spacing-top-s note">
+                   {{texts}}
+               </p>
+           </{% if links != blank %}a{% else %}div{% endif %}>
+         </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

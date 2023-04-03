@@ -1,0 +1,417 @@
+{%- assign image_desktop = section.settings.image_desktop -%}
+{%- assign image_mobile = section.settings.image_mobile -%}
+{%- assign button_label_left = section.settings.button_label_left -%}
+{%- assign button_label_right = section.settings.button_label_right -%}
+{%- assign button_link_left = section.settings.button_link_left -%}
+{%- assign button_link_right = section.settings.button_link_right -%}
+{%- assign headline_left = section.settings.headline_left -%}
+{%- assign headline_right = section.settings.headline_right -%}
+{%- assign description_right = section.settings.description_right -%}
+{%- assign description_left = section.settings.description_left -%}
+
+<section class="row row-lg container-wrap section-comparison-infographic">
+    <div class="comparison-infographic">
+      <div class="infographic-columns">
+        <div class="infographic-column-left">
+          <h3 class="infographic-heading-left">{{headline_left}}</h3>
+          <img src="{{ 'marker-right-desktop.png' | asset_url }}" loading="lazy" alt="" class="infographic-marker-desktop-left" />
+          <img src="{{ 'marker-right-mobile.png' | asset_url }}" loading="lazy" alt="" class="infographic-marker-mobile-left" />
+          <div class="infographic-description-left">{{description_left}}</div>
+          <a href="{{ button_link_left.url }}" class="infographic-button hollow infographic-button-left">{{button_label_left}}</a>
+          </div>
+        <div class="infographic-column-right">
+          <div class="infographic-new-badge">Neu</div>
+          <h3 class="infographic-heading-right">{{headline_right}}</h3>
+          <img src="{{ 'marker-left-desktop.png' | asset_url }}" loading="lazy" alt="" class="infographic-marker-desktop-right" />
+          <img src="{{ 'marker-left-mobile.png' | asset_url }}" loading="lazy" alt="" class="infographic-marker-mobile-right" />
+          <div class="infographic-description-right">{{description_right}}</div>
+          <a href="{{ button_link_right.url }}" class="infographic-button black infographic-button-right">{{button_label_right}}</a>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Comparison Infographic",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image Desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "headline_left",
+          "label": "Headline Left"
+        },
+        {
+          "type": "richtext",
+          "id": "description_left",
+          "label": "Description left"
+        },
+        {
+          "type": "text",
+          "id": "button_label_left",
+          "label": "Button label left"
+        },
+				{
+					"type": "url",
+					"id": "button_link_left",
+					"label": "Button link left"
+				},
+        {
+          "type": "text",
+          "id": "headline_right",
+          "label": "Headline Right"
+        },
+        {
+          "type": "richtext",
+          "id": "description_right",
+          "label": "Description right"
+        },
+        {
+          "type": "text",
+          "id": "button_label_right",
+          "label": "Button label right"
+        },
+				{
+					"type": "url",
+					"id": "button_link_right",
+					"label": "Button link right"
+				}
+    ],
+    "presets": [
+      {
+        "name": "Comparison Infographic",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}
+
+
+<style>
+.infographic-button {
+    display: inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.infographic-button.black {
+  background-color: #000;
+  color: #fff;
+}
+
+.infographic-button.black.infographic-button-right {
+  margin-top: 25px;
+  margin-left: 30%;
+}
+
+.infographic-button.hollow {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+}
+
+.infographic-button.hollow.infographic-button-left {
+  margin-top: 25px;
+  margin-left: 8%;
+}
+
+.comparison-infographic {
+  position: static;
+  height: 550px;
+  padding-top: 5%;
+  margin-bottom: 3em;
+  background-image: url('{{ image_desktop | img_url: '1440x' }}');
+  background-position: 50% 75%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.infographic-column-left {
+  position: relative;
+  padding-right: 3%;
+  padding-left: 20%;
+}
+
+.infographic-column-left img {
+  max-width: 100%;
+}
+
+.infographic-column-right {
+  position: relative;
+  padding-right: 3%;
+  padding-left: 20%;
+}
+
+.infographic-column-right img {
+  max-width: 100%;
+}
+
+.infographic-heading-left {
+  margin-bottom: 0px;
+  padding-left: 8%;
+  font-size: 20px;
+  line-height: 36px;
+}
+
+.infographic-heading-right {
+  margin-bottom: 0px;
+  padding-left: 30%;
+  font-size: 20px;
+  line-height: 36px;
+}
+
+.infographic-description-right {
+  margin-top: 20px;
+  padding-left: 30%;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.infographic-description-right p, .infographic-description-left p {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.infographic-description-left {
+  margin-top: 20px;
+  padding-left: 8%;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.infographic-marker-mobile-left {
+  display: none;
+}
+
+.infographic-marker-mobile-right {
+  display: none;
+}
+
+.infographic-new-badge {
+  position: absolute;
+  left: 2%;
+  top: 22%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 100px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding-bottom: 0;
+  line-height: 200%;
+}
+
+.infographic-columns {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto;
+  grid-template-rows: auto;
+}
+@media screen and (max-width: 1440px) {
+  .infographic-column-left {
+    padding-right: 15%;
+    padding-left: 10%;
+  }
+  .infographic-column-right {
+    padding-right: 10%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .section-comparison-infographic.row.row-lg {
+    width: 100%;
+  } 
+  .infographic-button.black.infographic-button-right {
+    margin-top: 15px;
+    margin-left: 20%;
+  }
+  .infographic-button.hollow.infographic-button-left {
+    margin-top: 15px;
+  }
+  .comparison-infographic {
+    height: 350px;
+    padding-top: 7%;
+    background-position: 50% 90%;
+  }
+  .infographic-column-left {
+    padding-left: 3%;
+    padding-right: 25%;
+  }
+  .infographic-column-right {
+    padding-right: 5%;
+  }
+  .infographic-heading-right {
+    padding-left: 20%;
+  }
+  .infographic-description-right {
+    padding-left: 20%;
+  }
+  .infographic-new-badge {
+    position: absolute;
+    left: -2%;
+    top: 19%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 10px 0px;
+    border-radius: 1000px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .infographic-button.black.infographic-button-right {
+    position: absolute;
+    bottom: 40px;
+    margin-left: 15%;
+  }
+  .infographic-button.hollow.infographic-button-left {
+    position: absolute;
+    bottom: 40px;
+    margin-left: 20%;
+  }
+  .comparison-infographic {
+    height: 750px;
+    padding-top: 4%;
+    background-image: url('{{ image_mobile | img_url: '1024x' }}');
+    background-position: 50% 75%;
+  }
+  .infographic-column-left {
+    height: 100%;
+    padding-right: 0%;
+    padding-left: 2%;
+  }
+  .infographic-column-right {
+    height: 100%;
+    padding-left: 0%;
+  }
+  .infographic-heading-left {
+    padding-left: 20%;
+  }
+  .infographic-heading-right {
+    padding-left: 15%;
+  }
+  .infographic-description-right {
+    padding-left: 15%;
+    font-size: 
+  }
+  .infographic-description-left {
+    padding-left: 20%;
+  }
+  .infographic-marker-desktop-left {
+    display: none;
+  }
+  .infographic-marker-desktop-right {
+    display: none;
+  }
+  .infographic-marker-mobile-left {
+    position: absolute;
+    right: 30px;
+    display: block;
+    min-width: 175px;
+  }
+  .infographic-marker-mobile-right {
+    position: absolute;
+    left: 7px;
+    display: block;
+    min-width: 175px;
+  }
+  .infographic-new-badge {
+    left: auto;
+    top: 38%;
+    right: 35%;
+    line-height: 250%;
+  }
+  .infographic-columns {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .infographic-button.black.infographic-button-right {
+    bottom: 25px;
+    min-width: auto;
+    margin-right: 5%;
+    margin-left: 20%;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 11px;
+  }
+  .infographic-button.hollow.infographic-button-left {
+    bottom: 25px;
+    min-width: auto;
+    margin-left: 10%;
+    font-size: 11px;
+  }
+  .comparison-infographic {
+    height: 550px;
+  }
+  .infographic-column-left {
+    padding-left: 0%;
+  }
+  .infographic-column-right {
+    padding-right: 0%;
+  }
+  .infographic-heading-left {
+    padding-left: 10%;
+    font-size: 15px;
+  }
+  .infographic-heading-right {
+    font-size: 15px;
+  }
+  .infographic-description-right {
+    font-size: 11px;
+    line-height: 20px;
+  }
+  .infographic-description-left {
+    padding-left: 10%;
+    font-size: 11px;
+    line-height: 20px;
+  }
+  .infographic-marker-mobile-left {
+    right: 5px;
+    max-width: 90%;
+    min-width: auto;
+  }
+  .infographic-marker-mobile-right {
+    left: 5px;
+    max-width: 90%;
+    min-width: auto;
+  }
+  .infographic-new-badge {
+    right: 17%;
+  }
+}
+</style>
+
+{% stylesheet %}
+    
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

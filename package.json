@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "enquire.js": "^2.1.6",
+    "fastclick": "^1.0.6",
+    "flickity": "^2.2.1",
+    "gmaps": "^0.4.25",
+    "grunt": "^1.1.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "handlebars": "^4.7.6",
+    "imagefill": "0.0.3",
+    "jquery": "^3.5.1",
+    "jquery-bridget": "^2.0.1",
+    "jquery-parallax.js": "^1.5.0",
+    "jquery-visible": "^1.2.0",
+    "jquery-zoom": "^1.7.21",
+    "jquery.panzoom": "^3.2.3",
+    "js-cookie": "^2.2.1",
+    "magnific-popup": "^1.1.0",
+    "modernizr": "^3.11.3",
+    "slick-slider": "^1.8.2",
+    "trunk8": "0.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "modernizr-webpack-plugin": "^1.0.7",
+    "webpack": "^4.44.1",
+    "webpack-clean-obsolete-chunks": "^0.4.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-modernizr-loader": "^5.0.0"
+  },
+  "scripts": {
+    "build": "find assets/*.bundle.*.js -exec rm -f {} +; npx webpack",
+    "watch": "npx webpack --watch"
+  }
+}

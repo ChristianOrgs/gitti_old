@@ -1,0 +1,83 @@
+
+
+<div class="page-width section-spacing ">
+  <p class="h1">.h1 Heading</p>
+  <p class="h1 bold">.h1.bold Heading bold</p>
+  <p class="h2">.h2 Heading</p>
+  <p class="h2 bold">.h2.bold Heading bold</p>
+  <p class="h3">.h3 Heading</p>
+  <p class="h3 bold">.h3.bold Heading bold</p>
+  <p class="h4">.h4 Body Large</p>
+  <p class="h4 bold">.h4.bold Body Large bold</p>
+  <p class="p">.p Body Medium</p>
+  <p class="p bold">.p.bold Body Medium bold</p>
+  <p class="note">.note Body Small</p>
+  <p class="note bold">.note.bold Body Small bold</p>
+</div>
+
+<div id="buttons" class="page-width section-spacing">
+  <p class="spacing-bottom-s h3">Buttons</p>
+  <div class="grid col-4 small_col-1 grid-gap" >
+    <a href="/" class="btn btn--primary">btn--primary</a>
+    <a href="/" class="btn btn--secondary">btn--secondary</a>
+    <a href="/" class="btn btn--tertiary">btn--tertiary</a>
+    <a href="/" class="btn btn--border">btn--border</a>
+   </div>
+</div>
+<div class="page-width section-spacing">
+  <div class="grid col-4 small_col-1 grid-gap">
+    <div class="grid-item">
+      <p class="spacing-bottom-s h3">Select</p>
+      {% assign test = 'XS,S,M,L,XL,XXL' | split: ',' %}
+      {% include 'select', option_name:'testselect', option_values:test %}
+    </div>
+    <div class="grid-item">
+      <p class="spacing-bottom-s h3">Rocker</p>
+      {% include 'rocker', name:'testrocker', default: 1 %}
+    </div>
+    
+    
+    </div>
+</div>
+<div class = "page-width section-spacing flex row between">
+    {% render 'icon', icon:'menu' %}
+    {% render 'icon', icon:'close' %}
+    {% render 'icon', icon:'chevron-up' %}
+    {% render 'icon', icon:'chevron-down' %}
+    {% render 'icon', icon:'chevron-left' %}
+    {% render 'icon', icon:'chevron-right' %}
+    {% render 'icon', icon:'plus' %}
+    {% render 'icon', icon:'minus' %}
+    {% render 'icon', icon:'check' %}
+    {% render 'icon', icon:'search' %}
+    {% render 'icon', icon:'customer' %}
+    {% render 'icon', icon:'heart' %}
+    {% render 'icon', icon:'cart' %}
+    {% render 'icon', icon:'grid_small' %}
+    {% render 'icon', icon:'grid_large' %}
+    {% render 'icon', icon:'filter' %}
+    {% render 'icon', icon:'bubble_large', count: 1 %}
+    {% render 'icon', icon:'remove' %}
+    {% render 'icon', icon:'bubble_small', count: 2 %}
+    {% render 'icon', icon:'internet' %}
+    {% render 'icon', icon:'star' %}
+</div>
+
+{% schema %}
+{
+  "name": "Theme test",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Theme test",
+      "category":  "Test"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,363 @@
+
+{% assign overlay_opacity =  section.settings.overlay_opacity | divided_by: 100.0 %}
+<style>
+#shopify-section-{{section.id}} .featured_promotion_content{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    left:0;
+    top:0;
+    background-color: {{section.settings.overlay_color | color_modify: 'alpha', overlay_opacity }};
+}
+#shopify-section-{{section.id}} .featured_promotion_overlay{
+    padding: 20px;
+    width: 100%;
+    height:100%;
+}
+#shopify-section-{{section.id}} .featured_promotion{
+    overflow: hidden;
+    
+}
+{% if section.settings.overlay_on_hover %}
+    #shopify-section-{{section.id}} .featured_promotion_content{
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    #shopify-section-{{section.id}} .featured_promotion_overlay{
+        transform: translateY(50%);
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    #shopify-section-{{section.id}} .featured_promotion_content:hover{
+        opacity: 1;
+    }
+    #shopify-section-{{section.id}} .featured_promotion_content:hover .featured_promotion_overlay{
+        transform: translateY(0);
+        opacity: 1;
+    }
+{% endif %}
+{% if section.settings.zoom_on_hover %}
+    #shopify-section-{{section.id}} .featured_promotion .image-wrapper{
+        transition: transform 0.3s;
+    }
+    #shopify-section-{{section.id}} .featured_promotion:hover .image-wrapper{
+        transform:scale(1.2);
+    }
+{% endif %}
+#shopify-section-{{section.id}} .featured_promotion_overlay i{
+    font-size:{{section.settings.icon_size}};
+}
+</style>
+
+<div class="bee_sectionly_featured_promotions section-spacing" data-section-type="editor"
+data-section-id="{{ section.id }}" >
+    <div class="page-width">
+        {% if section.settings.title != blank %}
+            <p class="h2 text-align-{{section.settings.text_align}} spacing-bottom-s">{{ section.settings.title | escape }}</p>
+        {% endif %}
+    </div>
+    
+    <div class="{{section.settings.section_width}} grid col-{{section.settings.columns}} small_col-{{section.settings.columns_mobile}} {{section.settings.row_gap}} {{section.settings.col_gap}}">
+        {% capture sizes %}{% render 'image_sizes', small:section.settings.columns_mobile, medium_up:section.settings.columns , page_width: true %}{% endcapture %}
+        {% for block in section.blocks %}
+            <div class="featured_promotion is-relative" id="featured_promotion_{{block.id}}">
+             <a {% if  block.settings.button_link != blank %} href="{{block.settings.button_link}}" {% endif %}>
+                {% render 'image_element', image: block.settings.image,  fit: 'cover', image_shape: section.settings.image_shape, sizes:sizes %}
+                <div class="featured_promotion_content">
+                    <div class="featured_promotion_overlay flex col {{block.settings.text_align}} {{block.settings.vertical_align}}">
+                        {% if block.settings.preheading != blank %}
+                            <p class="text-align-{{block.settings.text_align}} spacing-bottom-xs">{{ block.settings.preheading | escape }}</p>
+                        {% endif %}
+                        {% if block.settings.heading != blank %}
+                            <h3 class="text-align-{{block.settings.text_align}} spacing-bottom-xs">{{ block.settings.heading | escape }}</h3>
+                        {% endif %}
+                        {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                            <a href="{{block.settings.button_link}}" class="{{block.settings.button_class}}">{{block.settings.button_label}}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% schema %}
+  {
+    "name": "Featured promotions",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+        "type":      "range",
+        "id":        "columns",
+        "min":       2,
+        "max":        5,
+        "step":       1,
+        "label":     "Columns",
+        "default":   3
+        },
+        {
+        "type":      "range",
+        "id":        "columns_mobile",
+        "min":       1,
+        "max":        3,
+        "step":       1,
+        "label":     "Columns mobile",
+        "default":   1
+        },
+        {
+            "type": "select",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {
+                    "value": "page-width",
+                    "label": "page-width"
+                },
+                {
+                    "value": "",
+                    "label": "full"
+                },
+                {
+                    "value": "page-width-wide",
+                    "label": "full on mobile"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "col_gap",
+            "label": "Column gap",
+            "options": [
+                {
+                    "value": "",
+                    "label": "none"
+                },
+                {
+                    "value": "col-gap-small",
+                    "label": "small"
+                },
+                {
+                    "value": "col-gap",
+                    "label": "normal"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "row_gap",
+            "label": "Row gap",
+            "options": [
+                {
+                    "value": "",
+                    "label": "none"
+                },
+                {
+                    "value": "row-gap-small",
+                    "label": "small"
+                },
+                {
+                    "value": "row-gap",
+                    "label": "normal"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Overlay"
+        },
+        {
+            "type": "checkbox",
+            "id": "overlay_on_hover",
+            "label": "Show overlay on hover",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "zoom_on_hover",
+            "label": "Zoom on hover",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "overlay_color",
+            "label": "Overlay color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "range",
+            "id": "overlay_opacity",
+            "label": "Overlay opacity",
+            "unit": "%",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50
+        },
+        {
+            "type": "header",
+            "content": "Overlay"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Featured Promotions"
+        },
+        {
+            "type": "select",
+            "id": "text_align",
+            "options": [
+                { "value": "left", "label": "left"},
+                { "value": "center", "label": "center"},
+                { "value": "right", "label": "right"}
+            ],
+            "label": "Text align"
+        },
+        {
+            "type": "select",
+            "id": "icon_size",
+            "label": "Icon size",
+            "options": [
+                {
+                    "value": "26px",
+                    "label": "small"
+                },
+                {
+                    "value": "55px",
+                    "label": "medium"
+                },
+                {
+                    "value": "110px",
+                    "label": "large"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Images"
+        },
+        {
+            "type":      "select",
+            "id":        "image_shape",
+            "label":     "Image shape",
+            "options": [
+              {
+                "value": "",
+                "label": "Original"
+              },
+              {
+                "value": "square",
+                "label": "Square"
+              }
+              ,
+              {
+                "value": "circle",
+                "label": "Circle"
+              },
+              {
+                "value": "four_by_three",
+                "label": "4:3"
+              },
+              {
+                "value": "four_by_five",
+                "label": "4:5"
+              }
+              ,
+              {
+                "value": "sixteen_by_nine",
+                "label": "16:9"
+              }
+            ],
+            "default":   "square"
+          }
+    ],
+    "blocks":[
+    {
+        "name": "Featured promotion",
+        "type": "featured_promotion",
+        "settings": [
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "preheading",
+                "label": "Preheading",
+                "default": "Cillum est eiusmod aliqua labore esse quis."
+              },
+              {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Veniam enim mollit amet ut mollit."
+              },
+              {
+                "type": "select",
+                "id": "vertical_align",
+                "options": [
+                   { "value": "top", "label": "top"},
+                   { "value": "middle", "label": "middle"},
+                   { "value": "bottom", "label": "bottom"},
+                   { "value": "between", "label": "between"},
+                   { "value": "around", "label": "around"},
+                   { "value": "evenly", "label": "evenly"}
+                ],
+                "label": "Vertical align",
+                "default": "middle"
+              },
+              {
+                "type": "select",
+                "id": "text_align",
+                "options": [
+                   { "value": "left", "label": "left"},
+                   { "value": "center", "label": "center"},
+                   { "value": "right", "label": "right"}
+                ],
+                "label": "Text align"
+              },
+              {
+                "type": "text",
+                "id": "button_label",
+                "label": "Button label"
+              },
+              {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button link"
+              },
+              {
+                "type": "text",
+                "id": "button_class",
+                "label": "Button class",
+                "default": "btn"
+              }
+        ]   
+    }
+    ],
+    "presets": [
+      {
+        "name": "Featured Promotions",
+        "category":  "Promotions",
+        "blocks": [
+            {
+                "type": "featured_promotion"
+            },
+            {
+                "type": "featured_promotion"
+            },
+            {
+                "type": "featured_promotion"
+            }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

@@ -1,0 +1,193 @@
+<div data-section-id="{{ section.id }}" data-section-type="contact-template">
+  
+  <div class="page-width spacing-top-{{section.settings.spacing_top_section}} spacing-bottom-{{section.settings.spacing_bottom_section}} container-wrap">
+    <div class="container">
+          
+          {% if contact_heading != blank or contact_content != blank %}
+
+            <div class="contact-text spacing-bottom-{{section.settings.spacing_bottom_header}}">
+              {% if contact_heading != blank %}
+                <{{section.settings.tag_title}} class = "{{section.settings.class_title}} {{section.settings.weight_class_title}} spacing-bottom-{{section.settings.spacing_bottom_header_title}}">{{ contact_heading }}</{{section.settings.tag_title}}>
+              {% endif %}
+              
+              {% if contact_content != blank %}
+                <div class="content-wrapper text-content">
+                  {{ contact_content }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+          
+          <div class = "subContainerContact flex row between small_col">
+              <div class="contact-form">
+                  {% form 'contact' %}
+  
+                  {% if form.posted_successfully? %}
+                  <div class="successForm feedback">
+                      <p>{{ 'contact.form.post_success' | t }}</p>
+                  </div>
+                  {% else %}
+                  {% if form.errors %}
+                  <div class="feedback error p">
+                      {{ form.errors | default_errors }}
+                  </div>
+                  {% endif %}
+                  <div id="contactFormWrapper">
+                      <div class = "firstRow flex row between small_col">
+                          <p class = "spacing-bottom-m">
+                          <input type="text" class = "container" id="contactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" />
+                          </p>
+                          <p class = "spacing-bottom-m">
+                          <input type="email" class = "container" id="contactFormEmail" required name="contact[email]" placeholder="{{ 'contact.form.email' | t }}*"/>
+                          </p>
+                      </div>
+                      <p class = "spacing-bottom-m">
+                        <input type="text" class="container" id="contactFormOrderNumber" name="contact[order_number]" placeholder="{{ 'contact.form.order_number' | t }}" />
+                      </p>
+                      <div class = "selectWrapper spacing-bottom-m">
+                              {% assign test = 'contact.reason_list' | t | split: ',' %}
+                                <p>{% render 'select_contact', option_name:'contact[reason]', option_values:test %}</p>
+                              
+                              <!--<select name="contact[reason]" id="contactFormReason" form="contact" class = "select select_dropdown spacing-top-xs spacing-bottom-xs">
+                                  
+                                  <option>Wähle den Grund für deine Anfrage</option>
+                                  <option value ="2">Über das Produkt/Website</option>
+                                  <option value ="3">Wo befindet sich meine Bestellung?</option>
+                                  <option value ="4">Änderung/Stornierung</option>
+                                  <option value ="5">Reklamation (Bestellung/Produkt)</option>
+                                  <option value ="6">Newsletter/Datenschutz (DSGVO)</option>
+                                  <option value ="7">Zusammenarbeit/Influencer</option>
+                                  <option value ="8">Einzelhandel/B2B</option>
+                              </select>-->
+                              
+                      </div>
+                      <p class = "spacing-bottom-m">
+                      <textarea class = "container" rows="7" cols="75" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}"></textarea>
+                      </p>
+                      <p>
+                      <input type="submit" id="contactFormSubmit" class="btn btn--primary" value="{{ 'contact.form.submit' | t }}" />
+                      </p>
+                  </div><!-- contactWrapper -->
+                  {% endif %}
+                {% endform %}
+              </div>
+
+              <div class = "rightSideContact spacing-l">
+                  <div class = "rightTextBlocks">
+                      <{{section.settings.tag_right_heading}} class = "rightHeading {{section.settings.class_right_heading}} {{section.settings.weight_class_right_heading}} spacing-top-s spacing-bottom-{{section.settings.spacing_bottom_right_heading}}">{{section.settings.right_heading}}</{{section.settings.tag_right_heading}} >
+                      <div class = "rightElementWrapper spacing-bottom-m">
+                          <{{section.settings.tag_right_text}} class = "{{section.settings.class_right_text}} {{section.settings.weight_class_right_text}} spacing-bottom-{{section.settings.spacing_bottom_right_text}}">{{section.settings.right_call_us_title}}</{{section.settings.tag_right_text}}>
+                          <a href="{{section.settings.right_call_us_link}}">{{section.settings.right_call_us_text}}</a>
+                      </div>
+                      <div class = "rightElementWrapper spacing-bottom-m">
+                          <{{section.settings.tag_right_text}} class = "{{section.settings.class_right_text}} {{section.settings.weight_class_right_text}} spacing-bottom-{{section.settings.spacing_bottom_right_text}}">{{section.settings.right_whatsapp_title}}</{{section.settings.tag_right_text}}>
+                          <a href="{{section.settings.right_whatsapp_link}}">{{section.settings.right_whatsapp_text}}</a>
+                      </div>
+                      <div class = "rightElementWrapper spacing-bottom-l">
+                          <{{section.settings.tag_right_text}} class = "{{section.settings.class_right_text}} {{section.settings.weight_class_right_text}} spacing-bottom-{{section.settings.spacing_bottom_right_text}}">{{section.settings.right_address_title}}</{{section.settings.tag_right_text}}>
+                          {{section.settings.right_address_text}}
+                      </div>
+                      <div class = "rightElementWrapper">
+                          <{{section.settings.tag_right_text}} class = "{{section.settings.class_right_text}} {{section.settings.weight_class_right_text}} spacing-bottom-{{section.settings.spacing_bottom_right_text}}">{{section.settings.right_follow_title}}</{{section.settings.tag_right_text}}>
+                          <div class="container-social spacing-top-xs spacing-bottom-xs" >
+                              {%- render 'social_media' -%}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<style>  
+    #shopify-section-{{section.id}} .subContainerContact .contact-form {
+      flex: 0 1 60%;
+    }
+    #shopify-section-{{section.id}} .subContainerContact .rightSideContact {
+      flex: 0 1 30%;
+      border: 1px solid #a6a6a6;
+
+    }
+    #shopify-section-{{section.id}} .subContainerContact h2, #shopify-section-{{section.id}} .subContainerContact h4, #shopify-section-{{section.id}} .subContainerContact a, #shopify-section-{{section.id}} .subContainerContact p, #shopify-section-{{section.id}} .contact-text h1 {
+      color: #333333;
+    }
+    #shopify-section-{{section.id}} .firstRow p {
+      flex: 0 1 48%;
+    }
+    #shopify-section-{{section.id}} .contact-form input, #shopify-section-{{section.id}} .contact-form textarea, #shopify-section-{{section.id}} .contact-form select {
+      border: 1px solid #333333;
+    }
+    #shopify-section-{{section.id}} input::placeholder, #shopify-section-{{section.id}} textarea::placeholder {
+        color: #333333;
+    }
+    #shopify-section-{{section.id}} .contact-form select {
+        cursor: pointer;
+        width: 100%;
+    }
+    #shopify-section-{{section.id}} #contactFormSubmit {
+        float: right;
+    }
+    #shopify-section-{{section.id}} .rightSideContact .rightElementWrapper a{
+        text-decoration: underline;
+    }
+    #shopify-section-{{section.id}} .rightSideContact .rightElementWrapper .container-social a{
+        text-decoration: none;
+    }
+    #shopify-section-{{section.id}} .clever_icon {
+        margin-right: 25px;
+        width: 20px;
+        height: 20px;
+    }
+    #shopify-section-{{section.id}} .social_media.flex{
+      flex-wrap: wrap;
+    }
+    #shopify-section-{{section.id}} .selectWrapper {
+        /*border: 1px solid #000000;*/
+    }
+    #shopify-section-{{section.id}} .selectWrapper .select{
+      width: initial;
+    }
+    #shopify-section-{{section.id}} .select .select_output{
+      /*border: 1px solid {{settings.color_border}};*/
+      border: 1px solid #333333;
+      border-radius: 3px;
+      padding: 5px;
+    }
+    #shopify-section-{{section.id}} .selectWrapper button{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    #shopify-section-{{section.id}} li.select_dropdown-value {
+        padding-left: 4px;
+    }
+    #shopify-section-{{section.id}} .btn {
+      padding-left: 96px;
+      padding-right: 96px;
+    }
+    #shopify-section-contact_template .selectWrapper .clever_icon {
+        margin: 0;
+    }
+    #shopify-section-{{section.id}} .clever_icon svg {
+        width: fit-content;
+    }
+      @media (max-width: {{settings.breakpoint_small}}px) {
+
+      #shopify-section-{{section.id}} .subContainerContact .rightSideContact {
+          border: none;
+          margin-top: 30px;
+      }
+      /*#shopify-section-{{section.id}} .contact-column-custom a, #shopify-section-{{section.id}} .contact-column-custom h4, #shopify-section-{{section.id}} .contact-column-custom a, #shopify-section-{{section.id}} .contact-column-custom textarea, #shopify-section-{{section.id}} .contact-column-custom select, #shopify-section-{{section.id}} .contact-column-custom input, #shopify-section-{{section.id}} .contact-column-custom .text-content{
+          font-size: 14px;
+      }*/
+      #shopify-section-{{section.id}} .contact-form #contactFormSubmit {
+          width: 100%;
+      }
+      #shopify-section-{{section.id}} .rightSideContact {
+          padding: 0;
+      }
+    }
+
+</style>

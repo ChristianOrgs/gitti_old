@@ -1,0 +1,1343 @@
+{%- if settings.ps_optimization -%}
+	<img width="99999" height="99999" style="pointer-events: none; position: absolute; top: 0; left: 0; width: 96vw; height: 96vh; max-width: 99vw; max-height: 99vh;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSI5OTk5OXB4IiBoZWlnaHQ9Ijk5OTk5cHgiIHZpZXdCb3g9IjAgMCA5OTk5OSA5OTk5OSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48ZyBzdHJva2U9Im5vbmUiIGZpbGw9Im5vbmUiIGZpbGwtb3BhY2l0eT0iMCI+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9Ijk5OTk5IiBoZWlnaHQ9Ijk5OTk5Ij48L3JlY3Q+IDwvZz4gPC9zdmc+">
+    <style>
+        {{ section.settings.po_css }}
+    </style>
+    {%- liquid
+        capture preconnected
+            assign q = section.settings.dns_preconnect | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture exclude_dns_preconnect
+            assign q = section.settings.exclude_dns_preconnect | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture ES
+            assign q = section.settings.exclude_scripts | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DelayS
+            assign q = section.settings.delay_scripts | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DeferS
+            assign q = section.settings.defer_scripts | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture ECSS
+            assign q = section.settings.exclude_css | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DelayCSS
+            assign q = section.settings.delay_css | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture CritCSS
+            assign q = section.settings.critical_css | split: ","
+            for r in q
+                echo r | strip | asset_url | split: "?" | first
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture EA
+            assign q = section.settings.exclude_apps_string | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DeferAPPS
+            assign q = section.settings.defer_apps_string | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DelayA
+            assign q = section.settings.delay_apps | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture EF
+            assign q = section.settings.exclude_fonts | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DelayF
+            assign q = section.settings.delay_fonts | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture EI
+            assign q = section.settings.exclude_images | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+
+        capture DelayI
+            assign q = section.settings.delay_images | split: ","
+            for r in q
+                echo r | strip
+                unless forloop.last
+                    echo ","
+                endunless
+            endfor
+        endcapture
+    -%}
+
+    <script>
+        (function () {
+            var excludeSrcs = [];
+            var criticalCSS = [];
+
+            //AKB changes: Excludable JS and CSS, deferable/delayable JS and CSS, includable Apps
+            var customized = {
+                blockScriptsForLightHouse : {{ section.settings.activate_scriptblocking_for_lighthouse }},
+                excludeDnsPreconnect : {{ exclude_dns_preconnect | replace: '\/', '/' | split: "," | json }},
+                apps : {
+                    "scriptTags"    : [{{ content_for_header | split: 'var urls = [' | last | split: ']' | first | replace: '\/', '/' }}],
+                    "excluded"      : {{ EA | replace: '\/', '/' | split: "," | json }},
+                    "delayed"       : {{ DelayA | replace: '\/', '/' | split: "," | json }},
+                    "delay_time"    : {{ section.settings.delay_time_apps | default: 0 }},
+                    "defered"       : {{ DeferAPPS | replace: '\/', '/' | split: "," | json }},
+                },
+                js : {
+                    "preconnected"  : {{ preconnected | replace: '\/', '/' | split: "," | json }},
+                    "excluded"      : {{ ES | replace: '\/', '/' | split: "," | json }},
+                    "delayed"       : {{ DelayS | replace: '\/', '/' | split: "," | json }},
+                    "delay_time"    : {{ section.settings.delay_time | default: 0 }},
+                    "defered"       : {{ DeferS | replace: '\/', '/' | split: "," | json }},
+                },
+                css : {
+                    "excluded"      : {{ ECSS | replace: '\/', '/' | split: "," | json }},
+                    "defered"       : {{ DelayCSS | replace: '\/', '/' | split: "," | json }},
+                    "critical"      : {{ CritCSS | replace: '\/', '/' | split: "," | json }},
+                },
+                fonts : {
+                    "excluded"      : {{ EF | replace: '\/', '/' | split: "," | json }},
+                    "delayed"       : {{ DelayF | replace: '\/', '/' | split: "," | json }},
+                },
+                images : {
+                    "excluded"      : {{ EI | replace: '\/', '/' | split: "," | json }},
+                    "delayed"       : {{ DelayI | replace: '\/', '/' | split: "," | json }}
+                },
+                inlineScripts : {
+                    {%- for block in section.blocks -%}
+                    "{{- block.id -}}" : {{- block.settings | json -}}{%- unless forloop.last -%},{%- endunless -%}
+                    {%- endfor -%}
+                }
+            };
+
+            (()=>{var r={77:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0});var r={LOADING:"loading"in HTMLImageElement.prototype,MAX_PRELOAD_IMG:5,OBSERVER_CONFIG:{childList:!0,subtree:!0},SET_DATASET_ATTRIBUTE:!0,DATASET_KEY:"po_optimized"};t.default=r},179:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.CONFIG=void 0;r=r(77);t.CONFIG=r.default},709:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.subStringFound=void 0,t.subStringFound=function subStringFound(t,e){return 0<e.length&&0<e.filter(function(e){return-1<t.indexOf(e.replace("\\/","/"))}).length}},657:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0});var r=(TypeCheck.prototype.isPrimitive=function(e){return Object(e)!==e},TypeCheck.prototype.isInt=function(e){return"[object Number]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isString=function(e){return"[object String]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isNode=function(e){return Object.prototype.toString.call(e).includes("[object HTML")},TypeCheck.prototype.isObject=function(e){return Object.prototype.toString.call(e).includes("[object ")&&Object(e)===e},TypeCheck.prototype.isJSON=function(e){return"[object Object]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isArray=function(e){return"[object Array]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isUndefined=function(e){return"[object Undefined]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isNul=function(e){return"[object Null]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isBoolean=function(e){return"[object Boolean]"===Object.prototype.toString.call(e)},TypeCheck.prototype.isFunction=function(e){return"[object Function]"===Object.prototype.toString.call(e)&&!!e.prototype&&e.prototype.constructor&&!1===e.prototype.constructor.toString().startsWith("class ")&&-1===e.prototype.constructor.toString().search("_classCallCheck")},TypeCheck.prototype.isClass=function(e){return"[object Function]"===Object.prototype.toString.call(e)&&!!e.prototype&&e.prototype.constructor&&(e.prototype.constructor.toString().startsWith("class ")||-1!==e.prototype.constructor.toString().search("_classCallCheck"))},TypeCheck.prototype.ObjectExists=function(e,t){var r=!1;if(this.isObject(e)&&this.isString(t))try{for(var o=t.split("."),n=JSON.parse(JSON.stringify(e)),i=0,a=o;i<a.length;i++)var c=a[i],r=!!n[c]&&(n=n[c],!0)}catch(e){return!1}return r},TypeCheck);function TypeCheck(){}t.default=r},568:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0});var r=["Moto G (4)","Chrome-Lighthouse","Page Speed Insights","Page-Speed"];t.default=function(){return 0<r.filter(function(e){return-1!==navigator.userAgent.indexOf(e)}).length}},301:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(){window.langify=window.langify||{},window.langify.settings=window.langify.settings||{},r.g.po_global_data.isLighthouseReportingTool&&(window.langify.settings.maxMutations=0,window.langify.settings.observe=!1,window.langify.settings.observeCustomContents=!1,window.langify.settings.observeImages=!1,window.langify.settings.observeLinks=!1),window.langify.settings.lazyload=!0}},397:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.LangifyObserver=t.checkIfReportingTool=t.TypeCheck=void 0;var o=r(657);Object.defineProperty(t,"TypeCheck",{enumerable:!0,get:function(){return o.default}});var n=r(568);Object.defineProperty(t,"checkIfReportingTool",{enumerable:!0,get:function(){return n.default}});var i=r(301);Object.defineProperty(t,"LangifyObserver",{enumerable:!0,get:function(){return i.default}})},341:function(e,t,r){var o=this&&this.__awaiter||function(e,o,n,i){return new(n=n||Promise)(function(t,r){function fulfilled(e){try{step(i.next(e))}catch(e){r(e)}}function rejected(e){try{step(i.throw(e))}catch(e){r(e)}}function step(e){e.done?t(e.value):function adopt(t){return t instanceof n?t:new n(function(e){e(t)})}(e.value).then(fulfilled,rejected)}step((i=i.apply(e,o||[])).next())})},n=this&&this.__generator||function(r,o){var n,i,a,c={label:0,sent:function(){if(1&a[0])throw a[1];return a[1]},trys:[],ops:[]},e={next:verb(0),throw:verb(1),return:verb(2)};return"function"==typeof Symbol&&(e[Symbol.iterator]=function(){return this}),e;function verb(t){return function(e){return function step(t){if(n)throw new TypeError("Generator is already executing.");for(;c;)try{if(n=1,i&&(a=2&t[0]?i.return:t[0]?i.throw||((a=i.return)&&a.call(i),0):i.next)&&!(a=a.call(i,t[1])).done)return a;switch(i=0,(t=a?[2&t[0],a.value]:t)[0]){case 0:case 1:a=t;break;case 4:return c.label++,{value:t[1],done:!1};case 5:c.label++,i=t[1],t=[0];continue;case 7:t=c.ops.pop(),c.trys.pop();continue;default:if(!(a=0<(a=c.trys).length&&a[a.length-1])&&(6===t[0]||2===t[0])){c=0;continue}if(3===t[0]&&(!a||t[1]>a[0]&&t[1]<a[3])){c.label=t[1];break}if(6===t[0]&&c.label<a[1]){c.label=a[1],a=t;break}if(a&&c.label<a[2]){c.label=a[2],c.ops.push(t);break}a[2]&&c.ops.pop(),c.trys.pop();continue}t=o.call(r,c)}catch(e){t=[6,e],i=0}finally{n=a=0}if(5&t[0])throw t[1];return{value:t[0]?t[1]:void 0,done:!0}}([t,e])}}};Object.defineProperty(t,"__esModule",{value:!0});var i=r(179),a=r(191),t=r(397);(0,a.createGlobalData)(),(0,t.LangifyObserver)(),r.g.po_global_data.customized.js.preconnected.forEach(a.optimzeScriptController),r.g.po_global_data.customized.apps.scriptTags.forEach(a.optimzeScriptController),r.g.po_global_data.customized.css.critical.forEach(a.optimzeStylesheet),r.g.po_global_data.customized.js.preconnected.forEach(a.optimzeScriptController),r.g.po_global_data.customized.css.critical.forEach(function(e){return(0,a.optimzeStylesheetController)(null,e)}),(0,a.observer)(function(t){return o(this,void 0,void 0,function(){return n(this,function(e){switch(t.tagName.toLowerCase()){case"img":(0,a.optimizeImage)(t);break;case"script":(0,a.optimzeScriptController)(t),t.hasAttribute("class")&&t.classList.contains("analytics")&&r.g.po_global_data.isLighthouseReportingTool&&(t.innerHTML=t.innerHTML.replace("var loaded = false;","var loaded = true;"));break;case"stylesheet":(0,a.optimzeStylesheet)(t);break;case"link":t.rel&&"stylesheet"===t.rel&&(0,a.optimzeStylesheetController)(t)}return[2]})})}).observe(document.documentElement,i.CONFIG.OBSERVER_CONFIG),(0,a.executeDeferScripts)()},104:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.appendElement=void 0;var o=r(320);t.appendElement=function appendElement(e,t){var r=(0,o.getCreatetElement)(e);try{t?t.insertBefore(r,t.firstChild):requestAnimationFrame(function(){document.head.insertBefore(r,document.head.firstChild)})}catch(e){}}},474:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.createGlobalData=void 0;var o=r(397);t.createGlobalData=function createGlobalData(){r.g.po_global_data={customized:customized,domains:[],preload:[],preconnectedSrc:[],excludeDnsPreconnect:[],scripts:[],stylesheets:[],fonts:[],images:[],preCheckScripts:[],deferScripts:[],isLighthouseReportingTool:(0,o.checkIfReportingTool)()},window.thirdPartyScriptDefinition&&window.thirdPartyScriptDefinition.forEach(function(e){r.g.po_global_data.customized.js.excluded.push(e.src)})}},852:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.dnsPrefetch=void 0;var o=r(191);t.dnsPrefetch=function dnsPrefetch(e){e=function removeSubDomainElements(e){if(!1!==e.includes("//www."))return e;for(var t=(0,o.getDomain)(e).split(".");2<t.length;)t.splice(0,1);return"//"+t.join(".")}(e),(0,o.notExistsInArray)(r.g.po_global_data.domains,e)&&(e=(0,o.getAttributeSet)({nodeTagName:"link",rel:"dns-prefetch",src:e,prefetchPreconnect:!0}),(0,o.appendElement)(e))}},931:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.getAttributeSet=void 0;var s=r(281);t.getAttributeSet=function getAttributeSet(e){var t=e.src,r=e.rel,o=e.prefetchPreconnect,n=e.href,i=e.as,a=e.isFont,c=e.setDefer,l=e.preload,p=e.nodeTagName,u=e.attributes,e={};return p&&(e.nodeTagName=p),r&&(e.rel=r),n&&(e.href=n),o&&t&&(e.href=(0,s.getDomain)(t)),l&&(e.rel="preload"),i&&(e.as=i),t&&(e.src=t),a&&(e.crossorigin="anonymous"),c&&(e.defer=!0),u&&(e[u.key]=u.value),e}},320:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.getCreatetElement=void 0;r(77);t.getCreatetElement=function getCreatetElement(e){var t=function getElement(e){return document.createElement(e.nodeTagName)}(e);return delete e.nodeTagName,function setAttributes(e,t){for(var r=Object.keys(t),o=0,n=r;o<n.length;o++){var i=n[o];e[i]=t[i]}}(t,e),t}},281:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.getDomain=void 0,t.getDomain=function getDomain(e){try{return!1===e.startsWith("https://")&&e.startsWith("//")?e="https:"+e:!1===e.startsWith("https://")&&!1===e.startsWith("//")&&(e="https://"+e),new URL(e).origin}catch(e){return""}}},191:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.optimzeStylesheetController=t.optimzeScriptController=t.executeDeferScripts=t.preInit=t.notExistsInArray=t.createGlobalData=t.observer=t.optimizeFont=t.optimizeImage=t.optimzeStylesheet=t.optimzeScript=t.getAttributeSet=t.appendElement=t.getDomain=t.preload=t.dnsPrefetch=t.preconnect=void 0;var o=r(313);Object.defineProperty(t,"preconnect",{enumerable:!0,get:function(){return o.preconnect}});var n=r(852);Object.defineProperty(t,"dnsPrefetch",{enumerable:!0,get:function(){return n.dnsPrefetch}});var i=r(17);Object.defineProperty(t,"preload",{enumerable:!0,get:function(){return i.preload}});var a=r(281);Object.defineProperty(t,"getDomain",{enumerable:!0,get:function(){return a.getDomain}});var c=r(104);Object.defineProperty(t,"appendElement",{enumerable:!0,get:function(){return c.appendElement}});var l=r(931);Object.defineProperty(t,"getAttributeSet",{enumerable:!0,get:function(){return l.getAttributeSet}});var p=r(721);Object.defineProperty(t,"optimzeScript",{enumerable:!0,get:function(){return p.optimzeScript}}),Object.defineProperty(t,"optimzeStylesheet",{enumerable:!0,get:function(){return p.optimzeStylesheet}}),Object.defineProperty(t,"optimizeImage",{enumerable:!0,get:function(){return p.optimizeImage}}),Object.defineProperty(t,"optimizeFont",{enumerable:!0,get:function(){return p.optimizeFont}}),Object.defineProperty(t,"preInit",{enumerable:!0,get:function(){return p.preInit}});var u=r(474);Object.defineProperty(t,"createGlobalData",{enumerable:!0,get:function(){return u.createGlobalData}});var s=r(877);Object.defineProperty(t,"observer",{enumerable:!0,get:function(){return s.observer}});var d=r(373);Object.defineProperty(t,"notExistsInArray",{enumerable:!0,get:function(){return d.notExistsInArray}});var f=r(915);Object.defineProperty(t,"executeDeferScripts",{enumerable:!0,get:function(){return f.executeDeferScripts}}),Object.defineProperty(t,"optimzeScriptController",{enumerable:!0,get:function(){return f.optimzeScriptController}});var b=r(437);Object.defineProperty(t,"optimzeStylesheetController",{enumerable:!0,get:function(){return b.optimzeStylesheetController}})},721:(e,t,o)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.preInit=t.optimizeFont=t.optimizeImage=t.optimzeStylesheet=t.optimzeScript=void 0;var n=o(191);function preInit(e,t,r){e=(0,n.notExistsInArray)(o.g.po_global_data[e],t);t&&"string"==typeof t&&""!==t&&e&&function init(t,e){0===o.g.po_global_data.customized.excludeDnsPreconnect.filter(function(e){return-1<t.indexOf(e.replace("\\/","/"))}).length&&!1===/(\.map)$/gm.test(t)&&((0,n.dnsPrefetch)(t),(0,n.preconnect)(t),e&&(0,n.preload)(t,e))}(t,r)}t.preInit=preInit,t.optimzeScript=function optimzeScript(e){preInit("script",e.src,"script")},t.optimzeStylesheet=function optimzeStylesheet(e,t){preInit("stylesheets",e?e.src:t,"style")},t.optimizeFont=function optimizeFont(e){preInit("fonts",e.href,"font")},t.optimizeImage=function optimizeImage(e){e.setAttribute("loading","lazy")}},373:(e,t)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.notExistsInArray=void 0,t.notExistsInArray=function notExistsInArray(e,t){return!(!t||!1!==e.includes(t))&&(e.push(t),!0)}},877:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.observer=void 0;var o=r(179);t.observer=function(t){return new MutationObserver(function(e){e.forEach(function(e){e.addedNodes.forEach(function(e){e.dataset&&!1==!!e.dataset[o.CONFIG.DATASET_KEY]&&1===e.nodeType&&t(e)})})})}},915:(e,t,l)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.optimzeScriptController=t.executeDeferScripts=void 0;var r=l(373),p=l(721),u=l(709);function preCheck(e){if((0,r.notExistsInArray)(l.g.po_global_data.preCheckScripts,e))try{return new URL(e),e}catch(e){return null}return null}t.executeDeferScripts=function executeDeferScripts(){l.g.po_global_data.isLighthouseReportingTool||l.g.po_global_data.customized.blockScriptsForLightHouse||(document.addEventListener("DOMContentLoaded",function(){setTimeout(function(){document.dispatchEvent(new Event("bc_po"))},1e3*l.g.po_global_data.customized.js.delay_time)}),document.addEventListener("bc_po",function(){var e=document.querySelectorAll("[data-bc_po]");Array.prototype.forEach.call(e,function(e){e.setAttribute("src",e.getAttribute("data-src")),e.setAttribute("type","javascript"),e.removeAttribute("data-src")})}))},t.optimzeScriptController=function optimzeScriptController(e,t){var r,o,n,i,a,c;!function defineGlogalFunction(){l.g.po_global_data.reInitInlineScript=function(e){var t=document.getElementById(""+e);console.log("original node: "+t.type),t&&((e=t.cloneNode(!0)).setAttribute("type","javascript"),t.replaceWith(e),console.log("cloned node: "+e.type))}}(),e?r=preCheck(e.src):t&&(r=preCheck(t)),r?(o=(0,u.subStringFound)(r,l.g.po_global_data.customized.js.excluded),n=(0,u.subStringFound)(r,l.g.po_global_data.customized.js.delayed),i=(0,u.subStringFound)(r,l.g.po_global_data.customized.js.defered),a=(0,u.subStringFound)(r,l.g.po_global_data.customized.apps.excluded),c=(0,u.subStringFound)(r,l.g.po_global_data.customized.apps.delayed),t=(0,u.subStringFound)(r,l.g.po_global_data.customized.apps.defered),!r||o||n||i||a||c||t||(0,p.preInit)("scripts",r,"script"),(r&&t||i)&&(e.removeAttribute("async"),e.setAttribute("defer","defer"),document.body?(document.body.appendChild(e),0<l.g.po_global_data.deferScripts.length&&l.g.po_global_data.deferScripts.forEach(function(e){return document.body.appendChild(e)})):l.g.po_global_data.deferScripts.push(e)),(r&&n&&!1===o&&!1===a||l.g.po_global_data.isLighthouseReportingTool&&l.g.po_global_data.customized.blockScriptsForLightHouse)&&(e.setAttribute("data-src",r),e.setAttribute("type","javascript/blocked"),e.setAttribute("defer","defer"),document.body?(document.body.appendChild(e),0<l.g.po_global_data.deferScripts.length&&l.g.po_global_data.deferScripts.forEach(function(e){return document.body.appendChild(e)})):l.g.po_global_data.deferScripts.push(e),e.removeAttribute("src"),e.removeAttribute("async"))):e&&e.id&&e.src}},437:(e,t,a)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.optimzeStylesheetController=void 0;var c=a(721),l=a(709);t.optimzeStylesheetController=function optimzeStylesheetController(e,t){var r,o=e?e.href:"https:"+t.replace("\\/","/"),n=(0,l.subStringFound)(o,a.g.po_global_data.customized.css.excluded),i=(0,l.subStringFound)(o,a.g.po_global_data.customized.css.defered);t?((r=document.createElement("link")).rel="preload",r.as="style",r.href=t,document.head.prepend(r)):e&&(i?(e.setAttribute("media","print"),e.setAttribute("onload",'this.media="all"')):n||((0,c.preInit)("stylesheets",o,"style"),e.setAttribute("media","print"),e.setAttribute("onload",'this.media="all"')))}},313:(e,t,r)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.preconnect=void 0;var o=r(191);t.preconnect=function preconnect(e){var t=new URL(e).host;(0,o.notExistsInArray)(r.g.po_global_data.preconnectedSrc,t)&&(e=(0,o.getAttributeSet)({nodeTagName:"link",rel:"preconnect",src:e,prefetchPreconnect:!0}),(0,o.appendElement)(e))}},17:(e,t,o)=>{Object.defineProperty(t,"__esModule",{value:!0}),t.preload=void 0;var n=o(191);t.preload=function preload(e,t,r){(0,n.notExistsInArray)(o.g.po_global_data.preload,e)&&(e=(0,n.getAttributeSet)({nodeTagName:"link",preload:!0,as:t,isFont:r,href:e}),(0,n.appendElement)(e))}}},o={};function __webpack_require__(e){var t=o[e];if(void 0!==t)return t.exports;t=o[e]={exports:{}};return r[e].call(t.exports,t,t.exports,__webpack_require__),t.exports}__webpack_require__.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}();__webpack_require__(341)})();
+
+        }) ();
+    </script>
+{%- endif -%}
+
+{%- if request.design_mode -%}
+    <style>
+        #section-{{- section.id -}}-overlay .message,
+        #section-{{- section.id -}}-overlay #tab1:checked ~ nav label[for="tab1"]:after,
+        #section-{{- section.id -}}-overlay #tab2:checked ~ nav label[for="tab2"]:after,
+        #section-{{- section.id -}}-overlay #tab3:checked ~ nav label[for="tab3"]:after,
+        #section-{{- section.id -}}-overlay #tab4:checked ~ nav label[for="tab4"]:after,
+        #section-{{- section.id -}}-overlay #tab5:checked ~ nav label[for="tab5"]:after,
+        #section-{{- section.id -}}-overlay #tab6:checked ~ nav label[for="tab6"]:after,
+        #section-{{- section.id -}}-overlay #loader .loaderText,
+        #section-{{- section.id -}}-overlay #loader,
+        #section-{{- section.id -}}-overlay .loader,
+        #section-{{- section.id -}}-overlay details button {
+            position: absolute;
+        }
+        #section-{{- section.id -}}-overlay,
+        #section-{{- section.id -}}-overlay [name="tabs"],
+        #section-{{- section.id -}}-overlay .tab1,
+        #section-{{- section.id -}}-overlay .tab2,
+        #section-{{- section.id -}}-overlay .tab3,
+        #section-{{- section.id -}}-overlay .tab4,
+        #section-{{- section.id -}}-overlay .tab5,
+        #section-{{- section.id -}}-overlay .tab6{
+            display: none;
+        }
+        #section-{{- section.id -}}-overlay details,
+        #section-{{- section.id -}}-overlay details summary,
+        #section-{{- section.id -}}-overlay details p,
+        #section-{{- section.id -}}-overlay div,
+        #section-{{- section.id -}}-overlay nav {
+            display: flex;
+        }
+        #section-{{- section.id -}}-overlay .wrapper,
+        #section-{{- section.id -}}-overlay div figure div div,
+        #section-{{- section.id -}}-overlay div figure div div div,
+        #section-{{- section.id -}}-overlay #tab1:checked ~ figure .tab1,
+        #section-{{- section.id -}}-overlay #tab2:checked ~ figure .tab2,
+        #section-{{- section.id -}}-overlay #tab3:checked ~ figure .tab3,
+        #section-{{- section.id -}}-overlay #tab4:checked ~ figure .tab4,
+        #section-{{- section.id -}}-overlay #tab5:checked ~ figure .tab5,
+        #section-{{- section.id -}}-overlay #tab6:checked ~ figure .tab6,
+        #section-{{- section.id -}}-overlay #tab1:checked ~ nav label[for="tab1"]:after,
+        #section-{{- section.id -}}-overlay #tab2:checked ~ nav label[for="tab2"]:after,
+        #section-{{- section.id -}}-overlay #tab3:checked ~ nav label[for="tab3"]:after,
+        #section-{{- section.id -}}-overlay #tab4:checked ~ nav label[for="tab4"]:after,
+        #section-{{- section.id -}}-overlay #tab5:checked ~ nav label[for="tab5"]:after,
+        #section-{{- section.id -}}-overlay #tab6:checked ~ nav label[for="tab6"]:after {
+            display: block;
+        }
+
+        #section-{{- section.id -}}-overlay .message {
+            top: 0;
+            transition: all 1000ms ease-in-out;
+            padding: 1rem;
+            left: 50%;
+            transform: translate( -50%, -100%);
+        }
+        #section-{{- section.id -}}-overlay .message.visible {
+            transform: translate( -50%, 400%);
+            transition: all 1000ms ease-in-out;
+        }
+        #section-{{- section.id -}}-overlay{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 24000;
+            background-color: rgba(0, 0, 0, 0.2);
+            overflow: scroll;
+        }
+        #section-{{- section.id -}}-overlay .wrapper {
+            width: 100%;
+            height: auto;
+            margin: 3rem;
+            background-color: rgba(255, 255, 255, 1);
+        }
+        #section-{{- section.id -}}-overlay div {
+            width: auto;
+            white-space: nowrap;
+        }
+
+        #section-{{- section.id -}}-overlay div,
+        #section-{{- section.id -}}-overlay div figure {
+            overflow: auto;
+            clear: both;
+        }
+        #section-{{- section.id -}}-overlay div figure div div{
+            padding: 1rem 0;
+        }
+        #section-{{- section.id -}}-overlay div figure div div div{
+            border: solid 0.5px black;
+            padding: 1rem;
+            position: relative;
+        }
+
+        #section-{{- section.id -}}-overlay nav {
+            height: min-content;
+        }
+        #section-{{- section.id -}}-overlay nav label {
+            flex-grow: 1;
+            float: left;
+            padding: 15px 15px;
+            border-top: 1px solid silver;
+            border-right: 1px solid silver;
+            background: black;
+            color: #fff;
+        }
+        #section-{{- section.id -}}-overlay nav label:active {
+            background: #fff;
+            color: black;
+        }
+        #tab1:checked ~ nav label[for="tab1"],
+        #tab2:checked ~ nav label[for="tab2"],
+        #tab3:checked ~ nav label[for="tab3"],
+        #tab4:checked ~ nav label[for="tab4"],
+        #tab5:checked ~ nav label[for="tab5"],
+        #tab6:checked ~ nav label[for="tab6"]{
+            background: white;
+            color: #111;
+            position: relative;
+            border-bottom: none;
+        }
+
+        #tab1:checked ~ nav label[for="tab1"]:after,
+        #tab2:checked ~ nav label[for="tab2"]:after,
+        #tab3:checked ~ nav label[for="tab3"]:after,
+        #tab4:checked ~ nav label[for="tab4"]:after,
+        #tab5:checked ~ nav label[for="tab5"]:after,
+        #tab6:checked ~ nav label[for="tab6"]:after{
+            content: "";
+            height: 2px;
+            width: 100%;
+            background: white;
+            left: 0;
+            bottom: -1px;
+        }
+
+        #section-{{- section.id -}}-overlay #loader .loaderText {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 2rem;
+        }
+        #section-{{- section.id -}}-overlay #loader .loaderText,
+        #section-{{- section.id -}}-overlay #loader .loaderText .dud {
+            font-size: xxx-large;
+            color: #fff;
+            font-weight: bolder;
+        }
+
+        #section-{{- section.id -}}-overlay #loader {
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border: unset;
+            background-color: rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        #section-{{- section.id -}}-overlay .loader {
+            width: 250px;
+            height: 250px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: unset;
+        }
+        #section-{{- section.id -}}-overlay svg {
+            width: 90%;
+            fill: none;
+        }
+        #section-{{- section.id -}}-overlay .load {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 570;
+            stroke-width: 20px;
+        }
+        #section-{{- section.id -}}-overlay .load.one {
+            stroke: #554d73;
+            animation: load 1.5s infinite;
+        }
+        #section-{{- section.id -}}-overlay .load.two {
+            stroke: #a496a4;
+            animation: load 1.5s infinite;
+            animation-delay: 0.1s;
+        }
+        #section-{{- section.id -}}-overlay .load.three {
+            stroke: #a5a7bb;
+            animation: load 1.5s infinite;
+            animation-delay: 0.2s;
+        }
+        #section-{{- section.id -}}-overlay .point {
+            animation: bounce 1s infinite ease-in-out;
+        }
+        #section-{{- section.id -}}-overlay .point.one {
+            fill: #a5a7bb;
+            animation-delay: 0s;
+        }
+        #section-{{- section.id -}}-overlay .point.two {
+            fill: #a496a4;
+            animation-delay: 0.1s;
+        }
+        #section-{{- section.id -}}-overlay .point.three {
+            fill: #554d73;
+            animation-delay: 0.2s;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        @keyframes load {
+            0% {
+                stroke-dashoffset: 570;
+            }
+            50% {
+                stroke-dashoffset: 530;
+            }
+            100% {
+                stroke-dashoffset: 570;
+                transform: rotate(360deg);
+            }
+        }
+        #section-{{- section.id -}}-overlay details button {
+            left: auto;
+            right: 0.5rem;
+            bottom: 0.5rem;
+        }
+
+        #section-{{- section.id -}}-overlay details summary,
+        #section-{{- section.id -}}-overlay details p {
+            white-space: normal;
+            margin: 0 0 1rem 0;
+        }
+        #section-{{- section.id -}}-overlay details p {
+            margin: 1rem;
+        }
+        #section-{{- section.id -}}-overlay code {
+            padding: 1rem;
+            border: solid 0.1px #8e8e8e;
+        }
+        #section-{{- section.id -}}-overlay .icon.god::before,
+        #section-{{- section.id -}}-overlay .icon.bad::before{
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+        }
+        #section-{{- section.id -}}-overlay .icon.god::before{
+            content: "\2713";
+            color: green;
+        }
+        #section-{{- section.id -}}-overlay .icon.bad::before{
+            content: "\2717";
+            color: red;
+        }
+        #section-{{- section.id -}}-overlay code.bad {
+            background-color: #ffdfdf;
+        }
+        #section-{{- section.id -}}-overlay code.god {
+            background-color: #e0ffdf;
+        }
+
+        #section-{{- section.id -}}-overlay ul {
+            display: grid;
+        }
+
+    </style>
+
+    <div id="section-{{- section.id -}}-overlay" data-shopify="{{ get_id }}">
+
+        <div class="wrapper">
+            <input checked="checked" id="tab1" type="radio" name="tabs" />
+            <input id="tab2" type="radio" name="tabs" />
+            <input id="tab3" type="radio" name="tabs" />
+            <input id="tab4" type="radio" name="tabs" />
+            <input id="tab5" type="radio" name="tabs" />
+            <input id="tab6" type="radio" name="tabs" />
+
+            <nav>
+                <label for="tab1">Main</label>
+                <label for="tab2">Scripts</label>
+                <label for="tab3">CSS</label>
+                <label for="tab4">Fonts</label>
+                <label for="tab5">Images</label>
+
+                <label for="tab6">Readme / Tipps</label>
+            </nav>
+
+            <div id="loader">
+                <div class="loader">
+                    <svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="load one" cx="60" cy="60" r="40" />
+                        <circle class="load two" cx="60" cy="60" r="40" />
+                        <circle class="load three" cx="60" cy="60" r="40" />
+                        <g>
+                            <circle class="point one" cx="45" cy="70" r="5" />
+                            <circle class="point two" cx="60" cy="70" r="5" />
+                            <circle class="point three" cx="75" cy="70" r="5" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="loaderText"></div>
+            </div>
+
+            <figure>
+                <div id="main" class="tab1">
+                    <div class="hosts">
+                        <h3>hosts</h3>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="scripts" class="tab2">
+                    <div class="assets">
+                        <h3>assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="globalAssets">
+                        <h3>global_assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="scriptTags">
+                        <h3>script tags</h3>
+                        <div></div>
+                    </div>
+                    <div class="scripts">
+                        <h3>scripts</h3>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="stylesheets" class="tab3">
+                    <div class="assets">
+                        <h3>assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="globalAssets">
+                        <h3>global_assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="css">
+                        <h3>Other Stylesheets</h3>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="fonts" class="tab4">
+                    <div class="assets">
+                        <h3>assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="globalAssets">
+                        <h3>global_assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="fonts">
+                        <h3>Other Fonts</h3>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="images" class="tab5">
+                    <div class="assets">
+                        <h3>assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="globalAssets">
+                        <h3>global_assets</h3>
+                        <div></div>
+                    </div>
+                    <div class="images">
+                        <h3>Other images</h3>
+                        <div></div>
+                    </div>
+                </div>
+                <div id="tipps" class="tab6">
+                    <h3>Readme / Tipps</h3>
+
+                    <div>
+                        <details>
+                            <summary><h4>Pre-DNS / PreFetch</h4></summary>
+                            <p>Definition mit welchen Servern vorab eine Verbindung aufgebaut werden soll.</p>
+                        </details>
+                        <details>
+                            <summary><h4>PreLoad Script's</h4></summary>
+                            <p>Definition der Scripts die vorgeladen werden sollen. Nur für Scripts verwenden die in den ersten Sekunden benötigt werden.</p>
+                        </details>
+                        <details>
+                            <summary><h4>Load Script's with delay</h4></summary>
+                            <p>Definition der Scripts die mit einer Zeitlichen Verzögerung ausgeführt werden können.</p>
+                            <p>z.B. für Chat und Co.</p>
+                            <p>Zugehörige Snippets können speziell gekapselt werden. Verwende dazu folgenden Code,
+                                ersetzte dabei [name] durch eine eindeutige Bezeichnung. Alles was innerhalb dieses template Tag definiert wird, wird zeitverzögert ausgeführt.</p>
+                            <code>
+                                <pre>
+                                      &lt;template id="appRenders_[name]">
+                                          &lt;!-- gekapselter Code -->
+                                      &lt;/template>
+                                </pre>
+                            </code>
+                        </details>
+                        <details>
+                            <summary><h4>PreLoad Fonts</h4></summary>
+                            <p>Schriftarten die vorgeladen werden sollen, dürfen nicht über die Versionierung aufgerufen werden.
+                                Stelle sicher das in den jeweiligen Font Definitionen die asset_url gesplittet wird.
+                                z.B von:
+                            </p>
+                            <code>
+                                <pre>
+                                {% raw %}
+                                    {{ 'meine_font' | asset_url }}
+                                {% endraw %}
+                            </pre>
+                            </code>
+                            <p>zu:</p>
+                            <code>
+                                <pre>
+                                {% raw %}
+                                    {{ 'meine_font' | asset_url | split: '?' | first }}
+                                {% endraw %}
+                            </pre>
+                            </code>
+                        </details>
+                        <details>
+                            <summary><h4>PreLoad CSS</h4></summary>
+                            <p>Definition für CSS das vorgeladen werden soll.</p>
+                        </details>
+                        <details>
+                            <summary><h4>PreLoad CSS defer</h4></summary>
+                            <p>CSS Definition für das parallele laden von CSS. Das CSS wird nach dem laden automatisch bereitgestellt. Nicht für Kritisches CSS verwenden.</p>
+                            <p>CSS was über diese Funktion geladen wird, muss im Code gekapselt werden.
+                                Suche im Code die entsprechenden CSS deklarationen und umschließe diese mit folgendem Snippet:
+                            </p>
+                            <code>
+                                <pre>
+                                {% raw %}
+                                    {% unless settings.ps_optimization %}
+                                    // ... CSS declaration
+                                    {% endunless %}
+                                {% endraw %}
+                                </pre>
+
+                            </code>
+                        </details>
+                        <details>
+                            <summary><h4>PreLoad image</h4></summary>
+                            <p>Bilder die vorgeladen werden sollen, dürfen nicht über die Versionierung aufgerufen werden.
+                                Stelle sicher das in den jeweiligen Font Definitionen die image_url gesplittet wird.
+                                z.B von:
+                            </p>
+                            <code>
+                                <pre>
+                                {% raw %}
+                                    {{ 'meine_bild' | image_url }}
+                                {% endraw %}
+                            </pre>
+                            </code>
+                            <p>zu:</p>
+                            <code>
+                                <pre>
+                                {% raw %}
+                                    {{ 'meine_bild' | image_url | split: '?' | first }}
+                                {% endraw %}
+                            </pre>
+                            </code>
+                        </details>
+                        <details>
+                            <summary><h4>Hidden Script's for Lighthouse</h4></summary>
+                            <p>Ausführung von Scripts im Lighthouse Report verhindern.</p>
+                        </details>
+                    </div>
+
+                    <div>
+                        <details>
+                            <summary><h4>Performance Optimierung Grundlagen</h4></summary>
+                            <p>Performanceoptimierung beschreibt Möglichkeiten, die Ladezeit einer Internetseite auf ein Minimum zu reduzieren und gleichzeitig möglichst früh informative Inhalte für den Nutzer zur Verfügung zu stellen.</p>
+                            <details>
+                                <summary><h3>Optimieren von Grafiken</h3></summary>
+                                <p>Grafiken sind eine der größten Attraktionen ansprechender Webseiten, tragen aber überproportional zur page-load einer Webseite bei. Gerade deshalb sind hier aber auch schnelle Verbesserungen der Ladezeit möglich.</p>
+                            </details>
+                            <details>
+                                <summary><h3>Optimieren von Stylesheets</h3></summary>
+                                <h3>Effizente Selektoren</h3>
+                                Selektoren sind unterschiedlich effizient. Ein id-Selektor greift schneller als ein class-Selektor. Am Ende der Skala rangieren Pseudo-Selektoren, bei denen die Browser am längsten brauchen, bis das Element identifiziert und aufgehübscht ist.
+                                In der Praxis ist der Geschwindigkeitsunterschied zwischen id- und class-Selektoren gering. Viele Experten raten zum Verzicht auf id-Selektoren zugunsten von Klassen-Selektoren, denn Klassen-Selektoren können wiederverwendet werden. id-Selektoren dürfen nur einmal innerhalb der HTML-Datei benutzt werden. Also braucht ein einzelnes Element der Seite eine ganze Zeile CSS für sich allein. Das kann den Geschwindigkeitsvorteil unterwandern.
+                                Das heißt nun nicht, dass alle id-Selektoren aus dem HTML herausgeworfen werden sollten, denn Javascript profitiert von id-Attributen.
+                                <h3>CSS-Kurzschriften und Gruppen verwenden</h3>
+                                <code class="bad">
+                                    body { margin-top: 20px;
+                                    margin-right: 10px;
+                                    margin-bottom: 5px;
+                                    margin-left: 10px; }
+                                </code>
+                                <code class="god">
+                                    body { margin: 20px 10px 5px 10px }
+                                </code>
+                                <h3>Überqualifizierung vermeiden</h3>
+                                <p>Das figure ist überflüssig, wenn das figcaption-Tag sowieso nur in figure-Elementen vorkommt:</p>
+                                <code class="bad">
+                                    figure figcaption a
+                                </code>
+                                <code class="god">
+                                    figcaption a
+                                </code>
+                            </details>
+                        </details>
+                    </div>
+                </div>
+            </figure>
+            <div class="message"></div>
+        </div>
+    </div>
+
+    <script>
+        class TextScramble {
+            constructor(el) {
+                this.el = el
+                this.chars = '!<>-_\\/[]{}—=+*^?#________'
+                this.update = this.update.bind(this)
+            }
+            delete() {
+                delete this;
+            }
+            setText(newText) {
+                const oldText = this.el.innerText
+                const length = Math.max(oldText.length, newText.length)
+                const promise = new Promise((resolve) => this.resolve = resolve)
+                let from
+                let to
+                let start
+                let end
+
+                this.queue = []
+                for (let i = 0; i < length; i++) {
+                    from = oldText[i] || ''
+                    to = newText[i] || ''
+                    start = Math.floor(Math.random() * 40)
+                    end = start + Math.floor(Math.random() * 40)
+                    this.queue.push({ from, to, start, end })
+                }
+                cancelAnimationFrame(this.frameRequest)
+                this.frame = 0
+                this.update()
+                return promise
+            }
+            update() {
+                let output = ''
+                let complete = 0
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i]
+                    if (this.frame >= end) {
+                        complete++
+                        output += to
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar()
+                            this.queue[i].char = char
+                        }
+                        output += `<span class="dud">${char}</span>`
+                    } else {
+                        output += from
+                    }
+                }
+                this.el.innerHTML = output
+                if (complete === this.queue.length) {
+                    this.resolve(undefined)
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update)
+                    this.frame++
+                }
+            }
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)]
+            }
+        }
+        const phrases = [
+            'don\'t worry',
+            'beeclever',
+            'performing',
+            '...read data',
+            '...hold data',
+            '...analyze data'
+        ]
+        const el = document.querySelector('#loader .loaderText')
+        const fx = new TextScramble(el);
+        let counter = 0
+        function next () {
+            fx.setText(phrases[counter]).then(() => {
+                setTimeout(next, 800);
+            });
+            counter = (counter + 1) % phrases.length
+        }
+
+        const Performing = (function () {
+            let initPerforming = false,
+                section,
+                dataSet = {},
+                domains = [];
+
+            const mainData = {
+                host : {
+                    wrapper: 'hostWrapper',
+                    selector : '#main .hosts div',
+                    fieldData : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                scriptAssets : {
+                    wrapper: 'assetsWrapper',
+                    selector : '#scripts .assets div',
+                    fieldData : [{%- assign a = section.settings[d] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                scriptGlobalAssets : {
+                    wrapper: 'assetsGlobalWrapper',
+                    selector : '#scripts .globalAssets div',
+                    fieldData : [{%- assign a = section.settings[f] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                scriptWrapper : {
+                    wrapper: 'scriptWrapper',
+                    selector : '#scripts .scripts div',
+                    fieldData : [{%- assign a = section.settings[c] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                scriptTags : {
+                    wrapper: 'scriptTagWrapper',
+                    selector : '#scripts .scriptTags div',
+                    fieldData : [{{ e | join: ',' }}]
+                },
+                stylesheetAssets : {
+                    wrapper: 'CSSAssetsWrapper',
+                    selector : '#stylesheets .assets div',
+                    fieldData : [{%- assign a = section.settings[m] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                stylesheetGlobalAssets : {
+                    wrapper: 'CSSGlobalAssetsWrapper',
+                    selector : '#stylesheets .globalAssets div',
+                    fieldData : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                stylesheet : {
+                    wrapper: 'CSSWrapper',
+                    selector : '#stylesheets .css div',
+                    fieldData : [{%- assign a = section.settings[n] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                fontsAssets : {
+                    wrapper: 'FontsAssetsWrapper',
+                    selector : '#fonts .assets div',
+                    fieldData : [{%- assign a = section.settings[k] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                fontsGlobalAssets : {
+                    wrapper: 'FontsGlobalAssetsWrapper',
+                    selector : '#fonts .globalAssets div',
+                    fieldData : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                fonts : {
+                    wrapper: 'FontsWrapper',
+                    selector : '#fonts .fonts div',
+                    fieldData : [{%- assign a = section.settings[l] | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                imagesAssets : {
+                    wrapper: 'ImagesAssetsWrapper',
+                    selector : '#images .assets div',
+                    fieldData : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                imagesGlobalAssets : {
+                    wrapper: 'ImagesGlobalAssetsWrapper',
+                    selector : '#images .globalAssets div',
+                    fieldData : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                },
+                images : {
+                    wrapper: 'ImagesWrapper',
+                    selector : '#images .images div',
+                    fieldData : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+                }
+            };
+
+            const excludePath = [
+                '/online-store-web/assets/latest/',
+                '/assets/storefront/load_feature',
+                '/assets/shopify_pay/storefront',
+                '/assets/storefront/features-',
+                '/theme_editor.js'
+            ]
+
+            const types = {
+                main : [{%- assign a = section.settings.prefetch_preconnect_urls | split: ',' -%}{%- for r in a -%}"{{ r | strip }}"{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+            }
+            const wrapper = function ( name ){
+                return this[ name ];
+            }
+            const getWrapper = function () {
+                return document.createElement ( 'ul' );
+            }
+            const iterateScripts = function ( scripts, isScriptTag ) {
+                scripts.forEach( s => {
+                    let src;
+                    if( !!s.src ) {
+                        src = s.src;
+                    }else if( !!s.href ) {
+                        src = s.href;
+                    } else {
+                        src = s;
+                    }
+                    if( src !== '' && !includes( src ) )
+                        saveData( src, isScriptTag );
+                });
+            }
+            const includes = function ( src ) {
+                return excludePath.filter( path => src.includes( path ) ).length > 0;
+            }
+            const prepareSRC = function ( src ) {
+                return src.startsWith('//') || src.startsWith('\/\/') ? `https:${ src }` : src
+            }
+            const saveData = function ( src, isScriptTag ) {
+                let url = new URL( src = prepareSRC( src ) );
+                dataSet[ 'origins' ][ url.origin ] = dataSet[ 'origins' ][ url.origin ] || {};
+                let obj = dataSet[ 'origins' ][ url.origin ];
+
+                obj[ src ] = obj[ src ] || {};
+                obj[ src ]['isScriptTag'] = obj[ src ]['isScriptTag'] || isScriptTag;
+                obj[ 'hosts' ] = obj[ 'hosts' ] || [];
+
+                if( !obj[ 'hosts' ].includes( src ) ) obj[ 'hosts' ].push( src );
+
+                if( !dataSet[ 'hosts' ].includes( src ) ) dataSet[ 'hosts' ].push( src );
+
+                if ( !domains.includes( url.origin ) ) domains.push ( url.origin );
+            }
+
+            const appendElement = function ( src, parentElement, key = null, type = null ){
+                let node = document.createElement('li');
+                let content = !!key ? src.split( key ).pop().split('?')[0] : src;
+                node.innerText = content;
+
+                if ( !!parentElement.children && Array.prototype.filter.call( parentElement.children, pNode => pNode.innerText === node.innerText ).length === 0 ) {
+                    if ( !!type ) node.classList.add( 'icon', types[ type ].includes( content ) ? 'god' : 'bad' )
+                    parentElement.appendChild ( node );
+                }
+            }
+            const setClass = function () {
+                for ( const [ key, obj ]  of Object.entries(mainData)) {
+                    let children = section.querySelector( `${ obj.selector } ul` ).children;
+                    Array.prototype.forEach.call( children, li => {
+                        if ( li.nodeName !== 'BUTTON' )
+                            li.classList.add('icon', obj.fieldData.includes( li.innerText ) ? 'god' : 'bad' )
+                    })
+                }
+            }
+            const replaceElement = function  ( selector, content ) {
+                section.querySelector( selector ).innerHTML = '';
+                section.querySelector( selector ).appendChild( content );
+            }
+            const uniq = function  (arrArg) {
+                return arrArg.filter((elem, pos, arr) => {
+                    return arr.indexOf(elem) === pos;
+                });
+            }
+            const pushData = function  (host, dataSet, wrapper1, wrapper2, wrapper3, wrapper4 ) {
+                dataSet[ 'origins' ][ host ]['hosts'].forEach( src => {
+                    if ( dataSet[ 'origins' ][ host ][ src ]['isScriptTag'] ) {
+                        appendElement( src, wrapper1 );
+                    } else if ( !src.includes( '/theme_editor.js' ) && src.includes( '/services/') && src.includes( 'asset/' ) || src.includes( 'cdn.shopify' ) && src.includes( '/assets/' ) ) {
+                        appendElement( src, wrapper2, '/')
+                    } else if ( src.includes( '/services/') && src.includes( '/global/' ) ) {
+                        appendElement( src, wrapper3, '/');
+                    } else {
+                        appendElement( src, wrapper4 );
+                    }
+                });
+            }
+            const createDataWrapper = function  ( dataType ){
+                if( dataType === 'hosts' ){
+                    domains = uniq( domains );
+                    domains.forEach( src => {
+                        if ( !src.includes( Shopify.shop ) )
+                            appendElement( src, wrapper('hostWrapper'), null, 'main' );
+                    });
+                    appendCopyButton( wrapper('hostWrapper') );
+                    return;
+                }
+                Object.keys( dataSet[ 'origins' ] ).forEach( host => {
+                    dataSet[ 'origins' ][ host ]['hosts'] = uniq( dataSet[ 'origins' ][ host ]['hosts'] );
+                    if( dataType === 'scripts' ){
+                        dataSet[ 'origins' ][ host ]['hosts'].forEach( () => {
+                            pushData( host, dataSet,wrapper('scriptTagWrapper'), wrapper('assetsWrapper'),wrapper('assetsGlobalWrapper'), wrapper('scriptWrapper') )
+                        });
+                    } else if( dataType === 'CSS' ) {
+                        dataSet[ 'origins' ][ host ]['hosts'].forEach( () => {
+                            pushData( host, dataSet, null, wrapper('CSSAssetsWrapper'), wrapper('CSSGlobalAssetsWrapper'), wrapper('CSSWrapper'))
+                        });
+                    } else if( dataType === 'fonts' ) {
+                        dataSet[ 'origins' ][ host ]['hosts'].forEach( () => {
+                            pushData( host, dataSet, null, wrapper('FontsAssetsWrapper'), wrapper('FontsGlobalAssetsWrapper'), wrapper('FontsWrapper'))
+                        })
+                    } else if( dataType === 'images' ) {
+                        dataSet[ 'origins' ][ host ]['hosts'].forEach( () => {
+                            pushData( host, dataSet, null, wrapper('ImagesAssetsWrapper'), wrapper('ImagesGlobalAssetsWrapper'), wrapper('ImagesWrapper'))
+                        })
+                    }
+                });
+            }
+            const replaceWrapper = function  () {
+                for( const [key,obj] of Object.entries(mainData)){
+                    replaceElement( obj.selector, wrapper( obj.wrapper ) )
+                }
+            }
+            const generateWrapper = function (){
+                for( const [key,obj] of Object.entries(mainData)){
+                    this[mainData[ key ]['wrapper']] = getWrapper()
+                }
+            }
+            const setButtons = function  () {
+                for( const [key,obj] of Object.entries(mainData)){
+                    appendCopyButton( wrapper( obj.wrapper ) )
+                }
+            }
+
+            const clearDataSet = function  () {
+                dataSet[ 'origins' ] = {};
+                dataSet[ 'hosts' ] = dataSet[ 'hosts' ] || [];
+            }
+            const prepareHostData = function  () {
+                createDataWrapper( 'hosts' );
+            }
+            const prepareCSSData = function  () {
+                let css = Array.prototype.filter.call( document.styleSheets,  css => !!css.href && css.href )
+                clearDataSet();
+                iterateScripts( css, false );
+                createDataWrapper( 'CSS' );
+            }
+            const prepareScriptData = function  () {
+                let asyncScripts = '{{- e -}}'.replaceAll('""',',').replaceAll('"','').split(',');
+                let scripts = Array.prototype.filter.call(document.scripts, s => !!s.src && s.src );
+                clearDataSet();
+                iterateScripts( asyncScripts, true );
+                iterateScripts( scripts, false );
+                createDataWrapper( 'scripts' );
+            }
+            const prepareFontsData = function  () {
+                let fonts = [];
+                performance.getEntries().forEach( entry => {
+                    entry.entryType === 'resource' && (entry.initiatorType === 'css' || entry.initiatorType === 'link') && entry.name.match ( /\.(woff|woff2)/ ) != null ? fonts.push ( entry.name ) : null
+                } )
+                clearDataSet();
+                iterateScripts( fonts, false );
+                createDataWrapper( 'fonts' );
+            }
+            const preparePhotoData = function  () {
+                let images = [];
+                performance.getEntries().forEach( entry => {
+                    if ( entry.entryType === 'resource' &&
+                        entry.initiatorType === 'link' &&
+                        entry.name.split('?')[0].match ( /\.(jpeg|jpg|jfif|pjpeg|pjp|gif|png|svg|apng|avif|webp)/ ) != null
+                    ) {
+                        images.push ( entry.name )
+                    }
+                })
+
+                clearDataSet();
+                iterateScripts( images, false );
+                createDataWrapper( 'images' );
+            }
+            const appendCopyButton = function ( parentElement ){
+                if ( parentElement.childElementCount > 0 && parentElement.querySelector( 'button' ) === null ) {
+                    let node = document.createElement ( 'button' );
+                    node.innerText = 'Copy';
+                    node.onclick = copy;
+                    parentElement.appendChild ( node );
+                }
+            }
+            const copy = function ( event ) {
+                try {
+                    let copyText = '';
+                    Array.prototype.forEach.call( event.target.closest('div').querySelectorAll( 'li' ), li => {
+                        copyText = copyText === "" ? li.innerText : `${ copyText }, ${ li.innerText }`
+                    })
+                    let input = document.createElement('input');
+                    input.value = copyText;
+                    input.style.top = "-100%";
+                    input.style.left = "-100%";
+                    input.style.position = "absolute";
+                    document.body.appendChild( input );
+                    input.select();
+                    document.execCommand("copy");
+                    input.remove();
+                    setMessage('copied to clipboard', 'black', '#fff');
+                } catch ( e ) {
+                    setMessage('failed to copy', 'red', '#000');
+                }
+            }
+            const setMessage = function  ( message, bgColor, color ) {
+                let messageBox = section.querySelector('.message');
+
+                messageBox.innerText = message;
+                messageBox.style.backgroundColor = bgColor;
+                messageBox.style.color = color;
+                messageBox.classList.add('visible');
+                setTimeout(function () {
+                    messageBox.classList.remove('visible');
+                }, 2000);
+            }
+            return function () {
+                section = document.getElementById('section-{{- section.id -}}-overlay');
+                if ( parseInt({{ section.settings.get_id }}) === 0b000101010 ) {
+                    section.style.display = 'flex';
+                    if ( !initPerforming ) {
+                        dataSet = {};
+                        next ();
+                        initPerforming = true;
+                        setTimeout ( function () {
+                            generateWrapper ();
+
+                            prepareScriptData ();
+                            prepareCSSData ();
+                            prepareFontsData ();
+                            preparePhotoData();
+                            prepareHostData ();
+
+                            setButtons();
+                            replaceWrapper ();
+                            fx.delete ();
+                            section.querySelector ( '#loader' ).style.display = 'none';
+
+                            setTimeout( setClass, 200 );
+
+                        }, parseInt( {{ section.settings.a | plus: 2 | times: 1000 }}) );
+                    } else {
+                        replaceWrapper ();
+                        section.querySelector ( '#loader' ).style.display = 'none';
+                    }
+                }
+            }
+        })();
+        document.addEventListener('shopify:section:select', event => {
+            if( event.detail.sectionId === "{{- section.id -}}"){
+                Performing ();
+            }
+        } );
+
+        document.addEventListener('shopify:section:deselect', function ( event ) {
+            if ( event.detail.sectionId === "{{- section.id -}}" ) {
+                section.style.display = 'none';
+            }
+        });
+    </script>
+{%- endif -%}
+{%- schema -%}
+{
+"name": "Page Speed Optimization",
+"settings": [
+{
+"type": "textarea",
+"id": "po_css",
+"label": "CSS for corrections needed for optimization."
+},
+{
+"type": "header",
+"content": "Page Speed Optimization",
+"info": "In the following excluding means to exclude things from pre-loading, or in other words to 'lazyload' them"
+},
+{
+"type": "text",
+"id": "get_id",
+"label": "GET-ID"
+},
+{
+"type": "header",
+"content": "JavaScripts"
+},
+{
+"type": "textarea",
+"id": "dns_preconnect",
+"label": "DNS Preconnect",
+"info": "Separate by ,",
+"default": "https://cdn.shopify.com, https://shop.app, https://monorail-edge.shopifysvc.com, https://doubleclick.net"
+},
+{
+"type": "textarea",
+"id": "exclude_dns_preconnect",
+"label": "Exclude Scripts for DNS Preconnect by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "exclude_scripts",
+"label": "Exclude Scripts by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "delay_scripts",
+"label": "Delay Scripts by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "range",
+"id": "delay_time",
+"min": 0,
+"max": 15,
+"step": 1,
+"unit": "s",
+"label": "Delay execution",
+"default": 10
+},
+{
+"type": "textarea",
+"id": "defer_scripts",
+"label": "Defer Scripts by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "header",
+"content": "CSS"
+},
+{
+"type": "textarea",
+"id": "exclude_css",
+"label": "Exclude CSS by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "defer_css",
+"label": "Defer CSS by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "critical_css",
+"label": "Critical CSS by Substring",
+"info": "Will delete the version number of the CSS when processing. Separate by ,"
+},
+{
+"type": "header",
+"content": "Apps"
+},
+{
+"type": "textarea",
+"id": "exclude_apps_string",
+"label": "Exclude Apps by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "defer_apps_string",
+"label": "Defer Apps by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "delay_apps",
+"label": "Delay Apps by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "range",
+"id": "delay_time_apps",
+"min": 0,
+"max": 15,
+"step": 1,
+"unit": "s",
+"label": "Delay execution",
+"default": 10
+},
+{
+"type": "header",
+"content": "Fonts"
+},
+{
+"type": "textarea",
+"id": "exclude_fonts",
+"label": "Exclude Fonts by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "delay_fonts",
+"label": "Delay Fonts by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "header",
+"content": "Images"
+},
+{
+"type": "textarea",
+"id": "exclude_images",
+"label": "Exclude Images by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "textarea",
+"id": "delay_images",
+"label": "Delay Images by Substring",
+"info": "Separate by ,"
+},
+{
+"type": "radio",
+"id": "activate_scriptblocking_for_lighthouse",
+"label" : "activate script blocking for lighthouse",
+"default": "false",
+"options": [
+{
+"value": "true",
+"label": "true"
+},
+{
+"value": "false",
+"label": "false"
+}
+]
+},
+{
+"type": "text",
+"id": "hidden_scripts_for_lighthouse",
+"label": "hidden Script for lighthouse",
+"info": "only shows effect with the app"
+}
+],
+"blocks" : [
+{
+"type": "inline_script",
+"name": "Inline Script",
+"settings": [
+{
+"type": "text",
+"id": "inline_id",
+"label": "Inline ID",
+"info": "vergebe dem Inline Script eine eindeutige ID und trage diese hier ein"
+},
+{
+"type": "text",
+"id": "ressource",
+"label": "Ressource",
+"info": "Definiere die Scr an welches die Ausführung gehängt werden soll, wenn mehrere gefunden werden, wird automatisch das erste Element selektiert"
+}
+]
+}
+]
+}
+{%- endschema -%}

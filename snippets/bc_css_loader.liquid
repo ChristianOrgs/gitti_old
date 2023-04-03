@@ -1,0 +1,19 @@
+<script>
+  (function(){
+  	var cssLinks = ['{{ 'custom.css' | asset_url }}'];
+        
+    cssLinks.forEach(function(css){
+      var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimatinFrame || msRequestAnimationFrame;
+      var cb = function() {
+      	var n = document.createElement('link'); 
+        n.rel = 'preload';
+        n.as = "style";
+        n.setAttribute('onload', "this.rel='stylesheet'" );
+        n.href = css;
+      	document.head.appendChild(n);
+      }
+      if( raf ) raf( cb );
+      else window.addEventListener('load', cb );
+    });
+  })();
+</script>

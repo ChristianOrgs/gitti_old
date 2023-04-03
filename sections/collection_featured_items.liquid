@@ -1,0 +1,441 @@
+{% assign id = section.id %}
+{% assign mobile_per_row = section.settings.mobile_per_row | ceil | at_most: section.settings.max_items %}
+{% assign per_row = section.settings.per_row | at_most: section.settings.mobile_max_items %}
+{% capture this_sizes %} {% render 'image_sizes' large: section.settings.per_row, medium: large: section.settings.per_row, small: mobile_per_row %} {% endcapture %}
+
+<style>
+    #shopify-section-{{id}} .bestseller_tag{
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+	#shopify-section-{{id}} cs-slide{
+		flex: 0 0 calc(({{100.0 | divided_by: section.settings.mobile_per_row}}% - 16px) + {{1.0 | divided_by: section.settings.mobile_per_row}} * 16px);
+	}
+
+	@media (max-width: {{settings.breakpoint_small}}px){
+		#shopify-section-{{id}} .page-width {
+			padding-left: 24px;
+			padding-right: 0px;
+		}
+	}
+</style>
+
+{% comment %}
+use only metafield type json/old
+{% endcomment %}
+
+{% assign featured_items = collection.metafields.collection.featured_items.items %}
+{% assign section_title = collection.metafields.collection.featured_items.heading %}
+{% assign section_text = collection.metafields.collection.featured_items.text %}
+
+{% if featured_items != blank %}
+<div class="page-width flex col spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} {% if section_title != blank %}spacing-bottom-m{% endif %}">{{section_title}}</{{section.settings.heading_tag}}>
+    <{{section.settings.richtext_tag}} class="{{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} {% if section_text != blank %}spacing-bottom-m{% endif %}">{{section_text}}</{{section.settings.richtext_tag}}>
+    <div class="grid grid-gap col-{{section.settings.per_row}} only_medium-up">
+        {% for featured_item in featured_items %}
+            {% assign featured_item_title = blank %}
+            {% assign featured_item_image = blank %}
+            {% assign featured_item_url = blank %}
+            {% if featured_item.collection != blank %}
+
+                {%- assign collection_data = collections[featured_item.collection] -%}
+                {% if featured_item.title != blank %}
+                    {% assign featured_item_title = featured_item.title %}
+                {% else %}
+                    {% assign featured_item_title = collection_data.title %}
+                {% endif %}
+                {% assign featured_item_image = collection_data.featured_image %}
+                {% assign featured_item_url = collection_data.url %}
+            {% else %}
+
+                {%- assign product_data = all_products[featured_item.product] -%}
+                {% if featured_item.title %}
+                    {% assign featured_item_title = featured_item.title %}
+                {% else %}
+                    {% assign featured_item_title = product_data.title %}
+                {% endif %}
+                {% assign featured_item_image = product_data.featured_image %}
+                {% assign featured_item_url = product_data.url %}
+            {% endif %}
+			{% if forloop.index <= section.settings.max_items %}
+				<div class="flex col">
+					<a class="flex col is-relative" href="{% if featured_item.url != blank %}{{featured_item.url}}{% else %}{{featured_item_url}}{% endif %}">
+						{% if featured_item.image != blank %}
+                            {% assign featured_item_image_name = featured_item.image | split: '/' | last | split: '?' | first %}
+                            {% assign featured_item_image = images[featured_item_image_name] %}
+                        {% endif %}
+                        {% render 'image_element', image: featured_item_image, image_shape: 'circle', fit: 'cover', sizes: this_sizes %}
+						{% if featured_item.tag != blank %}
+							<p class="bestseller_tag is-absolute">{{featured_item.tag}}</p>
+						{% endif %}
+					</a>
+					<div class="flex col center spacing-top-s">
+						<p>{{featured_item_title}}</p>
+					</div>
+				</div>
+			{% endif %}
+        {% endfor %}
+    </div>
+		<div class="flex col only_small">
+			<clever-slider options-large="{'align':'start', 'slidesToScroll': 1}">
+				<cs-track>
+					<cs-slides class="gap">
+						{% for featured_item in featured_items %}
+							{% assign featured_item_title = blank %}
+							{% assign featured_item_image = blank %}
+							{% assign featured_item_url = blank %}
+							{% if featured_item.collection != blank %}
+								{%- assign collection_data = collections[featured_item.collection] -%}
+								{% if featured_item.title != blank %}
+									{% assign featured_item_title = featured_item.title %}
+								{% else %}
+									{% assign featured_item_title = collection_data.title %}
+								{% endif %}
+								{% assign featured_item_image = collection_data.featured_image %}
+								{% assign featured_item_url = collection_data.url %}
+							{% else %}
+								{%- assign product_data = all_products[featured_item.product] -%}
+											{% if featured_item.title %}
+													{% assign featured_item_title = featured_item.title %}
+											{% else %}
+									{% assign featured_item_title = product_data.title %}
+											{% endif %}
+								{% assign featured_item_image = product_data.featured_image %}
+								{% assign featured_item_url = product_data.url %}
+							{% endif %}
+							{% if forloop.index <= section.settings.mobile_max_items %}
+								<cs-slide class="slide">
+									<div class="flex col">
+									<a class="flex col is-relative" href="{% if featured_item.url != blank %}{{featured_item.url}}{% else %}{{featured_item_url}}{% endif %}">
+											{% if featured_item.image != blank %}
+                                                {% assign featured_item_image_name = featured_item.image | split: '/' | last | split: '?' | first %}
+                                                {% assign featured_item_image = images[featured_item_image_name] %}
+                                            {% endif %}
+                                            {% render 'image_element', image: featured_item_image, image_shape: 'circle', fit: 'cover', sizes: this_sizes %}
+											{% if featured_item.tag != blank %}
+													<p class="bestseller_tag is-absolute">{{featured_item.tag}}</p>
+											{% endif %}
+									</a>
+									<div class="flex col center spacing-top-s">
+											<p>{{featured_item_title}}</p>
+									</div>
+							</div>
+								</cs-slide>
+							{% endif %}
+					{% endfor %}
+					</cs-slides>
+				</cs-track>
+			</clever-slider>
+		</div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured Items",
+  "settings": [
+	{
+	  "type": "header",
+	  "content": "Layout"
+	},
+	{
+	  "type": "select",
+	  "id": "spacing_top",
+	  "label": "Spacing top",
+	  "default": "xs",
+	  "options": [
+		{
+		  "value": "xs",
+		  "label": "xs"
+		},
+		{
+		  "value": "s",
+		  "label": "s"
+		},
+		{
+		  "value": "m",
+		  "label": "m"
+		},
+		{
+		  "value": "l",
+		  "label": "l"
+		},
+		{
+		  "value": "xl",
+		  "label": "xl"
+		},
+		{
+		  "value": "xxl",
+		  "label": "xxl"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "spacing_bottom",
+	  "label": "Spacing bottom",
+	  "default": "xs",
+	  "options": [
+		{
+		  "value": "xs",
+		  "label": "xs"
+		},
+		{
+		  "value": "s",
+		  "label": "s"
+		},
+		{
+		  "value": "m",
+		  "label": "m"
+		},
+		{
+		  "value": "l",
+		  "label": "l"
+		},
+		{
+		  "value": "xl",
+		  "label": "xl"
+		},
+		{
+		  "value": "xxl",
+		  "label": "xxl"
+		}
+	  ]
+	},
+	{
+	  "type": "header",
+	  "content": "Heading"
+	},
+	{
+	  "type": "select",
+	  "id": "heading_tag",
+	  "label": "Html tag",
+	  "default": "p",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "small",
+		  "label": "small"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "heading_class",
+	  "label": "Font class",
+	  "default": "h4",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "note",
+		  "label": "note"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "heading_weight_class",
+	  "label": "Weight class",
+	  "default": "",
+	  "options": [
+		{
+		  "value": "bold",
+		  "label": "bold"
+		},
+		{
+		  "value": "",
+		  "label": "normal"
+		}
+	  ]
+	},
+	{
+	  "type": "header",
+	  "content": "Richtext"
+	},
+	{
+	  "type": "select",
+	  "id": "richtext_tag",
+	  "label": "Html tag",
+	  "default": "p",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "small",
+		  "label": "small"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "richtext_class",
+	  "label": "Font class",
+	  "default": "note",
+	  "options": [
+		{
+		  "value": "h1",
+		  "label": "h1"
+		},
+		{
+		  "value": "h2",
+		  "label": "h2"
+		},
+		{
+		  "value": "h3",
+		  "label": "h3"
+		},
+		{
+		  "value": "h4",
+		  "label": "h4"
+		},
+		{
+		  "value": "h5",
+		  "label": "h5"
+		},
+		{
+		  "value": "h6",
+		  "label": "h6"
+		},
+		{
+		  "value": "p",
+		  "label": "p"
+		},
+		{
+		  "value": "note",
+		  "label": "note"
+		}
+	  ]
+	},
+	{
+	  "type": "select",
+	  "id": "richtext_weight_class",
+	  "label": "Weight class",
+	  "options": [
+		{
+		  "value": "bold",
+		  "label": "bold"
+		},
+		{
+		  "value": "",
+		  "label": "normal"
+		}
+	  ]
+	},
+	{
+	  "type": "range",
+	  "id": "per_row",
+	  "label": "Items Per Row Desktop",
+	  "min": 1,
+	  "max": 10,
+	  "step": 1,
+	  "default": 5
+	},
+	{
+	  "type": "range",
+	  "id": "max_items",
+	  "label": "Displayed Count Desktop",
+	  "min": 1,
+	  "max": 10,
+	  "step": 1,
+	  "default": 10
+	},
+	{
+	  "type": "number",
+	  "id": "mobile_per_row",
+	  "label": "Items Per Row Mobile",
+	  "default": 2
+	},
+	{
+	  "type": "range",
+	  "id": "mobile_max_items",
+	  "label": "Displayed Count Mobile",
+	  "min": 1,
+	  "max": 10,
+	  "step": 1,
+	  "default": 10
+	}
+  ]
+}
+{% endschema %}

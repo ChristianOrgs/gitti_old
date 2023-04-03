@@ -1,0 +1,39 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (Shopify.Checkout.step === "contact_information" || Shopify.Checkout.step === "review") {
+            showMobileSummery();
+        }
+        if (Shopify.Checkout.step === "shipping_method" || Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "contact_information" || Shopify.Checkout.step === "review") {
+            setCouponSubmitEventListener();
+        }
+    });
+
+    document.addEventListener('page:change', function() {
+        if (Shopify.Checkout.step === "contact_information" || Shopify.Checkout.step === "review") {
+            showMobileSummery();
+        }
+    });
+
+    function showMobileSummery() {
+        if (window.innerWidth <= 999) {
+            if (document.querySelector(".order-summary-toggle") != null && document.querySelector(".order-summary-toggle").getAttribute("aria-expanded") === "false") {
+                document.querySelector(".order-summary-toggle").click();
+            }
+        }
+    }
+
+    function setCouponSubmitEventListener() {
+        document.querySelector("#checkout_reduction_code").closest("form").addEventListener("submit", function () {
+            if (document.querySelector(".order-summary__section--discount .field__message--error") != null) {
+                document.querySelector(".order-summary__section--discount .field__message--error").remove();
+            }
+            var checkExist = setInterval(function() {
+                if (document.querySelector(".order-summary__section--discount .tags-list") != null || document.querySelector(".order-summary__section--discount .field__message--error") != null) {
+                    showMobileSummery();
+                    clearInterval(checkExist);
+                }
+            }, 300);
+            return false;
+        });
+    }
+</script>

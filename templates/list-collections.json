@@ -1,0 +1,342 @@
+{
+  "sections": {
+    "collection_list_default": {
+      "type": "collection_list_default",
+      "settings": {
+        "collections_per_row": 3,
+        "collections_per_row_mobile": 2,
+        "collections_per_page": 24,
+        "grid_item_style": "below",
+        "grid_item_side_spacing": 0,
+        "grid_item_background_color": "",
+        "image_shape": "square",
+        "image_fit": "cover",
+        "image_spacing_bottom": 8
+      }
+    },
+    "16613363230920b3a4": {
+      "type": "index_triple_usp",
+      "disabled": true,
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "tag": "h1",
+        "class": "h1",
+        "weight_class": "",
+        "link_1": "",
+        "icon_1": "performance",
+        "text_1": "",
+        "link_2": "",
+        "icon_2": "",
+        "text_2": "",
+        "link_3": "",
+        "icon_3": "",
+        "text_3": "",
+        "custom_css": "#shopify-section-1615814327c950309d{\nborder-bottom: 4px solid #E8E8E8;"
+      }
+    },
+    "1661337652b65d3fd4": {
+      "type": "index_featured_blog",
+      "disabled": true,
+      "settings": {
+        "blog": "",
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "pictures_spacing_bottom": "xs",
+        "pictures_spacing_top": "xs",
+        "pictures_gap": "xs",
+        "show_author": false,
+        "headings_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "article_heading_tag": "p",
+        "heading_class": "h1",
+        "article_heading_class": "h1",
+        "heading_weight_class": "bold",
+        "article_heading_weight_class": "bold",
+        "text_spacing_bottom": "xs",
+        "text_tag": "p",
+        "text_class": "h1",
+        "max_articles": 4,
+        "preheading": "Cillum est eiusmod aliqua labore esse quis.",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "text": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "text_color": "",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn"
+      }
+    },
+    "16613376610b978623": {
+      "type": "index_featured_product",
+      "disabled": true,
+      "settings": {
+        "background_color": "",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "add_to_cart_btn": true,
+        "add_to_cart_btn_mo": true,
+        "more_btn_mo": true,
+        "sub_heading": "Product.",
+        "tag_sub_heading": "h3",
+        "class_sub_heading": "h2",
+        "weight_class_sub_heading": "",
+        "spacing_bottom_sub_heading": "xs",
+        "product": "aha-nail-treatment"
+      }
+    },
+    "16613381159ecd8a34": {
+      "type": "index_community_testimonials",
+      "disabled": true,
+      "blocks": {
+        "5164a679-10f0-4b13-a6b8-890ca2809a20": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "<p>love products<\/p>",
+            "richtext_author": "<p>Tiffany<\/p>"
+          }
+        },
+        "ec7df326-8c8b-46cc-b1ac-25d788d51d23": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "",
+            "richtext_author": ""
+          }
+        },
+        "139c45f9-d390-4c93-b8ce-f7cc2b92c4ae": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "",
+            "richtext_author": ""
+          }
+        },
+        "ff77511b-aa71-4c25-9e2d-e70da4ebd156": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "",
+            "richtext_author": ""
+          }
+        }
+      },
+      "block_order": [
+        "5164a679-10f0-4b13-a6b8-890ca2809a20",
+        "ec7df326-8c8b-46cc-b1ac-25d788d51d23",
+        "139c45f9-d390-4c93-b8ce-f7cc2b92c4ae",
+        "ff77511b-aa71-4c25-9e2d-e70da4ebd156"
+      ],
+      "settings": {
+        "background_color": "",
+        "block_color": "",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "main_heading_spacing_top": "",
+        "main_heading_spacing_bottom": "xs",
+        "main_heading_tag": "p",
+        "main_heading_class": "h1",
+        "main_heading_weight_class": "bold",
+        "richtext": "",
+        "spacing_bottom": "",
+        "spacing_top": "",
+        "block_spacing": "",
+        "block_margin": "",
+        "image_shape": "circle",
+        "image_fit": "cover"
+      }
+    },
+    "166133836067454074": {
+      "type": "index_instagram",
+      "disabled": true,
+      "blocks": {
+        "6aac05a3-2b54-465e-b09d-4917c6ecfe2e": {
+          "type": "post",
+          "settings": {
+            "link": ""
+          }
+        },
+        "b3c16465-cd4b-4032-9891-00c6076fa2ad": {
+          "type": "post",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "6aac05a3-2b54-465e-b09d-4917c6ecfe2e",
+        "b3c16465-cd4b-4032-9891-00c6076fa2ad"
+      ],
+      "settings": {
+        "background_color": "#F3F3F3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "166133836768793193": {
+      "type": "maestrooo-instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#F3F3F3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 2,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": true,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "16613390823c843c4c": {
+      "type": "video_cta",
+      "disabled": true,
+      "settings": {
+        "video_url": "",
+        "ignore_page_width": true,
+        "video_controls": false,
+        "video_fit": "contain",
+        "height_video": 60,
+        "desktop_spacing_top": "xs",
+        "desktop_spacing_bottom": "xs",
+        "desktop_item_align": "left",
+        "desktop_overlay_position_text": "center",
+        "desktop_button_item_align": "left",
+        "hide_in_desktop": false,
+        "video_fit_mobile": "cover",
+        "mobile_height_video": 60,
+        "mobile_spacing_top": "xs",
+        "mobile_spacing_bottom": "xs",
+        "mobile_item_align": "left",
+        "mobile_button_item_align": "left",
+        "hide_in_mobile": false,
+        "preheading": "Cillum est eiusmod aliqua labore esse quis.",
+        "preheading_weight_class": "",
+        "preheading_tag": "p",
+        "class_preheading": "h4",
+        "preheading_spacing_bottom": "xs",
+        "preheading_color": "#3a3a3a",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "heading_weight_class": "",
+        "heading_class": "h4",
+        "heading_tag": "p",
+        "spacing_bottom_heading": "xs",
+        "heading_color": "#3a3a3a",
+        "text": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "text_tag": "p",
+        "text_spacing_bottom": "xs",
+        "text_color": "#3a3a3a",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn",
+        "button_backgroundcolor": "#000",
+        "button_color": "#3a3a3a"
+      }
+    },
+    "1661340263f7001d57": {
+      "type": "index_why_gitti",
+      "disabled": true,
+      "blocks": {
+        "7945842e-fd4f-4ac0-96a2-e0bebc482b7b": {
+          "type": "icon_with_text",
+          "settings": {
+            "link": "",
+            "icon": "",
+            "heading": "Lorem ipsum",
+            "text": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
+          }
+        },
+        "421e4a92-bda7-4370-a7e2-7827e6a3bc41": {
+          "type": "icon_with_text",
+          "settings": {
+            "link": "",
+            "icon": "",
+            "heading": "Lorem ipsum",
+            "text": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
+          }
+        }
+      },
+      "block_order": [
+        "7945842e-fd4f-4ac0-96a2-e0bebc482b7b",
+        "421e4a92-bda7-4370-a7e2-7827e6a3bc41"
+      ],
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Lorem ipsum",
+        "text": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+        "link": "",
+        "label": "Lorem",
+        "color_background": "#FFF"
+      }
+    },
+    "16613410330f058675": {
+      "type": "index_featured_logos",
+      "disabled": true,
+      "settings": {
+        "background_color": "#F3F3F3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": ""
+      }
+    },
+    "1661341039955d5f7f": {
+      "type": "double_logo",
+      "disabled": true,
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs"
+      }
+    }
+  },
+  "order": [
+    "collection_list_default",
+    "16613363230920b3a4",
+    "1661337652b65d3fd4",
+    "16613376610b978623",
+    "16613381159ecd8a34",
+    "166133836067454074",
+    "166133836768793193",
+    "16613390823c843c4c",
+    "1661340263f7001d57",
+    "16613410330f058675",
+    "1661341039955d5f7f"
+  ]
+}

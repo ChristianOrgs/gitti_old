@@ -1,0 +1,43 @@
+<div class="container flex col">
+    <p aria-label="${title}" data-handle="${handle}" title="${title}, ${pType}"
+       class="collectionBlock-image collectionBlock-image--large fade-in has-second-image lazyloaded"
+       data-parent-fit="cover" data-aspectratio="0.666483214089158"
+       style="background-image: url(&quot;${productImg}&quot;);" class="container flex left">
+    <div class="is-relative container flex col add_to_cart_unhide">
+        <div class="flex col first_product_image">
+            <div class="image-wrapper cover" style="">
+                <img src="${productImg}" loading="lazy" alt="${title}" class="bee_perfect_size" data-sizes="auto" sizes="393px">
+            </div>
+        </div>
+        <div class="is-absolute container flex col end product_grid_item_overlay">
+            <div class="add_to_cart_desktop only_medium-up spacing-xs">
+                <button class="btn btn--primary btn--full" data-handle="${handle}" data-bc_freegift="${vId}" data-property-name="${this.propertyName}" data-property-value="${ this.propertyValue }"
+                        onclick="Shopify.theme.custom.bc_free_gift_addToCart(this)">
+                    ${ addButtonText }
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex container col left between">
+        <div class="flex col grid_item_title_wrapper">
+            <p class="spacing-top-xs">${title}</p>
+            <p class="product_color_name"></p>
+        </div>
+        <div class="flex col bottom">
+            <div class="spacing-top-xs">
+                <p class="product_price">
+                    <span>${price}</span>
+                </p>
+            </div>
+            <div class="review_badge flex col">
+                <div class="jdgm-badge-placeholder" data-handle="hand-nail-basics"></div>
+            </div>
+            <div class="container add_to_cart_mobile only_small spacing-top-xs">
+                <button class="btn btn--primary btn--full" data-bc_freegift="${vId}" data-handle="${handle}" data-property-name="${this.propertyName}" data-property-value="${ this.propertyValue }"
+                        data-id="${pId}" onclick="Shopify.theme.custom.bc_free_gift_addToCart(this)">
+                    ${ addButtonText }
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,788 @@
+<style>
+
+    #shopify-section-{{section.id}} .review_quote{
+        position: relative;
+    }
+    #shopify-section-{{section.id}} cs-track{
+      padding-right: 1px;
+      padding-bottom: 1px;
+    }
+    #shopify-section-{{section.id}} cs-slide::after{
+        --border-color: #111111;
+        position: absolute;
+        content: '';
+        display: block;
+        pointer-events: none;
+        width:100%;
+        height:100%;
+        left:0;
+        top:0;
+        z-index: 2;
+        box-shadow: 
+        1px 0 0 0 var(--border-color), 
+        0 1px 0 0 var(--border-color), 
+        1px 1px 0 0 var(--border-color),   /* Just to fix the corner */
+        1px 0 0 0 var(--border-color) inset, 
+        0 1px 0 0 var(--border-color) inset;
+    }
+
+    #shopify-section-{{section.id}} .stars {
+        gap: 4px;
+    }
+    #shopify-section-{{section.id}} .note {
+      font-size: {{section.settings.note_size}}px;
+    }
+    #shopify-section-{{section.id}} .slider_controls {
+        position: absolute;
+        transform: translateY(-100%);
+        margin: 24px;
+    }
+    #shopify-section-{{section.id}} .slider_controls.slider_prev {
+        left: 0;
+    }
+    #shopify-section-{{section.id}} .slider_controls.slider_next {
+        right: 0;
+    }
+
+    #shopify-section-{{section.id}} .slider_controls path {
+        stroke: #111111;
+    }
+
+    @media only screen and (max-width:1530px) and (min-width:{{settings.breakpoint_medium | plus: 1}}px){
+        #shopify-section-{{section.id}} clever-slider cs-slide {
+            flex: 0 0 40%;
+        }
+        #shopify-section-{{section.id}} cs-next, 
+        #shopify-section-{{section.id}} cs-prev {
+          display: none;
+        }
+        #shopify-section-{{section.id}} .medium-down_full-width {
+          padding-left: unset;
+          padding-right: unset;
+          max-width: unset;
+          margin-inline: -1px;
+      }
+    }
+
+    @media only screen and (max-width:{{settings.breakpoint_medium}}px) {
+        #shopify-section-{{section.id}} clever-slider cs-slide {
+            flex: 0 0 90%;
+        }
+        #shopify-section-{{section.id}} .stars .icon-star,
+        #shopify-section-{{section.id}} .stars .icon-half_star{
+          width:10px;
+          height:10px;
+       }
+        #shopify-section-{{section.id}} .medium-down_full-width {
+            padding-left: unset;
+            padding-right: unset;
+            max-width: unset;
+            margin-inline: -1px;
+        }
+    }
+
+</style>
+{% assign block_count = section.blocks.size %}
+<div class=" medium-up_spacing-top-{{section.settings.spacing_top}} medium-up_spacing-bottom-{{section.settings.spacing_bottom}}  small_spacing-top-{{section.settings.spacing_top_mobile}}  small_spacing-bottom-{{section.settings.spacing_bottom_mobile}}">
+    {% if section.settings.heading != blank %}
+        <{{section.settings.tag_heading}} class=" page-width {{section.settings.class_heading}} {{section.settings.weight_class_heading}} spacing-bottom-{{section.settings.spacing_bottom_heading}} text-align-{{section.settings.text_align}}  on-load fade-in" animation-delay="100">{{ section.settings.heading | escape }}</{{section.settings.tag_heading}}>
+    {% endif %}
+    <div class="is-relative">
+        <div class="page-width medium-down_full-width ">
+            {% if block_count > 1 %}
+                <cs-next for="reviewSlider-{{section.id}}" class="slider_controls only_large slider_next">
+                    {% render 'icon', icon:'chevron_2'%}
+                </cs-next>
+                <cs-prev for="reviewSlider-{{section.id}}"  class="slider_controls only_large slider_prev"> 
+                    {% render 'icon', icon:'chevron_2', style:'transform:rotate(180deg);' %}
+                </cs-prev>
+            {% endif %}
+            <clever-slider id="reviewSlider-{{section.id}}"
+                options-large="{'loop':true,'align':'start','containScroll':'keepSnaps','skipSnaps':false}" options-small="{'loop':true,'align':'start','containScroll':'keepSnaps','skipSnaps':false}"
+                {% if section.settings.enable_autoplay %} autoplay="{{section.settings.autoplay_speed | times: 1000 }}" pause-on-hover {% endif %}>
+            
+                <cs-track>
+                    <cs-slides  class="items-3 small_items-1 review_quotes-items">
+                        {% for block in section.blocks %}
+                            <cs-slide>
+                                <div class="flex container col gap between center text-align-center review_quote spacing-l">
+                                    <div class="stars flex row center middle spacing-bottom-l">
+                                        {% assign full_stars = block.settings.stars | floor %}
+                                        {% assign range = (1..full_stars) %}
+                                        {% for star in range %}
+                                            {% render 'icon', icon: 'star', color: section.settings.border_color %}
+                                        {% endfor %}
+                                        {% assign half_stars = block.settings.stars | minus: full_stars %}
+                                        {% if half_stars != 0 %}
+                                            {% render 'icon', icon: 'half_star', color: section.settings.border_color  %}
+                                        {% endif %}
+                                    </div>
+                                    <{{block.settings.tag_text}} class="{{block.settings.class_text}} {{block.settings.weight_class_text}} spacing-bottom-s">{{block.settings.review_text | remove: '<p>' | remove: '</p>'}}</{{block.settings.tag_text}}>
+                                    <{{block.settings.tag_author}} class="{{block.settings.class_author}} {{block.settings.weight_class_author}}">{{block.settings.review_author}}</{{block.settings.tag_author}}>
+                                </div>
+                            </cs-slide>
+                        {% endfor %}
+                    </cs-slider>
+                </cs-track>
+                
+            </clever-slider>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "NEW Review Quotes",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Veniam enim mollit amet ut mollit."
+    },
+    {
+      "type": "select",
+      "id": "tag_heading",
+      "label": "Tag heading",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "note",
+          "label": "note"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "class_heading",
+      "label": "Font class",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h0",
+          "label": "h0"
+        },
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "note",
+          "label": "note"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "weight_class_heading",
+      "label": "Weight class heading",
+      "options": [
+        {
+          "value": "bold",
+          "label": "bold"
+        },
+        {
+          "value": "",
+          "label": "normal"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "label": "Text align"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom_heading",
+      "label": "Spacing bottom",
+      "options": [
+        {
+          "value": "none",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing top",
+      "options": [
+        {
+          "value": "none",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing bottom",
+      "options": [
+        {
+          "value": "none",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spacing_top_mobile",
+      "label": "Spacing top mobile",
+      "options": [
+        {
+          "value": "none",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom_mobile",
+      "label": "Spacing bottom mobile",
+      "options": [
+        {
+          "value": "none",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Speed",
+      "unit": "s",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Note"
+    },
+    {
+      "type": "range",
+      "id": "note_size",
+      "label": "Font Size Notes",
+      "min": 5,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "tag_note",
+      "label": "Tag Note",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "div",
+          "label": "div"
+        },
+        {
+          "value": "note",
+          "label": "note"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 0,
+          "max": 5,
+          "step": 0.5,
+          "label": "Stars",
+          "default": 5
+        },
+        {
+          "type": "header",
+          "content": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "review_text",
+          "label": "Text",
+          "default": "<p>I love gitti!</p>"
+        },
+        {
+          "type": "select",
+          "id": "tag_text",
+          "label": "Tag text",
+          "default": "p",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "class_text",
+          "label": "Font class",
+          "default": "p",
+          "options": [
+            {
+              "value": "h0",
+              "label": "h0"
+            },
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "weight_class_text",
+          "label": "Weight class text",
+          "default": "",
+          "options": [
+            {
+              "value": "bold",
+              "label": "bold"
+            },
+            {
+              "value": "",
+              "label": "normal"
+            }, 
+            {
+              "value": "italic",
+              "label": "italic"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Author"
+        },
+        {
+          "type": "text",
+          "id": "review_author",
+          "label": "Author",
+          "default": "Betty Beth"
+        },
+        {
+          "type": "select",
+          "id": "tag_author",
+          "label": "Tag author",
+          "default": "p",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "class_author",
+          "label": "Font class",
+          "default": "small",
+          "options": [
+            {
+              "value": "h0",
+              "label": "h0"
+            },
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            },
+            {
+              "value": "small",
+              "label": "small"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "weight_class_author",
+          "label": "Weight class author",
+          "default": "italic",
+          "options": [
+            {
+              "value": "bold",
+              "label": "bold"
+            },
+            {
+              "value": "",
+              "label": "normal"
+            }, 
+            {
+              "value": "italic",
+              "label": "italic"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NEW Review Quotes",
+      "blocks": [
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,375 @@
+
+{%- liquid
+    if section.settings.custom_colors 
+      assign color_1 = section.settings.custom_text_color 
+      assign background_color_1 = section.settings.custom_background_color
+    else
+      case section.settings.announcement_primary 
+          when 'primary' 
+              assign background_color_1 = settings.color_primary 
+              assign color_1 = settings.color_on_primary 
+          when 'secondary' 
+              assign background_color_1 = settings.color_secondary 
+              assign color_1 = settings.color_on_secondary 
+          when 'surface' 
+              assign background_color_1 = settings.color_surface 
+              assign color_1 = settings.color_on_surface 
+          when 'background' 
+              assign background_color_1 = settings.color_background 
+              assign color_1 = settings.color_on_background 
+      endcase 
+    endif
+  -%}
+  
+  
+  <style>
+  #shopify-section-{{section.id}}{
+      width:100%;
+      background-color:{{background_color_1}};
+      color:{{color_1}};
+  }
+  #top_bar{
+    width:100%;
+  }
+  .top_wrapper{
+    text-align: center;
+    width:100%;
+  }
+  .top_wrapper .slide{
+    padding:8px 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+    #shopify-section-{{section.id}}  .countdown_divider{
+        padding-left:3px;
+        padding-right:3px;
+    }
+  </style>
+  
+  <div id="top_bar">
+    <clever-slider class="top_wrapper"
+        options-large="{'loop':true}"
+        {% if section.settings.enable_autoplay %} autoplay="{{section.settings.autoplay_speed | times: 1000 }}" pause-on-hover {% endif %} >
+        <cs-track>
+            <cs-slides  class="items-1">
+                {% for block in section.blocks %}
+                    {%- if block.type == "countdown" and block.settings.countdown and block.settings.time != blank -%}
+                        <cs-slide class="slide">
+                            {% render 'countdown', block:block %}
+                        </cs-slide>
+                    {%- else -%}
+                        <cs-slide class="slide">
+                            <{% if block.settings.link != blank %}a href="{{block.settings.link}}"{% else %}div{% endif %} class="section-spacing-side slide flex row center middle">
+                                    <p class="note">{{block.settings.title}}</p>
+                            </{% if block.settings.link != blank %}a{% else %}div{% endif %}>
+                        </cs-slide>
+                    {%- endif -%}
+                {% endfor %}
+            </cs-slides>
+        </cs-track>
+    </clever-slider>
+  </div>
+  
+  {% assign announcement_count = section.blocks | size %}
+  {% if announcement_count < 1 %}
+    <style>
+      #shopify-section-{{section.id}}{
+        display:none;
+      }
+    </style>
+  {% endif %}
+
+  {% schema %}
+  {
+    "name": "Global Countdown Ribbon",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Color"
+      },
+      {
+        "type": "select",
+        "id": "announcement_primary",
+        "label": "Color primary",
+        "options": [
+            {
+                "value": "primary",
+                "label": "primary"
+            },
+            {
+                "value": "secondary",
+                "label": "secondary"
+            },
+            {
+                "value": "surface",
+                "label": "surface"
+            },
+            {
+                "value": "background",
+                "label": "background"
+            }
+        ],
+        "default": "background"
+      },
+      {
+        "type": "color",
+        "id": "custom_background_color",
+        "label": "Custom background color"
+      },
+      {
+        "type": "color",
+        "id": "custom_text_color",
+        "label": "Custom text color"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_colors",
+        "label": "Use custom colors",
+        "default": false,
+        "info": "Overwrites Color primary selection."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_autoplay",
+        "label": "Enable",
+        "default": true
+      },
+      {
+          "type": "range",
+          "id": "autoplay_speed",
+          "label": "Speed",
+          "unit": "s",
+          "min": 0,
+          "max": 10,
+          "step": 0.5,
+          "default": 5
+      },
+      {
+        "type": "range",
+        "id": "items_per_page",
+        "label": "Items per page",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "default": 1
+      }
+    ],
+    "blocks": [
+    
+    {
+      "type": "countdown",
+      "name": "Countdown",
+      "settings": [
+      {
+        "type": "checkbox",
+        "id": "countdown",
+        "label": "Enable",
+        "default": true
+      },
+      {
+          "type": "text",
+          "id": "pre_text",
+          "label": "Pre text",
+          "default": "Countdown pre"
+        }, 
+        {
+          "type": "text",
+          "id": "post_text",
+          "label": "Post text",
+          "default": "Countdown post"
+        },
+        {
+            "type": "select",
+            "id": "text_class",
+            "label": "Text class",
+            "default": "h2",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "h1"
+                },
+                {
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "p",
+                    "label": "p"
+                },
+                {
+                    "value": "note",
+                    "label": "note"
+                }
+            ]
+        },
+          {
+            "type": "header",
+            "content": "Countdown"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "label": "Time",
+          "default": "January 5, 2022 15:37:25 GMT+00:00",
+          "info": "Month D, YYYY HH:MM:SS Timezone"
+        },
+        {
+          "type": "text",
+          "id": "days",
+          "label": "Days",
+          "default": "TAGE"
+        },
+        {
+            "type": "text",
+            "id": "hours",
+            "label": "Hours",
+            "default": "STUNDEN"
+        },
+        {
+            "type": "text",
+            "id": "minutes",
+            "label": "Minutes",
+            "default": "MINUTEN"
+        },
+        {
+            "type": "text",
+            "id": "seconds",
+            "label": "Seconds",
+            "default": "SEKUNDEN"
+        },
+        {
+          "type": "text",
+          "id": "expired",
+          "label": "Expired",
+          "default": "COUNTDOWN ZU ENDE"
+        },
+       {
+        "type": "url",
+        "id": "link",
+        "label": "URL"
+       },
+        {
+            "type": "select",
+            "id": "countdown_class",
+            "label": "Countdown class",
+            "default": "h2",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "h1"
+                },
+                {
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "p",
+                    "label": "p"
+                },
+                {
+                    "value": "note",
+                    "label": "note"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "countdown_text_class",
+            "label": "Countdown text class",
+            "default": "note",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "h1"
+                },
+                {
+                    "value": "h2",
+                    "label": "h2"
+                },
+                {
+                    "value": "h3",
+                    "label": "h3"
+                },
+                {
+                    "value": "h4",
+                    "label": "h4"
+                },
+                {
+                    "value": "h5",
+                    "label": "h5"
+                },
+                {
+                    "value": "h6",
+                    "label": "h6"
+                },
+                {
+                    "value": "p",
+                    "label": "p"
+                },
+                {
+                    "value": "note",
+                    "label": "note"
+                }
+            ]
+        },{
+            "type": "header",
+            "content": "Styling"
+           },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color"
+           }, 
+        {
+          "type": "color",
+          "id": "countdown_text_color",
+          "label": "Countdown text color"
+        },
+        {
+            "type": "color",
+            "id": "countdown_color",
+            "label": "Countdown color"
+        }
+      ]
+    }
+    ], 
+    "presets": [
+        {
+            "name": "Global Countdown Ribbon"
+        }
+    ]
+  }
+  {% endschema %}

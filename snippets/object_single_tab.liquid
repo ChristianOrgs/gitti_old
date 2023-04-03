@@ -1,0 +1,130 @@
+<div class="single_tab spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}} active">
+
+    <div class="tab_title is-relative" onclick="openTab{{object.id | remove: '-'}}()">
+        <h5 style="display: inline;">{{object.settings.title}}</h5>
+        <div class="button_icon is-absolute">
+            <div class="tab_toggle"></div>
+        </div>
+    </div>
+    
+    <div class="tab_content {{object.settings.collection_handle}}">
+        <div id="nail_polish_swatches_{{object.id | remove: '-'}}" class="swatch_grid" style="width: 100%;">
+            
+            
+            {% for product in collections[object.settings.collection_handle].products %}
+                {% assign product_title = product.title | split: " " %}
+                {% if product_title[1] == 'no' or product_title[1] == 'no.'%}
+                        
+                        <div class="flex col center nailpolish_swatch product_no_{{product_title[2]}}" style="width: 30px;">
+                            <a href="{{product.url}}" class="swatch swatch-{{product_title[2]}}"></a>
+                            <a href="{{product.url}}" class="p">{{product_title[2]}}</a>
+                        </div>
+
+
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+ 
+
+</div>
+
+<script>
+    function openTab{{object.id | remove: '-'}}(){
+        let tab = document.querySelector('#shopify-section-{{object.id}} .single_tab').classList.toggle('active');
+    }
+
+   
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        sortSwatches_{{object.id | remove: '-'}}();
+    });
+
+    function removeColorless_{{object.id | remove: '-'}}(){
+        
+    }
+
+    function sortSwatches_{{object.id | remove: '-'}}(){
+        let elementsArray =  Array.from(document.querySelectorAll('#nail_polish_swatches_{{object.id | remove: '-'}} .nailpolish_swatch'));
+        let swatchgrid = document.querySelector('#nail_polish_swatches_{{object.id | remove: '-'}}');
+        swatchgrid.textContent = '';
+
+        
+
+        
+        elementsArray.sort(function(a, b) {
+            
+            let swatchA = a.classList.item(4).replace('product_no_',''); 
+            let swatchB = b.classList.item(4).replace('product_no_','');
+            if (swatchA < swatchB) {
+                return -1;
+            }
+            if (swatchA > swatchB) {
+                return 1;
+            }
+            return 0;
+        });
+        
+        elementsArray.forEach(function(element){
+            let swatchId = element.classList.item(4).replace('product_no_','');
+
+            if (document.querySelector('#shopify-section-swatch_creator style').textContent.includes('swatch-' + swatchId))
+            {
+                swatchgrid.appendChild(element);
+            }
+        });
+
+    }
+    
+</script>
+
+<style>
+    #shopify-section-{{object.id}} .button_icon{
+        top:0;
+        right:32px;
+    }
+    #shopify-section-{{object.id}} a.swatch{
+        width: 36px;
+    }
+    #shopify-section-{{object.id}} .tab_toggle{
+        width: 10px;
+        height: 10px;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        transform-origin: center;
+        transform: translate(-50%, 60%) rotate(45deg);
+        transition: 0.3s transform ease;
+    }
+    #shopify-section-{{object.id}} .tab_content{
+        height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0;
+        transition: 0.3s opacity ease;
+    }
+    #shopify-section-{{object.id}} .tab_title{
+        cursor: pointer;
+    }
+    #shopify-section-{{object.id}} .tab_title h5{
+        font-weight: normal;
+    }
+    #shopify-section-{{object.id}} .active .tab_toggle{
+        transform: translate(-50%, 120%) rotate(225deg);
+    }
+    #shopify-section-{{object.id}} .active .tab_content{
+        display: flex;
+        opacity: 1;
+        height: unset;
+        padding: 16px 0;
+    }  
+    #shopify-section-{{object.id}} .active .tab_title h5{
+        font-weight: bold;
+    }
+    #shopify-section-{{object.id}} .swatch_grid{
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(80px, auto));
+        justify-items: center;
+    }
+    
+</style>

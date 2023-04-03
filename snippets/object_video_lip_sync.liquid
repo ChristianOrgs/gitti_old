@@ -1,0 +1,178 @@
+
+ <div id='desktop' class="grid  col-6 small_col-1  small_row-gap spacing-bottom-{{object.settings.desktop_spacing_bottom}} spacing-top-{{object.settings.desktop_spacing_top}} ">
+
+    <div class="text grid-item col-span-2 ">
+     {% if object.settings.preheading != blank %}
+         <{{object.settings.preheading_tag}} class="preheading text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.preheading_spacing_bottom}} {{object.settings.preheading_weight_class}} {{object.settings.preheading_class}}">{{ object.settings.preheading | escape }}</{{object.settings.preheading_tag}}>
+       {% endif %}
+       {% if object.settings.heading != blank %}
+         <{{object.settings.heading_tag}}  class="heading spacing-bottom-{{object.settings.spacing_bottom_heading}} text-align-{{object.settings.text_align}} {{object.settings.heading_weight_class}} {{object.settings.heading_class}}">{{ object.settings.heading | escape }}</{{object.settings.heading_tag}}>
+       {% endif %}
+       {% if object.settings.text != blank %}
+         <{{object.settings.text_tag}} class="text text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.text_spacing_bottom}} {{object.settings.text_weight_class}} {{object.settings.text_class}}">{{ object.settings.text | remove: '<p>' | remove: '</p>' }}</{{object.settings.text_tag}}>
+       {% endif %}
+       <div class='button'>
+         {% if object.settings.button_label != blank and object.settings.button_link != blank %}
+         <a href="{{object.settings.button_link}}" class="{{object.settings.button_class}}">{{object.settings.button_label}}</a>
+       {% endif %}
+ 
+       </div>
+ 
+     </div>
+     <div class='grid-item col-span-4 ' >
+       {% if object.settings.video_url != nil %}
+ 
+         <video class='video'   autoplay="true" {% if object.settings.video_controls %} controls {% endif %}  loop playsinline  muted="muted" >
+         <source src="{{object.settings.video_url}}" type="video/mp4" />
+       Your browser does not support our video.
+         </video>
+       <div style='display: none;'class="play-button is-absolute">&#9658</div>
+ 
+ 
+       {% endif %} 
+     </div>
+ 
+ 
+  </div>
+ 
+ {% if object.settings.video_url != nil %}
+ 
+ <div id='mobile' class="grid  small_row-gap spacing-bottom-{{object.settings.mobile_spacing_bottom}} spacing-top-{{object.settings.mobile_spacing_top}} ">
+ 
+ 
+    <div class='grid-item' >
+      {% if object.settings.video_url != nil %}
+ 
+        <video class='video'   autoplay="true"  {% if object.settings.video_controls %} controls {% endif %}  loop playsinline  muted="muted" >
+        <source src="{{object.settings.video_url}}" type="video/mp4" />
+      Your browser does not support our video.
+        </video>
+      <div style='display: none;'class="play-button is-absolute">&#9658</div>
+ 
+ 
+      {% endif %} 
+    </div>
+ 
+    <div class="text grid-item">
+     {% if object.settings.preheading != blank %}
+         <{{object.settings.preheading_tag}} class="preheading text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.preheading_spacing_bottom}} {{object.settings.preheading_weight_class}} {{object.settings.preheading_class}}">{{ object.settings.preheading | escape }}</{{object.settings.preheading_tag}}>
+       {% endif %}
+       {% if object.settings.heading != blank %}
+         <{{object.settings.heading_tag}}  class="heading spacing-bottom-{{object.settings.spacing_bottom_heading}} text-align-{{object.settings.text_align}} {{object.settings.heading_weight_class}} {{object.settings.heading_class}}">{{ object.settings.heading | escape }}</{{object.settings.heading_tag}}>
+       {% endif %}
+       {% if object.settings.text != blank %}
+         <{{object.settings.text_tag}} class="text text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.text_spacing_bottom}} {{object.settings.text_weight_class}} {{object.settings.text_class}}">{{ object.settings.text | remove: '<p>' | remove: '</p>' }}</{{object.settings.text_tag}}>
+       {% endif %}
+       <div class='button'>
+         {% if object.settings.button_label != blank and object.settings.button_link != blank %}
+         <a href="{{object.settings.button_link}}" class="{{object.settings.button_class}}">{{object.settings.button_label}}</a>
+       {% endif %}
+  
+       </div>
+  
+     </div>
+ 
+ 
+ </div>
+ 
+ 
+ {% endif %} 
+ 
+ <style>
+  
+     #shopify-section-{{object.id}} .text{
+         color:{{object.settings.text_color}};
+     }  
+ 
+     #shopify-section-{{object.id}} .heading{
+         color:{{object.settings.heading_color}};
+     }  
+ 
+     #shopify-section-{{object.id}} .preheading{
+         color:{{object.settings.preheading_color}};
+     }  
+ 
+     #shopify-section-{{object.id}} .button a{
+         color:{{object.settings.button_color}};
+     }  
+ 
+     #shopify-section-{{object.id}} .button a{
+         background-color :{{object.settings.button_backgroundcolor}};
+     }  
+ 
+ 
+ 
+   @media (min-width:750px) {
+ 
+           #shopify-section-{{object.id}}  .video
+             {
+              
+               position: relative;
+               object-fit: {{object.settings.video_fit}} ;
+               height: {{object.settings.height_video}}vh;
+               width: 100%;
+             }
+             #shopify-section-{{object.id}}  #mobile
+             {
+               display: none;
+             }
+ 
+             {% if object.settings.hide_in_desktop %}
+ 
+            #shopify-section-{{object.id}}  #desktop
+             {
+               display: none;
+             }
+             {% endif %} 
+ 
+             #shopify-section-{{object.id}} .grid-item
+             {
+               display: grid;
+               text-align: {{object.settings.desktop_item_align}};
+                align-content: {{object.settings.desktop_overlay_position_text}};
+             }
+ 
+             #shopify-section-{{object.id}} .button {
+               text-align: {{object.settings.desktop_button_item_align}};
+             }
+ 
+ 
+ 
+       }
+   
+      @media (max-width:750px) {
+ 
+ 
+           #shopify-section-{{object.id}}  .video
+             {
+               height: {{object.settings.mobile_height_video}}vh ;
+               position: relative;
+               object-fit: {{object.settings.video_fit_mobile}} ;
+               width: 100%;
+             }
+ 
+             #shopify-section-{{object.id}}  #desktop
+             {
+               display: none;
+             }
+ 
+ 
+             {% if object.settings.hide_in_mobile %}
+ 
+            #shopify-section-{{object.id}}  #mobile
+             {
+               display: none;
+             }
+             {% endif %} 
+ 
+             #shopify-section-{{object.id}}  .grid-item
+           {
+             text-align: {{object.settings.mobile_item_align}};
+           }
+ 
+           #shopify-section-{{object.id}} .button {
+               text-align: {{object.settings.mobile_button_item_align}};
+             }
+       }
+   
+   </style>

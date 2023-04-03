@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "16613383914d99f403": {
+      "type": "index_instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "1661338396770c362d": {
+      "type": "maestrooo-instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 2,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": true,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "16613410688f3ec6fb": {
+      "type": "index_featured_logos",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": ""
+      }
+    },
+    "1661341074db54f817": {
+      "type": "double_logo",
+      "disabled": true,
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16613383914d99f403",
+    "1661338396770c362d",
+    "16613410688f3ec6fb",
+    "1661341074db54f817"
+  ]
+}

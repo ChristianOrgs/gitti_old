@@ -1,0 +1,48 @@
+{%- comment -%}Captures for JS Tempalte{%- endcomment -%}
+{% assign image_schema = section.blocks | where: 'type', 'item_image' | first %}
+{% capture item_id %}{% if item == blank %}{% raw %}{{item_id}}{% endraw %}{% else %}{{item.id}}{% endif %}{% endcapture %}
+{% capture item_title %}{% if item == blank %}{% raw %}{{item_title}}{% endraw %}{% else %}{{item.title}}{% endif %}{% endcapture %}
+{% capture variant_title %}{% if item == blank %}{% raw %}{{variant_title}}{% endraw %}{% else %}{{item.variant.title}}{% endif %}{% endcapture %}
+{% capture item_quantity %}{% if item == blank %}{% raw %}{{item_quantity}}{% endraw %}{% else %}{{item.quantity}}{% endif %}{% endcapture %}
+{% capture item_max_quantity %}{% unless item == blank %}{{item.variant.inventory_quantity}}{% endunless %}{% endcapture %}
+{% capture item_vendor %}{% if item == blank %}{% raw %}{{item_vendor}}{% endraw %}{% else %}{{item.vendor}}{% endif %}{% endcapture %}
+{% capture item_handle %}{% if item == blank %}{% raw %}{{item_handle}}{% endraw %}{% else %}{{item.handle}}{% endif %}{% endcapture %}
+{% capture item_url %}{% if item == blank %}{% raw %}{{item_url}}{% endraw %}{% else %}{{item.url}}{% endif %}{% endcapture %}
+{% capture item_price %}{% if item == blank %}{% raw %}{{item_price}}{% endraw %}{% else %}{{ item.original_price | money }}{% endif %}{% endcapture %}
+{% capture item_line_price %}{% if item == blank %}{% raw %}{{item_line_price}}{% endraw %}{% else %}{{ item.original_line_price | money }}{% endif %}{% endcapture %}
+{% capture item_image %}{% if item == blank %}{% render 'image_element', image: 'item_image', image_shape: {{image_schema.settings.image_shape}}, fit: {{image_schema.settings.image_fit}}, js_template: true %}{% else %}{% render 'image_element',image: item.image, image_shape: image_schema.settings.image_shape,fit: image_schema.settings.image_fit %}{% endif %}{% endcapture %}
+
+<div id="item-{{item_id}}" class="item spacing-{{section.settings.item_spacing}} is-relative">
+    <div class="grid col-{{section.settings.item_columns}} grid-gap small_col-{{section.settings.item_columns_mobile}} item_grid">
+        {% for block in section.blocks %}
+            {% if block.type == 'item_quantity' %}
+                <div class="flex col middle item_quantity text-align-{{block.settings.text_align}} {{block.type | append: '_text'}}">
+                    <div class="quantity_selector flex row">
+                        <div class="decrement flex col left middle"></div>
+                        <input class="{{block.settings.text_tag}}" type="number" max="{{item_max_quantity}}" value="{{item_quantity}}" size="1" style="color: {{block.settings.text_color}}">
+                        <div class="increment flex col right middle"></div>
+                    </div>
+                </div>
+            {% elsif block.type == 'item_remove' %}
+                <div class="flex col top {{block.settings.text_align}} spacing-right-s spacing-top-s item_remove text-align-{{block.settings.text_align}} {{block.type | append: '_text'}}">
+                    <div class="remove_item flex row right middle">
+                        {% render 'icon' icon: 'close', color: block.settings.text_color %} <p class="{{block.settings.text_tag}}">{{block.settings.remove}}</p>
+                    </div>
+                </div>
+            {% elsif block.type == 'item_image' %}
+                <div class="flex col item_image"><a href="{{item_url}}" class="flex">{{item_image}}</a></div>
+            {% elsif block.type == 'item_title' %}
+                <div class="flex col middle item_title text-align-{{block.settings.text_align}} {{block.type | append: '_text'}}">
+                    <p class="{{block.settings.text_tag}} flex col">{{item_title}}</p>
+                    {% if block.settings.split_title %}
+                        <p class="{{block.settings.text_tag_split}}  {{block.type | append: '_text_split'}}">{{variant_title}}</p>
+                    {% endif %}
+                </div>
+            {% elsif block.type == 'item_price' %}
+                <div class="flex col middle item_price text-align-{{block.settings.text_align}} {{block.type | append: '_text'}}"><p class="{{block.settings.text_tag}}">{{item_price}}</p></div>
+            {% elsif block.type == 'line_price' %}
+                <div class="flex col middle line_price text-align-{{block.settings.text_align}} {{block.type | append: '_text'}}"><p class="{{block.settings.text_tag}}">{{item_line_price}}</p></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

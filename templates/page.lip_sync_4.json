@@ -1,0 +1,536 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "d97c06f7-5665-4ed6-93e5-d614f271f82d": {
+          "type": "image_hero_page",
+          "disabled": true,
+          "settings": {
+            "show_section": "desktop",
+            "section_height": 60,
+            "full_width_image_hero": false,
+            "use_natural_height": false,
+            "section_height_mobile": 80,
+            "use_natural_height_mobile": true,
+            "overlay_width": 50,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/HOMEPAGE-HEADER-LONG_BrandCampaign.gif",
+            "image_fit": "cover",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "Cillum est eiusmod aliqua labore esse quis.",
+            "tag_preheading_image_hero": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Veniam enim mollit amet ut mollit.",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "64f80c37-4623-4c5e-9db0-bed6493dd2e3": {
+          "type": "video_page",
+          "disabled": true,
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/xLaunch_16-9_instrumental_2mb.mp4?v=1632934462",
+            "ignore_page_width": true,
+            "video_controls": false,
+            "video_fit": "contain",
+            "height_video": 60,
+            "desktop_spacing_top": "xs",
+            "desktop_spacing_bottom": "m",
+            "desktop_item_align": "left",
+            "desktop_overlay_position_text": "center",
+            "desktop_button_item_align": "left",
+            "hide_in_desktop": false,
+            "video_fit_mobile": "cover",
+            "mobile_height_video": 30,
+            "mobile_spacing_top": "xs",
+            "mobile_spacing_bottom": "xs",
+            "mobile_item_align": "left",
+            "mobile_button_item_align": "left",
+            "hide_in_mobile": false,
+            "preheading": "",
+            "preheading_weight_class": "",
+            "preheading_tag": "p",
+            "class_preheading": "h4",
+            "preheading_spacing_bottom": "xs",
+            "preheading_color": "#3a3a3a",
+            "heading": "",
+            "heading_weight_class": "",
+            "heading_class": "h4",
+            "heading_tag": "p",
+            "spacing_bottom_heading": "xs",
+            "heading_color": "#3a3a3a",
+            "text": "",
+            "text_tag": "p",
+            "text_spacing_bottom": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn",
+            "button_backgroundcolor": "#000000",
+            "button_color": "#3a3a3a"
+          }
+        },
+        "0981911c-cdcc-4318-b2b5-95c29dc9a34a": {
+          "type": "shop_the_look",
+          "settings": {
+            "auto_play_shop_the_look": true,
+            "spacing_top": "xs",
+            "spacing_bottom": "l",
+            "heading": "The gitti look.",
+            "heading_tag": "h1",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "Sei mutig oder natürlich. Sei dramatisch oder sanft. gitti Beauty Produkte können dich du selbst sein lassen.",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn--tertiary",
+            "products_heading": "",
+            "products_heading_tag": "p",
+            "products_heading_class": "h1",
+            "products_heading_weight_class": "bold",
+            "image_shape": "square",
+            "image_fit": "contain",
+            "slider_speed": 3000,
+            "image_group_1": "shopify:\/\/shop_images\/gitti_shop_natural_shopthelook_1.jpg",
+            "shop_the_look_product_group_1": "gitti-look-natural,eye-level-no-02-brown,visionist-no-02-copper-sheen,everyblush-no-02-sunny-coral,lip-sync-refill-no-02-dance-floor",
+            "shop_the_look_product_group_2": ""
+          }
+        },
+        "a5442757-504c-40d0-b782-624f90b5f236": {
+          "type": "image_hero_page",
+          "disabled": true,
+          "settings": {
+            "show_section": "both",
+            "section_height": 60,
+            "full_width_image_hero": false,
+            "use_natural_height": true,
+            "section_height_mobile": 80,
+            "use_natural_height_mobile": true,
+            "overlay_width": 50,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_shop_natural_shopthelook_1.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_shop_natural_shopthelook_1.jpg",
+            "image_fit_mobile": "contain",
+            "mobile_wrapper": false,
+            "preheading": "",
+            "tag_preheading_image_hero": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "f4a1ce58-d1b1-4bf9-8445-e2f9d7ebc091": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "l",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Colour & Care Sets.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "text": "<p>Wir vereinen bei der Entwicklung unserer Make-up Produkte Farbe mit Pflege und Performance mit Nachhaltigkeit. So vereinfachen wir deine Beauty Routine.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "3ea7154e-8879-4486-9d4c-343a5c4eb90b": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "Colour & Care Sets.",
+            "class": "h1",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "m",
+            "spacing_bottom": "xs"
+          }
+        },
+        "62846d62-5d19-4e0e-9c23-6845af3b40af": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "richtext": "<p>Tempor do laborum excepteur ut minim fugiat velit tempor labore adipisicing nostrud excepteur. Tempor eu cillum eiusmod culpa Lorem amet irure eu. Nostrud consectetur aute ullamco sunt ex. Tempor fugiat officia officia nostrud mollit consectetur aute non excepteur cillum non dolor. Sunt ex id minim aliqua aliquip non laboris ipsum ea adipisicing. Minim duis ut qui esse mollit veniam eiusmod ex reprehenderit ea exercitation. Ut aliqua fugiat nostrud labore nostrud tempor eu deserunt et.<\/p>",
+            "text-color": "",
+            "padding-top": 5,
+            "padding-bottom": 5
+          }
+        },
+        "d98f1227-a4c5-4e5b-a5c5-c299a8e71f2a": {
+          "type": "triple_usp",
+          "disabled": true,
+          "settings": {
+            "spacing_top": "m",
+            "spacing_bottom": "m",
+            "tag": "p",
+            "class": "p",
+            "weight_class": "",
+            "triple_usp_link_1": "",
+            "triple_usp_icon_1": "sustainable_packaging",
+            "triple_usp_text_1": "Nachhaltige Verpackungen",
+            "triple_usp_link_2": "",
+            "triple_usp_icon_2": "clean_natural",
+            "triple_usp_text_2": "Vegane & natürliche Inhaltsstoffe",
+            "triple_usp_link_3": "",
+            "triple_usp_icon_3": "colour_and_care",
+            "triple_usp_text_3": "Pflegendes Multitalent",
+            "custom_css": "#shopify-section-1615814327c950309d{\nborder-bottom: 4px solid #E8E8E8;"
+          }
+        },
+        "1cae3026-d925-4a95-86ae-72ae85775e43": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "l",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "eye-level-no-01-black"
+          }
+        },
+        "fe5c9e23-a525-4a88-802c-a21c420f3502": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "visionist-no-01-metallic-mauve"
+          }
+        },
+        "91355608-539b-4741-95ac-d9f2954e223b": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "everyblush-no-01-deep-mulberry"
+          }
+        },
+        "0bbeee77-8c1c-4f4d-a1c4-8a1a407f2153": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "lip-sync-kit"
+          }
+        },
+        "b8d547bc-2649-48d3-8fd9-f398b6097b82": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "everyday-duo"
+          }
+        },
+        "d1048b6e-9d63-4d2b-83b8-7022c89ded0d": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "lips-cheeks-duo"
+          }
+        },
+        "7bbb9e04-8c0d-437b-816c-c6ae18a71fa1": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "eye-colour-set"
+          }
+        },
+        "f563b9c8-0cf7-4847-9008-45404594a4fb": {
+          "type": "products",
+          "disabled": true,
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "h1",
+            "richtext_weight_class": "bold",
+            "button_label": "",
+            "button_class": "btn--tertiary",
+            "collection": "sets"
+          }
+        },
+        "4460deaa-9224-40aa-b455-c20f14e33612": {
+          "type": "image_text_alt",
+          "disabled": true,
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_Brand_Campaign_05_BE_NATURAL_SADE-1-3.jpg",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "9fb58723-ddb7-4d58-a9d8-9cd1ae14c5a0": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look-natural"
+          }
+        },
+        "eed07ab0-ea07-4dda-acdd-99ce798d4d11": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look-bold"
+          }
+        },
+        "e14ea004-9e1d-4739-b233-615b401f0bd6": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look-fresh"
+          }
+        },
+        "f0f23ac6-cf09-4848-9278-4539bd8e5528": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-lips-in-sync-01"
+          }
+        },
+        "fc0f0ac2-6f4c-4f09-8cca-672820e083e4": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-lips-in-sync-02"
+          }
+        },
+        "92b93cab-b2a8-4ce1-b3c2-60d184ffb20d": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-lips-in-sync-03"
+          }
+        },
+        "ceca8d17-5e19-49c7-b6ce-c8ac44166b99": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-lips-in-sync-04"
+          }
+        },
+        "8874f5fb-d6cd-4671-9504-69a5455e230b": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "lip-sync-refill-duo"
+          }
+        }
+      },
+      "block_order": [
+        "d97c06f7-5665-4ed6-93e5-d614f271f82d",
+        "64f80c37-4623-4c5e-9db0-bed6493dd2e3",
+        "0981911c-cdcc-4318-b2b5-95c29dc9a34a",
+        "a5442757-504c-40d0-b782-624f90b5f236",
+        "f4a1ce58-d1b1-4bf9-8445-e2f9d7ebc091",
+        "3ea7154e-8879-4486-9d4c-343a5c4eb90b",
+        "62846d62-5d19-4e0e-9c23-6845af3b40af",
+        "d98f1227-a4c5-4e5b-a5c5-c299a8e71f2a",
+        "1cae3026-d925-4a95-86ae-72ae85775e43",
+        "fe5c9e23-a525-4a88-802c-a21c420f3502",
+        "91355608-539b-4741-95ac-d9f2954e223b",
+        "0bbeee77-8c1c-4f4d-a1c4-8a1a407f2153",
+        "b8d547bc-2649-48d3-8fd9-f398b6097b82",
+        "d1048b6e-9d63-4d2b-83b8-7022c89ded0d",
+        "7bbb9e04-8c0d-437b-816c-c6ae18a71fa1",
+        "f563b9c8-0cf7-4847-9008-45404594a4fb",
+        "4460deaa-9224-40aa-b455-c20f14e33612",
+        "9fb58723-ddb7-4d58-a9d8-9cd1ae14c5a0",
+        "eed07ab0-ea07-4dda-acdd-99ce798d4d11",
+        "e14ea004-9e1d-4739-b233-615b401f0bd6",
+        "f0f23ac6-cf09-4848-9278-4539bd8e5528",
+        "fc0f0ac2-6f4c-4f09-8cca-672820e083e4",
+        "92b93cab-b2a8-4ce1-b3c2-60d184ffb20d",
+        "ceca8d17-5e19-49c7-b6ce-c8ac44166b99",
+        "8874f5fb-d6cd-4671-9504-69a5455e230b"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page-lip-sync-sections-template"
+  ]
+}

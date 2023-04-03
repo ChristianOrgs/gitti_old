@@ -1,0 +1,131 @@
+<style>
+    .mega_menu_wrapper{
+        overflow: hidden;
+        height:100%;
+    }
+    .menu_content{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(100%);
+        transition: all 0.3s;
+        background-color: white;
+        width:100%;
+        height:100%;
+    }
+    .mega_menu_blocks_content{
+        overflow-y:auto;
+        padding-bottom:30px;
+    }
+    .open_mega_menu svg{
+        transform: rotate(180deg);
+    }
+    label[for="menu_item-0"] svg{
+        display:flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<div class="mega_menu_wrapper is-relative">
+    <input hidden type="radio" id="menu_item-0" name="mobile_mega_menu">
+    {% assign block_counts = '' %}
+    {% for link in linklist.links %}
+        {% assign block_count = 0 %}
+        {% for block in section.blocks %}
+            {% assign item_handle = block.settings.item_title | handleize %}
+            {% if item_handle == link.handle %}
+                {% assign block_count = block_count | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+        {% assign block_counts = block_counts | append: block_count %}
+        {% unless forloop.last %}
+            {% assign block_counts = block_counts | append: ',' %}
+        {% endunless %}
+
+        <input hidden type="radio" id="menu_item-{{forloop.index}}" name="mobile_mega_menu">
+        <style>
+            #menu_item-{{forloop.index}}:checked ~  .menu_content-{{forloop.index}}{
+                transform: translateX(0);
+            }
+        </style>
+    {% endfor %}
+    <!--{{block_counts}}-->
+    {% assign block_counts = block_counts | split: ',' %}
+    <div class="menu_level-1 section-spacing-side">
+        <ul class="flex col">
+            {% for link in linklist.links %}
+            <li class="flex row between spacing-bottom-s spacing-top-s">
+                <a href="{{link.url}}" class="h6 {% if link.active %} active {% endif %}">{{link.title}}</a>
+                <!--{{block_counts[forloop.index0]}}-->
+                {% if block_counts[forloop.index0] != '0' %}
+                    <label for="menu_item-{{forloop.index}}" class="open_mega_menu">
+                        {% render 'icon', icon:'chevron' %}
+                    </label>
+                {% endif %}
+                
+            </li>
+        {% endfor %} 
+        </ul>
+         
+    </div>
+        {% for link in linklist.links %}
+            <div class="menu_content menu_content-{{forloop.index}} mega_menu_blocks-{{link.title | handleize }} flex col ">
+                <div class="mega_menu_blocks_header flex row section-spacing-side spacing-top-s spacing-bottom-s">
+                    <label for="menu_item-0" class="spacing-right-s">{% render 'icon', icon:'chevron' %}</label><p class="h6">{{link.title}}</p>
+                </div>
+                <div class="mega_menu_blocks_content section-spacing-side">  
+                {% for block in blocks %}
+                    {% assign item_handle = block.settings.item_title | handleize %}
+                    {% if item_handle == link.handle %}
+                        <div id="mega_menu_block-{{block.id}}" class="mega_menu-item level-1">
+                            {% case block.type %}
+                                {% when 'menu' %}
+                                    {% assign has_blocks = true %}
+                                    {% assign block_linklist = linklists[block.settings.menu] %}
+                                    {% if block.settings.image != blank %}
+                                        {% render 'image_element',image:block.settings.image, fit:'cover', image_shape:block.settings.image_shape %}
+                                    {% endif %}
+                                    {% if block.settings.title_link != blank %}
+                                        <a class="menu_item-link h6" href="{{block.settings.title_link}}">{{block_linklist.title}}</a>
+                                    {% else %}
+                                        <p class="menu_item-link h6" >{{block_linklist.title}}</p>
+                                    {% endif %}
+                                    {% render 'menu', linklist:block_linklist, orientation:'vertical' %}
+                                {% when 'featured_image' %}
+                                    {% assign has_blocks = true %}
+                                    {% render 'image_element',image:block.settings.image, fit:'cover', image_shape:block.settings.image_shape %}
+                                {% when 'social_media' %}
+                                    {% assign has_blocks = true %}
+                                    {% if block.settings.title_link != blank %}
+                                        <a class="menu_item-link h6" href="{{block.settings.title_link}}">{{block.settings.title}}</a>
+                                    {% else %}
+                                        <p class="menu_item-link h6" >{{block.settings.title}}</p>
+                                    {% endif %}
+
+                                    {% render 'social_media',direction:block.settings.direction %}
+                                {% when 'featured_collection' %}
+                                    {% assign has_blocks = true %}
+                                    {% assign featured_collection = collections[block.settings.collection] %}
+                                    <a href="{{featured_collection.url}}">
+                                        {% render 'image_element',image:featured_collection.image, fit:'cover', image_shape:block.settings.image_shape %}
+                                        <h6 class="menu_item-link h6">{{featured_collection.title}}</h6>
+                                    </a>
+                                {% when 'featured_product' %}
+                                    {% assign has_blocks = true %}
+                                    {% assign featured_product = all_products[block.settings.product] %}
+                                    <a href="{{featured_product.url}}">
+                                        {% render 'image_element',image:featured_product.images[0], fit:'cover', image_shape:block.settings.image_shape %}
+                                        <h6 class="menu_item-link h6">{{featured_product.title}}</h6>
+                                        {% render 'product_price',product:featured_product %}
+                                    </a>
+                            {% endcase %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                                    
+                </div> 
+            </div>
+        {% endfor %}  
+
+</div>

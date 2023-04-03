@@ -1,0 +1,40 @@
+
+{% assign types = types | default: 'product' %}{%- comment -%},page,article,collection{%- endcomment -%}
+{% assign fields = fields | default: 'author,body,product_type,tag,title,variants.barcode,variants.sku,variants.title,vendor' %}
+{% assign limit = limit | default: 3 %}
+{% assign predictive_search_section = 'search_predictive' %}
+{% assign hide_unavailable_products = hide_unavailable_products | default: true %}
+
+{% if hide_unavailable_products %}
+    {% assign hide_unavailable_products = 'hide' %}
+{% else %}
+    {% assign hide_unavailable_products = 'show' %}
+{% endif %}
+
+<div id="predictive_results" class="grid-item col-span-3 small_col-span-1 grid col-3 small_col-2">
+</div>
+
+
+<script type="module">
+    const searchInput = document.querySelector('input[name="q"]')
+    const searchPreview = document.querySelector('#predictive_results')
+
+    searchInput.addEventListener('input',()=>{
+        fetch("{{ routes.search_url }}/suggest?q=" + searchInput.value + "&resources[type]={{types}}&resources[options][unavailable_products]={{hide_unavailable_products}}&resources[options][fields]={{fields}}&limit={{limit}}&section_id={{predictive_search_section}}")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`${response.status}: ${response.message}`);
+            }
+            else{
+                return response.text();
+            }
+        })
+        .then((text) => {
+            const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-{{predictive_search_section}}').innerHTML;
+            searchPreview.innerHTML = resultsMarkup;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    })
+</script>

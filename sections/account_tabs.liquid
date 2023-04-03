@@ -1,0 +1,308 @@
+{% assign id = section.id %}
+
+<style>
+    #shopify-section-{{id}} .block_title {
+        cursor: pointer;
+        background-color: #ffffff;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+    }
+    #shopify-section-{{id}} .block_title .clever_icon{
+        width: 60px;
+    }
+    #shopify-section-{{id}} .account_tab .view, #shopify-section-{{id}} .account_tab .edit, #shopify-section-{{id}} .account_tab .create{
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    #shopify-section-{{id}} .account_tab:not(.active){
+        display: none;
+    }
+    #shopify-section-{{id}} .block_title .clever_icon{
+        width: 60px;
+        height: 100%;
+        max-width: 60px;
+        max-height: 100%;
+    }
+    #shopify-section-{{section.id}}{
+        background-color:{{section.settings.background_color}};
+    }
+    #shopify-section-{{id}} .logout_block{
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<section class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    <p class="h3 text-align-left spacing-bottom-m">{{customer.first_name | capitalize}} {{customer.last_name | capitalize}}</p>
+    <div class="grid col-7 grid-gap">
+        <div class="grid-item col-span-2 block_titles flex col medium-down_col-span-7">
+            {% for block in section.blocks %}
+                <div class="spacing-bottom-xs">
+                    {% if block.type == 'logout' %}
+                        <a class="block_title logout_block flex row" href="/account/logout">
+                            <p class="p spacing-s  spacing-left-m">{{block.settings[translated_title]}}</p>
+                        </a>
+                    {% else %}
+                        <div class="block_title flex row" onclick="openTab('{{block.type}}')">
+                            {% assign translated_title = 'title_' | append: localization.language.iso_code %}
+                            <p class="spacing-s spacing-left-m">{{block.settings[translated_title]}}</p>
+                        </div>
+                    {% endif%}
+                    {% if forloop.first %}
+                        <script>
+                        document.addEventListener('DOMContentLoaded',function(){
+                            if(location.hash == ''){
+                               openTab('{{block.type}}') 
+                            }
+                            
+                        })
+                        
+                        </script>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="grid-item col-span-5 block_contents flex col  medium-down_col-span-7">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'profile' %}
+                        {% render 'account_profile' %}
+                    {% when 'orders' %}
+                        {% render 'account_orders' block: block %}
+                    {% when 'addresses' %}
+                        {% render 'account_addresses' %}
+                    {% when 'recent_products' %}
+                        {% render 'account_recent-products' %}
+                    {% when 'change_password' %}
+                        {% render 'account_password' %}
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    let account_tab_titles = document.querySelectorAll('#shopify-section-{{id}} .block_title');
+    let account_tabs = document.querySelectorAll('#shopify-section-{{id}} .account_tab');
+
+    function openTab(id){
+        let current_tab = document.querySelector('#shopify-section-{{id}} #'+id);
+        account_tabs.forEach(account_tab => {
+            account_tab.classList.remove('active');
+        });
+        current_tab.classList.add('active');
+        const url = new URL(window.location);
+        url.hash = id;
+        window.history.pushState({}, '', url);
+    }
+
+    document.addEventListener('DOMContentLoaded',function(){
+        if (location.hash != '') {
+            openTab(location.hash.replace('#',''))
+        } 
+    })
+    window.addEventListener("hashchange",function(){
+        if (location.hash != '') {
+            openTab(location.hash.replace('#',''))
+        } 
+    })
+</script>
+
+{% schema %}
+{
+    "name": "Account Tabs",
+    "settings": [
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background",
+            "default": "#f5f5f5"
+        },
+        {
+            "type": "select",
+            "id": "spacing_top",
+            "label": "Spacing top",
+            "options": [
+                {
+                    "value": "xs",
+                    "label": "xs"
+                },
+                {
+                    "value": "s",
+                    "label": "s"
+                },
+                {
+                    "value": "m",
+                    "label": "m"
+                },
+                {
+                    "value": "l",
+                    "label": "l"
+                },
+                {
+                    "value": "xl",
+                    "label": "xl"
+                },
+                {
+                    "value": "xxl",
+                    "label": "xxl"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "spacing_bottom",
+            "label": "Spacing bottom",
+            "options": [
+                {
+                    "value": "xs",
+                    "label": "xs"
+                },
+                {
+                    "value": "s",
+                    "label": "s"
+                },
+                {
+                    "value": "m",
+                    "label": "m"
+                },
+                {
+                    "value": "l",
+                    "label": "l"
+                },
+                {
+                    "value": "xl",
+                    "label": "xl"
+                },
+                {
+                    "value": "xxl",
+                    "label": "xxl"
+                }
+            ]
+        }
+    ],
+    "blocks":[
+        {
+            "type": "profile",
+            "name": "Profil",
+            "limit":1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_en",
+                    "label": "Heading EN",
+                    "default": "Profile"
+                },
+                {
+                    "type": "text",
+                    "id": "title_de",
+                    "label": "Heading DE",
+                    "default": "Profil"
+                }
+            ]
+        },
+        {
+            "type": "orders",
+            "name": "Orders",
+            "limit":1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_en",
+                    "label": "Heading EN",
+                    "default": "Orders"
+                },
+                {
+                    "type": "text",
+                    "id": "title_de",
+                    "label": "Heading DE",
+                    "default": "Bestellungen"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "reorder_btn",
+                    "label": "Show Re-Order Button",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "type": "addresses",
+            "name": "Addresses",
+            "limit":1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_en",
+                    "label": "Heading EN",
+                    "default": "Addresses"
+                },
+                {
+                    "type": "text",
+                    "id": "title_de",
+                    "label": "Heading DE",
+                    "default": "Versandadressen"
+                }
+            ]
+        },
+        {
+            "type": "recent_products",
+            "name": "Recent Products",
+            "limit":1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_en",
+                    "label": "Heading EN",
+                    "default": "Recent Products"
+                },
+                {
+                    "type": "text",
+                    "id": "title_de",
+                    "label": "Heading DE",
+                    "default": "Angesehene Produkte"
+                }
+            ]
+        },
+        {
+            "type": "change_password",
+            "name": "Change Password",
+            "limit":1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_en",
+                    "label": "Heading EN",
+                    "default": "Change Password"
+                },
+                {
+                    "type": "text",
+                    "id": "title_de",
+                    "label": "Heading DE",
+                    "default": "Passwort ändern"
+                }
+            ]
+        },
+        {
+            "type": "logout",
+            "name": "Logout",
+            "limit":1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title_en",
+                    "label": "Heading EN",
+                    "default": "Logout"
+                },
+                {
+                    "type": "text",
+                    "id": "title_de",
+                    "label": "Heading DE",
+                    "default": "Ausloggen"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

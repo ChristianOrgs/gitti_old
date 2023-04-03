@@ -1,0 +1,239 @@
+
+<section class="testimonial-advanced">
+    <div class="row inline row-lg row-mt-sm">
+        <h1>
+            {{ section.settings.headline }}
+        </h1>
+    </div>
+    <div class="row row-lg container-wrap">
+        <div class="testimonial-collection">
+            {%- for block in section.blocks -%}
+                {%- assign author_name = block.settings.author_name -%}
+                {%- assign quote = block.settings.quote -%}
+                {%- assign author_account = block.settings.author_account -%}
+                {%- assign image = block.settings.author_image -%}
+                <div class="testimonial-collection-item">
+                    <div class="testimonial-image-wrapper"><img src="{{ image | img_url: '350x350', crop: 'center' }}" loading="lazy" alt="" class="testimonial-image"></div>
+                    <div class="testimonial-text-wrapper">
+                        <div class="testimonial-text">{{ quote }}</div>
+                        <p class="testimonial-author"><span class="name">{{ author_name }}</span><br>‍<span class="account">{{ author_account }}</span></p>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+
+</section>
+
+
+{% schema %}
+{
+    "name": "Testimonials Advanced",
+    "settings": [
+        {
+            "type": "text",
+            "id": "headline",
+            "label": "Headline"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "testimonial",
+            "name": "Testimonial",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "author_image",
+                    "label": "Author image"
+                },
+                {
+                    "type": "richtext",
+                    "id": "quote",
+                    "label": "Text",
+                    "default": "<p>Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "author_name",
+                    "label": "Author name",
+                    "default": "John Doe"
+                },
+                {
+                    "type": "text",
+                    "id": "author_account",
+                    "label": "Author account",
+                    "default": "@johndoe"
+                }
+            ]
+        }
+    ],
+
+    "presets": [
+        {
+        "category": "Text",
+        "name": "Testimonials Advanced",
+        "blocks": [
+            {
+            "type": "testimonial"
+            },
+            {
+            "type": "testimonial"
+            },
+            {
+            "type": "testimonial"
+            }
+        ]
+        }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+    .testimonial-advanced {
+        background-color: #f7f7f7;
+        margin-bottom: 3em;
+        padding-top: 2em;
+        padding-bottom: 3em;
+    }
+
+    .testimonial-advanced h1 {
+        text-align: center;
+    }
+
+    .testimonial-collection {
+        display: -ms-grid;
+        display: grid;
+        padding-top: 8em;
+        max-width: 1082px;
+        margin-right: auto;
+        margin-left: auto;
+        grid-auto-columns: 1fr;
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+        -ms-grid-columns: minmax(200px, 350px) minmax(200px, 350px) minmax(200px, 350px);
+        grid-template-columns: minmax(200px, 350px) minmax(200px, 350px) minmax(200px, 350px);
+        -ms-grid-rows: auto;
+        grid-template-rows: auto;
+    }
+
+    .testimonial-collection-item {
+        position: relative;
+        max-width: 450px;
+        padding-top: 120px;
+        padding-bottom: 15px;
+        background-color: #fff;
+    }
+
+    .testimonial-author {
+        position: static;
+        bottom: 60px;
+        margin-top: 20px;
+    }
+
+    .testimonial-author .name {
+        font-weight: bold;
+    }
+
+    .testimonial-image {
+        position: static;
+        left: auto;
+        top: -128px;
+        max-width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 100%;
+    }
+
+    .testimonial-image-wrapper {
+        position: absolute;
+        top: -113px;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .testimonial-text-wrapper {
+        margin-right: 15px;
+        margin-bottom: 15px;
+        margin-left: 15px;
+    }
+
+    @media screen and (max-width: 991px) {
+        .testimonial-collection-item {
+            padding-top: 97px;
+        }
+        .testimonial-image-wrapper {
+            top: -57px;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .testimonial-advanced .container-wrap {
+            padding-left: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+        .testimonial-collection {
+            display: -ms-grid;
+            display: grid;
+            overflow: auto;
+            margin-left: 0px;
+            padding-top: 139px;
+            -webkit-box-pack: start;
+            -webkit-justify-content: start;
+            -ms-flex-pack: start;
+            justify-content: start;
+            justify-items: start;
+            -webkit-box-align: stretch;
+            -webkit-align-items: stretch;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            -webkit-align-content: space-between;
+            -ms-flex-line-pack: justify;
+            align-content: space-between;
+            grid-auto-columns: 1fr;
+            grid-column-gap: 16px;
+            grid-row-gap: 16px;
+            -ms-grid-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            -ms-grid-rows: auto;
+            grid-template-rows: auto;
+            -o-object-fit: fill;
+            object-fit: fill;
+        }
+        .testimonial-collection-item {
+            position: relative;
+            display: block;
+            overflow: visible;
+            width: 250px;
+            max-width: 350px;
+            padding-top: 84px;
+            float: left;
+            clear: none;
+            grid-auto-flow: row;
+            grid-auto-columns: 1fr;
+            -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+            -ms-grid-rows: auto auto;
+            grid-template-rows: auto auto;
+            -o-object-fit: fill;
+            object-fit: fill;
+        }
+        .testimonial-collection-item:first-child {
+            margin-left: 35px;
+        }
+        .testimonial-collection-item:last-child {
+            margin-right: 35px;
+        }
+        .testimonial-image-wrapper {
+            top: -87px;
+        }
+    }
+
+    @media screen and (max-width: 479px) {
+        .testimonial-collection-item {
+            padding-top: 107px;
+        }
+    }
+</style>

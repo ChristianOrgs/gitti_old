@@ -1,0 +1,911 @@
+
+<style>
+    #shopify-section-{{section.id}}{
+      background-color:{{section.settings.background_color}};
+    }
+
+    #shopify-section-{{section.id}} .is-absolute.bottom{
+      bottom: 0;
+    }
+
+    #shopify-section-{{section.id}} .flex.row.gap{
+      gap: 12px;
+      width: 100%;
+    }
+    #shopify-section-{{section.id}} .flex .fixed-size{
+      flex: 1 1 100%;
+    }
+
+    #shopify-section-{{section.id}} .overlay_wrapper {
+         position: absolute;
+         top: 0; 
+         left: 0;
+         width: 100%;
+         height: 100%;
+    }
+
+    @media (max-width: {{settings.breakpoint_small}}px) {
+          .small_flex > * > a {
+            vertical-align: middle;
+          }
+    }
+    {% if section.settings.only_mobile %}
+      #shopify-section-{{section.id}}{
+         display: none;
+      }
+      @media (max-width: {{settings.breakpoint_small}}px) {
+         #shopify-section-{{section.id}}{
+            display: block;
+         }
+      }
+   {% endif %}     
+  
+   {% if section.settings.full_width_button %}
+   #shopify-section-{{section.id}} .top_button{
+         width: 100%;
+      }
+   {% endif %}
+    
+  </style>
+
+<div class="page-width">
+    <div class="grid col-2 col-gap small_col-1 small_row-gap spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+      <div class="grid-item {{section.settings.layout}} {{section.settings.layout_mobile}}  is-relative">
+        {% render 'image_element',  image: section.settings.image, fit: section.settings.image_fit, image_shape: section.settings.image_shape%}
+        {% if section.settings.layout_mobile == "small_row-start-1 overlay-text" %}
+            <div class="overlay_wrapper flex col {{section.settings.text_align}} {{section.settings.vertical_align}}">
+               {% if section.settings.preheading != blank %}
+                  <{{section.settings.preheading_tag}} class="text-align-{{section.settings.text_align}} {{section.settings.preheading_class}} {{section.settings.preheading_weight_class}} spacing-bottom-{{section.settings.preheading_spacing_bottom}}">{{ section.settings.preheading | escape }}</{{section.settings.preheading_tag}}>
+               {% endif %}                 
+               {% if section.settings.heading != blank %}
+                     <{{section.settings.heading_tag}} class="flex col text-align-{{section.settings.text_align}} {{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-{{section.settings.heading_spacing_bottom}}">{{ section.settings.heading | escape }}</{{section.settings.heading_tag}}>
+               {% endif %}    
+               {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                  <a href="{{section.settings.button_link}}" class="top_button btn only_small text-align-{{section.settings.text_align}} {{section.settings.button_class}}  margin-bottom-{{section.settings.button_spacing_bottom}}">{{section.settings.button_label}}</a>
+               {% endif %}    
+            </div>
+         {% endif %}
+      </div>
+      <div class="grid-item flex col is-relative {{section.settings.text_align}} {{section.settings.vertical_align}}">
+        {% if section.settings.preheading != blank %}
+        <{{section.settings.preheading_tag}} class=" only_medium-up text-align-{{section.settings.text_align}} {{section.settings.preheading_class}} {{section.settings.preheading_weight_class}} spacing-bottom-{{section.settings.preheading_spacing_bottom}}">{{ section.settings.preheading | escape }}</{{section.settings.preheading_tag}}>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <{{section.settings.heading_tag}} class="flex col only_medium-up text-align-{{section.settings.text_align}} {{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-{{section.settings.heading_spacing_bottom}}">{{ section.settings.heading | escape }} </{{section.settings.heading_tag}}>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{section.settings.button_link}}" class="top_button only_medium-up btn {{section.settings.button_class}}  margin-bottom-{{section.settings.button_spacing_bottom}}">{{section.settings.button_label}}</a>
+      {% endif %}
+      {% if section.settings.layout_mobile != "small_row-start-1 overlay-text" %}
+            <div class="grid-item small_flex only_small">
+               {% if section.settings.preheading != blank %}
+               <div>
+                  <{{section.settings.preheading_tag}} class=" text-align-{{section.settings.text_align}} {{section.settings.preheading_class}} {{section.settings.preheading_weight_class}} spacing-bottom-{{section.settings.preheading_spacing_bottom}}">{{ section.settings.preheading | escape }}</{{section.settings.preheading_tag}}>
+               </div> 
+                {% endif %}
+               {% if section.settings.heading != blank %}
+                  <{{section.settings.heading_tag}} class="flex col text-align-{{section.settings.text_align}} {{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-{{section.settings.heading_spacing_bottom}}">{{ section.settings.heading | escape }} {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+               
+               {% endif %}</{{section.settings.heading_tag}}>
+               {% endif %}          
+            </div>
+            {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+               <a href="{{section.settings.button_link}}" class="top_button btn only_small text-align-{{section.settings.text_align}} {{section.settings.button_class}}  margin-bottom-{{section.settings.button_spacing_bottom}}">{{section.settings.button_label}}</a>
+            {% endif %}  
+      {% endif %}
+
+      {%- comment -%}button row medium up and small{%- endcomment -%}
+
+        <div class="is-absolute bottom gap only_medium-up">
+          {% if section.settings.button_row_heading != blank %}
+            <{{section.settings.button_row_tag}} class="text-align-{{section.settings.text_align}} {{section.settings.button_row_class}} {{section.settings.button_row_weight_class}} spacing-bottom-{{section.settings.button_row_spacing_bottom}}">{{ section.settings.button_row_heading | escape }}</{{section.settings.button_row_tag}}>
+          {% endif %}
+          <div class="flex row start gap">
+            {% for block in section.blocks %}
+            {% if block.type == 'button' %}
+              {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                <a href="{{block.settings.button_link}}" class=" btn {{block.settings.button_class}} ">{{block.settings.button_label}}</a>
+              {% endif %}              
+            {% endif %}          
+        {% endfor %}
+          </div>
+          
+        </div>
+      </div> 
+      {% if section.settings.button_row_heading != blank %}
+          <{{section.settings.button_row_tag}} class="only_small text-align-{{section.settings.text_align}} {{section.settings.button_row_class}} {{section.settings.button_row_weight_class}} spacing-bottom-{{section.settings.button_row_spacing_bottom}}">{{ section.settings.button_row_heading | escape }}</{{section.settings.button_row_tag}}>
+      {% endif %}
+      <div class="bottom flex between row gap only_small">
+        
+        {% for block in section.blocks %}
+            {% if block.type == 'button' %}
+              {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                <a href="{{block.settings.button_link}}" class="btn {{block.settings.button_class}} fixed-size">{{block.settings.button_label}}</a>
+              {% endif %}              
+            {% endif %}          
+        {% endfor %} 
+      </div>     
+    </div>
+  </div>
+
+{% schema %}
+{
+  "name":"Hero Buttons",
+  "settings":[
+     {
+        "type":"color",
+        "id":"background_color",
+        "label":"Background color",
+        "default":"#fff"
+     },
+    {
+       "type": "checkbox",
+       "id": "only_mobile",
+       "label": "Only mobile",
+       "default": false
+      },
+     {
+        "type":"header",
+        "content":"Layout"
+     },
+     {
+        "type":"select",
+        "id":"spacing_top",
+        "label":"Spacing top",
+        "default":"",
+        "options":[
+           {
+              "value":"",
+              "label":"no spacing"
+           },
+           {
+              "value":"xs",
+              "label":"xs"
+           },
+           {
+              "value":"s",
+              "label":"s"
+           },
+           {
+              "value":"m",
+              "label":"m"
+           },
+           {
+              "value":"l",
+              "label":"l"
+           },
+           {
+              "value":"xl",
+              "label":"xl"
+           },
+           {
+              "value":"xxl",
+              "label":"xxl"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"spacing_bottom",
+        "label":"Spacing bottom",
+        "default":"",
+        "options":[
+           {
+              "value":"",
+              "label":"no spacing"
+           },
+           {
+              "value":"xs",
+              "label":"xs"
+           },
+           {
+              "value":"s",
+              "label":"s"
+           },
+           {
+              "value":"m",
+              "label":"m"
+           },
+           {
+              "value":"l",
+              "label":"l"
+           },
+           {
+              "value":"xl",
+              "label":"xl"
+           },
+           {
+              "value":"xxl",
+              "label":"xxl"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"layout",
+        "label":"Layout",
+        "options":[
+           {
+              "value":"medium-up_col-start-1",
+              "label":"Image - Text"
+           },
+           {
+              "value":"medium-up_col-start-2",
+              "label":"Text - Image"
+           }
+        ],
+        "default":"medium-up_col-start-1"
+     },
+     {
+        "type":"select",
+        "id":"layout_mobile",
+        "label":"Layout mobile",
+        "options":[
+           {
+              "value":"small_row-start-1",
+              "label":"Image - Text"
+           },
+           {
+              "value":"small_row-start-2",
+              "label":"Text - Image"
+           },
+           {
+              "value":"small_row-start-1 overlay-text",
+              "label":"Overlay text"
+           }
+        ],
+        "default":"small_row-start-1"
+     },
+     {
+        "type":"header",
+        "content":"Image"
+     },
+     {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Image"
+     },
+     {
+        "type":"select",
+        "id":"image_shape",
+        "label":"Image shape",
+        "options":[
+           {
+              "value":"",
+              "label":"Original"
+           },
+           {
+              "value":"square",
+              "label":"Square"
+           },
+           {
+              "value":"circle",
+              "label":"Circle"
+           },
+           {
+              "value":"four_by_three",
+              "label":"4:3"
+           },
+           {
+              "value":"four_by_five",
+              "label":"4:5"
+           },
+           {
+              "value":"sixteen_by_nine",
+              "label":"16:9"
+           }
+        ],
+        "default":"square"
+     },
+     {
+        "type":"select",
+        "id":"image_fit",
+        "label":"Image fit",
+        "options":[
+           {
+              "value":"cover",
+              "label":"Cover"
+           },
+           {
+              "value":"contain",
+              "label":"contain"
+           }
+        ],
+        "default":"contain"
+     },
+     {
+        "type":"header",
+        "content":"Text Layout"
+     },
+     {
+        "type":"select",
+        "id":"text_align",
+        "options":[
+           {
+              "value":"left",
+              "label":"left"
+           },
+           {
+              "value":"center",
+              "label":"center"
+           },
+           {
+              "value":"right",
+              "label":"right"
+           }
+        ],
+        "label":"Text align"
+     },
+     {
+        "type":"select",
+        "id":"vertical_align",
+        "options":[
+           {
+              "value":"top",
+              "label":"top"
+           },
+           {
+              "value":"middle",
+              "label":"middle"
+           },
+           {
+              "value":"bottom",
+              "label":"bottom"
+           },
+           {
+              "value":"between",
+              "label":"between"
+           },
+           {
+              "value":"around",
+              "label":"around"
+           },
+           {
+              "value":"evenly",
+              "label":"evenly"
+           }
+        ],
+        "label":"Vertical align",
+        "default":"middle"
+     },
+     {
+        "type":"header",
+        "content":"Preheading"
+     },
+     {
+        "type":"text",
+        "id":"preheading",
+        "label":"Preheading",
+        "default":"Veniam enim mollit amet ut mollit."
+     },
+     {
+        "type":"select",
+        "id":"preheading_spacing_bottom",
+        "label":"Spacing bottom",
+        "default":"xs",
+        "options":[
+           {
+              "value":"xs",
+              "label":"xs"
+           },
+           {
+              "value":"s",
+              "label":"s"
+           },
+           {
+              "value":"m",
+              "label":"m"
+           },
+           {
+              "value":"l",
+              "label":"l"
+           },
+           {
+              "value":"xl",
+              "label":"xl"
+           },
+           {
+              "value":"xxl",
+              "label":"xxl"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"preheading_tag",
+        "label":"Html tag",
+        "default":"p",
+        "options":[
+           {
+              "value":"h1",
+              "label":"h1"
+           },
+           {
+              "value":"h2",
+              "label":"h2"
+           },
+           {
+              "value":"h3",
+              "label":"h3"
+           },
+           {
+              "value":"h4",
+              "label":"h4"
+           },
+           {
+              "value":"h5",
+              "label":"h5"
+           },
+           {
+              "value":"h6",
+              "label":"h6"
+           },
+           {
+              "value":"p",
+              "label":"p"
+           },
+           {
+              "value":"small",
+              "label":"small"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"preheading_class",
+        "label":"Font class",
+        "default":"h1",
+        "options":[
+           {
+              "value":"h1",
+              "label":"h1"
+           },
+           {
+              "value":"h2",
+              "label":"h2"
+           },
+           {
+              "value":"h3",
+              "label":"h3"
+           },
+           {
+              "value":"h4",
+              "label":"h4"
+           },
+           {
+              "value":"h5",
+              "label":"h5"
+           },
+           {
+              "value":"h6",
+              "label":"h6"
+           },
+           {
+              "value":"p",
+              "label":"p"
+           },
+           {
+              "value":"note",
+              "label":"note"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"preheading_weight_class",
+        "label":"Weight class",
+        "default":"bold",
+        "options":[
+           {
+              "value":"bold",
+              "label":"bold"
+           },
+           {
+              "value":"",
+              "label":"normal"
+           }
+        ]
+     },
+     {
+        "type":"header",
+        "content":"Heading"
+     },
+     {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading",
+        "default":"Veniam enim mollit amet ut mollit."
+     },
+     {
+        "type":"select",
+        "id":"heading_spacing_bottom",
+        "label":"Spacing bottom",
+        "default":"xs",
+        "options":[
+           {
+              "value":"xs",
+              "label":"xs"
+           },
+           {
+              "value":"s",
+              "label":"s"
+           },
+           {
+              "value":"m",
+              "label":"m"
+           },
+           {
+              "value":"l",
+              "label":"l"
+           },
+           {
+              "value":"xl",
+              "label":"xl"
+           },
+           {
+              "value":"xxl",
+              "label":"xxl"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"heading_tag",
+        "label":"Html tag",
+        "default":"p",
+        "options":[
+           {
+              "value":"h1",
+              "label":"h1"
+           },
+           {
+              "value":"h2",
+              "label":"h2"
+           },
+           {
+              "value":"h3",
+              "label":"h3"
+           },
+           {
+              "value":"h4",
+              "label":"h4"
+           },
+           {
+              "value":"h5",
+              "label":"h5"
+           },
+           {
+              "value":"h6",
+              "label":"h6"
+           },
+           {
+              "value":"p",
+              "label":"p"
+           },
+           {
+              "value":"small",
+              "label":"small"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"heading_class",
+        "label":"Font class",
+        "default":"h1",
+        "options":[
+           {
+              "value":"h1",
+              "label":"h1"
+           },
+           {
+              "value":"h2",
+              "label":"h2"
+           },
+           {
+              "value":"h3",
+              "label":"h3"
+           },
+           {
+              "value":"h4",
+              "label":"h4"
+           },
+           {
+              "value":"h5",
+              "label":"h5"
+           },
+           {
+              "value":"h6",
+              "label":"h6"
+           },
+           {
+              "value":"p",
+              "label":"p"
+           },
+           {
+              "value":"note",
+              "label":"note"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"heading_weight_class",
+        "label":"Weight class",
+        "default":"bold",
+        "options":[
+           {
+              "value":"bold",
+              "label":"bold"
+           },
+           {
+              "value":"",
+              "label":"normal"
+           }
+        ]
+     },
+     {
+        "type":"header",
+        "content":"Button"
+     },
+     {
+        "type":"text",
+        "id":"button_label",
+        "label":"Button",
+        "default":"Jetzt Entdecken"
+     },
+     {
+        "type":"url",
+        "id":"button_link",
+        "label":"Button link"
+     },
+     {
+        "type":"select",
+        "id":"button_class",
+        "label":"Button class",
+        "options":[
+           {
+              "value":"btn--primary",
+              "label":"primary"
+           },
+           {
+              "value":"btn--secondary",
+              "label":"secondary"
+           },
+           {
+              "value":"btn--tertiary",
+              "label":"link style"
+           }
+        ]
+     },
+     {
+      "type":"select",
+      "id":"button_spacing_bottom",
+      "label":"Spacing bottom",
+      "default":"",
+      "options":[
+         {
+            "value":"",
+            "label":"no spacing"
+         },
+         {
+            "value":"xs",
+            "label":"xs"
+         },
+         {
+            "value":"s",
+            "label":"s"
+         },
+         {
+            "value":"m",
+            "label":"m"
+         },
+         {
+            "value":"l",
+            "label":"l"
+         },
+         {
+            "value":"xl",
+            "label":"xl"
+         },
+         {
+            "value":"xxl",
+            "label":"xxl"
+         }
+      ]
+   },
+    {
+       "type": "checkbox",
+       "id": "full_width_button",
+       "label": "Full width",
+       "default": false
+    },
+     {
+        "type":"header",
+        "content":"Button row"
+     },
+     {
+        "type":"text",
+        "id":"button_row_heading",
+        "label":"Heading",
+        "default":"Button row"
+     },
+     {
+        "type":"select",
+        "id":"button_row_tag",
+        "label":"Html tag",
+        "default":"p",
+        "options":[
+           {
+              "value":"h1",
+              "label":"h1"
+           },
+           {
+              "value":"h2",
+              "label":"h2"
+           },
+           {
+              "value":"h3",
+              "label":"h3"
+           },
+           {
+              "value":"h4",
+              "label":"h4"
+           },
+           {
+              "value":"h5",
+              "label":"h5"
+           },
+           {
+              "value":"h6",
+              "label":"h6"
+           },
+           {
+              "value":"p",
+              "label":"p"
+           },
+           {
+              "value":"small",
+              "label":"small"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"button_row_class",
+        "label":"Font class",
+        "default":"h1",
+        "options":[
+           {
+              "value":"h1",
+              "label":"h1"
+           },
+           {
+              "value":"h2",
+              "label":"h2"
+           },
+           {
+              "value":"h3",
+              "label":"h3"
+           },
+           {
+              "value":"h4",
+              "label":"h4"
+           },
+           {
+              "value":"h5",
+              "label":"h5"
+           },
+           {
+              "value":"h6",
+              "label":"h6"
+           },
+           {
+              "value":"p",
+              "label":"p"
+           },
+           {
+              "value":"note",
+              "label":"note"
+           }
+        ]
+     },
+     {
+        "type":"select",
+        "id":"button_row_weight_class",
+        "label":"Weight class",
+        "default":"bold",
+        "options":[
+           {
+              "value":"bold",
+              "label":"bold"
+           },
+           {
+              "value":"",
+              "label":"normal"
+           }
+        ]
+     }, 
+     {
+      "type":"select",
+      "id":"button_row_spacing_bottom",
+      "label":"Spacing bottom",
+      "default":"",
+      "options":[
+         {
+            "value":"",
+            "label":"no spacing"
+         },
+         {
+            "value":"xs",
+            "label":"xs"
+         },
+         {
+            "value":"s",
+            "label":"s"
+         },
+         {
+            "value":"m",
+            "label":"m"
+         },
+         {
+            "value":"l",
+            "label":"l"
+         },
+         {
+            "value":"xl",
+            "label":"xl"
+         },
+         {
+            "value":"xxl",
+            "label":"xxl"
+         }
+      ]
+   }
+  ],
+  "blocks":[
+     {
+        "type":"button",
+        "name":"Button",
+        "settings":[
+           {
+              "type":"text",
+              "id":"button_label",
+              "label":"Label",
+              "default":"xxx"
+           },
+           {
+              "type":"url",
+              "id":"button_link",
+              "label":"Button link"
+           },
+           {
+              "type":"select",
+              "id":"button_class",
+              "label":"Button class",
+              "options":[
+                 {
+                    "value":"btn--primary",
+                    "label":"primary"
+                 },
+                 {
+                    "value":"btn--secondary",
+                    "label":"secondary"
+                 },
+                 {
+                    "value":"btn--tertiary",
+                    "label":"link style"
+                 }
+              ]
+           }
+        ]
+     }
+  ],
+  "presets":[
+     {
+        "name":"Hero Buttons"
+     }
+  ]
+}
+
+{% endschema %}

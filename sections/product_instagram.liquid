@@ -1,0 +1,418 @@
+<style>
+  #shopify-section-{{section.id}} {
+    overflow: hidden;
+  }
+  #shopify-section-{{section.id}},
+  #shopify-section-{{section.id}} clever-slider.overhanging_slider::before{
+        background-color:{{section.settings.background_color}};
+    }
+
+  @media only screen and (max-width:{{settings.breakpoint_small}}px){
+      #shopify-section-{{section.id}} .small_items-custom cs-slide{
+          flex: 0 0 80%;
+      }
+  }
+</style>
+{% capture sizes %}{% render 'image_sizes', small:2, medium:3, large:4 , page_width: true %}{% endcapture %}
+{% if product.metafields.global.instagram == blank %}
+    {% comment %}
+    <div class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+        <div class="flex col left">
+            <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-xs"> {{section.settings.heading}} </{{section.settings.heading_tag}}>
+            <{{section.settings.richtext_tag}} class="{{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} spacing-bottom-s"> {{section.settings.richtext}} </{{section.settings.richtext_tag}}>
+        </div>
+        <clever-slider class="overhanging_slider"
+            options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+            <cs-prev class="slider_nav slider_prev is-absolute only_large">
+                {% render 'icon', icon: 'chevron-left' %}
+            </cs-prev>
+            <cs-track>
+                <cs-slides class="items-4 medium_items-3 small_items-custom gap">
+                {% for block in section.blocks %}
+                        <cs-slide>
+                        {% render 'image_element', image: block.settings.image, image_shape: section.settings.image_shape, fit: section.settings.image_fit, sizes:sizes %} 
+                        </cs-slide>
+                {% endfor %}
+                </cs-slides>
+            </cs-track>
+            <cs-next class="slider_nav slider_next is-absolute">
+                {% render 'icon', icon: 'chevron-right' %}
+            </cs-next>
+        </clever-slider>
+
+    </div>    
+    {% endcomment %}
+{% else %}
+    <div class="page-width  spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+        <div class="flex col left">
+            <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-xs"> {{section.settings.heading}} </{{section.settings.heading_tag}}>
+            <{{section.settings.richtext_tag}} class="{{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} spacing-bottom-s"> {{section.settings.richtext}} </{{section.settings.richtext_tag}}>
+        </div>
+        <clever-slider class="overhanging_slider"
+            options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+            <cs-prev class="slider_nav slider_prev is-absolute only_large">
+                {% render 'icon', icon: 'chevron-left' %}
+            </cs-prev>
+            <cs-track>
+                <cs-slides class="items-3 medium_items-2 small_items-custom gap">
+                {% for item in product.metafields.global.instagram.images %}
+                        {% assign img_name = item.image | split: '?' | first | split: '/' | last %}
+                        {% assign img = images[img_name] %}
+                        {% capture img_type %}{{img}}{% endcapture %}
+                        {% if img_type != 'EmptyDrop' %}
+                            <cs-slide>
+                                {% render 'image_element', image: img, image_shape: section.settings.image_shape, fit: section.settings.image_fit %}  
+                            </cs-slide>  
+                        {% endif %}
+                {% endfor %}
+                </cs-slides>
+            </cs-track>
+            <cs-next class="slider_nav slider_next is-absolute">
+                {% render 'icon', icon: 'chevron-right' %}
+            </cs-next>
+        </clever-slider>
+
+    </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Instagram",
+  "settings": [
+    {
+        "type": "paragraph",
+        "content": "Use at least 5 blocks for best responsivity."
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "background",
+        "default": "#F3F3F3"
+    },
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "On the Gram"
+    },
+    {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "textarea",
+        "id": "richtext",
+        "label": "Richtext",
+        "default": "Mention @gitti in your photo and we will feature the best pictures on our site"
+    },
+    {
+        "type": "select",
+        "id": "richtext_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type":      "select",
+        "id":        "image_shape",
+        "label":     "Image shape",
+        "options": [
+          {
+            "value": "",
+            "label": "Original"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "two_by_three",
+            "label": "2:3"
+          },
+          {
+            "value": "sixteen_by_nine",
+            "label": "16:9"
+          }
+        ],
+        "default":   "square"
+      },
+      {
+        "type":      "select",
+        "id":        "image_fit",
+        "label":     "Image fit",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          }
+          ,
+          {
+            "value": "contain",
+            "label": "contain"
+          }
+        ],
+        "default":   "contain"
+      }
+  ],
+  "blocks": [
+    {
+        "type": "post",
+        "name": "Post",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}

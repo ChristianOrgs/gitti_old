@@ -1,0 +1,13 @@
+
+<form class="search container" action="{{ routes.search_url }}">
+    <input
+      type="text"
+      class="search_bar_input container"
+      placeholder="{{'general.search.search' | t }}"
+      name="q"
+      value="{{ search.terms | escape }}"
+    />
+    <input type="hidden" name="type" value="product" />
+    <input type="hidden" name="options[prefix]" value="last" />
+    <input hidden type="submit" value="Search" />
+</form>

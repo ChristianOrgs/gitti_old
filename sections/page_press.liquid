@@ -1,0 +1,1241 @@
+{% assign id = section.id %}
+
+<style>
+     #shopify-section-{{id}} .bc-object-heading {
+    padding-top: {{section.settings.padding-top-heading}}px;
+    padding-bottom: {{section.settings.padding-bottom-heading}}px;
+    color: {{section.settings.text-color-heading}};
+}
+#shopify-section-{{id}} .bc-object-heading p{
+    color: {{section.settings.text-color-heading}};
+}
+#shopify-section-{{id}} .bc-object-richtext {
+    padding-top: {{section.settings.padding-top-text}}px;
+    padding-bottom: {{section.settings.padding-bottom-text}}px;
+    color: {{section.settings.text-color-text}};
+}
+#shopify-section-{{id}} .text_pic_left,
+#shopify-section-{{id}} .text_pic_right{
+    cursor: pointer;
+}
+
+</style>
+<div>
+    {% for block in section.blocks %}
+        {% if forloop.index < 3 %}
+            <div id="shopify-section-{{block.id}}" {{block.shopify_attributes}}>
+                
+                    {% case block.type %}
+                        {% when 'heading' %}
+                            {% render 'object_heading', object: block %}
+                            <style>
+                                #shopify-section-{{block.id}} .h2{
+                                    font-weight: 700;
+                                }
+                            </style>
+                        {% when 'richtext' %}
+                        <style>
+                            #shopify-section-{{block.id}} .center{
+                                justify-content: initial;
+                            }
+                        </style>
+                            {% render 'object_richtext', object: block %}
+                        {% when 'd_content_alt' %}
+                            {% render 'object_double_content_altern', object: block %}
+                            
+                            {% comment %}more fuctionality for gitti design{% endcomment %}
+                        {% when 'contact_info' %}
+                            {% render 'object_contact_info', object: block %}
+                            
+                    {% endcase %}
+                     
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="grid col-2 large_col-gap medium-down_col-1 page-width spacing-bottom-xl">
+{% for block in section.blocks %}
+ 
+    <div id="shopify-section-{{block.id}}" {{block.shopify_attributes}}>
+        {% if forloop.index > 2 %}
+            {% case block.type %}
+                {% when 'heading' %}
+                    {% render 'object_heading', object: block %}
+                {% when 'richtext' %}
+                    {% render 'object_richtext', object: block %} 
+                    
+                {% when 'd_content_alt' %}
+                    {% render 'object_double_content_altern', object: block %}
+                    <style>
+                        
+                        #shopify-section-{{block.id}}{
+                            cursor: pointer; 
+
+                        }
+                        #shopify-section-{{block.id}} .double_content_alt{
+                            padding-top: 0px;
+                            
+                        }
+                    </style>
+                    {% comment %}more fuctionality for gitti design{% endcomment %}
+                {% when 'contact_info' %}
+                    {% render 'object_contact_info', object: block %}
+                    
+            {% endcase %}
+        {% endif %}
+    </div>
+   
+{% endfor %}
+</div>
+{% if request.design_mode %}
+    <script>
+        window.addEventListener('shopify:block:select', function(event){
+            var ele = document.querySelector('#shopify-section-'+event.detail.blockId);   
+            window.scrollTo(ele.offsetLeft,ele.offsetTop);
+        });
+        
+    </script>
+{% endif %}
+<script>
+    document.addEventListener("DOMContentLoaded", hangEventhandlerOnElementClick('#shopify-section-{{section.id}} .block_left', 'page_press_media_section', 'page_press_section'));
+    document.addEventListener("DOMContentLoaded", hangEventhandlerOnElementClick('#shopify-section-{{section.id}} .block_right', 'page_press_downloads_section', 'page_press_section'));
+</script>
+{% schema %}
+{
+  "name": "Page Sections",
+  "settings": [
+  {
+    "type": "color",
+    "id": "text-color-heading",
+    "label": "Text Color Heading"
+    },
+  {
+    "type": "range",
+    "id": "padding-top-heading",
+    "label": "Padding Top Heading",
+    "unit": "px",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 5
+},
+{
+    "type": "range",
+    "id": "padding-bottom-heading",
+    "label": "Padding Bottom Heading",
+    "unit": "px",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 5
+},
+{
+    "type": "color",
+    "id": "text-color-text",
+    "label": "Text Color Richtext"
+},
+{
+    "type": "range",
+    "id": "padding-top-text",
+    "label": "Padding Top Text",
+    "unit": "px",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 5
+},
+{
+    "type": "range",
+    "id": "padding-bottom-text",
+    "label": "Padding Bottom Text",
+    "unit": "px",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 5
+}
+  ],
+  "blocks": [
+    
+    {
+        "type": "heading",
+        "name": "Heading",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading",
+                "default": "Lorem Ipsum"
+            },
+            {
+                "type": "select",
+                "id": "class",
+                "label": "Font class",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": " ",
+                        "label": "p"
+                    },
+                    {
+                        "value": "note",
+                        "label": "note"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "tag",
+                "label": "html tag",
+                "default": "p",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    }
+                ]
+            },
+            {
+                "type": "color",
+                "id": "text-color",
+                "label": "Text Color"
+            },
+            {
+                "type": "range",
+                "id": "padding-top",
+                "label": "Padding Top",
+                "unit": "px",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "default": 5
+            },
+            {
+                "type": "range",
+                "id": "padding-bottom",
+                "label": "Padding Bottom",
+                "unit": "px",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "default": 5
+            },
+            {
+                "type": "select",
+                "id": "spacing_top",
+                "label": "Spacing above",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "no space"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "spacing_bottom",
+                "label": "Spacing below",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "no space"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "richtext",
+        "name": "Richtext",
+        "settings": [
+            {
+                "type": "richtext",
+                "id": "richtext",
+                "label": "Richtext",
+                "default": "<p>Tempor do laborum excepteur ut minim fugiat velit tempor labore adipisicing nostrud excepteur. Tempor eu cillum eiusmod culpa Lorem amet irure eu. Nostrud consectetur aute ullamco sunt ex. Tempor fugiat officia officia nostrud mollit consectetur aute non excepteur cillum non dolor. Sunt ex id minim aliqua aliquip non laboris ipsum ea adipisicing. Minim duis ut qui esse mollit veniam eiusmod ex reprehenderit ea exercitation. Ut aliqua fugiat nostrud labore nostrud tempor eu deserunt et.</p>"
+            },
+            {
+                "type": "color",
+                "id": "text-color",
+                "label": "Text Color"
+            },
+            {
+                "type": "range",
+                "id": "padding-top",
+                "label": "Padding Top",
+                "unit": "px",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "default": 5
+            },
+            {
+                "type": "range",
+                "id": "padding-bottom",
+                "label": "Padding Bottom",
+                "unit": "px",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "default": 5
+            }
+        ]
+    },
+    {
+        "type": "d_content_alt",
+        "name": "Alternative 2xContent",
+        "settings": [
+        {
+            "type": "header",
+            "content": "Tabs"
+        },
+        {
+            "type": "text",
+            "id": "tab_container",
+            "label": "Through which tab section should this section get controlled by"
+        },
+        {
+            "type": "text",
+            "id": "tab",
+            "label": "Tab"
+        },
+            {
+                "type": "header",
+                "content": "Image left"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_left",
+                "label": "Image Left"
+            },
+            {
+                "type": "range",
+                "id": "image_width_left",
+                "label": "Left Image width",
+                "unit": "%",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "default": 80
+            },
+            {
+                "type":      "select",
+                "id":        "image_shape_left",
+                "label":     "Left image shape",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Original"
+                  },
+                  {
+                    "value": "square",
+                    "label": "Square"
+                  },
+                  {
+                    "value": "four_by_three",
+                    "label": "4:3"
+                  },
+                  {
+                    "value": "sixteen_by_nine",
+                    "label": "16:9"
+                  }
+                ],
+                "default":   "four_by_three"
+              },
+              {
+                "type":      "select",
+                "id":        "image_focal_point_left",
+                "label":     "Left image focal point",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "center"
+                  },
+                  {
+                    "value": "left",
+                    "label": "left"
+                  },
+                  {
+                    "value": "right",
+                    "label": "right"
+                  },
+                  {
+                    "value": "top",
+                    "label": "top"
+                  },
+                  {
+                    "value": "bottom",
+                    "label": "bottom"
+                  }
+                ],
+                "default":   ""
+              },
+              {
+                "type":      "select",
+                "id":        "image_position_left",
+                "label":     "Left image position",
+                "options": [
+                  {
+                    "value": "center",
+                    "label": "center"
+                  },
+                  {
+                    "value": "left",
+                    "label": "left"
+                  },
+                  {
+                    "value": "right",
+                    "label": "right"
+                  }
+                ],
+                "default":   "right"
+              },
+              {
+                "type":      "select",
+                "id":        "image_fit_left",
+                "label":     "Left image fit",
+                "options": [
+                {
+                    "value": "cover",
+                    "label": "cover"
+                }
+                ,
+                {
+                    "value": "contain",
+                    "label": "contain"
+                }
+                ],
+                "default":   "cover"
+            },
+            {
+                "type": "select",
+                "id": "image_spacing_between_left",
+                "label": "Spacing between pic and nearest outter part",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "no space"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    }
+                ]
+            },
+            {
+                "type": "html",
+                "id": "text_left",
+                "label": "text for left image"
+            },
+            {
+                "type": "header",
+                "content": "Image right"
+            },
+            
+            {
+                "type": "image_picker",
+                "id": "image_right",
+                "label": "Image Right"
+            },
+            {
+                "type": "range",
+                "id": "image_width_right",
+                "label": "Right Image width",
+                "unit": "%",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "default": 65
+            },
+            {
+                "type":      "select",
+                "id":        "image_shape_right",
+                "label":     "Right image shape",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "Original"
+                  },
+                  {
+                    "value": "square",
+                    "label": "Square"
+                  },
+                  {
+                    "value": "four_by_three",
+                    "label": "4:3"
+                  },
+                  {
+                    "value": "sixteen_by_nine",
+                    "label": "16:9"
+                  }
+                ],
+                "default":   "square"
+              },
+              {
+                "type":      "select",
+                "id":        "image_focal_point_right",
+                "label":     "Right image focal point",
+                "options": [
+                  {
+                    "value": "",
+                    "label": "center"
+                  },
+                  {
+                    "value": "left",
+                    "label": "left"
+                  },
+                  {
+                    "value": "right",
+                    "label": "right"
+                  },
+                  {
+                    "value": "top",
+                    "label": "top"
+                  },
+                  {
+                    "value": "bottom",
+                    "label": "bottom"
+                  }
+                ],
+                "default":   ""
+              },
+              {
+                "type":      "select",
+                "id":        "image_position_right",
+                "label":     "Right image position",
+                "options": [
+                  {
+                    "value": "center",
+                    "label": "center"
+                  },
+                  {
+                    "value": "left",
+                    "label": "left"
+                  },
+                  {
+                    "value": "right",
+                    "label": "right"
+                  }
+                ],
+                "default":   "left"
+              },
+              {
+                "type":      "select",
+                "id":        "image_fit_right",
+                "label":     "Right image fit",
+                "options": [
+                {
+                    "value": "cover",
+                    "label": "cover"
+                }
+                ,
+                {
+                    "value": "contain",
+                    "label": "contain"
+                }
+                ],
+                "default":   "cover"
+            },
+            {
+                "type": "select",
+                "id": "image_spacing_between_right",
+                "label": "Spacing between pic and nearest outter part",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "no space"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    }
+                ]
+            },
+            {
+                "type": "html",
+                "id": "text_right",
+                "label": "text for right image"
+            },
+            {
+                "type": "header",
+                "content": "Layout settings"
+            },
+            {
+                "type": "select",
+                "id": "spacing_bottom",
+                "label": "Section spacing bottom",
+                "default": "xs",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "no space"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+              },
+              {
+                "type": "select",
+                "id": "spacing_top",
+                "label": "Section spacing top",
+                "default": "xs",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "no space"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+              },
+            {
+                "type": "checkbox",
+                "id": "shift_images",
+                "label": "Shift Images Mobile",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "change_images_on_mobile",
+                "label": "change Images Mobile",
+                "default": false
+            },
+            {
+                "type": "select",
+                "id": "text_class",
+                "label": "Font class",
+                "default": "h2",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": " ",
+                        "label": "p"
+                    },
+                    {
+                        "value": "note",
+                        "label": "note"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "text_tag",
+                "label": "html tag",
+                "default": "p",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "contact_info",
+        "name": "Contact information",
+        "settings": [
+        {
+            "type": "header",
+            "content": "Right side content"
+        },
+        {
+            "type": "text",
+            "id": "right_heading",
+            "label": "Mobile heading",
+            "default": "Still have Questions?"
+        },
+        {
+            "type": "text",
+            "id": "right_call_us_title",
+            "label": "Title",
+            "default": "Call us"
+        },
+        {
+            "type": "text",
+            "id": "right_call_us_text",
+            "label": "Text",
+            "default": "+49 (0) 30 217 82 82 8"
+        },
+        {
+            "type": "url",
+            "id": "right_call_us_link",
+            "label": "Link"
+        },
+        {
+            "type": "text",
+            "id": "right_whatsapp_title",
+            "label": "Title",
+            "default": "Whatsapp"
+        },
+        {
+            "type": "text",
+            "id": "right_whatsapp_text",
+            "label": "Text",
+            "default": "+49 (0) 30 217 82 82 8"
+        },
+        {
+            "type": "url",
+            "id": "right_whatsapp_link",
+            "label": "Link"
+        },
+        {
+            "type": "text",
+            "id": "right_address_title",
+            "label": "Title",
+            "default": "Address"
+        },
+        {
+            "type": "richtext",
+            "id": "right_address_text",
+            "label": "Text",
+            "default": "<p>gitti gmbh</p>"
+        },
+        {
+          "type": "text",
+          "id": "right_follow_title",
+          "label": "Title",
+          "default": "Follow us"
+        },
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        
+          {
+              "type": "select",
+              "id": "tag_right_heading",
+              "label": "Html tag heading right side",
+              "options": [
+                  {
+                      "value": "h1",
+                      "label": "h1"
+                  },
+                  {
+                      "value": "h2",
+                      "label": "h2"
+                  },
+                  {
+                      "value": "h3",
+                      "label": "h3"
+                  },
+                  {
+                      "value": "h4",
+                      "label": "h4"
+                  },
+                  {
+                      "value": "h5",
+                      "label": "h5"
+                  },
+                  {
+                      "value": "h6",
+                      "label": "h6"
+                  },
+                  {
+                      "value": "p",
+                      "label": "p"
+                  },
+                  {
+                      "value": "small",
+                      "label": "small"
+                  }
+                ]
+              },
+              {
+                  "type": "select",
+                  "id": "class_right_heading",
+                  "label": "Font class heading right side",
+                  "options": [
+                  {
+                      "value": "h1",
+                      "label": "h1"
+                  },
+                  {
+                      "value": "h2",
+                      "label": "h2"
+                  },
+                  {
+                      "value": "h3",
+                      "label": "h3"
+                  },
+                  {
+                      "value": "h4",
+                      "label": "h4"
+                  },
+                  {
+                      "value": "h5",
+                      "label": "h5"
+                  },
+                  {
+                      "value": "h6",
+                      "label": "h6"
+                  },
+                  {
+                      "value": "p",
+                      "label": "p"
+                  },
+                  {
+                      "value": "note",
+                      "label": "note"
+                  }
+                ]
+              },
+              {
+                  "type": "select",
+                  "id": "weight_class_right_heading",
+                  "label": "Weight class heading right side",
+                  "options": [
+                  {
+                      "value": "bold",
+                      "label": "bold"
+                  },
+                  {
+                      "value": "",
+                      "label": "normal"
+                  }
+                ]
+              },
+              {
+                  "type": "select",
+                  "id": "tag_right_text",
+                  "label": "Html tag text right side",
+                  "options": [
+                      {
+                          "value": "h1",
+                          "label": "h1"
+                      },
+                      {
+                          "value": "h2",
+                          "label": "h2"
+                      },
+                      {
+                          "value": "h3",
+                          "label": "h3"
+                      },
+                      {
+                          "value": "h4",
+                          "label": "h4"
+                      },
+                      {
+                          "value": "h5",
+                          "label": "h5"
+                      },
+                      {
+                          "value": "h6",
+                          "label": "h6"
+                      },
+                      {
+                          "value": "p",
+                          "label": "p"
+                      },
+                      {
+                          "value": "small",
+                          "label": "small"
+                      }
+                    ]
+                  },
+                  {
+                      "type": "select",
+                      "id": "class_right_text",
+                      "label": "Font class text right side",
+                      "options": [
+                      {
+                          "value": "h1",
+                          "label": "h1"
+                      },
+                      {
+                          "value": "h2",
+                          "label": "h2"
+                      },
+                      {
+                          "value": "h3",
+                          "label": "h3"
+                      },
+                      {
+                          "value": "h4",
+                          "label": "h4"
+                      },
+                      {
+                          "value": "h5",
+                          "label": "h5"
+                      },
+                      {
+                          "value": "h6",
+                          "label": "h6"
+                      },
+                      {
+                          "value": "p",
+                          "label": "p"
+                      },
+                      {
+                          "value": "note",
+                          "label": "note"
+                      }
+                    ]
+                  },
+                  {
+                      "type": "select",
+                      "id": "weight_class_right_text",
+                      "label": "Weight class text right side",
+                      "options": [
+                      {
+                          "value": "bold",
+                          "label": "bold"
+                      },
+                      {
+                          "value": "",
+                          "label": "normal"
+                      }
+                    ]
+                  },
+                  {
+                      "type": "header",
+                      "content": "Spacings"
+                  },
+                  {
+                      "type": "select",
+                      "id": "spacing_top_section",
+                      "label": "Section spacing top",
+                      "default": "m",
+                      "options": [
+                          {
+                              "value": "xs",
+                              "label": "xs"
+                          },
+                          {
+                              "value": "s",
+                              "label": "s"
+                          },
+                          {
+                              "value": "m",
+                              "label": "m"
+                          },
+                          {
+                              "value": "l",
+                              "label": "l"
+                          },
+                          {
+                              "value": "xl",
+                              "label": "xl"
+                          },
+                          {
+                              "value": "xxl",
+                              "label": "xxl"
+                          }
+                      ]
+                  },
+                  {
+                      "type": "select",
+                      "id": "spacing_bottom_section",
+                      "label": "Section spacing bottom",
+                      "default": "xxl",
+                      "options": [
+                          {
+                              "value": "xs",
+                              "label": "xs"
+                          },
+                          {
+                              "value": "s",
+                              "label": "s"
+                          },
+                          {
+                              "value": "m",
+                              "label": "m"
+                          },
+                          {
+                              "value": "l",
+                              "label": "l"
+                          },
+                          {
+                              "value": "xl",
+                              "label": "xl"
+                          },
+                          {
+                              "value": "xxl",
+                              "label": "xxl"
+                          }
+                      ]
+                  },
+                  {
+                      "type": "select",
+                      "id": "spacing_bottom_right_heading",
+                      "label": "Spacing bottom heading right side",
+                      "default": "s",
+                      "options": [
+                          {
+                              "value": "xs",
+                              "label": "xs"
+                          },
+                          {
+                              "value": "s",
+                              "label": "s"
+                          },
+                          {
+                              "value": "m",
+                              "label": "m"
+                          },
+                          {
+                              "value": "l",
+                              "label": "l"
+                          },
+                          {
+                              "value": "xl",
+                              "label": "xl"
+                          },
+                          {
+                              "value": "xxl",
+                              "label": "xxl"
+                          }
+                      ]
+                  },
+                  {
+                      "type": "select",
+                      "id": "spacing_bottom_right_text",
+                      "label": "Spacing bottom text right side",
+                      "default": "s",
+                      "options": [
+                          {
+                              "value": "xs",
+                              "label": "xs"
+                          },
+                          {
+                              "value": "s",
+                              "label": "s"
+                          },
+                          {
+                              "value": "m",
+                              "label": "m"
+                          },
+                          {
+                              "value": "l",
+                              "label": "l"
+                          },
+                          {
+                              "value": "xl",
+                              "label": "xl"
+                          },
+                          {
+                              "value": "xxl",
+                              "label": "xxl"
+                          }
+                      ]
+                  }
+
+        ]
+    }
+
+
+  ]
+}
+{% endschema %}

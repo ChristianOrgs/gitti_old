@@ -1,0 +1,322 @@
+{% if settings.black_grid_item %}
+        
+    {% unless sizes %}
+        {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+    {% endunless %}
+
+    {% assign btn_class = 'product_grid_item-button' %}
+    {% assign btn_class_mobile = 'product_grid_item-button' %}
+    {% assign variant = product.variants[0] %}
+    {% assign sibling_count = product.metafields.siblings | size %}
+    {% assign swatch_limit = 10 | plus: 1 %}
+    {% assign swatch_limit_mobile = 5 | plus: 1 %}
+
+    {% if product.metafields.bundle == blank %}
+        {% assign is_bundle = false %}    
+    {% else %}
+        {% assign is_bundle = true %}     
+    {% endif %}
+    {%- comment -%}Create sorted sibling array{%- endcomment -%}
+    {% comment %} {% assign siblings = null | sort  %}
+    {% if product.metafields.siblings.sibling_0.value != blank %}
+        {% assign first_sibling_index = 0 %}
+        {% assign last_sibling_index = sibling_count | minus: 1 %}
+    {% else %}
+        {% assign first_sibling_index = 1 %}
+        {% assign last_sibling_index = last_sibling_index  %}
+    {% endif %}
+    {% for i in (first_sibling_index..sibling_count) %}
+        {% assign sibling_key = 'sibling_' | append: i %}
+        {% assign sibling = product.metafields.siblings[sibling_key].value | sort %}
+        {% assign siblings = siblings | concat: sibling %}
+    {% endfor %} {% endcomment %}
+
+    {% capture add_to_cart_content %}
+        {% if product.available and is_bundle %}
+            <button class="btn {{ btn_class }} btn--full">
+                {{ 'products.product.choose_set' | t }}
+            </button>
+        {% elsif product.available %}
+            <clever-cart-add variant-id="{{variant.id}}" class="btn {{ btn_class }} btn--full">
+                {{ 'products.product.add_to_cart' | t }}
+            </clever-cart-add>
+        {% else %}
+            <button class="btn {{ btn_class }} btn--full BIS_trigger" data-product-data='{{ product | json }}'>
+                {{ 'apps.bis.email_when_available' | t }}
+            </button>
+        {% endif %}
+    {% endcapture %}
+
+    <div class="product_grid_item product_grid_item-{{product.handle}} container flex col" {% if index != blank %}style="order: {{index}};"{% endif %}>
+        <a href="{{product.url | within: collection }}" class="container flex col between">
+            <div class="container is-relative">
+                {% unless hide_second_image %}
+                    {% if product.images[1] != blank %}
+                        <div class="product_grid_item-image-secondary flex col is-absolute container">
+                            {% render 'image_element', image: product.images[1], fit: 'cover', sizes: sizes %}
+                        </div>   
+                        {% if enable_alternate_image %}
+                            <div class="product_grid_item-image-secondary-alternate flex col is-absolute container">
+                                {% render 'image_element', image: product.images[0], fit: 'cover', sizes: sizes %}
+                            </div>     
+                        {% endif %} 
+                    {% endif %}
+                {% endunless %}
+                <div class="product_grid_item-images is-relative">
+                    <div class="product_grid_item-image-primary flex col">
+                        {% render 'image_element', image: product.images[0], aspect_ratio: 1, fit: 'cover', sizes: sizes %}
+                    </div>
+                    {% if enable_alternate_image %}
+                        <div class="product_grid_item-image-primary-alternate flex col">
+                            {% render 'image_element', image: product.images[1], aspect_ratio: 1, fit: 'cover', sizes: sizes %}
+                        </div>    
+                    {% endif %}
+                    {% comment %} <div class="is-absolute flex col between product_grid_item_discount-overlay">
+                        <div class="flex row between">
+                            {% render 'product_badge_discount', product:product %}
+                        </div>
+                    </div> {% endcomment %}
+                
+                    <div class="is-absolute container flex col between product_grid_item-overlay">
+                        <div class="flex row between spacing-xs product_grid_item-badges">
+                            {% render 'product_badge', product: product %}
+                        </div>
+                    
+                        {% comment %} <div class="add_to_cart_desktop only_medium-up spacing-xs">
+                            {{ add_to_cart_content }}
+                        </div> {% endcomment %}
+                    </div> 
+                </div>
+                <div class="product_grid_item-content flex col left spacing-bottom-xs">
+                    <div class="flex col grid_item_title_wrapper">
+                        <p class="spacing-top-xs product_grid_item-title clamp-one-line">{{product.title}}</p>
+                        {% if product.metafields.swatch.name.value != blank %}
+                            <p class="product_color_name product_grid_item-subtitle clamp-one-line">{{ product.metafields.swatch.name.value }}</p>  
+                        {% else %}
+                            <p class="product_color_name product_grid_item-subtitle clamp-one-line">{% render 'product_color',product: product, get:'name' %}</p>
+                        {% endif %}
+                    </div>
+                    <div class="flex col between container ">
+                        <div class="flex col full-width grid_item_price_wrapper">
+                            <div class="spacing-top-xs flex col">
+                                
+                                    <p class="product_price">{{product.price | money }}</p>
+                                    {% if product.compare_at_price %}
+                                        <p>
+                                            <span class="compare_at_price">{{ product.compare_at_price | money }}</span>
+                                            <span class="discount">{{ product.price | times: 1.0 | divided_by: product.compare_at_price | times: 100.0 | minus: 100.0 | round | append: '%' }}</span>
+                                        </p> 
+                                    {% endif %}
+                            </div>
+                            {%- comment -%}Siblings{%- endcomment -%}
+                            {% comment %} {% if collection and collection.metafields.siblings.merge.value %}
+                                    {% if  sibling_count > 0 %}
+                                        <div class="product_grid_item-siblings flex row wrap spacing-top-xs">
+                                            {% for sibling in siblings %}
+                                                <!-- {{sibling.id}} {{sibling}} -->
+                                                {% if forloop.index == swatch_limit %}
+                                                    <toggle-parent-class parent-class="show-all" class="only_medium-up sibling_swatch-show_more">
+                                                        &#43;
+                                                    </toggle-parent-class>
+                                                {% endif %}
+                                                {% if forloop.index == swatch_limit_mobile %}
+                                                    <toggle-parent-class parent-class="show-all" class="only_small sibling_swatch-show_more">
+                                                        &#43;
+                                                    </toggle-parent-class>
+                                                {% endif %}
+                                                {% capture swatch_color %}--swatch-color: url('{{ sibling.metafields.swatch.color.value | image_url: width: 50, height: 50 }}');{% endcapture %}
+                                                {% if sibling.id == product.id %}
+                                                    <button class="sibling_swatch-{{sibling.metafields.swatch.type.value | handleize }} current" title="{{ sibling.metafields.swatch.name.value }}" style="{{swatch_color}}" >
+                                                        {{ sibling.metafields.swatch.number.value }}
+                                                    </button>
+                                                {% else %}
+                                                    <product-grid-item-variant-change title="{{ sibling.metafields.swatch.name.value }}" class="sibling_swatch-{{sibling.metafields.swatch.type.value | handleize }}" collection-handle="{{collection.handle}}" product-handle="{{sibling.handle}}" grid-item="{{product.handle}}"  style="{{swatch_color}}">
+                                                        {{ sibling.metafields.swatch.number.value }}
+                                                    </product-grid-item-variant-change>        
+                                                {% endif %}   
+                                            {% endfor %}   
+                                        </div> 
+                                    {% elsif product.metafields.swatch.no_siblings.value %}
+                                        <div class="product_grid_item-siblings flex row wrap spacing-top-xs">
+                                            <p class="sibling_swatch-no_sibling">
+                                                {{product.metafields.swatch.no_siblings.value}}
+                                            </p>  
+                                        </div>
+                                    {% else %}
+                                        <div class="product_grid_item-siblings-placeholder only_medium-up"></div>
+                                    {% endif %}
+                            {% endif %} {% endcomment %}
+                            {%- comment -%}End Siblings{%- endcomment -%}
+                            {% comment %} <div class="spacing-top-xs only_small">
+                                <p class="product_price">
+                                    <span>{{product.price | money }}</span>
+                                    {% if product.compare_at_price %}
+                                        <span class="compare_at_price">{{product.compare_at_price | money }}</span>
+                                    {% endif %}
+                                </p>
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add_to_cart_mobile full-width">
+                {{add_to_cart_content | replace: btn_class, btn_class_mobile  }}
+            </div>
+        </a>
+    </div>
+{% else %}
+    {% unless sizes %}
+        {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+    {% endunless %}
+
+    {% assign btn_class = btn_class | default: 'btn--primary' %}
+    {% assign btn_class_mobile = btn_class_mobile | default: 'btn--secondary' %}
+    {% assign variant = product.variants[0] %}
+    {% assign sibling_count = product.metafields.siblings | size %}
+    {% assign swatch_limit = 10 | plus: 1 %}
+    {% assign swatch_limit_mobile = 5 | plus: 1 %}
+
+    {% if product.metafields.bundle == blank %}
+        {% assign is_bundle = false %}    
+    {% else %}
+        {% assign is_bundle = true %}     
+    {% endif %}
+    {%- comment -%}Create sorted sibling array{%- endcomment -%}
+    {% assign siblings = null | sort  %}
+    {% if product.metafields.siblings.sibling_0.value != blank %}
+        {% assign first_sibling_index = 0 %}
+        {% assign last_sibling_index = sibling_count | minus: 1 %}
+    {% else %}
+        {% assign first_sibling_index = 1 %}
+        {% assign last_sibling_index = last_sibling_index  %}
+    {% endif %}
+    {% for i in (first_sibling_index..sibling_count) %}
+        {% assign sibling_key = 'sibling_' | append: i %}
+        {% assign sibling = product.metafields.siblings[sibling_key].value | sort %}
+        {% assign siblings = siblings | concat: sibling %}
+    {% endfor %}
+
+    {% capture add_to_cart_content %}
+        {% if product.available and is_bundle %}
+            <button class="btn {{ btn_class }} btn--full">
+                {{ 'products.product.choose_set' | t }}
+            </button>
+        {% elsif product.available %}
+            <clever-cart-add variant-id="{{variant.id}}" class="btn {{ btn_class }} btn--full">
+                {{ 'products.product.add_to_cart' | t }}
+            </clever-cart-add>
+        {% else %}
+            <button class="btn {{ btn_class }} btn--full BIS_trigger" data-product-data='{{ product | json }}'>
+                {{ 'apps.bis.email_when_available' | t }}
+            </button>
+        {% endif %}
+    {% endcapture %}
+
+    <div class="product_grid_item product_grid_item-{{product.handle}} container flex col"  {% if index != blank %}style="order: {{index}};"{% endif %}>
+        <a href="{{product.url | within: collection }}" class="container flex col">
+            <div class="product_grid_item-images is-relative">
+                <div class="product_grid_item-image-primary flex col">
+                    {% render 'image_element', image: product.images[0], image_shape: 'two_by_three', fit: 'cover', sizes:sizes %}
+                </div>
+                {% unless hide_second_image %}
+                    {% if product.images[1] != blank %}
+                        <div class="product_grid_item-image-secondary flex col is-absolute container">
+                            {% render 'image_element', image: product.images[1], image_shape: 'two_by_three', fit: 'cover', sizes:sizes %}
+                        </div>    
+                    {% endif %}
+                {% endunless %}
+                
+
+                <div class="is-absolute flex col between product_grid_item_discount-overlay">
+                    <div class="flex row between">
+                        {% render 'product_badge_discount', product:product %}
+                    </div>
+                </div>
+
+                <div class="is-absolute container flex col between product_grid_item-overlay">
+                    <div class="flex row between spacing-xs">
+                        {% render 'product_badge', product:product %}
+                    </div>
+                
+                    <div class="add_to_cart_desktop only_medium-up spacing-xs">
+                        {{ add_to_cart_content }}
+                    </div>
+                </div>
+            </div>
+            <div class="product_grid_item-content flex col left between container">
+                <div class="flex col grid_item_title_wrapper">
+                    <p class="spacing-top-xs">{{product.title}}</p>
+                    {% if sibling_count > 0 %}
+                        <p class="product_color_name">{{ product.metafields.swatch.name.value }}</p>  
+                    {% else %}
+                        <p class="product_color_name">{% render 'product_color',product: product, get:'name' %}</p>
+                    {% endif %}
+                </div>
+                <div class="flex col top ">
+                    <div class="flex col">
+                        <div class="spacing-top-xs only_medium-up">
+                            <p class="product_price">
+                                <span>{{product.price | money }}</span>
+                                {% if product.compare_at_price %}
+                                    <span class="compare_at_price">{{product.compare_at_price | money }}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        {%- comment -%}Siblings{%- endcomment -%}
+                        {% if collection and collection.metafields.siblings.merge.value %}
+                                {% if  sibling_count > 0 %}
+                                    <div class="product_grid_item-siblings flex row wrap spacing-top-xs">
+                                        {% for sibling in siblings %}
+                                            <!-- {{sibling.id}} {{sibling}} -->
+                                            {% if forloop.index == swatch_limit %}
+                                                <toggle-parent-class parent-class="show-all" class="only_medium-up sibling_swatch-show_more">
+                                                    &#43;
+                                                </toggle-parent-class>
+                                            {% endif %}
+                                            {% if forloop.index == swatch_limit_mobile %}
+                                                <toggle-parent-class parent-class="show-all" class="only_small sibling_swatch-show_more">
+                                                    &#43;
+                                                </toggle-parent-class>
+                                            {% endif %}
+                                            {% capture swatch_color %}--swatch-color: url('{{ sibling.metafields.swatch.color.value | image_url: width: 50, height: 50 }}');{% endcapture %}
+                                            {% if sibling.id == product.id %}
+                                                <button class="sibling_swatch-{{sibling.metafields.swatch.type.value | handleize }} current" title="{{ sibling.metafields.swatch.name.value }}" style="{{swatch_color}}" >
+                                                    {{ sibling.metafields.swatch.number.value }}
+                                                </button>
+                                            {% else %}
+                                                <product-grid-item-variant-change title="{{ sibling.metafields.swatch.name.value }}" class="sibling_swatch-{{sibling.metafields.swatch.type.value | handleize }}" collection-handle="{{collection.handle}}" product-handle="{{sibling.handle}}" grid-item="{{product.handle}}"  style="{{swatch_color}}">
+                                                    {{ sibling.metafields.swatch.number.value }}
+                                                </product-grid-item-variant-change>        
+                                            {% endif %}   
+                                        {% endfor %}   
+                                    </div> 
+                                {% elsif product.metafields.swatch.no_siblings.value %}
+                                    <div class="product_grid_item-siblings flex row wrap spacing-top-xs">
+                                        <p class="sibling_swatch-no_sibling">
+                                            {{product.metafields.swatch.no_siblings.value}}
+                                        </p>  
+                                    </div>
+                                {% else %}
+                                    <div class="product_grid_item-siblings-placeholder only_medium-up"></div>
+                                {% endif %}
+                        {% endif %}
+                        {%- comment -%}End Siblings{%- endcomment -%}
+                        <div class="spacing-top-xs only_small">
+                            <p class="product_price">
+                                <span>{{product.price | money }}</span>
+                                {% if product.compare_at_price %}
+                                    <span class="compare_at_price">{{product.compare_at_price | money }}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="add_to_cart_mobile only_small spacing-top-xs">
+                        {{add_to_cart_content | replace: btn_class, btn_class_mobile  }}
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+
+{% endif %}

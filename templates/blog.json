@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {}
+    },
+    "16613381475e02da05": {
+      "type": "index_community_testimonials",
+      "disabled": true,
+      "blocks": {
+        "45bba0db-048a-4bec-9c48-0e61c390f3c6": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "",
+            "richtext_author": ""
+          }
+        }
+      },
+      "block_order": [
+        "45bba0db-048a-4bec-9c48-0e61c390f3c6"
+      ],
+      "settings": {
+        "background_color": "",
+        "block_color": "",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "main_heading_spacing_top": "",
+        "main_heading_spacing_bottom": "xs",
+        "main_heading_tag": "p",
+        "main_heading_class": "h1",
+        "main_heading_weight_class": "bold",
+        "richtext": "",
+        "spacing_bottom": "",
+        "spacing_top": "",
+        "block_spacing": "",
+        "block_margin": "",
+        "image_shape": "circle",
+        "image_fit": "cover"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16613381475e02da05"
+  ]
+}

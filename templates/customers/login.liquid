@@ -1,0 +1,120 @@
+<!-- /templates/customers/login.liquid -->
+
+<style>
+#login-password-revover:checked ~ #CustomerLoginForm{
+    opacity:0;
+    height:0;
+    pointer-events: none;
+}
+#login-password-revover:not(:checked) ~ #RecoverPasswordForm{
+    opacity:0;
+    height:0;
+    pointer-events: none;
+}
+</style>
+
+<div class="page-width spacing-top-l spacing-bottom-l">
+    <div class="flex col middle center">
+
+        <div class="flex col middle center">
+
+            <input type="checkbox" hidden id="login-password-revover" >
+            <div id="CustomerLoginForm" class="grid col-1 row-gap">
+
+                <h1 id="LoginHeading" class="grid col-1 row-gap">{{ 'customer.login.title' | t }}</h1>
+
+                {% form 'customer_login', novalidate: 'novalidate' %}
+                <div class="grid col-1 grid-gap-small">
+                    {%- if form.errors -%}
+                    <div class="form-message form-message--error">
+                        <h2 class="h3 form-message__title " tabindex="-1" data-form-status>
+                            {{ 'contact.form.error_heading' | t }}</h2>
+                        {{ form.errors | default_errors }}
+                    </div>
+                    {%- endif -%}
+                    <div class="grid col-3 col-gap">
+                        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+                        <input class="grid-item col-span-2" type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" autocorrect="off"
+                            autocapitalize="off" {%- if form.errors contains 'form' -%} class="input--error" aria-invalid="true" {%- endif -%}>
+                    </div>
+                    <div class="grid col-3 col-gap">
+                        {% if form.password_needed %}
+                            <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+                            <input class="grid-item col-span-2" type="password" value="" name="customer[password]" id="CustomerPassword"
+                                {%- if form.errors contains 'form' -%} class="input--error" aria-invalid="true" {%- endif -%}>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="grid col-1 row-gap-small">
+                        <button type="submit" class="btn btn--primary">
+                            {{ 'customer.login.sign_in' | t }}
+                        </button>
+    
+                        {% if form.password_needed %}
+                            <label for="login-password-revover" href="#recover" class="text-align-center" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</label>
+                        {% endif %}
+                        <a href="{{routes.account_register_url}}" class="text-align-center" id="RecoverPassword">{{ 'layout.customer.create_account' | t }}</a>
+                        
+                    </div>    
+                </div>
+                
+
+                {% endform %}
+            </div>
+
+            <div id="RecoverPasswordForm" class="grid col-1 row-gap">
+
+                <div class="grid col-1 row-gap-small">
+                    <h2 id="RecoverHeading">{{ 'customer.recover_password.title' | t }}</h2>
+                    <p>{{ 'customer.recover_password.subtext' | t }}</p>
+                </div>
+               
+                {% form 'recover_customer_password' %}
+                    <div class="grid col-1 row-gap">
+                        {% if form.posted_successfully? %}
+                        <p> {{ 'customer.recover_password.success' | t }}</p>
+                        {% endif %}
+
+                        <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
+                        <input type="email" value="" name="email" id="RecoverEmail"
+                            class="input-full{% if form.errors %} input--error{% endif %}" autocorrect="off"
+                            autocapitalize="off" {% if form.errors %} aria-invalid="true"
+                            aria-describedby="RecoverEmail-email-error" {%- endif -%}>
+                        {%- if form.errors -%}
+                        <span id="RecoverEmail-email-error" class="input-error-message">
+                            <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                            {% include 'icon-error' %}
+                            <span>{{ form.errors.messages['form'] }}</span>
+                        </span>
+                        {%- endif -%}
+
+                        <div class="grid col-2 col-gap">
+                            <button type="submit" class="btn btn--primary text-align-center">
+                                {{ 'customer.recover_password.submit' | t }}
+                            </button>
+
+                            <label for="login-password-revover" class="btn btn--primary btn--transparent text-align-center">{{ 'customer.recover_password.cancel' | t }}</label>
+                        </div>
+                    </div>
+                {% endform %}
+                
+            </div>
+
+            {% if shop.checkout.guest_login %}
+                <div class="flex col center">
+                    <h2>{{ 'customer.login.guest_title' | t }}</h2>
+                    {% form 'guest_login' %}
+                    <button type="submit" class="btn btn--primary">
+                        {{ 'customer.login.guest_continue' | t }}
+                    </button>
+                    {% endform %}
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+</script>

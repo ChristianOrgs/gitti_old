@@ -1,0 +1,18 @@
+{% if current_level == blank %}
+    {% assign current_level = 0 %}
+{% endif %}
+<ul class="{{orientation}}_menu level-{{current_level}}">
+    {% for link in linklist.links %}
+        <li class="{{orientation}}_menu-item spacing-bottom-s spacing-top-s {% if link.active %} active {% endif %}
+        {% if link.levels > 0 and levels > 1 %} has_menu {% endif %}">
+            <a href="{{link.url}}">{{link.title}}</a>
+            {% if link.levels > 0 and levels > 1 %}
+                {% assign next_level = levels | minus: 1 %}
+                {% assign current_level = current_level | plus: 1 %}
+                <div class="{{orientation}}_menu-submenu">
+                    {% render 'menu',linklist:link, orientation:'vertical', levels:next_level, current_level:current_level %}
+                </div>
+            {% endif %}
+        </li>
+    {% endfor %}  
+</ul>

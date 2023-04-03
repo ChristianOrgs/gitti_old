@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "theme_test": {
+      "type": "theme_test",
+      "settings": {}
+    }
+  },
+  "order": [
+    "theme_test"
+  ]
+}

@@ -1,0 +1,177 @@
+{% assign opacity = section.settings.opacity | times: 0.01 %}
+<style>
+    .top_anchor {
+        transform: translateY(200px);
+        position: fixed;
+        right: {{section.settings.position_x_desktop}}px;
+        bottom: {{section.settings.position_y_desktop}}px;
+        background-color: {{section.settings.background_color | color_modify: 'alpha', opacity }};
+        color: {{section.settings.text_color}};
+        padding: 7px;
+        gap: 7px;
+        z-index: 100;
+        display: flex;
+        align-items: baseline;
+        -webkit-transition: transform 1s ease-in-out;
+        -moz-transition: transform 1s ease-in-out;
+        -ms-transition: transform 1s ease-in-out;
+        -o-transition: transform 1s ease-in-out;
+        transition: transform 1s ease-in-out;
+    }
+
+    @media (max-width: {{settings.breakpoint_small}}px){
+        .top_anchor {
+            right: {{section.settings.position_x_mobile}}px;
+            bottom: {{section.settings.position_y_mobile}}px;
+            padding: 12px;
+        }
+    }
+    .top_anchor.active {
+        transform: translateY(0px);
+    }
+</style>
+
+{% assign sites = section.settings.sites | split: ',' %}
+{% for site in sites %}
+    {% if request.path contains site %}
+        <a class="top_anchor" href="#top">
+            {% if section.settings.text != blank %}
+                <span class="only_medium-up">
+                {{section.settings.text}}
+            </span>
+            {% endif %}
+            <span>
+                {% render 'icon', icon: 'arrow_up', color: section.settings.text_color %}
+            </span>
+        </a>
+
+
+        <script>
+            var window_width = window.innerWidth;
+            var anchor = document.querySelector('.top_anchor');
+
+            function anchorDesktop() {
+                if (window.scrollY > {{section.settings.offset_desktop}}) {
+                    anchor.classList.add('active');
+                } else {
+                    anchor.classList.remove('active');
+                }
+            }
+
+            function anchorMobile () {
+                if (window.scrollY > {{section.settings.offset_mobile}}) {
+                    anchor.classList.add('active');
+                } else {
+                    anchor.classList.remove('active');
+                }
+            }
+
+            function updateAnchor() {
+                if (window_width > {{settings.breakpoint_small}}) {
+                    anchorDesktop();
+                } else {
+                    anchorMobile();
+                }
+            }
+
+            window.addEventListener('resize', function () {
+                window_width = window.innerWidth;
+            })
+
+            document.addEventListener('scroll', function () {
+                if (!!anchor) {
+                    updateAnchor();
+                }
+            })
+
+            if (!!anchor) {
+                updateAnchor();
+            }
+        </script>
+
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% schema %}
+{
+"name": "Top anchor",
+"settings": [
+{
+"type": "textarea",
+"id": "sites",
+"label": "Sites",
+"default": "/collections/",
+"info": "Note down on which site-urls the anchor should appear. Separate by (,)"
+},
+{
+"type": "text",
+"id": "text",
+"label": "Anchor text",
+"default": "Back to top"
+},
+{
+"type": "number",
+"id": "offset_desktop",
+"label": "Offset desktop (px)",
+"default": 1000
+},
+{
+"type": "number",
+"id": "offset_mobile",
+"label": "Offset mobile (px)",
+"default": 500
+},
+{
+"type": "header",
+"content": "Style"
+},
+{
+"type": "color",
+"id": "background_color",
+"label": "Background_color",
+"default": "#000"
+},
+{
+"type": "range",
+"id": "opacity",
+"label": "Opacity",
+"unit": "%",
+"min": 1,
+"max": 100,
+"step": 1,
+"default": 80
+},
+{
+"type": "color",
+"id": "text_color",
+"label": "Text color",
+"default": "#fff"
+},
+{
+"type": "number",
+"id": "position_x_desktop",
+"label": "Distance to right (desktop)",
+"default": 20
+},
+{
+"type": "number",
+"id": "position_y_desktop",
+"label": "Distance to bottom (desktop)",
+"default": 20
+},
+{
+"type": "number",
+"id": "position_x_mobile",
+"label": "Distance to right (mobile)",
+"default": 20
+},
+{
+"type": "number",
+"id": "position_y_mobile",
+"label": "Distance to bottom (mobile)",
+"default": 20
+}
+]
+}
+{% endschema %}

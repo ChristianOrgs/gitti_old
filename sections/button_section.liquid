@@ -1,0 +1,217 @@
+<div class="container flex col {{section.settings.button_align}} page-width medium-up_spacing-top-{{section.settings.spacing_top}} medium-up_spacing-bottom-{{section.settings.spacing_bottom}}  small_spacing-top-{{section.settings.spacing_top_mobile}}  small_spacing-bottom-{{section.settings.spacing_bottom_mobile}}">
+    <a class="{{section.settings.button_class}}" href="{{section.settings.button_link}}">{{section.settings.button_text}}</a>
+</div>
+{% schema %}
+   {
+       "name": "Button Section",
+       "settings": [
+           {
+               "type": "text",
+               "id": "button_text",
+               "label": "Button text",
+               "default": "Button"
+           },
+           {
+               "type": "url",
+               "id": "button_link",
+               "label": "Button link"
+           },
+           {
+               "type": "select",
+               "id": "button_class",
+               "label": "Button Style",
+               "options": [
+                   {
+                       "value": "btn btn--white",
+                       "label": "White primary"
+                   },
+                   {
+                       "value": "btn btn--black",
+                       "label": "Black primary"
+                   },
+                   {
+                       "value": "btn btn--primary",
+                       "label": "Button primary"
+                   },
+                   {
+                       "value": "btn btn--secondary",
+                       "label": "Button secondary"
+                   },
+                   {
+                       "value": "btn btn--tertiary",
+                       "label": "Button tertiary"
+                   }
+               ],
+               "default": "btn btn--white"
+           },
+           {
+               "type": "select",
+               "id": "button_align",
+               "label": "Alignment",
+               "options": [
+                   {
+                       "value": "center",
+                       "label": "center"
+                   },
+                   {
+                       "value": "left",
+                       "label": "left"
+                   },
+                   {
+                       "value": "right",
+                       "label": "right"
+                   }
+               ],
+               "default": "center"
+           },
+           {
+               "type": "select",
+               "id": "spacing_top",
+               "label": "Spacing top",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           },
+           {
+               "type": "select",
+               "id": "spacing_bottom",
+               "label": "Spacing bottom",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           },
+           {
+               "type": "select",
+               "id": "spacing_top_mobile",
+               "label": "Spacing top mobile",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           },
+           {
+               "type": "select",
+               "id": "spacing_bottom_mobile",
+               "label": "Spacing bottom mobile",
+               "options": [
+                   {
+                       "value": "none",
+                       "label": "no spacing"
+                   },
+                   {
+                       "value": "xs",
+                       "label": "xs"
+                   },
+                   {
+                       "value": "s",
+                       "label": "s"
+                   },
+                   {
+                       "value": "m",
+                       "label": "m"
+                   },
+                   {
+                       "value": "l",
+                       "label": "l"
+                   },
+                   {
+                       "value": "xl",
+                       "label": "xl"
+                   },
+                   {
+                       "value": "xxl",
+                       "label": "xxl"
+                   }
+               ]
+           }
+       ],
+       "presets": [
+           {
+               "name": "Button section",
+               "category":  "Hero",
+               "blocks": [
+               ]
+           }
+       ]
+   }
+{% endschema %}

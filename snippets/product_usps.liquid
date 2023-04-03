@@ -1,0 +1,36 @@
+{% assign id = section.id %}
+
+<style>
+    #shopify-section-{{id}} .product_usps{
+        row-gap: 8px;
+    }
+    #shopify-section-{{id}} .product_usps > div{
+        border: 1px solid black;
+        padding: 12px;
+    }
+    #shopify-section-{{id}} .product_usps .usp_icon{
+        width: 51px;
+        height: 35px;
+    }
+    #shopify-section-{{id}} .product_usps .usp_icon .clever_icon{
+        width: 100%;
+        height: auto;
+    }
+    #shopify-section-{{id}} .product_usps .usp_icon .clever_icon svg{
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="grid col-1 product_usps">
+
+  {%- liquid
+        for usp in product.metafields['product'].usps 
+            echo '<div class="flex row middle">'
+                echo '<div class="usp_icon spacing-right-s flex row center middle">'
+                render 'icon' icon: usp.icon.name,  color: usp.icon.color 
+                echo '</div>'
+                echo '<p>' | append: usp.text | append: '</p>'
+            echo '</div>'
+        endfor -%}
+</div>

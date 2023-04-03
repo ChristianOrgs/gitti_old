@@ -1,0 +1,312 @@
+{% comment %} Settings {% endcomment %}
+
+<section data-section-type="collection-static" data-section-id="{{ section.id }}" class="collection-static">
+  <div class="row inline row-lg row-mt-sm">
+    <h1>
+      {{section.settings.headline }}
+    </h1>
+    <p>
+      {{section.settings.subline }}
+    </p>
+  </div>
+
+  <div class="collectionGrid-row js-collectionGrid row row-lg inline EndlessClick" data-show-quickview="true">
+
+    {% for block in section.blocks  %}
+    {% comment %} Settings {% endcomment %}
+    {% assign product = all_products[block.settings.product] %}
+    {% assign product_upsell = all_products[block.settings.upsell] %}
+    {% assign upsell_headline = block.settings.upsell_headline %}
+    {% assign show_reviews = true %}
+    {% assign full_width = block.settings.full_width %}
+    {% assign disable_quickview = block.settings.disable_quickview %}
+    {% assign preorder = product.metafields.custom_fields["preorder"] %}
+    {% assign gray_background = block.settings.gray_background %}
+    {% assign hide_add_to_cart_button = block.settings.hide_add_to_cart_button %}
+    {% assign background_left = block.settings.background_left %}
+    {% assign color_swatches = block.settings.color_swatches %}
+    {% assign image_position = block.settings.image_position %}
+    {% assign subline = product.metafields.custom_fields["subline_collection"] %}
+    {% assign image_size = 'large' %}
+    {% assign arrows = true %}
+    {% assign dots = block.settings.product_slideshow_dots %}
+    {% if image_position == '1' %}
+    <style>.shopify-payment-button {margin-left: auto !important; margin-right: auto !important;}</style>
+    {% endif %}
+    {% assign on_sale = false %}
+
+    {% if product.compare_at_price > product.price %}
+      {% assign on_sale = true %}
+      {% assign on_sale_class = ' is-sale' %}
+    {% endif %}
+
+    {% if product == blank %}
+        {% assign onboarding_product = true %}
+    {% endif %}
+
+    {% comment %} Set the layout for the variant images {% endcomment %}
+    {% for image in product.images %}
+    {% if forloop.length == 2 %}
+        {% assign thumbnail_width = 'product-image--100' %}
+    {% elsif forloop.length == 3 %}
+        {% assign thumbnail_width = 'product-image--50' %}
+    {% elsif forloop.length == 4 %}
+        {% assign thumbnail_width = 'product-image--33' %}
+      {% else %}
+        {% assign thumbnail_width = 'product-image--25' %}
+    {% endif %}
+      {% assign length = forloop.length %}
+    {% endfor %}
+
+    <div class="{% if disable_quickview == false %} js-quickViewPopover {% endif %} {% if full_width == false %} s1{{ section.settings.items_per_row_mobile }} med_s1{{ section.settings.items_per_row }} {% endif %} {% if full_width == true %} full-width {% endif %} {% if gray_background == true %} gray-background {% endif %} {% if background_left == true %} background-left {% endif %} block row inline center">
+    {% if product != blank %}
+      {% include 'collectionGridStatic-block' %}
+    {% endif %}
+      <section data-section-type="featured-product" data-section-id="{{ block.id }}" style="display: none;" class="js-quickViewPopover-container js-product-template clearfix featured-product--{{block.id}} js-product-template--{{block.id}} featured-product {% if onboarding_product %}onboarding-product{% endif %}" data-show_reviews="{{ show_reviews }}">
+        {% unless onboarding_product == true %}
+        <span id="product-json" hidden>{{ product | json }}</span>
+        {% endunless %}
+        {% unless onboarding_product == true %}
+        <h5 itemprop="name" class="product-title size--large">
+          {{ product.title }}
+        </h5>
+        {% else %}
+        <h1 itemprop="name" class="product-title size--large">
+          {{ 'onboarding.product_title' | t }}
+        </h1>
+        {% endunless %}
+          <div class="container">
+            <div class="content">
+              <div class="row row-lg product-layout-{{ image_position }}--images product-layout--{{ image_size }} s1 center">
+                {% comment %} Set the layout for the variant images {% endcomment %}
+                {% for image in product.images %}
+                  {% if forloop.length <= 2 %}
+                      {% assign thumbnail_width = 'product-image--100' %}
+                  {% elsif forloop.length == 3 %}
+                    {% assign thumbnail_width = 'product-image--50' %}
+                  {% elsif forloop.length == 4 %}
+                    {% assign thumbnail_width = 'product-image--33' %}
+                  {% else %}
+                    {% assign thumbnail_width = 'product-image--25' %}
+                  {% endif %}
+                  {% assign length = forloop.length %}
+                {% endfor %}
+
+                <div class="productImgSlider js-productImgSlider" data-arrows="{{ arrows }}" id="productImgSlider--{{ block.id }}">
+                  {% unless onboarding_product == true %}
+                    {% for image in product.images %}
+                        <div class="js-slide {{ thumbnail_width }} product-image product-image--fit {% if forloop.length == 1 %}product-image--single{% endif %} lazyload fade-in" data-image="{{ image | product_img_url: 'master'}}" data-id="{{ image.id }}" data-bgset="{% include 'bgset', image: image %}" data-sizes="auto" data-parent-fit="contain" data-aspect-ratio="{{ image.aspect_ratio }}">
+                          <!-- <a href="{{ product.url }}"> -->
+                            <noscript>
+                              <img src="{{ image | img_url: '2048x' }}" alt="{{ image.alt | escape }}">
+                            </noscript>
+                          <!-- </a> -->
+                        </div>
+                    {% endfor %}
+                  {% else %}
+                    {{ 'product-5' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endunless %}
+                </div>
+              </div>
+              <!-- end product-images -->
+
+              <div class="row row-lg product-info js-product-info product-layout-{{ image_position }}--info xxl_s12 xl_s12 lg_s12 s1">
+                <div class="product-title__wrapper">
+                  {% if show_reviews %}
+                    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                  {% endif %}
+                </div>
+                <p>{{ product.metafields.custom_fields["subline_product"] }}</p>
+                <div class="product-link">
+                  <a href="{{ product.url }}">Produktdetails ansehen</a>
+                  {% include 'icon-arrow' %}
+                </div>
+                <div class="product-form">
+                {% unless onboarding_product == true %}
+                  {% form 'product', product, class:'productForm', data-color_swatches: color_swatches %}
+                    <div class="productForm-block productForm-block--options-inline {% if color_swatches == true %}productForm-block--swatches is-loading{% endif %}">
+                      <select id="product-select--{{ block.id }}" name="id">
+                      {% for variant in product.variants %}
+                        <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}" data-sku="{{variant.sku}}">
+                        {{ variant.title }} - {{ variant.price | money | strip_html }}
+                      </option>
+                      {% endfor %}
+                      </select>
+
+                      {% if product.available and product.variants.size > 1 and color_swatches == true %}
+                       {% include 'swatch' with 'Color' %}
+                      {% endif %}
+                    </div>
+
+                    {% if product.tags contains 'box' %}
+                      <h4>Jetzt Wählen:</h4>
+                        <p>&nbsp;</p>
+                    {% endif %}
+
+                    <div class="wrapper-option-set">
+                      <div data-id="moodja_set_custom_options_{{ product.id }}"></div>
+                    </div>
+
+                    <div class="productForm-block">
+                      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+                        <div class="productForm-select">
+                          <label for="quantity">{{ 'products.form.qty' | t }}</label>
+                          <select name="quantity" id="quantity">
+                            {% for i in (1..9) %}
+                              <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                          </select>
+                          <span class="selectArrow"></span>
+                        </div>
+
+                        <div>
+                          <button class="productForm-submit js-productForm-submit add-to-cart-btn-style" type="submit" name="checkout" data-handle="{{product.handle}}"  data-id="{{product.id}}"><span>{%- if preorder != 0 -%}  {{ 'products.form.submitpreorder' | t }} {% else %} {{ 'products.form.submit' | t }} {%- endif -%}</span></button>
+                        </div>
+
+                      </div>
+                    </div>
+                  {% endform %}
+                {% else %}
+                  {% include 'pseudoform' %}
+                {% endunless %}
+                </div>
+                <div class="product-small-info">
+                  <small>incl. VAT / inkl. MwSt<!--{{ 'products.labels.preisauszeichnung_html' | t }}--></small>
+                  {% if product.metafields.custom_fields["delivery_time"] != blank %}
+                    <small>{% include 'icon-delivery' %} {{ product.metafields.custom_fields["delivery_time"] }}</small>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="product-upsell">
+              <div class="row row-lg">
+                {% if product_upsell != blank %}
+                    {% render 'product-upsell', product: product_upsell, upsell_headline: upsell_headline %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      </section>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Collection static pages",
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline",
+        "default":"Headline"
+      },
+      {
+        "type": "text",
+        "id": "subline",
+        "label": "Subline label",
+        "default":"Subline"
+      },
+      {
+        "type": "range",
+        "id": "items_per_row",
+        "label": "Items per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "items_per_row_mobile",
+        "label": "Mobile: Items per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "checkbox",
+            "id": "full_width",
+            "label": "Full Width",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "gray_background",
+            "label": "Gray Background",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "background_left",
+            "label": "Image Left",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_add_to_cart_button",
+            "label": "Add to cart Button",
+            "info": "If this is a product where you have different options (box) you need to disable the add to cart button.",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "disable_quickview",
+            "label": "Disable mobile quickview",
+            "info": "If you dont want to show the quickview on mobile",
+            "default": false
+          },
+          {
+            "type": "product",
+            "id": "upsell",
+            "label": "Upsell Product"
+          },
+          {
+            "type": "text",
+            "id": "upsell_headline",
+            "label": "Upsell Headline",
+            "default": "Für längere Haltbarkeit empfehlen wir"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Product",
+        "name": "Product list",
+        "blocks": [
+          {
+            "type": "product"
+          },
+          {
+            "type": "product"
+          },
+          {
+            "type": "product"
+          },
+          {
+            "type": "product"
+          },
+          {
+            "type": "product"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

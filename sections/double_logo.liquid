@@ -1,0 +1,110 @@
+<!-- sections/double_logo.liquid -->
+<style>
+    #shopify-section-{{section.id}} .grid-gap {
+        gap: 12px;
+    }
+
+    @media screen and (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{section.id}} .grid-gap {
+            gap: 6px;
+        }
+    }
+</style>
+<div class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    <div class="grid col-5 small_col-2 left grid-gap spacing-l">
+        {% for block in section.blocks %}
+            <div>
+                {% render 'image_element',  image: block.settings.image, fit: "contain", image_shape: "square", sizes:sizes %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+   "name": "Double Logo",
+    "settings": [
+        {
+            "type": "select",
+            "id": "spacing_top",
+            "label": "Spacing top",
+            "options": [
+                {
+                    "value": "xs",
+                    "label": "xs"
+                },
+                {
+                    "value": "s",
+                    "label": "s"
+                },
+                {
+                    "value": "m",
+                    "label": "m"
+                },
+                {
+                    "value": "l",
+                    "label": "l"
+                },
+                {
+                    "value": "xl",
+                    "label": "xl"
+                },
+                {
+                    "value": "xxl",
+                    "label": "xxl"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "spacing_bottom",
+            "label": "Spacing bottom",
+            "options": [
+                {
+                    "value": "xs",
+                    "label": "xs"
+                },
+                {
+                    "value": "s",
+                    "label": "s"
+                },
+                {
+                    "value": "m",
+                    "label": "m"
+                },
+                {
+                    "value": "l",
+                    "label": "l"
+                },
+                {
+                    "value": "xl",
+                    "label": "xl"
+                },
+                {
+                    "value": "xxl",
+                    "label": "xxl"
+                }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+        "type": "logo",
+        "name": "Logo",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Image",
+            "name":"Double Logo"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,57 @@
+<script>
+  //The conditional statement below doesn't seem to be executing correctly despite Shopify.Checkout.step returning as a string with value "contact_information".
+  document.addEventListener("DOMContentLoaded", function () {
+    if (Shopify.Checkout.step === "shipping_method") {
+      changeShippingNames();
+    } else if (Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "review") {
+      changeShippingNamesSummary();
+    } else if (Shopify.Checkout.isOrderStatusPage || Shopify.Checkout.page == "thank_you") {
+      changeShippingNamesThankYou();
+    }
+  });
+
+  document.addEventListener('page:change', function() {
+    if (Shopify.Checkout.step === "shipping_method") {
+      changeShippingNames();
+    } else if (Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "review") {
+      changeShippingNamesSummary();
+    } else if (Shopify.Checkout.isOrderStatusPage || Shopify.Checkout.page == "thank_you") {
+      changeShippingNamesThankYou();
+    }
+  });
+
+  function changeShippingNames() {
+    if (document.querySelectorAll(".section--shipping-method .content-box[data-shipping-methods] .content-box__row") !== null) {
+      document.querySelectorAll(".section--shipping-method .content-box[data-shipping-methods] .content-box__row").forEach(shippingOption => {
+        if (shippingOption.querySelector(".radio__label__primary").innerText.includes("sendit.green")) {
+          shippingOption.querySelector(".radio__label__primary").innerText = "Nachhaltiger Same-Day Versand (max. 24h)";
+        } else {
+          shippingOption.querySelector(".radio__label__primary").innerText = "Standard Shipping";
+        }       
+      });
+    }
+
+  }
+
+  function changeShippingNamesSummary() {
+    if (document.querySelector(".review-block__content[data-review-section='shipping-cost']") !== null) {
+      if (document.querySelector(".review-block__content[data-review-section='shipping-cost']").innerText.includes("sendit.green")) {
+        document.querySelector(".review-block__content[data-review-section='shipping-cost']").innerText = "Nachhaltiger Same-Day Versand (max. 24h)";
+      } else {
+        document.querySelector(".review-block__content[data-review-section='shipping-cost']").innerText = "Standard Shipping";
+      }
+    }
+  }
+
+  function changeShippingNamesThankYou() {
+    if (document.querySelector(".section__content__column .text-container p") !== null) {
+      document.querySelectorAll(".section__content__column .text-container p").forEach(p_content => {
+        if (p_content.innerText.includes("sendit.green")) {
+          p_content.innerText = "Nachhaltiger Same-Day Versand (max. 24h)";
+        } else if (p_content.innerText.includes("DHL_") || p_content.innerText.includes("UPS_")) {
+          p_content.innerText = "Standard Shipping";
+        }
+      });
+    }
+  }
+</script>

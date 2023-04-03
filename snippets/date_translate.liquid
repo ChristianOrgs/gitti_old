@@ -1,0 +1,44 @@
+{%- assign datesSupported = 'en,no,fr,es,de,it' | split:',' -%}
+{%- assign dateFormat = format | default:'%A %B %d, %Y' -%}
+
+{%- if datesSupported contains localization.language.iso_code and dateString != blank  -%}
+    
+    {%- assign daysen = 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday' | split:',' -%}
+    {%- assign monthsen = 'January,February,March,April,May,June,July,August,September,October,November,December' | split:',' -%}
+
+    {%- assign daysno = 'Mandag,Tirsdag,Onsdag,Torsdag,Fredag,Lørdag,Søndag' | split:',' -%}
+    {%- assign monthsno = 'Januar,Februar,Mars,April,Mai,Juni,Juli,August,September,Oktober,November,Desember' | split:',' -%}
+
+    {%- assign daysfr = 'Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche' | split:',' -%}
+    {%- assign monthsfr = 'Janvier,Février,Mars,Avril,Mai,juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre' | split:',' -%}
+
+    {%- assign dayses = 'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo' | split:',' -%}
+    {%- assign monthses = 'Enero,Febrero,Marzo,Abril,Mayo,Junio,Julio,Agosto,Septiembre,Octubre,Noviembre,Diciembre' | split:',' -%}
+
+    {%- assign daysit = 'lunedì,martedì,mercoledì,giovedì,venerdì,sabato,domenica' | split:',' -%}
+    {%- assign monthsit = 'gennaio,febbraio,marzo,aprile,maggio,giugno,luglio,agosto,settembre,ottobre,novembre,dicembre' | split:',' -%}
+
+    {%- assign daysde = 'Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag,Sonntag' | split:',' -%}
+    {%- assign monthsde = 'Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember' | split:',' -%}
+
+    {%- assign currentDays = 'days' | append: localization.language.iso_code -%}
+    {%- assign currentMonths = 'months' | append: localization.language.iso_code -%}
+
+    {%- assign currentDaysArray = [currentDays] -%}
+    {%- assign currentMonthsArray = [currentMonths] -%}
+    {%- assign shortSlice = 3 -%}
+
+    {%- for _i in (0..11) -%}
+    {%- if _i < 7 -%}
+        {%- assign shortDateFormatEnglish = daysen[_i] | slice:0,shortSlice -%}
+        {%- assign shortDateFormatCurrent = currentDaysArray[_i] | slice:0,shortSlice -%}
+        {%- assign dateString = dateString | replace:daysen[_i],currentDaysArray[_i] | replace:shortDateFormatEnglish,shortDateFormatCurrent -%}
+    {%- endif -%}
+    {%- assign shortMonthFormatEnglish = monthsen[_i] | slice:0,shortSlice -%}
+    {%- assign shortMonthFormatCurrent = currentMonthsArray[_i] | slice:0,shortSlice -%}
+    {%- assign dateString = dateString | replace:monthsen[_i],currentMonthsArray[_i] | replace:shortMonthFormatEnglish,shortMonthFormatCurrent -%}
+    {%- endfor -%}
+
+    {{- dateString -}} 
+    
+{%- endif -%}

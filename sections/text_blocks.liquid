@@ -1,0 +1,281 @@
+<section class = "text-blocks">
+    <div class = "row flex row between page-width spacing-bottom-xl spacing-top-xl">
+        <div class = "rowElement flex col headingSide only_medium-up">
+            <{{section.settings.tag_title}} class = "{{section.settings.class_title}} {{section.settings.weight_class_title}}">{{section.settings.title}}</{{section.settings.tag_title}}>
+        </div>
+        <div class = "rowElement flex col leftSideWrapper only_medium-up">
+            {% for block in section.blocks %}
+            {% if block.type == 'left_side' %}
+                <div class = "linkElement leftSideElement spacing-top-s spacing-bottom-s spacing-right-l is-relative">
+                    <a href ="{{block.settings.link_url_left}}">{{block.settings.link_text_left}}</a>
+                    {% render 'icon', icon: 'chevron-right' %}
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class = "rowElement flex col rightSideWrapper only_medium-up">
+            {% for block in section.blocks %}
+            {% if block.type == 'right_side' %}
+            <div class = "linkElement rightSideElement spacing-top-s spacing-bottom-s spacing-right-l is-relative">
+                <a href ="{{block.settings.link_url_right}}">{{block.settings.link_text_right}}</a>
+                {% render 'icon', icon: 'chevron-right' %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class = "mobileTextBlocks only_small">
+            <h4 class = "mobileHeading">{{section.settings.mobile_heading}}</h4>
+            <div class = "mobileElementWrapper">
+                <h5>{{section.settings.mobile_call_us_title}}</h5>
+                <a href="{{section.settings.mobile_call_us_link}}">{{section.settings.mobile_call_us_text}}</a>
+            </div>
+            <div class = "mobileElementWrapper">
+                <h5>{{section.settings.mobile_whatsapp_title}}</h5>
+                <a href="{{section.settings.mobile_whatsapp_link}}">{{section.settings.mobile_whatsapp_text}}</a>
+            </div>
+            <div class = "mobileElementWrapper">
+                <h5>{{section.settings.mobile_contact_title}}</h5>
+                <a href="{{section.settings.mobile_contact_link}}">{{section.settings.mobile_contact_text}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<style>
+#shopify-section-{{section.id}} .text-blocks {
+    border-top: 1px solid #e4e4e4;
+}
+#shopify-section-{{section.id}} .rowElement {
+    flex: 0 1 30%;
+}
+#shopify-section-{{section.id}} .headingSide h2{
+    margin: auto 0;
+    color: #333333;
+}
+#shopify-section-{{section.id}} .rowElement .linkElement {
+    border-bottom: 1px solid #e4e4e4;
+}
+#shopify-section-{{section.id}} .rowElement .linkElement .clever_icon{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    bottom: 50%;
+}
+@media (max-width: {{settings.breakpoint_small}}px) {
+    #shopify-section-{{section.id}} .mobileTextBlocks .mobileElementWrapper{
+        padding:10px 0;
+    }
+    #shopify-section-{{section.id}} .mobileTextBlocks .mobileElementWrapper a{
+        text-decoration: underline;
+        font-size: 14px;
+    }
+    #contact-us .text-blocks {
+        display: none;
+    }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Text blocks",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Want to learn more about gitti?"
+    },
+    {
+        "type": "select",
+        "id": "tag_title",
+        "label": "Html tag title",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "class_title",
+            "label": "Font class title",
+            "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "weight_class_title",
+            "label": "Weight class title",
+            "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+          ]
+        },
+    {
+        "type": "header",
+        "content": "Mobile"
+    },
+    {
+        "type": "text",
+        "id": "mobile_heading",
+        "label": "Mobile heading",
+        "default": "Still have Questions?"
+    },
+    {
+        "type": "text",
+        "id": "mobile_call_us_title",
+        "label": "Title",
+        "default": "Call us"
+    },
+    {
+        "type": "text",
+        "id": "mobile_call_us_text",
+        "label": "Text",
+        "default": "+49 (0) 30 217 82 82 8"
+    },
+    {
+        "type": "url",
+        "id": "mobile_call_us_link",
+        "label": "Link"
+    },
+    {
+        "type": "text",
+        "id": "mobile_whatsapp_title",
+        "label": "Title",
+        "default": "Whatsapp"
+    },
+    {
+        "type": "text",
+        "id": "mobile_whatsapp_text",
+        "label": "Text",
+        "default": "+49 (0) 30 217 82 82 8"
+    },
+    {
+        "type": "url",
+        "id": "mobile_whatsapp_link",
+        "label": "Link"
+    },
+    {
+        "type": "text",
+        "id": "mobile_contact_title",
+        "label": "Title",
+        "default": "Contact"
+    },
+    {
+        "type": "text",
+        "id": "mobile_contact_text",
+        "label": "Text",
+        "default": "Write to us"
+    },
+    {
+        "type": "url",
+        "id": "mobile_contact_link",
+        "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "left side",
+      "type": "left_side",
+      "settings": [
+      {
+          "type": "text",
+          "id": "link_text_left",
+          "label": "Text",
+          "default": "Text"
+      },
+      {
+        "type": "url",
+        "id": "link_url_left",
+        "label": "Choose link"
+      }
+      ]
+    },
+    {
+        "name": "right side",
+        "type": "right_side",
+        "settings": [
+        {
+            "type": "text",
+            "id": "link_text_right",
+            "label": "Text",
+            "default": "Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url_right",
+          "label": "Choose link"
+        }
+        ]
+    }
+  ]
+}
+{% endschema %}

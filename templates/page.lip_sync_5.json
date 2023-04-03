@@ -1,0 +1,278 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "cc788e49-8d6d-4acd-a654-52cae2ca649f": {
+          "type": "shop_the_look",
+          "settings": {
+            "auto_play_shop_the_look": true,
+            "spacing_top": "xs",
+            "spacing_bottom": "l",
+            "heading": "Get the gitti look.",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "All eyes on you - natürlicher Glow und betonte Augen mit gitti Eye Level Mascara und Visionist für ein natürliches Highlight.",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn--tertiary",
+            "products_heading": "",
+            "products_heading_tag": "p",
+            "products_heading_class": "h1",
+            "products_heading_weight_class": "bold",
+            "image_shape": "square",
+            "image_fit": "contain",
+            "slider_speed": 3000,
+            "image_group_1": "shopify:\/\/shop_images\/gitti_shop_eyelevel_01_visionist_02_shopthelook_1.jpg",
+            "shop_the_look_product_group_1": "eye-colour-set,eye-level-no-01-black,lips-cheeks-duo,visionist-no-01-metallic-mauve,everyblush-no-01-deep-mulberry,lip-sync-kit",
+            "shop_the_look_product_group_2": ""
+          }
+        },
+        "91a7fc2d-3b5f-4c1c-b6d5-2da2efe33a15": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "m",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "Entdecke alle Neuheiten",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Make-up that cares.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>Wir vereinen bei der Entwicklung unserer Make-up Produkte Farbe mit Pflege und Performance mit Nachhaltigkeit. <\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "fe147ce9-24ec-4525-8972-bf496b564f28": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": true,
+            "product": "eye-level-no-01-black"
+          }
+        },
+        "15f5c98b-40c0-4a5b-bee8-0bd02adc5b91": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "l",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "everyblush-no-01-deep-mulberry"
+          }
+        },
+        "f83ccb40-a968-4de7-8988-c99e09f517f4": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "lip-sync-kit"
+          }
+        },
+        "8f830a0a-af23-4d55-8fc8-c6926474fb06": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "lips-cheeks-duo"
+          }
+        },
+        "3bca2916-a670-470d-a84d-db9af977a172": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "eye-level-no-02-brown"
+          }
+        },
+        "e5c6be34-b704-49e2-8bd6-3303c7dca589": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "everyday-duo"
+          }
+        },
+        "70f51a2a-cd85-4b5e-906a-4764d14ddb91": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "visionist-no-03-golden-pearl"
+          }
+        },
+        "d094e2ec-128c-4370-8d02-693de792a31a": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "eye-colour-set"
+          }
+        },
+        "8675c88e-4f25-429c-82e5-f74ac290f186": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look-natural"
+          }
+        },
+        "6a3d3594-fd45-4add-a15f-411ad3c33dc2": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look-bold"
+          }
+        },
+        "df14e7ee-e9ff-4a1b-a24d-1bd9af12a348": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look-fresh"
+          }
+        },
+        "eb31a6dc-6664-464a-89dc-dc8758d0ac6d": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "eye-level-no-03-blue"
+          }
+        },
+        "8d52a6ac-813c-4432-92ec-97791dc145b4": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "everyblush-no-02-sunny-coral"
+          }
+        },
+        "bb7e0113-70c9-4dc2-a384-5b16637b9376": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": false,
+            "more_btn_mo": true,
+            "product": "everyblush-no-03-blossom-pink"
+          }
+        }
+      },
+      "block_order": [
+        "cc788e49-8d6d-4acd-a654-52cae2ca649f",
+        "91a7fc2d-3b5f-4c1c-b6d5-2da2efe33a15",
+        "fe147ce9-24ec-4525-8972-bf496b564f28",
+        "15f5c98b-40c0-4a5b-bee8-0bd02adc5b91",
+        "f83ccb40-a968-4de7-8988-c99e09f517f4",
+        "8f830a0a-af23-4d55-8fc8-c6926474fb06",
+        "3bca2916-a670-470d-a84d-db9af977a172",
+        "e5c6be34-b704-49e2-8bd6-3303c7dca589",
+        "70f51a2a-cd85-4b5e-906a-4764d14ddb91",
+        "d094e2ec-128c-4370-8d02-693de792a31a",
+        "8675c88e-4f25-429c-82e5-f74ac290f186",
+        "6a3d3594-fd45-4add-a15f-411ad3c33dc2",
+        "df14e7ee-e9ff-4a1b-a24d-1bd9af12a348",
+        "eb31a6dc-6664-464a-89dc-dc8758d0ac6d",
+        "8d52a6ac-813c-4432-92ec-97791dc145b4",
+        "bb7e0113-70c9-4dc2-a384-5b16637b9376"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page-lip-sync-sections-template"
+  ]
+}

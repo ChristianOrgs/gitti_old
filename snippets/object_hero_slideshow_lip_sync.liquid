@@ -1,0 +1,297 @@
+{% assign min_image_aspect = object.settings.slidehero_desktop_one.aspect_ratio %}
+    {% if object.settings.slidehero_desktop_one.aspect_ratio < min_image_aspect %}
+        {% assign min_image_aspect = object.settings.slidehero_desktop_one.aspect_ratio %}
+    {% endif %}
+
+<style>
+        #shopify-section-{{object.id}} .bee-image-with-text-overlay-wrapper{
+          position: relative;
+          overflow: hidden;
+          {% if object.settings.use_natural_height %}
+            height: {{100.0 | divided_by: min_image_aspect }}vw;
+          {% else %} 
+            height: {{object.settings.section_height}}vh;
+          {% endif %}
+        }
+        #shopify-section-{{object.id}} .bee-image-with-text-overlay-image{
+          position: absolute;
+          width: 100%;
+          top:0;
+          {% if object.settings.use_natural_height %}
+            height: {{100.0 | divided_by: min_image_aspect }}vw;
+          {% else %}
+            height: {{object.settings.section_height}}vh;
+          {% endif %}
+        }
+        #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay{
+          position: absolute;
+          width: 100%;
+          top:0;
+          {% if object.settings.use_natural_height %}
+            height: {{100.0 | divided_by: min_image_aspect }}vw;
+          {% else %}
+            height: {{object.settings.section_height}}vh;
+          {% endif %}
+        }
+       
+        #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay > .page-width{
+            height:100%;
+        }
+        #shopify-section-{{object.id}} #textMobile {
+            display: none;
+        }
+        #shopify-section-{{object.id}} .mobileLine {
+            display: none;
+            width: 90%;
+            border-bottom: 1px solid #E8E8E8;
+            margin: auto;
+        }
+        #shopify-section-{{object.id}} .slider_controls{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            margin:{{settings.site_gutter_mobile}}px;
+        }
+        #shopify-section-{{object.id}} .slider_prev{
+            left:0;
+        }
+        #shopify-section-{{object.id}} .slider_controls{
+            right:0;
+        }
+        {% if object.settings.show_section == 'mobile' %}
+          #shopify-section-{{object.id}}{
+            display:none;
+          }
+          @media (max-width: {{settings.breakpoint_small}}px) {
+            #shopify-section-{{object.id}}{
+              display:block;
+            }
+          }
+        {% elsif object.settings.show_section == 'desktop'%}
+          #shopify-section-{{object.id}}{
+            display:block;
+          }
+          @media (max-width: {{settings.breakpoint_small}}px) {
+            #shopify-section-{{object.id}}{
+              display:none;
+            }
+          }
+        {% endif %}
+
+        @media (max-width: {{settings.breakpoint_small}}px) {
+          #shopify-section-{{object.id}}  cs-slide,
+          #shopify-section-{{object.id}} .bee-image-with-text-overlay-wrapper,
+          #shopify-section-{{object.id}} .bee-image-with-text-overlay-image{
+            {% if object.settings.use_natural_height_mobile %}
+                height: {{100.0 | divided_by: min_image_aspect }}vw;
+            {% else %}
+                height: {{object.settings.section_height_mobile}}vh;
+            {% endif %}
+            position:relative;
+          }
+          #shopify-section-{{object.id}} .slider_controls{
+                position:absolute;
+                top:{{object.settings.section_height_mobile | divided_by: 2 }}vh;
+                transform:translateY(-50%);
+                margin:{{settings.site_gutter_mobile}}px;
+            }
+          #shopify-section-{{object.id}} .bee-image-with-text-overlay-overlay{
+            height: 35vh;
+            position:relative;
+          }
+          #shopify-section-{{object.id}} .clever-slider,
+          #shopify-section-{{object.id}} .cs-track {
+                height:100%;
+            }
+          {% comment %}
+          #shopify-section-{{object.id}} .bee-image-with-text-overlay-wrapper{
+              height: 85vh;
+          }
+          {% endcomment %}
+          {% comment %}comment
+          #shopify-section-{{section.id}} .bee-image-with-text-overlay-overlay {
+            display: none;
+          }{% endcomment %}
+          #shopify-section-{{object.id}} #textMobile {
+            display: block;
+          }
+          #shopify-section-{{object.id}} .mobileLine {
+            display: block;
+        }
+        }
+
+</style>
+{% assign i = 0 %}
+{% for image_hero_slideshow in object.settings %}
+{% if image_hero_slideshow contains 'button_class_' %}
+{% assign i = i | plus: 1 %}
+{% endif %}  
+{% endfor %} 
+{% assign block_count =  i %} 
+
+<div class="bee-image-with-text-overlay-wrapper" >
+    <clever-slider class="container"
+        options-large="{'loop':true,'align':'start', 'inViewThreshold': 1, 'skipSnaps': true}" 
+        {% if object.settings.enable_autoplay %} autoplay="{{object.settings.autoplay_speed | times: 1000 }}" pause-on-hover {% endif %}>
+        {% if block_count > 1 %}
+            <cs-prev class="slider_controls slider_prev">
+                {% render 'icon', icon:'chevron' %}
+            </cs-prev>
+        {% endif %}    
+        <cs-track>
+            <cs-slides  class="items-1 small_items-1">
+                {% for image_hero_slideshow in object.settings %}
+              
+                {% if image_hero_slideshow contains 'slidehero_desktop_' %}
+                {% assign images = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_image_fit_' %}
+                {% assign images_fit = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_mobile_' %}
+                {% assign images_mobile = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_image_fit_mobile_' %}
+                {% assign images_mobile_fit = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_mobile_wrapper_' %}
+                {% assign images_mobile_wrapper = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_preheading_' %}
+                {% assign preheadings = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_tag_preheading_' %}
+                {% assign preheadings_tags = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_class_preheading_' %}
+                {% assign preheadings_class = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_weight_class_preheading_' %}
+                {% assign preheadings_weight_class = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_spacing_bottom_preheading_' %}
+                {% assign preheadings_spacing_bottom = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_heading_image_' %}
+                {% assign headings = object.settings[image_hero_slideshow] %}  
+
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_tag_heading_' %}
+                {% assign headings_tags = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_class_heading_' %}
+                {% assign headings_class = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_weight_class_heading_' %}
+                {% assign headings_weight_class = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_spacing_bottom_heading_' %}
+                {% assign headings_spacing_bottom = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_richtext_' %}
+                {% assign texts = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_spacing_bottom_richtext_' %}
+                {% assign texts_spacing_bottom = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_text_color_' %}
+                {% assign texts_color = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_button_label_' %}
+                {% assign buttons = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_button_link_' %}
+                {% assign buttons_links = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_button_class_' %}
+                {% assign buttons_class = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+                {% if image_hero_slideshow contains 'slidehero_spacing_bottom_button_' %}
+                {% assign buttons_spacing_bottom = object.settings[image_hero_slideshow] %}  
+                {% endif %}
+
+                {% if image_hero_slideshow contains 'slidehero_button_class_' %}
+                    <cs-slide>
+                        <div {{texts}} class="slide-{{object.id}}"  >
+                            <style>
+                                        #shopify-section-{{object.id}} .slide-{{object.id}} .bee-image-with-text-overlay-overlay > .page-width > div{
+                                            width:{{block.settings.overlay_width}}%;
+                                        }
+                                        #shopify-section-{{object.id}} .slide-{{object.id}} {
+                                            color:{{texts_color}};
+                                        }  
+                                        #shopify-section-{{object.id}} .slide-{{object.id}}  p{
+                                            color:{{texts_color}};
+                                        }  
+                                        @media (max-width: {{settings.breakpoint_small}}px) {
+                                            #shopify-section-{{object.id}} .slide-{{object.id}}  .bee-image-with-text-overlay-overlay > .page-width > div{
+                                                width:{{object.settings.overlay_width_mobile}}%;
+                                            }
+                                        }
+                            </style>
+                            {% capture sizes %}{% render 'image_sizes', small:1, medium_up:1, page_width: false %}{% endcapture %}
+                            <div class="bee-image-with-text-overlay-image" >
+                                <div class="container only_medium-up">
+                                {% render 'image_element',  image: images, fit: images_fit, sizes:sizes %}
+                                </div>
+                                <div class="container only_small {% if images_mobile_wrapper %}page-width{% endif %}">
+
+                                {% render 'image_element',  image: images_mobile, fit: images_mobile_fit,  sizes:sizes %}
+                                </div>
+                            </div>
+                            <div class="bee-image-with-text-overlay-overlay
+                            {% if object.settings.background_type == 'banner' %} page-width{% endif %}">
+                                {% if buttons != blank and buttons_links != blank %}<a href="{{buttons_links}}"{% else %} <div {% endif %} class="page-width section-spacing flex col {{object.settings.overlay_position_v}} {{object.settings.overlay_position_h}}">
+                                    {%- comment -%}Text element snippet{%- endcomment -%}
+                                    <div class="flex col {{object.settings.text_align}} middle">
+                                        {% if preheadings != blank %}
+                                            <{{preheadings_tags}} class="{{preheadings_class}} {{preheadings_weight_class}} spacing-bottom-{{preheadings_spacing_bottom}} text-align-{{object.settings.text_align}}  on-load fade-in" >{{ preheadings}}</{{preheadings_tags}}>
+                                        {% endif %}
+                                        {% if headings != blank %}
+                                            <{{headings_tags}} class="{{headings_class}} {{headings_weight_class}} spacing-bottom-{{headings_spacing_bottom}} text-align-{{object.settings.text_align}}  on-load fade-in" animation-delay="100">{{ headings }}
+                                            </{{headings_tags}}>
+                                        {% endif %}
+                                        {% if texts != blank %}
+                                            <div class="spacing-bottom-{{texts_spacing_bottom}} text-align-{{object.settings.text_align}}  on-load fade-in" animation-delay="200">{{ texts }}</div>
+                                        {% endif %}
+                                        {% if buttons != blank and buttons_links != blank %}
+                                        <div class="button_wrapper flex spacing-bottom-{{buttons_spacing_bottom}}  on-load fade-in" animation-delay="300" >
+                                            <div class="{{buttons_class}}">{{buttons}}</div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                {% if buttons != blank and buttons_links != blank %}</a>{% else %}</div>{% endif %}
+                            </div>
+                        </div>
+                    </cs-slide>
+                    {% endif %}
+                {% endfor %}
+            </cs-slides>
+        </cs-track>
+        {% if block_count > 1 %}
+            <cs-next class="slider_controls slider_next">
+                {% render 'icon', icon:'chevron', style:'transform:rotate(180deg);' %} 
+            </cs-next>
+        {% endif %}    
+    </clever-slider>
+</div>
+
+{% if object.settings.gif %}
+<script type="module">
+  
+    window.addEventListener('load',()=>{
+        let embla = document.querySelector('#shopify-section-{{object.id}} clever-slider').embla;
+        embla.dangerouslyGetEngine().translate.toggleActive(false);
+    })
+</script>
+<style>
+      #shopify-section-{{object.id}} cs-slide.is-selected{
+        position: absolute;
+        left:0  !important;
+        width:100%;
+    }
+      #shopify-section-{{object.id}} cs-slide:not(.is-selected){
+       visibility: hidden;
+    }
+</style>    
+{% endif %}    

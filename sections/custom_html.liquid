@@ -1,0 +1,387 @@
+{% assign id = section.id %}
+<style>
+  #shopify-section-{{id}} .page-width{
+    background-color: {{section.settings.color_background}};
+  }
+  #shopify-section-{{id}} iframe{
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{id}} .no_site_gutter{
+    padding-left: 0;
+    padding-right: 0;
+  }
+</style>
+
+<div class="flex col spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}} small_spacing-top-{{section.settings.spacing_top_mobile}} small_spacing-bottom-{{section.settings.spacing_bottom_mobile}}">
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'html' -%}
+        <div id="block-{{block.id}}" class="{% if block.settings.page_width %}page-width{% endif %}{% unless block.settings.spacing_left_right %} no_site_gutter{% endunless %} flex col full-width" {{block.shopify_attributes}}>
+          {{block.settings.html}}
+        </div>
+      {%- when 'youtube' -%}
+        <div id="block-{{block.id}}" class="page-width flex col full-width">
+          <style>
+            {% unless block.settings.spacing_left_right %}
+              #shopify-section-{{id}} #block-{{block.id}}{
+                padding-left: 0;
+                padding-right: 0;
+              }
+            {% endunless %}
+            {% if block.settings.use_aspect_ratio %}
+              #shopify-section-{{id}} #block-{{block.id}} .aspect_ratio_padding{
+                height: 0;
+                padding-bottom: {{ 100.0 | divided_by: block.settings.aspect_ratio}}%;
+              }
+              #shopify-section-{{id}} #block-{{block.id}} iframe, #shopify-section-{{id}} #block-{{block.id}} .iframe_placeholder{
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+            {% endif %}
+          </style>
+          <div class="flex col external_video_wrapper full-width{% if block.settings.use_aspect_ratio %} is-relative full-width aspect_ratio_padding{% endif %}">
+            <div class="iframe_placeholder"></div>
+          </div>
+          <script type="module">
+            let player = null;
+            function loadVideo(){
+              let placeholder = document.querySelector('#shopify-section-{{id}} #block-{{block.id}} .iframe_placeholder');
+              player = new YT.Player(placeholder, {
+                  width: '1600',
+                  height: '900',
+                  videoId: '{{block.settings.video.id}}',
+                  playerVars: {
+                      showinfo: 0,
+                      enablejsapi: 1,
+                      autoplay: 0,
+                      origin: '{{request.origin}}',
+                      iv_load_policy: 3,
+                      modestbranding: 1,
+                      controls: 1,
+                      playsinline: 1,
+                      showinfo: 0,
+                      playlist: '{{block.settings.video.id}}',
+                      loop: 1,
+                      rel: 0,
+                      mute: 1
+                  }
+              });
+            }
+            function initializeVideo(){
+              {% if block.settings.lazyload and request.design_mode == false %}
+                  function handleIntersect(entries, observer) {
+                    let found = entries.find(entry => entry.isIntersecting);
+                    if(!!found) {
+                      loadVideo();
+                      observer.disconnect();
+                    }
+                  }
+                  function createObserver() {
+                    let observer;
+                    let section = document.querySelector('#shopify-section-{{id}} #block-{{block.id}}');
+                    let options = {
+                      rootMargin: "{{block.settings.threshold}}px 0px 0px 0px"
+                    };
+                    observer = new IntersectionObserver(handleIntersect, options);
+                    observer.observe(section);
+                  }
+                  createObserver();
+              {% else %}
+                loadVideo();
+              {% endif %}
+            }
+            function initializeYoutubeIframAPI(){
+              if (typeof YT == "undefined"){
+                console.log('YT undefined')
+                window.YT = {};
+                document.addEventListener('YT:ready', () => {
+                  initializeVideo();
+                });
+                window.onYouTubeIframeAPIReady = function(){
+                  document.dispatchEvent(new Event('YT:ready'))
+                }
+                let iframe_api = document.createElement('script');
+                iframe_api.id = 'iframe_api';
+                iframe_api.src = "https://www.youtube.com/iframe_api";
+                document.head.appendChild(iframe_api);
+              }else if(Object.keys(YT).length === 0){
+                console.log('YT loading')
+                document.addEventListener('YT:ready', () => {
+                  initializeVideo();
+                });
+              }else{
+                console.log('YT ready')
+                initializeVideo();
+              }
+            }
+            initializeYoutubeIframAPI();
+            {% if request.design_mode %}
+              document.addEventListener('shopify:section:load', event => {
+                  if(event.detail.sectionId == '{{section.id}}')
+                    initializeYoutubeIframAPI();
+              });
+          {% endif %}
+          </script>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Custom HTML",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+          {
+            "value": "none",
+            "label": "none"
+          },
+          {
+            "value": "xs",
+            "label": "xs"
+          },
+          {
+            "value": "s",
+            "label": "s"
+          },
+          {
+            "value": "m",
+            "label": "m"
+          },
+          {
+            "value": "l",
+            "label": "l"
+          },
+          {
+            "value": "xl",
+            "label": "xl"
+          },
+          {
+            "value": "xxl",
+            "label": "xxl"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing_top_mobile",
+        "label": "Spacing top mobile",
+        "options": [
+          {
+            "value": "none",
+            "label": "none"
+          },
+          {
+            "value": "xs",
+            "label": "xs"
+          },
+          {
+            "value": "s",
+            "label": "s"
+          },
+          {
+            "value": "m",
+            "label": "m"
+          },
+          {
+            "value": "l",
+            "label": "l"
+          },
+          {
+            "value": "xl",
+            "label": "xl"
+          },
+          {
+            "value": "xxl",
+            "label": "xxl"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+          {
+            "value": "none",
+            "label": "none"
+          },
+          {
+            "value": "xs",
+            "label": "xs"
+          },
+          {
+            "value": "s",
+            "label": "s"
+          },
+          {
+            "value": "m",
+            "label": "m"
+          },
+          {
+            "value": "l",
+            "label": "l"
+          },
+          {
+            "value": "xl",
+            "label": "xl"
+          },
+          {
+            "value": "xxl",
+            "label": "xxl"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "spacing_bottom_mobile",
+        "label": "Spacing bottom mobile",
+        "options": [
+          {
+            "value": "none",
+            "label": "none"
+          },
+          {
+            "value": "xs",
+            "label": "xs"
+          },
+          {
+            "value": "s",
+            "label": "s"
+          },
+          {
+            "value": "m",
+            "label": "m"
+          },
+          {
+            "value": "l",
+            "label": "l"
+          },
+          {
+            "value": "xl",
+            "label": "xl"
+          },
+          {
+            "value": "xxl",
+            "label": "xxl"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Style"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "html",
+        "name": "HTML",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "html",
+            "id": "html",
+            "label": "HTML",
+            "default": "<div></div>"
+          },
+          {
+            "type": "header",
+            "content": "Style"
+          },
+          {
+            "type": "checkbox",
+            "id": "spacing_left_right",
+            "label": "Spacing Left Right",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "page_width",
+            "label": "Page Width",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "youtube",
+        "name": "Youtube Video",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "video_url",
+            "id": "video",
+            "label": "Youtube Video",
+            "accept": [
+              "youtube"
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Style"
+          },
+          {
+            "type": "checkbox",
+            "id": "lazyload",
+            "label": "Lazyload",
+            "default": true
+          },
+          {
+            "type": "range",
+            "id": "threshold",
+            "min": 0,
+            "max": 1000,
+            "step": 100,
+            "unit": "px",
+            "label": "Lazyload threshold",
+            "default": 500
+          },
+          {
+            "type": "checkbox",
+            "id": "spacing_left_right",
+            "label": "Spacing Left Right",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "use_aspect_ratio",
+            "label": "Force Aspect Ratio",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "aspect_ratio",
+            "label": "Aspect Ratio",
+            "default": "1.7777"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom HTML",
+        "category": "html"
+      }
+    ]
+  }
+{% endschema %}

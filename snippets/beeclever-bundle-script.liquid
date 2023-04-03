@@ -1,0 +1,79 @@
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        hideSetsItems();
+        addSetItemsToParent();
+    });
+
+    document.addEventListener('page:change', function() {
+        hideSetsItems();
+        addSetItemsToParent();
+    });
+
+    function hideSetsItems() {
+        var set_product_exist = false;
+        document.querySelectorAll(".product-table .product").forEach(product => {
+            if (product.querySelector(".product__description .reduction-code__text") != null && product.querySelector(".product__description .reduction-code__text").textContent.indexOf('SET:') !== -1) {
+                product.closest(".product").style.display = "none";
+                set_product_exist = true;
+            }
+        });
+        if (set_product_exist)
+            if (document.querySelector('.order-summary-toggle__inner dd s.total-recap__original-price') != null )
+                document.querySelector('.order-summary-toggle__inner dd s.total-recap__original-price').style.display = "none";
+    }
+
+    function addSetItemsToParent() {
+        document.querySelectorAll(".product-table .product").forEach(product => {
+            is_mystery_box = false;
+            if (product.textContent.includes('mystery_box_set')) is_mystery_box = true
+            product.querySelectorAll(".product__description__property").forEach(property => {
+                if (property.textContent.includes("set:") && !is_mystery_box) {
+                    let setID = property.textContent.split('set:').pop().trim();
+                    let ulSetList = buildItemsSet(setID);
+                    property.textContent = "";
+                    property.appendChild(ulSetList);
+                } else if (property.textContent.includes("Bundle:")) {
+                    property.style.display = "none";
+                } else if (is_mystery_box) {
+                    property.style.display = "none";
+                }
+            });
+        });
+    }
+
+    function buildItemsSet(setID) {
+        var ulSetList = document.createElement('ul');
+        document.querySelectorAll(".product-table .product").forEach(product => {
+            if (setID !== "") {
+                product.querySelectorAll(".product__description__property").forEach(property => {  
+                    if (property.textContent.includes("set_id:")) {
+                        if (property.textContent.indexOf('set_id: ' + setID) !== -1) {
+                            var li = document.createElement('li');
+                            var color = getSetIdColor(product);
+                            li.innerHTML = product.querySelector('.product__description__name').textContent + " x " + product.querySelector('.product__quantity').textContent + " - " + color;
+                            ulSetList.appendChild(li);
+                        }
+                    }
+                });
+            }
+        });
+        //console.log("List " + setID, ulSetList); change
+        return ulSetList;
+    }
+
+    function getSetIdColor(product) {
+        if (product.querySelectorAll(".product__description__property") != null) {
+            var color_return = "";
+            product.querySelectorAll(".product__description__property").forEach(property => {
+                if (property.textContent.indexOf("set_item_color") !== -1) {
+                    color_return = property.textContent.replace("set_item_color:", "").trim();
+                }
+            });
+            if (color_return !== "") {
+                return color_return;
+            }
+        }
+        return "";
+    }
+</script>

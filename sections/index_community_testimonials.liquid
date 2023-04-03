@@ -1,0 +1,702 @@
+
+<style>
+    #shopify-section-{{section.id}} {
+        overflow: hidden;
+    }
+    #shopify-section-{{section.id}},
+    #shopify-section-{{section.id}} clever-slider.overhanging_slider::before {
+        background-color: {{section.settings.background_color}};
+    }
+
+    #shopify-section-{{section.id}} .block_color {
+        background-color: {{section.settings.block_color}};
+    }
+
+    @media only screen and (max-width: {{settings.breakpoint_medium}}px) {
+        #shopify-section-{{section.id}} .testimonials {
+            display: flex
+        }
+    }
+
+    @media only screen and (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{section.id}} .small_items-custom cs-slide {
+            flex: 0 0 80%;
+        }
+    }
+</style>
+
+{% for block in section.blocks %}
+  {% capture number_blocks %}{{ forloop.length }}{% endcapture %}
+{% endfor %}
+<!-- {{ number_blocks }} -->
+<div class="page-width section-spacing">
+  <div class="flex col spacing-top-{{ section.settings.spacing_top }} spacing-bottom-{{ section.settings.spacing_bottom }}">
+    <div class="flex col">
+        {% if section.settings.heading != blank %}
+          <{{ section.settings.main_heading_tag }}
+          class="{{ section.settings.main_heading_class }} {{ section.settings.main_heading_weight_class }}
+          spacing-bottom-{{ section.settings.main_heading_spacing_bottom }}
+          spacing-top-{{ section.settings.main_heading_spacing_top }} "
+          animation-delay="100">{{ section.settings.heading | escape }}</{{ section.settings.main_heading_tag }}>
+        {% endif %}
+        {% if section.settings.richtext != blank %}
+          <{{ section.settings.richtext_tag }}
+          class="{{ section.settings.richtext_class }} {{ section.settings.richtext_weight_class }}
+          spacing-bottom-{{ section.settings.richtext_spacing_bottom }} "
+          >{{ section.settings.richtext | remove: '<p>' | remove: '</p>' }}</{{ section.settings.richtext_tag }}>
+        {% endif %}
+    </div>
+    <clever-slider class="overhanging_slider" options-large="{'align':'start','containScroll':'trimSnaps'}">
+      <cs-prev class="slider_nav slider_prev is-absolute only_large">
+        {% render 'icon', icon: 'chevron-left' %}
+      </cs-prev>
+      <cs-track>
+        <cs-slides class="items-3 medium_items-2 small_items-custom gap">
+          {% for block in section.blocks %}
+            {% if block.type == 'testimonial' %}
+              <cs-slide>
+                <div class="container block_color testimonial spacing-{{ section.settings.block_spacing }}">
+
+                  <div class="flex col between" style="height: 100%;">
+                    {% if block.settings.richtext != blank %}
+                    <{{ section.settings.richtext_tag }}
+                    class="text-align-{{ section.settings.text_align }} {{ section.settings.richtext_class }} {{ section.settings.richtext_weight_class }}
+                    spacing-bottom-{{ section.settings.block_spacing }} "
+                    >{{ block.settings.richtext | remove: '<p>' | remove: '</p>' }}</{{ section.settings.richtext_tag }}>
+                  {% endif %}
+                  <div class="flex row">
+                    <div class="testimonial_picture spacing-right-{{ section.settings.block_spacing }}"
+                         style="width: 80px;">
+                      {% render 'image_element', image: {{block.settings.image}}, image_shape: {{section.settings.image_shape}}, fit: {{section.settings.image_fit}}, sizes:'80px' %}
+                    </div>
+                    <div class="testimonial_author flex col middle">
+                      {% if block.settings.richtext != blank %}
+                      <{{ section.settings.richtext_tag }}
+                      class="{{ section.settings.richtext_class }} {{ section.settings.richtext_weight_class }} "
+                      style="height:fit-content;">{{ block.settings.richtext_author | remove: '<p>' | remove: '</p>' }}</{{ section.settings.richtext_tag }}
+                    >
+                    {% endif %}
+                  </div>
+                </div>
+                </div>
+
+                </div>
+              </cs-slide>
+            {% endif %}
+          {% endfor %}
+        </cs-slides>
+      </cs-track>
+      <cs-next class="slider_nav slider_next is-absolute only_large">
+        {% render 'icon', icon: 'chevron-right' %}
+      </cs-next>
+    </clever-slider>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Community testimonials",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "block_color",
+      "label": "Block color"
+    },
+    {
+      "type": "header",
+      "content": "Text Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+               { "value": "left", "label": "left"},
+               { "value": "center", "label": "center"},
+               { "value": "right", "label": "right"}
+      ],
+      "label": "Text align"
+    },
+    {
+      "type": "select",
+      "id": "vertical_align",
+      "options": [
+               { "value": "top", "label": "top"},
+               { "value": "middle", "label": "middle"},
+               { "value": "bottom", "label": "bottom"},
+               { "value": "between", "label": "between"},
+               { "value": "around", "label": "around"},
+               { "value": "evenly", "label": "evenly"}
+      ],
+      "label": "Vertical align",
+      "default": "middle"
+    },
+    {
+      "type": "header",
+      "content": "Settings Text"
+    },
+    {
+      "type": "select",
+      "id": "richtext_spacing_bottom",
+      "label": "Spacing bottom",
+      "default": "s",
+      "options": [
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "richtext_tag",
+      "label": "Html tag",
+      "default": "p",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "small",
+          "label": "small"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "richtext_class",
+      "label": "Font class",
+      "default": "p",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "note",
+          "label": "note"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "richtext_weight_class",
+      "label": "Weight class",
+      "default": "",
+      "options": [
+        {
+          "value": "bold",
+          "label": "bold"
+        },
+        {
+          "value": "",
+          "label": "normal"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Settings block"
+    },
+    {
+      "type": "header",
+      "content": "Text Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Veniam enim mollit amet ut mollit."
+    },
+    {
+      "type": "header",
+      "content": "Settings Heading"
+    },
+    {
+      "type": "select",
+      "id": "main_heading_spacing_top",
+      "label": "Spacing top",
+      "default": "",
+      "options": [
+        {
+          "value": "",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "main_heading_spacing_bottom",
+      "label": "Spacing bottom",
+      "default": "xs",
+      "options": [
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "main_heading_tag",
+      "label": "Html tag",
+      "default": "p",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "small",
+          "label": "small"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "main_heading_class",
+      "label": "Font class",
+      "default": "h1",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        },
+        {
+          "value": "note",
+          "label": "note"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "main_heading_weight_class",
+      "label": "Weight class",
+      "default": "bold",
+      "options": [
+        {
+          "value": "bold",
+          "label": "bold"
+        },
+        {
+          "value": "",
+          "label": "normal"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Settings section"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing bottom",
+      "default": "",
+      "options": [
+        {
+          "value": "",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing top",
+      "default": "",
+      "options": [
+        {
+          "value": "",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Blocks setting"
+    },
+    {
+      "type": "select",
+      "id": "block_spacing",
+      "label": "Block spacing",
+      "default": "",
+      "options": [
+        {
+          "value": "",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "block_margin",
+      "label": "Block margin",
+      "default": "",
+      "options": [
+        {
+          "value": "",
+          "label": "no spacing"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "label": "Image shape",
+      "options": [
+        {
+          "value": "",
+          "label": "Original"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "four_by_three",
+          "label": "4:3"
+        },
+        {
+          "value": "four_by_five",
+          "label": "4:5"
+        },
+        {
+          "value": "sixteen_by_nine",
+          "label": "16:9"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "contain"
+        }
+      ],
+      "default": "cover"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "richtext_author",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community testimonials",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+    

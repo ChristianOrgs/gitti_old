@@ -1,0 +1,171 @@
+{% comment %} Fill product rows if there is Featured image or product {% endcomment %}
+{% assign lastProduct = productLimit %}
+{% assign preorder = product.metafields.custom_fields["preorder"] %}
+
+{% if featured == 'image' %}
+  {% if productsColumns == 2 or productsColumns == 3 %}
+    {% if forloop.index == lastProduct %}
+      {% assign lastElementClass = 'visually-hidden' %}
+    {% endif %}
+  {% endif %}
+{% elsif featured == 'products' %}
+  {% if productsColumns == 3 %}
+    {% if forloop.index == lastProduct %}
+      {% assign lastElementClass = 'visually-hidden' %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% if fallback %}
+  <div class="collectionBlock js-collectionBlock block s1 sm_s12 {% unless template == 'collection' %}lg_s1{{ columnsSize }} {% else %}{{ collectionBlock--size }}{% endunless %} {{ lastElementClass }} {% if settings.transition_grid_items %}will-animate{% endif %} {% if forloop.index == 1 %}is-visible{% endif %}" data-animation="fadeInUp">
+    <div class="collectionBlock-image collectionBlock-image--large svg-placeholder">
+      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+      {{ 'product-' | append: current | placeholder_svg_tag }}
+
+    </div>
+    <div class="collectionBlock-info">
+      <h4>{{ 'onboarding.product_title' | t }}</h4>
+      <p class="{% if settings.price_hover %}price--hover{% endif %}"><span class="money">{{ '9900' | money}}</span></p>
+      {% if show_reviews %}
+       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  {% assign on_sale = false %}
+  {% if product.compare_at_price > product.price %}
+    {% assign on_sale = true %}
+    {% assign on_sale_class = ' is-sale' %}
+  {% endif %}
+
+  {% assign sold_out = true %}
+  {% unless product.tags contains 'ausverkauft' %}
+    {% if product.available %}
+      {% assign sold_out = false %}
+    {% endif %}
+  {% endunless %}
+
+
+  <div class="collectionBlock js-collectionBlock block s1 {% unless template == 'collection' %}lg_s1{% else %}{{ collectionBlock--size }}{% endunless %} {{ lastElementClass }} {% if settings.transition_grid_items %}will-animate{% endif %} {% if forloop.index == 1 %}is-visible{% endif %}" data-animation="fadeInUp">
+    <a href="{{ product.url }}" aria-label="{{product.title}}" data-handle="{{ product.handle }}" title="{% if product.object_type == 'product' %}{{ product.featured_image.alt }}{%elsif product.object_type == 'article' %}{{product.title | escape}}{% endif%}" class="collectionBlock-image collectionBlock-image--large lazyload fade-in {% if product.images[1] != blank and settings.hover_image == true %}has-second-image{% endif %}"
+      data-bgset="{% include 'bgset', image: product.featured_image %}"
+      data-sizes="auto"
+      data-parent-fit="cover"
+      data-aspectratio="{{ product.featured_image.aspect_ratio }}">
+      {%- if product.images[1] != blank and settings.hover_image == true -%}
+        <div class="collectionBlock-hover">
+          <span class="collectionBlock-hover lazyload fade-in" data-bgset="{% include 'bgset', image: product.images[1] %}" data-sizes="auto"></span>
+        </div>
+      {%- endif -%}
+      {% if product.object_type == 'product' %}
+      {%- comment -%}
+        {% if on_sale == true or sold_out == true %}
+          <span class="product-status-flag{%if sold_out == true %} is-sold-out{%endif%}{{on_sale_class}}">
+            {% if sold_out == true %}
+              {{ 'products.labels.sold_out' | t }}
+            {% else if on_sale == true %}
+              {{ 'products.labels.on_sale' | t }}
+            {% else if on_sale == true and sold_out == true %}
+              {{ 'products.labels.sold_out' | t }}
+            {% endif %}
+          </span>
+        {% endif %}
+        {% if on_sale == true %}
+          <span class="product-status-flag {{on_sale_class}}">
+            {% if on_sale == true %}
+              {{ 'products.labels.on_sale' | t }}
+            {% endif %}
+          </span>
+        {% endif %}
+      {%- endcomment -%}
+        
+
+          {%- for tag in product.tags -%}
+            {%- if tag == 'bestseller' -%}
+              <span class="product-status-flag bestseller">
+                  {{ 'products.labels.bestseller' | t }}
+              </span>
+            {%- endif -%}
+            {% if tag == 'sale' %}
+              <span class="product-status-flag {{on_sale_class}}">
+                {{ 'products.labels.on_sale' | t }}
+              </span>
+            {% endif %}
+          {%- comment -%}
+          {%- if tag == 'neu' -%}
+            <span class="product-status-flag-tags">
+                {{ tag }}
+            </span>
+          {%- endif -%}
+          {%- if tag == 'limitiert' -%}
+            <span class="product-status-flag-tags">
+                {{ tag }}
+            </span>
+          {%- endif -%}
+          {%- endcomment -%}
+        {%- endfor -%}
+      {% endif %}
+
+    </a>
+    <noscript>
+
+
+      {% if product.object_type == 'product' %}
+        {% if sold_out == true %}
+          <span class="product-status-flag{%if sold_out == true %} is-sold-out{%endif%}{{on_sale_class}}">
+              {{ 'products.labels.sold_out' | t }}           
+          </span>
+        {% endif %}
+      {% endif %}
+
+    </noscript>
+    <div>
+      {% form 'product', product, class:'productForm', data-color_swatches: color_swatches %}
+         <h4>{{ product.title }}</h4>
+        <p>{{subline}}</p>
+        {% if show_reviews %}
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        {% endif %}
+        <input type="hidden" class="inputCounter" name="quantity" value="1" />
+        <select name="id" style="display:none;">
+          {% for variant in product.variants %}
+            {% assign variantIdentifier = variant.id %}
+            <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}" data-sku="{{variant.sku}}">
+            {{ variant.title }} - {{ variant.price | money | strip_html }}
+            </option>
+          {% endfor %}
+        </select>
+        {% unless product.price_varies %}
+          <div style="padding: 0 0 10px 0;">
+            <strike class="product-compare-price_nojs">{{product.compare_at_price | money_with_currency}}</strike>&nbsp;{{product.price | money_with_currency}}
+          </div>
+        {% endunless %}
+        {% if product.price_varies %}
+          <div style="padding: 0 0 10px 0;" class="{% if settings.price_hover %}price--hover{% endif %}">{{ 'products.labels.price_from' | t }} {{ product.price_min | money }}</div>
+          <a href="{{ product.url }}" class="button add-to-cart-btn-style">zur auswahl</a>
+        {% else %}
+            {% if hide_add_to_cart_button == true or product.tags contains 'box' %}
+              <a href="{{ product.url }}" class="button add-to-cart-btn-style">set auswählen</a>
+            {% else %}
+
+              {% assign global_upsell = all_products[settings.upsell] %}
+              {% if sold_out == true and settings.show_notify_btn %}
+                <button class="js-notify-popup button add-to-cart-btn-style mobile-floating-width" type="button" name="checkout" data-variant="{{variantIdentifier}}" data-handle="{{product.handle}}" onclick="pintrk('track', 'addtocart', { product_price: {{ product.price | divided_by: 100.0 | round: 2 }}, product_name: '{{ product.title }}' });" data-id="{{product.id}}">{{ settings.notify_btn_text }}</button>
+              {% else %}
+                <button class="productForm-submit js-productForm-submit button add-to-cart-btn-style {% if global_upsell.id == product.id or product.tags contains 'no-upsell'%} js-no-popup {% endif %} {% if settings.price_hover %}price--hover{% endif %}" type="submit" name="checkout" data-handle="{{product.handle}}" onclick="pintrk('track', 'addtocart', { product_price: {{ product.price | divided_by: 100.0 | round: 2 }}, product_name: '{{ product.title }}' });" data-id="{{product.id}}"><span>{%- if preorder != 0 -%}  {{ 'products.form.submitpreorder' | t }} {% else %} {{ 'products.form.submit' | t }} {%- endif -%}</span></button>
+              {% endif %}
+            {% endif %}
+        {% endif %}
+        <div class="swatches-fake">
+          {% if product.variants.size > 1 and color_swatches == true %}
+            {% include 'swatch' with 'Color' %}
+          {% endif %}
+        </div>
+      {% endform %}
+    </div>
+
+    <script type="application/json" class = "product-json">
+      {{ product | json }}
+    </script>
+  </div>
+{% endif %}

@@ -1,0 +1,37 @@
+<div id="shopify-template-{{template.name}}">
+    <script>
+    
+        
+
+        function changeSection(thisSection, newSection){
+            
+          if(document.querySelectorAll('#shopify-template-{{template.name}}').length != 0)
+          {
+              
+                if (document.querySelectorAll('#shopify-template-{{template.name}} .' + thisSection + '.visible').length != 0)
+                {
+                    document.querySelectorAll('#shopify-template-{{template.name}} .' + thisSection + '.visible')[0].classList.remove('visible');
+                    document.querySelectorAll('#shopify-template-{{template.name}} .' + newSection)[0].classList.add('visible');
+                }
+          }
+        
+        }
+        function hangEventhandlerOnElementClick(target, newSection, thisSection){
+            
+            document.querySelectorAll(target)[0].addEventListener("click", function(event) {changeSection(thisSection, newSection)});
+            
+        }
+    </script> 
+    
+    <div class="page_press_section animation on-load fade-in hidden visible">
+        {% section 'page_press' %}
+    </div>
+    <div class="page_press_media_section animation on-load fade-in hidden page-width">
+        {% section 'page_press_media' %}
+    </div>
+    <div class="page_press_downloads_section animation on-load fade-in hidden page-width">
+        {% section 'page_press_downloads' %}
+    </div>
+    
+</div>
+

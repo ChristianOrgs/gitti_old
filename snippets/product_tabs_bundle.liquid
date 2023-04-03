@@ -1,0 +1,225 @@
+{% assign id = section.id %}
+
+<style>
+  #shopify-section-{{id}} .tab_toggle{
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+      transform-origin: center;
+      transform: translate(-50%, 60%) rotate(45deg);
+      transition: 0.3s transform ease;
+  }
+  #shopify-section-{{id}} .tab_content{
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0;
+      transition: 0.3s opacity ease;
+  }
+  #shopify-section-{{id}} .tab_title{
+      cursor: pointer;
+  }
+  #shopify-section-{{id}} .tab_title h5{
+      font-weight: normal;
+  }
+  #shopify-section-{{id}} .active .tab_toggle{
+      transform: translate(-50%, 120%) rotate(225deg);
+  }
+  #shopify-section-{{id}} .active .tab_content{
+      display: flex;
+      opacity: 1;
+      height: unset;
+      padding: 16px 0;
+  }
+  #shopify-section-{{id}} .active .tab_title h5{
+      font-family: 'Apercu Pro Bold', serif;
+      font-weight: bold;
+  }
+  #shopify-section-{{id}} .product_tabs ul{
+      margin-left: 20px;
+  }
+  #shopify-section-{{id}} .product_tabs ul li{
+      list-style-type: disc;
+  }
+</style>
+
+<div class="flex col product_tabs">
+  {% assign static_products = product.metafields.bundle.bundle_data.static_products %}
+  {% capture ingredients %}
+    {% for item in static_products %}
+      {% assign sprod = all_products[item.product_handle] %}
+      <p class="static_ingredients_title spacing-bottom-xs ">
+        {{ sprod.title }}
+      </p>
+      <div class="static_ingredients_content spacing-bottom-s">
+        {% if sprod.metafields.product.ingredients_overwrite.value != blank %}
+          {{ sprod.metafields.product.ingredients_overwrite.value }}
+        {% elsif sprod.metafields.product.ingredients_default.value != blank %}
+            {{ pages[sprod.metafields.product.ingredients_default.value.handle].content }}
+        {% else %}
+          {% for subtab in sprod.metafields.product.tabs %}
+            {% if subtab.title == 'Ingredients' or subtab.title == 'Inhaltsstoffe' %}
+              {{ subtab.html }}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endcapture %}
+
+  {% assign tab_count = product.metafields.product.tabs | size %}
+  {% for tab in product.metafields.product.tabs %}
+    {%- case tab.title -%}
+      {%- when 'Produktdetails' -%}
+        {%- comment -%}Product description{%- endcomment -%}
+        {% if product.metafields.product.description_overwrite.value != blank %}
+          <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %}{%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+            <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+              <Tab>{{ 'products.tabs.description' | t }}</Tab>
+              <div class="tab_toggle"></div>
+            </div>
+            <div class="tab_content flex col">{{ product.metafields.product.description_overwrite.value }}</div>
+          </div>
+        {% elsif product.metafields.product.description_default.value != blank %}
+          <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %}{%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+            <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+              <Tab>{{ 'products.tabs.description' | t }}</Tab>
+              <div class="tab_toggle"></div>
+            </div>
+            <div class="tab_content flex col">
+              {{ pages[product.metafields.product.description_default.value.handle].content }}
+            </div>
+          </div>
+        {% elsif tab.html != blank %}
+          <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %} {%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+            <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+              <Tab>{{ 'products.tabs.description' | t }}</Tab>
+              <div class="tab_toggle"></div>
+            </div>
+            <div class="tab_content flex col">{{ tab.html }}</div>
+          </div>
+        {% endif %}
+      {%- when 'Anwendung' -%}
+        {% unless mystery %}
+           {%- comment -%}How to Use{%- endcomment -%}
+          {% if product.metafields.product.usage_overwrite.value != blank %}
+            <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %}{%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+              <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+                <Tab>{{ 'products.tabs.how-to' | t }}</Tab>
+                <div class="tab_toggle"></div>
+              </div>
+              <div class="tab_content flex col">{{ product.metafields.product.usage_overwrite.value }}</div>
+            </div>
+          {% elsif product.metafields.product.usage_default.value != blank %}
+            <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %}{%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+              <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+                <Tab>{{ 'products.tabs.how-to' | t }}</Tab>
+                <div class="tab_toggle"></div>
+              </div>
+              <div class="tab_content flex col">
+                {{ pages[product.metafields.product.usage_default.value.handle].content }}
+              </div>
+            </div>
+          {% elsif tab.html != blank %}
+            <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %} {%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+              <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+                <Tab>{{ 'products.tabs.how-to' | t }}</Tab>
+                <div class="tab_toggle"></div>
+              </div>
+              <div class="tab_content flex col">{{ tab.html }}</div>
+            </div>
+          {% endif %}
+        {% endunless %}
+       
+      {%- when 'Inhaltsstoffe' -%}
+        {%- comment -%}Ingredients{%- endcomment -%}
+        {% if product.metafields.product.ingredients_overwrite.value != blank %}
+          <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %}{%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+            <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+              <Tab>{{ 'products.tabs.ingredients' | t }}</Tab>
+              <div class="tab_toggle"></div>
+            </div>
+            <div class="tab_content flex col">{{ product.metafields.product.ingredients_overwrite.value }}</div>
+          </div>
+        {% elsif product.metafields.product.ingredients_default.value != blank %}
+          <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %}{%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+            <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+              <Tab>{{ 'products.tabs.ingredients' | t }}</Tab>
+              <div class="tab_toggle"></div>
+            </div>
+            <div class="tab_content flex col">
+              {{ pages[product.metafields.product.ingredients_default.value.handle].content }}
+            </div>
+          </div>
+        {% elsif tab.html != blank %}
+          <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %} {%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+            <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+              <Tab>{{ 'products.tabs.ingredients' | t }}</Tab>
+              <div class="tab_toggle"></div>
+            </div>
+            <div class="tab_content flex col">
+              {% assign dynamic_products_collections = product.metafields.bundle.bundle_data.dynamic_products %}
+
+              {% for item in dynamic_products_collections %}
+                {% assign dynamic_product_id = forloop.index %}
+                <p class="ingredients_title-{{dynamic_product_id}} spacing-bottom-xs ">
+                  color {{ dynamic_product_id }}
+                </p>
+                <div class="ingredients_content-{{dynamic_product_id}} spacing-bottom-s">
+                  <p class="">
+                    {{ 'products.bundle.select_color' | t }}
+                  </p>
+                </div>
+              {% endfor %}
+              {{ ingredients }}
+            </div>
+          </div>
+        {% endif %}
+      {%- else -%}
+        {%- comment -%}Other{%- endcomment -%}
+        <div class="tab-{{forloop.index0}} {% unless forloop.last %}spacing-bottom-l{% endunless %} {%if forloop.first and template.suffix == "product_new" %}active{% endif %}">
+          <div onclick="openTab(Number('{{forloop.index0}}'))" class="tab_title flex row between">
+            <Tab>{{ tab.title }}</Tab>
+            <div class="tab_toggle"></div>
+          </div>
+          <div class="tab_content flex col">{{ tab.html }}</div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+  {% if product.metafields.product.tab_4_title.value != blank %}
+    <div class="tab-{{ tab_count | plus: 1 }} spacing-top-l ">
+      <div onclick="openTab(Number('{{ tab_count | plus: 1 }}'))" class="tab_title flex row between">
+        <Tab>{{ product.metafields.product.tab_4_title.value }}</Tab>
+        <div class="tab_toggle"></div>
+      </div>
+      <div class="tab_content flex col">{{ product.metafields.product.tab_4_content.value }}</div>
+    </div>
+  {% endif %}
+  {% if product.metafields.product.tab_5_title.value != blank %}
+    <div class="tab-{{ tab_count | plus: 2 }} spacing-top-l">
+      <div onclick="openTab(Number('{{ tab_count | plus: 2 }}'))" class="tab_title flex row between">
+        <Tab>{{ product.metafields.product.tab_5_title.value }}</Tab>
+        <div class="tab_toggle"></div>
+      </div>
+      <div class="tab_content flex col">{{ product.metafields.product.tab_5_content.value }}</div>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+    function openTab(index){
+        let tab = document.querySelector('#shopify-section-{{id}} .product_tabs .tab-'+index).classList.toggle('active');
+    }
+
+    document.querySelectorAll('a[href~="#ProductDetailsTab"]').forEach(element => {
+        element.addEventListener('click', e => {
+            e.preventDefault()
+            {% if product_tab_index != blank %}
+                openTab({{product_tab_index}})
+                document.querySelector('#ProductDetailsTab').scrollIntoView()
+            {% endif %}
+            
+        })
+    })
+</script>

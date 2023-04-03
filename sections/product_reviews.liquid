@@ -1,0 +1,307 @@
+
+
+
+{% assign id = section.id %}
+<style>
+    #shopify-section-{{id}} {
+        border-top: 4px solid #e8e8e8;
+    }
+    #shopify-section-{{id}} .jdgm-rev-widg{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 80px;
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+        font-family: 'Apercu Pro Regular', sans-serif;
+        font-weight: {{ settings.text_font.weight }};
+    }
+    #shopify-section-{{id}} .jdgm-rev-widg__header{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    #shopify-section-{{id}} .jdgm-rev-widg__body{
+        grid-column: 2 / span 2;
+        padding-top: 80px;
+    }
+    #shopify-section-{{id}} .jdgm-sort-dropdown-wrapper{
+        position: absolute;
+        right: -80px;
+        top: 0;
+        transform: translateX(100%);
+    }
+    #shopify-section-{{id}} .jdgm-sort-dropdown, #shopify-section-{{id}} .jdgm-write-rev-link{
+        padding: 8px 16px;
+        margin: 0;
+        border: 1px solid transparent;
+        text-align: center;
+        cursor: pointer;
+        background-color: #ffffff;
+        color: #333333;
+        border-color: #333333;
+        line-height: 125%;
+        padding: 9px 16px;
+        font-size: 16px;
+        font-weight: 400;
+        padding-right: 30px;
+        max-width: unset;
+        font-family: 'Apercu Pro Regular', sans-serif;
+        font-weight: {{ settings.text_font.weight }};
+    }
+    #shopify-section-{{id}} .jdgm-write-rev-link{
+        background-color: #333333;
+        color: #ffffff;
+        border-color: #333333;
+        width: 100%;
+    }
+    #shopify-section-{{id}} .jdgm-sort-dropdown-arrow{
+        border: none;
+        width: 10px;
+        height: 10px;
+        transform-origin: center;
+        transform: translate(-9px,-7px) rotate(45deg);
+        border-right: 1px solid #333333;
+        border-bottom: 1px solid #333333;
+        margin-left: -30px;
+        pointer-events: none;
+    }
+    #shopify-section-{{id}} .jdgm-widget-actions-wrapper{
+        order: 1;
+        display: flex;
+    }
+    #shopify-section-{{id}} .jdgm-histogram{
+        margin: 0;
+        padding: 0;
+        padding-bottom: 20px;
+        border: none;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__star .jdgm-star{
+        display: none !important;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row{
+        display: flex;
+        font-family: 'Apercu Pro Regular', sans-serif;
+        font-weight: {{ settings.text_font.weight }};
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:not(.jdgm-histogram__clear-filter){
+        display: grid;
+        grid-template-columns: 20px 1fr 30px;
+        column-gap: 5px;
+        align-items: center;
+        font-size: 14px;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:not(.jdgm-histogram__clear-filter) > div{
+        margin: 0;
+        width: 100%;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__bar{
+        height: 5px;
+        box-shadow: none;
+        background-color: #0001;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__bar .jdgm-histogram__bar-content{
+        background-color: black;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__frequency{
+        display: flex;
+        justify-content: flex-end;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__percentage{
+        display: none;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:nth-child(1) .jdgm-histogram__star::before{
+        content: '5';
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:nth-child(2) .jdgm-histogram__star::before{
+        content: '4';
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:nth-child(3) .jdgm-histogram__star::before{
+        content: '3';
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:nth-child(4) .jdgm-histogram__star::before{
+        content: '2';
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:nth-child(5) .jdgm-histogram__star::before{
+        content: '1';
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row:not([data-frequency="0"]) .jdgm-histogram__frequency{
+        text-decoration: underline;
+    }
+    #shopify-section-{{id}} .jdgm-histogram__row.jdgm-histogram__clear-filter{
+        margin: 0;
+        padding: 0;
+        margin-top: 10px;
+        height: unset;
+    }
+    #shopify-section-{{id}} .jdgm-rev-widg__summary{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 20px;
+    }
+    #shopify-section-{{id}} .jdgm-rev-widg__summary .jdgm-rev-widg__summary-stars{
+        order: 1;
+    }
+    #shopify-section-{{id}} .jdgm-rev-widg__header .jdgm-rev-widg__title{
+        font-weight: 400;
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+    #shopify-section-{{id}} .jdgm-rev__header{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding-bottom: 20px;
+        margin: 20px 0 0 0;
+    }
+    #shopify-section-{{id}} .jdgm-rev__header .jdgm-rev__icon{
+        display: none;
+    }
+    #shopify-section-{{id}} .jdgm-rev__header .jdgm-rev__timestamp,
+    #shopify-section-{{id}} .jdgm-rev__header .jdgm-rev__rating {
+        position: relative;
+    }
+    #shopify-section-{{id}} .jdgm-review-widget:not(.jdgm-review-widget--medium) .jdgm-rev-widg__sort-wrapper {
+        position: unset;
+    }
+    #shopify-section-{{id}} .jdgm-rev__header .jdgm-rev__timestamp{
+        margin: 0;
+        padding-bottom: 5px;
+    }
+    #shopify-section-{{id}} .jdgm-rev__rating{
+        margin: 0;
+        padding-bottom: 5px;
+        order: 1;
+    }
+    #shopify-section-{{id}} .jdgm-rev__author-wrapper{
+        order: 2;
+    }
+    #shopify-section-{{id}} .jdgm-rev__reply{
+        border: none;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+    }
+    #shopify-section-{{id}} .jdgm-rev__reply-content{
+        padding-bottom: 20px;
+        padding-top: 0;
+    }
+    #shopify-section-{{id}} .jdgm-rev__replier-wrapper{
+        padding-bottom: 20px;
+        margin: 0;
+        padding-top: 20px;
+    }
+    #shopify-section-{{id}} .jdgm-rev:last-child{
+        border-bottom: 1px solid #eee;
+    }
+    #shopify-section-{{id}} .jdgm-form-wrapper, #shopify-section-{{id}} .jdgm-form-dynamic-wrapper{
+        grid-column: 1 / span 3;
+    }
+    @media (max-width: {{settings.breakpoint_medium}}px) {
+        #shopify-section-{{id}} .jdgm-rev-widg__sort-wrapper{
+            display: none;
+        }
+        #shopify-section-{{id}} .jdgm-rev-widg__title, #shopify-section-{{id}} .jdgm-rev-widg__summary, #shopify-section-{{id}} .jdgm-widget-actions-wrapper{
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translateX(100%);
+            width: calc(100vw - {{ settings.site_gutter | times: 2.0 | append: 'px' }});
+        }
+        #shopify-section-{{id}} .jdgm-rev-widg__summary{
+            top: 60px;
+        }
+        #shopify-section-{{id}} .jdgm-rev-widg__body{
+            grid-column: 2 / span 2;
+            padding-top: 120px;
+        }
+        #shopify-section-{{id}} .jdgm-histogram{
+            display: none;
+        }
+        #shopify-section-{{id}} .jdgm-widget-actions-wrapper{
+            top: unset;
+            bottom: 0;
+            transform: translate(100%, 100%);
+        }
+        #shopify-section-{{id}} .jdgm-rev-widg__header{
+            width: 0;
+        }
+        #shopify-section-{{id}} .jdgm-rev-widg{
+            grid-template-columns: 0px 1fr 1fr;
+            column-gap: 0;
+            padding-bottom: 40px;
+        }
+    }
+    @media (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{id}} .jdgm-rev-widg__title, #shopify-section-{{id}} .jdgm-rev-widg__summary, #shopify-section-{{id}} .jdgm-widget-actions-wrapper{
+            width: calc(100vw - {{ settings.site_gutter_mobile | times: 2.0 | append: 'px' }});
+        }
+    }
+</style>
+
+<div class="page-width spacing-top-xl spacing-bottom-xl">
+    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', removeFrequencyBrackets);
+    document.addEventListener('bc_reduce_duplicate_button', moveJdgmForm );
+
+    function moveJdgmForm() {
+        let jdgmForm = document.querySelector('#shopify-section-{{ id }} .jdgm-form-wrapper');
+        let jdgmDynamic = document.querySelector('#shopify-section-{{ id }} .jdgm-form-dynamic-wrapper');
+        let jdgmWrapper = document.querySelector('#shopify-section-{{ id }} .jdgm-rev-widg');
+        if (jdgmForm != undefined && jdgmDynamic != undefined && jdgmWrapper != undefined) {
+            jdgmWrapper.childNodes[0].parentNode.appendChild(jdgmForm.childNodes[0].parentNode);
+            jdgmWrapper.childNodes[0].parentNode.appendChild(jdgmDynamic.childNodes[0].parentNode);
+        }
+    }
+
+    function removeFrequencyBrackets(){
+        let frequencies = document.querySelectorAll('#shopify-section-{{id}} .jdgm-histogram__frequency');
+        frequencies.forEach(frequence => {
+            let innerHtml = frequence.innerHTML;
+            innerHtml = innerHtml.replace('(', '');
+            innerHtml = innerHtml.replace(')', '');
+            frequence.innerHTML = innerHtml;
+        });
+    }
+    function observeJDGM () {
+        var container = document.querySelector('#judgeme_product_reviews');
+        var config = { childList: true, subtree: true }
+
+        if ( !!container ) {
+            var observer = new MutationObserver( function ( mutations ) {
+                mutations.forEach(function ( mutation ) {
+                    if ( mutation.addedNodes ) {
+                        let count_action = document.querySelectorAll('.jdgm-widget-actions-wrapper');
+                        if ( !!count_action && count_action.length > 1 ) {
+                            for ( var i = 0; i < count_action.length -1; i++ ) {
+                                count_action[ i ].style.display = 'none';
+                            }
+                        } else if ( !!count_action && count_action.length === 1 ) {
+                            observer.disconnect();
+                            document.dispatchEvent( new Event( 'bc_reduce_duplicate_button') );
+                        }
+                    }
+                })
+            });
+            observer.observe( container, config );
+        }
+    }
+
+    document.addEventListener('jdgm.doneSetup', function(){
+        observeJDGM();
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Product Reviews",
+    "presets": [
+        {
+            "name": "Product Reviews"
+        }
+    ]
+}
+{% endschema %}

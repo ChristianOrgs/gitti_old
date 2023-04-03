@@ -1,0 +1,50 @@
+{% liquid 
+  echo '{'
+  assign first = true
+  for line_item in cart.items
+    if line_item.properties['_presentment_money_compared_at_price'] == blank and line_item.variant.compare_at_price != blank
+      assign set_compare_at_price = true
+    else
+      assign set_compare_at_price = false
+    endif
+    if line_item.properties['_presentment_money_compared_at_price_currency'] == blank
+      assign set_compare_at_price_currency = true
+    else
+      assign set_compare_at_price_currency = false
+    endif
+    if set_compare_at_price or set_compare_at_price_currency
+      unless first
+        echo ','
+      endunless
+      echo '"' | append: line_item.key | append: '": {'
+        echo '"quantity": ' | append: line_item.quantity | append: ','
+        echo '"properties": {'
+          for property in line_item.properties
+            assign property_first = property | first
+            assign property_last = property | last
+            echo '"' | append: property_first | append: '": "' | append: property_last | append: '"'
+            unless forloop.last
+              echo ','
+            endunless
+          endfor
+          if set_compare_at_price
+            if line_item.properties != blank
+              echo ','
+            endif
+            assign compare_at_price = line_item.variant.compare_at_price | json
+            echo '"_presentment_money_compared_at_price": ' | append: compare_at_price
+          endif
+          if set_compare_at_price_currency
+            if line_item.properties != blank or set_compare_at_price
+              echo ','
+            endif
+            assign compare_at_price_currency = cart.currency.iso_code | json
+            echo '"_presentment_money_compared_at_price_currency": ' | append: compare_at_price_currency
+          endif
+        echo '}'
+      echo '}'
+      assign first = false
+    endif
+  endfor 
+  echo '}'
+%}

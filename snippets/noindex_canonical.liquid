@@ -1,0 +1,29 @@
+{% liquid
+    assign page_type = request.page_type
+
+    assign bc_noindex = false
+
+    case page_type
+        when "product"
+            assign pt_object = product
+        when "collection"
+            assign pt_object = collection
+        when "page"
+            assign pt_object = page
+        when "article"
+            assign pt_object = article
+        else
+        assign pt_object = false
+    endcase
+
+    if pt_object != false
+        if pt_object.metafields.bc_seo.noindex == true
+            assign bc_noindex = true
+        endif
+    endif
+%}
+{% if bc_noindex == true %}
+    <meta name="robots" content="noindex">
+{% else %}
+    <link rel="canonical" href="{{ canonical_url }}">
+{% endif %}

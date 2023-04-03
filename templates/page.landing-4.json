@@ -1,0 +1,187 @@
+{
+  "sections": {
+    "page_landing": {
+      "type": "page_landing",
+      "blocks": {
+        "8d11b6d4-a184-4757-8572-f9a3c726ba12": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Weißt du eigentlich, was in deinen Beauty-Produkten enthalten ist?",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>Wenn dir Inhaltsstoffe genauso wichtig sind wie uns, dann teste jetzt dein Wissen. Melde dich dafür zu unserem Newsletter an und erhalte Zugang zu unserem Quiz per E-Mail. Und pssst, außerdem wartet ein Willkommensgeschenk auf dich.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "786aaeed-aaa5-43ad-9501-781f6c75e49c": {
+          "type": "html_content",
+          "settings": {
+            "custom_html": "<br>\n<div class=\"klaviyo-form-Y3zHXh\"><\/div>\n<br>",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "040c945d-e8a3-4a18-88ed-8205448bbc8e": {
+          "type": "html_content",
+          "disabled": true,
+          "settings": {
+            "custom_html": "<p>Unsere Teilnahmebedingungen für das Gewinnspiel findest du <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/teilnahmebedingungen-gewinnspiel\"><span style=\"text-decoration: underline;\">hier<\/span><\/a>.<\/p>",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "6e6cdc7e-eb60-4fb4-a5aa-94636047b82f": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "richtext": "<p>Das Gewinnspiel läuft bis zum 31.10.2021. Die Gewinner:innen werden am Folgetag von uns per E-Mail benachrichtigt.<\/p>",
+            "text-color": "",
+            "padding-top": 0,
+            "padding-bottom": 5
+          }
+        },
+        "6ddfcbb3-2a04-4bdc-bce7-3f6baef16cf7": {
+          "type": "d_content_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "image_left": "shopify:\/\/shop_images\/gitti_shop_collection_Makeupsets_2_2.jpg",
+            "image_width_left": 90,
+            "image_shape_left": "square",
+            "image_focal_point_left": "",
+            "image_position_left": "center",
+            "image_fit_left": "cover",
+            "image_spacing_between_left": "",
+            "image_right": "shopify:\/\/shop_images\/LandingPage_03.png",
+            "image_width_right": 65,
+            "image_shape_right": "",
+            "image_focal_point_right": "",
+            "image_position_right": "center",
+            "image_fit_right": "cover",
+            "image_spacing_between_right": "",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "shift_images": false,
+            "change_images_on_mobile": false,
+            "text_class": "h2",
+            "text_tag": "p"
+          }
+        },
+        "b0f611d6-d5e7-4192-b356-993645abe0c1": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "m",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_shop_HOMEPAGE-HEADER-LONG_visionist.jpg",
+            "image_width": 35,
+            "image_shape": "four_by_three",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 75,
+            "image_shape_mobile": "four_by_three",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "8d11b6d4-a184-4757-8572-f9a3c726ba12",
+        "786aaeed-aaa5-43ad-9501-781f6c75e49c",
+        "040c945d-e8a3-4a18-88ed-8205448bbc8e",
+        "6e6cdc7e-eb60-4fb4-a5aa-94636047b82f",
+        "6ddfcbb3-2a04-4bdc-bce7-3f6baef16cf7",
+        "b0f611d6-d5e7-4192-b356-993645abe0c1"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "page_landing"
+  ]
+}

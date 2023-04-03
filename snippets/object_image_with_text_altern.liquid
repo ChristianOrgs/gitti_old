@@ -1,0 +1,134 @@
+<style>
+    #shopify-section-{{object.id}}{
+        background-color:{{object.settings.background_color}};
+        background: {{object.settings.background_color}};
+        background: linear-gradient(0deg, {{object.settings.background_color}} 0%, {{object.settings.background_color}} {{object.settings.split_at}}%, {{object.settings.background_color_2}} {{object.settings.split_at}}%, {{object.settings.background_color_2}} 100%);
+    {% if object.settings.overlay_header %}
+        margin-top:-109px;
+        padding-top:109px;
+    {% endif %}
+    }
+
+
+
+    @media only screen and (min-width: {{settings.breakpoint_small | plus: 1}}px){
+        #shopify-section-{{object.id}} .dislocated{
+            justify-content: inherit;
+            margin-top: 200px;
+        }
+        #shopify-section-{{object.id}} .mobile-hero.page-width{
+            padding-right: initial;
+            padding-left: initial;
+
+        }
+
+    }
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{object.id}} .no_padding_mobile {
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+
+        }
+    {% if object.settings.is_hero  %}
+        #shopify-section-{{object.id}} > .page-width{
+            padding-right: initial;
+            padding-left: initial;
+
+        }
+    {% endif %}
+    }
+    /* TABS */
+    {% if object.settings.tab_container != blank %}
+    .{{object.settings.tab_container | remove: " " | handleize}}_bc_tabs{
+        display:none;
+    }
+    {% endif %}
+    #shopify-section-{{object.id}} .bc_active_tab_info{
+        display: block;
+    }
+    #shopify-section-{{object.id}} .is_sticky{
+        position: sticky;
+        top: 0;
+    }
+
+
+    {}
+</style>
+<div class="image_with_text_alt spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}} {% if object.settings.tab_container != blank %}{{object.settings.tab | remove: " " | handleize}}_tab {{object.settings.tab_container | remove: " " | handleize}}_bc_tabs{% endif %}">
+
+    {% if object.settings.smaller %}
+    <div class="custom_wrapper grid medium-up_col-11 col-gap">
+        <div class="grid-item medium-up_col-start-2 medium-up_col-span-9">
+            {% endif %}
+
+
+
+
+
+
+
+
+            <div class="grid {% unless object.settings.no_image %}col-2{% else %}col-1{% endunless %} small_col-1 {% unless object.settings.no_image %}small_row-gap{% endunless %}">
+
+                <div class="grid-item {{object.settings.layout}} {{object.settings.layout_mobile}} {% if object.settings.layout == "medium-up_col-start-1" %}no_padding_mobile margin-right-{{object.settings.image_spacing_between_left}}{% else %}no_padding_mobile margin-left-{{object.settings.image_spacing_between_left}}{% endif %}">
+
+                    {% if object.settings.image != nil %}
+                        <div class="grid {% if object.settings.is_sticky %} is_sticky {% endif %} only_medium-up" style="justify-items: {{object.settings.image_position}};">
+                            {% capture picture %}{%render 'image_croper', image: object.settings.image, shape: object.settings.image_shape, crop_position: object.settings.image_focal_point%}{% endcapture %}
+                            <div class="image_wrapper" style="width: {{object.settings.image_width}}%;">
+                            {% if object.settings.image_link != blank %}<a href="{{object.settings.image_link }}">{% endif %}
+                                    <img class="image" src="{{picture}}" style="width: 100%; object-fit: {{object.settings.image_fit}};">
+                                    {% if object.settings.image_link != blank %}</a>{% endif %}
+                            </div>
+                        </div>
+                        <div class="grid only_small" style="justify-items: {{object.settings.image_position_mobile}};">
+                            {% capture picture_mobile %}{%render 'image_croper', image: object.settings.image, shape: object.settings.image_shape_mobile, crop_position: object.settings.image_focal_point_mobile%}{% endcapture %}
+                            <div class="image_wrapper" style="width: {{object.settings.image_width_mobile}}%;">
+                            {% if object.settings.image_link != blank %}<a href="{{object.settings.image_link }}">{% endif %}
+                                    <img class="image" src="{{picture_mobile}}" style="width: 100%; object-fit: {{object.settings.image_fit_mobile}};">
+                                    {% if object.settings.image_link != blank %}</a>{% endif %}
+
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="text grid-item  flex col {{object.settings.text_align}} {{object.settings.vertical_align}} {% if object.settings.dislocate_text %}dislocated{% endif %} {% if object.settings.layout == "medium-up_col-start-1" %}no_padding_mobile spacing-left-{{object.settings.image_spacing_between_right}}{% else %}no_padding_mobile spacing-right-{{object.settings.image_spacing_between_right}}{% endif %}">
+                    <div class="{% if object.settings.is_hero  %}mobile-hero page-width{% endif %}">
+                        {% if object.settings.preheading != blank %}
+                        <{{object.settings.preheading_tag}} class="text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.preheading_spacing_bottom}} {{object.settings.preheading_weight_class}} {{object.settings.preheading_class}}">{{ object.settings.preheading | escape }}</{{object.settings.preheading_tag}}>
+                    {% endif %}
+                    {% if object.settings.heading != blank %}
+                    <{{object.settings.heading_tag}} class="text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.heading_spacing_bottom}} {{object.settings.heading_weight_class}} {{object.settings.heading_class}}">{{ object.settings.heading | escape }}</{{object.settings.heading_tag}}>
+                {% endif %}
+                {% if object.settings.text != blank %}
+                <{{object.settings.text_tag}} class="text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.text_spacing_bottom}} {{object.settings.text_weight_class}} {{object.settings.text_class}}">{{ object.settings.text | remove: '<p>' | remove: '</p>' }}</{{object.settings.text_tag}}>
+            {% endif %}
+            {% if object.settings.text_split != blank %}
+            <{{object.settings.text_tag}} class="text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.text_spacing_bottom}} {{object.settings.text_weight_class}} {{object.settings.text_class}} only_medium-up">{{ object.settings.text_split | remove: '<p>' | remove: '</p>' }}</{{object.settings.text_tag}}>
+        {% endif %}
+        {% if object.settings.button_label != blank and object.settings.button_link != blank %}
+            <a href="{{object.settings.button_link}}" class="{{object.settings.button_class}}">{{object.settings.button_label}}</a>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="text grid-item flex col {{object.settings.text_align}} {{object.settings.vertical_align}} only_small {% if object.settings.dislocate_text %}dislocated{% endif %} {% if object.settings.layout == "medium-up_col-start-1" %}no_padding_mobile spacing-left-{{object.settings.image_spacing_between_right}}{% else %}no_padding_mobile spacing-right-{{object.settings.image_spacing_between_right}}{% endif %}">
+    <div class="{% if object.settings.is_hero  %}mobile-hero page-width{% endif %}">
+        {% if object.settings.text_split != blank %}
+        <{{object.settings.text_tag}} class="text-align-{{object.settings.text_align}} spacing-bottom-{{object.settings.text_spacing_bottom}} {{object.settings.text_weight_class}} {{object.settings.text_class}} ">{{ object.settings.text_split | remove: '<p>' | remove: '</p>' }}</{{object.settings.text_tag}}>
+    {% endif %}
+</div>
+</div>
+
+</div>
+{% if object.settings.smaller %}
+    </div>
+    </div>
+{% endif %}
+</div>
+

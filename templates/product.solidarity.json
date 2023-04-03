@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "product_template_solidarity_default_expanded": {
+      "type": "product_template_solidarity_default_expanded",
+      "settings": {}
+    },
+    "product_recommended_products": {
+      "type": "product_recommended_products",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Das könnte dir auch gefallen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    }
+  },
+  "order": [
+    "product_template_solidarity_default_expanded",
+    "product_recommended_products"
+  ]
+}

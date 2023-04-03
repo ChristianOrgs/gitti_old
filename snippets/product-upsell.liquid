@@ -1,0 +1,57 @@
+{% comment %} Fill product rows if there is Featured image or product {% endcomment %}
+
+  {% assign on_sale = false %}
+  {% if product.compare_at_price > product.price %}
+    {% assign on_sale = true %}
+    {% assign on_sale_class = ' is-sale' %}
+  {% endif %}
+
+  {% assign sold_out = true %}
+  {% unless product.tags contains 'ausverkauft' %}
+    {% if product.available %}
+      {% assign sold_out = false %}
+    {% endif %}
+  {% endunless %}
+  <h5 class="upsell-headline">{{ upsell_headline }}</h5>
+  {% if upsell_subline %}
+    <p class="upsell-subline">{{ upsell_subline }}</p>
+  {% endif %}
+  <div class="product-upsell-inner">
+    <a class="product-thumbnail lazyload fade-in" href="{{ product.url }}" data-bgset="{% render 'bgset', image: product.featured_image %}" data-sizes="auto" data-parent-fit="cover"></a>
+    <div class="product-upsell-info">
+      {% form 'product', product, class:'productForm', data-color_swatches: color_swatches %}
+          <div class="upsell-info-wrapper">
+            <a class="h3" href="{{ product.url }}">{{ product.title }}</a>
+            <p class="u-margin-0">{{ product.metafields.custom_fields["subline_collection"] }}</p>
+            <p class="product-price u-margin-0" data-price="{{ product.price }}">
+              <span class="">{{ product.price | money }}</span>
+            </p>
+          </div>
+          {% if on_sale == true %}
+            <p class= "price button sale {% if settings.price_hover %}price--hover{% endif %}">
+              {{button_text}} -
+              <strike>{{ product.compare_at_price | money }}</strike>&nbsp;
+              {{ product.price | money }}
+            </p>
+          {% else %}
+            <p class="productForm-submit js-productForm-submit price button add-to-cart-btn-upsell js-no-popup {% if settings.price_hover %}price--hover{% endif %}" type="submit" name="checkout" data-handle="{{product.handle}}" data-id="{{product.id}}">{{ 'products.form.submit' | t }}</p>
+          {% endif %}
+
+        <select name="id" style="display:none;">
+          {% for variant in product.variants %}
+            <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}" data-sku="{{variant.sku}}">
+            {{ variant.title }} - {{ variant.price | money | strip_html }}
+            </option>
+          {% endfor %}
+        </select>
+      {% endform %}
+    </div>
+    <script type="application/json" class = "product-json">
+      {{ product | json }}
+    </script>
+  </div>
+  {% if content %}
+    <p class="upsell-content">{{ content }}</p>
+  {% endif %}
+
+

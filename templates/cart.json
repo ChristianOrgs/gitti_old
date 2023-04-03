@@ -1,0 +1,553 @@
+{
+  "sections": {
+    "cart_free_shipping_bar": {
+      "type": "cart_free_shipping_bar",
+      "blocks": {
+        "9be8fb37-72c0-49d7-82cf-fdabbd661283": {
+          "type": "shipping_bar",
+          "settings": {
+            "whitelist": "DE, AT",
+            "blacklist": "",
+            "text": "Noch __price_for_free_shipping__ bis zum kostenfreien Versand.",
+            "text_free": "Großartig! Du erhältst kostenfreien Versand.",
+            "free_shipping_price": 50
+          }
+        },
+        "ee83c997-5797-4084-a549-21260e8e0f41": {
+          "type": "shipping_bar",
+          "settings": {
+            "whitelist": "CH",
+            "blacklist": "",
+            "text": "Noch __price_for_free_shipping__ bis zum kostenfreien Versand.",
+            "text_free": "Großartig! Du erhältst kostenfreien Versand.",
+            "free_shipping_price": 64.9
+          }
+        },
+        "589ec0d3-d780-427b-8806-16a9c28c3cf1": {
+          "type": "shipping_bar",
+          "settings": {
+            "whitelist": "FR",
+            "blacklist": "",
+            "text": "Plus que __price_for_free_shipping__ pour bénéficier de la livraison gratuite.",
+            "text_free": "Super ! Vous êtes désormais éligible à la livraison gratuite.",
+            "free_shipping_price": 50
+          }
+        },
+        "49460d16-6ef5-4645-98c0-ad2863a9136a": {
+          "type": "shipping_bar",
+          "settings": {
+            "whitelist": "IT",
+            "blacklist": "",
+            "text": "Spendi __price_for_free_shipping__ in più per la spedizione gratuita.",
+            "text_free": "Ottimo! Vi siete qualificati per la spedizione gratuita.",
+            "free_shipping_price": 30
+          }
+        },
+        "a4f940f2-427e-44c5-b2c0-c481e9093b09": {
+          "type": "shipping_bar",
+          "settings": {
+            "whitelist": "",
+            "blacklist": "CH, FR, DE, IT, AT, DK",
+            "text": "Spend __price_for_free_shipping__ more for free shipping.",
+            "text_free": "Great! You’ve qualified for free shipping.",
+            "free_shipping_price": 50
+          }
+        },
+        "f28eaa2f-2372-445a-90fc-9e3144c69522": {
+          "type": "shipping_bar",
+          "settings": {
+            "whitelist": "DK",
+            "blacklist": "",
+            "text": "Spend __price_for_free_shipping__ more for free shipping.",
+            "text_free": "Great! You’ve qualified for free shipping.",
+            "free_shipping_price": 390
+          }
+        }
+      },
+      "block_order": [
+        "9be8fb37-72c0-49d7-82cf-fdabbd661283",
+        "ee83c997-5797-4084-a549-21260e8e0f41",
+        "589ec0d3-d780-427b-8806-16a9c28c3cf1",
+        "49460d16-6ef5-4645-98c0-ad2863a9136a",
+        "a4f940f2-427e-44c5-b2c0-c481e9093b09",
+        "f28eaa2f-2372-445a-90fc-9e3144c69522"
+      ],
+      "settings": {
+        "bar_width": 500,
+        "color_background": "#f3f3f3",
+        "color_text": "#000000",
+        "color_bar_back": "#ffffff",
+        "color_bar_front": "#000000",
+        "color_background_mobile": "#f3f3f3",
+        "color_text_mobile": "#000000",
+        "color_bar_back_mobile": "#ffffff",
+        "color_bar_front_mobile": "#333333"
+      }
+    },
+    "multi_stage_discount": {
+      "type": "multi_stage_discount",
+      "blocks": {
+        "486cd4f2-d350-4ccf-9ba1-857f13ada988": {
+          "type": "stage",
+          "settings": {
+            "title": "1 Produkt###break###-10%",
+            "activation_price": 1,
+            "discount": 10
+          }
+        },
+        "0ce56941-59c2-486c-9b8a-30afadcaecaf": {
+          "type": "stage",
+          "settings": {
+            "title": "2 Produkte###break###-15%",
+            "activation_price": 2,
+            "discount": 15
+          }
+        },
+        "7b638be7-ed74-4fa9-b4d7-4f0d0395ad3b": {
+          "type": "stage",
+          "settings": {
+            "title": "3 Produkte###break###-20%",
+            "activation_price": 3,
+            "discount": 20
+          }
+        },
+        "8fe95dd0-8784-474c-9649-4096ef6f52cc": {
+          "type": "stage",
+          "settings": {
+            "title": "4 Produkte###break###-25%",
+            "activation_price": 4,
+            "discount": 25
+          }
+        },
+        "f3724a9d-a885-4a5a-94ee-e28ee4d8d876": {
+          "type": "stage",
+          "settings": {
+            "title": "5 Produkte###break###-30%",
+            "activation_price": 5,
+            "discount": 30
+          }
+        }
+      },
+      "block_order": [
+        "486cd4f2-d350-4ccf-9ba1-857f13ada988",
+        "0ce56941-59c2-486c-9b8a-30afadcaecaf",
+        "7b638be7-ed74-4fa9-b4d7-4f0d0395ad3b",
+        "8fe95dd0-8784-474c-9649-4096ef6f52cc",
+        "f3724a9d-a885-4a5a-94ee-e28ee4d8d876"
+      ],
+      "settings": {
+        "enabled": false,
+        "enabled_qty_discount": false,
+        "background_color": "#cedacf",
+        "color": "#000000",
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Dein großes gitti Geburtstagsgeschenk.",
+        "sub_heading": "Kaufe noch 1 Produkt und du bekommst --discount--%.",
+        "default_discount": 0,
+        "default_title": "20% auf alles",
+        "inactive_stage_icon": "<svg id=\"Ebene_1\" data-name=\"Ebene 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 107.9 135.08\"><defs><style>.cls-1{fill:none;}.cls-2{fill:none;}<\/style><\/defs><path class=\"cls-1\" d=\"M94.16,58.21H82.37a14,14,0,0,0-15.92-23,13.7,13.7,0,0,0-5.38,6.46L54.17,56.2,47.31,41.77A14,14,0,1,0,26,58.21H14.19a1.5,1.5,0,0,0-1.5,1.5v73.87a1.5,1.5,0,0,0,1.5,1.5h80a1.5,1.5,0,0,0,1.5-1.5V59.71a1.5,1.5,0,0,0-1.5-1.5Zm-40,3h7.7v70.87H46.49V61.21Zm9.67-18.34a10.81,10.81,0,0,1,4.24-5.13A11,11,0,1,1,73.58,58H73.4l-16.84.19ZM25.07,41.08A11,11,0,0,1,44.56,43l7.23,15.22L35,58h-.17a10.87,10.87,0,0,1-6.37-1.73,11,11,0,0,1-3.4-15.18ZM15.69,61.21h27.8v70.87H15.69Zm77,70.87H64.85V61.21H92.66Z\" transform=\"translate(0 0)\"><\/path><rect class=\"cls-2\" x=\"52.8\" width=\"3\" height=\"19.08\"><\/rect><rect class=\"cls-2\" x=\"94.16\" y=\"46.08\" width=\"13.74\" height=\"3\"><\/rect><polygon class=\"cls-2\" points=\"13.74 49.08 0 49.08 0 46.08 13.71 46.08 13.74 49.08\"><\/polygon><polygon class=\"cls-2\" points=\"25.79 26.28 15.9 16.39 18 14.27 27.89 24.16 25.79 26.28\"><\/polygon><rect class=\"cls-2\" x=\"80.72\" y=\"19.87\" width=\"13.71\" height=\"3\" transform=\"translate(10.54 68.18) rotate(-45)\"><\/rect><\/svg>",
+        "active_stage_icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 107.87 135.08\"><g id=\"Ebene_2\" data-name=\"Ebene 2\"><path d=\"M94.16,58.21H82.37a14,14,0,0,0-15.92-23,13.68,13.68,0,0,0-5.38,6.46l-6.9,14.53L47.31,41.77a14,14,0,0,0-16-8.44A14,14,0,0,0,26,58.21H14.19a1.5,1.5,0,0,0-1.5,1.5v73.87a1.5,1.5,0,0,0,1.5,1.5h80a1.5,1.5,0,0,0,1.5-1.5V59.71A1.5,1.5,0,0,0,94.16,58.21Zm-40,3h7.7v70.87H46.49V61.21Zm9.67-18.34a10.85,10.85,0,0,1,4.24-5.13A11,11,0,0,1,74,36a10.69,10.69,0,0,1,2.37.26A11,11,0,0,1,73.58,58H73.4l-16.84.19ZM25.07,41.08A11,11,0,0,1,44.56,43l7.23,15.22L35,58h-.17a10.87,10.87,0,0,1-6.37-1.73A11,11,0,0,1,25.07,41.08ZM15.69,61.21h27.8v70.87H15.69Zm77,70.87H64.85V61.21H92.66Zm-36.89-113h-3V0h3Zm52.1,27v3H94.16v-3Zm-94.16,3H0v-3H13.71Zm12.05-22.8-9.89-9.89L18,14.27l9.89,9.89Zm58,1-2.12-2.12,9.69-9.7,2.12,2.13Z\"><\/path><\/g><\/svg>",
+        "checkout_note_container": ".discount_note",
+        "checkout_note_text": "Du hast dir den Rabatt von --discount-- gesichert!"
+      }
+    },
+    "cart_template": {
+      "type": "cart_template",
+      "settings": {
+        "spacing_top": "xs",
+        "additional_checkout_text": "Weitere Bezahlmöglichkeiten",
+        "spacing_bottom": "xs",
+        "show_payment_options": false,
+        "enabled_payment_types": "american_express,apple_pay,bitcoin,google_pay,klarna,maestro,master,paypal,shopify_pay,sofort,visa",
+        "title": "Voraussichtliches Zustelldatum",
+        "de_min_delay": 3,
+        "de_max_delay": 3,
+        "at_ch_li_min_delay": 3,
+        "at_ch_li_max_delay": 3,
+        "others_1_min_delay": 3,
+        "others_1_max_delay": 4,
+        "others_2_min_delay": 3,
+        "others_2_max_delay": 5,
+        "text": "Zwischen --minimum_shipping_date-- und --maxiumum_shipping_date--"
+      }
+    },
+    "index_featured_collection": {
+      "type": "index_featured_collection",
+      "blocks": {
+        "b756abdc-c361-49ff-9a47-6022e75a0a86": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "cart-recommendations",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "b756abdc-c361-49ff-9a47-6022e75a0a86"
+      ],
+      "custom_css": [
+        ".in-view {margin-right: 0px;}"
+      ],
+      "settings": {
+        "spacing_top": "xl",
+        "spacing_bottom": "xl",
+        "heading": "Das könnte dir auch gefallen.",
+        "spacing_bottom_heading": "m",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Mach deine Bestellung komplett und füge einen unserer Favoriten deinem Warenkorb hinzu",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "",
+        "button_class": "btn--tertiary",
+        "collections": [],
+        "product_button_class": "btn--primary",
+        "product_button_class_mobile": "btn--secondary",
+        "style": "slider"
+      }
+    },
+    "16613365306f32e0ae": {
+      "type": "index_triple_usp",
+      "disabled": true,
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "tag": "h1",
+        "class": "h1",
+        "weight_class": "",
+        "link_1": "",
+        "icon_1": "",
+        "text_1": "",
+        "link_2": "",
+        "icon_2": "performance",
+        "text_2": "",
+        "link_3": "",
+        "icon_3": "",
+        "text_3": "",
+        "custom_css": "performance"
+      }
+    },
+    "1661337748bfd6ee54": {
+      "type": "index_featured_product",
+      "disabled": true,
+      "settings": {
+        "background_color": "",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "add_to_cart_btn": true,
+        "add_to_cart_btn_mo": true,
+        "more_btn_mo": true,
+        "sub_heading": "Product.",
+        "tag_sub_heading": "h3",
+        "class_sub_heading": "h2",
+        "weight_class_sub_heading": "",
+        "spacing_bottom_sub_heading": "xs",
+        "product": "aha-nail-treatment"
+      }
+    },
+    "166133817025484e2d": {
+      "type": "index_community_testimonials",
+      "disabled": true,
+      "blocks": {
+        "26efe4d4-01d4-4dd9-80f3-dbdeafd5023f": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "",
+            "richtext_author": ""
+          }
+        },
+        "78861f19-617a-4bfd-9d85-dd51440ec12b": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "<p>love products<\/p>",
+            "richtext_author": "<p>tiffany<\/p>"
+          }
+        },
+        "ca8a807a-b53a-4fed-b42f-cfe5afab0007": {
+          "type": "testimonial",
+          "settings": {
+            "richtext": "",
+            "richtext_author": ""
+          }
+        }
+      },
+      "block_order": [
+        "26efe4d4-01d4-4dd9-80f3-dbdeafd5023f",
+        "78861f19-617a-4bfd-9d85-dd51440ec12b",
+        "ca8a807a-b53a-4fed-b42f-cfe5afab0007"
+      ],
+      "settings": {
+        "background_color": "",
+        "block_color": "",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "main_heading_spacing_top": "",
+        "main_heading_spacing_bottom": "xs",
+        "main_heading_tag": "p",
+        "main_heading_class": "h1",
+        "main_heading_weight_class": "bold",
+        "richtext": "",
+        "spacing_bottom": "",
+        "spacing_top": "",
+        "block_spacing": "",
+        "block_margin": "",
+        "image_shape": "circle",
+        "image_fit": "cover"
+      }
+    },
+    "16613382340feff9ca": {
+      "type": "index_instagram",
+      "disabled": true,
+      "blocks": {
+        "c5838492-6acf-4ca4-92b2-41be98d086bb": {
+          "type": "post",
+          "settings": {
+            "link": ""
+          }
+        },
+        "658320ff-3282-4e84-bb42-ed8dbd5ea90b": {
+          "type": "post",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c5838492-6acf-4ca4-92b2-41be98d086bb",
+        "658320ff-3282-4e84-bb42-ed8dbd5ea90b"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "166133824620102a97": {
+      "type": "maestrooo-instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 2,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": true,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "1661339238793af879": {
+      "type": "video_cta",
+      "disabled": true,
+      "settings": {
+        "video_url": "",
+        "ignore_page_width": true,
+        "video_controls": false,
+        "video_fit": "contain",
+        "height_video": 60,
+        "desktop_spacing_top": "xs",
+        "desktop_spacing_bottom": "xs",
+        "desktop_item_align": "left",
+        "desktop_overlay_position_text": "center",
+        "desktop_button_item_align": "left",
+        "hide_in_desktop": false,
+        "video_fit_mobile": "cover",
+        "mobile_height_video": 60,
+        "mobile_spacing_top": "xs",
+        "mobile_spacing_bottom": "xs",
+        "mobile_item_align": "left",
+        "mobile_button_item_align": "left",
+        "hide_in_mobile": false,
+        "preheading": "Cillum est eiusmod aliqua labore esse quis.",
+        "preheading_weight_class": "",
+        "preheading_tag": "p",
+        "class_preheading": "h4",
+        "preheading_spacing_bottom": "xs",
+        "preheading_color": "#3a3a3a",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "heading_weight_class": "",
+        "heading_class": "h4",
+        "heading_tag": "p",
+        "spacing_bottom_heading": "xs",
+        "heading_color": "#3a3a3a",
+        "text": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "text_tag": "p",
+        "text_spacing_bottom": "xs",
+        "text_color": "#3a3a3a",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn",
+        "button_backgroundcolor": "#000000",
+        "button_color": "#3a3a3a"
+      }
+    },
+    "1661339261f13c8682": {
+      "type": "index_image_with_text",
+      "disabled": true,
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "#cedacf",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-1",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/Zeichenflache_1_Kopie_4.jpg",
+        "image_shape": "square",
+        "image_fit": "contain",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading": "Veniam enim mollit amet ut mollit.",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "166133929795f82404": {
+      "type": "index_image_with_text_blocks",
+      "disabled": true,
+      "blocks": {
+        "f454740f-708e-456b-9b42-9ffdf73a60cb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Zeichenflache_1_Kopie_2.jpg",
+            "image_shape": "square",
+            "image_fit": "contain"
+          }
+        },
+        "3d2c05f2-83d3-4ca3-8dc9-5e6f229e8d77": {
+          "type": "text",
+          "settings": {
+            "text_align": "left",
+            "vertical_align": "middle",
+            "heading": "Veniam enim mollit amet ut mollit.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "<p>new innovative products&lt;br&gt;<\/p>",
+            "richtext_splitted": "",
+            "richtext_spacing_bottom": "s",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn--tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "f454740f-708e-456b-9b42-9ffdf73a60cb",
+        "3d2c05f2-83d3-4ca3-8dc9-5e6f229e8d77"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "mobile_layout_revert": false,
+        "dislocated": false
+      }
+    },
+    "1661340577bfc0d396": {
+      "type": "index_shop_the_look",
+      "disabled": true,
+      "blocks": {
+        "1a83c55d-d31a-4b0b-a823-d5250292635c": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "1a83c55d-d31a-4b0b-a823-d5250292635c"
+      ],
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Shop the look",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Tempus nulla vel tempor ante malesuada uspendisse nunc.",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_label": "Call to action",
+        "button_link": "",
+        "button_class": "btn--tertiary",
+        "products_heading": "Products in this look:",
+        "products_heading_tag": "p",
+        "products_heading_class": "h1",
+        "products_heading_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    }
+  },
+  "order": [
+    "cart_free_shipping_bar",
+    "multi_stage_discount",
+    "cart_template",
+    "index_featured_collection",
+    "16613365306f32e0ae",
+    "1661337748bfd6ee54",
+    "166133817025484e2d",
+    "16613382340feff9ca",
+    "166133824620102a97",
+    "1661339238793af879",
+    "1661339261f13c8682",
+    "166133929795f82404",
+    "1661340577bfc0d396"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "page_jobs": {
+      "type": "page_jobs",
+      "blocks": {
+        "991c1e70-93d9-43ba-a03e-15527216bae6": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "is_sticky": false,
+            "is_hero": true,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_pb_107_109_110_dennis_multicolor-2-2.jpg",
+            "image_width": 100,
+            "image_shape": "sixteen_by_nine",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Jobs at gitti",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>At gitti we aim to revolutionize the beauty industry with innovative, vegan beauty products. We reunite two concepts that the traditional beauty seems to have opposed in the last years: beauty from inside and out .   What does this mean for us?We strive for a dual power of beauty and mindfulness: we make beauty sustainable by caring for ourselves and our planet. We want to wake up this industry and offer better alternatives, because you and our plant deserve better. We know we cannot do this alone. Changing an industry requires true heroines and heroes who consciously live beauty every day and lead the way.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_class": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "991c1e70-93d9-43ba-a03e-15527216bae6"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5,
+        "subheading_jobs": "Open positions",
+        "initiative_ad_field": "<p><strong>Can’t find your position?<\/strong><br\/><br\/>Apply here:<\/p><p><br\/><a href=\"mailto:jobs@gitti.de\" title=\"mailto:jobs@gitti.de\">jobs@gitti.de<\/a><br\/><br\/><\/p>",
+        "spacing_bottom": "l",
+        "subheading_tag": "p",
+        "subheading_class": "h4",
+        "subheading_weight_class": "bold"
+      }
+    }
+  },
+  "order": [
+    "page_jobs"
+  ]
+}

@@ -1,0 +1,478 @@
+{% if section.settings.enabled %}
+    <style>
+        #shopify-section-{{section.id}}{
+            background-color:{{section.settings.background_color}};
+        }
+        #shopify-section-{{section.id}} .h6,
+        #shopify-section-{{section.id}} .p{
+            color:{{section.settings.color}};
+        }
+        #shopify-section-{{section.id}} .multi_stage_discounts_wrapper{
+            gap: 24px;
+        }
+        #shopify-section-{{section.id}} .discounts_wrapper{
+            width:100%;
+            display:grid;
+        {% assign columns = section.blocks | size %}
+
+        {% unless section.settings.enabled_qty_discount %}
+        {% assign columns = section.blocks | size | plus: 1 %}
+        {% endunless %}
+            grid-template-columns: repeat({{ columns }}, 1fr);
+        }
+        #shopify-section-{{section.id}} .discounts_heading{
+            white-space: nowrap;
+        }
+        #shopify-section-{{section.id}} .active_discount_icon,
+        #shopify-section-{{section.id}} .inactive_discount_icon{
+            width:30px;
+            height:38px
+        }
+        #shopify-section-{{section.id}} .discount.active .inactive_discount_icon{
+            display:none;
+        }
+        #shopify-section-{{section.id}} .discount:not(.active) .active_discount_icon{
+            display:none;
+        }
+        #shopify-section-{{section.id}} .discount_progress_placeholder{
+            height:4px;
+            width:100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+        }
+        #shopify-section-{{section.id}} .discount_progress_bar{
+            width:100%;
+            height:4px;
+            background-color:{{section.settings.color | color_modify: 'alpha', 0.4 }};
+        }
+        #shopify-section-{{section.id}} .discount_progress{
+            height:4px;
+            background-color: {{section.settings.color}};
+        }
+        #shopify-section-{{section.id}} .default_discount{
+            justify-self: start;
+        }
+        #shopify-section-{{section.id}} .discount{
+            justify-self: center;
+        }
+        #shopify-section-{{section.id}} .discount:last-child{
+            justify-self: end;
+        }
+        @media only screen and (max-width: {{settings.breakpoint_small}}px){
+            #shopify-section-{{section.id}} .discount_title_mobile {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+
+    {% assign cart_quantity = 0 %}
+    {% assign cart_original_price_sets = 0 %}
+
+    {% for item in cart.items %}
+        {% assign properties = item.properties | join: ';' %}
+        {% unless properties contains 'set_id' %}
+            {% assign cart_original_price_sets = cart_original_price_sets | plus: item.original_line_price %}
+        {% endunless %}
+
+        {% unless properties contains 'set' and item.gift_card %}
+            {% assign cart_quantity = cart_quantity | plus: item.quantity %}
+        {% endunless %}
+    {% endfor %}
+
+    {% assign cart_total = cart_original_price_sets | times: 1.0 | divided_by: 100.0 %}
+
+    {% assign max_activate_discount_price = 0.0  %}
+    {% assign max_activate_discount_quantiy = 0  %}
+
+    {% for block in section.blocks %}
+        {% if block.settings.activation_price > max_activate_discount_price %}
+            {% assign max_activate_discount_price = block.settings.activation_price %}
+            {% assign max_activate_discount_quantiy = block.settings.activation_price %}
+        {% endif %}
+    {% endfor %}
+
+    {% if section.settings.enabled_qty_discount %}
+        {% assign part = max_activate_discount_quantiy | times: 1.0 | divided_by: cart_quantity %}
+    {% else %}
+        {% assign part = max_activate_discount_price | times: 1.0 | divided_by: cart_total %}
+    {% endif %}
+
+    <!-- max_activate_discount_quantiy: {{ max_activate_discount_quantiy }} -->
+    <!-- cart_quantity: {{ cart_quantity }} -->
+    <!-- part: {{ part }} -->
+
+    {% assign progress = 100.0 | divided_by: part | at_most: 100.0  %}
+
+    <div class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+        <div class="flex row middle small_col small_center multi_stage_discounts_wrapper">
+            <div class="discounts_heading">
+                <p class="h6">{{section.settings.heading}}</p>
+            </div>
+
+            <div class="discounts_wrapper is-relative">
+
+                {% if section.settings.default_discount != 0 %}
+                    <div class="flex col center default_discount">
+                        <div class="flex col bottom center active_discount_icon">
+                            {% if section.settings.default_discount != 0 %}
+                                {{section.settings.active_stage_icon}}
+                            {% endif %}
+                        </div>
+
+                        <div class="discount_progress_placeholder">
+                            <div class="is-absolute discount_progress_bar">
+                                <div class="discount_progress" style="width:{{progress}}%;"></div>
+                            </div>
+                        </div>
+                        {% if section.settings.default_discount != 0 %}
+                            <p class="p text-align-center">{{section.settings.default_title}}</p>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    {% assign block = section.blocks[0] %}
+                    <div class="flex col center default_discount">
+                        <div id="multi_stage_discount-{{block.id}}" data-discount="{{block.settings.discount}}" data-activation="{{block.settings.activation_price}}" class="flex col center discount
+                    {% if section.settings.enabled_qty_discount %}
+                        {% if cart_quantity >= block.settings.activation_price %}active{% endif %}
+                    {% else %}
+                        {% if cart_total >= block.settings.activation_price %}active{% endif %}
+                    {% endif %}
+                        ">
+
+                            <div class="flex col bottom center inactive_discount_icon">
+                                {{section.settings.inactive_stage_icon}}
+                            </div>
+                            <div class="flex col bottom center active_discount_icon">
+                                {{section.settings.active_stage_icon}}
+                            </div>
+                            <div class="discount_progress_placeholder">
+                                <div class="is-absolute discount_progress_bar">
+                                    <div class="discount_progress" style="width:{{progress}}%;"></div>
+                                </div>
+                            </div>
+                            {% assign title_elements = block.settings.title | split: '###break###' %}
+                            <p class="p text-align-center discount_title_mobile">
+                                {% for title_element in title_elements %}
+                                    {% if forloop.first %}
+                                        {{ title_element | strip }}
+                                    {% else %}
+                                        <br>{{ title_element | strip }}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+
+                    </div>
+                {% endif %}
+
+                {% for block in section.blocks %}
+                    {% if section.settings.default_discount == 0 and forloop.first %}
+                        {% continue %}
+                    {% endif %}
+                    <div id="multi_stage_discount-{{block.id}}" data-discount="{{block.settings.discount}}" data-activation="{{block.settings.activation_price}}" class="flex col center discount
+                    {% if section.settings.enabled_qty_discount %}
+                        {% if cart_quantity >= block.settings.activation_price %}active{% endif %}
+                    {% else %}
+                        {% if cart_total >= block.settings.activation_price %}active{% endif %}
+                    {% endif %}
+                        ">
+
+                        <div class="flex col bottom center inactive_discount_icon">
+                            {{section.settings.inactive_stage_icon}}
+                        </div>
+                        <div class="flex col bottom center active_discount_icon">
+                            {{section.settings.active_stage_icon}}
+                        </div>
+                        <div class="discount_progress_placeholder">
+
+                        </div>
+                        {% assign title_elements = block.settings.title | split: '###break###' %}
+                        <p class="p text-align-center discount_title_mobile">
+                            {% for title_element in title_elements %}
+                                {% if forloop.first %}
+                                    {{ title_element | strip }}
+                                {% else %}
+                                    <br>{{ title_element | strip }}
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        {% for block in section.blocks %}
+        const msd_{{forloop.index0}} = document.querySelector('#multi_stage_discount-{{block.id}}');
+        {% endfor %}
+        const max_activate_discount_price = {% if section.settings.enabled_qty_discount %} Number( {{max_activate_discount_quantiy}} ) {% else %} Number({{max_activate_discount_price}}){% endif %};
+        const progress = document.querySelector('#shopify-section-{{section.id}} .discount_progress')
+        let checkout_note_container;
+
+        {% if section.settings.default_discount == 0 %}
+        document.querySelector('#shopify-section-{{section.id}} .discount_progress_placeholder').style.marginLeft = `-${ document.querySelector('#shopify-section-{{section.id}} .default_discount').offsetWidth - document.querySelector('#shopify-section-{{section.id}} [id^="multi_stage_discount-"]').offsetWidth }px`;
+        {% endif %}
+
+        window.updateMultiStageDiscounts = function ( template = null ){
+            function add(accumulator, a) {
+                return accumulator + a;
+            }
+            {% if section.settings.enabled_qty_discount %}
+            let cart_qty = Shopify.theme.cart.data.items.filter(item => !item.properties.set && !item.gift_card).map(item => item.quantity).reduce(add, 0);
+            {% endif %}
+
+            let cart_total = Shopify.theme.cart.data.items.filter(item => !item.properties.set_id && !item.gift_card).map(item => item.original_line_price).reduce(add, 0) / 100.0;
+            let cart_total_no_discount = Shopify.theme.cart.data.items.filter(item => !item.properties.set_id && !item.gift_card).map(item => item.final_line_price).reduce(add, 0) / 100.0;
+
+            let discount_value =  cart_total_no_discount * 100 - cart_total * 100;
+            let discount = Number({{section.settings.default_discount}});
+            let discountValues = [];
+
+            {% for block in section.blocks %}
+            discountValues.push( {{ block.settings.discount }} );
+
+            if({% if section.settings.enabled_qty_discount %}cart_qty{% else %}cart_total{% endif %} >= Number(msd_{{forloop.index0}}.getAttribute('data-activation'))){
+                msd_{{forloop.index0}}.classList.add('active')
+                discount = msd_{{forloop.index0}}.getAttribute('data-discount')
+            } else {
+                msd_{{forloop.index0}}.classList.remove('active')
+            }
+            {% endfor %}
+
+            if ( !!template ) {
+                template = template.target ?? template;
+                checkout_note_container = template.querySelector('{{section.settings.checkout_note_container}}')
+            } else {
+                checkout_note_container = document.querySelector('{{section.settings.checkout_note_container}}')
+            }
+            if ( Shopify.theme.cart.data.item_count === 0 || cart_qty === 0 ) {
+                checkout_note_container.style.display = 'none';
+            }
+
+            progress.style.width = Math.min((100.0 / (max_activate_discount_price / {% if section.settings.enabled_qty_discount %} cart_qty {% else %} cart_total {% endif %})), 100.0) + "%";
+
+            let checkout_note = "{{section.settings.checkout_note_text}}"
+            let sub_heading = "";
+
+            if ( discountValues.indexOf( +discount ) <= discountValues.length - 2 ) {
+                sub_heading = "<br>{{ section.settings.sub_heading }}";
+                {% raw %}
+                sub_heading = sub_heading.replace('{{discount}}', discountValues[ discountValues.indexOf( +discount ) + 1 ] );
+                {% endraw %}
+                checkout_note += sub_heading;
+            }
+
+            {% raw %}
+            checkout_note = checkout_note.replace('{{discount}}',discount+"%")
+            {% endraw %}
+
+            if ( !!checkout_note_container ) {
+                let priceNode;
+
+                if ( !!template ) {
+                    priceNode = template.querySelector("#shopify-section-cart_template [section-api-replace-price] div:nth-child(1) > p:nth-child(2)");
+                } else {
+                    priceNode = document.querySelector("#shopify-section-cart_template [section-api-replace-price] div:nth-child(1) > p:nth-child(2)");
+                }
+
+
+                priceNode.innerHTML = Shopify.theme.tools.formatMoney ( ( Shopify.theme.cart.data.total_price + Math.abs( discount_value ) ), '{{ shop.money_format }}' )
+
+                checkout_note_container.innerHTML = `
+                        <p class="spacing-bottom-s bold">
+                            ${ checkout_note }
+                        </p>
+                        <div class="flex row between">
+                            <p class="h6 discount_title">{{ "customer.order.discount" | t }}</p>
+                            <p class="h6 discount_value" style="color:#d16262;">${ Shopify.theme.tools.formatMoney ( discount_value, '{{ shop.money_format }}' ) }</p>
+                        </div>
+
+                    `;
+                //"{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}<br><br>"+checkout_note;
+            }
+            if ( {{ settings.multi_stage_discount }} ) {
+                return template;
+            }
+        }
+        window.addEventListener('cartsectionapichanged', window.updateMultiStageDiscounts );
+        window.addEventListener('load', window.updateMultiStageDiscounts );
+    </script>
+{% endif %}
+
+{% schema %}
+{
+"name": "Multi stage discount",
+"settings": [
+{
+"type": "checkbox",
+"id": "enabled",
+"label": "Enable",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "enabled_qty_discount",
+"label": "Enable QTY Breaks",
+"default": false,
+"info": "This must run with the Shopify Scripts App code. Go to the Scripts and activate the Quantity Break Option value."
+},
+{
+"type": "color",
+"id": "background_color",
+"label": "Background color"
+},
+{
+"type": "color",
+"id": "color",
+"label": "Color"
+},
+{
+"type": "select",
+"id": "spacing_top",
+"label": "Spacing top",
+"options": [
+{
+"value": "xs",
+"label": "xs"
+},
+{
+"value": "s",
+"label": "s"
+},
+{
+"value": "m",
+"label": "m"
+},
+{
+"value": "l",
+"label": "l"
+},
+{
+"value": "xl",
+"label": "xl"
+},
+{
+"value": "xxl",
+"label": "xxl"
+}
+]
+},
+{
+"type": "select",
+"id": "spacing_bottom",
+"label": "Spacing bottom",
+"options": [
+{
+"value": "xs",
+"label": "xs"
+},
+{
+"value": "s",
+"label": "s"
+},
+{
+"value": "m",
+"label": "m"
+},
+{
+"value": "l",
+"label": "l"
+},
+{
+"value": "xl",
+"label": "xl"
+},
+{
+"value": "xxl",
+"label": "xxl"
+}
+]
+},
+{
+"type": "text",
+"id": "heading",
+"label": "Heading",
+"default": "Sichere dir deinen Rabatt:"
+},
+{
+"type": "text",
+"id": "sub_heading",
+"label": "Sub Heading",
+"default": "Kaufe noch 1 Produkt und du bekommst {{discount}}."
+},
+{
+"type": "range",
+"id": "default_discount",
+"label": "Default discount",
+"min": 0,
+"max": 100,
+"step": 1,
+"unit": "%",
+"default": 20
+},
+{
+"type": "text",
+"id": "default_title",
+"label": "Title",
+"default": "20% auf alles"
+},
+{
+"type": "html",
+"id": "inactive_stage_icon",
+"label": "Inactive stage icon"
+},
+{
+"type": "html",
+"id": "active_stage_icon",
+"label": "Active stage icon"
+},
+{
+"type": "text",
+"id": "checkout_note_container",
+"label": "Checkout note container",
+"default": ".shipping_note"
+},
+{
+"type": "textarea",
+"id": "checkout_note_text",
+"label": "Checkout note zext",
+"default": "{{discount}} Rabatt werden an der Kasse abgezogen.",
+"info": "Set the discount is applied at checkout. set the postion of the discount by {{discount}}."
+}
+],
+"blocks": [
+{
+"type": "stage",
+"name": "Stage",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Title",
+"default": "25% ab 50€",
+"info": "can use ###break### for line break"
+},
+{
+"type": "number",
+"id": "activation_price",
+"label": "Activation price",
+"default": 50
+},
+{
+"type": "range",
+"id": "discount",
+"label": "Discount",
+"min": 0,
+"max": 100,
+"step": 1,
+"unit": "%",
+"default": 25
+}
+]
+}
+]
+}
+{% endschema %}

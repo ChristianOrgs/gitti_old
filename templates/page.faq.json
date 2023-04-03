@@ -1,0 +1,1074 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "1664468044cafb5ae6": {
+      "type": "page_glossary",
+      "disabled": true,
+      "settings": {
+        "hide_title": false,
+        "main_title": "lorem ipsum",
+        "subheading": "Questions and answers",
+        "text": "",
+        "titleMenu": "Select a topic",
+        "tag_title": "h1",
+        "tag_header_menu": "h2",
+        "tag_menu_topics": "p",
+        "tag_header_faq_list": "h2",
+        "tag_questions": "h4",
+        "class_title": "h1",
+        "class_header_menu": "h2",
+        "class_menu_topics": "p",
+        "class_header_faq_list": "h2",
+        "class_questions": "h4",
+        "weight_class_title": "",
+        "weight_class_header_menu": "",
+        "weight_class_menu_topics": "",
+        "weight_class_header_faq_list": "",
+        "weight_class_questions": "",
+        "spacing_page_text": "m",
+        "spacing_top_section": "m",
+        "spacing_bottom_section": "xxl",
+        "spacing_bottom_title": "l",
+        "spacing_bottom_header": "m",
+        "spacing_bottom_questionWrapper": "m",
+        "spacing_bottom_question": "xs"
+      }
+    },
+    "faq": {
+      "type": "faq_template",
+      "blocks": {
+        "86f904f9-df63-4959-96c8-597dc45749a0": {
+          "type": "header",
+          "settings": {
+            "header": "Die häufigsten Fragen"
+          }
+        },
+        "4e0f1ab0-3ba4-48d9-8efc-7dffd2a3cb8f": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Die häufigsten Fragen",
+            "title": "Ist gitti “x-free” \/ auf welche Inhaltsstoffe verzichtet gitti?",
+            "answer": "",
+            "answer_text": "<p>Bei der Entwicklung unserer Formeln gehen wir bewusst vor: Wir verzichten auf  synthetische und potenziell schädliche Inhaltsstoffe und ersetzen sie durch natürliche Alternativen. Alle gitti Produkte enthalten hochwertige Inhaltsstoffe, werden fair in der EU produziert, sind 100 % vegan und umweltfreundlich.<br\/><br\/>Für unsere Nagelfarben haben wir ein klares Ziel: 100 % natürliche Formeln. Schon jetzt ersetzen wir eine Vielzahl an Inhaltsstoffen, die in traditionellen Nagellacken enthalten ist. <br\/>Allerdings gibt es für Nagellacke noch kein einheitliches, offizielles Bewertungsschema. Üblicherweise werden sogenannte “x-free” Claims verwendet, um auszudrücken, auf wie viele schädliche Inhaltsstoffe ein Nagellack verzichtet. Da jeder Hersteller eine eigene Definition bzw. Liste aufrufen kann, wird dieser Claim jedoch oft irreführend verwendet und zum Beispiel mit Inhaltsstoffen erweitert, die normalerweise gar nicht in Nagellack enthalten oder ohnehin in der EU verboten sind. Von solchen irreführenden Verwendungen des 'x-free' Begriffs möchten wir uns bewusst distanzieren. <br\/>Alle unsere Nagelfarben sind 19-free, vegan, und eco-friendly. Das bedeutet, dass wir auf die folgenden 19 schädlichen oder bedenklichen Inhaltsstoffe in unseren Nagelfarben verzichten:<br\/>Formaldehyd-Freisetzer, Toluol, Phtalate, Kampfer, Tierische Inhaltsstoffe, Parabene, Zugesetzte Duftstoffe, Sulfonamid, Xylol, Aceton, Benzophenon-1, Benzophenon-3, Hydrochinone, Kolophonium, Mineralöle \/ Wachse, Mikroplastik (nach Definition der UNEP 2015), Diethylhexyladipat, EDTA, Triphenylphosphat<br\/><br\/>Transparenz ist uns wichtig. Deshalb ist es für uns selbstverständlich, zu erklären, was in unseren Produkten drin ist - und was nicht. Details dazu findest du hier (<a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/gitti-faq\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/gitti-faq\">F.A.Q.<\/a>) und hier (<a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe-nitrocellulose\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe-nitrocellulose\">Nitrocellulose-Artikel<\/a>).<\/p>"
+          }
+        },
+        "ddf84332-a3e3-482d-9aba-a07f5bea5d3f": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Die häufigsten Fragen",
+            "title": "Wo kann ich gitti kaufen?",
+            "answer": "",
+            "answer_text": "<p>gitti gibt es jetzt auch in der Nähe Deines Zuhauses!<br\/><br\/><strong>Deutschland:<\/strong><br\/>Berlin: KaDeWe, The Store X (Soho House Berlin), COWSHED Spa (Soho House Berlin)<strong>, <\/strong>NOVeL Berlin, Kauf Dich Glücklich, Pure Schönheit (Dahlem)<br\/><br\/>Düsseldorf: Douglas, Koko Selected, Breuninger<br\/><br\/>Frankfurt: Kauf Dich Glücklich<br\/><br\/>Hamburg: Meister Parfümerie, Little Department Store, Kauf Dich Glücklich<br\/><br\/>Heidelberg: Victor&linchen<br\/><br\/>Karlsruhe: Breuninger<br\/><br\/>Leipzig: Breuninger<br\/><br\/>Ludwigsburg: Breuninger<br\/><br\/>München: Breuninger, Kauf Dich Glücklich<br\/><br\/>Nürnberg: Emerson Renaldi, Breuninger<br\/><br\/>Sindelfingen: Breuninger<\/p><p><strong><br\/>Österreich:<br\/><\/strong>Dornbirn: Nägele & Strubell<br\/><strong><br\/><\/strong>Hohenems: Heerdegen Store<br\/><br\/>Klagenfurt: Nägele & Strubell<br\/><br\/>Linz: Nägele & Strubell<br\/><br\/>Salzburg: Nägele & Strubell<br\/><br\/>Wien: Naturparfumerie Staudigl, Steffl, Nägele & Strubell<br\/><br\/>Schaue dir für die Adressen gern auch unsere Shop-Übersicht an. Die gitti Nagelfarben kannst du vor Ort testen. Bitte beachte, dass sie nur ausgewählte und nicht alle gitti Nagelfarben vorliegen haben.<\/p>"
+          }
+        },
+        "85ba0869-c9cb-4550-9e56-482c694cd299": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Die häufigsten Fragen",
+            "title": "Wie lange sind eure Lieferzeiten?",
+            "answer": "",
+            "answer_text": "<p>Unser Standardversand innerhalb Deutschlands dauert 1-3 Tage. Der Versand in die Schweiz und alle andere EU Länder dauert durchschnittlich 3-5 Werktage.<\/p>"
+          }
+        },
+        "6d8b863f-f78e-45ac-ac4d-76a3fe0266b8": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Die häufigsten Fragen",
+            "title": "Was bedeutet \"wasserbasiert\" und \"pflanzenbasiert\" genau?",
+            "answer": "",
+            "answer_text": "<p>Unsere wasserbasierten, veganen und geruchsneutralen Nagelfarben sind die Innovation, mit der wir Nagellack und Beauty ganz neu gedacht haben. Die einzigartige Formel basiert zu 55 % auf Wasser. Mit bis zu 3 Tagen Haltbarkeit ist sie der perfekte Begleiter für den schnelllebigen Alltag. Um die Haltbarkeit zu garantieren, solltest du die Farbschicht nach dem Trocknen immer mit einer dünnen Schicht unseres wasserbasierten Top Coats versiegeln. <br\/><br\/>Auf vielfachen Wunsch hin haben wir an einer Formulierung gefeilt, die noch länger hält. Das Ergebnis: unsere pflanzenbasierten Formeln. Damit können wir euch den besten Kompromiss aus höchstmöglicher Natürlichkeit und farbintensiver Haltbarkeit bieten, denn die pflanzenbasierten Nagelfarben basieren bis zu 82 % auf Pflanzen wie Maniok, Mais und Weizen. Mit unserem pflanzenbasierten Top&Base Coat hält diese Variante bis zu 7 Tage. <br\/><br\/>Ob wasserbasiert oder pflanzenbasiert – alle gitti Nagelfarben sind so natürlich wie möglich und vegan. Sie schenken nicht nur intensive Farbe, sondern sorgen mit Inhaltsstoffen wie Vitamin C, Vitamin E und Calcium Pantothenate für eine Portion Pflege.<\/p>"
+          }
+        },
+        "756e7b13-f64d-4635-914e-9dc9df02f89e": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Die häufigsten Fragen",
+            "title": "Wie ist der Status meiner Bestellung?",
+            "answer": "",
+            "answer_text": "<p>Eingehende Bestellungen bearbeiten wir Werktags innerhalb von 48 Stunden. Gleich im Anschluss schicken wir diese los. Der Standardversand innerhalb Deutschland dauert 1-3 Werktage, für alle anderen EU-Länder dauert der Versand bis zu 5 Werktage. <br\/><br\/>Solltest du Fragen zu deiner Bestellung haben, findest du <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\">hier<\/a> unsere Kontaktmöglichkeiten.<\/p>"
+          }
+        },
+        "74f12b52-f3d7-42f3-87f4-53bdc6d7b637": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Die häufigsten Fragen",
+            "title": "Wie kann ich meine Bestellung ändern?",
+            "answer": "",
+            "answer_text": "<p>Am einfachsten ist es, wenn du uns anrufst. Du erreichst uns unter: +49 (0) 30 217 82 82 <\/p>"
+          }
+        },
+        "92e75a58-6cfc-4000-aa17-d5f9b508af78": {
+          "type": "header",
+          "settings": {
+            "header": "Nagelfarben"
+          }
+        },
+        "9e51999e-7474-4396-8934-fad3e1796d4f": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Was bedeutet \"wasserbasiert\" und \"pflanzenbasiert\" genau?",
+            "answer": "",
+            "answer_text": "<p>Unsere wasserbasierten, veganen und geruchsneutralen Nagelfarben sind die Innovation, mit der wir Nagellack und Beauty ganz neu gedacht haben. Die einzigartige Formel basiert zu 55 % auf Wasser. Mit bis zu 3 Tagen Haltbarkeit ist sie der perfekte Begleiter für den schnelllebigen Alltag. Um die Haltbarkeit zu garantieren, solltest du die Farbschicht nach dem Trocknen immer mit einer dünnen Schicht unseres wasserbasierten Top Coats versiegeln. <br\/><br\/>Auf vielfachen Wunsch hin haben wir an einer Formulierung gefeilt, die noch länger hält. Das Ergebnis: unsere pflanzenbasierten Formeln. Damit können wir euch den besten Kompromiss aus höchstmöglicher Natürlichkeit und farbintensiver Haltbarkeit bieten, denn die pflanzenbasierten Nagelfarben basieren bis zu 82 % auf Pflanzen wie Maniok, Mais und Weizen. Mit unserem pflanzenbasierten Top&Base Coat hält diese Variante bis zu 7 Tage. <br\/><br\/>Ob wasserbasiert oder pflanzenbasiert – alle gitti Nagelfarben sind so natürlich wie möglich und vegan. Sie schenken nicht nur intensive Farbe, sondern sorgen mit Inhaltsstoffen wie Vitamin C, Vitamin E und Calcium Pantothenate für eine Portion Pflege. <\/p>"
+          }
+        },
+        "c365f5a0-17ff-4052-9271-de7b10f8b46d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Kann ich die Nagelfarben auch ohne einen Base oder Top Coat verwenden?",
+            "answer": "",
+            "answer_text": "<p>Für eine optimale Haltbarkeit und extra Glanz empfehlen wir dir immer, die getrocknete Farbschicht mit einem Top Coat zu versiegeln.<br\/>Falls es mal schneller gehen muss, kannst du die Farben natürlich auch einzeln auftragen. In diesem Fall kann die Haltbarkeit aber etwas kürzer ausfallen. <\/p>"
+          }
+        },
+        "ce3484da-2019-493f-93e4-c319b9f017c1": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Kann ich die wasserbasierten und pflanzenbasierten Nagelfarben miteinander kombinieren?",
+            "answer": "",
+            "answer_text": "<p>Ja, beide Formeln lassen sich miteinander kombinieren. Für ein optimales Ergebnis empfehlen wir jedoch, Produkte mit derselben Formulierung zu verwenden. <\/p>"
+          }
+        },
+        "82c390f8-35f0-43d0-9c22-f28e7e447d41": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Halten die pflanzenbasierten länger als die wasserbasierten Nagelfarben?",
+            "answer": "",
+            "answer_text": "<p>Wie gut unsere Nagelfarben auf den Nägeln halten, hängt von verschiedenen Faktoren ab: Beispielsweise kann die Beschaffenheit deiner Nägel oder die Beanspruchung deiner Hände im Alltag Einfluss auf die Haltbarkeit nehmen. Erfahrungsgemäß halten die Farben auf glatten Nägeln besser. Deshalb empfehlen wir (bei unseren pflanzenbasierten Farben) den passenden Base Coat zu verwenden. Eine detaillierte Maniküre-Anleitung findest du übrigens auf der jeweiligen Produktseite im Shop. <br\/>Generell gilt: Die wasserbasierte Formel hält bis zu 3 und die pflanzenbasierte Formel bis zu 7 Tage.<br\/><br\/><\/p>"
+          }
+        },
+        "12e0b44b-4fec-4a7d-831d-0d5f87f73517": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Warum sind die pflanzenbasierten Nagelfarben im Vergleich zu den wasserbasierten nicht geruchsneutral?",
+            "answer": "",
+            "answer_text": "<p>Der Geruch der pflanzenbasierten Formel ist auf zwei bestimmte Inhaltsstoffe zurückzuführen: Ethyl Acetate und Butyl Acetate. Beide dienen als Lösungsmittel und sorgen so dafür, dass aus wasserlöslichen und öllöslichen Bestandteilen eine homogene Flüssigkeit entstehen kann. Alle Details zu diesen Inhaltsstoffen findest du übrigens in unserem <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\"><span style=\"text-decoration:underline\">Glossar<\/span><\/a>.<\/p>"
+          }
+        },
+        "d4d201c4-2234-4ca6-88ad-f1bd6d1e6b7b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Wie trage ich gitti Nagelfarben richtig auf?",
+            "answer": "",
+            "answer_text": "<p>Wir empfehlen die Farbschicht so dünn wie möglich aufzutragen, gut trocknen zu lassen und zum Schluss mit einem Top Coat zu versiegeln. Bei der wasserbasierten Formel gilt außerdem: 2 Stunden nach der Maniküre den Kontakt mit heißem Wasser zu vermeiden. Eine genaue Anleitung findest du <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/steps\" target=\"_blank\"><span style=\"text-decoration:underline\">hier<\/span><\/a>. <\/p>"
+          }
+        },
+        "05e14e82-e1fa-49f0-929b-674ae33d950b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Wie lagere ich meine gitti Farben am besten?",
+            "answer": "",
+            "answer_text": "<p>Um die Farbpower solange wie möglich zu erhalten, empfehlen wir unsere Nagelfarben nicht mit anderen Flüssigkeiten zu verdünnen. Am besten lagerst du die Farben an einem trockenen Ort, der vor direkter Sonneneinstrahlung geschützt ist. Außerdem empfehlen wir, die Fläschchen nicht länger als nötig offen stehen zu lassen. <\/p>"
+          }
+        },
+        "3c068ca3-e958-43a4-804b-dbeb8d869fe4": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Wie vertragen sich die Nagelfarben mit meiner Handpflege?",
+            "answer": "",
+            "answer_text": "<p>Unsere Nagelfarben können empfindlich auf Sonnencremes reagieren. Außerdem solltest du kurz vor und kurz nach der Maniküre auf fetthaltige Cremes oder Pflegeprodukte verzichten. <\/p>"
+          }
+        },
+        "4011504e-83e8-42f4-861d-3a921f5665a7": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Wie lange sind die Nagelfarben haltbar?",
+            "answer": "",
+            "answer_text": "<p>Die wasserbasierten Nagelfarben sind mindestens 12 Monate haltbar, während die pflanzenbasierten Farben sogar für mindestens 24 Monate nach Anbruch haltbar sind. Das erkennst du übrigens ganz leicht an dem kleinen Label am Boden der Flasche. Die Zahl in dem kleinen Döschen gibt die Haltbarkeit von Kosmetikprodukten nach dem Öffnen an. <\/p>"
+          }
+        },
+        "9ce12b66-7865-4848-b0b4-c23c3070dc56": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Können sich die Nägel durch gitti Nagelfarben verfärben?",
+            "answer": "",
+            "answer_text": "<p>Vereinzelt können sich die farbgebenden Stoffe in unseren Nagelfarben in der Nagelplatte einlagern. Deshalb empfehlen wir vor allem bei farbintensiven Tönen wie beispielsweise Rot, zunächst eine dünne Schicht Base Coat unter der Farbschicht aufzutragen. <\/p>"
+          }
+        },
+        "c5557a6e-c32d-430d-865c-f884454cbac5": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Sind gitti Nagelfarben wasserdurchlässig?",
+            "answer": "",
+            "answer_text": "<p>Unsere wasserbasierten Farben sind wasserdurchlässig, unsere pflanzenbasierten hingegen nicht. <\/p>"
+          }
+        },
+        "93e81365-84a5-440e-b1d0-b6234813b92d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelfarben",
+            "title": "Wie sind eure Nagelfarben zu entsorgen?",
+            "answer": "",
+            "answer_text": "<p>Unsere Nagelfarben sollten trotz ihrer innovativen Formeln nicht über den Hausmüll entsorgt werden. Um die Verpackung zu recyceln sollte man die Farbenreste aus den Flaschen lösen. Dafür gibt man am besten etwas Nagellackentferner in die Flasche und schüttelt die Flasche bis sich die Lackreste gelöst haben. Die Lackreste müssen dann separat an der Schadstoffsammelstelle entsorgt werden. Der Deckel kann in den gelben Sack und die leere Flasche kann im Altglascontainer entsorgt werden. Ist der Lack komplett ausgetrocknet, kann er auch über den Hausmüll entsorgt werden.<\/p>"
+          }
+        },
+        "f5c5586a-aba3-4e8e-8f76-67fb386b3251": {
+          "type": "header",
+          "settings": {
+            "header": "Nagelpflege"
+          }
+        },
+        "1ddbce70-8af0-49ac-9b5d-4191a387102c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Wie kann ich meine Nägel optimal pflegen und so trockenen oder spröden Nägeln vorbeugen beziehungsweise sie behandeln?",
+            "answer": "",
+            "answer_text": "<p>Trockene oder spröde Nägel können verschiedene Ursachen haben. Vor allem externe Faktoren wie häufiges Händewaschen und fehlende Pflege, aber auch innere Faktoren wie Ernährung, Nährstoffversorgung oder Stress spielen eine Rolle. Natürlich kannst du die Symptome mit der richtigen Pflege behandeln beziehungsweise ihnen vorbeugen. Unsere Nagelfarben sind mit pflegenden Wirkstoffen wie Vitaminen und Calcium Pantothenate angereichert. Die pflanzenbasierten Nagelfarben enthalten im Vergleich zu den wasserbasierten Farben Lösungsmittel (Ethylacetat und Butylacetat), die den Nagel je nach Beschaffenheit und bei permanenter Anwendung auch etwas austrocknen können. Ähnlich wie unsere Haut, freut sich auch der Nagel mal \"durchzuatmen\", um sich besser regenerieren zu können. Daher empfehlen wir zwischendurch auch mal farbfreihe Tage einzulegen oder eine Kur durchzuführen. Dazu eignet sich unser probiotisches Serum übrigens besonders gut. Das Nagelöl pflegt zusätzlich die Nägel und auch die empfindliche Nagelhaut. Im Vergleich zu klassischen Nagellackentfernern, die oftmals austrocknende Lösungsmittel wie Aceton oder Ether enthalten, ist unser Nagellackentferner komplett natürlich und pflegt zusätzlich den Nagel dank wertvoller Öle.<\/p>"
+          }
+        },
+        "69c80a54-f998-4254-8d80-b85cbd7468d8": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Was macht das probiotische Nagelserum besonders?",
+            "answer": "",
+            "answer_text": "<p>Unser Nagelserum dient als Intensivkur, die die natürliche Mikroflora der Nägel stärkt. Der enthaltene probiotische Komplex bewahrt das Mikrobiom der Nägel, spendet ihnen Feuchtigkeit und sorgt so für gesunde und gut geschützte Nägel.<\/p>"
+          }
+        },
+        "901dc7e9-4b92-4d01-b1b4-6cbc63597ea5": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Wie und wann verwende ich das probiotische Nagelserum am besten an?",
+            "answer": "",
+            "answer_text": "<p>Unser Nagelserum dient als Intensivkur, die je nach Beschaffenheit der Nägel einmal täglich direkt auf den unlackierten Nagel aufgetragen und im Anschluss sanft einmassiert werden sollte. Bei besonders dünnen und brüchigen Nägeln empfehlen wir eine zweiwöchige Nagelaufbaukur, bei der das Serum zweimal täglich aufgetragen wird. <br\/>Unser Tipp: Wenn du das Serum über Nacht einwirken lässt, können sich die pflegenden Inhaltsstoffe gleich noch viel besser entfalten. <\/p>"
+          }
+        },
+        "b085b34c-1dde-4edf-82bf-96c41dd0911a": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Was macht das Nagelöl von gitti besonders?",
+            "answer": "",
+            "answer_text": "<p>Unser Nagelöl schenkt dank reichhaltiger Öle und Vitamin E intensive Pflege. Es spendet Feuchtigkeit und unterstützt mit seinen aufbauenden Eigenschaften den Regenerationprozess der Nägel und Nagelhaut.<\/p>"
+          }
+        },
+        "9870d60b-fa6f-4467-8346-3357803b4b20": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Wie und wann wende ich das Nagelöl am besten an?",
+            "answer": "",
+            "answer_text": "<p>Wir empfehlen das Nagelöl in der Regel einmal pro Woche anzuwenden. Bei stark beanspruchten Nägeln und sehr trockener Nagelhaut kannst du es auch mehrmals täglich auftragen. Gib dazu mit der Pipette einen kleinen Tropfen auf den Nagelmond, am Rande der Nagelhaut und massiere das Öl sanft ein. <br\/>Unser Tipp: Von leicht feuchter Haut, beispielsweise direkt nach dem Händewaschen, können die pflegenden Inhaltsstoffe noch besser aufgenommen werden. <br\/><br\/>Falls du das Öl vor der Farbmaniküre verwenden möchtest, empfehlen wir die Hände noch mal gründlich zu waschen, nachdem es eingezogen ist. So bleibt kein fettiger Film zurück, der die Haltbarkeit der Nagelfarbe beeinträchtigen könnte. Du kannst das Nagelöl übrigens auch nach der Farbmaniküre verwenden – so sorgt es für eine Extraportion Glow.<\/p>"
+          }
+        },
+        "6ce5a342-ff3c-4b0f-970a-0f9de11db73c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Wie entferne ich die gitti Nagelfarben?",
+            "answer": "",
+            "answer_text": "<p>Unsere pflanzenbasierten Nagelfarben lassen sich am besten mit unserem 100 % natürlichen Nagellackentferner abnehmen. Dabei ist es wichtig, die getränkten Wattepads ein wenig länger als gewohnt auf dem Nagel einwirken zu lassen.<br\/>Solltest du unseren Nagellackentferner nicht griffbereit haben, kannst du alternativ auch einen acetonfreien Nagellackentferner verwenden, um die Farbe von deinen Nägeln zu nehmen.<br\/>Bei den wasserbasierten Nagellacken kannst du deine lackierten Nägel am besten für kurze Zeit in warmes Wasser tauchen und die Nagelfarbe im Anschluss vom Nagelbett ausgehend vorsichtig abschieben, dies funktioniert z. B. besonders leicht mit einem Rosenholzstäbchen. Oder du verwendest auch hier unseren natürlichen Nagellackentferner.<\/p>"
+          }
+        },
+        "440a38cb-4b40-42e5-a7fc-4978756d58ea": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Nimmt der Nagellackentferner von gitti auch herkömmlichen Nagellack ab?",
+            "answer": "",
+            "answer_text": "<p>Ja. Du kannst mit unserem 100 % natürlichen Nagellackentferner auch herkömmlichen Nagellack abnehmen.<\/p>"
+          }
+        },
+        "7e18a72f-6e89-40c8-806d-c0a571611bc8": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nagelpflege",
+            "title": "Welche pflegenden Öle sind im gitti Nagellackentferner enthalten?",
+            "answer": "",
+            "answer_text": "<p>Unser 100 % natürliche Nagellackentferner enthält pflegendes Jojoba-, Argan- und Lavendelöl.<\/p>"
+          }
+        },
+        "dad73029-5f63-4a8d-a10f-04bcf37eb024": {
+          "type": "header",
+          "settings": {
+            "header": "Handpflege"
+          }
+        },
+        "23fd418d-8316-4e8e-a715-87a17deb30f9": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Was macht euer Hydrating Hand Treatment so besonders?",
+            "answer": "",
+            "answer_text": "<p>Für alle, die auf der Suche nach einer besonderen Handpflege sind, ist unser Hand Treatment genau die richtige Wahl. Die Formel basiert, anders als viele Cremes nicht auf Wasser, sondern auf Aloe Vera Saft. Dieser ist bekannt für seine besonders feuchtigkeitsspendenden und entzündungshemmenden Eigenschaften. Außerdem unterstützt er die Zellregeneration. Wertvolle Inhaltsstoffe wie Arganöl, Shea Butter und Squalane liefern die optimale Basis um die Feuchtigkeit einzuschließen und sorgen für weiche Haut. Der ebenfalls enthaltene Haferextrakt hat antioxidative Eigenschaften und hilft, gestresste Haut auszugleichen und zu beruhigen. Die belebende, fruchtig-herbe Duftkomposition aus Orange, Lavendel und Zedernholz macht das Einmassieren zu einem wohltuenden Erlebnis. <\/p>"
+          }
+        },
+        "41e5172a-b939-4796-b7a1-9f8a2c69d5f6": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Wie und wann wende ich das Hand Treatment am besten an?",
+            "answer": "",
+            "answer_text": "<p>Du kannst das Hand Treatment anwenden wie eine Handcreme – und zwar wann immer du magst. Trage dazu einfach eine großzügige Menge auf deinen Handrücken auf und massiere die einzigartige Textur ein. <br\/>Unser Tipp: Du kannst das Hand Treatment auch bewusst für eine ausgiebigere Handmassage oder sogar als Handmaske nutzen. Dafür brauchst du es nur in einer dickeren Schicht auf die Hände geben. Baumwollhandschuhe können den pflegenden Effekt übrigens noch verstärken.<\/p>"
+          }
+        },
+        "c42bb60f-f2f5-4637-a6ad-ce15d7a5b742": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Wie verträgt sich das Hand Treatment mit den Nagelfarben?",
+            "answer": "<p>Generally, the Hand Treatment is well compatible with the nail colors and should not affect their durability. Shortly before and directly after the manicure, however, we recommend that you do not use oil-based creams like the Hand Treatment. In general, it is recommended not to exert pressure on the nail surface when massaging in.<\/p>",
+            "answer_text": "<p>Generell verträgt sich das Hand Treatment gut mit den Nagelfarben und sollte deren Haltbarkeit nicht beeinflussen. Kurz vor und direkt nach der Maniküre empfehlen wir dir allerdings keine ölhaltigen Cremes wie das Hand Treatment zu nutzen. Generell empfiehlt sich beim Einmassieren keinen Druck auf die Nageloberfläche auszuüben.<\/p>"
+          }
+        },
+        "6224b801-7ae0-40e6-89e7-5f5645429922": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Warum habt ihr euch bei dem Hand Treatment für eine Aluminiumtube als Packmittel entschieden?",
+            "answer": "",
+            "answer_text": "<p>Die Nachhaltigkeit unserer Verpackungen ist für uns essentiell und daher ein Thema von höchster Priorität. Für jedes Produkt wägen wir sorgfältig Vor-und Nachteile der Optionen ab und sind natürlich immer auf der Suche nach neuen Innovationen. Mehr dazu erfährst du <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit\">hier<\/a>.<br\/>Bei dem Hand Treatment haben wir uns gezielt für eine Aluminiumtube entschieden. Aluminium ist leicht, extrem langlebig und das einzige Material, was wiederholt recycled werden kann, ohne an Qualität zu verlieren. Der Recyclingprozess ist relativ unaufwendig, verbraucht nur etwa 5% an Energie im Vergleich zur Produktion von neuem Aluminium. In Deutschland werden rund 90% des Aluminummülls recycled, während die Recyclingrate bei Plastik derzeit nur bei ca. 55% liegt. Außerdem kann keine Luft eindringen, sodass unsere Produkte besonders lange frisch bleiben und du kannst sogar den letzten Tropfen extrem leicht herausdrücken und es so vollständig aufbrauchen.<\/p>"
+          }
+        },
+        "ae514e22-1715-42c4-ae4c-5fd8d0fd6fce": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Was macht den Rinse-free Cleanser besonders?",
+            "answer": "<p>With its refreshing citrus bergamot scent, our Rinse-Free Cleanser was developed in the light of the current Covid pandemic. It was our aim to create a product for on-the-go that would clean hands while also protecting them from drying out. For this reason, it contains 70% alcohol as well as hydrating and soothing ingredients such as glycerin, jojoba esters and oat extract.<\/p>",
+            "answer_text": "<p>Unser rinse-free cleanser mit seinem erfrischenden Zitrus-Bergamotte Duft wurde insbesondere unter dem Aspekt der derzeitigen Corona-Pandemie entwickelt. Der Gedanke dabei war, ein Produkt für unterwegs zu kreieren, das eine reinigende Wirkung aufweist und die Hände gleichzeitig vor dem Austrocknen bewahrt. Aus diesem Grund enthält das Produkt einen Alkoholanteil von 70 %, gleichzeitig aber auch feuchtigkeitsspendende und beruhigende Inhaltsstoffe wie Glycerin, Jojoba Ester und Haferextrakt. <\/p>"
+          }
+        },
+        "a0c0d207-baaa-4918-98b4-b3f5aad7e034": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Warum habt ihr euch bei dem rinse-free cleanser für eine Plastikflasche als Verpackung entschieden?",
+            "answer": "<p>The sustainability of our packaging is essential to us and therefore a top priority. For each product, we carefully weigh up the pros and cons of the options and are, of course, always on the lookout for new innovations. You can read more about this here (link to sustainablity).\nWe deliberately chose a recycled plastic bottle with a spray head for the rinse-free cleanser to ensure that the product is perfect for on-the-go use and easy to apply. The bottle and also the label are made from 100% recycled plastic and are also recyclable, this is a very sustainable option for us.<\/p>",
+            "answer_text": "<p>Die Nachhaltigkeit unserer Verpackungen ist für uns essentiell und daher ein Thema von höchster Priorität. Für jedes Produkt wägen wir sorgfältig Vor-und Nachteile der Optionen ab und sind natürlich immer auf der Suche nach neuen Innovationen. Mehr dazu erfährst du <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/nachhaltigkeit\">hier<\/a>.<br\/>Wir haben uns bei dem rinse-free cleanser bewusst für eine recyclete Plastikflasche mit Sprühkopf entschieden, um zu gewährleisten, dass das Produkt perfekt für unterwegs geeignet ist und eine leichte Anwendung mit sich bringt. Die Flasche und auch das Label bestehen zu 100% aus recycletem Plastik und sind ebenfalls wieder recyclbar, dies stellt für uns eine sehr nachhaltige Option dar.<\/p>"
+          }
+        },
+        "6523d6d5-5c90-4e95-80d0-b54eb3e514bc": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Handpflege",
+            "title": "Wie verträgt sich der Rinse-Free Cleanser mit den Nagelfarben?",
+            "answer": "",
+            "answer_text": "<p>Wir empfehlen dir, den den Rinse-Free Cleanser immer auf die Handflächen zu sprühen und nicht direkt auf den Nagel, um die Haltbarkeit der Nagelfarben nicht zu beeinflussen. Da das Produkt auf Alkohol basiert, kann es bei direktem Auftrag auf dem Nagel und zusätzlicher Reibung auf der Nageloberfläche zum leichten Ablösen der Nagelfarbe kommen. <\/p>"
+          }
+        },
+        "740c1509-1dca-4be9-9c82-4fd722d38592": {
+          "type": "header",
+          "settings": {
+            "header": "Lip Sync"
+          }
+        },
+        "d61adf7f-adbd-4706-91a5-ce87128b63ee": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Lip Sync",
+            "title": "Ist Lip Sync vegan und “cruelty-free”?",
+            "answer": "",
+            "answer_text": "<p>Unser Produkt ist vegan (sprich frei von tierischen Inhaltsstoffen) und wurde nicht an Tieren getestet und hier heben wir uns auch von einigen, ähnlichen Produkten auf dem Markt ab, die Wollwachs, Bienenwachs und Karmine enthalten.<\/p>"
+          }
+        },
+        "e70df786-b3b2-4290-8001-db736ccf6c7a": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Lip Sync",
+            "title": "Was sind die Inhaltsstoffe?",
+            "answer": "",
+            "answer_text": "<p>Lip Sync enthält eco-zertifiziertes Reisölwachs, Wassermelonenkernöl, Hyaluronsäure und organic Arganöl. Für einen Überblick aller Inhaltsstoffe kannst du dir die INCI Liste auf unserer Website oder auf der Umverpackung ansehen.<\/p>"
+          }
+        },
+        "c69dc3fc-2d87-4bb5-80af-11321ebcb03b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Lip Sync",
+            "title": "Wie bewahre ich die Refills auf? <br>Wie lange kann ich die Lip Sync Refills benutzen?",
+            "answer": "",
+            "answer_text": "<p>Am besten bewahrst du die Refills, die du nicht im Case eingesetzt hast, mit dem kleinen Deckel des Refills darauf auf. So schützt du sie vor Staub, Austrocknen und so weiter. Ein trockener Ort bei Raumtemperatur eignet sich zudem am besten.<\/p><p><\/p><p>Die Haltbarkeit nach dem Öffnen (PAO) erkennst du ganz leicht an dem kleinen Tiegelsymbol auf der Umverpackung. Lip Sync ist 18 Monate nach Anbruch haltbar, ungeöffnet sogar mindestens 30 Monate.<br\/><\/p>"
+          }
+        },
+        "f45873da-cbaf-4cfd-919d-fb7ddd58ae0d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Lip Sync",
+            "title": "Ich bin schwanger: Kann ich Lip Sync benutzen?<br>Ist die Anwendung bei Kindern sicher?<br> Enthält Lip Sync Allergene?",
+            "answer": "",
+            "answer_text": "<p>Grundsätzlich werden all unsere Produkte überprüft und bewertet, ob diese bei üblicher und vorhersehbarer Anwendung für unsere Kund:innen sicher sind. Die Frage einer möglichen Schwangerschaft spielt bei kosmetischen Produkten, die nicht explizit für eine Verwendung während der Schwangerschaft entwickelt wurden, in der Regel keine Rolle. Insofern können wir leider vor diesem Hintergrund keine spezielle Empfehlung zur Anwendung während der Schwangerschaft geben. Am besten, besprichst du das Thema mit deinem\/deiner Arzt\/Ärztin. Die Inhaltsstoffe kannst du auf der Produktseite finden.<\/p><p><br\/>Lip Sync enthält keine Allergene. Bitte sieh dir die INCI Liste an, wenn du eine bestimmte Allergie hast. Manche Menschen reagieren allergisch auf Rizinusöl.<\/p>"
+          }
+        },
+        "e63913d1-835f-4b96-a38f-3d19058e5081": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Lip Sync",
+            "title": "Wie können die Refills entsorgt werden?",
+            "answer": "",
+            "answer_text": "<p>Um sicherzustellen, dass das Produkt eine gute Performance zeigt, mussten wir an dieser Stelle einen Kompromiss eingehen und die Refills sollten im Restmüll entsorgt werden. Wir arbeiten daran, unsere Verpackung weiter zu verbessern und vollständig recyclebar zu machen.<\/p>"
+          }
+        },
+        "d9f55c0a-d0b4-425e-aa72-4ff43ffa4839": {
+          "type": "header",
+          "settings": {
+            "header": "Eye Level"
+          }
+        },
+        "a4069605-2b22-4989-9bc2-fa13ff1b51e1": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Eye Level",
+            "title": "Ist Eye Level vegan und “cruelty-free”?",
+            "answer": "",
+            "answer_text": "<p>Ja, Eye Level ist vegan (enthält also keine Inhaltsstoffe tierischen Ursprungs) und wurde nicht an Tieren getestet.<br\/>Nach der EU-Kosmetikverordnung 1223\/2009 sind Tierversuche für kosmetische Mittel und ihre Bestandteile nicht erlaubt.<\/p>"
+          }
+        },
+        "62b5479d-dbee-47c2-a503-c05b034a8038": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Eye Level",
+            "title": "Was sind die Inhaltsstoffe?",
+            "answer": "",
+            "answer_text": "<p>Unsere drei Superpower Wirkstoffe: Rizinusöl-Derivate, Shea Butter, Vegane Wachse. Für einen Überblick aller Inhaltsstoffe kannst du dir die INCI Liste auf unserer Website oder auf der Umverpackung ansehen.<\/p>"
+          }
+        },
+        "e86efd0b-b404-401e-bac6-942e7c539e4b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Eye Level",
+            "title": "Wie bewahre ich ihn auf? <br>Wie lange kann ich ihn benutzen?",
+            "answer": "",
+            "answer_text": "<p>Die Haltbarkeit nach dem Öffnen (PAO) erkennst du ganz leicht an dem kleinen Tiegelsymbol auf der Umverpackung. Eye Level ist 6 Monate nach Anbruch haltbar, ungeöffnet sogar 36 Monate.<\/p>"
+          }
+        },
+        "d0231121-4e81-4c78-96e4-483e48c30a8f": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Eye Level",
+            "title": "Ich bin schwanger: Kann ich benutzen? <br>Ist die Anwendung bei Kindern sicher?<br>Enthält Eye Level Allergene?",
+            "answer": "",
+            "answer_text": "<p>All unsere Produkte werden sorgsam geprüft und bewertet, damit sie für unsere Kunden unter normalen und vorhersehbaren Anwendungsbedingungen sicher sind. Eine Verwendung während der Schwangerschaft wird bei kosmetischen Produkten, die nicht speziell für Schwangere entwickelt wurden, in der Regel nicht geprüft. Aus diesem Grund können wir leider keine spezifische Empfehlung für die Verwendung während der Schwangerschaft geben. Am besten besprichst du dich mit deinem Arzt. Die Inhaltsstoffe findest du auf der Produktseite auf unserer Website. <br\/>Alternativ: Das Produkt enthält keine Inhaltsstoffe, die während einer Schwangerschaft vermieden werden sollten. Unsere Produkte sind jedoch nicht speziell für schwangere Frauen geeignet. Um auf der sicheren Seite zu sein würden wir dich bitten, dich vor der Anwendung mit deinem Arzt zu besprechen.<br\/><br\/>Eye Level wurde gemäß der europäischen Kosmetikverordnung formuliert und kann daher unbedenklich für die Augenpartie verwendet werden. Falls du zu Allergien oder Unverträglichkeiten neigst, überprüfe bitte vor der ersten Anwendung die INCI-Liste und tragen eine kleine Menge auf deinem Unterarm auf, um zu überprüfen, ob deine Haut das Produkt verträgt.<\/p>"
+          }
+        },
+        "665974bb-4c3d-4075-946f-bfcf12ddb6ee": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Eye Level",
+            "title": "Wie kann ihn entsorgt werden?",
+            "answer": "",
+            "answer_text": "<p>Das Glasfläschchen kann recycelt werden, sobald das Produkt leer ist. Entferne dazu einfach den Applikator und reinige die Glasflasche, um alle Produktreste zu entfernen und sie dann in der Glastonne zu entsorgen. Applikator, Verschlusskappe und Stab können im Restmüll entsorgt werden. Die Faltschachtel besteht zu 100% aus recyceltem und wiederverwertbarem Papier. <br\/><br\/>Wir arbeiten daran, unsere Produkte so nachhaltig wie möglich zu machen und wissen, dass wir noch nicht zu 100% am Ziel sind. Kontaktier uns gerne und teile deine Ideen, damit wir uns weiter verbessern können!<\/p>"
+          }
+        },
+        "527d4977-b6a0-4c02-a979-b398643b71a5": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Eye Level",
+            "title": "Ist er wasserdicht?",
+            "answer": "",
+            "answer_text": "<p>Eye Level ist zwar nicht wasserfest, aber dank der natürlichen Wachse in der Formel hält er bis zu 36 Stunden, ganz ohne zu verschmieren, zu verkleben oder zu bröseln.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "86f904f9-df63-4959-96c8-597dc45749a0",
+        "4e0f1ab0-3ba4-48d9-8efc-7dffd2a3cb8f",
+        "ddf84332-a3e3-482d-9aba-a07f5bea5d3f",
+        "85ba0869-c9cb-4550-9e56-482c694cd299",
+        "6d8b863f-f78e-45ac-ac4d-76a3fe0266b8",
+        "756e7b13-f64d-4635-914e-9dc9df02f89e",
+        "74f12b52-f3d7-42f3-87f4-53bdc6d7b637",
+        "92e75a58-6cfc-4000-aa17-d5f9b508af78",
+        "9e51999e-7474-4396-8934-fad3e1796d4f",
+        "c365f5a0-17ff-4052-9271-de7b10f8b46d",
+        "ce3484da-2019-493f-93e4-c319b9f017c1",
+        "82c390f8-35f0-43d0-9c22-f28e7e447d41",
+        "12e0b44b-4fec-4a7d-831d-0d5f87f73517",
+        "d4d201c4-2234-4ca6-88ad-f1bd6d1e6b7b",
+        "05e14e82-e1fa-49f0-929b-674ae33d950b",
+        "3c068ca3-e958-43a4-804b-dbeb8d869fe4",
+        "4011504e-83e8-42f4-861d-3a921f5665a7",
+        "9ce12b66-7865-4848-b0b4-c23c3070dc56",
+        "c5557a6e-c32d-430d-865c-f884454cbac5",
+        "93e81365-84a5-440e-b1d0-b6234813b92d",
+        "f5c5586a-aba3-4e8e-8f76-67fb386b3251",
+        "1ddbce70-8af0-49ac-9b5d-4191a387102c",
+        "69c80a54-f998-4254-8d80-b85cbd7468d8",
+        "901dc7e9-4b92-4d01-b1b4-6cbc63597ea5",
+        "b085b34c-1dde-4edf-82bf-96c41dd0911a",
+        "9870d60b-fa6f-4467-8346-3357803b4b20",
+        "6ce5a342-ff3c-4b0f-970a-0f9de11db73c",
+        "440a38cb-4b40-42e5-a7fc-4978756d58ea",
+        "7e18a72f-6e89-40c8-806d-c0a571611bc8",
+        "dad73029-5f63-4a8d-a10f-04bcf37eb024",
+        "23fd418d-8316-4e8e-a715-87a17deb30f9",
+        "41e5172a-b939-4796-b7a1-9f8a2c69d5f6",
+        "c42bb60f-f2f5-4637-a6ad-ce15d7a5b742",
+        "6224b801-7ae0-40e6-89e7-5f5645429922",
+        "ae514e22-1715-42c4-ae4c-5fd8d0fd6fce",
+        "a0c0d207-baaa-4918-98b4-b3f5aad7e034",
+        "6523d6d5-5c90-4e95-80d0-b54eb3e514bc",
+        "740c1509-1dca-4be9-9c82-4fd722d38592",
+        "d61adf7f-adbd-4706-91a5-ce87128b63ee",
+        "e70df786-b3b2-4290-8001-db736ccf6c7a",
+        "c69dc3fc-2d87-4bb5-80af-11321ebcb03b",
+        "f45873da-cbaf-4cfd-919d-fb7ddd58ae0d",
+        "e63913d1-835f-4b96-a38f-3d19058e5081",
+        "d9f55c0a-d0b4-425e-aa72-4ff43ffa4839",
+        "a4069605-2b22-4989-9bc2-fa13ff1b51e1",
+        "62b5479d-dbee-47c2-a503-c05b034a8038",
+        "e86efd0b-b404-401e-bac6-942e7c539e4b",
+        "d0231121-4e81-4c78-96e4-483e48c30a8f",
+        "665974bb-4c3d-4075-946f-bfcf12ddb6ee",
+        "527d4977-b6a0-4c02-a979-b398643b71a5"
+      ],
+      "settings": {
+        "hide_title": true,
+        "subheading": "Questions and answers",
+        "text": "",
+        "titleMenu": "Choose a topic.",
+        "tag_title": "p",
+        "tag_header_menu": "p",
+        "tag_menu_topics": "p",
+        "tag_header_faq_list": "p",
+        "tag_questions": "p",
+        "class_title": "p",
+        "class_header_menu": "h3",
+        "class_menu_topics": "p",
+        "class_header_faq_list": "h3",
+        "class_questions": "p",
+        "weight_class_title": "bold",
+        "weight_class_header_menu": "bold",
+        "weight_class_menu_topics": "",
+        "weight_class_header_faq_list": "bold",
+        "weight_class_questions": "bold",
+        "spacing_top_section": "m",
+        "spacing_bottom_section": "m",
+        "spacing_bottom_title": "m",
+        "spacing_bottom_header": "l",
+        "spacing_bottom_question_mobile": "s",
+        "spacing_bottom_question": "l"
+      }
+    },
+    "faq2": {
+      "type": "faq_template",
+      "blocks": {
+        "515dec5b-01ca-48d0-87f9-be74e9ccd4d5": {
+          "type": "header",
+          "settings": {
+            "header": "Visionist"
+          }
+        },
+        "0756f028-900a-4599-80fd-def807c5bfa9": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Visionist",
+            "title": "Ist Visionist vegan und “cruelty-free”?",
+            "answer": "",
+            "answer_text": "<p>Ja, Visionist ist vegan und enthält somit keine tierischen Inhaltsstoffe oder Inhaltsstoffe tierischen Ursprungs.<\/p>"
+          }
+        },
+        "2d1f466b-2be4-4f64-b4b6-716aa49c71d0": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Visionist",
+            "title": "Was sind die Inhaltsstoffe?",
+            "answer": "",
+            "answer_text": "<p>Unsere drei Superpower Wirkstoffe: Honokiolextrakt, Kornblumenwasser, Orangenfruchtextrakt.<br\/>Für einen Überblick aller Inhaltsstoffe kannst du dir die INCI Liste auf unserer Website oder auf der Umverpackung ansehen.<\/p>"
+          }
+        },
+        "d4652538-7081-4d99-853f-a29847d94521": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Visionist",
+            "title": "Wie bewahre ich ihn auf? <br>Wie lange kann ich ihn benutzen?",
+            "answer": "",
+            "answer_text": "<p>Die Haltbarkeit nach dem Öffnen (PAO) erkennst du ganz leicht an dem kleinen Tiegelsymbol auf der Verpackung. Visionist ist 6 Monate nach Anbruch haltbar.<\/p>"
+          }
+        },
+        "fa19f6e2-8c60-47b7-aa91-403307759a30": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Visionist",
+            "title": "Ich bin schwanger: Kann ich ihn benutzen?<br>Ist die Anwendung bei Kindern sicher?<br>Enthält er Allergene?",
+            "answer": "",
+            "answer_text": "<p>All unsere Produkte werden sorgsam geprüft und bewertet, damit sie für unsere Kunden unter normalen und vorhersehbaren Anwendungsbedingungen sicher sind. Eine Verwendung während der Schwangerschaft wird bei kosmetischen Produkten, die nicht speziell für Schwangere entwickelt wurden, in der Regel nicht geprüft. Aus diesem Grund können wir leider keine spezifische Empfehlung für die Verwendung während der Schwangerschaft geben. Am besten besprichst du dich mit deinem Arzt. Die Inhaltsstoffe findest du auf der Produktseite auf unserer Website. <\/p><p><br\/>Visionist ist sicher in der Anwendung, enthält keine Allergene und wurde augenärztlich getestet.<\/p>"
+          }
+        },
+        "4744fa8d-9ee9-447d-8b3d-b95efb7f1f40": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Visionist",
+            "title": "Wie kann ihn entsorgt werden?",
+            "answer": "",
+            "answer_text": "<p>Das Glasfläschchen kann recycelt werden, sobald das Produkt leer ist. Entferne einfach den Applikator und wasche das Fläschchen gründlich aus, damit alle Produktreste entfernt werden und es in der Glastonne entsorgt werden kann. Die Faltschachtel besteht aus 100% recyceltem und recyclebarem Papier. <br\/><br\/>Wir arbeiten daran, unsere Produkte so nachhaltig wie möglich zu machen und wissen, dass wir noch nicht zu 100% am Ziel sind. Kontaktier uns gerne und teile deine Ideen, damit wir uns weiter verbessern können!<\/p>"
+          }
+        },
+        "60de9aab-36a4-4a80-b1d1-bc09500c1bb1": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Visionist",
+            "title": "Ist Visionist wasserfest?",
+            "answer": "",
+            "answer_text": "<p>Visionist ist nicht wasserfest, aber dank der flüchtigen Bestandteile ist Visionist lang anhaltend. Außerdem kann der Mascara bei Bedarf erneut aufgetragen werden.<br\/><br\/><\/p>"
+          }
+        },
+        "5126b8b8-a7c5-4100-adde-8a80a054b003": {
+          "type": "header",
+          "settings": {
+            "header": "Everyblush"
+          }
+        },
+        "72d5e194-d8ae-4858-af84-af73503ea46a": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Everyblush",
+            "title": "Ist Everyblush vegan und “cruelty-free”?",
+            "answer": "",
+            "answer_text": "<p>Ja, Everyblush ist vegan (enthält also keine Inhaltsstoffe tierischen Ursprungs) und wurde nicht an Tieren getestet.<\/p>"
+          }
+        },
+        "c92013cb-1ca7-4ffc-835f-449f81faf765": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Everyblush",
+            "title": "Was sind die Inhaltsstoffe?",
+            "answer": "",
+            "answer_text": "<p>Everyblush’s drei Superpower Wirkstoffe: Moos-Extrakt, Lactobacillus Ferment und Brokkolisamenöl. <br\/>Für einen Überblick aller Everyblush Inhaltsstoffe kannst du die INCI-Liste auf unserer Website oder auf der Umverpackung ansehen. <\/p>"
+          }
+        },
+        "1fa14c8e-4f74-4536-a5cb-558e1e7e1211": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Everyblush",
+            "title": "Wie bewahre ich ihn auf?<br>Wie lange kann ich ihn benutzen?",
+            "answer": "",
+            "answer_text": "<p>Die Haltbarkeit nach dem Öffnen (PAO) erkennst du ganz leicht an dem kleinen Tiegelsymbol auf der Umverpackung. Everyblush ist 12 Monate nach Anbruch haltbar, ungeöffnet sogar 30 Monate.<\/p>"
+          }
+        },
+        "d4aa4dc6-c0d2-4056-b385-30ee2b6c7b59": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Everyblush",
+            "title": "Ich bin schwanger: Kann ich ihn benutzen?<br>Ist die Anwendung bei Kindern sicher?<br>Enthält er Allergene?",
+            "answer": "",
+            "answer_text": "<p>All unsere Produkte werden sorgsam geprüft und bewertet, damit sie für unsere Kunden unter normalen und vorhersehbaren Anwendungsbedingungen sicher sind. Eine Verwendung während der Schwangerschaft wird bei kosmetischen Produkten, die nicht speziell für Schwangere entwickelt wurden, in der Regel nicht geprüft. Aus diesem Grund können wir leider keine spezifische Empfehlung für die Verwendung von Everyblush während der Schwangerschaft geben. Um sicherzugehen, solltest du dich mit deinem Arzt besprechen. Die Inhaltsstoffe findest du auf der Produktseite auf unserer Website.<br\/><br\/>Everyblush enthält weder Parfüm noch Allergene. <\/p>"
+          }
+        },
+        "3369b178-a5a8-42af-9a74-96f80c2f6a6d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Everyblush",
+            "title": "Wie kann ihn entsorgt werden?",
+            "answer": "",
+            "answer_text": "<p>Überschüssiger Inhalt kann ganz einfach über den Restmüll entsorgt werden. Die leere Tube sollte von der Kappe getrennt und beides in der gelben Tonne entsorgt werden.<\/p>"
+          }
+        },
+        "d4424cb3-3421-4e17-ab86-09c8c27d63a5": {
+          "type": "header",
+          "settings": {
+            "header": "Inhaltsstoffe & Formel"
+          }
+        },
+        "181c358e-a17d-4d5c-95d6-f7fd39296649": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Was ist das besondere an veganen Nagelfarben?",
+            "answer": "",
+            "answer_text": "<p>Unsere gitti Nagelfarben sind komplett vegan. Bei allen Farbpigmenten greifen wir auf Alternativen zurück, die nicht von Tieren stammen. <br\/>In herkömmlichen Nagellacken sind nämlich vor allem die Farb- und Effektpigmente oft nicht vegan. Rottöne bestehen meist aus Karmin – also aus gepressten Schildläusen. Dieses nicht vegane Farbpigment wird unter anderem auch für Rosa-, Violett- und Brauntöne eingesetzt. Für schimmernde Effekte sind hingegen ganz oft Fischschuppen verantwortlich. <\/p>"
+          }
+        },
+        "6377b875-96b8-402d-9d93-ff91903c2a29": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Was bedeutet ISO 16128? Wie erfolgt die Berechnung?",
+            "answer": "",
+            "answer_text": "<p>ISO standard 16128 increases transparency - Die ISO Norm 16128 erhöht die Transparenz – vor allem für die Hersteller von Naturkosmetikprodukten, denn bis heute gibt es für Naturkosmetikprodukte keine rechtliche Definition über die Bedeutung der Begriffe «natürlich» oder «biologisch». Mit dieser Norm lässt sich der Grad des natürlichen oder biologischen Ursprunges numerisch ermitteln, wodurch sich einzelne Rohstoffe und fertige Produkte leicht untereinander vergleichen lassen.<br\/><br\/>Im Fall von gitti berechnen wir mit dieser Norm den prozentualen Anteil aller natürlichen Inhaltsstoffe und Inhaltsstoffe mit natürlichem Ursprung. Um den natürlichen Wert für die Formel berechnen, werden die prozentualen Anteile der einzelnen Inhaltsstoffe mit dem jeweiligen natürlichen Index multipliziert und die Ergebnisse aufsummiert. Der natürliche Index eines Rohstoffes kann zwischen 0 und 1 variieren. Natürlichen Inhaltsstoffen wie z. B. Pflanzenölen wird ein Index von 1 zugeordnet, während rein synthetische Inhaltsstoffe wie z. B. Silikonöle einen Index von 0 aufweisen.<\/p>"
+          }
+        },
+        "79028dcd-0b00-428a-ac8e-5d07efefe0b4": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Ist gitti “x-free” \/ auf welche Inhaltsstoffe verzichtet gitti?",
+            "answer": "",
+            "answer_text": "<p>Bei der Entwicklung unserer Formeln gehen wir bewusst vor: Wir verzichten auf  synthetische und potenziell schädliche Inhaltsstoffe und ersetzen sie durch natürliche Alternativen. Alle gitti Produkte enthalten hochwertige Inhaltsstoffe, werden fair in der EU produziert, sind 100 % vegan und umweltfreundlich.<br\/><br\/>Für unsere Nagelfarben haben wir ein klares Ziel: 100 % natürliche Formeln. Schon jetzt ersetzen wir eine Vielzahl an Inhaltsstoffen, die in traditionellen Nagellacken enthalten ist. <br\/>Allerdings gibt es für Nagellacke noch kein einheitliches, offizielles Bewertungsschema. Üblicherweise werden sogenannte “x-free” Claims verwendet, um auszudrücken, auf wie viele schädliche Inhaltsstoffe ein Nagellack verzichtet. Da jeder Hersteller eine eigene Definition bzw. Liste aufrufen kann, wird dieser Claim jedoch oft irreführend verwendet und zum Beispiel mit Inhaltsstoffen erweitert, die normalerweise gar nicht in Nagellack enthalten oder ohnehin in der EU verboten sind. Von solchen irreführenden Verwendungen des 'x-free' Begriffs möchten wir uns bewusst distanzieren. <br\/>Alle unsere Nagelfarben sind 19-free, vegan, und eco-friendly. Das bedeutet, dass wir auf die folgenden 19 schädlichen oder bedenklichen Inhaltsstoffe in unseren Nagelfarben verzichten:<br\/>Formaldehyd-Freisetzer, Toluol, Phtalate, Kampfer, Tierische Inhaltsstoffe, Parabene, Zugesetzte Duftstoffe, Sulfonamid, Xylol, Aceton, Benzophenon-1, Benzophenon-3, Hydrochinone, Kolophonium, Mineralöle \/ Wachse, Mikroplastik (nach Definition der UNEP 2015), Diethylhexyladipat, EDTA, Triphenylphosphat<br\/><br\/>Transparenz ist uns wichtig. Deshalb ist es für uns selbstverständlich, zu erklären, was in unseren Produkten drin ist - und was nicht. Details dazu findest du hier (<a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/gitti-faq\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/gitti-faq\">F.A.Q.<\/a>) und hier (<a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe-nitrocellulose\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe-nitrocellulose\">Nitrocellulose-Artikel<\/a>).<\/p>"
+          }
+        },
+        "e2f25317-a3d9-46e8-9334-94a6ce8edfe3": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Was ist Nitrocellulose und ist dieser Inhaltsstoff bedenklich?",
+            "answer": "",
+            "answer_text": "<p>Nitrocellulose ist einer der Hauptbestandteile in herkömmlichen lösungsmittelbasierten Nagellacken. Dieser Stoff sorgt als Filmbildner für die typische Textur des Lackes und ist für den langen Halt der Nagelfarbe auf deinem Nagel verantwortlich. Derzeit ist es noch nicht möglich, diesen Filmbildner in der pflanzenbasierten Formel zu ersetzen, da er essenziell für den langen Halt und das ebenmäßige Farbergebnis des Produktes ist. <br\/>Nitrocellulose steht oft als potenziell gesundheitsgefährdender Stoff in der Kritik. Einzeln betrachtet ist Nitrocellulose ein sicherer Inhaltsstoff. Der Knackpunkt: Bei der Produktion von pigmentierten Kosmetikprodukten kommt Nitrocellulose oft mit Stearalkonium Bentonite in Berührung, damit Farbpigmente bestmöglich gelöst und gleichmäßig verteilt werden können. Die Reaktion dieser beiden Stoffe kann dazu führen, dass Nitrosamine entstehen. Nitrosamine sind organische Substanzen, die unter anderem in Lebensmitteln (z. B. Fleisch, Fisch und getrockneten Gewürzen) und in verschiedenen Kosmetikprodukten zu finden sind. Tatsächlich können sie während des Verdauungsprozesses sogar im Körper gebildet werden. Es sind diese Nitrosamine, die wiederum im Verdacht stehen, potenziell krebserregend zu sein – also nicht die Nitrocellulose selbst. Die EU-Kosmetikverordnung (EG Nr. 1223\/2009) legt die Grenze an Nitrosaminen für kosmetische Mittel auf einen minimalen Gehalt fest.<br\/>Bei gitti verhindern wir die Entstehung von Nitrosaminen während der Produktion und Abfüllung, indem der pflanzenbasierte und sichere Hemmstoff Tocopherol eingesetzt wird. Zusätzlich produzieren wir unter gekühlten Verhältnissen, da Nitrosamine vor allem bei erhöhter Temperatur leichter entstehen können. Das ist ein wirklich innovativer Ansatz und wir sind stolz darauf, diese Lösung anbieten zu können. <br\/>In Verbindung mit den EU-Regularien für Kosmetikprodukte, die wir selbstverständlich erfüllen, können wir euch ein vollständig sicheres Produkt bieten. Solltest du trotzdem ein besseres Gefühl haben, diesen Stoff zu vermeiden, empfehlen wir dir unsere wasserbasierten Formeln ohne Nitrocellulose.<br\/>Du willst mehr über die Inhaltsstoffe erfahren? Hier entlang: <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\">Informationen zu Inhaltsstoffen<\/a>. <\/p>"
+          }
+        },
+        "9c4241b2-db34-420b-aa6d-1b52f31f4b2b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Warum ist natürliche Nitrocellulose besser als synthetische?",
+            "answer": "",
+            "answer_text": "<p>Wir möchten so viele synthetische Inhaltsstoffe wie möglich durch pflanzliche Alternativen ersetzen. Deshalb greifen wir auch beim Thema Nitrocellulose auf die pflanzliche Variante zurück. Unsere Nitrocellulose wird aus Cellulose, also aus Pflanzenfasern gewonnen. Dabei handelt es sich um Baumwollfasern, die nitriert werden und so eine Stoffgruppe chemischer Verbindungen (Ester) bilden. Nitrocellulose, die aus Baumwollfasern gewonnen wird, hat gegenüber der künstlichen Variante einen großen Vorteil: einen geringeren ökologischen Fußabdruck. Durch die nachhaltigere Produktion dieser natürlichen Alternative wird der CO2-Ausstoß gegenüber der Produktion synthetischer Nitrocellulose stark reduziert, sodass wir einen positiven Beitrag für den Planeten und unsere Umwelt leisten können.<\/p>"
+          }
+        },
+        "ab3ef3ec-85b0-4cbc-b9ee-ddb1e8edcfbc": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Ist in den Formeln Mikroplastik enthalten?",
+            "answer": "",
+            "answer_text": "<p>Damit gitti gut auf deinen Nägeln hält und nicht direkt wieder abwaschbar ist, verwenden wir sogenannte Filmbildner. Obwohl es sich chemisch gesehen um Kunststoffe handelt, fallen unsere Filmbildner laut der Definition des Umweltbundesamtes nicht unter Mikroplastik. Unser Ziel ist es aber, zukünftig eine 100 % natürliche Formel anzubieten, die völlig auf synthetische Inhaltsstoffe wie Kunststoffe verzichtet.<\/p>"
+          }
+        },
+        "c541106b-a997-4da5-b81c-fdc10f5a9e28": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Sind hormonaktive, toxische oder bedenkliche Substanzen in den Produkten enthalten?",
+            "answer": "",
+            "answer_text": "<p>Alle in gitti Produkten eingesetzten Inhaltsstoffe erfüllen sämtliche Vorgaben der europäischen Kosmetikverordnung und sind in ihrer Konzentration sicher. Diese Konformität wird durch umfangreiche Gesetzgebungen und Sicherheitsbewertungen von Experten, mit denen wir eng zusammen arbeiten, gewährleistet. Wir verfolgen zudem alle wissenschaftlichen Diskussionen zum Thema sehr aufmerksam, da die Sicherheit unserer Kunden*innen für uns oberste Priorität hat. Zusätzlich verzichten wir im Vergleich zu herkömmlichen Nagellacken bei unseren Nagelfarben auf 19 bedenkliche Inhaltsstoffe und ersetzen sie durch Alternativen, die aus unserer Sicht besser sind.  <\/p>"
+          }
+        },
+        "62d8fcb0-b2ea-44ad-a5f2-b28c4e896411": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Wo werden eure Produkte produziert?",
+            "answer": "",
+            "answer_text": "<p>Alle gitti Produkte enthalten hochwertige Inhaltsstoffe, werden fair in der EU produziert, sind 100 % vegan und umweltfreundlich. Für die Entwicklung unserer Formeln und deren Produktion arbeiten wir vornehmlich mit Partnern aus Deutschland, Polen und Frankreich zusammen. <\/p>"
+          }
+        },
+        "914394ca-f8f6-40ca-82a8-9cab028a5e8d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Warum bekommen eure Nagelfarben in einigen Bewertungsapps keine vollständig \"grüne\" bzw. unbedenkliche Bewertung?",
+            "answer": "",
+            "answer_text": "<p>Bewertungswebsiten und Apps für Inhaltsstoffe sind hilfreiche Berater, gerade wenn es darum geht, einen bewussteren Lifestyle zu leben. Dies wird ermöglicht, indem potenzielle \"Schadstoffe\" beziehungsweise kritische Inhaltsstoffe in Kosmetikprodukten aufgedeckt werden. Allerdings hat die dahinterliegende Bewertungssystematik auch einige Schwachstellen. Zunächst ist zu betonen, dass die Einstufung der Inhaltsstoffe der App selbst überlassen ist. Die für die Einstufung verwendeten Kriterien sind nicht in jedem Fall objektiv und haben teilweise mangelnde Aussagekraft und Quellenvalidität. Die App differenziert meist nicht, ob die Inhaltsstoffe synthetischen oder natürlichen Ursprungs sind. Zudem wird nicht berücksichtigt, ob und in welchem Ausmaß die Gewinnung des Rohstoffes nachhaltig, biologisch oder ethisch ist. <br\/>Hinzukommend berücksichtigen die Bewertungsplattformen weder die eingesetzte Konzentration eines Inhaltsstoffes noch den Anwendungsbereich. Einige Inhaltsstoffe sind bedenklich, wenn sie oral aufgenommen oder inhaliert werden, aber viel weniger, wenn dies nicht der Fall ist. Für unsere Nagelfarben ist zum Beispiel auch zu betonen, dass der Nagel eine dickere und somit weniger durchlässige Hornschicht (bis 0,75 mm) aufweist als die Haut (ca. 0,04 mm). <br\/>Außerdem werde alle synthetischen Polymere als kritisch eingestuft, vornehmlich aufgrund der schlechten Abbaubarkeit und möglichen Umweltbelastung. Dies ist eine sehr verallgemeinernde Einstufung, denn es wird kein Zusammenhang zu der Wahrscheinlichkeit hergestellt, dass diese synthetischen Polymere in die Umwelt gelangen. <br\/><br\/>In jedem Fall können wir dir garantieren, dass alle gitti Formeln überprüft und bewertet, ob diese bei üblicher und vorhersehbarer Verwendung für unsere Kunden*innen sicher sind und andernfalls nicht auf dem Markt wären. So wie wir stetig an unseren Formeln feilen, arbeiten auch diese Apps daran, das Bewertungssystem immer weiter zu optimieren.<\/p>"
+          }
+        },
+        "534532ea-13a6-49d3-ba03-c2f72a232932": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Ist gitti für Allergiker oder bei Erkrankungen geeignet?",
+            "answer": "",
+            "answer_text": "<p>Grundsätzlich werden alle gitti Formeln überprüft und bewertet, ob diese bei üblicher und vorhersehbarer Verwendung für unsere Kunden*innen sicher sind. Die Bewertung hinsichtlich individueller Sensibilitäten oder Krankheiten spielt hingegen wie bei den meisten kosmetischen Produkten keine Rolle. Solltest du also spezielle Allergien, Empfindlichkeiten oder Erkrankungen haben und demnach Bedenken, prüfe die Eignung der Inhaltsstoffe bitte mit einem Facharzt. Die Inhaltsstoffe kannst du bei den Nagellacken auf der jeweiligen Produktseite finden. Wir würden uns freuen, von dir zu hören, welches Feedback du bekommen hast.<\/p>"
+          }
+        },
+        "1ef71477-e084-4b56-b8f9-920c41fecc2b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Inhaltsstoffe & Formel",
+            "title": "Ist gitti für Schwangere geeignet?",
+            "answer": "",
+            "answer_text": "<p>Grundsätzlich werden all unsere Produkte überprüft und bewertet, ob diese bei üblicher und vorhersehbarer Anwendung für unsere Kunden*innen sicher sind. Die Frage einer möglichen Schwangerschaft spielt bei kosmetischen Produkten, die nicht explizit für eine Verwendung während der Schwangerschaft entwickelt wurden, in der Regel keine Rolle. Insofern können wir leider vor diesem Hintergrund keine spezielle Empfehlung zur Anwendung während der Schwangerschaft geben. Am besten besprichst du das Thema mit deinem\/deiner Arzt\/Ärztin. Die Inhaltsstoffe kannst du bei den Nagellacken auf der jeweiligen Produktseite finden. Wir würden uns freuen, von dir zu hören, welches Feedback du bekommen hast.<\/p>"
+          }
+        },
+        "45144d08-ac2e-4347-a852-637b21e58b81": {
+          "type": "header",
+          "settings": {
+            "header": "Meine Bestellung"
+          }
+        },
+        "05f36a39-3c56-422e-a915-f3b1e9ecc799": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Wie ist der Status meiner Bestellung?",
+            "answer": "",
+            "answer_text": "<p>Eingehende Bestellungen bearbeiten wir Werktags innerhalb von 48 Stunden. Gleich im Anschluss schicken wir diese los. Der Standardversand innerhalb Deutschland dauert 1-3 Werktage, für alle anderen EU-Länder dauert der Versand bis zu 5 Werktage. <br\/><br\/>Solltest du Fragen zu deiner Bestellung haben, findest du <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\">hier<\/a> unsere Kontaktmöglichkeiten.<\/p>"
+          }
+        },
+        "7e52d9f1-7821-4f9a-b758-d4a8c239b7c5": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Wie kann ich meine Bestellung ändern?",
+            "answer": "",
+            "answer_text": "<p>Am einfachsten ist es, wenn du uns anrufst. Du erreichst uns unter: +49 (0) 30 217 82 82 8<br\/><br\/>Solange deine Bestellung noch nicht versandfertig ist, können wir gegebenenfalls noch etwas ändern. <\/p>"
+          }
+        },
+        "c72ec9de-62cf-43ce-95d9-cddb06c0871d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Wie kann ich meine Bestellung stornieren?",
+            "answer": "",
+            "answer_text": "<p>Am einfachsten ist es, wenn du uns anrufst. Du erreichst uns unter: +49 (0) 30 217 82 82 8<br\/><br\/>Solange deine Bestellung noch nicht versandfertig ist, können wir gegebenenfalls noch etwas ändern. <br\/><\/p>"
+          }
+        },
+        "82a5e7e1-6264-4b64-a3c5-3465098ab022": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Welche Zahlungsmöglichkeiten gibt es?",
+            "answer": "",
+            "answer_text": "<p>Dir stehen aktuell folgende Zahlungsoptionen zur Verfügung. <br\/><br\/>- PayPal<br\/><br\/>- Rechnung mit Klarna<br\/><br\/>- Sofortbezahlen\/Sofortüberweisung mit Klarna<br\/><br\/>- Amazon Pay<br\/><br\/>- eps-Überweisung<br\/><br\/>- iDEAL<br\/><br\/>- Bancontact<br\/><br\/>- Google Pay<br\/><br\/>- Shop Pay<br\/><br\/>Wir arbeiten kontinuierlich daran, diese auf aktuellen Stand zu halten, um dir eine bequeme Zahlung zu ermöglichen.<\/p>"
+          }
+        },
+        "dc7392e3-884c-4c71-82af-efe8a1f5e1db": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Besteht die Möglichkeit, gitti Geschenkgutscheine zu kaufen?",
+            "answer": "",
+            "answer_text": "<p>Du kannst bei gitti <a href=\"https:\/\/www.gitticonsciousbeauty.de\/products\/gutschein\" title=\"gitti Geschenkgutschein\">digitale Geschenkgutscheine<\/a> im Wert von 20€, 50€ oder 100€ erwerben. <\/p><p>Der digitale Geschenkgutschein wird dir nach dem Einkauf direkt per Email zugesendet und ist damit natürlich versandkostenfrei.<br\/><br\/>Der Mehrzweckgutschein berechtigt dich oder deine Liebsten zum Erwerb jeglicher Produkte des zum Zeitpunkt der Einlösung angebotenen gitti Sortiments. Der Gutschein ist ab Kauf 3 Jahre gültig.<\/p>"
+          }
+        },
+        "f3992791-b6c3-4912-bd18-8910794cdcc6": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Kann ich gitti in der Drogerie oder Parfümerie kaufen?",
+            "answer": "",
+            "answer_text": "<p>gitti kannst du leider nicht in der Drogerie oder Parfümerie erhalten. Du findest einige ausgewählte Nagelfarben im Handel bei unseren Partnern:<br\/><br\/>Berlin: KaDeWe, The Store X (Soho House Berlin), IVY&OAK (Berlin Mitte)<br\/><br\/>Hamburg: Alsterhaus <br\/><br\/>München: Oberpollinger <br\/><br\/>Paris: Le Bon Marché<br\/><br\/>Schaue dir für die Adressen gern auch unsere Shop-Übersicht an. Die gitti Nagelfarben kannst du vor Ort testen. Bitte beachte, dass sie nur ausgewählte und nicht alle gitti Nagelfarben vorliegen haben.<\/p>"
+          }
+        },
+        "d5088f50-5326-4155-9af2-9effff87f08d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Meine Bestellung",
+            "title": "Wo kann ich gitti kaufen?",
+            "answer": "",
+            "answer_text": "<p>gitti gibt es jetzt auch in der Nähe Deines Zuhauses!<br\/><br\/><strong>Deutschland:<\/strong><br\/>Berlin: KaDeWe, The Store X (Soho House Berlin), COWSHED Spa (Soho House Berlin)<strong>, <\/strong>NOVeL Berlin, Kauf Dich Glücklich, Pure Schönheit (Dahlem)<br\/><br\/>Düsseldorf: Douglas, Koko Selected, Breuninger<br\/><br\/>Frankfurt: Kauf Dich Glücklich<br\/><br\/>Hamburg: Alsterhaus, Meister Parfümerie, Little Department Store, Kauf Dich Glücklich<br\/><br\/>Heidelberg: Victor&linchen<br\/><br\/>Karlsruhe: Breuninger<br\/><br\/>Ludwigsburg: Breuninger<br\/><br\/>München: Oberpollinger, Breuninger, Kauf Dich Glücklich<br\/><br\/>Nürnberg: Emerson Renaldi, Breuninger<br\/><br\/>Sindelfingen: Breuninger<\/p><p><strong><br\/>Österreich:<br\/><\/strong>Dornbirn: Nägele & Strubell<br\/><strong><br\/><\/strong>Hohenems: Heerdegen Store<br\/><br\/>Klagenfurt: Nägele & Strubell<br\/><br\/>Linz: Nägele & Strubell<br\/><br\/>Salzburg: Nägele & Strubell<br\/><br\/>Wien: Naturparfumerie Staudigl, Steffl, Nägele & Strubell<br\/><br\/>Schaue dir für die Adressen gern auch unsere Shop-Übersicht an. Die gitti Nagelfarben kannst du vor Ort testen. Bitte beachte, dass sie nur ausgewählte und nicht alle gitti Nagelfarben vorliegen haben.<\/p>"
+          }
+        },
+        "44ea5a1a-2331-430d-b24d-b8eee7956417": {
+          "type": "header",
+          "settings": {
+            "header": "Versand"
+          }
+        },
+        "41b2ed4e-0cf3-4566-a025-2129f8e4b2b5": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Versand",
+            "title": "Was kostet der Versand?",
+            "answer": "",
+            "answer_text": "<p>Für den Versand innerhalb Deutschlands berechnen wir pauschal 3,90 € für jede Bestellung bis zu einem Warenwert von 49 €. Ab einem Warenwert von 49 € ist der Versand kostenlos. <\/p><p>Für den Versand in die Schweiz berechnen wir pauschal 9,90 € für jede Bestellung bis zu einem Warenwert von 100,00 €. Ab einem Warenwert von 100,00 € ist der Versand kostenlos.<\/p><p>Für den <a href=\"https:\/\/www.gitticonsciousbeauty.de\" title=\"https:\/\/www.gitticonsciousbeauty.de\">Versand innerhalb Europas <\/a>berechnen wir pauschal 4,90 € für jede Bestellung bis zu einem Warenwert von 50,00 €. Ab einem Warenwert von 50,00 € ist der Versand kostenlos. <\/p>"
+          }
+        },
+        "0f226318-2b16-4180-a1c6-eec76cd1a742": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Versand",
+            "title": "Bietet ihr auch internationalen Versand an?",
+            "answer": "",
+            "answer_text": "<p>Ja! Wir liefern unsere gitti Farben nach Österreich, in die Schweiz und Liechtenstein.<br\/><br\/>Wenn wir deine Produkte nach Belgien, in die Niederlande, Schweden, Dänemark, Norwegen, Luxemburg, Frankreich, Spanien, Italien, Portugal, Ungarn, Tschechien, Monaco, Croatia, Slovakia, Poland, Finland, Slovenia liefern sollen, besuche bitte unseren <a href=\"https:\/\/www.gitticonsciousbeauty.com\" title=\"https:\/\/www.gitticonsciousbeauty.com\">internationalen Shop<\/a>.<br\/><\/p><p><br\/>Bei weiteren Fragen kannst du dich gerne jederzeit bei uns melden. <br\/><br\/><a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\">Hier<\/a> findest du unsere Kontaktmöglichkeiten.<\/p>"
+          }
+        },
+        "ebf642f6-0c0d-496a-9ee6-72c39b2a36fe": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Versand",
+            "title": "Wie lange sind eure Lieferzeiten?",
+            "answer": "",
+            "answer_text": "<p>Unser Standardversand innerhalb Deutschlands dauert 1-3 Tage. <\/p><p>Der Versand in die Schweiz und alle andere EU Länder (via <a href=\"https:\/\/www.gitticonsciousbeauty.com\/\" title=\"https:\/\/www.gitticonsciousbeauty.com\/\">www.gitticonsciousbeauty.com<\/a>) dauert durchschnittlich 3-5 Werktage.<\/p>"
+          }
+        },
+        "fa0e2f6a-97b5-4bd2-b0b0-1044d3730ab0": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Versand",
+            "title": "Wie kommt meine Bestellung bei mir zu Hause an?",
+            "answer": "",
+            "answer_text": "<p>Unsere gitti Flaschen sind so flach, dass sie in normale Briefkästen passen. Daher verschicken wir alle nationalen Sendungen mit der Deutschen Post inklusive Sendungsverfolgung für dich. Den internationalen Versand wickeln wir über DHL und UPS ab, ebenfalls inklusive Sendungsverfolgungsnummer. Den Link zu deiner Sendungsnummer findest du in deiner Versandbestätigung.<\/p>"
+          }
+        },
+        "c514f113-fcab-4a3b-affb-4ed08f35ed02": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Versand",
+            "title": "Mein Paket ist nicht oder beschädigt angekommen.",
+            "answer": "",
+            "answer_text": "<p>Es tut uns sehr leid, dass beim Versand deiner Bestellung etwas schief gelaufen ist. Bitte melde dich bei uns. Am einfachsten ist es, wenn du uns anrufst oder anschreibst. Du erreichst uns unter: +49 (0) 30 217 82 82 8.<br\/><br\/>Bitte halte deine Bestellnummer bereit, damit wir dir schnellstmöglich helfen können. <strong>Wir finden in jedem Fall eine Lösung!<\/strong><\/p>"
+          }
+        },
+        "648e4e6a-8ebc-4cf7-8814-5d606dc8fd6c": {
+          "type": "header",
+          "settings": {
+            "header": "Rückgabe & Umtausch"
+          }
+        },
+        "b90c233c-f5de-4d10-bb71-ade1aecebd15": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Rückgabe & Umtausch",
+            "title": "Wie ist euer Rückgaberecht? Kann ich meine Bestellung umtauschen?",
+            "answer": "",
+            "answer_text": "<p>Du kannst deine ungeöffneten Produkte innerhalb von 14 Tagen an unsere Adresse zurücksenden, jedoch musst du die Versandkosten selbst übernehmen. <br\/>Am einfachsten ist es, wenn du uns anrufst. Bitte halte deine Bestellnummer bereit, damit wir dir schnellstmöglich helfen können. <br\/><a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\">Hier<\/a> findest du unsere Kontaktmöglichkeiten.<\/p>"
+          }
+        },
+        "8fd2b4d1-e656-4b24-a567-4c4d7ea7805c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Rückgabe & Umtausch",
+            "title": "Ich habe ein falsches Produkt erhalten, was kann ich tun?",
+            "answer": "",
+            "answer_text": "<p>Das tut uns leid und wir entschuldigen uns dafür. Bei all den schönen gitti Farben kann das leider schon mal passieren. Selbstverständlich senden wir dir schnellstmöglich dein Wunschprodukt zu. <br\/><br\/>Bitte melde dich bei uns. Wir helfen dir schnellstmöglich weiter und klären alle Details.<br\/><br\/><a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/kontakt\">Hier<\/a> findest du unsere Kontaktmöglichkeiten. <\/p>"
+          }
+        },
+        "2b1d43de-72fa-4a04-85cc-f6dec406eeba": {
+          "type": "header",
+          "settings": {
+            "header": "Mein Account"
+          }
+        },
+        "c41e0496-f417-43dd-96c0-68c532a7a51e": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Mein Account",
+            "title": "Ich habe mein Passwort vergessen.",
+            "answer": "",
+            "answer_text": "<p>Das ist überhaupt kein Problem. Unter dem Login-Formular findest du den \"Passwort vergessen\"-Button. Klicke einfach auf den Button und trage die Mailadresse deines Accounts ein. Kurz darauf erhältst du eine Mail, durch die du mit einem Klick ein neues Passwort wählen kannst. Bitte beachte: Sofern gitti kein hinterlegter Kontakt in deinem Postfach ist, kann die Mail ggf. auch in deinem Spam- oder Werbungs-Postfach landen. Um das zukünftig zu verhindern, füge uns einfach als Kontakt hinzu. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "515dec5b-01ca-48d0-87f9-be74e9ccd4d5",
+        "0756f028-900a-4599-80fd-def807c5bfa9",
+        "2d1f466b-2be4-4f64-b4b6-716aa49c71d0",
+        "d4652538-7081-4d99-853f-a29847d94521",
+        "fa19f6e2-8c60-47b7-aa91-403307759a30",
+        "4744fa8d-9ee9-447d-8b3d-b95efb7f1f40",
+        "60de9aab-36a4-4a80-b1d1-bc09500c1bb1",
+        "5126b8b8-a7c5-4100-adde-8a80a054b003",
+        "72d5e194-d8ae-4858-af84-af73503ea46a",
+        "c92013cb-1ca7-4ffc-835f-449f81faf765",
+        "1fa14c8e-4f74-4536-a5cb-558e1e7e1211",
+        "d4aa4dc6-c0d2-4056-b385-30ee2b6c7b59",
+        "3369b178-a5a8-42af-9a74-96f80c2f6a6d",
+        "d4424cb3-3421-4e17-ab86-09c8c27d63a5",
+        "181c358e-a17d-4d5c-95d6-f7fd39296649",
+        "6377b875-96b8-402d-9d93-ff91903c2a29",
+        "79028dcd-0b00-428a-ac8e-5d07efefe0b4",
+        "e2f25317-a3d9-46e8-9334-94a6ce8edfe3",
+        "9c4241b2-db34-420b-aa6d-1b52f31f4b2b",
+        "ab3ef3ec-85b0-4cbc-b9ee-ddb1e8edcfbc",
+        "c541106b-a997-4da5-b81c-fdc10f5a9e28",
+        "62d8fcb0-b2ea-44ad-a5f2-b28c4e896411",
+        "914394ca-f8f6-40ca-82a8-9cab028a5e8d",
+        "534532ea-13a6-49d3-ba03-c2f72a232932",
+        "1ef71477-e084-4b56-b8f9-920c41fecc2b",
+        "45144d08-ac2e-4347-a852-637b21e58b81",
+        "05f36a39-3c56-422e-a915-f3b1e9ecc799",
+        "7e52d9f1-7821-4f9a-b758-d4a8c239b7c5",
+        "c72ec9de-62cf-43ce-95d9-cddb06c0871d",
+        "82a5e7e1-6264-4b64-a3c5-3465098ab022",
+        "dc7392e3-884c-4c71-82af-efe8a1f5e1db",
+        "f3992791-b6c3-4912-bd18-8910794cdcc6",
+        "d5088f50-5326-4155-9af2-9effff87f08d",
+        "44ea5a1a-2331-430d-b24d-b8eee7956417",
+        "41b2ed4e-0cf3-4566-a025-2129f8e4b2b5",
+        "0f226318-2b16-4180-a1c6-eec76cd1a742",
+        "ebf642f6-0c0d-496a-9ee6-72c39b2a36fe",
+        "fa0e2f6a-97b5-4bd2-b0b0-1044d3730ab0",
+        "c514f113-fcab-4a3b-affb-4ed08f35ed02",
+        "648e4e6a-8ebc-4cf7-8814-5d606dc8fd6c",
+        "b90c233c-f5de-4d10-bb71-ade1aecebd15",
+        "8fd2b4d1-e656-4b24-a567-4c4d7ea7805c",
+        "2b1d43de-72fa-4a04-85cc-f6dec406eeba",
+        "c41e0496-f417-43dd-96c0-68c532a7a51e"
+      ],
+      "settings": {
+        "hide_title": true,
+        "subheading": "Questions and answers",
+        "text": "",
+        "titleMenu": "Choose a topic.",
+        "tag_title": "p",
+        "tag_header_menu": "p",
+        "tag_menu_topics": "p",
+        "tag_header_faq_list": "p",
+        "tag_questions": "p",
+        "class_title": "p",
+        "class_header_menu": "h3",
+        "class_menu_topics": "p",
+        "class_header_faq_list": "h3",
+        "class_questions": "p",
+        "weight_class_title": "bold",
+        "weight_class_header_menu": "bold",
+        "weight_class_menu_topics": "",
+        "weight_class_header_faq_list": "bold",
+        "weight_class_questions": "bold",
+        "spacing_top_section": "m",
+        "spacing_bottom_section": "m",
+        "spacing_bottom_title": "m",
+        "spacing_bottom_header": "l",
+        "spacing_bottom_question_mobile": "s",
+        "spacing_bottom_question": "l"
+      }
+    },
+    "text": {
+      "type": "text_blocks",
+      "blocks": {
+        "bddabbe1-b8e4-4ae3-8bd7-80da4e28d445": {
+          "type": "left_side",
+          "settings": {
+            "link_text_left": "About us",
+            "link_url_left": "shopify:\/\/pages\/about-us-1"
+          }
+        },
+        "3ee64902-80fe-4e8a-b48d-8f210bbaca5e": {
+          "type": "left_side",
+          "settings": {
+            "link_text_left": "Sustainability",
+            "link_url_left": "shopify:\/\/pages\/nachhaltigkeit"
+          }
+        },
+        "997ed08e-f3c5-4f06-b895-bbaa70a92751": {
+          "type": "right_side",
+          "settings": {
+            "link_text_right": "Ingredients",
+            "link_url_right": "shopify:\/\/pages\/inhaltsstoffe"
+          }
+        },
+        "17a4459d-c859-4b8e-aed8-78844b5d30b6": {
+          "type": "right_side",
+          "settings": {
+            "link_text_right": "Why gitti?",
+            "link_url_right": "shopify:\/\/pages\/warum-gitti"
+          }
+        }
+      },
+      "block_order": [
+        "bddabbe1-b8e4-4ae3-8bd7-80da4e28d445",
+        "3ee64902-80fe-4e8a-b48d-8f210bbaca5e",
+        "997ed08e-f3c5-4f06-b895-bbaa70a92751",
+        "17a4459d-c859-4b8e-aed8-78844b5d30b6"
+      ],
+      "settings": {
+        "title": "Would you like to know more about gitti?",
+        "tag_title": "h2",
+        "class_title": "h2",
+        "weight_class_title": "bold",
+        "mobile_heading": "Would you like to know more about gitti?",
+        "mobile_call_us_title": "",
+        "mobile_call_us_text": "About us",
+        "mobile_call_us_link": "shopify:\/\/pages\/about-us-1",
+        "mobile_whatsapp_title": "",
+        "mobile_whatsapp_text": "Sustainability",
+        "mobile_whatsapp_link": "shopify:\/\/pages\/nachhaltigkeit",
+        "mobile_contact_title": "",
+        "mobile_contact_text": "Ingredients",
+        "mobile_contact_link": "shopify:\/\/pages\/inhaltsstoffe"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1664468044cafb5ae6",
+    "faq",
+    "faq2",
+    "text"
+  ]
+}

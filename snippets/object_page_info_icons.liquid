@@ -1,0 +1,82 @@
+<style>
+    @media (max-width: {{settings.breakpoint_small}}px) {
+                    {% if object.settings.object_border_mobile %}
+                    #shopify-section-{{object.id}} {
+                        border-bottom: 4px solid {{settings.color_border}};
+                    }
+                    {% endif %}
+                }
+                @media (min-width: {{settings.breakpoint_small | plus: 1 }}px) {
+                    {% if object.settings.object_border_desktop %}
+                #shopify-section-{{object.id}} {
+                    
+                        border-bottom: 4px solid {{settings.color_border}};
+                    }
+                    {% endif %}
+                }
+    #shopify-section-{{object.id}}{
+      background-color:{{object.settings.background_color}};
+    }
+    #shopify-section-{{object.id}} .clever_icon svg{
+      width: 50px;
+      height: 50px;
+    }
+    #shopify-section-{{object.id}} .clever_icon{
+        width: initial;
+        height: initial;
+      }
+
+    @media (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-object-{{object.id}} .icon_padding_mobile{
+            padding-right: 20px; 
+            padding-left: 20px;
+        }
+    }
+
+    @media (max-width: {{settings.site_width}}px) {
+        #shopify-section-{{object.id}} .why_object {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+                grid-gap: {{settings.grid_gap_small}}px;
+            }
+            #shopify-section-{{object.id}} .why_block_span_one {
+                grid-column-end: span 1;
+               
+            }
+    }
+</style>
+  
+      <div class="grid col-gap col-4 small_col-1 small_row-gap spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}} why_object">
+          {% for i in (1..4) %}
+           
+          {% capture icon_id %}icon_{{i}}{% endcapture %}
+          {% capture heading_id %}heading_{{i}}{% endcapture %}
+          {% capture text_id %}text_{{i}}{% endcapture %}
+
+
+                <div class="grid-item border"> 
+                    <div class="flex col small_middle">
+                        <div class="flex col left bottom icon_padding_mobile" style="align-items: {{object.settings.align_icons}};">
+                            <div class="spacing-left-{{object.settings.block_spacing_left_right}} spacing-right-{{object.settings.block_spacing_left_right}}">
+                                {% render 'icon' icon: object.settings[icon_id] %}
+                            </div>
+                        </div>
+                        <div class="spacing-left-{{object.settings.block_spacing_left_right}} spacing-right-{{object.settings.block_spacing_left_right}} flex col small_left small_evenly">
+                            <div class="spacing-top-{{object.settings.richtext_spacing_bottom}} only_small"></div>
+                            <div class="spacing-top-{{object.settings.heading_spacing_bottom}} only_medium-up"></div>
+                            {% if object.settings[heading_id]!= blank %}
+                                <{{object.settings.heading_tag}} class="text-align-{{object.settings.text_align}} {{object.settings.heading_class}} {{object.settings.heading_weight_class}} spacing-bottom-{{object.settings.heading_spacing_bottom}} animation on-load fade-in" animation-delay="100">{{ object.settings[heading_id] | escape }}</{{object.settings.heading_tag}}> 
+                            {% endif %}
+                            {% if object.settings[text_id]!= blank %}
+                                <{{object.settings.richtext_tag}} class="text-align-{{object.settings.text_align}} {{object.settings.richtext_class}} {{object.settings.richtext_weight_class}} spacing-bottom-{{object.settings.richtext_spacing_bottom}} animation on-load fade-in" animation-delay="200">{{ object.settings[text_id] | remove: '<p>' | remove: '</p>'}}</{{object.settings.richtext_tag}}>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            
+            
+            {% endfor %}
+      </div>
+    
+
+
+     

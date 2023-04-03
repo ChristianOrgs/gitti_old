@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "page_job_ad": {
+      "type": "page_job_ad",
+      "settings": {
+        "link_back": "https:\/\/gitti-com.myshopify.com\/pages\/jobs",
+        "show_application_info": true,
+        "title_appli_info": "Sound like a good fit?",
+        "text_appli_info": "<p>Sounds like a fit? Please send your CV, salary expectations and your earliest possible starting date to<a href=\"mailto:jobs@gitti.de\" title=\"mailto:jobs@gitti.de\"> jobs@gitti.de<\/a>. The beauty industry is changing fast, support us while we re-invent it. We look forward to meeting you!&quot;variety is the spice of life” — and a celebrated component of our culture. At gitti, we strive to create an inclusive environment that empowers our employees. We believe that our products benefit from our diverse backgrounds and experiences and are proud to be an equal opportunity employer: all qualified applicants are considered for positions regardless of race, ethnic origin, gender, age, religion or belief, marital status, gender identification, sexual orientation, or disability.<\/p>",
+        "heading_spacing_bottom": "m",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "subheading_spacing_bottom": "m",
+        "subheading_tag": "p",
+        "subheading_class": "h4",
+        "subheading_weight_class": "bold",
+        "text_spacing_bottom": "m",
+        "text_tag": "p",
+        "text_class": "h4",
+        "text_weight_class": ""
+      }
+    }
+  },
+  "order": [
+    "page_job_ad"
+  ]
+}

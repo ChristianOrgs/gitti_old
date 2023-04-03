@@ -1,0 +1,19 @@
+
+<ul class="filter_group_values_list filter_group_values_list-{{style}}">
+    {% for value in filter_values %}
+        {% assign value_handle = value | handleize %}
+        <li class="filter_group_values_list_item flex">
+            <input hidden data-filter-value type="{{select_type}}" name="filter_values-{{id}}" id="filter_values-{{id}}-{{value_handle}}" value="{{value | strip }}" {% if selected_value != blank and selected_value == value %} checked{% endif %} data-t="{% if value contains '.' %}{{value | strip | strip_newlines | split: '|' | last | t }}{% else %}{{value}}{% endif %}" data-handle="{% if value contains '.' %}{{value | strip | strip_newlines | split: '|' | last | t | handleize }}{% else %}{{value | handleize }}{% endif %}" >
+            {% if style == 'swatch' %}
+              <label for="filter_values-{{id}}-{{value_handle}}" class="filter_item_style-{{style}}">
+                <label for="filter_values-{{id}}-{{value_handle}}" class="swatch swatch-{{value_handle}}"></label>
+                <span>{% if value contains '.' %}{{value | strip | strip_newlines | split: '|' | last | t }}{% else %}{{value}}{% endif %}</span>
+              </label>
+            {% else %}
+              <label for="filter_values-{{id}}-{{value_handle}}" class="filter_item_style-{{style}}">
+                {% if value contains '.' %}{{value | strip | strip_newlines | split: '|' | last | t }}{% else %}{{value}}{% endif %}
+              </label>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

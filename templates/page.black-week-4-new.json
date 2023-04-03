@@ -1,0 +1,230 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "c0ce3211-be6e-4331-a0c4-5bd2818b8554": {
+      "type": "index_image_with_text",
+      "disabled": true,
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-1",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/gitti_SHOP_November_Sales_2022_HP_Banner_Mobile_7.jpg",
+        "image_shape": "sixteen_by_nine",
+        "image_fit": "contain",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading": "November Specials.",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext": "<p>Der größte Sale des Jahres. Wir feiern Conscious Beauty mit <strong>30% auf unser gesamtes Sortiment! <\/strong><em>Der Rabatt wird automatisch an der Kasse abgezogen.<\/em><\/p>",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "",
+        "button_link": "",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "5b60850f-cc92-44f5-848f-fc93235887cd": {
+      "type": "index_image_with_text_blocks",
+      "blocks": {
+        "77a4db88-685f-4497-a94b-7752ff99899c": {
+          "type": "text",
+          "settings": {
+            "text_align": "left",
+            "vertical_align": "middle",
+            "heading": "November Specials.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "<p>Der größte Sale des Jahres. Wir feiern Conscious Beauty mit <strong>30% auf unser gesamtes Sortiment! <\/strong><em>Der Rabatt wird automatisch an der Kasse abgezogen.<\/em><\/p>",
+            "richtext_splitted": "",
+            "richtext_spacing_bottom": "xs",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_label": "Jetzt shoppen",
+            "button_link": "#products",
+            "button_class": "btn--primary btn"
+          }
+        },
+        "ca42bae2-6b5c-4fe8-8692-46c90e0dc034": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_November_Sales_2022_HP_Banner_Mobile_7.jpg",
+            "image_shape": "sixteen_by_nine",
+            "image_fit": "contain"
+          }
+        }
+      },
+      "block_order": [
+        "77a4db88-685f-4497-a94b-7752ff99899c",
+        "ca42bae2-6b5c-4fe8-8692-46c90e0dc034"
+      ],
+      "settings": {
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "mobile_layout_revert": true,
+        "dislocated": false
+      }
+    },
+    "aa1bf7cd-e4bb-4e57-b6e9-2ac3810938cc": {
+      "type": "index_triple_usp",
+      "settings": {
+        "spacing_top": "s",
+        "spacing_bottom": "s",
+        "tag": "p",
+        "class": "p",
+        "weight_class": "",
+        "link_1": "",
+        "icon_1": "vegan_v",
+        "text_1": "Vegan & PETA zertifiert",
+        "link_2": "",
+        "icon_2": "innovative_formulas",
+        "text_2": "Innovative Formeln natürlichen Ursprungs",
+        "link_3": "",
+        "icon_3": "sustainable_packaging",
+        "text_3": "Nachhaltige Verpackungen",
+        "custom_css": "#shopify-section-d1b33abf-9304-4827-acff-3c0292267bf6{\nbackground-color: #F3F3F3;}"
+      }
+    },
+    "575ea628-a668-49b9-8950-e4a029dad1fa": {
+      "type": "custom_html",
+      "blocks": {
+        "ffed4a91-ed70-4a91-a1c3-694b930d6e22": {
+          "type": "html",
+          "settings": {
+            "html": "<div id=\"products\"><\/div>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "ffed4a91-ed70-4a91-a1c3-694b930d6e22"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": ""
+      }
+    },
+    "285a6694-96f8-40fd-98f0-9baabe4fb229": {
+      "type": "index_featured_collection",
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Highlights.",
+        "spacing_bottom_heading": "none",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_label": "",
+        "button_class": "btn--tertiary",
+        "collections": [],
+        "product_button_class": "btn--primary",
+        "product_button_class_mobile": "btn--secondary",
+        "style": "grid"
+      }
+    },
+    "16613383914d99f403": {
+      "type": "index_instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "1661338396770c362d": {
+      "type": "maestrooo-instagram",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 2,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": true,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "16613410688f3ec6fb": {
+      "type": "index_featured_logos",
+      "disabled": true,
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "c0ce3211-be6e-4331-a0c4-5bd2818b8554",
+    "5b60850f-cc92-44f5-848f-fc93235887cd",
+    "aa1bf7cd-e4bb-4e57-b6e9-2ac3810938cc",
+    "575ea628-a668-49b9-8950-e4a029dad1fa",
+    "285a6694-96f8-40fd-98f0-9baabe4fb229",
+    "16613383914d99f403",
+    "1661338396770c362d",
+    "16613410688f3ec6fb"
+  ]
+}

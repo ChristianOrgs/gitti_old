@@ -1,0 +1,200 @@
+{
+  "sections": {
+    "product_template_gallery_dots": {
+      "type": "product_template_gallery_dots",
+      "settings": {
+        "gallery_spacing": 2,
+        "slider_preview": 60,
+        "gallery_dot_outline": "#000000",
+        "gallery_dot_fill": "#ffffff",
+        "gallery_dot_fill_selected": "#a6a6a6",
+        "gallery_dot_opacity": 80,
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "title_tag": "p",
+        "title_class": "h1",
+        "title_weight_class": "bold",
+        "price_tag": "p",
+        "price_class": "h1",
+        "price_weight_class": "bold",
+        "price_font_size": 20,
+        "shipping_note": "Delivery in 3-5 working days"
+      }
+    },
+    "index_info_slider_lip_sync_product_template": {
+      "type": "index_info_slider_lip_sync_product_template",
+      "settings": {
+        "no_image": false,
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Unsere Formel.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Unsere vier Superpower Inhaltsstoffe und was sie können.",
+        "richtext_tag": "p",
+        "richtext_class": "h4",
+        "richtext_weight_class": "",
+        "block_heading_spacing_bottom": "xs",
+        "block_heading_tag": "p",
+        "block_heading_class": "h4",
+        "block_heading_weight_class": "bold",
+        "block_text_spacing_bottom": "m",
+        "block_text_tag": "p",
+        "block_text_class": "p",
+        "block_text_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain",
+        "image_focal_point": "",
+        "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricebranwax.jpg",
+        "url_1": "",
+        "heading_1": "Reisölwachs",
+        "text_1": "<p>Sorgt als vegane Wachsalternative für ein gepflegtes, weiches Hautgefühl.<\/p>",
+        "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_watermelonseedoil.jpg",
+        "url_2": "",
+        "heading_2": "Wassermelonenkernöl",
+        "text_2": "<p>Schützt vor trockenen, rissigen Lippen. Reich an Vitamin A und E.<\/p>",
+        "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_hyaluronicacid.jpg",
+        "url_3": "",
+        "heading_3": "Hyaluronsäure",
+        "text_3": "<p>Spendet Feuchtigkeit, sorgt für Spannkraft und Elastizität.<\/p>",
+        "image_4": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_arganoil.jpg",
+        "url_4": "",
+        "heading_4": "Organic Arganöl",
+        "text_4": "<p>Ist antioxidativ, enthält viele essentielle Fettsäuren und Vitamin E.<\/p>",
+        "url_5": "",
+        "heading_5": "",
+        "text_5": "",
+        "url_6": "",
+        "heading_6": "",
+        "text_6": ""
+      }
+    },
+    "product_video": {
+      "type": "product_video",
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-4",
+        "layout_mobile": "small_row-start-1",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "product_instagram": {
+      "type": "product_instagram",
+      "blocks": {
+        "98bc8b54-f7af-4b03-a365-f99f898b0cbc": {
+          "type": "post",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRLpb147_pb150-2.jpg"
+          }
+        },
+        "5c228299-3caf-4a68-ad67-a79ccaaebe89": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_0269-min_1_-min.jpg"
+          }
+        },
+        "fea805bc-c4dd-479f-8072-c0af39ca0b37": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IRL_pb_119_1_f7c0cabd-80b4-42d7-88b6-3b7a2c20b099.jpg"
+          }
+        },
+        "262d1088-8780-4417-a357-5fb7a8f290be": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRL_pb145-2_6951f1fe-0839-46b3-b28c-192f7ec29e50.jpg"
+          }
+        },
+        "1f4fefee-5015-4bfa-b0df-1bded25a04c7": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_2243_2_-min.jpg"
+          }
+        },
+        "0aa5510e-dab7-4253-af7d-125279cc8a74": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRLpb148_pb149-1.jpg"
+          }
+        },
+        "e002ad7d-7dc4-47d1-b15f-c12ebe006986": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_2259_1.jpg"
+          }
+        },
+        "11a8c6a0-76ed-4591-97f2-089a44d125d2": {
+          "type": "post",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "98bc8b54-f7af-4b03-a365-f99f898b0cbc",
+        "5c228299-3caf-4a68-ad67-a79ccaaebe89",
+        "fea805bc-c4dd-479f-8072-c0af39ca0b37",
+        "262d1088-8780-4417-a357-5fb7a8f290be",
+        "1f4fefee-5015-4bfa-b0df-1bded25a04c7",
+        "0aa5510e-dab7-4253-af7d-125279cc8a74",
+        "e002ad7d-7dc4-47d1-b15f-c12ebe006986",
+        "11a8c6a0-76ed-4591-97f2-089a44d125d2"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xl",
+        "spacing_bottom": "xl",
+        "heading": "@gittibeauty community - in real life.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "cover"
+      }
+    },
+    "product_recommended_products": {
+      "type": "product_recommended_products",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Das könnte dir auch gefallen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_reviews": {
+      "type": "product_reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product_template_gallery_dots",
+    "index_info_slider_lip_sync_product_template",
+    "product_video",
+    "product_instagram",
+    "product_recommended_products",
+    "product_reviews"
+  ]
+}

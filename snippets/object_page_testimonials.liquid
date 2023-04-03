@@ -1,0 +1,119 @@
+<style>
+    #shopify-section-{{section.id}} {
+        overflow: hidden;
+    }
+    #shopify-section-{{object.id}},
+    #shopify-section-{{object.id}} clever-slider.overhanging_slider::before {
+        background-color: {{object.settings.background_color}};
+    }
+
+    #shopify-section-{{object.id}} .block_color {
+        background-color: {{object.settings.block_color}};
+    }
+
+    @media only screen and (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{object.id}} .small_items-custom cs-slide {
+            flex: 0 0 80%;
+        }
+    }
+</style>
+
+
+{% for i in (1..12) %}
+        
+    {% capture image_id %}image_{{i}}{% endcapture %}
+    {% capture author_id %}author_{{i}}{% endcapture %}
+    {% capture text_id %}text_{{i}}{% endcapture %}
+
+    {% if object.settings[image_id] == blank %}
+        {% if object.settings[author_id] == blank %}
+            {% if object.settings[text_id] == blank %}
+                
+                    {% capture _ %}{% increment zeroblocks %}{% endcapture %}
+                
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if forloop.last %}
+        {% if zeroblocks > 0 %}
+            {% assign number_blocks =  forloop.length | minus: zeroblocks %}
+        {% endif %}
+    {% endif %}
+
+{% endfor %}
+
+
+<div class="object-spacing">
+  <div class="flex col spacing-top-{{ object.settings.spacing_top }} spacing-bottom-{{ object.settings.spacing_bottom }}">
+    <div class="flex col">
+
+        {% if object.settings.heading != blank %}
+          <{{ object.settings.main_heading_tag }}
+          class="{{ object.settings.main_heading_class }} {{ object.settings.main_heading_weight_class }}
+          spacing-bottom-{{ object.settings.main_heading_spacing_bottom }}
+          spacing-top-{{ object.settings.main_heading_spacing_top }} "
+          animation-delay="100">{{ object.settings.heading | escape }}</{{ object.settings.main_heading_tag }}>
+        {% endif %}
+        {% if object.settings.richtext != blank %}
+          <{{ object.settings.richtext_tag }}
+          class="{{ object.settings.richtext_class }} {{ object.settings.richtext_weight_class }}
+          spacing-bottom-{{ object.settings.richtext_spacing_bottom }} "
+          >{{ object.settings.richtext | remove: '<p>' | remove: '</p>' }}</{{ object.settings.richtext_tag }}>
+        {% endif %}
+
+    </div>
+    <clever-slider class="overhanging_slider"
+                   options-large="{'align':'start','containScroll':'trimSnaps'}">
+      <cs-prev class="slider_nav slider_prev is-absolute only_large">
+        {% render 'icon', icon: 'chevron-left' %}
+      </cs-prev>
+      <cs-track>
+        <cs-slides class="items-3 medium_items-2 small_items-custom gap">
+          {% for i in (1..12) %}
+
+            {% capture author_id %}author_{{ i }}{% endcapture %}
+            {% capture text_id %}text_{{ i }}{% endcapture %}
+            {% capture image_id %}image_{{ i }}{% endcapture %}
+            {% unless object.settings[author_id] == blank and  object.settings[image_id] == blank and object.settings[text_id] == blank %}
+              <cs-slide>
+                <div class="container block_color testimonial spacing-{{ object.settings.block_spacing }}">
+
+
+                  <div class="flex col between" style="height: 100%;">
+                    {% if object.settings[text_id] != blank %}
+                    <{{ object.settings.richtext_tag }}
+                    class="text-align-{{ object.settings.text_align }} {{ object.settings.richtext_class }} {{ object.settings.richtext_weight_class }}
+                    spacing-bottom-{{ object.settings.text_spacing_bottom }} "
+                    >{{ object.settings[text_id] | remove: '<p>' | remove: '</p>' }}</{{ object.settings.richtext_tag }}>
+                  {% endif %}
+                  <div class="flex row">
+                    <div class="testimonial_picture spacing-right-l" style="width: 80px;">
+                      {% render 'image_element', image: object.settings[image_id], image_shape: object.settings.image_shape, fit: object.settings.image_fit, sizes:'80px' %}
+                    </div>
+                    <div class="testimonial_author flex col middle">
+                      {% if object.settings[author_id] != blank %}
+                      <{{ object.settings.richtext_tag }}
+                      class="{{ object.settings.richtext_class }} {{ object.settings.richtext_weight_class }} "
+                      style="height:fit-content;">{{ object.settings[author_id] | remove: '<p>' | remove: '</p>' }}</{{ object.settings.richtext_tag }}
+                    >
+                    {% endif %}
+                  </div>
+                </div>
+                </div>
+
+
+                </div>
+              </cs-slide>
+            {% endunless %}
+          {% endfor %}
+        </cs-slides>
+      </cs-track>
+      <cs-next class="slider_nav slider_next is-absolute only_large">
+        {% render 'icon', icon: 'chevron-right' %}
+      </cs-next>
+    </clever-slider>
+
+
+  </div>
+</div>

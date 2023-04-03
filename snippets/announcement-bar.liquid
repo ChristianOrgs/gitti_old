@@ -1,0 +1,11 @@
+<div class="js-siteAlert siteAlert container-wrap" data-status="{{ section.settings.show_announcement }}" data-status-mobile="{{ section.settings.show_announcement_on_mobile }}" style="{% if section.settings.color_announcement_bar_bg %}background:{{ section.settings.color_announcement_bar_bg }};{% endif %}">
+  <div class="container u-center">
+      <div class="row row-lg u-center">
+        <div class="u-center">
+          <a href = "{{section.settings.link}}">
+            <span class="alert-title h4" style="{% if section.settings.color_announcement_bar_text %}color:{{ section.settings.color_announcement_bar_text }} !important;{% endif %}">{{ section.settings.text }}</span>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>

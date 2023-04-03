@@ -1,0 +1,17 @@
+{
+  "layout": false,
+  "sections": {
+    "collection-json": {
+      "type": "collection-json",
+      "settings": {}
+    },
+    "collection-grid-items": {
+      "type": "collection-grid-items",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection-json",
+    "collection-grid-items"
+  ]
+}

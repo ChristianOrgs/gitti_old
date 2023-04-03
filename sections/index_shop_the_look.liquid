@@ -1,0 +1,512 @@
+<style>
+    #shopify-section-{{section.id}} {
+        overflow: hidden;
+    }
+    #shopify-section-{{section.id}} clever-slider.overhanging_slider::before{
+      background-color:#ffffff;
+    }
+    @media only screen and (max-width:{{settings.breakpoint_small}}px){
+        #shopify-section-{{section.id}} .small_items-custom cs-slide{
+            flex: 0 0 45%;
+        }
+    }
+</style>
+
+<div class="page-width overhanging_slider_page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    <div class="grid col-12 small_col-1 grid-gap">
+        <div class="grid-item medium-up_col-span-5 flex col middle left">
+            <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-xs"> {{section.settings.heading}} </{{section.settings.heading_tag}}>
+            <{{section.settings.richtext_tag}} class="{{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} spacing-bottom-s"> {{section.settings.richtext}} </{{section.settings.richtext_tag}}>
+            <a href="{{section.settings.button_link}}" class="btn {{section.settings.button_class}}">{{section.settings.button_label}}</a>
+        </div>
+        <div class="grid-item medium-up_col-start-7 medium-up_col-span-6 is-relative">
+            {% capture sizes %}{% render 'image_sizes', small:1, medium_up:2 , page_width: true %}{% endcapture %}
+            {% if section.settings.button_link != blank %}<a href="{{section.settings.button_link}}">{% endif %}
+                {% render 'image_element', image: section.settings.image, image_shape: section.settings.image_shape, fit: section.settings.image_fit, sizes:sizes %}
+            {% if section.settings.button_link != blank %}</a>{% endif %}
+        </div>
+    </div>
+    <{{section.settings.products_heading_tag}} class="{{section.settings.products_heading_class}} {{section.settings.products_heading_weight_class}} spacing-top-s spacing-bottom-s"> {{section.settings.products_heading}} </{{section.settings.products_heading_tag}}>
+    <clever-slider class="overhanging_slider"
+        options-large="{'align':'start','containScroll':'trimSnaps'}"   >
+        <cs-prev class="slider_nav slider_prev is-absolute only_large">
+            {% render 'icon', icon: 'chevron-left' %}
+        </cs-prev>
+        <cs-track>
+            <cs-slides class="items-4 medium_items-3 small_items-custom gap">
+            {% capture sizes %}{% render 'image_sizes', small:2, medium:3, large:4 , page_width: true %}{% endcapture %}
+            {% for block in section.blocks %}
+                {% if all_products[block.settings.product].available %}
+                    <cs-slide>
+                        {% render 'product_grid_item' product: all_products[block.settings.product], sizes:sizes %}
+                    </cs-slide>
+                {% endif %}
+            {% endfor %}
+            </cs-slides>
+        </cs-track>
+        <cs-next class="slider_nav slider_next is-absolute only_large">
+            {% render 'icon', icon: 'chevron-right' %}
+        </cs-next>
+    </clever-slider>
+    </div>
+
+{% schema %}
+{
+  "name": "Shop the look",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Shop the look"
+    },
+    {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "textarea",
+        "id": "richtext",
+        "label": "Richtext",
+        "default": "Tempus nulla vel tempor ante malesuada uspendisse nunc."
+    },
+    {
+        "type": "select",
+        "id": "richtext_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label",
+        "default": "Call to action"
+    },
+    {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+    },
+    {
+        "type": "text",
+        "id": "button_class",
+        "label": "Button class",
+        "default": "btn--tertiary",
+        "placeholder": "btn--primary"
+    },
+    {
+        "type": "text",
+        "id": "products_heading",
+        "label": "Heading",
+        "default": "Products in this look:"
+    },
+    {
+        "type": "select",
+        "id": "products_heading_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "products_heading_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "products_heading_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    },
+    {
+        "type":      "select",
+        "id":        "image_shape",
+        "label":     "Image shape",
+        "options": [
+          {
+            "value": "",
+            "label": "Original"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "two_by_three",
+            "label": "2:3"
+          },
+          {
+            "value": "sixteen_by_nine",
+            "label": "16:9"
+          }
+        ],
+        "default":   "square"
+      },
+      {
+        "type":      "select",
+        "id":        "image_fit",
+        "label":     "Image fit",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          }
+          ,
+          {
+            "value": "contain",
+            "label": "contain"
+          }
+        ],
+        "default":   "contain"
+      }
+  ],
+  "blocks": [
+    {
+        "type": "product",
+        "name": "Produkt",
+        "settings": [
+            {
+                "type": "product",
+                "id": "product",
+                "label": "Product"
+            }
+        ]
+    }
+  ],
+  "presets": [
+      {
+          "category": "Products",
+          "name":"Shop the look"
+      }
+  ]
+}
+{% endschema %}

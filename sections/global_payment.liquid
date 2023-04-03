@@ -1,0 +1,77 @@
+{% assign pay_by = 'general.pay_by' | t %}
+<div class="only_medium-up page-width section-spacing">
+    {% for block in section.blocks %}   
+        {% capture markets_content %}
+            {% render 'payment_icons_cart', pos: 'left', title: pay_by, enabled_payment_types: block.settings.enabled_payment_types %}
+        {% endcapture %}
+        {% assign markets_whitelist = block.settings.whitelist | upcase | remove: ' ' | split: ',' %}
+        {% assign markets_blacklist = block.settings.blacklist | upcase | remove: ' ' | split: ',' %}
+        {% render 'contextualize', 
+            whitelist: markets_whitelist, 
+            blacklist: markets_blacklist,
+            content: markets_content,
+            id: block.id %}            
+    {% endfor %}
+</div>
+<div class="only_small mobile page-width section-spacing">
+    {% for block in section.blocks %}   
+        {% capture markets_content %}
+            {% render 'payment_icons_cart', pos: 'top', title: pay_by, enabled_payment_types: block.settings.enabled_payment_types, cols: 4 %}
+        {% endcapture %}
+        {% assign markets_whitelist = block.settings.whitelist | upcase | remove: ' ' | split: ',' %}
+        {% assign markets_blacklist = block.settings.blacklist | upcase | remove: ' ' | split: ',' %}
+        {% render 'contextualize', 
+            whitelist: markets_whitelist, 
+            blacklist: markets_blacklist,
+            content: markets_content,
+            id: block.id %}            
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+    "name": "Payments",
+    "settings": [
+        
+    ],
+    "blocks": [
+        {
+            "type": "localized_payment_icons",
+            "name": "Localized Payment Icons",
+            "settings": [
+                {
+                      "type": "header",
+                      "content": "Markets"
+                  },
+                  {
+                      "type": "paragraph",
+                      "content": "You can set up markets [here](\/admin\/settings\/markets)."
+                  },
+                  {
+                      "type": "textarea",
+                      "id": "whitelist",
+                      "label": "Whitelist",
+                      "info": "Define countries in which this section should appear. Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+                  },
+                  {
+                      "type": "textarea",
+                      "id": "blacklist",
+                      "label": "Blacklist",
+                      "info": "Define countries in which this section should not appear.  Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+                  },
+                  {
+                      "type": "header",
+                      "content": "Settings"
+                  },
+                  {
+                    "type": "textarea",
+                    "id": "enabled_payment_types",
+                    "label": "Enabled payment types",
+                    "default": "visa,paypal,amazon,master,apple_pay,klarna",
+                    "info": "https://shopify.dev/tutorials/customize-theme-add-credit-card-icons"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

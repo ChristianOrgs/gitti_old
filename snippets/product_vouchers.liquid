@@ -1,0 +1,178 @@
+{%- comment -%} Vouchers {%- endcomment -%}  
+{% for voucher in vouchers %}
+    {% assign product_ids = voucher.settings.products | map: 'id' %}
+    {% assign collection_ids = voucher.settings.collections | map: 'id' %}
+    {% assign in_collection = false %}
+    {% for collection in product.collections %}
+        {% if collection_ids contains collection.id %}
+            {% assign in_collection = true %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% if product_ids contains product.id or in_collection %}
+        <div class="spacing-bottom-s">
+            <style>
+                #shopify-section-{{voucher.id}} {
+                    background-color: {{voucher.settings.background}};
+                }
+                #shopify-section-{{voucher.id}} .voucher-gap{
+                    gap: 16px;
+                }
+                {% if voucher.settings.full_width %}
+                    @media screen and (max-width: {{settings.breakpoint_small}}px) {
+                        #shopify-section-{{voucher.id}} {
+                            margin-inline: -{{settings.site_gutter_mobile}}px;
+                            padding-inline: {{settings.site_gutter_mobile}}px;
+                        }
+                    }        
+                {% endif %}
+            </style>
+            <div id="shopify-section-{{voucher.id}}" class="voucher spacing-xs">
+                <div class="flex row middle voucher-gap">
+                    <div class="icon">
+                        {{ voucher.settings.icon }}
+                    </div>
+                    <div class="text">
+                        {{ voucher.settings.text_richtext }}
+                        {{ voucher.settings.text_liquid }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module">
+            document.querySelectorAll('#shopify-section-{{voucher.id}} a[href~="#TermsOfService"]').forEach(element => {
+                element.addEventListener('click', async e => {
+                    e.preventDefault()
+                    document.querySelector('[voucher-popup-content]').innerHTML = await fetch('/pages/{{voucher.settings.terms_and_conditions.handle}}?section_id=main-page').then(res => res.text())
+                    document.querySelector('[voucher-popup]').classList.add('open')
+                })
+            })
+            
+            document.querySelectorAll('#shopify-section-{{voucher.id}} a[href~="#copy"]').forEach(element => {
+                element.addEventListener('click', async e => {
+                    e.preventDefault()
+                    if (navigator.clipboard && window.isSecureContext) {
+                        // navigator clipboard api method'
+                        navigator.clipboard.writeText(element.innerHTML.replace(/(<([^>]+)>)/gi, ""))
+                        .then(res => {
+                            let div = document.createElement('div')
+                            div.className = 'copied-to-clipboard'
+                            element.appendChild(div)
+                            setTimeout(() => {
+                                div.remove()
+                            },2000)
+                        })
+                        .catch(err => console.error(err))
+                    }
+                })
+            })
+        </script>
+    {% endif %}
+{% endfor %}
+
+<style>
+    .voucher-popup{
+        position: fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100vh;
+        height:calc(100 * var(--vh)) ;
+        z-index: 1000000;
+        background-color: #0008;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .voucher-popup:not(.open){
+        display:none;
+    }
+    .voucher-popup-inner{
+        max-width: 400px;
+        padding-inline: 32px;
+        background-color:#fff;
+    }
+    .voucher-popup-content{
+        overflow:auto;
+        height:100%;
+    }
+    .voucher-popup-content .page-width {
+        max-width: unset;
+        width: unset;
+        margin: unset;
+        padding: 0px;
+    }
+    .voucher-popup-close{
+        background-color:transparent;
+        border: none;
+        padding:16px;
+    }
+    a[href~="#copy"]{
+        position: relative;
+    }
+    a[href~="#copy"]::after{
+        content: "";
+        display:inline-block;
+        margin-left:2px;
+        margin-bottom: -2px;
+        height:16px;
+        width:16px;
+        background-size: 16px 16px;
+        background-image: url("{{ 'copy.svg' | asset_url }}");
+        background-repeat: no-repeat;
+    }
+    .copied-to-clipboard{
+        position: absolute;
+        left:0;
+    }
+    .copied-to-clipboard::before{
+        content: '{{ "general.copied_to_clipboad" | t }}';
+        display:block;
+        background-color: black;
+        color: white;
+        border-radius: 3px;
+        padding:5px 5px;
+    }
+    .copied-to-clipboard::after{
+        content: '';
+        display:block;
+        position: absolute;
+        top:0;
+        left:50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background-color: black;
+        color: white;
+        width:5px;
+        height:5px;
+    }
+    .voucher-header{
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+    }
+    @media screen and (max-width: {{settings.breakpoint_small}}px) {
+        .voucher-popup{
+            padding-inline: 16px;
+        }
+    }   
+</style>
+
+<div class="voucher-popup spacing-top-l spacing-bottom-l" voucher-popup>
+    <div class="page-width spacing-l voucher-popup-inner is-relative">
+        <div class="flex row right voucher-header">
+            <button class="voucher-popup-close" voucher-popup-close>
+                {% render 'icon', icon: 'close' %}
+            </button>
+        </div>
+        <div class="voucher-popup-content" voucher-popup-content >
+        
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector('[voucher-popup-close]').addEventListener('click', () => {
+        document.querySelector('[voucher-popup]').classList.remove('open')
+    })
+</script>

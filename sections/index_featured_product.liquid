@@ -1,0 +1,459 @@
+<style> 
+    /*   #shopify-section-{{section.id}}{
+           background-color:{{section.settings.background_color}};
+       }*/
+       #shopify-section-{{section.id}} .btn{
+           text-align: center;
+       }
+   
+       #shopify-section-{{section.id}}  .custom-grid-gap {
+       grid-gap: 145px;
+       align-items: flex-start;
+       margin-bottom: 30px;
+       }
+   
+       #shopify-section-{{section.id}}  .product_images-wrapper {
+       width: 100%;
+       position: sticky;
+       top: 86px;
+       }
+   
+   
+       #shopify-section-{{section.id}} .more_know
+       {
+           display: none;
+       }
+       #shopify-section-{{section.id}} .product_price .compare_at_price {
+               text-decoration: line-through;
+               color: #A6A6A6;
+           }
+   
+       @media screen and (min-width: 750px) {
+   
+           #shopify-section-{{section.id}} .sub_heading
+           {
+               display: block;
+           }
+           {% if section.settings.add_to_cart_btn == false %}
+           #shopify-section-{{section.id}}  .addtocart
+           {
+               display: none;
+           }
+           {% endif %} 
+   
+       }
+   
+   
+       @media screen and (max-width: 750px) {
+           #shopify-section-{{section.id}} .sub_heading
+           {
+               display: none;
+           }
+   
+           #shopify-section-{{section.id}} .custom-grid-gap {
+               grid-gap: 0px;
+               margin-bottom: 30px;
+           }
+           #shopify-section-{{section.id}} .grid.col-2 {
+               grid-template-columns: repeat(1, minmax(0, 1fr));
+           }
+           #shopify-section-{{section.id}} .more_know
+           {
+               display: block;
+   
+           }
+           #shopify-section-{{section.id}} .more_know button
+           {
+               background-color: white;
+               color: black;
+               border: black 1;
+   
+           }
+           {% if section.settings.add_to_cart_btn_mo == false %}
+           #shopify-section-{{section.id}}  .addtocart
+           {
+               display: none;
+           }
+           {% endif %} 
+           {% if section.settings.more_btn_mo == false %}
+           #shopify-section-{{section.id}}  .more_know
+           {
+               display: none;
+           }
+           {% endif %} 
+       }
+   </style>
+   <div class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+     {%- comment -%}
+      <p class="h2 bold">
+           {{section.settings.heading}}
+       </p>
+       <p class="p spacing-bottom-l">
+           {{section.settings.text}}
+       </p>
+     
+     
+     {%- endcomment -%} 
+   
+               {% assign product = all_products[section.settings.product] %}
+               {% if product != blank %}
+               {% capture add_to_cart_text %}
+                   {% if product.available %}
+                       {{ 'products.product.add_to_cart' | t }}
+                   {% else %}
+                       {{ 'products.product.sold_out' | t }}
+                   {% endif %}
+               {% endcapture %}
+               {% capture choose_color_text %}
+                   {% if product.available %}
+                       {{ 'products.product.choose_set' | t }}
+                   {% else %}
+                       {{ 'products.product.sold_out' | t }}
+                   {% endif %}
+               {% endcapture %}
+           
+               {% assign uid = "now" | date: "%3N" %}
+               {% assign unique_product_id = product.id | append: '-' | append: uid %}
+           
+               <div class="grid col-2 is-relative custom-grid-gap">
+           
+           
+                   <div class="is-relative container flex col add_to_cart_unhide grid_item_root-{{unique_product_id}}">
+                        {% capture sizes %}{% render 'image_sizes', medium_down:1, large:2 , page_width: true %}{% endcapture %}
+                       <div class="flex col first_product_image">
+                           {% render 'image_element', image: product.images[0], image_shape: 'two_by_three', fit: 'cover', sizes:sizes %}
+                       </div>
+                       <div class="flex col second_product_image is-absolute container">
+                           {% render 'image_element', image: product.images[1], image_shape: 'two_by_three', fit: 'cover', sizes:sizes %}
+                       </div>
+                   </div>  
+                   <div class="flex col grid-item col-span-1 medium-down_col-span-5">
+                       <div class="flex  row bottom spacing-bottom-s spacing-top-s">
+                           <h1 class="spacing-top-xs">{{product.title}}</h1>
+                       </div>
+                       {% if section.settings.sub_heading != blank %}
+                       <div class="sub_heading flex row bottom spacing-bottom-{{section.settings.spacing_bottom_sub_heading}}">
+                           <{{section.settings.tag_sub_heading}}  class="{{section.settings.class_sub_heading}} {{section.settings.weight_class_sub_heading}} ">{{section.settings.sub_heading}}</{{section.settings.tag_sub_heading}}>
+                       </div>
+                       {% endif %}
+                       <div class="flex col bottom spacing-bottom-s">
+                           <div class="flex col spacing-top-xxs spacing-bottom-s">
+                               {{product.description}}
+                           </div>
+                           <div class="spacing-bottom-s">
+                               <p class="product_price">
+                                   <span class='h4 price price_spacing '>{{product.price | money }}</span>
+                                   {% if product.compare_at_price %}
+                                   <span class="h4 compare_at_price">{{product.compare_at_price | money }}</span>
+                                   {% endif %}
+                               </p>
+                               <p class="note flex row bottom"><span >   {{ 'products.product.vat' | t }} </span> <span >&nbsp</span> <a  href='{{ pages.shipping.url }}' class="shipping_note underline note" style="padding-bottom: 1px;"> {{ 'products.product.shipping' | t }}</a></p>
+                           </div>
+                           <div class="addtocart  spacing-bottom-s ">
+                               {% if product.available %}
+                                   {% if product.metafields.bundle != blank %}
+                                   <a href='{{ shop.url}}{{product.url}}'></a>
+                                       <button class="btn btn--primary btn--full" {% unless product.available %} disabled {% endunless %}>
+                                           {{choose_color_text}}
+                                       </button>
+                                   </a>    
+                                   {% else %}
+                                       <button class="btn btn--primary btn--full add_to_cart-{{unique_product_id}}" {% unless product.available %} disabled {% endunless %}>
+                                           {{add_to_cart_text}}
+                                       </button>
+                                   {% endif %}
+                               {% else %}
+                                   <button class="btn btn--primary btn--full BIS_trigger" data-product-data="{{ product | json | escape }}">
+                                       {{ 'apps.bis.email_when_available' | t }}
+                                   </button>
+                               {% endif %}
+                           
+                              </div>
+                              <a href='{{ shop.url}}{{product.url}}'>
+                              <div class="more_know spacing-top-xxs spacing-bottom-xxs ">
+                                   <button  class="btn btn--primary btn--full {{unique_product_id}}">
+                                       Mehr Erfahren
+                                   </button>    
+                              </div>
+                             </a>
+                       </div>
+                       <div class="flex col spacing-bottom-s  only_medium-up spacing-top-xs">
+                
+                           {% render 'product_tabs_feature_index' , product: product  %}
+                         
+                       </div>    
+                   </div>
+                   {% if product.metafields.bundle == blank %}
+                   <script>
+                       document.querySelectorAll('.add_to_cart-{{unique_product_id}}').forEach(element => {
+                           element.addEventListener('click', function(e){
+                               e.preventDefault();
+                               {% if product.available %}
+                                   let atcJson = {'items':[{'id': Number('{{product.selected_or_first_available_variant.id}}'), 'quantity':1}]};
+                                   Shopify.theme.cart.addToCart(atcJson)
+                               {% endif %}
+                           });
+                       })
+                       document.querySelector('.grid_item_root-{{unique_product_id}}').addEventListener('touchstart', function(){
+                           document.querySelector('.grid_item_root-{{unique_product_id}}').classList.add('mobile_hover');
+                       })
+                       document.querySelector('.grid_item_root-{{unique_product_id}}').addEventListener('touchend', function(){
+                           document.querySelector('.grid_item_root-{{unique_product_id}}').classList.remove('mobile_hover');
+                       })
+                   </script>
+               {% endif %}
+               </div>
+               {% endif %}
+           
+           
+   </div>
+   
+   {% schema %}
+   {
+     "name": "Featured Product",
+     "settings": [
+       {
+           "type": "color",
+           "id": "background_color",
+           "label": "Background color"
+       },
+       {
+           "type": "select",
+           "id": "spacing_top",
+           "label": "Spacing top",
+           "options": [
+               {
+                   "value": "xs",
+                   "label": "xs"
+               },
+               {
+                   "value": "s",
+                   "label": "s"
+               },
+               {
+                   "value": "m",
+                   "label": "m"
+               },
+               {
+                   "value": "l",
+                   "label": "l"
+               },
+               {
+                   "value": "xl",
+                   "label": "xl"
+               },
+               {
+                   "value": "xxl",
+                   "label": "xxl"
+               }
+           ]
+       },
+       {
+           "type": "select",
+           "id": "spacing_bottom",
+           "label": "Spacing bottom",
+           "options": [
+               {
+                   "value": "xs",
+                   "label": "xs"
+               },
+               {
+                   "value": "s",
+                   "label": "s"
+               },
+               {
+                   "value": "m",
+                   "label": "m"
+               },
+               {
+                   "value": "l",
+                   "label": "l"
+               },
+               {
+                   "value": "xl",
+                   "label": "xl"
+               },
+               {
+                   "value": "xxl",
+                   "label": "xxl"
+               }
+           ]
+       },
+       {
+           "type": "header",
+           "content": "Settings for Desktop"
+       },
+       {
+           "type": "checkbox",
+           "id": "add_to_cart_btn",
+           "label": "Show the add to cart button",
+           "default": true
+       },
+       {
+           "type": "header",
+           "content": "Settings for Mobile"
+       },
+       {
+           "type": "checkbox",
+           "id": "add_to_cart_btn_mo",
+           "label": "Show the add to cart button",
+           "default": true
+       },
+       {
+           "type": "checkbox",
+           "id": "more_btn_mo",
+           "label": "Show the more information button",
+           "default": true
+       },
+       {
+           "type": "header",
+           "content": "Sub Heading"
+       },
+       {
+           "type": "text",
+           "id": "sub_heading",
+           "label": "Sub Heading",
+           "default": "Product."
+       },
+       {
+           "type": "select",
+           "id": "tag_sub_heading",
+           "label": "Tag sub heading",
+           "default": "h3",
+           "options": [
+               {
+                   "value": "h1",
+                   "label": "h1"
+               },
+               {
+                   "value": "h2",
+                   "label": "h2"
+               },
+               {
+                   "value": "h3",
+                   "label": "h3"
+               },
+               {
+                   "value": "h4",
+                   "label": "h4"
+               },
+               {
+                   "value": "h5",
+                   "label": "h5"
+               },
+               {
+                   "value": "h6",
+                   "label": "h6"
+               },
+               {
+                   "value": "p",
+                   "label": "p"
+               },
+               {
+                   "value": "note",
+                   "label": "note"
+               }
+           ]
+       },
+       {
+           "type": "select",
+           "id": "class_sub_heading",
+           "label": "Font class sub heading",
+           "default": "h2",
+           "options": [
+               {
+                   "value": "h1",
+                   "label": "h1"
+               },
+               {
+                   "value": "h2",
+                   "label": "h2"
+               },
+               {
+                   "value": "h3",
+                   "label": "h3"
+               },
+               {
+                   "value": "h4",
+                   "label": "h4"
+               },
+               {
+                   "value": "h5",
+                   "label": "h5"
+               },
+               {
+                   "value": "h6",
+                   "label": "h6"
+               },
+               {
+                   "value": "p",
+                   "label": "p"
+               },
+               {
+                   "value": "note",
+                   "label": "note"
+               }
+           ]
+       },
+       {
+           "type": "select",
+           "id": "weight_class_sub_heading",
+           "label": "Weight class sub heading",
+           "options": [
+           {
+               "value": "bold",
+               "label": "bold"
+           },
+           {
+               "value": "",
+               "label": "normal"
+           }
+         ]
+       },
+       {
+           "type": "select",
+           "id": "spacing_bottom_sub_heading",
+           "label": "Spacing bottom sub heading",
+           "options": [
+               {
+                   "value": "xs",
+                   "label": "xs"
+               },
+               {
+                   "value": "s",
+                   "label": "s"
+               },
+               {
+                   "value": "m",
+                   "label": "m"
+               },
+               {
+                   "value": "l",
+                   "label": "l"
+               },
+               {
+                   "value": "xl",
+                   "label": "xl"
+               },
+               {
+                   "value": "xxl",
+                   "label": "xxl"
+               }
+           ]
+       },
+       {
+           
+             "type": "product",
+             "id": "product",
+            "label": "product"
+           
+       }
+     ],
+     "presets": [
+         {
+             "category": "product",
+             "name":"Featured Product"
+         }
+     ]
+   }   
+   {% endschema %}

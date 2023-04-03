@@ -1,0 +1,1282 @@
+{
+  "sections": {
+    "365e07a1-1cd9-4c5e-b0b9-3cbfbe731d27": {
+      "type": "custom_html",
+      "disabled": true,
+      "blocks": {
+        "251c99b2-0ef2-4a33-acd3-8d701228c83e": {
+          "type": "html",
+          "settings": {
+            "html": "<h4><b>Global Countdown Ribbon<\/b><\/h4>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "251c99b2-0ef2-4a33-acd3-8d701228c83e"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": ""
+      }
+    },
+    "d89c670b-e7f4-49a1-bf2b-532e7bebd389": {
+      "type": "top_bar",
+      "disabled": true,
+      "blocks": {
+        "1499f6bf-433f-4124-aa8b-07f1364268cc": {
+          "type": "countdown",
+          "settings": {
+            "countdown": true,
+            "pre_text": "Countdown pre",
+            "post_text": "Countdown post",
+            "text_class": "h2",
+            "time": "December 25, 2022 15:37:25 GMT+00:00",
+            "days": "TAGE",
+            "hours": "STUNDEN",
+            "minutes": "MINUTEN",
+            "seconds": "SEKUNDEN",
+            "expired": "COUNTDOWN ZU ENDE",
+            "link": "shopify:\/\/pages\/astro-gift-guide",
+            "countdown_class": "h2",
+            "countdown_text_class": "note",
+            "background_color": "",
+            "countdown_text_color": "",
+            "countdown_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "1499f6bf-433f-4124-aa8b-07f1364268cc"
+      ],
+      "settings": {
+        "announcement_primary": "background",
+        "custom_background_color": "#cedacf",
+        "custom_text_color": "",
+        "custom_colors": true,
+        "enable_autoplay": true,
+        "autoplay_speed": 5,
+        "items_per_page": 1
+      }
+    },
+    "95a1fbbd-b18b-4fe9-bf22-9ea05a5f3936": {
+      "type": "custom_html",
+      "blocks": {
+        "5d00b7c6-7e4e-4d51-aad6-550cc252664d": {
+          "type": "html",
+          "settings": {
+            "html": "<h4><b>Hero Slideshow<\/b><\/h4>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "5d00b7c6-7e4e-4d51-aad6-550cc252664d"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": ""
+      }
+    },
+    "baf48d46-5433-49f9-a984-9ed177b0aee7": {
+      "type": "index_hero_slideshow",
+      "blocks": {
+        "template--16167140983052__baf48d46-5433-49f9-a984-9ed177b0aee7-1670334603f8423c20-0": {
+          "type": "slide",
+          "settings": {
+            "overlay_width": 65,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_Homepage_Banner_Desktop_November_Specials_Sales_2022_Black_Month_ALL-1.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/HOMEPAGE-HEADER-LONG_mothersday22-06-small.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "NEW",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Heading",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Rich text field with <b>html<\/b> field.<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/products\/aha-nail-treatment",
+            "button_class": "btn--primary btn",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "2f607737-e28e-480f-b4dc-1521a1201c50": {
+          "type": "slide",
+          "settings": {
+            "overlay_width": 25,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "top",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_Homepage_Banner_November_Specials_Sales_2022_Black_Month_6_1.jpg",
+            "image_fit": "cover",
+            "image_mobile": "shopify:\/\/shop_images\/gitti_SHOP_landingpage_half_header-glitters-5.jpg",
+            "image_fit_mobile": "cover",
+            "mobile_wrapper": false,
+            "preheading": "NEW TEST",
+            "tag_preheading": "p",
+            "class_preheading": "h4",
+            "weight_class_preheading": "bold",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Heading test",
+            "tag_heading": "h3",
+            "class_heading": "h2",
+            "weight_class_heading": "bold",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Rich text editor with <u>HTML<\/u> enabled<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/pages\/reviews",
+            "button_class": "btn--primary btn",
+            "spacing_bottom_button": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "template--16167140983052__baf48d46-5433-49f9-a984-9ed177b0aee7-1670334603f8423c20-0",
+        "2f607737-e28e-480f-b4dc-1521a1201c50"
+      ],
+      "settings": {
+        "show_section": "both",
+        "section_height": 60,
+        "use_natural_height": true,
+        "section_height_mobile": 80,
+        "use_natural_height_mobile": true,
+        "navigation_style": "dot",
+        "enable_autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "d8086d6a-bdef-4398-99a4-ffaf00e579ce": {
+      "type": "index_triple_usp",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "tag": "p",
+        "class": "p",
+        "weight_class": "",
+        "link_1": "",
+        "icon_1": "vegan_v",
+        "text_1": "Vegan & PETA-zertifiziert",
+        "link_2": "",
+        "icon_2": "innovative_formulas",
+        "text_2": "Innovative Formeln natürlichen Ursprungs",
+        "link_3": "",
+        "icon_3": "sustainable_packaging",
+        "text_3": "Nachhaltige Verpackungen",
+        "custom_css": ""
+      }
+    },
+    "fbbc4438-7741-4849-9351-efc2462e78d9": {
+      "type": "index_featured_collections",
+      "blocks": {
+        "a70e7962-3b8c-4e58-9c24-1d282682f88a": {
+          "type": "collection",
+          "settings": {
+            "collection": "skincare",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_pb_204_texture_dot_1.jpg"
+          }
+        },
+        "db5a4f09-6785-45a0-87cd-e163da457296": {
+          "type": "page",
+          "settings": {
+            "page": "glitter-collection",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_pb_203_texture_dot_1_434d8c32-8292-4e28-b4c5-a33b0f6e0b8b.jpg"
+          }
+        },
+        "2e0fd79c-e492-4023-bd6b-0d3374b4dc2b": {
+          "type": "collection",
+          "settings": {
+            "collection": "make-up-sets",
+            "image": "shopify:\/\/shop_images\/Swatch_Festive_Eye_Set.jpg"
+          }
+        },
+        "bd3945ec-71af-470b-9ebb-0060e20445d2": {
+          "type": "page",
+          "settings": {
+            "page": "gitti-skin-care-routine",
+            "image": "shopify:\/\/shop_images\/gen-c-texture.webp"
+          }
+        }
+      },
+      "block_order": [
+        "a70e7962-3b8c-4e58-9c24-1d282682f88a",
+        "db5a4f09-6785-45a0-87cd-e163da457296",
+        "2e0fd79c-e492-4023-bd6b-0d3374b4dc2b",
+        "bd3945ec-71af-470b-9ebb-0060e20445d2"
+      ],
+      "settings": {
+        "background_color": "#cedacf",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Category entries",
+        "text": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+        "hide_desktop": false,
+        "hide_mobile": false,
+        "collection_button_class": "btn--secondary"
+      }
+    },
+    "fac55f56-ea8d-42c2-ab28-cc791c4fe4ee": {
+      "type": "index_featured_collection",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Product Carousel",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Lorem ipsum dolor sit amet bijsed dotsuenfre i queri rimeter dejar thise lavorus",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "shop all",
+        "button_class": "btn--tertiary",
+        "product_button_class": "btn--primary",
+        "product_button_class_mobile": "btn--secondary"
+      }
+    },
+    "575fcb23-0776-4b94-949a-defa0db60521": {
+      "type": "index_community_testimonials",
+      "blocks": {
+        "8f6bb096-7643-4164-b45d-b54888b2296a": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gen-c-texture.webp",
+            "richtext": "<p>Mascaras mit sauberer Formel gibt es. Aber eine mit sauberer Formel, die tolle Wimpern macht UND sich nicht unterm Auge abstempelt obwohl sie wasserlöslich ist, darauf hat die Welt (oder auch einfach nur ich) gewartet! ;-)<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/www.instagram.com\/accounts\/login\/\" target=\"_blank\" title=\"Schminktante\"><strong>Anja @schminktante<br\/><\/strong><\/a>Make-up Artist & Bloggerin<\/p>"
+          }
+        },
+        "6d64bbe5-a66f-4e5e-bcc0-decb358d2f93": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-0.jpg",
+            "richtext": "<p>Den inneren Glow nach außen tragen – kann ich mit diesem Produkt. Meine Augen, Wangen und Lippen leuchten. Liebe es!<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/instagram.com\/kategelinsky\" target=\"_blank\" title=\"Kate Gelinsky \"><strong>Kate @Kategelinsky<\/strong><\/a><strong><br\/><\/strong>Influencerx<\/p>"
+          }
+        },
+        "5fdf79de-afb7-4967-ba9e-8878ec5cf1c7": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Swatch_PB202.jpg",
+            "richtext": "<p>Den inneren Glow nach außen tragen – kann ich mit diesem Produkt. Meine Augen, Wangen und Lippen leuchten. Liebe es!<\/p>",
+            "richtext_author": "<p><a href=\"https:\/\/instagram.com\/kategelinsky\" target=\"_blank\" title=\"Kate Gelinsky \"><strong>Kate @Kategelinsky<\/strong><\/a><strong><br\/><\/strong>Influencerx<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "8f6bb096-7643-4164-b45d-b54888b2296a",
+        "6d64bbe5-a66f-4e5e-bcc0-decb358d2f93",
+        "5fdf79de-afb7-4967-ba9e-8878ec5cf1c7"
+      ],
+      "settings": {
+        "background_color": "#e8e8e8",
+        "block_color": "#f3f3f3",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "heading": "Community testimonials",
+        "main_heading_spacing_top": "",
+        "main_heading_spacing_bottom": "s",
+        "main_heading_tag": "p",
+        "main_heading_class": "h2",
+        "main_heading_weight_class": "bold",
+        "richtext": "",
+        "spacing_bottom": "s",
+        "spacing_top": "s",
+        "block_spacing": "",
+        "block_margin": "xl",
+        "image_shape": "circle",
+        "image_fit": "cover"
+      }
+    },
+    "1f07ed01-1acd-4d75-bb4a-efedbef556cf": {
+      "type": "custom_html",
+      "blocks": {
+        "91c48751-a0b4-4162-8e7d-7185efb49609": {
+          "type": "html",
+          "settings": {
+            "html": "<br><h4><b>Double Logo<\/b><\/h4>\n<p>Used for certificates in page footer<\/p>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "91c48751-a0b4-4162-8e7d-7185efb49609"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": "#ffffff"
+      }
+    },
+    "6a4db0c0-8bed-4560-8e99-e22448b73465": {
+      "type": "double_logo",
+      "blocks": {
+        "d5287cb9-280d-4e6f-8b0e-e31d40e4a132": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PETA_Approved_VGATP_BW_v2_72_1_1.webp"
+          }
+        },
+        "393a05d7-09f3-4551-a0d7-6a9ac48c0dae": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/planetly.badge_klimaneutral-blue.webp"
+          }
+        }
+      },
+      "block_order": [
+        "d5287cb9-280d-4e6f-8b0e-e31d40e4a132",
+        "393a05d7-09f3-4551-a0d7-6a9ac48c0dae"
+      ],
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs"
+      }
+    },
+    "08f72cb4-5039-4cb2-8ac1-f186cea107bb": {
+      "type": "index_image_with_text",
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "#f3f3f3",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-1",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-0.jpg",
+        "image_shape": "square",
+        "image_fit": "contain",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading": "Image with text",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext": "<p>Testing testing, richtext editor - can <a href=\"\/collections\/all\" title=\"All products\">add links<\/a> and <strong>bold <\/strong>or <em>italics<\/em> but no html.<\/p>",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "Read more",
+        "button_link": "shopify:\/\/blogs\/blog",
+        "button_class": "btn--tertiary btn"
+      }
+    },
+    "e91a493b-33c1-48e2-9b34-f44d779a5940": {
+      "type": "index_image_with_text_blocks",
+      "blocks": {
+        "3ec4012e-8446-4f6c-8ce6-79919a9e39b4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Swatch_Glitter_Duo.jpg",
+            "image_shape": "square",
+            "image_fit": "contain"
+          }
+        },
+        "e181ef98-7d47-4ac1-9fcd-bfae78e46d4c": {
+          "type": "text",
+          "settings": {
+            "text_align": "left",
+            "vertical_align": "middle",
+            "heading": "Image with text (blocks)",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "<p>Rich text again, no HTML. 2 fields to split text on mobile <\/p>",
+            "richtext_splitted": "<p>Split text here. No obvious benefit of this section over the one above.<\/p>",
+            "richtext_spacing_bottom": "s",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_label": "Read more",
+            "button_link": "shopify:\/\/pages\/autumn-collection",
+            "button_class": "btn--primary btn"
+          }
+        }
+      },
+      "block_order": [
+        "3ec4012e-8446-4f6c-8ce6-79919a9e39b4",
+        "e181ef98-7d47-4ac1-9fcd-bfae78e46d4c"
+      ],
+      "settings": {
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "mobile_layout_revert": false,
+        "dislocated": false
+      }
+    },
+    "2e0953ef-5245-4277-a35e-68a4c0a146ae": {
+      "type": "custom_html",
+      "blocks": {
+        "aa563447-3296-4dce-b35f-7e726e978801": {
+          "type": "html",
+          "settings": {
+            "html": "<h4><b>Review carousel<\/b><\/h4>\n<p>Reviews taken from Judge Me<\/p>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "aa563447-3296-4dce-b35f-7e726e978801"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": ""
+      }
+    },
+    "ee4bedcf-0d10-4cb1-b969-c96309431b0c": {
+      "type": "judgeme_carousel_section",
+      "settings": {
+        "maxwidth": 1080
+      }
+    },
+    "2269b79a-ced9-4e40-92b7-db5b56ee14d0": {
+      "type": "hero_three_buttons",
+      "blocks": {
+        "000e07d8-c67b-46fb-af49-fbbafacf9a4e": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button 1",
+            "button_link": "shopify:\/\/products\/aha-nail-treatment",
+            "button_class": "btn--primary"
+          }
+        },
+        "3461d18e-c30d-401d-b04e-0844f050f879": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button 2",
+            "button_link": "shopify:\/\/products\/colour-care",
+            "button_class": "btn--primary"
+          }
+        },
+        "f2357af4-09cd-402c-9164-189ca7d5efe6": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button 3",
+            "button_link": "#",
+            "button_class": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "000e07d8-c67b-46fb-af49-fbbafacf9a4e",
+        "3461d18e-c30d-401d-b04e-0844f050f879",
+        "f2357af4-09cd-402c-9164-189ca7d5efe6"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "only_mobile": false,
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-1",
+        "layout_mobile": "small_row-start-1",
+        "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_glitters-4.jpg",
+        "image_shape": "square",
+        "image_fit": "cover",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "preheading": "Testing",
+        "preheading_spacing_bottom": "xs",
+        "preheading_tag": "p",
+        "preheading_class": "p",
+        "preheading_weight_class": "bold",
+        "heading": "Hero buttons",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "button_label": "Jetzt Entdecken",
+        "button_link": "shopify:\/\/collections\/all-gitti-products",
+        "button_class": "btn--primary",
+        "button_spacing_bottom": "",
+        "full_width_button": false,
+        "button_row_heading": "Heading 2",
+        "button_row_tag": "p",
+        "button_row_class": "h3",
+        "button_row_weight_class": "bold",
+        "button_row_spacing_bottom": ""
+      }
+    },
+    "ae1f3d8e-66b9-44ec-a852-2ea629fe0d21": {
+      "type": "index_info_slider_lip_sync_product_template",
+      "settings": {
+        "no_image": false,
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "On the Gram",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "",
+        "richtext": "Mention @gitti in your photo and we will feature the best pictures on our site",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "block_heading_spacing_bottom": "xs",
+        "block_heading_tag": "p",
+        "block_heading_class": "h2",
+        "block_heading_weight_class": "bold",
+        "block_text_spacing_bottom": "xs",
+        "block_text_tag": "p",
+        "block_text_class": "h4",
+        "block_text_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain",
+        "image_focal_point": "",
+        "image_1": "shopify:\/\/shop_images\/gitti_SHOP_pb_206_texture_dot_1.jpg",
+        "url_1": "shopify:\/\/pages\/terms-of-service",
+        "heading_1": "Veniam enim mollit amet ut mollit.",
+        "text_1": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "image_2": "shopify:\/\/shop_images\/gitti_SHOP_pb_202_texture_dot_1_878f9120-28d6-4b7b-9427-327827fae808.jpg",
+        "url_2": "shopify:\/\/pages\/autumn-collection-exclusive-access",
+        "heading_2": "Veniam enim mollit amet ut mollit.",
+        "text_2": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "url_3": "",
+        "heading_3": "Veniam enim mollit amet ut mollit.",
+        "text_3": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "url_4": "",
+        "heading_4": "Veniam enim mollit amet ut mollit.",
+        "text_4": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "url_5": "",
+        "heading_5": "Veniam enim mollit amet ut mollit.",
+        "text_5": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+        "url_6": "",
+        "heading_6": "Veniam enim mollit amet ut mollit.",
+        "text_6": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>"
+      }
+    },
+    "faefb650-439b-472a-8b3d-f1ce6e445b8b": {
+      "type": "maestrooo-instagram",
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "l",
+        "spacing_bottom": "xs",
+        "heading": "Instagram feed",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "",
+        "button_text": "",
+        "button_link": "",
+        "layout": "grid",
+        "image_size": "small",
+        "full_width": false,
+        "add_spacing": true,
+        "rows_count": 2,
+        "show_author": false,
+        "show_caption": true,
+        "show_date": true,
+        "click_action": "open_instagram",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_background": "#000000",
+        "button_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_text_color": "#ffffff",
+        "overlay_opacity": 65
+      }
+    },
+    "e7737642-cf93-4829-86ba-bb0214a66bd9": {
+      "type": "custom_html",
+      "blocks": {
+        "e361e956-b766-4c55-aefe-3b810cacf419": {
+          "type": "html",
+          "settings": {
+            "html": "<br><br><h3><b>Featured Product<\/b><\/h3>",
+            "spacing_left_right": true,
+            "page_width": true
+          }
+        }
+      },
+      "block_order": [
+        "e361e956-b766-4c55-aefe-3b810cacf419"
+      ],
+      "settings": {
+        "spacing_top": "none",
+        "spacing_top_mobile": "none",
+        "spacing_bottom": "none",
+        "spacing_bottom_mobile": "none",
+        "color_background": ""
+      }
+    },
+    "e781d388-d161-4337-8890-428e3ff4bb6c": {
+      "type": "index_featured_product",
+      "settings": {
+        "background_color": "",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "add_to_cart_btn": true,
+        "add_to_cart_btn_mo": true,
+        "more_btn_mo": true,
+        "sub_heading": "Product.",
+        "tag_sub_heading": "h3",
+        "class_sub_heading": "h2",
+        "weight_class_sub_heading": "",
+        "spacing_bottom_sub_heading": "xs",
+        "product": "holiday-gift-set"
+      }
+    },
+    "e52a34ca-917b-43a7-a7a2-2878394e5480": {
+      "type": "index_shop_the_look",
+      "blocks": {
+        "551aa510-b1c3-4113-a9e4-d73ff885bac4": {
+          "type": "product",
+          "settings": {
+            "product": "aha-nail-treatment"
+          }
+        },
+        "00f093c1-7b9b-437a-9afd-650f0d4a9fe3": {
+          "type": "product",
+          "settings": {
+            "product": "baumwollhandschuhe"
+          }
+        },
+        "4276cfad-4516-4df0-be7d-0b52997c96eb": {
+          "type": "product",
+          "settings": {
+            "product": "conditioning-aloe-gel"
+          }
+        },
+        "cec9e4ad-3b11-403f-b437-c3d18ce63a52": {
+          "type": "product",
+          "settings": {
+            "product": "everybalm-moisturizer-100-ml"
+          }
+        }
+      },
+      "block_order": [
+        "551aa510-b1c3-4113-a9e4-d73ff885bac4",
+        "00f093c1-7b9b-437a-9afd-650f0d4a9fe3",
+        "4276cfad-4516-4df0-be7d-0b52997c96eb",
+        "cec9e4ad-3b11-403f-b437-c3d18ce63a52"
+      ],
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Shop the look",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "",
+        "richtext": "Tempus nulla vel tempor ante malesuada uspendisse nunc.",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "button_label": "Call to action",
+        "button_link": "",
+        "button_class": "btn--tertiary btn",
+        "products_heading": "Products in this look:",
+        "products_heading_tag": "p",
+        "products_heading_class": "h4",
+        "products_heading_weight_class": "",
+        "image": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-7.jpg",
+        "image_shape": "square",
+        "image_fit": "contain"
+      }
+    },
+    "d83ac127-a2e3-4f49-9b01-caa26a6b0c59": {
+      "type": "faq_pages",
+      "blocks": {
+        "9fadf64c-6b5f-4b4d-ab28-84ad9083c15c": {
+          "type": "block",
+          "settings": {
+            "page": "about-us"
+          }
+        },
+        "48121fe8-6696-4232-8e94-317e92225981": {
+          "type": "block",
+          "settings": {
+            "page": "astro-gift-guide"
+          }
+        }
+      },
+      "block_order": [
+        "9fadf64c-6b5f-4b4d-ab28-84ad9083c15c",
+        "48121fe8-6696-4232-8e94-317e92225981"
+      ],
+      "settings": {
+        "hide_title": false,
+        "main_title": "lorem ipsum",
+        "subheading": "Questions and answers",
+        "text": "",
+        "titleMenu": "Select a topic",
+        "tag_title": "h1",
+        "tag_header_menu": "h2",
+        "tag_menu_topics": "p",
+        "tag_header_faq_list": "h2",
+        "tag_questions": "h4",
+        "class_title": "h1",
+        "class_header_menu": "h2",
+        "class_menu_topics": "p",
+        "class_header_faq_list": "h2",
+        "class_questions": "h4",
+        "weight_class_title": "",
+        "weight_class_header_menu": "",
+        "weight_class_menu_topics": "",
+        "weight_class_header_faq_list": "",
+        "weight_class_questions": "",
+        "spacing_top_section": "m",
+        "spacing_bottom_section": "xxl",
+        "spacing_bottom_title": "l",
+        "spacing_bottom_header": "m",
+        "spacing_bottom_questionWrapper": "m",
+        "spacing_bottom_question": "xs"
+      }
+    },
+    "40367da2-3d79-4891-991b-86b1c49a33eb": {
+      "type": "page_glossary",
+      "blocks": {
+        "c332fcca-c3be-4599-ab85-3d35066f2529": {
+          "type": "header",
+          "settings": {
+            "header": "Example 1"
+          }
+        },
+        "4ede6781-b303-4ea3-880d-ef7fd6e9f607": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Example 1",
+            "title": "Question",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero nihil at impedit nam commodi magni quas fuga, porro asperiores repellendus, doloribus voluptate labore eligendi. Aliquid cupiditate, quaerat magnam et, mollitia iusto, voluptas error quos nemo sunt neque iure corporis dolor.<\/p>"
+          }
+        },
+        "362f2e52-2771-4184-893a-e8a0d0a51af8": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Example 1",
+            "title": "Question",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero nihil at impedit nam commodi magni quas fuga, porro asperiores repellendus, doloribus voluptate labore eligendi. Aliquid cupiditate, quaerat magnam et, mollitia iusto, voluptas error quos nemo sunt neque iure corporis dolor.<\/p>"
+          }
+        },
+        "48c04e5a-486e-483b-8991-b19bc3e5ba37": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Example 1",
+            "title": "Question",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero nihil at impedit nam commodi magni quas fuga, porro asperiores repellendus, doloribus voluptate labore eligendi. Aliquid cupiditate, quaerat magnam et, mollitia iusto, voluptas error quos nemo sunt neque iure corporis dolor.<\/p>"
+          }
+        },
+        "678d2187-de95-46ce-bd7b-d27d1d006868": {
+          "type": "header",
+          "settings": {
+            "header": "Example 2"
+          }
+        },
+        "9c8e461c-9d3c-4876-af07-d668db5074f4": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Example 2",
+            "title": "Question",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero nihil at impedit nam commodi magni quas fuga, porro asperiores repellendus, doloribus voluptate labore eligendi. Aliquid cupiditate, quaerat magnam et, mollitia iusto, voluptas error quos nemo sunt neque iure corporis dolor.<\/p>"
+          }
+        },
+        "f5ee7aed-2894-4591-b568-916851e187fd": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Example 2",
+            "title": "Question",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero nihil at impedit nam commodi magni quas fuga, porro asperiores repellendus, doloribus voluptate labore eligendi. Aliquid cupiditate, quaerat magnam et, mollitia iusto, voluptas error quos nemo sunt neque iure corporis dolor.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c332fcca-c3be-4599-ab85-3d35066f2529",
+        "4ede6781-b303-4ea3-880d-ef7fd6e9f607",
+        "362f2e52-2771-4184-893a-e8a0d0a51af8",
+        "48c04e5a-486e-483b-8991-b19bc3e5ba37",
+        "678d2187-de95-46ce-bd7b-d27d1d006868",
+        "9c8e461c-9d3c-4876-af07-d668db5074f4",
+        "f5ee7aed-2894-4591-b568-916851e187fd"
+      ],
+      "settings": {
+        "hide_title": false,
+        "main_title": "FAQ Blocks",
+        "subheading": "",
+        "text": "<p>Questions and answers<\/p>",
+        "titleMenu": "Select a topic",
+        "tag_title": "h1",
+        "tag_header_menu": "h2",
+        "tag_menu_topics": "p",
+        "tag_header_faq_list": "h2",
+        "tag_questions": "h4",
+        "class_title": "h1",
+        "class_header_menu": "h2",
+        "class_menu_topics": "p",
+        "class_header_faq_list": "h2",
+        "class_questions": "h4",
+        "weight_class_title": "",
+        "weight_class_header_menu": "",
+        "weight_class_menu_topics": "",
+        "weight_class_header_faq_list": "",
+        "weight_class_questions": "",
+        "spacing_page_text": "m",
+        "spacing_top_section": "m",
+        "spacing_bottom_section": "xxl",
+        "spacing_bottom_title": "l",
+        "spacing_bottom_header": "m",
+        "spacing_bottom_questionWrapper": "m",
+        "spacing_bottom_question": "xs"
+      }
+    },
+    "fc7ea652-fe54-4d1e-b0bd-6b3150c4ed04": {
+      "type": "index_featured_logos",
+      "blocks": {
+        "db25bcf0-e864-478c-9b2e-227f1b868c72": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 195.4 50\" style=\"enable-background:new 0 0 195.4 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M195.5,48.6c0,0.1,0,0.1,0,0.3h-0.7c-11.2,0-22.4,0-33.5,0c-0.3,0-0.8-0.2-0.8-0.3c0-0.5,0.5-0.3,0.7-0.3c1,0,2.1,0,3.2,0\n\t\tV2h-8.5v0.8c0,12.2,0,24.3,0,36.5c0,0.8-0.1,1.7-0.4,2.4c-2.1,5-5.9,7.7-11.2,8.2c-4.5,0.4-8.8-0.3-12.8-2.4\n\t\tc-3-1.6-5.1-3.9-5.8-7.3c-0.2-0.9-0.3-1.9-0.3-2.8c0-11.5-0.1-23-0.1-34.6c0-0.3,0-0.6,0-0.9h-2.4c-0.6,0-1.2,0-1.9,0\n\t\tc-0.2,0-0.3-0.2-0.5-0.3c0.2-0.1,0.3-0.2,0.5-0.2c2.4,0,4.9,0,7.3,0h9.2c0.3,0,0.7-0.1,0.5,0.5h-4.7c0,0.3,0,0.5,0,0.7\n\t\tc0,12.7,0.1,25.4,0.1,38c0,4.7,3.4,8.3,8,8.6c3.3,0.3,6.3-0.3,9.1-2.3c2.3-1.6,3.7-3.8,4.6-6.5c0.1-0.2,0.1-0.5,0.1-0.7\n\t\tc0-12.4,0-24.8,0-37.3V1.9h-0.7c-1.4,0-2.9,0-4.3,0c-0.1,0-0.3-0.2-0.4-0.3c0.1-0.1,0.3-0.2,0.4-0.3c0.1,0,0.3,0,0.4,0h43.9v17.2\n\t\tc-0.1,0-0.1,0-0.2,0.1c-0.1-0.2-0.2-0.4-0.2-0.5c-0.4-2.1-0.6-4.2-1.1-6.2c-0.9-3.5-2.8-6.4-6.1-8.1c-2.3-1.2-4.8-1.8-7.4-1.9\n\t\tc-2.1-0.1-4.3,0-6.4,0.1c-0.1,0-0.2,0-0.3,0v22c0.9,0,1.7,0,2.6,0c1.4,0,2.8-0.3,4.1-0.8c2.1-0.9,3.1-2.7,3.7-4.8\n\t\tc0.2-0.9,0.4-1.9,0.6-2.9c0-0.2,0.1-0.3,0.1-0.5c0.1,0,0.1,0,0.2,0c0,0.2,0.1,0.3,0.1,0.5c0,6.1,0,12.1,0,18.2\n\t\tc0,0.2-0.1,0.3-0.2,0.5c-0.1-0.2-0.2-0.3-0.2-0.5c-0.2-0.9-0.3-1.9-0.6-2.8c-1.1-4.7-5.2-6.5-8.8-6.3c-0.5,0-1,0.1-1.5,0.1v23.5\n\t\tc0,0,0.1,0.1,0.1,0.1c2.8,0,5.6,0.2,8.4-0.1c6.6-0.9,10.9-4.7,12.9-11c0.6-2,0.9-4,0.9-6.1c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.2,0.3,0.3,0.3,0.5C195.5,36.9,195.5,42.8,195.5,48.6z M73.1,40.2c-2.1,3.3-4.8,6-8.4,7.8c-6.9,3.4-15.1,2-20.6-3.4\n\t\tc-3.7-3.6-5.8-8.1-7-13c-0.6-2.4-0.9-4.8-0.9-7.9c0.1-5.2,2.1-10.5,5.7-15.1c2.4-3.1,5.3-5.5,9-7C56.3-0.6,61.4,0,66.2,3\n\t\tc7,4.5,11,11.1,11.7,19.4C78.5,28.8,76.6,34.7,73.1,40.2z M69.1,24.7c0-4-0.2-7.8-0.9-11.6c-0.6-2.9-1.4-5.7-3.1-8.2\n\t\tc-3.5-5.1-10.4-5.1-13.9-2.2c-1.6,1.3-2.7,3-3.5,4.9c-1.8,4.2-2.4,8.6-2.5,13.1c-0.2,4.7-0.1,9.3,0.4,13.9c0.3,2.8,0.7,5.5,1.8,8.2\n\t\tc1.2,3.1,3.2,5.5,6.6,6.2c1.2,0.3,2.5,0.4,3.8,0.3c3.3-0.1,5.9-1.6,7.7-4.4c1.3-2.1,2-4.4,2.5-6.8C68.9,33.6,69,29.1,69.1,24.7z\n\t\t M122.7,28.9h-15.9c-0.2,0.5,0.1,0.6,0.5,0.6c1.2,0,2.4,0,3.6,0v0.8c0,3.8,0,7.7,0,11.5c0,2.1-0.8,3.8-2.3,5.1\n\t\tc-2.9,2.5-6.3,3-9.9,2c-2.4-0.7-3.9-2.5-4.9-4.6c-1.5-3-2.2-6.3-2.5-9.6c-0.7-7.1-0.7-14.2,0.2-21.3c0.4-2.8,1-5.6,2.3-8.1\n\t\tc2-4.1,5.1-5.5,9.5-4.3c3,0.8,5.3,2.5,7.2,4.9c2.5,3.2,3.9,6.8,4.8,10.7c0.1,0.2,0.1,0.4,0.2,0.6c0.1,0,0.1,0,0.2,0V0\n\t\tc-0.2,0.1-0.3,0.2-0.3,0.3c-1.3,2-3.8,2.8-6,1.9c-1.3-0.5-2.6-1-4-1.4c-3.5-1.1-7-0.9-10.2,0.9C87.2,6.2,83,13.2,82,22.1\n\t\tc-0.6,5.4,0.4,10.6,2.7,15.6c2,4.4,4.9,8,9.3,10.3c2.9,1.5,6,2.2,9.2,1.7c1.7-0.3,3.4-1,5-1.6c1.8-0.6,3.5-1.3,5.3-1.7\n\t\tc2.2-0.5,4.2,0.4,4.9,2.4c0,0.1,0.2,0.2,0.2,0.3c0.1,0,0.1,0,0.2,0V29.5c1.2,0,2.4,0,3.5,0C122.8,29.5,122.8,29.5,122.7,28.9z\n\t\t M41.1,1.4c-2.2,0-4.3,0-6.5,0h-2.2V2h4.4c-3.7,11.4-7.4,22.6-11.1,33.9c0,0-0.1,0-0.1,0C21.5,24.6,17.3,13.3,13.1,2h4.3\n\t\tc0.2-0.6-0.2-0.6-0.5-0.6c-5.5,0-10.9,0-16.4,0c-0.2,0-0.3,0-0.5,0V2c1.5,0,2.9,0,4.3,0c0.5,0,0.7,0.2,0.9,0.6\n\t\tC10.8,18,16.3,33.3,21.9,48.7c0.1,0.2,0.2,0.4,0.3,0.7c0.1-0.3,0.2-0.5,0.2-0.7C27.4,33.4,32.3,18,37.3,2.6C37.4,2.1,37.6,2,38.1,2\n\t\tc1.2,0,2.4,0,3.5,0C41.8,1.4,41.5,1.4,41.1,1.4z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"gitti ist DIE Nagellack-Innovation aus Berlin. Die Lacke des jungen Labels sind nicht nur vegan und frei von Schadstoffen, sondern pflegen die Nägel obendrein.\"<br>"
+          }
+        },
+        "192e477e-be10-4de2-a106-9f1f758ac95c": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 220.8 50.3\" style=\"enable-background:new 0 0 220.8 50.3;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M127.9,1.2c0,0.1,0,0.2,0,0.3v47.3c0,0.8,0,0.8-0.8,0.8c-2.7,0-5.4,0-8.2,0c-0.4,0-0.6-0.1-0.6-0.6c0-10.5,0-21.1,0.1-31.6\n\t\tc0-2.8,0.2-5.5,0.3-8.3c0-0.5,0-1,0-1.5l-0.1,0c-0.2,1.2-0.4,2.5-0.5,3.7c-0.7,5-1.5,10.1-2.6,15.1c-1.6,7.4-3.1,14.9-4.7,22.4\n\t\tc-0.2,0.9-0.2,0.9-1,0.9c-1.6,0-3.3,0-4.9,0c-0.4,0-0.5-0.1-0.6-0.5c-1.9-9.4-3.8-18.7-5.6-28.1c-0.5-2.8-0.9-5.6-1.3-8.3\n\t\tc-0.2-1.7-0.4-3.5-0.6-4.8c0.1,13.6,0.1,27.6,0.2,41.7h-8V0.8c0.2,0,0.4,0,0.5,0c4.2,0,8.4,0,12.6,0c0.4,0,0.6,0.1,0.7,0.6\n\t\tc1,5.9,2.1,11.8,3.2,17.6c0.5,2.6,0.9,5.2,1.3,7.9c0.3,2,0.4,4,0.6,6.1c0.1,0.7,0.1,1.4,0.3,2c0.1-0.6,0.1-1.2,0.2-1.8\n\t\tc0.4-3.2,0.7-6.5,1.3-9.7c1.5-7.5,3.1-14.9,4.6-22.3c0.1-0.3,0.2-0.4,0.5-0.4c4.2,0,8.4,0,12.6,0C127.8,0.7,127.9,0.8,127.9,1.2z\n\t\t M220.7,49.5c-0.2,0-0.4,0-0.6,0c-3.1,0-6.3,0-9.4,0c-0.4,0-0.5-0.1-0.7-0.5c-1.7-6.1-3.5-12.1-5.2-18.2c-0.1-0.4-0.2-0.5-0.7-0.5\n\t\tc-0.9,0-1.7,0-2.7,0v19.2h-9.7V0.8c0.2,0,0.4,0,0.5,0c5.1,0,10.1,0,15.2,0.1c1.3,0,2.7,0.2,4,0.5c2.9,0.7,4.8,2.8,6.3,5.3\n\t\tc1.5,2.6,2,5.5,2,8.5c0,2.6-0.3,5.2-1.3,7.6c-0.9,2.3-2.5,4.1-4.6,5.3c-0.4,0.3-0.5,0.5-0.3,0.9c2.3,6.7,4.7,13.3,7,20\n\t\tC220.6,49.1,220.7,49.3,220.7,49.5z M209.3,11.6c-0.5-1.6-1.6-2.7-3.2-3.1c-0.6-0.1-1.2-0.2-1.7-0.2c-0.9,0-1.8,0-2.8,0v13.9\n\t\tc1.3,0,2.6,0.1,3.8,0c2-0.2,3.3-1.4,3.9-3.2C210,16.6,210.1,14.1,209.3,11.6z M160,24.1c-0.1,5.5-0.2,9.6-1.2,13.7\n\t\tc-0.6,2.7-1.6,5.3-3.3,7.5c-2.1,2.8-4.9,4.3-8.3,4.8c-2.7,0.4-5.3,0.2-7.8-0.7c-2.6-0.9-4.6-2.6-6-4.9c-1.6-2.8-2.5-5.8-3.1-8.9\n\t\tc-1-5.3-1-10.7-0.7-16.1c0.2-3.7,0.8-7.4,2.3-10.9c1.2-2.9,3-5.4,5.8-6.9c2.5-1.4,5.3-1.8,8.1-1.6c2,0.1,3.9,0.5,5.6,1.5\n\t\tc2.8,1.5,4.6,3.9,5.9,6.8c1.2,2.8,1.8,5.7,2.1,8.6C159.8,19.8,159.9,22.6,160,24.1z M149.5,24c-0.1-2.6-0.3-6.2-0.6-9.8\n\t\tc-0.1-1.3-0.5-2.6-1.1-3.8c-1.1-2.2-4.7-2.5-6.1-0.2c-0.6,1-1,2-1.1,3.1c-0.2,2-0.5,4.1-0.5,6.2c-0.1,5.4-0.3,10.8,0.3,16.2\n\t\tc0.2,1.3,0.4,2.7,1,3.9c0.5,1,1.1,1.7,2.2,1.9c2.3,0.5,4.2-0.2,4.8-2.7c0.4-1.5,0.6-3,0.7-4.6C149.3,31.2,149.3,28.1,149.5,24z\n\t\t M29.8,23.8c-4.6,0-9.2,0-13.8,0c-0.4,0-0.5,0.2-0.5,0.5c0,2.3,0,4.6,0,6.9c0,0.2,0,0.4,0,0.6h0.6c1.6,0,3.3,0,4.9,0\n\t\tc0.2,0,0.5,0,0.5,0.3c-0.1,2.1-0.2,4.2-0.9,6.1c-0.8,2.2-2,3.2-4.4,3.2c-1.9,0.1-3.4-0.7-4.3-2.4c-0.4-0.8-0.7-1.6-0.9-2.5\n\t\tc-0.7-2.8-0.8-5.6-0.8-8.5c0-3.7,0.1-7.4,0.3-11.2c0.1-1.6,0.4-3.2,0.8-4.7c0.6-2.4,2-3.5,4.4-3.6c2-0.1,3.5,0.6,4.4,2.4\n\t\tc0.3,0.6,0.5,1.2,0.7,1.8c0.4,1.6,0.7,3.3,1,5c0.1,0,0.2,0,0.4,0c2.4-0.4,4.8-0.9,7.3-1.3c0.5-0.1,0.5-0.3,0.5-0.7\n\t\tc-0.3-2.4-0.7-4.8-1.5-7.1c-1.1-2.8-2.6-5.3-5.2-7c-1.9-1.2-4-1.8-6.3-1.9C13.2-0.2,9.8,0.7,6.9,3.3c-2,1.8-3.3,4.1-4.3,6.6\n\t\tc-1.7,4.3-2.3,8.8-2.4,13.3c-0.1,3.6,0,7.2,0.5,10.8C1,37,1.7,39.8,2.9,42.5c1.4,3,3.4,5.4,6.6,6.7c2.2,0.9,4.5,1.2,6.9,1\n\t\tc3.1-0.2,5.5-1.6,7.1-4.2c0.3-0.6,0.7-1.2,1-1.8c0.1-0.1,0.2-0.3,0.3-0.5c0.1,0.3,0.1,0.4,0.1,0.6c0.3,1.6,0.7,3.2,1,4.9\n\t\tc0.1,0.3,0.2,0.4,0.5,0.4c1.1,0,2.3,0,3.4,0c0.1,0,0.3,0,0.4-0.1V23.9C30,23.8,29.9,23.8,29.8,23.8z M189.5,0.7c-2.4,0-4.8,0-7.3,0\n\t\tc-0.2,0-0.4,0-0.6,0v0.7c0,6,0,12,0,18.1c0,5,0,10-0.1,14.9c0,1.4-0.2,2.9-0.7,4.2c-0.5,1.4-1.5,2.3-3,2.5c-0.5,0.1-1,0.1-1.5,0.1\n\t\tc-2.1-0.1-3.4-1-4-3c-0.5-1.5-0.6-3.1-0.6-4.6c0-8.9,0-17.9,0-26.8c0-1.9,0-3.8,0-5.7c0-0.4-0.1-0.5-0.5-0.5c-3,0-6,0-9.1,0\n\t\tc-0.3,0-0.5,0.1-0.5,0.5c0,11.4,0,22.8,0.1,34.2c0,2.4,0.4,4.8,1.2,7.2c1.2,3.6,3.5,6,7.1,7c3.5,1,7.1,1,10.6,0.2\n\t\tc2.6-0.6,4.8-1.9,6.4-4.1c1.3-1.8,1.9-3.8,2.3-5.9c0.5-2.8,0.6-5.6,0.6-8.4c0-10,0-20,0-30.1C190.1,0.8,190,0.7,189.5,0.7z\n\t\t M88.2,49.6h-0.7c-2.9,0-5.8,0-8.7,0c-0.6,0-0.7-0.2-0.8-0.7c-0.6-3.2-1.2-6.4-1.8-9.5c0-0.1,0-0.2-0.1-0.3h-9.7\n\t\tc-0.2,1.2-0.4,2.3-0.6,3.5c-0.4,2.2-0.8,4.5-1.2,6.7c0,0.1-0.2,0.3-0.4,0.3c-2.8,0-5.6,0-8.4,0c0,0-0.1,0-0.2-0.1\n\t\tc0-0.1,0-0.3,0.1-0.5c3.3-14.4,6.6-28.8,9.9-43.1c0.4-1.6,0.7-3.1,1-4.7c0.1-0.4,0.2-0.5,0.7-0.5c3.1,0,6.2,0,9.3,0\n\t\tc0.4,0,0.5,0.1,0.6,0.5c2.8,12.2,5.5,24.4,8.3,36.6c0.9,3.8,1.7,7.5,2.6,11.3C88.2,49.2,88.2,49.4,88.2,49.6z M75.1,31.1\n\t\tc0-0.2,0-0.3-0.1-0.5c-0.7-3.1-1.3-6.3-2-9.4c-0.5-2.2-0.9-4.5-1.3-6.7c-0.2-1.4-0.3-2.9-0.4-4.3c-0.9,7-2.6,13.9-3.8,20.9H75.1z\n\t\t M54.3,41.1c0-0.1,0-0.3,0-0.5H41.9V0.7h-0.7c-2.9,0-5.7,0-8.6,0c-0.7,0-0.7,0-0.7,0.7v15.9c0,10.5,0,21.1,0,31.6\n\t\tc0,0.4,0,0.7,0.6,0.7c7.1,0,14.2,0,21.3,0c0.4,0,0.5-0.1,0.5-0.5C54.3,46.4,54.3,43.7,54.3,41.1z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Hier kommt die Beauty-Revolution, auf die die Welt gewartet hat!\"<br>"
+          }
+        },
+        "49124d60-843d-4622-b3de-ff80ce13663e": {
+          "type": "logo",
+          "settings": {
+            "logo": "<!--?xml version=\"1.0\" encoding=\"utf-8\"?-->\n<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\n<svg height=\"32\" version=\"1.1\" id=\"Ebene_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 161.8 50\" style=\"enable-background:new 0 0 161.8 50;\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M53.6,46.8c-0.7,0.8-1.7,0.6-2.1-0.4c-0.1-0.4-0.2-0.7-0.3-1.1c-0.2-2.4-0.3-4.8-0.4-7.2c-0.2-2.6-0.3-5.1-0.5-7.7\n\t\tc-0.3-2.7-2.5-4.7-5.1-5.2c-0.1,0-0.2-0.1-0.5-0.3c2.7,0,4.3-1.6,5.3-3.6c2.4-5.1,2.8-10.4,0.6-15.7c-1.4-3.3-3.9-5.2-7.7-5\n\t\tc-2.5,0.1-5,0-7.5,0c-0.4,0-0.7,0-1.1,0c-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.5,0,1,0,1.6,0v47.3h-2.3\n\t\tc0,0.1-0.1,0.1-0.1,0.2c0.2,0.1,0.3,0.4,0.5,0.4c2.8,0,5.6,0,8.4,0c0.2,0,0.3-0.2,0.5-0.4c0-0.1-0.1-0.2-0.1-0.2h-2V25.4\n\t\tc2.7-0.1,3.5,0.2,4.3,2.5c0.6,1.7,1,3.6,1.1,5.4c0.2,3.1,0.2,6.2,0.3,9.2c0.1,1.9,0.3,3.8,1.4,5.5c0.9,1.4,2.1,1.9,3.5,1.5\n\t\tc1.3-0.4,2.8-2.3,2.8-3.6C54,46.3,53.8,46.5,53.6,46.8z M44.2,23.6c-1,0.9-2.1,1.2-3.4,1.2V1.3c2.4-0.3,3.4,0.2,4.5,2.3\n\t\tc1.1,2.1,1.7,4.3,1.9,6.6c0.3,3.5,0,6.9-1,10.3C45.7,21.7,45.2,22.8,44.2,23.6z M20.8,25.4c-0.6,0-1.3,0-2,0v24.1\n\t\tc-0.1,0-0.1,0-0.2,0c-0.1-0.2-0.2-0.4-0.2-0.6c-0.1-0.5-0.2-1-0.4-1.4c-0.4-1-1.3-1.3-2.2-0.8c-0.4,0.2-0.7,0.5-1.1,0.8\n\t\tc-0.4,0.4-0.8,0.8-1.3,1.1c-1.8,1.6-3.5,1.8-5.7,0.6c-1.6-0.9-2.7-2.3-3.6-3.9c-1.6-2.9-2.5-6.1-3.1-9.3C0.1,31-0.3,25.9,0.2,20.7\n\t\tc0.5-5.2,1.4-10.2,3.7-14.9c0.8-1.7,1.8-3.3,3.3-4.5C8.3,0.5,9.4,0,10.8,0c1.1,0,2,0.5,2.7,1.3C13.8,1.7,14,2,14.3,2.3\n\t\tc0.8,0.7,1.8,0.5,2.2-0.5c0.2-0.4,0.3-0.9,0.4-1.3c0.1,0,0.1,0,0.2,0c0.2,5.6,0.5,11.2,0.7,16.8c-0.1,0-0.2,0-0.2,0\n\t\tc-0.1-0.7-0.3-1.5-0.4-2.2c-0.5-3.2-1.1-6.4-2.2-9.5c-0.4-1-0.9-2-1.4-2.9c-0.2-0.4-0.6-0.8-1-1.2C11.2,0,9.9,0.2,8.9,1.9\n\t\tC7.9,3.7,7.4,5.7,7,7.8C5.8,14.3,5.3,21,5.4,27.6c0.1,4.7,0.4,9.4,1.3,14c0.4,1.8,0.9,3.5,1.5,5.2c0.2,0.6,0.6,1.1,1,1.6\n\t\tc1.1,1.2,2.5,1.2,3.3-0.2c0.6-1.1,1-2.3,1.3-3.5c0.3-1.2,0.3-2.4,0.3-3.6c0-5,0-10,0-15c0-0.2,0-0.4,0-0.7c-0.6,0-1.2,0-1.9,0\n\t\tc-0.4,0-0.6-0.1-0.4-0.6h9.4C21.4,25.2,21.3,25.4,20.8,25.4z M110.3,48.9c0,0.1,0,0.1-0.1,0.2H93.2c3.9-16,7.7-31.9,11.6-47.9\n\t\tc-2,0-3.9-0.1-5.9,0c-1,0-1.8,0.7-2.4,1.5c-1.5,1.9-2.1,4.1-2.3,6.4c-0.2,1.7-0.1,3.4-0.2,5.2c0,0.2-0.2,0.4-0.2,0.5\n\t\tc-0.1-0.2-0.2-0.4-0.2-0.5c0-4.4,0-8.7,0-13.1c0-0.1,0-0.3,0-0.4h16.6c-4,16-8,31.9-11.9,47.8c0.2,0,0.4,0,0.6,0\n\t\tc1.4,0,2.8-0.1,4.2,0c2.8,0.1,4.6-1.3,5.7-3.8c0.9-1.9,1-3.9,1.1-5.9c0-1.1,0-2.3,0-3.4c0-0.2,0.1-0.3,0.2-0.5\n\t\tc0.1,0.1,0.3,0.3,0.3,0.4C110.3,40,110.3,44.5,110.3,48.9z M83.6,48.6c-0.3-0.1-0.5,0-0.8,0c-0.5,0.1-0.6-0.1-0.7-0.6\n\t\tc-1-6.1-2.1-12.2-3.2-18.3c-1.3-7.7-2.7-15.4-4-23.1c-0.4-2.1-0.7-4.1-1.1-6.2h-0.1c-3,16.1-6,32.1-9.1,48.3c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,3,0,4.4,0c0.4,0,0.5-0.1,0.4-0.6h-2.3c0.8-4.5,1.6-8.8,2.4-13.2\n\t\tc0-0.2,0.4-0.4,0.6-0.4c1.2,0,2.4,0,3.6,0h2.9c0.8,4.5,1.6,9,2.4,13.6h-1.9c-0.2,0.6,0.1,0.6,0.5,0.6c2.6,0,5.1,0,7.7,0\n\t\tc0.2,0,0.4-0.2,0.6-0.3C84,48.8,83.8,48.7,83.6,48.6z M68.1,34.4c1.1-6.2,2.3-12.4,3.4-18.5c0,0,0.1,0,0.1,0\n\t\tc1.1,6.2,2.1,12.3,3.2,18.5H68.1z M161.4,48.6c-0.2,0-0.5,0-0.7,0c-0.6,0.1-0.8-0.2-0.9-0.7c-1-6.1-2.1-12.2-3.2-18.3\n\t\tc-1.5-8.5-2.9-17-4.4-25.5c-0.2-1.2-0.4-2.5-0.7-3.7c0,0-0.1,0-0.1,0c-3,16.1-6,32.1-9.1,48.2c-0.6,0-1.1,0-1.7,0\n\t\tc-0.1,0-0.3,0.2-0.4,0.3c0.1,0.1,0.3,0.3,0.4,0.3c1.5,0,2.9,0,4.4,0c0.2,0,0.3-0.2,0.5-0.3c-0.2-0.1-0.3-0.3-0.5-0.3\n\t\tc-0.6,0-1.3,0-1.9,0c0-0.2,0-0.3,0-0.5c0.8-4.2,1.5-8.5,2.3-12.7c0.1-0.4,0.3-0.4,0.6-0.4c1.7,0,3.3,0,5,0h1.5\n\t\tc0.8,4.6,1.6,9,2.4,13.6c-0.5,0-1,0-1.4,0c-0.2,0-0.4,0.2-0.5,0.3c0.2,0.1,0.4,0.3,0.6,0.3c2,0,4,0,6,0h2.2\n\t\tC161.8,48.6,161.8,48.6,161.4,48.6z M145.7,34.4c1.2-6.2,2.3-12.4,3.4-18.6c0,0,0.1,0,0.1,0c1.1,6.2,2.1,12.4,3.2,18.6H145.7z\n\t\t M131.3,48.6c0.1,0.4,0.1,0.6-0.3,0.6c-2.7,0-5.4,0-8.2,0c-0.4,0-0.5-0.2-0.4-0.6h2V1.3c-0.5,0-1.1,0-1.6,0c-0.2,0-0.3-0.2-0.4-0.3\n\t\tc0.1-0.1,0.3-0.3,0.4-0.3c2.7,0,5.4,0,8.2,0c0.2,0,0.3,0.2,0.5,0.3c0,0.1-0.1,0.1-0.1,0.2h-2.1v47.4H131.3z\"><\/path>\n<\/g>\n<\/svg>",
+            "richtext": "<br>\"Mit ihrer veganen und schadstofffreien Nagellackbrand gitti hat Gründerin Jennifer Baum-Minkus voll ins Schwarze getroffen.\"<br>"
+          }
+        }
+      },
+      "block_order": [
+        "db25bcf0-e864-478c-9b2e-227f1b868c72",
+        "192e477e-be10-4de2-a106-9f1f758ac95c",
+        "49124d60-843d-4622-b3de-ff80ce13663e"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Brand Quotes",
+        "heading_tag": "p",
+        "heading_class": "h3",
+        "heading_weight_class": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "page_plant_b_vs_water_b": {
+      "type": "page_plant_b_vs_water_b",
+      "blocks": {
+        "c556459d-8f43-428b-a834-3c863e03ba6e": {
+          "type": "heading",
+          "settings": {
+            "title": "Old page Section Blocks",
+            "class": "h2",
+            "tag": "p",
+            "text-color": "",
+            "padding-top": 5,
+            "padding-bottom": 20
+          }
+        },
+        "4816bedc-1a98-48a3-aef9-5ee07ec7fc28": {
+          "type": "heading",
+          "settings": {
+            "title": "Image&Text Alternative",
+            "class": "h4",
+            "tag": "p",
+            "text-color": "",
+            "padding-top": 5,
+            "padding-bottom": 5
+          }
+        },
+        "187f2105-fac2-46d7-8c37-e6d6a28c193b": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "m",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepage_header_mobile_holiday-season-3.jpg",
+            "image_width": 100,
+            "image_shape": "",
+            "image_fit": "contain",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "p",
+            "preheading_weight_class": "",
+            "heading": "Nagelfarben-Revolution.",
+            "heading_spacing_bottom": "s",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>gitti ist eine Innovation in der Nagellack-Industrie. Unsere Nagelfarben sind 19-free, vegan und eco-friendly. <br\/>'19-free' bedeutet, wir verzichten auf 19 bedenkliche Inhaltsstoffe, die in einigen herkömmlichen Nagellacken enthalten sind, und ersetzen sie durch bessere Alternativen.<br\/>Wir haben zwei innovative Alternativen zu herkömmlichen Nagellacken entwickelt: Eine pflanzenbasierte Formel für lange Haltbarkeit und höchste Leistungsansprüche und eine wasserbasierte Formel, die geruchsneutral ist und sich bestens für den schnelllebigen Alltag eignet.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "43cac343-1fad-4175-a135-a8b4dd23f4c9": {
+          "type": "image_text_alt",
+          "disabled": true,
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-2",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/Bildschirmfoto_2021-06-01_um_15.37.28.png",
+            "image_width": 80,
+            "image_shape": "four_by_three",
+            "image_fit": "contain",
+            "image_focal_point": "right",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "gitti langanhaltend und 19-free* - bis zu 82% pflanzenbasiert.",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h2",
+            "preheading_weight_class": "bold",
+            "heading": "Unser Favorit für höchste Leistungsansprüche",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "text": "<p>- besonders langanhaltend - bis zu 7 Tage <br\/>- leuchtende Farben mit hoher Deckkraft<br\/>- einfache Anwendung dank innovativem Pinsel<\/p>",
+            "text_split": "<p>Du beanspruchst deine Hände viel? Dann sind unsere pflanzenbasierten Nagelfarben genau richtig für dich! Denn diese Variante besticht durch extra langen Halt. Je nach Farbton lässt sich die Deckkraft durch zwei Schichten verdoppeln. Das Ergebnis: ultraglänzende und intensive Farbpower. <br\/>Die pflanzlichen Stoffe werden gemäß der ISO-Norm 16128 (anerkannte Naturkosmetik-Norm) angebaut und stammen unter anderem von Pflanzen wie Maniok, Zuckerrohr, Mais und Weizen.<br\/><br\/>Alle pflanzenbasierten Nagelfarben erkennst du an ihrer dreistelligen Nummer. Bei 'gitti 101' handelt es sich also um die Farbe Feuerrot, pflanzenbasiert.<br\/><br\/>Du willst mehr über die Inhaltsstoffe erfahren? <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\">Hier entlang.<\/a><\/p>",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "f73f2f76-af97-4477-8c66-85845ddb4433": {
+          "type": "heading",
+          "settings": {
+            "title": "Single tab",
+            "class": "h4",
+            "tag": "p",
+            "text-color": "",
+            "padding-top": 5,
+            "padding-bottom": 5
+          }
+        },
+        "bf845b40-3964-4cea-ae1f-8bc6786352a7": {
+          "type": "single_tab",
+          "settings": {
+            "title": "Entdecke unsere pflanzenbasierten Nagelfarben.",
+            "collection_handle": "alle-produkte-alt",
+            "spacing_top": "l",
+            "spacing_bottom": "xl"
+          }
+        },
+        "9c156984-fdd7-43ac-943b-b9bed6b2ed03": {
+          "type": "image_text_alt",
+          "disabled": true,
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-2",
+            "spacing_bottom": "m",
+            "spacing_top": "m",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_shop_page_pb_vs_wb_WB05.jpg",
+            "image_width": 80,
+            "image_shape": "four_by_three",
+            "image_fit": "contain",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "gitti geruchsneutral und 19-free* - mit 55% Wasser.",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "h2",
+            "preheading_class": "h2",
+            "preheading_weight_class": "bold",
+            "heading": "Unsere innovative Wahl für den schnelllebigen Alltag",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "h4",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "text": "<p>- geruchsneutral<br\/>- Ø 3-4 Tage Halt <br\/>- optimaler Halt mit Water-based Top Coat <\/p>",
+            "text_split": "<p><br\/>Du passt die Farbe deiner Nägel am liebsten an deine Stimmungslage oder dein Outfit an? Dann ist unsere wasserbasierte Nagelfarbe das perfekte Match für dich. Denn mit dieser Formel kannst du deine Maniküre quasi überall ändern: Sie ist geruchsneutral und trocknet in dünner Schicht aufgetragen superschnell.<br\/><br\/>Alle wasserbasierten Nagelfarben erkennst du an ihrer zweistelligen Nummer. Bei 'gitti 01' handelt es sich also um die Farbe Feuerrot, wasserbasiert.<br\/><br\/>Du willst mehr über die Inhaltsstoffe erfahren? Hier entlang.<\/p>",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "a34b5b65-a79d-4b8f-abbd-00b058b8f992": {
+          "type": "single_tab",
+          "disabled": true,
+          "settings": {
+            "title": "<b h3>Entdecke unsere wasserbasierten Nagelfarben.<\/b>",
+            "collection_handle": "wasserbasierter-nagellack",
+            "spacing_top": "l",
+            "spacing_bottom": "xl"
+          }
+        },
+        "9850c76d-e505-43d8-8dda-0bb122f4e7d6": {
+          "type": "richtext",
+          "settings": {
+            "richtext": "<p>Rich text box. -- buggy and broken<\/p>",
+            "text-color": "",
+            "padding-top": 5,
+            "padding-bottom": 5
+          }
+        },
+        "c1491632-9741-46fa-bb16-2490f284272b": {
+          "type": "heading",
+          "settings": {
+            "title": "Image Hero",
+            "class": "h4",
+            "tag": "p",
+            "text-color": "",
+            "padding-top": 5,
+            "padding-bottom": 5
+          }
+        },
+        "d5ed834b-d6fb-4221-b6ca-edfed2625a84": {
+          "type": "image_hero",
+          "settings": {
+            "overlay_header": true,
+            "section_height": 60,
+            "section_height_mobile": 80,
+            "overlay_width": 35,
+            "overlay_width_mobile": 100,
+            "overlay_position_v": "middle",
+            "overlay_position_h": "left",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_Homepage_Banner_Desktop_holiday-season-new.jpg",
+            "image_fit": "cover",
+            "preheading": "Preheading",
+            "class_preheading": "h4",
+            "spacing_bottom_preheading": "xs",
+            "heading": "Heading",
+            "class_heading": "h2",
+            "spacing_bottom_heading": "xs",
+            "text": "<p>Rich text example<\/p>",
+            "spacing_bottom_richtext": "xs",
+            "text_color": "#3a3a3a",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/pages\/compliance",
+            "button_class": "btn",
+            "spacing_bottom_button": "xs"
+          }
+        },
+        "7782ecc3-a151-40c7-8f63-4ae35803cc53": {
+          "type": "double_content",
+          "settings": {
+            "title": "Double Content",
+            "image_left": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-0.jpg",
+            "image_right": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-7.jpg",
+            "image_shape": "square",
+            "image_fit": "cover",
+            "name_left": "Heading",
+            "position_left": "Subheading",
+            "text_left": "<p>Text example<\/p>",
+            "name_right": "Heading",
+            "position_right": "Subheading",
+            "text_right": "<p>Text example<\/p>",
+            "shift_images": true
+          }
+        },
+        "74e442fe-4a7d-48b3-a47d-04ca9bbe7127": {
+          "type": "d_content_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "image_width_left": 80,
+            "image_shape_left": "four_by_three",
+            "image_focal_point_left": "",
+            "image_position_left": "right",
+            "image_fit_left": "cover",
+            "image_spacing_between_left": "",
+            "image_width_right": 65,
+            "image_shape_right": "square",
+            "image_focal_point_right": "",
+            "image_position_right": "left",
+            "image_fit_right": "cover",
+            "image_spacing_between_right": "",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "shift_images": false,
+            "change_images_on_mobile": false,
+            "text_class": "h2",
+            "text_tag": "p"
+          }
+        },
+        "9f5387c2-833e-4877-b418-1b0e94caf043": {
+          "type": "gallery",
+          "settings": {
+            "background_color": "#f3f3f3",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "heading": "Gallery",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "Choose up to 8 images to display",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "image_shape": "square",
+            "image_fit": "contain",
+            "image_id1": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-7.jpg",
+            "image_id2": "shopify:\/\/shop_images\/gitti_SHOP_IRL_pb_206-0.jpg",
+            "image_id3": "shopify:\/\/shop_images\/Swatch_Festive_Eye_Set.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "c556459d-8f43-428b-a834-3c863e03ba6e",
+        "4816bedc-1a98-48a3-aef9-5ee07ec7fc28",
+        "187f2105-fac2-46d7-8c37-e6d6a28c193b",
+        "43cac343-1fad-4175-a135-a8b4dd23f4c9",
+        "f73f2f76-af97-4477-8c66-85845ddb4433",
+        "bf845b40-3964-4cea-ae1f-8bc6786352a7",
+        "9c156984-fdd7-43ac-943b-b9bed6b2ed03",
+        "a34b5b65-a79d-4b8f-abbd-00b058b8f992",
+        "9850c76d-e505-43d8-8dda-0bb122f4e7d6",
+        "c1491632-9741-46fa-bb16-2490f284272b",
+        "d5ed834b-d6fb-4221-b6ca-edfed2625a84",
+        "7782ecc3-a151-40c7-8f63-4ae35803cc53",
+        "74e442fe-4a7d-48b3-a47d-04ca9bbe7127",
+        "9f5387c2-833e-4877-b418-1b0e94caf043"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "365e07a1-1cd9-4c5e-b0b9-3cbfbe731d27",
+    "d89c670b-e7f4-49a1-bf2b-532e7bebd389",
+    "95a1fbbd-b18b-4fe9-bf22-9ea05a5f3936",
+    "baf48d46-5433-49f9-a984-9ed177b0aee7",
+    "d8086d6a-bdef-4398-99a4-ffaf00e579ce",
+    "fbbc4438-7741-4849-9351-efc2462e78d9",
+    "fac55f56-ea8d-42c2-ab28-cc791c4fe4ee",
+    "575fcb23-0776-4b94-949a-defa0db60521",
+    "1f07ed01-1acd-4d75-bb4a-efedbef556cf",
+    "6a4db0c0-8bed-4560-8e99-e22448b73465",
+    "08f72cb4-5039-4cb2-8ac1-f186cea107bb",
+    "e91a493b-33c1-48e2-9b34-f44d779a5940",
+    "2e0953ef-5245-4277-a35e-68a4c0a146ae",
+    "ee4bedcf-0d10-4cb1-b969-c96309431b0c",
+    "2269b79a-ced9-4e40-92b7-db5b56ee14d0",
+    "ae1f3d8e-66b9-44ec-a852-2ea629fe0d21",
+    "faefb650-439b-472a-8b3d-f1ce6e445b8b",
+    "e7737642-cf93-4829-86ba-bb0214a66bd9",
+    "e781d388-d161-4337-8890-428e3ff4bb6c",
+    "e52a34ca-917b-43a7-a7a2-2878394e5480",
+    "d83ac127-a2e3-4f49-9b01-caa26a6b0c59",
+    "40367da2-3d79-4891-991b-86b1c49a33eb",
+    "fc7ea652-fe54-4d1e-b0bd-6b3150c4ed04",
+    "page_plant_b_vs_water_b"
+  ]
+}

@@ -1,0 +1,37 @@
+<div id="popover-popup">
+		<div class="popover-popup__header">
+			<div class="popover-popup__header-checkmark">
+				<span class="checkmark">
+					<div class="checkmark_stem"></div>
+					<div class="checkmark_kick"></div>
+				</span>
+			</div>
+			<div class="popover-popup__header-text">zum Warenkorb hinzugefügt</div>
+			<div class="icon-close"></div>
+		</div>
+		<div class="popover-popup__button">
+			<button class="add-to-cart-btn-style js-go-to-cart">Weiter zum Warenkorb</button>
+		</div>
+
+		<div class="inner">
+			<div class="popover-inner_product">
+				{% if settings.upsell != blank %}
+					{% assign product_upsell = all_products[settings.upsell] %}
+					{% assign subline = product_upsell.metafields.custom_fields["subline_collection"] %}
+					{% assign upsell_headline = settings.upsell_headline %}
+					{% assign upsell_subline = settings.upsell_subline %}
+					{% assign video_headline = settings.video_headline %}
+					{% assign iframe_html = settings.iframe_html %}
+					{% assign content = settings.content %}
+					{% if product_upsell != blank %}
+						{% render 'product-upsell', product: product_upsell, upsell_headline: upsell_headline, upsell_subline: upsell_subline, content: content, subline: subline %}
+					{% endif %}
+ 					<div class="popover-video">
+						<h4>{{video_headline}}</h4>
+						{{iframe_html}}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+</div>
+<div id="popover-overlay"></div>

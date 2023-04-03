@@ -1,0 +1,70 @@
+{% if settings.enable_checkout_message %}
+  {% capture checkoutStepsMessageCode %}
+    <div class="checkout-step-message">
+      {% if settings.metafield_checkout_message %}
+        {{ settings.metafield_checkout_message }}
+      {% else %}
+        {{ settings.checkout_message }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+{% endif %}
+
+{% if settings.enable_confirmation_message %}
+  {% capture reviewStepsMessageCode %}
+    <div class="review-step-message">
+      {% if settings.metafield_confirmation_message %}
+        {{ settings.metafield_confirmation_message }}
+      {% else %}
+        {{ settings.confirmation_message }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+{% endif %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    {% if settings.enable_checkout_message %}
+      if (Shopify.Checkout.step === "shipping_method" || Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "contact_information") {
+          checkoutStepsMessageShow()
+      } else{% endif %} {% if settings.enable_confirmation_message %}if (Shopify.Checkout.step === "review") {
+          reviewStepMessageShow()
+      }
+    {% endif %}
+  });
+
+  document.addEventListener('page:change', function () {
+    {% if settings.enable_checkout_message %}
+      if (Shopify.Checkout.step === "shipping_method" || Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "contact_information") {
+          checkoutStepsMessageShow()
+      } else{% endif %} {% if settings.enable_confirmation_message %}if (Shopify.Checkout.step === "review") {
+          reviewStepMessageShow()
+      }
+    {% endif %}
+  });
+
+  function checkoutStepsMessageShow() {
+      if (document.querySelector(".checkout-step-message") === null) {
+          var xmlString = '{{ checkoutStepsMessageCode | strip_newlines }}';
+          var doc = new DOMParser().parseFromString(xmlString, "text/html");
+          var referenceNode = document.querySelector(".step__footer")
+          referenceNode.parentNode.insertBefore(doc.body.firstChild, referenceNode.nextSibling);
+      }
+  }
+
+  function reviewStepMessageShow() {
+      if (document.querySelector(".review-step-message") === null) {
+          var xmlString = '{{ reviewStepsMessageCode | strip_newlines }}';
+          var doc = new DOMParser().parseFromString(xmlString, "text/html");
+          var referenceNode = document.querySelector(".step__footer")
+          referenceNode.parentNode.insertBefore(doc.body.firstChild, referenceNode.nextSibling);
+      }
+  }
+</script>
+
+<style>
+  .checkout-step-message,
+  .review-step-message {
+    margin-top: 15px;
+  }
+</style>

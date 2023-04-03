@@ -1,0 +1,46 @@
+{% assign country = localization.country.iso_code %}
+{% assign language = localization.language.iso_code %}
+{% assign market = 'country__' | append: country | append: ',language__' | append: language %}
+
+{% if cart.attributes.localization != market %}
+  <script defer>
+      fetch('{{routes.cart_url}}/update.js', {
+              body: JSON.stringify(
+                  {
+                      attributes: {
+                    {% assign has_other_attributes = false -%}
+                    {%- for attribute in cart.attributes -%}
+                    {%- assign key = attribute | first -%}
+                    {%- assign value = attribute | last -%}
+                    {%- unless key == 'localization' -%}
+                    {%- if has_other_attributes %},{% endif -%}
+                    {%- assign has_other_attributes = true -%}
+                      '{{- attribute | first -}}': '{{- attribute | last -}}'
+                    {%- endunless -%}
+                    {%- endfor -%}
+                    {%- if has_other_attributes %},{% endif -%}
+                      'localization': '{{market}}'
+                  }
+          }
+      ),
+          credentials: 'same-origin',
+          headers: {'Content-Type': 'application/json', 'Accept':'application/json', 'X-Requested-With': 'XMLHttpRequest'},
+      method: 'POST'
+      }).then(function(response) {
+          if(!response.ok) {
+              response.text().then(text => {
+                  let error = JSON.parse(text);
+                  console.error(error.status);
+                  console.error(error.message);
+                  console.error(error.description);
+              })
+          } else {
+              return response.json();
+          }
+      }).then(function(cart) {
+          console.log(cart)
+      }).catch(function(err) {
+          console.error(err)
+      });
+  </script>
+{% endif %}

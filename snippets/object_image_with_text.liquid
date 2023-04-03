@@ -1,0 +1,48 @@
+<style>
+    #shopify-section-{{object.id}}{
+        background-color:{{object.settings.background_color}};
+        background: {{object.settings.background_color}};
+        background: linear-gradient(0deg, {{object.settings.background_color}} 0%, {{object.settings.background_color}} {{object.settings.split_at}}%, {{object.settings.background_color_2}} {{object.settings.split_at}}%, {{object.settings.background_color_2}} 100%);
+        {% if object.settings.overlay_header %}
+            margin-top:-109px;
+            padding-top:109px;
+        {% endif %}
+    }
+
+{}
+</style>
+
+<div class="page-width">
+   {% if object.settings.smaller %}
+    <div class="custom_wrapper grid medium-up_col-11 col-gap">
+        <div class="grid-item medium-up_col-start-2 medium-up_col-span-9">
+   {% endif %}
+
+    <div class="grid col-2 col-gap small_col-1 small_row-gap">
+      {% capture sizes %}{% render 'image_sizes', small:1, medium_up:2, page_width: true %}{% endcapture %}
+      <div class="grid-item {{object.settings.layout}} {{object.settings.layout_mobile}}">
+          {% if object.settings.image_link != blank %}<a href="{{object.settings.image_link }}">{% endif %}
+            {% render 'image_element',  image: object.settings.image, fit: object.settings.image_fit, image_shape: object.settings.image_shape, sizes:sizes %}
+          {% if object.settings.image_link != blank %}</a>{% endif %}
+      </div>
+      <div class="text grid-item flex col {{object.settings.text_align}} {{object.settings.vertical_align}}">
+        {% if object.settings.preheading != blank %}
+          <p class="text-align-{{object.settings.text_align}} spacing-bottom-xs {{object.settings.class_preheading}}">{{ object.settings.preheading | escape }}</p>
+        {% endif %}
+        {% if object.settings.heading != blank %}
+          <p class="h1 text-align-{{object.settings.text_align}} spacing-bottom-xs {{object.settings.class_heading}}">{{ object.settings.heading | escape }}</p>
+        {% endif %}
+        {% if object.settings.text != blank %}
+          <div class="text-align-{{object.settings.text_align}} spacing-bottom-xs">{{ object.settings.text }}</div>
+        {% endif %}
+        {% if object.settings.button_label != blank and object.settings.button_link != blank %}
+          <a href="{{object.settings.button_link}}" class="{{object.settings.button_class}}">{{object.settings.button_label}}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if object.settings.smaller %}
+        </div>
+      </div>
+   {% endif %}
+  </div>
+  

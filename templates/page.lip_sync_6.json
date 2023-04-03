@@ -1,0 +1,303 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "c698a229-c8d2-430f-8eff-3a2be554b48b": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": true,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_pb_134_135_couple_happy-2-s_2.jpg",
+            "image_link": "",
+            "image_width": 100,
+            "image_shape": "",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "Besser für dich und deine Liebsten",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "p",
+            "preheading_weight_class": "bold",
+            "heading": "Conscious Gift Guide.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "text": "<p>Wir haben für dich eine Auswahl unserer beliebtesten gitti Routinen zusammengestellt. Ob pflegend, natürlich oder voller Farbe - mach deinen Freund:innen oder dir selbst eine Freude mit gitti.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "e60d5492-7da5-4c77-a461-badf9d9d5119": {
+          "type": "triple_usp",
+          "settings": {
+            "spacing_top": "m",
+            "spacing_bottom": "m",
+            "tag": "h1",
+            "class": "h4",
+            "weight_class": "",
+            "triple_usp_link_1": "",
+            "triple_usp_icon_1": "fair_eco_friendly",
+            "triple_usp_text_1": "Vegan & eco-friendly",
+            "triple_usp_link_2": "",
+            "triple_usp_icon_2": "innovative_formulas",
+            "triple_usp_text_2": "Innovative Produktformeln",
+            "triple_usp_link_3": "",
+            "triple_usp_icon_3": "sustainable_packaging",
+            "triple_usp_text_3": "Nachhaltige Verpackungen",
+            "custom_css": "#shopify-section-1615814327c950309d{\nborder-bottom: 4px solid #E8E8E8;"
+          }
+        },
+        "60ec2ffb-7bc3-4ec4-9ac6-883f97ea7465": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>Exklusive Geschenke Sets.<\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "2fe47d66-be40-409d-aeb8-041d21b1dcc8": {
+          "type": "heading",
+          "settings": {
+            "title": "<p>Nur für kurze Zeit im Shop: Exklusive Sets für die Festtage. Hier ist für alle etwas dabei - auch für dich selbst.<\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "6b96702e-3aee-4098-a259-6e2e69d21977": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-starter-trio"
+          }
+        },
+        "0959335a-14ae-4862-9227-e01321f96bd3": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "seasonal-trio"
+          }
+        },
+        "bbd15c06-e0b0-4276-9ab6-2d70c8afb603": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "all-eyes-on-me-set"
+          }
+        },
+        "98f39352-b91f-4850-ae92-e230dfa9ffd6": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "on-the-go-set"
+          }
+        },
+        "3c1d5472-20de-476b-98f1-d361dc7d7101": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "everybalm-feuchtigkeitspflege-100-ml"
+          }
+        },
+        "ab6a1381-8ffd-4c8e-a391-22868cab2d7d": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-starter-kit"
+          }
+        },
+        "4254e1a1-3f4b-4160-a47e-01ea6fbe4a95": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "fresh-start-routine"
+          }
+        },
+        "2d024e30-0b3f-4b49-a422-8e2ca6705300": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nail-hand-trio"
+          }
+        },
+        "f6113a6c-5a39-4ff0-8b74-8d9a4c51a330": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "manicure-tools-set"
+          }
+        },
+        "5c8c3e87-8e4e-41ab-bbf7-a2ca77ece3bf": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look"
+          }
+        },
+        "a200bcba-7e05-40a6-b278-9e2dd6259b23": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "eye-colour-set"
+          }
+        },
+        "8629f098-0559-4a01-bec7-d65a91c6c638": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>All-time favourites.<\/b>",
+            "class": "h2",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xl",
+            "spacing_bottom": "xs"
+          }
+        },
+        "0c5d0c91-dee7-499c-add0-42e32eb163a6": {
+          "type": "heading",
+          "settings": {
+            "title": "Unsere gitti Klassiker, Community Lieblinge und bestselling Beauty Innovationen.",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "9ac36316-8663-4538-9d00-283ba3912ccf": {
+          "type": "products",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xl",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "h1",
+            "richtext_weight_class": "bold",
+            "button_label": "shop all favourites",
+            "button_class": "btn--tertiary",
+            "collection": "bestseller",
+            "style": "slider"
+          }
+        }
+      },
+      "block_order": [
+        "c698a229-c8d2-430f-8eff-3a2be554b48b",
+        "e60d5492-7da5-4c77-a461-badf9d9d5119",
+        "60ec2ffb-7bc3-4ec4-9ac6-883f97ea7465",
+        "2fe47d66-be40-409d-aeb8-041d21b1dcc8",
+        "6b96702e-3aee-4098-a259-6e2e69d21977",
+        "0959335a-14ae-4862-9227-e01321f96bd3",
+        "bbd15c06-e0b0-4276-9ab6-2d70c8afb603",
+        "98f39352-b91f-4850-ae92-e230dfa9ffd6",
+        "3c1d5472-20de-476b-98f1-d361dc7d7101",
+        "ab6a1381-8ffd-4c8e-a391-22868cab2d7d",
+        "4254e1a1-3f4b-4160-a47e-01ea6fbe4a95",
+        "2d024e30-0b3f-4b49-a422-8e2ca6705300",
+        "f6113a6c-5a39-4ff0-8b74-8d9a4c51a330",
+        "5c8c3e87-8e4e-41ab-bbf7-a2ca77ece3bf",
+        "a200bcba-7e05-40a6-b278-9e2dd6259b23",
+        "8629f098-0559-4a01-bec7-d65a91c6c638",
+        "0c5d0c91-dee7-499c-add0-42e32eb163a6",
+        "9ac36316-8663-4538-9d00-283ba3912ccf"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page-lip-sync-sections-template"
+  ]
+}

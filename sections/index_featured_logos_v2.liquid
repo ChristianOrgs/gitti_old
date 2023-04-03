@@ -1,0 +1,408 @@
+<style>
+    #shopify-section-{{section.id}} {
+        overflow: hidden;
+    }
+    #shopify-section-{{section.id}}, #shopify-section-{{section.id}} clever-slider.overhanging_slider::before{
+        background-color:{{section.settings.background_color}};
+    }
+
+    #shopify-section-{{section.id}} cs-slides {
+        align-items: center;
+    }
+
+    #ThumbnailSlider cs-slide:not(.is-selected) div{
+        opacity:0.5;
+    }
+</style>
+
+<div class="spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    {% if section.settings.heading != blank %}
+        <{{section.settings.heading_tag}} class="{{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-xs"> {{section.settings.heading}} </{{section.settings.heading_tag}}>
+    {% endif %}
+    <div class="grid col-2 small_col-1 gap">
+        <div class="container flex col center middle  medium-up_spacing-left-xl medium-up_spacing-right-xl small_spacing-left-xs small_spacing-right-xs">
+            <clever-slider id="MainSlider" class=""
+                options-large="{'align':'start','containScroll':'trimSnaps'}"   
+                {% if section.settings.enable_autoplay %} autoplay="{{section.settings.autoplay_speed | times: 1000 }}" pause-on-hover {% endif %}>
+                <cs-track>
+                    <cs-slides class="items-1">
+                {% for block in section.blocks %}
+                            <cs-slide>
+                    <{{section.settings.richtext_tag}} id="richtext-{{block.id}}" class="{{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} flex col center middle text-align-{{section.settings.text_align}} spacing-bottom-s"> {{block.settings.richtext}} </{{section.settings.richtext_tag}}>
+                            </cs-slide>
+                {% endfor %}
+                    </cs-slides>
+                </cs-track>
+            </clever-slider>
+        </div>
+        <div class="container flex col center middle medium-up_spacing-left-l medium-up_spacing-right-l small_spacing-left-xs small_spacing-right-xs">
+            <clever-slider id="ThumbnailSlider" for="MainSlider" class="small_spacing-top-s"
+                options-large="{'align':'start','containScroll':'trimSnaps'}" >
+                <cs-track>
+                    <cs-slides class="items-4 medium_items-4 small_items-4">
+                    {% for block in section.blocks %}
+                            <cs-slide>
+                                <div class="medium-up_spacing-s small_spacing-xs">{{block.settings.logo}}</div>
+                            </cs-slide>
+                    {% endfor %}
+                    </cs-slides>
+                </cs-track>
+            </clever-slider>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "NEW Brand Quotes",
+  "settings": [
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "background",
+        "default": "#F3F3F3"
+    },
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "none",
+                "label": "no spacing"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "none",
+                "label": "no spacing"
+            },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Autoplay"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_autoplay",
+        "label": "Enable",
+        "default": true
+    },
+    {
+        "type": "range",
+        "id": "autoplay_speed",
+        "label": "Speed",
+        "unit": "s",
+        "min": 0,
+        "max": 10,
+        "step": 0.5,
+        "default": 5
+    },
+    {
+        "type": "header",
+        "content": "Content"
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "On the Gram"
+    },
+    {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Quotes"
+    },
+    {
+        "type": "select",
+        "id": "richtext_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_class",
+        "label": "Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_weight_class",
+        "label": "Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    }, 
+    {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text align",
+        "default": "center",
+        "options": [
+            {
+            "value": "center",
+            "label": "center"
+            },
+            {
+                "value": "left",
+                "label": "left"
+            },
+            {
+                "value": "right",
+                "label": "right"
+            }
+        ]
+    }
+  ],
+  "blocks": [
+    {
+        "type": "logo",
+        "name": "Logo",
+        "settings": [
+            {
+                "type": "html",
+                "id": "logo",
+                "label": "Logo"
+            },
+            {
+                "type": "textarea",
+                "id": "richtext",
+                "label": "Richtext",
+                "default": "Mention @gitti in your photo and we will feature the best pictures on our site"
+            }
+        ]
+    }
+  ],
+  "presets": [
+      {
+          "category": "Promotion",
+          "name":"NEW Brand Quotes"
+      }
+  ]
+}
+{% endschema %}

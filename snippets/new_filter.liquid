@@ -1,0 +1,233 @@
+{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+<style>
+    .shades-filter,
+    .sub-collections{
+        gap:7.5px;
+        padding-top: 10px;
+        padding-bottom:10px;
+    }
+    .sub-collection-link{
+        padding:10px 8px;
+        {% comment %} background: #F7F7F7; {% endcomment %}
+        border-radius: 2px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        white-space: nowrap;
+    }
+    .sort-by{
+        border:none;
+        font-family: 'Apercu Pro Regular', sans-serif;
+        font-size: 16px;
+        line-height: 140%;
+        font-weight: 400;
+        color:black;
+        border-radius:0;
+        background-color: white;
+    }
+    .count-sort-wrapper{
+        padding-top:15px;
+        padding-bottom:15px;
+    }
+    .shade{
+        order:2;
+    }
+
+    input[name="shades"]:checked + .shade{
+        order:1;
+    }
+
+    input[name="shades"]:checked + .shade .swatch::after{
+        content: '';
+        border: 1px solid #333333;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        position: absolute;
+        margin: -5px;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+    }
+    .shade .swatch{
+        display: flex;
+        width: 48px;
+    }
+    .collection-back{
+        padding-right:20px;
+    }
+    .collection-title{
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+    .collection-breadcrumbs-wrapper{
+        padding-top:20px;
+    }
+    .filter-shades-heading{
+        padding-top:10px;
+    }
+    @media screen and (max-width:{{settings.breakpoint_small}}px){
+        .shades-filter,
+        .sub-collections{
+            overflow: auto;
+            margin-inline: -{{settings.site_gutter_mobile}}px;
+            padding-inline: {{settings.site_gutter_mobile}}px;
+            scrollbar-width: none;
+        }
+        .shades-filter{
+            border-bottom: 1px solid #F3F3F3;
+        }
+        .shades-filter::-webkit-scrollbar ,
+        .sub-collections::-webkit-scrollbar {
+            display: none;
+        }
+        .sort-by{
+            font-size: 14px;
+        }
+    }
+
+</style>
+
+<div class="page-width">
+    {% comment %} <div class="collection-breadcrumbs-wrapper only_small">
+        {% render 'collection-breadcrumbs' %}
+    </div>
+    {%- comment -%}Collection title{%- endcomment -%}
+    <div class="flex row collection-title only_small">
+        {% if parent_collection != blank %}
+            <a keep-filter href="{{ parent_collection.url }}" class="flex collection-back">
+                {% render 'icon', icon: 'chevron-left' %}
+            </a>    
+        {% endif %}
+        <h1 class="h3">{{ collection.title }}</h1>
+    </div> {% endcomment %}
+    {%- comment -%}Sub collections{%- endcomment -%}
+    <div class="flex row sub-collections">
+        {% assign title_overwrites = collection.metafields.collection.sub_collections_overwrites.value | split: ',' %}
+        {% for sub_collection_handle in collection.metafields.collection.sub_collections.value %}
+            {% assign sub_collection = collections[sub_collection_handle] %}
+            {% assign title = sub_collection.title %}
+            {% if title_overwrites[forloop.index0] != blank %}
+                {% assign title = title_overwrites[forloop.index0] %}
+            {% endif %}
+            <a keep-filter href="{{sub_collection.url}}" class="flex sub-collection-link">{{title}}</a>
+        {% endfor %}
+    </div>
+
+    {%- liquid
+        assign unordered_shades = blank | sort 
+        assign ordered_shades = blank | sort 
+        assign shade_tags = blank | sort
+        for tag in collection.all_tags 
+            assign inserter = tag | sort 
+            if tag contains 'tags.shades'
+                assign shade_tags = shade_tags | concat: inserter 
+            endif 
+        endfor 
+        for to in tag_order 
+            for tag in shade_tags 
+                assign inserter = tag | sort 
+                assign tag_handle = tag | handleize
+                assign to_handle = to | handleize
+                if tag_handle == to_handle 
+                    assign ordered_shades = ordered_shades | concat: inserter 
+                    break 
+                endif 
+            endfor 
+        endfor 
+        for tag in shade_tags 
+            assign inserter = tag | sort 
+            unless ordered_shades contains tag
+                assign unordered_shades = unordered_shades | concat: inserter 
+            endunless
+        endfor 
+        assign ordered_shades = ordered_shades | concat: unordered_shades 
+    -%}
+
+    {% assign shades = '' %}
+    {% for tag in ordered_shades %}
+        {% if tag == '' %}
+            {% continue %}
+        {% endif %}
+        {% capture shade %}
+            <input name="shades" id="shades-{{ tag | handleize }}" hidden type="checkbox" value="{{ tag }}">
+            <div class="shade">
+                <label for="shades-{{ tag | handleize }}" class="swatch swatch-{{ tag | handleize }}"></label>
+            </div>
+        {% endcapture %}
+        {% assign shades = shades | append: shade %}
+    {% endfor %}
+    {% if shades != '' and collection.metafields.collection.enable_filter_by_shades.value %}
+        <p class="filter-shades-heading" shades-heading > 
+            {{'general.filter.filter_by_shades' | t }} <span shades-count></span>:
+        </p>
+        <div class="flex row shades-filter">
+            {{ shades }}
+        </div>    
+    {% endif %}
+    
+    {%- comment -%}Count and Sort{%- endcomment -%}
+    <div class="flex row between middle count-sort-wrapper">
+        <p product-count class="p">{% if collection.products_count != collection.all_products_count %}{{ collection.products_count }}/{% endif %}{{ collection.all_products_count }}&nbsp;{{'general.filter.products' | t }}</p>
+        <select class="sort-by" name="sort-by" id="sort-by">
+            {% for sort_option in collection.sort_options %}
+                <option value="{{sort_option.value}}" {% if sort_option.value == sort_by %} selected {% endif %} >{{sort_option.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<script type="module">
+    const section = document.querySelector('#shopify-section-{{section.id}}')
+    const sortBy = section.querySelector('#sort-by')
+    const shades = section.querySelectorAll('[name="shades"]')
+    const keepFilterLinks = document.querySelectorAll('[keep-filter]')
+
+    sortBy.addEventListener('change', reloadSection)
+    shades.forEach(s => { s.addEventListener('change', reloadSection) })
+
+    async function reloadSection(){
+        updateKeepFilterLinks()
+        section.querySelector('[product-grid]').innerHTML =  `{% render 'loading_animation', css_class: 'bc_collection_loading_animation' %}`
+        const tags = Array.from(shades).filter(s => s.checked).map(s => s.value).join(',')
+        await fetch('{{request.origin | append: routes.root_url | append: collection.url }}'+ '?section_id={{section.id}}&sort_by='+sortBy.value + '&filter.p.tag=' + tags)
+        .then(res => res.text())
+        .then(text => {
+            let div = document.createElement('div')
+            div.innerHTML = text.trim()
+
+            section.querySelector('[product-grid]').replaceWith(div.querySelector('[product-grid]'))
+            section.querySelector('[product-count]').replaceWith(div.querySelector('[product-count]'))
+
+            let appliedTags = tags.split(',')
+            if(appliedTags[0] == ''){
+                appliedTags = []
+            }
+            section.querySelector('[shades-count]').innerHTML = appliedTags.length > 0 ? '(' + appliedTags.length + ')' : ''
+        })
+    }
+
+    function updateKeepFilterLinks(){
+        Array.from(keepFilterLinks).forEach(a => {
+            let baseLink = a.getAttribute('href').split('?')[0]
+            const tags = Array.from(shades).filter(s => s.checked).map(s => s.value).join(',')
+            a.setAttribute('href', baseLink + '?' + 'sort_by='+sortBy.value + '&filter.p.tag=' + tags)
+        })
+    }
+
+    document.addEventListener('DOMContentLoaded', (e) => {
+        let tagParam = new URL(location).searchParams.get('filter.p.tag')
+        let tags = !!tagParam ? tagParam.split(',') : []
+        tags.forEach(tag => {
+            shades.forEach(shade => {
+                if(shade.value == tag){
+                    shade.checked = true;
+                }
+            })
+        })
+        history.replaceState('', {}, location.origin + location.pathname)
+        updateKeepFilterLinks()
+    })
+
+</script>
+

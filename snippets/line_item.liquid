@@ -1,0 +1,128 @@
+{% assign is_bundle_item = false %}
+{% assign is_bundle = false %}
+{% assign bundle_id = '' %}
+
+{% for property in line_item.properties %}
+    {% if property.first == 'set_id' %}
+        {% assign is_bundle_item = true %}
+    {% elsif property.first == 'set' %}
+        {% assign is_bundle = true %}
+        {% assign bundle_id = property.last %}
+    {% endif %}
+{% endfor %}
+{% if is_bundle %}
+    {% capture bundle_items %}
+        {% for item in cart.items %}
+            {% for prop in item.properties %}
+                {% if prop.first == "mystery_box" %}
+                    {% break %}
+                {% endif %}
+                {% if prop.first == 'set_id' and prop.last == bundle_id %}
+                    {% capture product_color %}{% render 'product_color', product: item.product, get:'name' %}{% endcapture %}
+                    {% assign product_color = product_color | strip %}
+                    <p class="p" data-product_id="{{ item.id }}" data-product_color="{{ product_color }}">
+                        {{item.quantity}}x {{item.title}}{% if product_color != '' %} - {{product_color}}{% endif %}
+                    </p>
+
+                    {% comment %}
+                    {%-capture color_no_handle-%}{%- render 'product_color', product: item.product, get:'no' -%}{%-endcapture-%}
+                    {% if color_no_handle contains '-' %}
+                        {% assign color_no_handle_no = color_no_handle | split: '-' | last %}
+                    {% else %}
+                        {% assign color_no_handle_no = color_no_handle %}
+                    {% endif %}
+
+                    <p class="p bundle_item_cart_swatch" data-product_id="{{ item.id }}" data-product_color="{{ product_color }}">
+                        <span class="swatch swatch-{{ color_no_handle_no }}"></span>
+                        <span class="bundle_item_qty_title">{{item.quantity}}x {{item.title}}{% if product_color != '' %} - {{product_color}}{% endif %}</span>
+                    </p>
+                    {% endcomment %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endcapture %}
+{% endif %}
+
+{% unless is_bundle_item %}
+    <div class="grid col-5 small_col-6 grid-gap-small line_item">
+        <div class="grid-item col-start-1 row-span-5 small_row-span-1 small_col-span-2">
+            <a href="{{ line_item.product.url }}" class="flex">
+                {% render 'image_element', image:line_item.product.featured_image, aspect_ratio: 0.6666 %}
+            </a>
+        </div>
+        <div class="grid-item col-start-2 small_col-start-3 col-span-3">
+            <p class="p title_bold">{{line_item.title}}</p>
+            {% if is_bundle %}
+                {{bundle_items}}
+            {% endif %}
+
+        </div>
+        
+        <div class="grid-item row-start-2 col-start-2 small_col-start-3 col-span-4">
+            {%- comment -%}
+                {% if line_item.total_discount > 0 %}
+                    <p class="p">{{ line_item.original_price | money }}</p>
+                {% else %}
+                    <p class="p">{{ line_item.final_price | money }}</p>
+                {% endif %}
+            {%- endcomment -%}
+
+            {% if line_item.variant.compare_at_price %}
+                {% assign temp_final = line_item.final_price | times: 1.0 %}
+                {% assign temp_compare = line_item.variant.compare_at_price | times: 1.0 %}
+                {% assign discount = temp_final | divided_by: temp_compare | times: 100 %}
+                <div class="small_text-align-right">
+                    <span class="price">{{line_item.final_price | money }}</span> 
+                    <span class="compare_at_price">{{line_item.variant.compare_at_price | money }}</span>  
+                </div>
+                <p class="small_text-align-right cart-relative-discount">-{{100.0 | minus: discount | round }} %</p>
+            {% else %}
+                {% if line_item.original_price != line_item.final_price %}
+                    {% assign temp_final = line_item.final_price | times: 1.0 %}
+                    {% assign temp_compare = line_item.original_price | times: 1.0 %}
+                    {% assign discount = temp_final | divided_by: temp_compare | times: 100 %}
+                    <div class="small_text-align-right">
+                        <span class="price">{{line_item.final_price | money }}</span> 
+                        <span class="compare_at_price">{{line_item.original_price | money }}</span>  
+                    </div>
+                    <p class="small_text-align-right cart-relative-discount">-{{100.0 | minus: discount | round }} %</p>
+                {% else %} 
+                    <div class="small_text-align-right">
+                        <span class="price">{{line_item.final_price | money }}</span> 
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+        </div>
+        <div class="grid-item row-start-3 col-start-2 col-span-3 small_row-start-2 small_col-start-1 small_col-span-2">
+            <div class="flex row line_item-quantity">
+                <input-change class="qty-button" for="qty-{{ line_item.key | handleize }}" by="-1">&#8722;</input-change>
+                <input id="qty-{{ line_item.key | handleize }}"
+                       type="number"
+                       min="0"
+                       class="qty-input text-align-center"
+                       value="{{line_item.quantity}}"
+                       onchange="Shopify.theme.cart.changeItem({'id': '{{line_item.key}}', 'quantity': this.value })">
+                <input-change  class="qty-button" for="qty-{{ line_item.key | handleize }}" by="1">&#43;</input-change>
+            </div>
+        </div>
+        {%- comment -%}
+            Currently not working properly 
+            <div class="grid-item row-start-4 col-start-2  col-span-3">
+                {% if line_item.total_discount > 0 %}
+                    {% assign one_percent = line_item.original_price | divided_by: 100.0 %}
+                    <p class="p spacing-bottom-s" style="color:hsl(0deg 54% 60%);">-{{ line_item.total_discount | divided_by: line_item.quantity | divided_by: one_percent | ceil }}% ({{ line_item.total_discount | money }})</p>
+                    <p class="total_price">{{ line_item.line_price | money }}</p>
+                {% else %}
+                    <p class="p">{{ line_item.final_line_price | money }}</p>
+                {% endif %}
+            </div>
+        {%- endcomment -%}
+        <div class="grid-item col-start-5 small_col-start-6 flex row right">
+            <input-change for="qty-{{ line_item.key | handleize }}" to="0">
+                {% render 'icon', icon: 'close' %}
+            </input-change>
+        </div>
+    </div>
+{% endunless %}
+

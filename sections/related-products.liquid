@@ -1,0 +1,71 @@
+{% assign showRel = section.settings.showRel %}
+{% assign custom_title = section.settings.custom_title %}
+
+{% if showRel %}
+  {% assign heading = section.settings.title %}
+  {% assign currentproduct = product.handle %}
+  {% assign totalproducts = 0 %}
+  {% for collection in product.collections %}
+    {% assign related = collection.handle %}
+    {% if totalproducts == 4 %}
+      {% break %}
+    {% endif %}
+    {% if collection.products_count >= 5 %}
+      <section class="related-products container-wrap row inline js-collectionGrid" data-section-type="related-products" data-section-id="{{ section.id }}" data-show-quickview="{{ settings.show_quick_view }}" data-show_reviews="{{ show_reviews }}" data-show_quantity="{{ settings.show_quantity }}" data-color_swatches="{{ color_swatches }}">
+        <div class="container pad-med">
+          <div class="row row-lg">
+            {% if heading != blank %}
+            <h4>{{ heading }}</h4>
+            {% endif %}
+          </div>
+          <div class="collectionGrid-row row row-lg inline">
+            {% for product in collections[related].products %}
+              {% if totalproducts == 4 %}
+                {% break %}
+              {% endif %}
+              {% if currentproduct != product.handle %}
+                {% assign totalproducts = totalproducts | plus:1 %}
+                <div class="s12 sm_s14 block row inline center">
+                  {% assign subline = product.metafields.custom_fields["subline_collection"] %}
+                  {% include 'collectionGridStatic-block' %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if section.settings.show_button %}
+          <div class="row row-sm inline u-center">
+            <a href="{{ collections[related].url }}" class="inline alt related-link">
+            {{ 'products.product_page.similar_products_cta' | t }}
+            </a>
+          </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Related products",
+    "settings": [
+    {
+      "type": "checkbox",
+      "id": "showRel",
+      "label": "Show related products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default":"Related Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show collection link button",
+      "default":true
+    }]
+  }
+{% endschema %}

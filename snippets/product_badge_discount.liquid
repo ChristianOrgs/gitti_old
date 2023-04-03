@@ -1,0 +1,10 @@
+{% if product.compare_at_price != blank %}
+  {% assign temp_final = product.price | times: 1.0 %}
+  {% assign temp_compare = product.compare_at_price | times: 1.0 %}
+  {% assign discount = temp_final | divided_by: temp_compare | times: 100 %}
+  <div class="discount_badge">
+    <p
+      class="bestseller_tag discount"
+    >-{{100 | minus: discount | round }}%</p>
+  </div>
+{% endif %}

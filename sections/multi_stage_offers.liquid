@@ -1,0 +1,881 @@
+<script>
+    (function ( open ) {
+        XMLHttpRequest.prototype.open = function ( method, url, async, user, pass ) {
+            if ( arguments[0] === 'GET' && arguments[1].includes ( "{{routes.cart_url}}" ) ) {
+
+                this.addEventListener ( "readystatechange", function () {
+
+                    if ( this.readyState === 4 ) {
+                        var event = new CustomEvent ( 'cart:get', { detail : { cart : JSON.parse ( this.response ) } } );
+                        document.dispatchEvent ( event );
+                    }
+                }, false );
+            }
+            open.call ( this, method, url, async, user, pass );
+        };
+    }) ( XMLHttpRequest.prototype.open );
+
+    (function () {
+        var cookie = 'bc_fg';
+        var [blockData, tags, bc_advanced_cart_gift, cartItems, cartVendorsData] = [null, [], [], null, {}];
+
+        var setCookie = ( c, d = document ) => d.cookie = c + "=" + btoa ( window.location.origin + window.location.pathname ) + ";path=/";
+        var cookieExist = cookie => getCookie ( cookie ).length > 0;
+        var getRegex = c => new RegExp ( "(" + c + ")", "gm" );
+        var getCookie = ( cookie, d = document ) => d.cookie.split ( ";" ).filter ( c => c.match ( getRegex ( cookie ) ) !== null );
+        var getCookieValue = cookie => cookie === undefined ? null : atob ( cookie.split ( '=' )[1].trim () );
+
+        {%- for block in section.blocks -%}
+        {%- if block.settings.is_active == "true" -%}
+        blockData = {
+            {% assign timestamp = "now" | date: "%s" %}
+            "date" : {{ timestamp | times: 1000 }},
+            "is_active" : {{ block.settings.is_active }},
+            "time_control" : {{ block.settings.time_control }},
+            "times" : {
+                "start" : Date.parse ( "{{ block.settings.start_month }}/{{ block.settings.start_day }}/{{ block.settings.start_year }} {%- if block.settings.start_hours < 10 -%}0{{ block.settings.start_hours }}{%- else -%}{{ block.settings.start_hours }}{%- endif -%}:{%- if block.settings.start_minute < 10 -%}0{{ block.settings.start_minute }}{%- else -%}{{ block.settings.start_minute }}{%- endif -%}:00" ),
+                "end" : Date.parse ( "{{ block.settings.end_month }}/{{ block.settings.end_day }}/{{ block.settings.end_year }} {%- if block.settings.end_hours < 10 -%}0{{ block.settings.end_hours }}{%- else -%}{{ block.settings.end_hours }}{%- endif -%}:{%- if block.settings.end_minute < 10 -%}0{{ block.settings.end_minute }}{%- else -%}{{ block.settings.end_minute }}{%- endif -%}:00" )
+            },
+            "trigger" : "{{ block.settings.trigger }}",
+            "trigger_tag" : "{{ block.settings.trigger_tag }}",
+            "links" : [
+                {%- assign links = block.settings.links | split: ',' -%}
+                {%- for link in links -%}
+                "{{ link }}",
+                {%- endfor -%}
+            ],
+            "product" : {{ all_products[ block.settings.gift_handle ] | json }},
+            "property_name" : "{{ block.settings.property_name | downcase }}",
+            "property_value" : "{{ block.settings.property_value }}",
+            "checkAvailability" : {{ block.settings.check_availability }},
+            "existInCart" : false,
+            "hasAccessForGift" : false,
+            "checkAccess" : false,
+            "is_vendor_based" : {% if block.settings.trigger == 'vendor' %}true{% else %}false{% endif %},
+            "vendor" : {% if block.settings.vendor_handle != blank %}{{ all_products[ block.settings.gift_handle ].vendor | json }}{% else %}"ANY"{% endif %}
+        };
+
+        if ( !cookieExist ( cookie ) ) {
+            setCookie ( cookie )
+        } else if( blockData.trigger === 'page_visited') {
+            var href = document.location.href.replace(document.location.search, '');
+            var sessionData = sessionStorage.bc_fg;
+
+            if ( sessionData === undefined ) {
+                sessionStorage.bc_fg = JSON.stringify( { "links" : [href] } );
+            } else {
+                sessionData = JSON.parse( sessionData );
+                if ( sessionData["links"].includes( href ) === false ) {
+                    sessionData["links"].push ( href );
+                    sessionStorage.bc_fg = JSON.stringify( sessionData );
+                }
+            }
+        }
+
+        tags = blockData['product']["tags"];
+
+        if ( tags ) {
+            tags.forEach ( function ( tag ) {
+                if ( tag.startsWith ( 'bc_gift|' ) ) {
+                    tag = tag.replace ( 'bc_gift|', '' );
+                    tag.split ( '|' ).forEach ( function ( t ) {
+                        t = t.split ( ':' );
+                        if ( t[0] === "cart_value" && t.length > 1 ) {
+                            blockData["cartValue"] = +t[1];
+                        }
+                    } );
+                }
+            } );
+        }
+
+        bc_advanced_cart_gift.push ( blockData );
+        {%- endif -%}
+        {%- endfor -%}
+
+        window.bc_mso_data = bc_advanced_cart_gift;
+
+        var customerTags = [{% for tag in customer.tags %}"{{ tag }}",{% endfor %}];
+        var customer_has_gift_access = true;
+        var customerGroups = ["Kundengruppe_Professionals", "Kundengruppe_Family_and_Friends"];
+
+        customerTags.forEach ( function ( tag ) {
+            if ( customerGroups.includes( tag ) ) {
+                customer_has_gift_access = false;
+            }
+        });
+
+        function init ( data ) {
+
+          	if( !data || !data.detail || !data.detail.cart || !data.detail.cart.items ) return;
+
+            var hasOtherGiftInCart = checkHasOtherGiftsInCart( data );
+
+            bc_advanced_cart_gift.forEach ( function ( block ) {
+
+                resetData ( block );
+                prepareData ( data, block );
+
+                if ( checkAccess ( block, data.detail.cart.items ) && hasOtherGiftInCart === false ) {
+                    setGiftsData ();
+                    checkGiftsInCart ();
+                }
+            } );
+            addGiftToCart ();
+            removeGiftFromCart ();
+        }
+
+        function checkHasOtherGiftsInCart ( data ) {
+            return data.detail.cart.items.filter( item => {
+                if ( item.properties && !!item.properties.gitti && item.properties.gitti === "{{ settings.bc_fg_property_value }}" ) return item;
+            }).length > 0;
+        }
+
+        function timeControl ( block ) {
+            return block.time_control ? block.times.start <= block.date && block.times.end >= block.date : true;
+        }
+
+        function checkAccess ( block, items ) {
+            var result = false;
+            if ( (timeControl ( block ) && block.is_active) && customer_has_gift_access ) {
+                var cookieValue = getCookieValue ( getCookie ( 'bc_fg' )[0] );
+
+                switch ( block.trigger ) {
+                    case "1+1":
+                        result = true;
+                        break;
+                    case "page_visited":
+                        var sessionData = sessionStorage.bc_fg;
+	                      var visitedPages = JSON.parse(sessionData);
+                        result = sessionData !== undefined && block.links.filter ( link => visitedPages['links'].includes ( location.protocol + '//' + location.host + link.trim () ) ).length > 0;
+                        break;
+                    case "landingpage":
+                        result = cookieValue !== null && block.links.filter ( link => cookieValue.includes ( link.trim () ) ).length > 0;
+                        break;
+                    case "tagged_product":
+                        console.log("tagged product");
+                        result = cartCheck(block.trigger_tag, items);
+                        break;
+                    default:
+                        result = true;
+                        break;
+                }
+            }
+            block.checkAccess = result;
+            return result;
+        }
+
+        function cartCheck(trigger_tag, items) {
+            let trigger_found = false;
+            items.forEach(item => {
+                if (item.tags.includes(trigger_tag)) {
+                    console.log("tagged product found");
+                    trigger_found = true;
+                }
+            });
+            return trigger_found;
+        }
+
+        function resetData ( gift ) {
+            cartVendorsData = {};
+            gift.existInCart = Shopify.theme.cart.data.items.filter( item => (item.variant_id === gift.product.variants[0].id && (item.properties[gift.property_name] !== undefined && item.properties[gift.property_name] === gift.property_value)) ).length > 0;
+            //gift.existInCart = false;
+        }
+
+        function prepareData ( data, block ) {
+          
+            cartItems = data.detail.cart.items;
+
+            var items = data.detail.cart.items.filter(function(item){
+                if(item.properties !== null && item.properties[block.property_name] === undefined) return item;
+            });
+
+            if ( block.is_vendor_based ) {
+                items.forEach ( function ( lineItem ) {
+                    if ( cartVendorsData[lineItem.vendor.toUpperCase()] === undefined ) {
+                        cartVendorsData[lineItem.vendor.toUpperCase()] = { "cartValue" : lineItem.line_price };
+                    } else {
+                        cartVendorsData[lineItem.vendor.toUpperCase()]['cartValue'] += lineItem.line_price;
+                    }
+                } );
+            } else {
+                cartVendorsData['ANY'] = { "cartValue" : 0 }
+
+                items.forEach(function(item){
+                    cartVendorsData['ANY']['cartValue'] += item.line_price;
+                });
+            }
+        }
+
+        function checkAvailability ( bc_definition ) {
+            return bc_definition.checkAvailability ? bc_definition.product.available : true;
+        }
+
+        function setGiftsData () {
+            bc_advanced_cart_gift.forEach ( function ( bc_definition ) {
+
+                if ( cartVendorsData[bc_definition.vendor.toUpperCase()] !== undefined && checkAvailability ( bc_definition ) ) {
+                    var result = false;
+                    if ( bc_definition.trigger === '1+1' && customer_has_gift_access ) {
+                        result = cartItems.filter( function ( item ) {
+                            if ( item.variant_id === bc_definition.product.variants[0].id && item.properties[ bc_definition.property_name ] === undefined ) return item;
+                        }).length > 0;
+
+                    }else if ( bc_definition.trigger === 'vendor' && customer_has_gift_access ) {
+                        result = (cartVendorsData[bc_definition.vendor.toUpperCase()]["cartValue"] >= bc_definition["cartValue"]);
+
+                    }else if ( (bc_definition.trigger === 'landingpage' || bc_definition.trigger === 'page_visited' || bc_definition.trigger === 'ANY') && customer_has_gift_access ) {
+                        result = cartVendorsData["ANY"]["cartValue"] >= bc_definition["cartValue"];
+                    }else if ( bc_definition.trigger === 'tagged_product' && customer_has_gift_access ) {
+                        result = cartVendorsData["ANY"]["cartValue"] >= bc_definition["cartValue"];
+                    }
+
+                    bc_definition["hasAccessForGift"] = result;
+                }
+            } );
+        }
+
+        function checkGiftsInCart () {
+            bc_advanced_cart_gift.forEach ( function ( gift ) {
+                if ( gift.product && gift.product.variants && gift.product.variants[0] ) {
+                    cartItems.forEach ( function ( lineItem ) {
+                        /* Ist Geschenk bereits im Warenkorb? */
+                        if ( lineItem.variant_id === gift.product.variants[0].id ) {
+                            gift.existInCart = gift.existInCart ? true : (lineItem.properties[gift.property_name] !== undefined && lineItem.properties[gift.property_name] === gift.property_value);
+                        }
+                    } );
+                }
+            } );
+        }
+
+        function buildFormDataAddItem () {
+            var formData = {
+                "items" : []
+            };
+            var index = 0;
+            bc_advanced_cart_gift.forEach ( function ( gift ) {
+                if ( gift.existInCart === false && gift.hasAccessForGift && gift.checkAccess ) {
+
+                    formData.items.push ( {
+                        "id" : gift.product.variants[0].id,
+                        "quantity" : 1,
+                        properties : {}
+                    } );
+                    formData.items[index].properties[gift.property_name] = gift.property_value;
+                    gift.existInCart = true;
+                    index++;
+                }
+            } );
+            return formData;
+        }
+
+        function buildFormDataRemoveItem () {
+            var items = [];
+
+            if( !!cartItems ) {
+                cartItems.forEach ( function ( cartItem, index ) {
+                    bc_advanced_cart_gift.forEach ( function ( gift ) {
+                        if ( gift.product && gift.product.variants && gift.product.variants[0] ) {
+                            if ( cartItem.variant_id === gift.product.variants[0].id &&
+                                cartItem.properties[gift.property_name] !== undefined &&
+                                cartItem.properties[gift.property_name] === gift.property_value &&
+                                gift.hasAccessForGift === false ) {
+                                items.push ( {
+                                    "line" : index + 1,
+                                    "quantity" : 0
+                                } );
+                                if (gift.existInCart === true) {
+                                    gift.existInCart = false;
+                                }
+                            }
+                        }
+                    } );
+                } );
+            }
+
+            return items;
+        }
+
+        function submitFormDataAddItem ( formData ) {
+            if ( formData.items.length > 0 ) {
+              fetch ( "{{routes.cart_url}}/add.js", {
+                method : "POST",
+                body : JSON.stringify ( formData ),
+                headers : {
+                  "Content-Type" : "application/json"
+                }
+              } )
+              .then ( function () {
+                rebuildCartData ();
+              } )
+            }
+        }
+
+        function submitFormDataRemoveItem ( line, qty ) {
+          fetch ( "{{routes.cart_url}}/change.js", {
+            method : "POST",
+            body : JSON.stringify ( { quantity : qty, line : line } ),
+            headers : {
+              "Content-Type" : "application/json"
+            }
+          } )
+          .then ( function () {
+            rebuildCartData ();
+          } )
+        }
+
+        function addGiftToCart () {
+            submitFormDataAddItem ( buildFormDataAddItem () );
+        }
+
+        function removeGiftFromCart () {
+            var removeItems = buildFormDataRemoveItem ();
+
+            if ( removeItems.length > 0 ) {
+                submitFormDataRemoveItem ( removeItems[0].line, removeItems[0].quantity )
+            }
+        }
+
+        function rebuildCartData () {
+          Shopify.theme.cart.getCart();
+        }
+
+        window.addEventListener ( 'cart:getCart',  async function ( data ) {
+            let requests = data.detail.cart.items.map(async (item, i) => {
+                let product = await fetch(window.Shopify.routes.root + 'products/' + item.handle + '.js')
+                    .then(response => response.json())
+                    .then(data => {
+                        return data
+                    });
+                data.detail.cart.items[i].tags = product.tags;
+            });
+            Promise.all(requests).then(() => {
+                console.log('data returned', data);
+                init ( data );
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            if ( !!window.Shopify && !!!!window.Shopify.theme && !!!!window.Shopify.theme.cart && !!!!window.Shopify.theme.cart.data ) {
+                window.dispatchEvent(new CustomEvent('cart:getCart', { detail : { cart : window.Shopify.theme.cart.data } }))
+            }
+        })
+    }) ();
+
+</script>
+
+<!-- {{ customer.tags }} -->
+{% if request.design_mode %}
+
+    <div id="section-{{ section.id }}" style="display:none;">
+        <div id="tag-wrapper">
+
+            <div class="message"></div>
+
+            <div class="divTable">
+                <div class="divTableBody divTableHeading">
+                    <div class="divTableRow">
+                        <div class="divTableCell">Title</div>
+                        <div class="divTableCell">is active</div>
+                        <div class="divTableCell">trigger</div>
+                        <div class="divTableCell">tag trigger<br><smaller>(If tagged_product is selected)</smaller></div>
+                        <div class="divTableCell">timer</div>
+                        <div class="divTableCell">start</div>
+                        <div class="divTableCell">end</div>
+                        <div class="divTableCell">cart value</div>
+                        <div class="divTableCell">properties</div>
+                        <div class="divTableCell">copy</div>
+                    </div>
+                </div>
+                <div id="table_content" class="divTableBody"></div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #section-{{ section.id }} {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.60);
+        }
+        #tag-wrapper {
+            display: block;
+            position: fixed;
+            width: calc(100% - 42px);
+            z-index: 100;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: solid;
+            padding: 2rem;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: #000 1rem 1rem 2rem;
+        }
+        #tag-wrapper .tap_data {
+            display: grid;
+            margin-bottom: 1rem;
+        }
+        #tag-wrapper .tap_data:last-child {
+            display: grid;
+            margin-bottom: 0;
+        }
+        #tag-wrapper .title {
+            font-weight: bold;
+        }
+        #tag-wrapper .message {
+            position: absolute;
+            top: 0;
+            transition: all 500ms ease-in-out;
+            padding: 1rem;
+            left: 50%;
+            transform: translate( -50%, -100%);
+        }
+        #tag-wrapper .message.visible {
+            transform: translate( -50%, 100%);
+            transition: all 500ms ease-in-out;
+        }
+
+        #section-{{ section.id }} .divTable{
+            display: table;
+            width: 100%;
+        }
+        #section-{{ section.id }} .divTableRow {
+            display: table-row;
+        }
+        #section-{{ section.id }} .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+        }
+        #section-{{ section.id }} .divTableCell, .divTableHead {
+            border: 1px solid #999999;
+            display: table-cell;
+            padding: 3px 10px;
+        }
+        #section-{{ section.id }} .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+            font-weight: bold;
+        }
+        #section-{{ section.id }} .divTableFoot {
+            background-color: #EEE;
+            display: table-footer-group;
+            font-weight: bold;
+        }
+        #section-{{ section.id }} .divTableBody {
+            display: table-row-group;
+        }
+        #section-{{ section.id }} #table_content .warning{
+            color: darkred;
+        }
+
+        #section-{{ section.id }} .divTableCell smaller {
+            font-size: 70%;
+        }
+    </style>
+
+    <div style="display:none;">
+        {% for block in section.blocks%}
+            <div id="block-{{ block.id }}" {{ block.shopify_attributes }}>
+                {
+                    "title": "{{ block.settings.title }}",
+                    "cart_value": "{{ block.settings.cart_value | default: null }}",
+                    "property_name": "{{ block.settings.property_name | default: null }}",
+                    "property_value": "{{ block.settings.property_value | default: null }}",
+                    "trigger": "{{ block.settings.trigger }}",
+                    "trigger_tag": "{{ block.settings.trigger_tag }}",
+                    "is_active" : {{ block.settings.is_active }},
+                    "time_control" : {{ block.settings.time_control }},
+                    "times" : {
+                        "start" : "{{ block.settings.start_month }}/{{ block.settings.start_day }}/{{ block.settings.start_year }} {%- if block.settings.start_hours < 10 -%}0{{ block.settings.start_hours }}{%- else -%}{{ block.settings.start_hours }}{%- endif -%}:{%- if block.settings.start_minute < 10 -%}0{{ block.settings.start_minute }}{%- else -%}{{ block.settings.start_minute }}{%- endif -%}:00",
+                        "end" : "{{ block.settings.end_month }}/{{ block.settings.end_day }}/{{ block.settings.end_year }} {%- if block.settings.end_hours < 10 -%}0{{ block.settings.end_hours }}{%- else -%}{{ block.settings.end_hours }}{%- endif -%}:{%- if block.settings.end_minute < 10 -%}0{{ block.settings.end_minute }}{%- else -%}{{ block.settings.end_minute }}{%- endif -%}:00"
+                    }
+                }
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        var wrapper = document.querySelector('#tag-wrapper');
+        var section = document.querySelector('#section-{{ section.id }}');
+        var divTableBody = wrapper.querySelector('#table_content');
+        var patt1 = /\s/g;
+
+        var blocksData = [];
+        function getDivTableCell ( content, additionalClass = null ) {
+            var tableCell = document.createElement('div');
+            tableCell.classList.add('divTableCell');
+            if ( additionalClass !== null ) tableCell.classList.add( additionalClass );
+            tableCell.innerHTML = content;
+            return tableCell;
+        }
+        function getCopyButton ( block ) {
+            var button = document.createElement('button');
+            var wrapper_div = document.createElement('div');
+            wrapper_div.classList.add("divTableCell");
+            var product_tag = "bc_gift|key:" + block.property_name + "|cart_value:" + block.cart_value;
+            var inner_text = document.createElement("span");
+            inner_text.innerHTML = "<b> Tag: " + product_tag;
+
+            if ( block.property_name.match( patt1 ) === null && block.cart_value !== "" ) {
+                button.dataset.tag = product_tag;
+                button.innerText = "copy product tag";
+                wrapper_div.append(button);
+                wrapper_div.append(inner_text);
+            } else {
+                button.setAttribute('disabled', true );
+                button.innerText = "block not valide";
+                wrapper_div.append(button);
+            }
+            return wrapper_div;
+        }
+        function generateWrapperData () {
+
+            blocksData.forEach( function ( block ) {
+                var divTableRow = document.createElement('div');
+                divTableRow.classList.add('divTableRow');
+
+                var title = getDivTableCell( block.title );
+                var cart_value = block.cart_value !== "" ? getDivTableCell( block.cart_value ) : getDivTableCell( 'check value', 'warning');
+                var properties = block.property_name.match( patt1 ) === null ? getDivTableCell( block.property_name + ': ' + block.property_value ) : getDivTableCell( "pleas not use whitespace characters", "warning" );
+                var trigger = getDivTableCell( block.trigger );
+                var trigger_tag = getDivTableCell( block.trigger_tag );
+                var is_active = getDivTableCell( block.is_active );
+                var time_control = getDivTableCell( block.time_control );
+                var times_start = getDivTableCell( block.time_control ? block.times.start : '-' );
+                var times_end = getDivTableCell( block.time_control ? block.times.end : '-' );
+
+                var copyButton = getCopyButton( block );
+
+                divTableRow.appendChild( title );
+                divTableRow.appendChild( is_active );
+                divTableRow.appendChild( trigger );
+                divTableRow.appendChild( trigger_tag );
+                divTableRow.appendChild( time_control );
+                divTableRow.appendChild( times_start );
+                divTableRow.appendChild( times_end );
+                divTableRow.appendChild( cart_value );
+                divTableRow.appendChild( properties );
+                divTableRow.appendChild( copyButton );
+
+                divTableBody.appendChild( divTableRow );
+            });
+        }
+
+        function setMessage ( message, bgColor, color ) {
+            var messageBox = wrapper.querySelector('.message');
+
+            messageBox.innerText = message;
+            messageBox.style.backgroundColor = bgColor;
+            messageBox.style.color = color;
+            messageBox.classList.add('visible');
+            setTimeout(function () {
+                messageBox.classList.remove('visible');
+            }, 2000);
+        }
+
+        function copy( event ) {
+            try {
+                var copyText = event.target.dataset.tag;
+                var input = document.createElement('input');
+                input.value = copyText;
+                input.style = "top: -100%; left: -100%; position: absolute;";
+                wrapper.appendChild( input );
+                input.select();
+                document.execCommand("copy");
+                input.remove();
+                setMessage('tag copied to clipboard', 'black', '#fff');
+            } catch ( e ) {
+                setMessage('failed to copy', 'red', '#000');
+            }
+        }
+        function init( event ) {
+
+            if ( event.detail.sectionId === "{{ section.id }}" ) {
+
+                setTimeout( function () {
+                    blocksData = [
+                        {% for block in section.blocks %}
+                        JSON.parse( document.querySelector("#block-{{ block.id }}").innerText ),
+                        {% endfor %}
+                    ];
+                    wrapper = document.querySelector('#tag-wrapper');
+                    section = document.querySelector('#section-{{ section.id }}');
+                    divTableBody = wrapper.querySelector('#table_content');
+                    divTableBody.innerHTML = '';
+                    generateWrapperData();
+                    Array.from( wrapper.querySelectorAll("button") ).forEach( function ( button ) {
+                        button.addEventListener("click", copy );
+                    });
+                    section.style.display = 'flex';
+                    wrapper.style.display = 'block';
+                }, 1000 );
+
+            }
+        }
+
+        document.addEventListener('shopify:section:select', init );
+
+        document.addEventListener('shopify:section:deselect', function ( event ) {
+            if ( event.detail.sectionId === "{{ section.id }}" ) {
+                section.style.display = 'none';
+                wrapper.style.display = 'none';
+            }
+        });
+
+    </script>
+{% endif %}
+{% schema %}
+{
+    "name": "Multi stage offers",
+    "class": "bc_free_gift",
+    "tag": "div",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "offer_definition",
+            "name": "Offer definition",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "radio",
+                    "id": "is_active",
+                    "label": "Activate",
+                    "options": [
+                        {
+                            "value": "true",
+                            "label": "yes"
+                        },
+                        {
+                            "value": "false",
+                            "label": "no"
+                        }
+                    ],
+                    "default": "false"
+                },
+                {
+                    "type": "header",
+                    "content": "Time control"
+                },
+                {
+                    "type": "radio",
+                    "id": "time_control",
+                    "label": "Use time control",
+                    "options": [
+                        {
+                            "value": "true",
+                            "label": "yes"
+                        },
+                        {
+                            "value": "false",
+                            "label": "no"
+                        }
+                    ],
+                    "default": "false"
+                },
+                {
+                    "type": "header",
+                    "content": "Start date"
+                },
+                {
+                    "type": "range",
+                    "id": "start_year",
+                    "label": "Year",
+                    "min": 2021,
+                    "max": 2050,
+                    "step": 1,
+                    "default": 2021
+                },
+                {
+                    "type": "range",
+                    "id": "start_month",
+                    "label": "Month",
+                    "min": 1,
+                    "max": 12,
+                    "step": 1,
+                    "default": 1
+                },
+                {
+                    "type": "range",
+                    "id": "start_day",
+                    "label": "Day",
+                    "min": 1,
+                    "max": 31,
+                    "step": 1,
+                    "default": 1
+                },
+                {
+                    "type": "range",
+                    "id": "start_hours",
+                    "label": "Hours",
+                    "min": 0,
+                    "max": 23,
+                    "step": 1,
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "start_minute",
+                    "label": "Minute",
+                    "min": 0,
+                    "max": 59,
+                    "step": 1,
+                    "default": 0
+                },
+                {
+                    "type": "header",
+                    "content": "End date"
+                },
+                {
+                    "type": "range",
+                    "id": "end_year",
+                    "label": "Year",
+                    "min": 2021,
+                    "max": 2050,
+                    "step": 1,
+                    "default": 2021
+                },
+                {
+                    "type": "range",
+                    "id": "end_month",
+                    "label": "Month",
+                    "min": 1,
+                    "max": 12,
+                    "step": 1,
+                    "default": 1
+                },
+                {
+                    "type": "range",
+                    "id": "end_day",
+                    "label": "Day",
+                    "min": 1,
+                    "max": 31,
+                    "step": 1,
+                    "default": 1
+                },
+                {
+                    "type": "range",
+                    "id": "end_hours",
+                    "label": "Hours",
+                    "min": 0,
+                    "max": 23,
+                    "step": 1,
+                    "default": 16
+                },
+                {
+                    "type": "range",
+                    "id": "end_minute",
+                    "label": "Minute",
+                    "min": 0,
+                    "max": 59,
+                    "step": 1,
+                    "default": 0
+                },
+                {
+                    "type": "header",
+                    "content": "Triggers"
+                },
+                {
+                    "type": "select",
+                    "id": "trigger",
+                    "label": "Trigger",
+                    "options": [
+                        {
+                            "value": "tagged_product",
+                            "label": "Tagged Product"
+                        },
+                        {
+                            "value": "1+1",
+                            "label": "1 + 1"
+                        },
+                        {
+                            "value": "page_visited",
+                            "label": "Page visited"
+                        },
+                        {
+                            "value": "landingpage",
+                            "label": "landingpage"
+                        },
+                        {
+                            "value": "vendor",
+                            "label": "trigger vendor based"
+                        },
+                        {
+                            "value": "ANY",
+                            "label": "Any"
+                        }
+                    ]
+                },
+                {
+                    "type": "textarea",
+                    "id": "links",
+                    "label": "Links",
+                    "info": "You can add multiple links separated with comma."
+                },
+                {
+                    "type": "text",
+                    "id": "trigger_tag",
+                    "label": "Trigger Tag",
+                    "info": "Name of the product tag. When a product with this tag is added, the free gift will be added."
+                },
+                {
+                    "type": "header",
+                    "content": "Product data"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "check_availability",
+                    "label": "Check availability?",
+                    "default": true
+                },
+                {
+                    "type": "product",
+                    "id": "gift_handle",
+                    "label": "Select Gift",
+                    "info": "Select a free gift and make sure that the product has the tag bc_gift|cart_value:value . Replace value with the minimum cart value in cents. e.g. minimum value €45.00 => bc_gift|cart_value:4500."
+                },
+                {
+                    "type": "product",
+                    "id": "vendor_handle",
+                    "label": "Select Vendor",
+                    "info": "If the trigger is set to Vendor, select any product from the vendor here. Serves as reference only."
+                },
+                {
+                    "type": "header",
+                    "content": "Property data"
+                },
+                {
+                    "type": "number",
+                    "id": "cart_value",
+                    "label": "Cart min value",
+                    "info": "Add shopping cart value in cents. Important Set minimum value 0."
+                },
+                {
+                    "type": "text",
+                    "id": "property_name",
+                    "label": "Property name.",
+                    "info": "Define the property name. Must be included in the tag definition of the product. e.g. bc_gift|key:property_name"
+                },
+                {
+                    "type": "text",
+                    "id": "property_value",
+                    "label": "Property value.",
+                    "info": "Define the property value."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "beeclever",
+            "name": "BC free gifts"
+        }
+    ]
+}
+{% endschema %}

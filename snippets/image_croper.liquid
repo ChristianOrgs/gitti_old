@@ -1,0 +1,41 @@
+
+{% case shape %}
+{% when 'four_by_three' %}
+
+
+{% assign image_height_calc_width = image.height | divided_by: 3 | round: 5 | times: 2 %}
+
+{% assign image_width_calc_height = image.width | divided_by: 2 | round: 5 | times: 3 %}
+
+{% when 'sixteen_by_nine' %}
+   
+{% assign image_height_calc_width = image.height | divided_by: 9 | round: 5 | times: 16 %}
+{% assign image_width_calc_height = image.width | divided_by: 16 | round: 5 | times: 9 %}
+
+{% when 'square' %}
+
+{% assign image_height_calc_width = image.height %}
+{% assign image_width_calc_height = image.width %}
+
+{% else %}
+{% assign unknown_shape = true%}
+{% endcase %}
+
+{% if crop_position == blank %}{% assign crop_position = 'center' %}{% endif %}
+
+
+{% unless unknown_shape %}
+
+{% if image_height_calc_width > image.width %}
+  {% assign image_size= image.width | append: 'x' | append: image_width_calc_height%}
+    {{ image | img_url: image_size, crop: crop_position }}
+
+  {% elsif image_height_calc_width <= image.width %}
+    {% assign image_size = image_height_calc_width | append:'x' | append:  image.height %}
+    {{ image | img_url: image_size, crop: crop_position }}
+{% endif %}
+
+{% else %}
+{{image | img_url: "master" }}
+{% endunless %}
+

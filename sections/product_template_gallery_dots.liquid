@@ -1,0 +1,636 @@
+{% assign id = section.id %}
+<style>
+    {% if product.template_suffix == "sale.bundle" or  product.template_suffix == "sale.product"%}
+    #shopify-section-product_template_bundle .product_price .price{
+        color: #d16262;
+    }
+    #shopify-section-product_template_bundle .tags p{
+        background-color: #d16262;
+    }
+    #shopify-section-product_template .product_price .price{
+        color: #d16262;
+    }
+    #shopify-section-product_template .tags p{
+        background-color: #d16262;
+    }
+    {% endif %}
+    #shopify-section-{{id}} .custom-grid-gap{
+        grid-gap: 145px;
+        align-items: flex-start;
+    }
+    #shopify-section-{{id}} .swatch_gap{
+        grid-column-gap: 5px;
+        grid-row-gap: 16px;
+    }
+    #shopify-section-{{id}} .swatch-grid-item{
+        width:50px;
+        margin-left:-4px;
+    }
+    #shopify-section-{{id}} .swatch-grid-item .swatch{
+        width:42px;
+    }
+    #shopify-section-{{id}} .underline{
+        text-decoration: underline;
+    }
+    #shopify-section-{{id}} .product_images-wrapper{
+        width: 100%;
+        position: sticky;
+        top: 0px;
+    }
+    .OOS{
+        opacity:0.2;
+    }
+    @meda only screen and (max-width: 1300px){
+        #shopify-section-{{id}} .custom-grid-gap{
+            grid-gap: 45px;
+        }
+    }
+    @media only screen and (max-width: {{settings.breakpoint_medium}}px){
+        #shopify-section-{{id}} .custom-grid-gap{
+            grid-gap: 32px;
+        }
+        #shopify-section-{{id}} .product_images-wrapper{
+            width: 100%;
+            position: static;
+            top: unset;
+        }
+        #shopify-section-{{id}} .spacing-top-l{
+            padding-top: 0px;
+        }
+    }
+    #shopify-section-{{id}} .quantity_add_to_cart
+    {
+        grid-template-columns: repeat(3, 1fr);
+    }
+ #shopify-section-{{section.id}} .quantity_add_to_cart {
+        gap:16px;
+        padding-top: 8px;
+    }
+</style>
+
+<div class="page-width spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+<div class="grid col-5 is-relative custom-grid-gap">
+    <div class="grid-item col-span-3 product_images-wrapper medium-down_col-span-5">
+        {%- liquid
+         assign dot_opacity = section.settings.gallery_dot_opacity | times: 0.01 
+         assign dot_color = section.settings.gallery_dot_fill | color_modify: 'alpha', dot_opacity 
+         assign dot_color_selected = section.settings.gallery_dot_fill_selected | color_modify: 'alpha', dot_opacity 
+        -%}
+        {% render 'product_images', style: "dots", gap: section.settings.gallery_spacing, preview: section.settings.slider_preview, fill_color: dot_color, fill_selected: dot_color_selected, outline: section.settings.gallery_dot_outline %}
+    </div>
+    <div class="grid-item col-span-2 medium-down_col-span-5">
+        <div class="product_description_wrapper flex col">
+            <div class="flex row bottom spacing-bottom-s">
+                {% assign quantity_value = product.selected_or_first_available_variant.unit_price_measurement.quantity_value | round %}
+                <{{section.settings.title_tag}} class="{{section.settings.title_class}} {{section.settings.title_weight_class}}">{{product.title}}
+                {% unless product.selected_or_first_available_variant.unit_price_measurement.quantity_unit == blank or quantity_value == 0  %}
+                    <span class="p">{{'&nbsp;&nbsp;' | append: quantity_value | append: ' ' | append: product.selected_or_first_available_variant.unit_price_measurement.quantity_unit}}</span>
+                {% endunless %}
+            </div>
+            <div class="flex row">
+                {% render 'product_price' price_tag: section.settings.price_tag, price_class: section.settings.price_class, price_weight_class: section.settings.price_weight_class , price_font_size: section.settings.price_font_size %}
+            </div>
+            <div class="flex row spacing-bottom-s">
+                <p class="note flex row bottom" style="padding-top: 3px;">
+                    <span style="padding-right: 4px; font-size: 12px;"> {{ 'products.product.vat' | t }} </span>
+                    <a  href='{{ pages.shipping.url }}' class="shipping_note underline note" style="padding-bottom: 1px;"> {{ 'products.product.shipping' | t }}</a>
+                </p>
+            </div>
+            <div class="product_reviews_star_wrapper">
+                <div class="flex row spacing-bottom-s">
+                    <p>{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}</p>
+                </div>
+            </div>
+            <div class="flex col spacing-bottom-s">
+                {{product.description}}
+            </div>
+
+            {% render 'product_siblings', product: product %}
+            
+            {% unless product.has_only_default_variant %}
+                <label for="variant_select">{{products.options[0].title}}</label>
+                <clever-select id="variant_select" class="p" name="id">
+                    {% for variant in product.variants %}
+                        <option {% unless variant.available %} disabled {% endunless %} {% if variant == product.selected_or_first_available_variant  %} selected {% endif %} value="{{variant.id}}">{{variant.title}}</option>
+                    {% endfor %}
+                </clever-select>
+                <script>
+                    document.addEventListener('DOMContentLoaded',function(){
+                        let current_variant_id = Number('{{product.selected_or_first_available_variant.id}}');
+                        let url = new URL(location.href);
+                        let params = new URLSearchParams(url.search);
+                        params.set('variant', current_variant_id);
+                        url.search = params.toString();
+                        history.replaceState({ variant: current_variant_id }, '', url)
+                    })
+                    document.querySelector('[name="id"]').addEventListener('change',function(){
+                        let current_variant_id = Number(this.getAttribute('value'));
+                        let url = new URL(location.href);
+                        let params = new URLSearchParams(url.search);
+                        params.set('variant', current_variant_id);
+                        url.search = params.toString();
+                        history.replaceState({ variant: current_variant_id }, '', url)
+                    })
+                </script>
+            {% endunless %}
+            <div class="quantity_add_to_cart grid col-4 grid-gap spacing-bottom-m medium-down_col-3 spacing-top-l">
+                <div class="grid-item flex">
+                    {% render 'rocker', name:'quantity', default: 1, min: 1  %} 
+                </div>
+                <div class="grid-item grid-item col-span-3 medium-down_col-span-2">
+                    {% assign color_selected = false %}
+                                          {% assign available_and_color_selected = false %}
+                       <!--{{available_and_color_selected}}-->
+                        {% if product.available and color_selected and static_products_available  %}
+                            {% assign available_and_color_selected = true %}
+                        {% endif %}
+                       <!--{{available_and_color_selected}}-->
+                        {% assign available_and_no_dynamic_products = false %}
+                       <!--{{available_and_no_dynamic_products}}-->
+                        {% if  product.available and dynamic_products_collections_count <= 0 and static_products_available %}
+                            {% assign available_and_no_dynamic_products = true %}
+                        {% endif %}
+                      <!--{{available_and_no_dynamic_products}}-->
+                    <button class="btn btn--primary btn--full" id="add_to_cart-{{product.id}}" >
+                        {% if available_and_color_selected or available_and_no_dynamic_products %}
+                            {{ 'products.product.add_to_cart' | t }}
+                        {% elsif product.available and static_products_available %}
+                            {% if product.metafields.bundle.type.value == 'product' %}
+                                {{ 'products.bundle.choose_products' | t }}
+                            {% else %}
+                                {{ 'products.bundle.choose_colors' | t }}
+                            {% endif %}
+                        {% else %}
+                            {{ 'products.product.sold_out' | t }}
+                        {% endif %}
+                    </button>
+                </div>
+                <div class="grid-item col-span-4 flex row right">
+                    {% if product.metafields.product.delivery %}
+                        <p class="note">{{product.metafields.product.delivery.value}}</p>
+                    {% else %}
+
+                     {%- comment -%}BE/NL/PL/SI/SK/CZ{%- endcomment -%}
+                     {% assign others_1 = "BE,NL,PL,SI,SK,CZ" | split: ',' %}
+                     {%- comment -%}DK/FI/FR/IT/PT/SE/ES/HU{%- endcomment -%}
+                     {% assign others_2 = "DK,FI,FR,IT,PT,SE,ES,HU" | split: ',' %}
+                        <!-- localization.country.iso_code {{ localization.country.iso_code }}  -->
+                        {% if localization.country.iso_code == "CH" or localization.country.iso_code == "AT"  or localization.country.iso_code == "LI" %}
+                            <p class="note">{{ 'shopify.checkout.shipping.estimated_delivery_time_range' | t: min_time: section.settings.at_ch_li_min_delay, max_time: section.settings.at_ch_li_max_delay }}</p>
+                      {% elsif others_1 contains localization.country.iso_code %}
+                            <p class="note">{{ 'shopify.checkout.shipping.estimated_delivery_time_range' | t: min_time: section.settings.others_1_min_delay, max_time: section.settings.others_1_max_delay }}</p>
+                      {% elsif localization.country.iso_code == "DE" %}
+                            <p class="note">{{ 'shopify.checkout.shipping.estimated_delivery_time_range' | t: min_time: section.settings.de_min_delay, max_time: section.settings.de_max_delay }}</p>
+                      {% elsif others_2 contains localization.country.iso_code  %}
+                            <p class="note">{{ 'shopify.checkout.shipping.estimated_delivery_time_range' | t: min_time: section.settings.others_2_min_delay, max_time: section.settings.others_2_max_delay }}</p>
+                      {% endif %}
+                        {% comment %}
+                            <!-- TODO: is this needed anymore? -->
+                            <p class="note">{{section.settings.shipping_note}}</p>
+                        {% endcomment %}
+                    {% endif %}
+                </div>    
+            </div>
+            
+            <div class="flex col spacing-bottom-l">
+                {% render 'product_usps' %}
+            </div>
+            <div class="flex col spacing-bottom-s spacing-top-xs">
+                {% render 'product_tabs_bundle' %}
+            </div>
+            <div class="flex col spacing-bottom-s">
+                {% render 'upselling_module' %}
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="{{'clever-select.js' | asset_url  }}"></script>
+
+
+<script>
+    function addToCart(){
+        let quantity = Number(document.querySelector('#shopify-section-{{id}} input[name="quantity"]').value);
+        {% unless product.has_only_default_variant %}
+            let id = document.querySelector('[name="id"]').getAttribute('value');
+        {% else %}
+            let id = '{{product.selected_or_first_available_variant.id}}';
+        {% endunless %}
+        let addJson = {"items": [{"quantity": quantity, "id": Number(id) }]};
+        console.log(addJson)
+        Shopify.theme.cart.addToCart(addJson);
+    }
+</script>
+
+{% schema %}
+{
+"name": "Product Template",
+"settings": [
+    {
+        "type": "header",
+        "content": "Layout"
+    },
+   {
+       "type": "range",
+       "id": "gallery_spacing",
+       "label": "Gallery image spacing",
+       "unit": "px",
+       "min": 1,
+       "max": 100,
+       "step": 1,
+       "default": 2
+   },
+  {
+      "type": "range",
+      "id": "slider_preview",
+      "label": "Slider preview",
+      "unit": "%",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "default": 60,
+      "info": "How much of the next slider image should be shown"
+  },
+    {
+        "type": "color",
+        "id": "gallery_dot_outline",
+        "label": "Gallery dot outline",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "gallery_dot_fill",
+        "label": "Gallery dot fill",
+        "default": "#FFF"
+    },
+    {
+        "type": "color",
+        "id": "gallery_dot_fill_selected",
+        "label": "Gallery dot fill (selected)",
+        "default": "#FFF"
+    },
+    {
+        "type": "range",
+        "id": "gallery_dot_opacity",
+        "label": "Fill opacity",
+        "unit": "%",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 80
+    },
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Product Title"
+    },
+    {
+        "type": "select",
+        "id": "title_tag",
+        "label": "Title Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "title_class",
+        "label": "Title Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "title_weight_class",
+        "label": "Title Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "header",
+        "content": "Product Price"
+    },
+    {
+        "type": "select",
+        "id": "price_tag",
+        "label": "Price Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "price_class",
+        "label": "Price Font class",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "price_weight_class",
+        "label": "Price Weight class",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "price_font_size",
+        "label": "Price Size",
+        "unit": "px",
+        "min": 10,
+        "max": 30,
+        "step": 2,
+        "default": 20
+    },
+    {
+        "type": "header",
+        "content": "Shipping Note"
+    },    {
+        "type": "range",
+        "id": "de_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DE minimum days of delation",
+        "default": 3
+    },
+    {
+        "type": "range",
+        "id": "de_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DE maximum days of delation",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "at_ch_li_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "AT/CH/LI minimum days of delation",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "at_ch_li_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "AT/CH/LI maximum days of delation",
+        "default": 6
+    },
+    {
+        "type": "range",
+        "id": "others_1_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "BE/NL/PL/SI/SK/CZ minimum days of delation",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "others_1_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "BE/NL/PL/SI/SK/CZ  maximum days of delation",
+        "default": 6
+    },
+    {
+        "type": "range",
+        "id": "others_2_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DK/FI/FR/IT/PT/SE/ES/HU minimum days of delation",
+        "default": 5
+    },
+    {
+        "type": "range",
+        "id": "others_2_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DK/FI/FR/IT/PT/SE/ES/HU maximum days of delation",
+        "default": 8
+    },
+    {
+        "type": "text",
+        "id": "shipping_note",
+        "label": "Shipping Note",
+        "info": "In case of wanting a specific different value for some products a single line text product metafield can be added with namespace 'product' and key 'delivery'",
+        "default": "Delivery in 3-5 working days"
+    }
+]
+}
+{% endschema %}

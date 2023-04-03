@@ -1,0 +1,567 @@
+{% assign contact_heading = page.title %}
+{% assign contact_content = page.content %}
+<style>
+    #select-contactreason.select .select_output.open .toggle .clever_icon.icon-chevron{
+        transform: rotate(90deg);
+    }
+    #select-contactreason.select .select_output .toggle .clever_icon.icon-chevron{
+        transform: rotate(-90deg);
+    }
+</style>
+
+{% render 'contact_section', contact_heading: page.title, contact_content: page.content %}
+
+{% schema %}
+	{
+		"name": "Contact section",
+		"settings": [  
+              {
+                  "type": "header",
+                  "content": "Right side content"
+              },
+              {
+                  "type": "text",
+                  "id": "right_heading",
+                  "label": "Mobile heading",
+                  "default": "Still have Questions?"
+              },
+              {
+                  "type": "text",
+                  "id": "right_call_us_title",
+                  "label": "Title",
+                  "default": "Call us"
+              },
+              {
+                  "type": "text",
+                  "id": "right_call_us_text",
+                  "label": "Text",
+                  "default": "+49 (0) 30 217 82 82 8"
+              },
+              {
+                  "type": "url",
+                  "id": "right_call_us_link",
+                  "label": "Link"
+              },
+              {
+                  "type": "text",
+                  "id": "right_whatsapp_title",
+                  "label": "Title",
+                  "default": "Whatsapp"
+              },
+              {
+                  "type": "text",
+                  "id": "right_whatsapp_text",
+                  "label": "Text",
+                  "default": "+49 (0) 30 217 82 82 8"
+              },
+              {
+                  "type": "url",
+                  "id": "right_whatsapp_link",
+                  "label": "Link"
+              },
+              {
+                  "type": "text",
+                  "id": "right_address_title",
+                  "label": "Title",
+                  "default": "Address"
+              },
+              {
+                  "type": "richtext",
+                  "id": "right_address_text",
+                  "label": "Text",
+                  "default": "<p>gitti gmbh</p>"
+              },
+              {
+                "type": "text",
+                "id": "right_follow_title",
+                "label": "Title",
+                "default": "Follow us"
+              },
+              {
+                  "type": "header",
+                  "content": "Layout"
+              },
+              {
+                "type": "select",
+                "id": "tag_title",
+                "label": "Html tag title",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    },
+                    {
+                        "value": "small",
+                        "label": "small"
+                    }
+                  ]
+                },
+                {
+                    "type": "select",
+                    "id": "class_title",
+                    "label": "Font class title",
+                    "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    },
+                    {
+                        "value": "note",
+                        "label": "note"
+                    }
+                  ]
+                },
+                {
+                    "type": "select",
+                    "id": "weight_class_title",
+                    "label": "Weight class title",
+                    "options": [
+                    {
+                        "value": "bold",
+                        "label": "bold"
+                    },
+                    {
+                        "value": "",
+                        "label": "normal"
+                    }
+                  ]
+                },
+                {
+                    "type": "select",
+                    "id": "tag_right_heading",
+                    "label": "Html tag heading right side",
+                    "options": [
+                        {
+                            "value": "h1",
+                            "label": "h1"
+                        },
+                        {
+                            "value": "h2",
+                            "label": "h2"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "h3"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "h4"
+                        },
+                        {
+                            "value": "h5",
+                            "label": "h5"
+                        },
+                        {
+                            "value": "h6",
+                            "label": "h6"
+                        },
+                        {
+                            "value": "p",
+                            "label": "p"
+                        },
+                        {
+                            "value": "small",
+                            "label": "small"
+                        }
+                      ]
+                    },
+                    {
+                        "type": "select",
+                        "id": "class_right_heading",
+                        "label": "Font class heading right side",
+                        "options": [
+                        {
+                            "value": "h1",
+                            "label": "h1"
+                        },
+                        {
+                            "value": "h2",
+                            "label": "h2"
+                        },
+                        {
+                            "value": "h3",
+                            "label": "h3"
+                        },
+                        {
+                            "value": "h4",
+                            "label": "h4"
+                        },
+                        {
+                            "value": "h5",
+                            "label": "h5"
+                        },
+                        {
+                            "value": "h6",
+                            "label": "h6"
+                        },
+                        {
+                            "value": "p",
+                            "label": "p"
+                        },
+                        {
+                            "value": "note",
+                            "label": "note"
+                        }
+                      ]
+                    },
+                    {
+                        "type": "select",
+                        "id": "weight_class_right_heading",
+                        "label": "Weight class heading right side",
+                        "options": [
+                        {
+                            "value": "bold",
+                            "label": "bold"
+                        },
+                        {
+                            "value": "",
+                            "label": "normal"
+                        }
+                      ]
+                    },
+                    {
+                        "type": "select",
+                        "id": "tag_right_text",
+                        "label": "Html tag text right side",
+                        "options": [
+                            {
+                                "value": "h1",
+                                "label": "h1"
+                            },
+                            {
+                                "value": "h2",
+                                "label": "h2"
+                            },
+                            {
+                                "value": "h3",
+                                "label": "h3"
+                            },
+                            {
+                                "value": "h4",
+                                "label": "h4"
+                            },
+                            {
+                                "value": "h5",
+                                "label": "h5"
+                            },
+                            {
+                                "value": "h6",
+                                "label": "h6"
+                            },
+                            {
+                                "value": "p",
+                                "label": "p"
+                            },
+                            {
+                                "value": "small",
+                                "label": "small"
+                            }
+                          ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "class_right_text",
+                            "label": "Font class text right side",
+                            "options": [
+                            {
+                                "value": "h1",
+                                "label": "h1"
+                            },
+                            {
+                                "value": "h2",
+                                "label": "h2"
+                            },
+                            {
+                                "value": "h3",
+                                "label": "h3"
+                            },
+                            {
+                                "value": "h4",
+                                "label": "h4"
+                            },
+                            {
+                                "value": "h5",
+                                "label": "h5"
+                            },
+                            {
+                                "value": "h6",
+                                "label": "h6"
+                            },
+                            {
+                                "value": "p",
+                                "label": "p"
+                            },
+                            {
+                                "value": "note",
+                                "label": "note"
+                            }
+                          ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "weight_class_right_text",
+                            "label": "Weight class text right side",
+                            "options": [
+                            {
+                                "value": "bold",
+                                "label": "bold"
+                            },
+                            {
+                                "value": "",
+                                "label": "normal"
+                            }
+                          ]
+                        },
+                        {
+                            "type": "header",
+                            "content": "Spacings"
+                        },
+                        {
+                            "type": "select",
+                            "id": "spacing_top_section",
+                            "label": "Section spacing top",
+                            "default": "m",
+                            "options": [
+                                {
+                                    "value": "xs",
+                                    "label": "xs"
+                                },
+                                {
+                                    "value": "s",
+                                    "label": "s"
+                                },
+                                {
+                                    "value": "m",
+                                    "label": "m"
+                                },
+                                {
+                                    "value": "l",
+                                    "label": "l"
+                                },
+                                {
+                                    "value": "xl",
+                                    "label": "xl"
+                                },
+                                {
+                                    "value": "xxl",
+                                    "label": "xxl"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "spacing_bottom_section",
+                            "label": "Section spacing bottom",
+                            "default": "xxl",
+                            "options": [
+                                {
+                                    "value": "xs",
+                                    "label": "xs"
+                                },
+                                {
+                                    "value": "s",
+                                    "label": "s"
+                                },
+                                {
+                                    "value": "m",
+                                    "label": "m"
+                                },
+                                {
+                                    "value": "l",
+                                    "label": "l"
+                                },
+                                {
+                                    "value": "xl",
+                                    "label": "xl"
+                                },
+                                {
+                                    "value": "xxl",
+                                    "label": "xxl"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "spacing_bottom_header",
+                            "label": "Spacing bottom header (wrapper)",
+                            "default": "l",
+                            "options": [
+                                {
+                                    "value": "xs",
+                                    "label": "xs"
+                                },
+                                {
+                                    "value": "s",
+                                    "label": "s"
+                                },
+                                {
+                                    "value": "m",
+                                    "label": "m"
+                                },
+                                {
+                                    "value": "l",
+                                    "label": "l"
+                                },
+                                {
+                                    "value": "xl",
+                                    "label": "xl"
+                                },
+                                {
+                                    "value": "xxl",
+                                    "label": "xxl"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "spacing_bottom_header_title",
+                            "label": "Spacing bottom header",
+                            "default": "l",
+                            "options": [
+                                {
+                                    "value": "xs",
+                                    "label": "xs"
+                                },
+                                {
+                                    "value": "s",
+                                    "label": "s"
+                                },
+                                {
+                                    "value": "m",
+                                    "label": "m"
+                                },
+                                {
+                                    "value": "l",
+                                    "label": "l"
+                                },
+                                {
+                                    "value": "xl",
+                                    "label": "xl"
+                                },
+                                {
+                                    "value": "xxl",
+                                    "label": "xxl"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "spacing_bottom_right_heading",
+                            "label": "Spacing bottom heading right side",
+                            "default": "s",
+                            "options": [
+                                {
+                                    "value": "xs",
+                                    "label": "xs"
+                                },
+                                {
+                                    "value": "s",
+                                    "label": "s"
+                                },
+                                {
+                                    "value": "m",
+                                    "label": "m"
+                                },
+                                {
+                                    "value": "l",
+                                    "label": "l"
+                                },
+                                {
+                                    "value": "xl",
+                                    "label": "xl"
+                                },
+                                {
+                                    "value": "xxl",
+                                    "label": "xxl"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "select",
+                            "id": "spacing_bottom_right_text",
+                            "label": "Spacing bottom text right side",
+                            "default": "s",
+                            "options": [
+                                {
+                                    "value": "xs",
+                                    "label": "xs"
+                                },
+                                {
+                                    "value": "s",
+                                    "label": "s"
+                                },
+                                {
+                                    "value": "m",
+                                    "label": "m"
+                                },
+                                {
+                                    "value": "l",
+                                    "label": "l"
+                                },
+                                {
+                                    "value": "xl",
+                                    "label": "xl"
+                                },
+                                {
+                                    "value": "xxl",
+                                    "label": "xxl"
+                                }
+                            ]
+                        }
+		],
+		"presets": [
+			{
+				"name": "Contact section",
+				"category": "Store information"
+			}
+		]
+	}
+{% endschema %}

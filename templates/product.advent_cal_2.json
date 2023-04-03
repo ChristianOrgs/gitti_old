@@ -1,0 +1,148 @@
+{
+  "sections": {
+    "product_template": {
+      "type": "product_template",
+      "blocks": {
+        "bd6795f6-ceda-4f3b-be2c-d960ebb15d22": {
+          "type": "voucher",
+          "settings": {
+            "collections": [
+              "black-week-3"
+            ],
+            "products": [],
+            "full_width": true,
+            "background": "#cedacf",
+            "icon": "<svg fill=\"#000\" width=\"50\" height=\"50\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 107.87 135.08\"><g id=\"Ebene_2\" data-name=\"Ebene 2\"><path d=\"M94.16,58.21H82.37a14,14,0,0,0-15.92-23,13.68,13.68,0,0,0-5.38,6.46l-6.9,14.53L47.31,41.77a14,14,0,0,0-16-8.44A14,14,0,0,0,26,58.21H14.19a1.5,1.5,0,0,0-1.5,1.5v73.87a1.5,1.5,0,0,0,1.5,1.5h80a1.5,1.5,0,0,0,1.5-1.5V59.71A1.5,1.5,0,0,0,94.16,58.21Zm-40,3h7.7v70.87H46.49V61.21Zm9.67-18.34a10.85,10.85,0,0,1,4.24-5.13A11,11,0,0,1,74,36a10.69,10.69,0,0,1,2.37.26A11,11,0,0,1,73.58,58H73.4l-16.84.19ZM25.07,41.08A11,11,0,0,1,44.56,43l7.23,15.22L35,58h-.17a10.87,10.87,0,0,1-6.37-1.73A11,11,0,0,1,25.07,41.08ZM15.69,61.21h27.8v70.87H15.69Zm77,70.87H64.85V61.21H92.66Zm-36.89-113h-3V0h3Zm52.1,27v3H94.16v-3Zm-94.16,3H0v-3H13.71Zm12.05-22.8-9.89-9.89L18,14.27l9.89,9.89Zm58,1-2.12-2.12,9.69-9.7,2.12,2.13Z\"\/><\/g><\/svg>",
+            "text_richtext": "<p>November Specials | -30%<\/p><p>Mit dem Code: <a href=\"#copy\" title=\"SET30\"><strong>SET30<\/strong><\/a><\/p><p><a href=\"#TermsOfService\" title=\"#TermsOfService\"><span style=\"text-decoration:underline\">AGB<\/span><\/a><\/p>",
+            "text_liquid": "",
+            "terms_and_conditions": "voucher-tc"
+          }
+        }
+      },
+      "block_order": [
+        "bd6795f6-ceda-4f3b-be2c-d960ebb15d22"
+      ],
+      "settings": {
+        "gallery_spacing": 2,
+        "slider_preview": 60,
+        "gallery_dot_outline": "#a6a6a6",
+        "gallery_dot_fill": "#ffffff",
+        "gallery_dot_fill_selected": "#a6a6a6",
+        "gallery_dot_opacity": 80,
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "title_tag": "h1",
+        "title_class": "h2",
+        "title_weight_class": "",
+        "price_tag": "p",
+        "price_class": "h4",
+        "price_weight_class": "bold",
+        "price_font_size": 20,
+        "shipping_note": "Lieferung in 3-5 Werktagen"
+      }
+    },
+    "1664442564b078089a": {
+      "type": "index_info_slider_makeup_product_template",
+      "blocks": {
+        "33822ef5-52be-44f3-bae3-1de18b5102b0": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_adventcalendar_highlightproducts_204_2048x2048_crop_center_jpg.webp",
+            "heading_1": "gitti no. 204",
+            "url_1": "",
+            "text_1": "<p><strong>Liquid Gold<\/strong><br\/>Der schimmernde Goldton verspricht eine Extraportion Glamour auf deinen Nägeln. Unsere Glitzer-Nagelfarben sind vegan, langanhaltend, mit bis zu 81,2% Inhaltsstoffen natürlichen Ursprungs und ohne Mikroplastik. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_adventcalendar_highlightproducts_eyespy_2048x2048_crop_center.jpg-2.webp",
+            "heading_2": "Eye Spy",
+            "url_2": "",
+            "text_2": "<p>Eye Spy ist unser lang anhaltender, flüssiger Eyeliner, der zu 99,7% aus natürlichen Inhaltsstoffen besteht. Die cremige Formel sorgt für ein intensives Finish, das den ganzen Tag lang hält, ohne zu verschmieren.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_adventcalendar_highlightproduct_spoiler_1_2048x2048_crop_center_jpg.webp",
+            "heading_3": "",
+            "url_3": "",
+            "text_3": "<p>Spoiler! Wenn du alle Produkte des Kalenders sehen willst, <a href=\"\/pages\/gitti-adventskalender-2022-spoiler\" target=\"_blank\" title=\"gitti Adventskalender 2022 - Inhalt\"><span style=\"text-decoration:underline\">klicke hier.<\/span><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "33822ef5-52be-44f3-bae3-1de18b5102b0"
+      ],
+      "settings": {
+        "no_image": false,
+        "background_color": "#cedacf",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Exklusive Beauty-Innovationen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "h1",
+        "richtext_weight_class": "bold",
+        "block_heading_spacing_bottom": "xs",
+        "block_heading_tag": "p",
+        "block_heading_class": "h2",
+        "block_heading_weight_class": "bold",
+        "block_text_spacing_bottom": "xs",
+        "block_text_tag": "p",
+        "block_text_class": "h4",
+        "block_text_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "contain",
+        "image_focal_point": ""
+      }
+    },
+    "1664444871df54d4ca": {
+      "type": "index_community_testimonials",
+      "settings": {
+        "background_color": "#ffffff",
+        "block_color": "#ffffff",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "richtext_spacing_bottom": "xs",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "heading": "",
+        "main_heading_spacing_top": "",
+        "main_heading_spacing_bottom": "xs",
+        "main_heading_tag": "p",
+        "main_heading_class": "h2",
+        "main_heading_weight_class": "bold",
+        "richtext": "",
+        "spacing_bottom": "",
+        "spacing_top": "",
+        "block_spacing": "",
+        "block_margin": "",
+        "image_shape": "circle",
+        "image_fit": "cover"
+      }
+    },
+    "product_recommended_products": {
+      "type": "product_recommended_products",
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "Das könnte dir auch gefallen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_reviews": {
+      "type": "product_reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product_template",
+    "1664442564b078089a",
+    "1664444871df54d4ca",
+    "product_recommended_products",
+    "product_reviews"
+  ]
+}

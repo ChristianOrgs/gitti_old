@@ -1,0 +1,569 @@
+
+<style>
+  #shopify-section-{{section.id}}{
+    background-color:{{section.settings.background_color}};
+  }
+  @media (max-width: {{settings.breakpoint_small}}px) {
+                    {% if section.settings.section_border_mobile %}
+                    #shopify-section-{{section.id}} {
+                        border-bottom: 4px solid {{settings.color_border}};
+                    }
+                    {% endif %}
+                }
+                @media (min-width: {{settings.breakpoint_small | plus: 1 }}px) {
+                    {% if section.settings.section_border_desktop %}
+                #shopify-section-{{section.id}} {
+                    
+                        border-bottom: 4px solid {{settings.color_border}};
+                    }
+                    {% endif %}
+                }
+</style>
+{% capture sizes %}{% render 'image_sizes', small:1, medium_up:2 , page_width: true %}{% endcapture %}
+<div class="page-width section-spacing" data-section-type="editor"
+data-section-id="{{ section.id }}">
+    <div class="grid col-2 col-gap small_col-1 small_row-gap spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+      <div class="grid-item {{section.settings.layout}} {{section.settings.layout_mobile}}">
+        <a href="{{section.settings.button_link}}">{% render 'image_element',  image: section.settings.image, fit: section.settings.image_fit, image_shape: section.settings.image_shape, sizes:sizes %}</a>
+      </div>
+      <div class="grid-item flex col {{section.settings.text_align}} {{section.settings.vertical_align}}">
+        {% if section.settings.heading != blank %}
+          <{{section.settings.heading_tag}} class="text-align-{{section.settings.text_align}} {{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-{{section.settings.heading_spacing_bottom}} animation on-load fade-in" animation-delay="100">{{ section.settings.heading | escape }}</{{section.settings.heading_tag}}>
+        {% endif %}
+        {% if section.settings.richtext != blank %}
+          <{{section.settings.richtext_tag}} class="text-align-{{section.settings.text_align}} {{section.settings.richtext_class}} {{section.settings.richtext_weight_class}} spacing-bottom-{{section.settings.richtext_spacing_bottom}} animation on-load fade-in" animation-delay="200">{{ section.settings.richtext | strip_html }}</{{section.settings.richtext_tag}}>
+        {% endif %}
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{section.settings.button_link}}" class="{{section.settings.button_class}} animation on-load fade-in" animation-delay="200">{{section.settings.button_label}}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Image with text",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "section_border_desktop",
+        "label": "Border on section bottom (desktop)",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "section_border_mobile",
+        "label": "Border on section bottom (mobile)",
+        "default": false
+    },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+      },
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "default": "",
+        "options": [
+        {
+          "value": "",
+          "label": "no spacing"   
+         },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "default": "",
+        "options": [
+        {
+          "value": "",
+          "label": "no spacing"   
+         },
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+      {
+        "type":      "select",
+        "id":        "layout",
+        "label":     "Layout",
+        "options": [
+          {
+            "value": "medium-up_col-start-1",
+            "label": "Image - Text"
+          },
+          {
+            "value": "medium-up_col-start-2",
+            "label": "Text - Image"
+          }
+        ],
+        "default":   "medium-up_col-start-1"
+      },
+      {
+        "type":      "select",
+        "id":        "layout_mobile",
+        "label":     "Layout mobile",
+        "options": [
+          {
+            "value": "small_row-start-1",
+            "label": "Image - Text"
+          },
+          {
+            "value": "small_row-start-2",
+            "label": "Text - Image"
+          }
+        ],
+        "default":   "small_row-start-1"
+      },
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type":      "select",
+        "id":        "image_shape",
+        "label":     "Image shape",
+        "options": [
+          {
+            "value": "",
+            "label": "Original"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          }
+          ,
+          {
+            "value": "circle",
+            "label": "Circle"
+          },
+          {
+            "value": "four_by_three",
+            "label": "4:3"
+          },
+          {
+            "value": "four_by_five",
+            "label": "4:5"
+          }
+          ,
+          {
+            "value": "sixteen_by_nine",
+            "label": "16:9"
+          }
+        ],
+        "default":   "square"
+      },
+      {
+        "type":      "select",
+        "id":        "image_fit",
+        "label":     "Image fit",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Cover"
+          }
+          ,
+          {
+            "value": "contain",
+            "label": "contain"
+          }
+        ],
+        "default":   "contain"
+      },
+      {
+        "type": "header",
+        "content": "Text Layout"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "options": [
+           { "value": "left", "label": "left"},
+           { "value": "center", "label": "center"},
+           { "value": "right", "label": "right"}
+        ],
+        "label": "Text align"
+      },
+      {
+        "type": "select",
+        "id": "vertical_align",
+        "options": [
+           { "value": "top", "label": "top"},
+           { "value": "middle", "label": "middle"},
+           { "value": "bottom", "label": "bottom"},
+           { "value": "between", "label": "between"},
+           { "value": "around", "label": "around"},
+           { "value": "evenly", "label": "evenly"}
+        ],
+        "label": "Vertical align",
+        "default": "middle"
+      },
+      {
+        "type": "header",
+        "content": "Text Heading"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Veniam enim mollit amet ut mollit."
+      },
+      {
+        "type": "select",
+        "id": "heading_spacing_bottom",
+        "label": "Spacing bottom",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+      {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Font class",
+        "default": "h1",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_weight_class",
+        "label": "Weight class",
+        "default": "bold",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+      {
+        "type": "richtext",
+        "id": "richtext",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "richtext_spacing_bottom",
+        "label": "Spacing bottom",
+        "default": "s",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+      {
+        "type": "select",
+        "id": "richtext_tag",
+        "label": "Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_class",
+        "label": "Font class",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "richtext_weight_class",
+        "label": "Weight class",
+        "default": "",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "text",
+        "id": "button_class",
+        "label": "Button class",
+        "default": "btn--tertiary",
+        "placeholder": "btn--primary"
+    }
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category":  "Image"
+      }
+    ]
+  }
+  {% endschema %}
+  

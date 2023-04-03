@@ -1,0 +1,15 @@
+{% capture sizes %}{% render 'image_sizes', small:1, medium_up:4 , page_width: true %}{% endcapture %}
+{% paginate collection.products by 50 %}
+<!--content-start-->
+{
+    "grid_items":{
+        {% for product in collection.products %}
+            {% capture grid_item %}{% render 'product_grid_item': product: product, sizes: sizes, enable_alternate_image: true %}{% endcapture %}
+            {% assign grid_item = grid_item | strip | url_escape %}
+            "{{product.handle}}": "{{ grid_item  }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    }
+}
+<!--content-end-->
+{% endpaginate  %}
+  

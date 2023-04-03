@@ -1,0 +1,437 @@
+<style>
+#shopify-section-{{section.id}} input[type="text"],
+#shopify-section-{{section.id}} input[type="email"],
+#shopify-section-{{section.id}} input[type="date"],
+#shopify-section-{{section.id}} textarea,
+#shopify-section-{{section.id}} input[type="textarea"]{
+   width:100%;
+}
+#shopify-section-{{section.id}} label{
+    display:flex;
+    margin-bottom:0;
+}
+#shopify-section-{{section.id}} .radio_option_wrapper{
+    padding-top:20px;
+}
+
+#shopify-section-{{section.id}} .contact_success{
+    padding:20px;
+    color: #56ad6a;
+    background-color: #ecfef0;
+    border: 1px solid transparent;
+    border-color: #56ad6a;
+    padding: 6px 12px;
+    margin-bottom: 15px;
+}
+#shopify-section-{{section.id}} .custom_wrapper{
+    padding: 50px 100px;
+}
+@media only screen and (max-width: {{settings.breakpoint_small}}px) {
+    #shopify-section-{{section.id}} .custom_wrapper{
+        padding: 50px 20px;
+    }
+}
+</style>
+
+{% assign required = '*' %}
+{% assign step = 1 %}
+<div class="page-width section-spacing">
+    <div class="custom_wrapper">
+    {% form 'contact' %}
+        {% if form.posted_successfully? %}
+            <div class="contact_success">
+                {{section.settings.success}}
+            </div>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+        <div class="form_wrapper grid col-gap row-gap-small ">
+            <div class="grid col-gap row-gap form_step form_step-{{step}}">
+                {% for block in section.blocks %}
+                    {% assign name = block.settings.title | strip_html | handleize  | append: '-' | append: block.id  %}
+                    {% if block.type == 'heading' and forloop.index > 1 %}
+                        {% assign step = step | plus: 1 %}
+                        </div>
+                        <div class="grid col-gap row-gap form_step form_step-{{step}}">
+                    {% endif %}
+                    <div class="grid-item">
+                        {% case block.type %}
+                            {% when 'text' %}
+                            {% assign title = block.settings.title %}
+                                <label {% if block.settings.title == blank %} style="display: none;" {% endif %} for="{{name}}">{{block.settings.title}} {% if block.settings.required %}{{required}}{% endif %}</label>
+                                <input  type="{{block.settings.type}}" 
+                                        id="{{name}}" 
+                                        name="{{name}}"
+                                        {% if block.settings.placeholder != blank %}placeholder="{{block.settings.placeholder}}{% if block.settings.required %}{{required}}{% endif %}"{% endif %}
+                                        {% if block.settings.required %} required {% endif %}
+                                        {% if block.settings.max_length != blank %}maxlength="{{block.settings.max_length}}"{% endif %}
+                                        {% if block.settings.pattern != blank %}pattern="{{block.settings.pattern}}"{% endif %}>
+                            {% when 'textarea' %}
+                                <label {% if block.settings.title == blank %} style="display: none;" {% endif %} for="{{name}}">{{block.settings.title}} {% if block.settings.required %}{{required}}{% endif %}</label>
+                                <textarea  id="{{name}}" 
+                                        name="{{name}}"
+                                        rows="{{block.settings.rows}}"
+                                        {% if block.settings.placeholder != blank %}placeholder="{{block.settings.placeholder}}{% if block.settings.required %}{{required}}{% endif %}"{% endif %}
+                                        {% if block.settings.required %} required {% endif %}
+                                        {% if block.settings.max_length != blank %}maxlength="{{block.settings.max_length}}"{% endif %}></textarea>
+                            {% when 'radio' %}
+                                <label for="{{name}}">{{block.settings.title}} {% if block.settings.required %}{{required}}{% endif %}</label>
+                                {% assign options = block.settings.options | split: ',' %}
+                                <div class="radio_wrapper grid medium-up_col-2 medium-up_col-gap">
+                                    {% for option in options %}
+                                        <div class="radio_option_wrapper flex row baseline">
+                                            <input  type="{{block.type}}" 
+                                            id="{{option | strip_html | handleize | append: '-' | append: block.id }}" 
+                                            name="{{name}}"
+                                            {% if forloop.first %} checked {% endif %}>
+                                            <label for="{{option | strip_html | handleize | append: '-' | append: block.id }}">{{option}}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                
+                            {% when 'checkbox' %}
+                                <div class="checkbox_wrapper flex row baseline">
+                                    <input  type="{{block.type}}" 
+                                        id="{{name}}" 
+                                        name="{{name}}"
+                                        {% if block.settings.required %} required {% endif %}>  
+                                    <label for="{{name}}">{{block.settings.title}} {% if block.settings.required %}{{required}}{% endif %}</label>
+                                </div>
+                            {% when 'select' %}
+                                <label for="{{name}}">{{block.settings.title}} {% if block.settings.required %}{{required}}{% endif %}</label>
+                                {% assign options = block.settings.options | split: ',' %}
+                                <select name="{{name}}" id="{{name}}">
+                                {% for option in options %}
+                                    <option  type="{{block.type}}" 
+                                                id="{{option | strip_html | handleize | append: '-' | append: block.id }}" 
+                                                name="{{name}}"
+                                        {% if forloop.first %} checked {% endif %}>{{option}}</option>
+                                {% endfor %}
+                            </select>
+                            {% when 'submit' %}
+                            <div class="flex row {{block.settings.button_align}}">
+                                <button type="{{block.type}}"
+                                        class="btn {{block.settings.button_class}}"
+                                        id="{{name}}" 
+                                        name="{{name}}">{{block.settings.title}}</button>
+                            </div>
+                            {% when 'reset' %}
+                            <div class="flex row {{block.settings.button_align}}">
+                                <button type="{{block.type}}"
+                                    class="btn {{block.settings.button_class}}"
+                                    id="{{name}}" 
+                                    name="{{name}}">{{block.settings.title}} </button>
+                            </div>
+                            {% when 'heading' %}
+                                <h3>{{block.settings.title}}</h3>
+                            {% when 'info' %}
+                                {{block.settings.title}}
+                        {% endcase %}
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+    {% endform %}
+</div>
+</div>
+
+{% schema %}
+{
+    "name": "Modular contact form",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "success",
+            "label": "Success Message",
+            "default": "<p><strong>Thank you for getting in touch!</strong> We appreciate you contacting us. One of our colleagues will get back in touch with you soon! Have a great day!</p>"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Text",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Text</p>"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Required",
+                    "default": false,
+                    "info": "Sets if the field is needed to proceed."
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Placeholder"
+                },
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Type",
+                    "options": [
+                        {
+                            "value": "text",
+                            "label": "Text"
+                        },
+                        {
+                            "value": "date",
+                            "label": "Date"
+                        },
+                        {
+                            "value": "email",
+                            "label": "E-mail"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "pattern",
+                    "label": "Pattern"
+                },
+                {
+                    "type": "text",
+                    "id": "max_length",
+                    "label": "Max Length",
+                    "default": "100"
+                }
+            ]
+        },
+        {
+            "type": "textarea",
+            "name": "Textarea",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Textarea</p>"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Required",
+                    "default": false,
+                    "info": "Sets if the field is needed to proceed."
+                },
+                {
+                    "type": "textarea",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "max_length",
+                    "label": "Max Length",
+                    "default": "300"
+                },
+                {
+                    "type": "range",
+                    "id": "rows",
+                    "label": "Rows",
+                    "min": 1,
+                    "max": 10,
+                    "step": 1,
+                    "default": 5
+                }
+            ]
+        },
+        {
+            "type": "radio",
+            "name": "Radio buttons",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Radio buttons</p>"
+                },
+                {
+                    "type": "textarea",
+                    "id": "options",
+                    "label": "Options",
+                    "info": "Devide options by comma. The first option is the default one.",
+                    "default": "Option 1,Option 2,Option 3"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Required",
+                    "default": false,
+                    "info": "Sets if the field is needed to proceed."
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "name": "Checkbox",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Checkbox</p>"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Required",
+                    "default": false,
+                    "info": "Sets if the field is needed to proceed."
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "name": "Select",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Select</p>"
+                },
+                {
+                    "type": "textarea",
+                    "id": "options",
+                    "label": "Options",
+                    "info": "Devide options by comma. The first option is the default one.",
+                    "default": "Option 1,Option 2,Option 3"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "Required",
+                    "default": false,
+                    "info": "Sets if the field is needed to proceed."
+                },
+                {
+                    "type": "checkbox",
+                    "id": "allow_multiple",
+                    "label": "Allow multiple",
+                    "default": false,
+                    "info": "Allow users multiple selections."
+                }
+            ]
+        },
+        {
+            "type": "submit",
+            "name": "Submit",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Submit</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "button_class",
+                    "label": "Button class",
+                    "default": "btn--primary"
+                },
+                {
+                    "type": "select",
+                    "id": "button_align",
+                    "label": "Button align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "reset",
+            "name": "Reset",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Label",
+                    "default": "<p>Reset</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "button_class",
+                    "label": "Button class",
+                    "default": "btn--primary"
+                },
+                {
+                    "type": "select",
+                    "id": "button_align",
+                    "label": "Button align",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "center",
+                            "label": "center"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "info",
+            "name": "Info",
+            "settings": [
+               {
+                   "type": "richtext",
+                   "id": "title",
+                   "label": "Info",
+                   "default": "<p>Eu adipisicing adipisicing sint consequat ea non veniam ut commodo aliqua voluptate sunt sit.</p>"
+               }
+            ]
+        },
+        {
+            "type": "heading",
+            "name": "Heading/Step",
+            "settings": [
+               {
+                   "type": "richtext",
+                   "id": "title",
+                   "label": "Heading",
+                   "default": "<p>Lorem ipsum</p>"
+               }
+            ]
+        },
+        {
+            "type": "required",
+            "name": "Required text",
+            "settings": [
+               {
+                   "type": "richtext",
+                   "id": "title",
+                   "label": "Required",
+                   "default": "<p>* required</p>"
+               }
+            ]
+        }
+    ]
+}
+{% endschema %}

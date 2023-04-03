@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[31],{105:function(e,n,r){"use strict";r.r(n);var s=r(0),i=r.n(s);i()(window).width()>1024&&i()(".teaser-bubbles-wrapper").on("mouseenter",".bubbles",(function(e){var n=i()(e.currentTarget).data("bubble-index");i()(".js-hero-slider").slick("getSlick").slickGoTo(n)}))}}]);

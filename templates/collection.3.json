@@ -1,0 +1,463 @@
+{
+  "sections": {
+    "page_collection_landing": {
+      "type": "page_collection_landing",
+      "blocks": {
+        "0cbee395-3555-47a8-9a82-38eaedf61344": {
+          "type": "image_text_alt",
+          "disabled": true,
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_SHOP_homepageheader_mobile_lipsync.gif",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Entdecke Lip Sync.",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>Entdecke unsere neuste Innovation vor allen anderen und sichere dir jetzt dein Lip Sync Starterset noch vor dem offiziellen Launch! Und damit nicht genug: Beim Kauf eines Lip Sync Startersets bekommst du zusätzlich eine pflanzenbasierte Nagelfarbe deiner Wahl geschenkt!<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "0c712a42-3ded-4ce5-baa9-bebfc6b0666b": {
+          "type": "html_content",
+          "disabled": true,
+          "settings": {
+            "custom_html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<style>\nimg {\n  max-width: 100%;\n  height: auto;\n}\n<\/style>\n\n\n\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/Bildschirmfoto_2021-10-04_um_15.34.43.png?v=1633354514\" width=\"460\" height=\"345\">",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "a37e8bf3-edbb-4421-8b33-af5b4f981098": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "richtext": "<p>So geht’s: Lege dein Lip Sync Starterset sowie deine liebste pflanzenbasierte Nagelfarbe in den Warenkorb und gib den Rabattcode im dafür vorgesehenen Fenster ein. Die Nagelfarbe wird dir nun automatisch erstattet.<\/p>",
+            "text_align": "left",
+            "class": "p",
+            "tag": "p",
+            "weight_class": "",
+            "text-color": "",
+            "spacing_top": "xl",
+            "spacing_bottom": "l"
+          }
+        },
+        "acc2cca8-6834-4a7f-bd6c-e025fa9e5e9b": {
+          "type": "html_content",
+          "disabled": true,
+          "settings": {
+            "custom_html": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<style>\nimg {\n  max-width: 100%;\n  height: auto;\n}\n<\/style>\n\n\n\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/gitti_SHOP_lipsync_textures_trenner_1.jpg?v=1633079460\" width=\"460\" height=\"345\">",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "0cbee395-3555-47a8-9a82-38eaedf61344",
+        "0c712a42-3ded-4ce5-baa9-bebfc6b0666b",
+        "a37e8bf3-edbb-4421-8b33-af5b4f981098",
+        "acc2cca8-6834-4a7f-bd6c-e025fa9e5e9b"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    },
+    "collection_header": {
+      "type": "collection_header",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "xs",
+        "heading_tag": "h1",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "collection_image_size": "6",
+        "collection_image_size_mobile": "100"
+      }
+    },
+    "collection_featured_items": {
+      "type": "collection_featured_items",
+      "settings": {
+        "spacing_top": "xs",
+        "spacing_bottom": "xl",
+        "heading_tag": "h2",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "per_row": 6,
+        "max_items": 10,
+        "mobile_per_row": 2.5,
+        "mobile_max_items": 10
+      }
+    },
+    "collection_filter": {
+      "type": "collection_filter",
+      "blocks": {
+        "092400ed-8030-4d6f-9c2f-914d156b52d2": {
+          "type": "tag",
+          "settings": {
+            "collapsed": true,
+            "style": "list",
+            "title": "Kategorie",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.categories.nail_polish,\ntags.categories.hand_care,\ntags.categories.nail_care,\ntags.categories.sets",
+            "whitelist": "hand-und-naegel,"
+          }
+        },
+        "9c66956c-b2f7-4fe5-93ab-0b59295c9f7d": {
+          "type": "tag",
+          "settings": {
+            "collapsed": true,
+            "style": "swatch",
+            "title": "Farbe",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.shades.reds,\ntags.shades.pinks,\ntags.shades.purples, \ntags.shades.corals,\ntags.shades.oranges, \ntags.shades.yellows,\ntags.shades.neutrals,\ntags.shades.browns,\ntags.shades.darks,\ntags.shades.blues,\ntags.shades.greens,\ntags.shades.greys, \ntags.shades.blacks,\ntags.shades.whites",
+            "whitelist": "nagellack,nagelfarben,pflanzenbasierter-nagellack,wasserbasierter-nagellack,veganer-nagellack-pflanzenbasiert,wasserbasierte-nagelfarben,waehle-dein-geschenk,every-step-counts,nagellack,gitti-produkte,changing-the-world,\nhand-und-naegel,"
+          }
+        },
+        "eeabde26-e329-4acf-a429-86b093a496de": {
+          "type": "tag",
+          "settings": {
+            "collapsed": true,
+            "style": "list",
+            "title": "Formel",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.formulas.water_based,\ntags.formulas.plant_based,",
+            "whitelist": "nagelfarben,conscious-collection,nagelfarben-neu,waehle-dein-geschenk,nagellack,bestseller,manikuere-sets,sets,nagellack-sets,gitti-produkte,summer-sale,changing-the-world,hand-und-naegel,"
+          }
+        },
+        "54b68647-d419-47fb-b913-6cb874c376a1": {
+          "type": "tag",
+          "disabled": true,
+          "settings": {
+            "collapsed": true,
+            "style": "swatch",
+            "title": "Farbe NEW",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.shades.yellows,\ntags.shades.whites,\ntags.shades.beiges,\ntags.shades.pinks,\ntags.shades.corals,\ntags.shades.reds,\ntags.shades.purples,\ntags.shades.blues,\ntags.shades.greens,\ntags.shades.greys,\ntags.shades.blacks",
+            "whitelist": "nagellack,nagelfarben,pflanzenbasierter-nagellack,wasserbasierter-nagellack,veganer-nagellack-pflanzenbasiert,wasserbasierte-nagelfarben,waehle-dein-geschenk,every-step-counts,nagellack,gitti-produkte,changing-the-world"
+          }
+        },
+        "a6f7601b-aa64-4c22-800d-3ead7dc27e97": {
+          "type": "tag",
+          "disabled": true,
+          "settings": {
+            "collapsed": true,
+            "style": "swatch",
+            "title": "Collection",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.collection.neutrals,\ntags.collection.sheers,\ntags.collection.brights,\ntags.collection.classics,\ntags.collection.pastels,\ntags.collection.darks",
+            "whitelist": "nagellack,nagelfarben,pflanzenbasierter-nagellack,wasserbasierter-nagellack,veganer-nagellack-pflanzenbasiert,wasserbasierte-nagelfarben,waehle-dein-geschenk,every-step-counts,nagellack,gitti-produkte,changing-the-world"
+          }
+        },
+        "a3d7c4a5-e71d-4b42-a7a9-5546aaddfffe": {
+          "type": "tag",
+          "settings": {
+            "collapsed": true,
+            "style": "list",
+            "title": "Kategorie",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.categories.nail_polish,\ntags.categories.nail_care,\ntags.categories.hand_care,\ntags.categories.lips,\ntags.categories.eyes,\ntags.categories.cheeks,\ntags.categories.skincare,\ntags.categories.sets",
+            "whitelist": "alle-produkte,neuheiten,bestseller,most-wanted,valentines-its-okay-to-be-a-softie,dein-geschenk,gitti-birthday"
+          }
+        },
+        "11013245-1fc2-4680-b6aa-75a830d2ef7e": {
+          "type": "tag",
+          "settings": {
+            "collapsed": true,
+            "style": "list",
+            "title": "Kategorie",
+            "select_type": "checkbox",
+            "logic": "or",
+            "tags": "tags.categories.lips,\ntags.categories.eyes,\ntags.categories.cheeks,\ntags.categories.sets",
+            "whitelist": "make-up,"
+          }
+        }
+      },
+      "block_order": [
+        "092400ed-8030-4d6f-9c2f-914d156b52d2",
+        "9c66956c-b2f7-4fe5-93ab-0b59295c9f7d",
+        "eeabde26-e329-4acf-a429-86b093a496de",
+        "54b68647-d419-47fb-b913-6cb874c376a1",
+        "a6f7601b-aa64-4c22-800d-3ead7dc27e97",
+        "a3d7c4a5-e71d-4b42-a7a9-5546aaddfffe",
+        "11013245-1fc2-4680-b6aa-75a830d2ef7e"
+      ],
+      "settings": {
+        "theme": "Custom",
+        "apply_filter": "onsubmit",
+        "product_grid_container": "#product_grid",
+        "columns": 4,
+        "rows": 10,
+        "pagination_container": "#pagination",
+        "pagination_type": "all"
+      }
+    },
+    "collection_product_grid": {
+      "type": "collection_product_grid",
+      "blocks": {
+        "7f70a62d-68c4-4e2c-b67f-968533ca1800": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "collection": "gittiplantbased",
+            "row_start": 2,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_wb_25_05_13_19_26_750x_4ac8f5a4-a088-4a73-8d64-f04a09d77287.jpg",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "richtext": "<p><img alt=\"shipping\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/Delivery_Icon_bcdf1e16-e5fd-4616-8255-1e739d7360f5.png?v=1618826118\" style=\"border: 0; height: 33px; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 60px;\"> Shipping within 3-5 days. <br><br><img alt=\"iDeal\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/iDEAL_Icon_bdbc6eae-c74c-4ee1-a8e9-7f89d8d5eadf.png?v=1618826118\" style=\"border: 0; height: 43px; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 80px;\"> Payment via iDeal.<\/p>",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_link": "",
+            "button_class": "btn--tertiary",
+            "button_label": ""
+          }
+        },
+        "d572373f-d146-4be8-b329-14ba1e48e0b4": {
+          "type": "promotion",
+          "settings": {
+            "collection": "every-step-counts",
+            "row_start": 2,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_wb_25_05_13_19_26_750x_310b4106-ba48-4554-91fc-3ca95d068362.jpg",
+            "heading": "",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "",
+            "richtext": "<p><img alt=\"shipping\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/Delivery_Icon_bcdf1e16-e5fd-4616-8255-1e739d7360f5.png?v=1618826118\" style=\"border: 0; height: 33px; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 60px;\"> Shipping within 3-5 days. <br><br><img alt=\"iDeal\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0155\/4943\/1908\/files\/iDEAL_Icon_bdbc6eae-c74c-4ee1-a8e9-7f89d8d5eadf.png?v=1618826118\" style=\"border: 0; height: 43px; line-height: 100%; max-width: 100%; outline: none; text-decoration: none; width: 80px;\"> Payment via iDeal.<\/p>",
+            "richtext_tag": "p",
+            "richtext_class": "h2",
+            "richtext_weight_class": "bold",
+            "button_link": "",
+            "button_class": "btn--tertiary",
+            "button_label": ""
+          }
+        },
+        "7565a33e-faf2-4865-bb06-d4b78f270e62": {
+          "type": "promotion",
+          "settings": {
+            "collection": "podcast",
+            "row_start": 5,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_shop_page_pb_vs_wb_pb107.jpg",
+            "heading": "Hol dir den Sommer auf die Nägel!",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "",
+            "richtext": "So viele Farben und Optionen. Mix & Match mit unseren gitti Sets, die deine Nägel zum Leuchten bringen.",
+            "richtext_tag": "p",
+            "richtext_class": "note",
+            "richtext_weight_class": "",
+            "button_link": "",
+            "button_class": "btn--tertiary",
+            "button_label": ""
+          }
+        },
+        "58811feb-8e8c-4a95-887a-93e40db7efcc": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "collection": "gitti-geschenke",
+            "row_start": 3,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_everybalm_100ml_still_tube_texture_closeup.webp",
+            "heading": "Receive your sample of Everybalm with every order from 49€.",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "richtext": "No code needed! The perfect way to try your balm for every dry spot of your body - from head to toe! For everyone and everyday.",
+            "richtext_tag": "p",
+            "richtext_class": "note",
+            "richtext_weight_class": "",
+            "button_link": "https:\/\/www.gitticonsciousbeauty.de\/collections\/set-empfehlungen",
+            "button_class": "btn--tertiary",
+            "button_label": ""
+          }
+        },
+        "2e771046-2705-4083-b9cb-ab701508ce5b": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "collection": "nail-polish-sets",
+            "row_start": 9,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/114-104.jpg",
+            "heading": "So viele Farben, so viel Auswahl und du kannst dich nicht entscheiden?",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "richtext": "Wir haben eine Vorauswahl für dich getroffen: Unsere Empfehlungen sind perfekt aufeinander abgestimmt und machen die Entscheidung leicht.",
+            "richtext_tag": "p",
+            "richtext_class": "note",
+            "richtext_weight_class": "",
+            "button_link": "https:\/\/www.gitticonsciousbeauty.de\/collections\/set-empfehlungen",
+            "button_class": "btn--tertiary",
+            "button_label": "Jetzt entdecken"
+          }
+        },
+        "b5031b5f-beac-486e-94a3-02978112c027": {
+          "type": "promotion",
+          "disabled": true,
+          "settings": {
+            "collection": "water-nail-polish-sets",
+            "row_start": 9,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_wb_consciouscollection_01.jpg",
+            "heading": "So viele Farben, so viel Auswahl und du kannst dich nicht entscheiden?",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "richtext": "Wir haben eine Vorauswahl für dich getroffen: Unsere Empfehlungen sind perfekt aufeinander abgestimmt und machen die Entscheidung leicht.",
+            "richtext_tag": "p",
+            "richtext_class": "note",
+            "richtext_weight_class": "",
+            "button_link": "",
+            "button_class": "btn--tertiary",
+            "button_label": ""
+          }
+        },
+        "f32d7b61-55e6-4027-9874-dc8888a4c43f": {
+          "type": "promotion",
+          "settings": {
+            "collection": "annaklinski",
+            "row_start": 3,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/image00001-min.jpg",
+            "heading": "Annas Favoriten.",
+            "heading_tag": "p",
+            "heading_class": "h3",
+            "heading_weight_class": "bold",
+            "richtext": "So viele Farben, so viel Auswahl und du kannst dich nicht entscheiden?<br><br>Mix & Match mit unseren gitti Sets.",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_link": "shopify:\/\/collections\/sets",
+            "button_class": "btn--tertiary",
+            "button_label": "Jetzt entdecken"
+          }
+        },
+        "9757b748-c80e-44d1-b26d-a2daac7fe973": {
+          "type": "promotion",
+          "settings": {
+            "collection": "nagel-geschenke",
+            "row_start": 9,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_shop_menu_saveonset_1.jpg",
+            "heading": "Entdecke alle Sets",
+            "heading_tag": "p",
+            "heading_class": "h3",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "note",
+            "richtext_weight_class": "",
+            "button_link": "shopify:\/\/collections\/sets",
+            "button_class": "btn--tertiary",
+            "button_label": "JETZT SHOPPEN"
+          }
+        },
+        "a10a04c5-6ec6-46c3-9655-448b26e2fe1c": {
+          "type": "promotion",
+          "settings": {
+            "collection": "make-up-geschenke",
+            "row_start": 5,
+            "col_start": 1,
+            "image": "shopify:\/\/shop_images\/gitti_shop_menu_saveonset_1.jpg",
+            "heading": "Entdecke alle Sets",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "richtext": "",
+            "richtext_tag": "p",
+            "richtext_class": "p",
+            "richtext_weight_class": "",
+            "button_link": "shopify:\/\/collections\/sets",
+            "button_class": "btn--tertiary",
+            "button_label": "JETZT SHOPPEN"
+          }
+        }
+      },
+      "block_order": [
+        "7f70a62d-68c4-4e2c-b67f-968533ca1800",
+        "d572373f-d146-4be8-b329-14ba1e48e0b4",
+        "7565a33e-faf2-4865-bb06-d4b78f270e62",
+        "58811feb-8e8c-4a95-887a-93e40db7efcc",
+        "2e771046-2705-4083-b9cb-ab701508ce5b",
+        "b5031b5f-beac-486e-94a3-02978112c027",
+        "f32d7b61-55e6-4027-9874-dc8888a4c43f",
+        "9757b748-c80e-44d1-b26d-a2daac7fe973",
+        "a10a04c5-6ec6-46c3-9655-448b26e2fe1c"
+      ],
+      "settings": {
+        "rows": 8,
+        "cols": 4,
+        "spacing_top": "xs",
+        "spacing_bottom": "xl"
+      }
+    }
+  },
+  "order": [
+    "page_collection_landing",
+    "collection_header",
+    "collection_featured_items",
+    "collection_filter",
+    "collection_product_grid"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "contact_template": {
+      "type": "contact_template",
+      "settings": {
+        "right_heading": "",
+        "right_call_us_title": "Kooperationsanfragen werden nur per E-Mail beantwortet. <br>Bitte benutzen Sie das Kontaktformular. <br><br>Telefon",
+        "right_call_us_text": "+49 (0) 30 217 82 82 8",
+        "right_call_us_link": "tel:+493021782828",
+        "right_whatsapp_title": "Whatsapp",
+        "right_whatsapp_text": "+49 152 085 10 97 2",
+        "right_whatsapp_link": "https:\/\/wa.me\/4915208510972",
+        "right_address_title": "Adresse",
+        "right_address_text": "<p>gitti GmbH<br\/>Saarbrücker Str. 36-38 \/ Prenzlauer Allee 248-251<\/p><p>10405 Berlin<br\/><\/p>",
+        "right_follow_title": "Folge uns",
+        "tag_title": "p",
+        "class_title": "h2",
+        "weight_class_title": "bold",
+        "tag_right_heading": "p",
+        "class_right_heading": "h6",
+        "weight_class_right_heading": "",
+        "tag_right_text": "h6",
+        "class_right_text": "p",
+        "weight_class_right_text": "",
+        "spacing_top_section": "xs",
+        "spacing_bottom_section": "xl",
+        "spacing_bottom_header": "m",
+        "spacing_bottom_header_title": "m",
+        "spacing_bottom_right_heading": "xs",
+        "spacing_bottom_right_text": "xs"
+      }
+    },
+    "text_blocks": {
+      "type": "text_blocks",
+      "blocks": {
+        "bddabbe1-b8e4-4ae3-8bd7-80da4e28d445": {
+          "type": "left_side",
+          "settings": {
+            "link_text_left": "About us",
+            "link_url_left": "shopify:\/\/pages\/about-us-1"
+          }
+        },
+        "3ee64902-80fe-4e8a-b48d-8f210bbaca5e": {
+          "type": "left_side",
+          "settings": {
+            "link_text_left": "Sustainability",
+            "link_url_left": "shopify:\/\/pages\/nachhaltigkeit"
+          }
+        },
+        "997ed08e-f3c5-4f06-b895-bbaa70a92751": {
+          "type": "right_side",
+          "settings": {
+            "link_text_right": "Ingredients",
+            "link_url_right": "shopify:\/\/pages\/inhaltsstoffe"
+          }
+        },
+        "17a4459d-c859-4b8e-aed8-78844b5d30b6": {
+          "type": "right_side",
+          "settings": {
+            "link_text_right": "Why gitti?",
+            "link_url_right": "shopify:\/\/pages\/warum-gitti"
+          }
+        }
+      },
+      "block_order": [
+        "bddabbe1-b8e4-4ae3-8bd7-80da4e28d445",
+        "3ee64902-80fe-4e8a-b48d-8f210bbaca5e",
+        "997ed08e-f3c5-4f06-b895-bbaa70a92751",
+        "17a4459d-c859-4b8e-aed8-78844b5d30b6"
+      ],
+      "settings": {
+        "title": "Would you like to know more about gitti?",
+        "tag_title": "h2",
+        "class_title": "h2",
+        "weight_class_title": "bold",
+        "mobile_heading": "Would you like to know more about gitti?",
+        "mobile_call_us_title": "",
+        "mobile_call_us_text": "About us",
+        "mobile_call_us_link": "shopify:\/\/pages\/about-us-1",
+        "mobile_whatsapp_title": "",
+        "mobile_whatsapp_text": "Sustainability",
+        "mobile_whatsapp_link": "shopify:\/\/pages\/nachhaltigkeit",
+        "mobile_contact_title": "",
+        "mobile_contact_text": "Ingredients",
+        "mobile_contact_link": "shopify:\/\/pages\/inhaltsstoffe"
+      }
+    }
+  },
+  "order": [
+    "contact_template",
+    "text_blocks"
+  ]
+}

@@ -1,0 +1,182 @@
+{% comment %} Settings {% endcomment %}
+{% assign showNavDots = section.settings.showNavDots %}
+{% assign showNavArrows = section.settings.showNavArrows %}
+{% assign transition = section.settings.transition %}
+{% assign transparent = section.settings.transparent %}
+{% assign autoplay = section.settings.autoplay %}
+{% assign duration = section.settings.duration | times:1000 %}
+{% assign fadeMode = true %}
+{% if transition == 'slide' %}
+	{% assign fadeMode = false %}
+{% endif %}
+{% assign hover = true %}
+{% assign speed = 400 %}
+
+{%- assign image = section.settings.image  -%}
+{%- assign image_size = section.settings.image_size  -%}
+
+{% comment %} Check if Image Height setting is selected {% endcomment %}
+{% assign image_height = false %}
+{% if section.settings.slide_height == 'original-height' %}
+{% assign image_height = true %}
+{% endif %}
+
+{% assign custom = section.settings.custom %}
+{% assign customTitle = section.settings.title %}
+{% assign customSubheading = section.settings.subheading %}
+{% assign customContent = section.settings.content | truncatewords: 70 %}
+{% assign customCTA = section.settings.cta %}
+{% assign customLink = section.settings.cta_link %}
+{% assign video_url_webm = section.settings.video_url_webm %}
+{% assign video_url_mp = section.settings.video_url_mp %}
+
+
+<style>
+.gallery-wrap.style-nav-text .slick-next:after, .gallery-wrap.style-nav-text .slick-prev:after {
+		color:{{section.settings.color_style}};
+}
+.gallery-wrap.style-nav-text .slick-dots li.slick-active {background-color: {{section.settings.color_style}};}
+.gallery-wrap.style-nav-text .slick-dots li {border-color: {{section.settings.color_style}};}
+@media screen and (max-width: 769px) {
+	.mobile-full-size {
+		width: 100% !important;
+	}
+}
+
+</style>
+
+{% comment %} Section {% endcomment %}
+
+
+
+<section class="gallery-wrap container-wrap style-default style-nav-text cstm_section_first" id="gallery-module-{{ section.id }}" data-section-type="gallery">
+		<div class="gallery {% if section.settings.show_margins %}gallery--margins{% endif %}">
+				<div class="row {{ section.settings.slide_height }}">
+
+
+
+					{%- if image != blank -%}
+							<div class="block s1">
+								<a {% if customLink != blank %}href="{{ customLink }}"{% endif %}>
+									<img src="{{ image | img_url: '1440x' }}" width="{{image_size}}%" class="mobile-full-size" />
+								</a>
+							</div>
+						{%- else -%}
+							<div class="block s1">
+									<a {% if customLink != blank %}href="{{ customLink }}"{% endif %}>
+										<video width="{{image_size}}%" autoplay loop muted playsinline class="mobile-full-size">
+											<source src="{{ video_url_mp  }}" type="video/mp4">
+											<source src="{{ video_url_webm }}" type="video/ogg">
+										</video>
+									</a>
+							</div>
+						{%- endif -%}
+
+
+						{% if customTitle != blank or customSubheading != blank or customContent != blank or customCTA != blank %}
+						<div class="gallery-content block s1">
+							<div class="gallery-content-inner" style="background: rgba(255,255,255, 0.{{ transparent }});">
+								{% if customTitle != blank %}
+										<h1>{{ customTitle }}</h1>
+                    <div class="cstm_border_left_cm">
+                    	<div class="cstm_border_hd_line"></div>
+                    </div>
+                {% endif %}
+								{% if customContent != blank %}
+										{{ customContent }}
+								{% endif %}
+
+              	{% if customSubheading != blank %}
+										<h4 class="subheading-text">{{ customSubheading }}</h4>
+								{% endif %}
+                {% if customCTA != blank %}
+									<a {% if customLink != blank %}href="{{ customLink }}"{% endif %} class="button mobile-full-size" style="width: 90%;">{{ customCTA }}</a>
+								{% endif %}
+							</div>
+						</div>
+						{% endif %}
+				</div>
+		</div>
+</section>
+<style>
+.slick-prev, .slick-next {background: none !important;}
+</style>
+{% comment %} Schema {% endcomment %}
+{% schema %}
+{
+	"name": "Homepage Teaser",
+	"class": "header--full",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Content"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Heading",
+			"default": "Tell a Story"
+		},
+		{
+			"type": "richtext",
+			"id": "content",
+			"label": "Text",
+			"default": "<p>By showcasing a product, collection, or your brand.</p>"
+		},
+		{
+			"type": "text",
+			"id": "cta",
+			"label": "CTA Text",
+			"default": "Zum Shop"
+		},
+		{
+			"type": "url",
+			"id": "cta_link",
+			"label": "CTA Link"
+		},
+		{
+			"type": "text",
+			"id": "video_url_mp",
+			"label": "Add video link in MP4 format"
+		},
+		{
+			"type": "text",
+			"id": "video_url_webm",
+			"label": "Add video link in WEBM format"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Add image",
+			"info": "If you select a image the video will be disabled"
+		},
+		{
+			"type": "range",
+			"id": "image_size",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "Change image or video size",
+			"default": 100
+		},
+		{
+			"type": "range",
+			"id": "transparent",
+			"min": 0,
+			"max": 9,
+			"step": 1,
+			"unit": "%",
+			"label": "Change the transparenz of the content section",
+			"default": 9
+		}
+	],
+	"presets": [
+		{
+			"category": "Image",
+			"name": "Homepage Teaser"
+
+		}
+	]
+}
+{% endschema %}

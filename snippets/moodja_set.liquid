@@ -1,0 +1,32 @@
+
+      <script>
+        {% assign moodja_set_page_type = "" %}
+          window.moodja_set = {
+            shop_slug: "{{shop.permanent_domain | remove: '.myshopify.com' }}",
+            store_id: "{{shop.permanent_domain}}",
+            money_format: "{{shop.money_format | replace: '"', "'"}}",
+            cart: null,
+            product: null,
+            product_variants: null,
+            product_id: null,
+            page_type: null,
+            //moodja_set_url: "https://int03.moodja.com",
+            moodja_set_url: "https://{{shop.domain}}/apps/moodja_sets",
+            customer: null
+          }
+
+        {% if template contains "product" %}
+          window.moodja_set.page_type = "product"
+          window.moodja_set.product_id = "{{ product.id }}";
+          window.moodja_set.product = {{ product | json }} 
+                                   
+          window.moodja_set.product_variant = []
+          {% for variant in product.variants %}
+            window.moodja_set.product_variant.push({{variant.id}})
+          {% endfor %}
+            
+          window.moodja_set.product_variants = window.moodja_set.product_variant.toString();                          
+                                             
+        {% endif %}
+
+      </script>

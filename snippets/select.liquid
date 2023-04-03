@@ -1,0 +1,56 @@
+{% assign toggle_icon = 'caret' %}
+{% if settings.expand_collapse != 'plus_minus'%}
+    {% assign toggle_icon = settings.expand_collapse %}
+{% endif %}
+
+{% if  selected_value != blank %}
+    {% assign default_value = selected_value %}
+{% else %}
+    {% assign default_value = option_values[0] %}
+{% endif %}
+
+{% assign name_handle = option_name | handleize %}
+<div id="select-{{name_handle}}" class="select ">
+    <input hidden type="text" value="{{default_value}}" id="{{name_handle}}" name="{{option_name}}" {{data_attribute}}>
+    <button aria-label="select_output" type="button" class="select_output" id="{{name_handle}}-output"><output>{{default_value}}</output><div class="toggle">{% render 'icon',icon: toggle_icon, color:color %}</div></button>
+    <ul id="select_dropdown-{{name_handle}}" class="select_dropdown">
+    {% for value in option_values %}
+        {% assign value_handle = value | handleize %}
+        <li class="select_dropdown-value select_dropdown-value-{{value_handle}}">
+            <input hidden value="{{value}}" type="text" id="{{name_handle}}-{{value_handle}}" {% if default_value == value %} checked {% endif %} >
+            <label for="{{name_handle}}-{{value_handle}}">
+                {% if option_value_names != blank %}
+                    {{option_value_names[forloop.index0]}}
+                {% else %}
+                    {{value}}
+                {% endif %}</label>
+            <script>
+                document.querySelector('#{{name_handle}}-{{value_handle}} + label').addEventListener('click',function(){
+                    document.querySelector('#{{name_handle}}-output > output').value = document.querySelector('#{{name_handle}}-{{value_handle}}').value
+                    document.querySelector('#{{name_handle}}').value = document.querySelector('#{{name_handle}}-{{value_handle}}').value
+                    document.querySelector('#{{name_handle}}-output').classList.remove('toggle')
+                    document.querySelector('#select_dropdown-{{name_handle}}').classList.remove('open')
+                    window.dispatchEvent(new Event('selectChanged'));
+                    document.querySelector('#{{name_handle}}').dispatchEvent(new Event('selectChanged'));
+                })
+            </script>
+        </li>
+    {% endfor %}    
+    </ul>
+</div>
+<script>
+    document.querySelector('#{{name_handle}}-output').addEventListener('click', (e) => {
+        document.querySelector('#{{name_handle}}-output').classList.toggle('open')
+        document.querySelector('#select_dropdown-{{name_handle}}').classList.toggle('open')
+    })
+    document.body.addEventListener('click', (e) => {
+        if (e.target.closest('#select-{{name_handle}}') == null) {
+            document.querySelector('#{{name_handle}}-output').classList.remove('open')
+            document.querySelector('#select_dropdown-{{name_handle}}').classList.remove('open')
+        }
+    })
+
+</script>
+
+
+

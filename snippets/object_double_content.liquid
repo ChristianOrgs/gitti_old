@@ -1,0 +1,77 @@
+{% assign id = object.id %}
+
+<style>
+    #shopify-section-{{id}} .inner_grid > div > *:last-child{
+        padding-bottom: 0;
+    }
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{id}} .page-width{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        #shopify-section-{{id}} .inner_grid > div:not(.heading) > *:not(.image), #shopify-section-{{id}} .inner_grid > div.heading{
+            padding-left: {{settings.site_gutter_mobile}}px;
+            padding-right: {{settings.site_gutter_mobile}}px;
+        }
+        {% if object.settings.shift_images %}
+            #shopify-section-{{id}} .inner_grid > div.block_left > .image{
+                padding-left: {{settings.site_gutter_mobile}}px;
+                padding-right: 0;
+            }
+            #shopify-section-{{id}} .inner_grid > div.block_right > .image{
+                padding-right: {{settings.site_gutter_mobile}}px;
+                padding-left: 0;
+            }
+        {% endif %}
+        #shopify-section-{{id}} .inner_grid{
+            row-gap: 70px;
+        }
+    }
+</style>
+{% capture sizes %}{% render 'image_sizes', small:1, medium_up:2, page_width: true %}{% endcapture %}
+<div class="page-width section-spacing">
+            <div class="inner_grid grid col-2 grid-gap small_col-1">
+                {% if object.settings.title != blank %}
+                    <div class="heading grid-item col-span-2 small_col-span-1">
+                        <p class="h2">{{object.settings.title}}</p>
+                    </div>
+                {% endif %}
+                <div class="block_left flex col grid-item">
+                    {% if object.settings.image_left != blank %}
+                        <div class="image flex col spacing-bottom-m">
+                            {% render 'image_element',image: object.settings.image_left, image_shape: object.settings.image_shape, fit: object.settings.image_fit , sizes:sizes%}
+                        </div>
+                    {% endif %}
+                    {% if object.settings.name_left != blank %}
+                        <p class="h5 spacing-bottom-xs">{{object.settings.name_left}}</p>
+                    {% endif %}
+                    {% if object.settings.position_left != blank %}
+                        <p class="spacing-bottom-xs">{{object.settings.position_left}}</p>
+                    {% endif %}
+                    {% if object.settings.text_left != blank %}
+                        <div class="flex col">
+                            {{object.settings.text_left}}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="block_right flex col grid-item">
+                    {% if object.settings.image_right != blank %}
+                        <div class="image flex col spacing-bottom-m">
+                            {% render 'image_element',image: object.settings.image_right, image_shape: object.settings.image_shape, fit: object.settings.image_fit, sizes:sizes %}
+                        </div>
+                    {% endif %}
+                    {% if object.settings.name_right != blank %}
+                        <p class="h5 spacing-bottom-xs">{{object.settings.name_right}}</p>
+                    {% endif %}
+                    {% if object.settings.position_right != blank %}
+                        <p class="spacing-bottom-xs">{{object.settings.position_right}}</p>
+                    {% endif %}
+                    {% if object.settings.text_right != blank %}
+                        <div class="flex col">
+                            {{object.settings.text_right}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+</div>

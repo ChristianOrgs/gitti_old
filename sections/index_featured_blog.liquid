@@ -1,0 +1,606 @@
+<div class="page-width section-spacing section_container" data-section-type="editor"
+data-section-id="{{ section.id }}" >
+    <div class="grid col-1 small_col-1 featured_blog_container">
+        <div class="grid-item">
+            <div class="blog-post flex col left spacing-bottom-l custom_text">
+                {% if section.settings.preheading != blank %}
+                    <p class="text-align-{{section.settings.text_align}} spacing-bottom-{{section.settings.headings_spacing_bottom}}">{{ section.settings.preheading | escape }}</p>
+                {% endif %}
+                {% if section.settings.heading != blank %}
+                    <{{section.settings.heading_tag}} class="text-align-{{section.settings.text_align}} {{section.settings.heading_class}} {{section.settings.heading_weight_class}} spacing-bottom-{{section.settings.headings_spacing_bottom}}">{{ section.settings.heading }}</{{section.settings.heading_tag}}>
+                {% endif %}
+                {% if section.settings.text != blank %}
+                    <div class="text-align-{{section.settings.text_align}} h4 {% if section.settings.button_label != blank and section.settings.button_link != blank %}spacing-bottom-{{section.settings.text_spacing_bottom}}{% endif %}"><{{section.settings.text_tag}} class="{{section.settings.text_class}}">{{ section.settings.text | remove: '<p>'  | remove: '</p>'}}</{{section.settings.text_tag}}></div>
+                {% endif %}
+                {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                <div>
+                    <a href="{{section.settings.button_link}}" class="{{section.settings.button_class}}">{{section.settings.button_label}}</a>
+                </div> 
+                {% endif %}
+            </div>
+           
+        </div>
+        <div class="grid col-2 small_col-1">
+            {% for article in blogs[section.settings.blog].articles limit: section.settings.max_articles %}
+                {% assign iseven = forloop.index | modulo: 2 %}
+                {% if iseven == 1 %}
+                    {% continue %}
+                {% endif %}
+                <div class="blog-post flex col small_center small_middle spacing-right-{{section.settings.pictures_gap}} article_one">
+                    <div class="image_wrapper spacing-bottom-{{section.settings.pictures_spacing_bottom}} spacing-top-{{section.settings.pictures_spacing_top}}">
+                        {% capture sizes %}{% render 'image_sizes', small:1, medium_up:2 , page_width: true %}{% endcapture %}
+                        {% render 'image_element', image: article.image,  fit: 'cover', image_shape:'sixteen_by_nine', sizes:sizes%}  
+                    </div>
+                    <{{section.settings.article_heading_tag}} class="bee_sectionly_article_title {{section.settings.article_heading_class}} {{section.settings.article_heading_weight_class}} spacing-bottom-{{section.settings.headings_spacing_bottom}}">{{article.title}}</{{section.settings.article_heading_tag}}>
+                    {% if section.settings.show_author %}<p class="bee_sectionly_article_author">{{article.author}}</p>{% endif %}
+                    <{{section.settings.text_tag}} class="{{section.settings.text_class}}">{{article.excerpt }}</{{section.settings.text_tag}}>
+                </div>
+                <style>
+                    @media (max-width: {{settings.breakpoint_small}}px) {
+                    #shopify-section-{{section.id}} .article_one{
+                        padding-right: initial;
+                    }
+                }
+                </style>
+            {% endfor %}
+            {% for article in blogs[section.settings.blog].articles limit: section.settings.max_articles %}
+                {% assign iseven = forloop.index | modulo: 2 %}
+                {% if iseven == 0 %}
+                    {% continue %}
+                {% endif %}
+                <div class="blog-post flex col small_center small_middle spacing-left-{{section.settings.pictures_gap}} article_two">
+                    <div class="image_wrapper spacing-bottom-{{section.settings.pictures_spacing_bottom}} spacing-top-{{section.settings.pictures_spacing_top}}">
+                        {% capture sizes %}{% render 'image_sizes', small:1, medium_up:2 , page_width: true %}{% endcapture %}
+                        {% render 'image_element', image: article.image,  fit: 'cover', image_shape:'sixteen_by_nine', sizes:sizes %}  
+                    </div>
+                    <{{section.settings.article_heading_tag}} class="bee_sectionly_article_title {{section.settings.article_heading_class}} {{section.settings.article_heading_weight_class}} spacing-bottom-{{section.settings.headings_spacing_bottom}}">{{article.title}}</{{section.settings.article_heading_tag}}>
+                    {% if section.settings.show_author %}<p class="bee_sectionly_article_author">{{article.author}}</p>{% endif %}
+                    <{{section.settings.text_tag}} class="{{section.settings.text_class}}">{{article.excerpt }}</{{section.settings.text_tag}}>
+                </div>
+                <style>
+                    @media (max-width: {{settings.breakpoint_small}}px) {
+                    #shopify-section-{{section.id}} .article_two{
+                        padding-left: initial;
+                    }
+
+                    {% if section.settings.section_border_mobile %}
+                    #shopify-section-{{section.id}} {
+                        border-bottom: 4px solid {{settings.color_border}};
+                    }
+                    {% endif %}
+                }
+                @media (min-width: {{settings.breakpoint_small | plus: 1 }}px) {
+                    {% if section.settings.section_border_desktop %}
+                #shopify-section-{{section.id}} {
+                    
+                        border-bottom: 4px solid {{settings.color_border}};
+                    }
+                    {% endif %}
+                </style>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Blog",
+  "settings": [
+    {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+    },
+    {
+        "type": "checkbox",
+        "id": "section_border_desktop",
+        "label": "Border on section bottom (desktop)",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "section_border_mobile",
+        "label": "Border on section bottom (mobile)",
+        "default": false
+    },
+    {
+        "type": "select",
+        "id": "pictures_spacing_bottom",
+        "label": "Pictures spacings bottom",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "pictures_spacing_top",
+        "label": "Pictures spacings top",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "pictures_gap",
+        "label": "Gap between pictures",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        
+            "type": "checkbox",
+            "id": "show_author",
+            "label": "Show author",
+            "default": false
+    },
+    {
+        "type": "header",
+        "content": "Text settings"
+      },
+    {
+        "type": "select",
+        "id": "headings_spacing_bottom",
+        "label": "Headings spacings bottom",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+      {
+        "type": "select",
+        "id": "heading_tag",
+        "label": "Main heading Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "article_heading_tag",
+        "label": "Articles headings Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_class",
+        "label": "Main heading font class",
+        "default": "h1",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "article_heading_class",
+        "label": "Articles headings font class",
+        "default": "h1",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "heading_weight_class",
+        "label": "Main heading weight class",
+        "default": "bold",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "article_heading_weight_class",
+        "label": "Articles headings weight class",
+        "default": "bold",
+        "options": [
+            {
+                "value": "bold",
+                "label": "bold"
+            },
+            {
+                "value": "",
+                "label": "normal"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "text_spacing_bottom",
+        "label": "Text Spacing bottom",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+      {
+        "type": "select",
+        "id": "text_tag",
+        "label": "Text Html tag",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "text_class",
+        "label": "Text font class",
+        "default": "h1",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "note",
+                "label": "note"
+            }
+        ]
+    },
+    {
+        "type": "range",
+        "id": "max_articles",
+        "label": "Max articles",
+        "min": 2,
+        "max": 10,
+        "step": 1,
+        "default": 4
+    },
+    {
+    "type": "text",
+    "id": "preheading",
+    "label": "Preheading",
+    "default": "Cillum est eiusmod aliqua labore esse quis."
+    },
+    {
+    "type": "text",
+    "id": "heading",
+    "label": "Heading",
+    "default": "Veniam enim mollit amet ut mollit."
+    },
+    {
+    "type": "richtext",
+    "id": "text",
+    "label": "Text",
+    "default": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.</p>"
+    },
+    {
+    "type": "color",
+    "id": "text_color",
+    "label": "Text colors"
+    },
+    {
+    "type": "text",
+    "id": "button_label",
+    "label": "Button label"
+    },
+    {
+    "type": "url",
+    "id": "button_link",
+    "label": "Button link"
+    },
+    {
+        "type": "text",
+        "id": "button_class",
+        "label": "Button class",
+        "default": "btn"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Featured Blog",
+      "category":  "Blog"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{% if template contains 'collection' %}
+
+  {{ 'collections.breadcrumbs.collections' | t | link_to: '/collections'}}
+  <span class="breadcrumbs-sep">›</span>
+
+  {% if collection.handle %}
+    {% if collection.handle == 'all' %}
+      {{ 'collections.breadcrumbs.default_collection' | t }}
+    {% else %}
+      {{ collection.title }}
+    {% endif %}
+  {% endif %}
+
+{% endif %}
+
+{% if template contains 'product' %}
+
+  {% assign first_collection = product.collections[0] %}
+  {% if first_collection.handle != blank %}
+    <div class="mobile-breadcrumb">
+      <span class="breadcrumbs-sep"><</span>
+      <a href="{{first_collection.url}}">zurück zur Übersicht</a>
+    </div>
+    {{ first_collection.title | link_to: first_collection.url }}
+    <span class="breadcrumbs-sep">›</span>
+  {% endif %}
+
+  {% if product.handle %}
+       <span>{{ product.title }}</span>
+  {% endif %}
+
+{% endif %}

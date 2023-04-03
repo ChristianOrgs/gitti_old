@@ -1,0 +1,670 @@
+
+{%- capture style -%}
+    <style>
+        {% assign loadedFontFamilies = '' %}
+        {% for block in section.blocks %}
+        {% if block.settings.type == 'shopify' %}
+        {{ block.settings.font | font_face: font_display: 'swap'  }}
+
+        {% if block.settings.global_style %}
+        label,
+        input,
+        textarea,
+        button,
+        a,
+        span,
+        .jdgm-rev-widg__title,
+        .jdgm-rev-widg__summary-text,
+        .jdgm-write-rev-link,
+        {% endif %}
+        {{block.settings.class_name}},
+        {% if block.type == 'button_class' %}.btn{% endif %}.{{block.settings.class_name}}{
+            font-family: {{ block.settings.font.family }}, {{ block.settings.font.fallback_families }};
+            font-weight: {{  block.settings.font.weight }};
+            text-transform:{{block.settings.transform}};
+            text-decoration:{{block.settings.decoration}};
+            font-size:{{block.settings.font_size}}px;
+            font-style:{% if block.settings.style == blank %}normal{% else %}{{ block.settings.style }}{% endif %};
+        {% if block.settings.custom_line_height %}
+            line-height: {{block.settings.line_height}}%;
+        {% else %}
+            line-height: normal;
+        {% endif %}
+            letter-spacing:{{block.settings.letter_spacing}}px;
+            word-spacing:{{block.settings.word_spacing}}px;
+        {% if block.type == 'button_class' %}
+            color:{{block.settings.color}};
+            background-color:{{block.settings.background_color}};
+            border-color:{{block.settings.border_color}};
+        {{block.settings.custom_css}}
+        {% endif %}
+        }
+        @media only screen and (max-width:{{settings.breakpoint_small}}px){
+            .{{block.settings.class_name}}{
+                font-size:{{block.settings.font_size_mobile}}px;
+            {% if block.settings.custom_line_height %}
+                line-height: {{block.settings.line_height_mobile}}%;
+            {% else %}
+                line-height: normal;
+            {% endif %}
+            }
+        }
+        {% if block.type == 'button_class' %}
+        .{{block.settings.class_name}}:hover{
+        {{block.settings.custom_css_hover}}
+        }
+        {% endif %}
+        {% else %}
+        {% if block.settings.font_name and block.settings.font_name != '' %}
+        {% assign fontFamiliy = '@@' | append: block.settings.font_name | append: '@@' %}
+        {% unless loadedFontFamilies contains fontFamiliy %}
+        @font-face {
+            font-family: '{{block.settings.font_name}}';
+            src: url("{{ block.settings.woff2 }}") format('woff2'),
+            url("{{ block.settings.woff }}") format('woff');
+            font-display: swap;
+            font-weight: {{block.settings.weight}};
+            font-style:{% if block.settings.style == blank %}normal{% else %}{{ block.settings.style }}{% endif %};
+        }
+        {% assign loadedFontFamilies = loadedFontFamilies | append: fontFamiliy %}
+        {% endunless %}
+        {% endif %}
+
+        {% if block.settings.global_style %}
+        label,
+        input,
+        textarea,
+        button,
+        a,
+        span,
+        {% endif %}
+        {{block.settings.class_name}},
+        {% if block.type == 'button_class' %}.btn{% endif %}.{{block.settings.class_name}}{
+            font-family: '{{block.settings.font_name}}', {{ block.settings.fallback }};
+            font-weight: {{block.settings.weight}};
+            text-transform:{{block.settings.transform}};
+            text-decoration:{{block.settings.decoration}};
+            font-size:{{block.settings.font_size}}px;
+            font-style:{% if block.settings.style == blank %}normal{% else %}{{ block.settings.style }}{% endif %};
+        {% if block.settings.custom_line_height %}
+            line-height: {{block.settings.line_height}}%;
+        {% else %}
+            line-height: normal;
+        {% endif %}
+            letter-spacing:{{block.settings.letter_spacing}}px;
+            word-spacing:{{block.settings.word_spacing}}px;
+        {% if block.type == 'button_class' %}
+            color:{{block.settings.color}};
+            background-color:{{block.settings.background_color}};
+            border-color:{{block.settings.border_color}};
+        {{block.settings.custom_css}}
+        {% endif %}
+        }
+        @media only screen and (max-width:{{settings.breakpoint_small}}px){
+            .{{block.settings.class_name}}{
+                font-size:{{block.settings.font_size_mobile}}px;
+            {% if block.settings.custom_line_height %}
+                line-height: {{block.settings.line_height_mobile}}%;
+            {% else %}
+                line-height: normal;
+            {% endif %}
+            }
+        }
+        {% if block.type == 'button_class' %}
+        .{{block.settings.class_name}}:hover{
+        {{block.settings.custom_css_hover}}
+        }
+        {% endif %}
+        {% endif %}
+
+
+        {% endfor %}
+    </style>
+{%- endcapture -%}
+{{- style | strip_newlines | replace: '  ', ' ' | replace: '  ', ' '-}}
+
+{% if request.design_mode %}
+    <style>
+        #shopify-section-{{section.id}}{
+            position:fixed;
+            left:0;
+            padding:20px;
+            background-color:#fff;
+            top:50%;
+            z-index:800;
+            display:none;
+        }
+    </style>
+    <p>Font Style Preview</p>
+    {% for block in section.blocks %}
+        <p class="{{block.settings.class_name}}">.{{block.settings.class_name}} : The quick brown fox jumps over the lazy dog</p>
+    {% endfor %}
+{% endif %}
+
+
+{% schema %}
+{
+"name": "Font & Button Styles",
+"settings": [
+{
+"type": "paragraph",
+"content": "Add a block to overwrite an existing font or button style. You can also define new styles."
+}
+],
+"blocks":[
+{
+"type": "font_class",
+"name":"Font class",
+"settings": [
+{
+"type": "checkbox",
+"id": "global_style",
+"label": "Global Style",
+"default": false,
+"info": "Set this as the global font style."
+},
+{
+"type": "text",
+"id": "title",
+"label": "Title"
+},
+{
+"type": "text",
+"id": "class_name",
+"label": "Class name",
+"placeholder": "h1"
+},
+{
+"type": "radio",
+"id": "type",
+"label": "Font",
+"info": "Select if you want to use a Shopify font or a custom one.",
+"options": [
+{
+"value": "shopify",
+"label": "Shopify"
+},
+{
+"value": "custom",
+"label": "Custom"
+}
+]
+},
+{
+"type": "header",
+"content": "Shopify Font"
+},
+{
+"type": "font_picker",
+"id": "font",
+"label": "Font",
+"default": "poppins_n5"
+},
+{
+"type": "header",
+"content": "Custom Font"
+},
+{
+"type": "text",
+"id": "font_name",
+"label": "Font name",
+"info": "Set the name of the font."
+},
+{
+"type": "url",
+"id": "woff",
+"label": ".woff file",
+"info": "Upload the font as .woff to your stores files."
+},
+{
+"type": "url",
+"id": "woff2",
+"label": ".woff2 file",
+"info": "Upload the font as .woff2 to your stores files."
+},
+{
+"type": "select",
+"id": "fallback",
+"label": "Fallback family",
+"info": "Select what font is getting loaded when the custom font isn't working.",
+"options": [
+{
+"value": "serif",
+"label": "serif"
+},
+{
+"value": "sans-serif",
+"label": "sans-serif"
+}
+]
+},
+{
+"type": "range",
+"id": "weight",
+"label": "Weight",
+"min": 100,
+"max": 900,
+"step": 50,
+"default": 400,
+"info": "Set the weight of your custom font. For Reference see this site: https:\/\/developer.mozilla.org\/de\/docs\/Web\/CSS\/font-weight"
+},
+{
+"type": "select",
+"id": "style",
+"label": "Style",
+"info": "Set the syle of the used font.",
+"options": [
+{
+"value": "normal",
+"label": "normal"
+},
+{
+"value": "italic",
+"label": "italic"
+},
+{
+"value": "oblique",
+"label": "oblique"
+}
+]
+},
+{
+"type": "select",
+"id": "transform",
+"label": "Transform",
+"info": "Set the transform of the used font.",
+"options": [
+{
+"value": "none",
+"label": "none"
+},
+{
+"value": "capitalize",
+"label": "capitalize"
+},
+{
+"value": "uppercase",
+"label": "uppercase"
+},
+{
+"value": "lowercase",
+"label": "lowercase"
+}
+]
+},
+{
+"type": "select",
+"id": "decoration",
+"label": "Decoration",
+"info": "Set the decoration of the used font.",
+"options": [
+{
+"value": "none",
+"label": "none"
+},
+{
+"value": "underline",
+"label": "underline"
+},
+{
+"value": "line-through",
+"label": "line-through"
+},
+{
+"value": "overline",
+"label": "overline"
+},
+{
+"value": "underline overline",
+"label": "underline overline"
+}
+]
+},
+{
+"type": "range",
+"id": "font_size",
+"label": "Font size",
+"unit": "px",
+"min": 8,
+"max": 80,
+"step": 1,
+"default": 16,
+"info": "Set the font size of the used font."
+},
+{
+"type": "range",
+"id": "font_size_mobile",
+"label": "Font size",
+"unit": "px",
+"min": 8,
+"max": 80,
+"step": 1,
+"default": 16,
+"info": "Set the font size of the used font on mobile."
+},
+{
+"type": "checkbox",
+"id": "custom_line_height",
+"label": "Use custom line height",
+"default": false,
+"info": "Set if 'normal' or the cusrom line height is used."
+},
+{
+"type": "range",
+"id": "line_height",
+"label": "Line height",
+"unit": "%",
+"min": 0,
+"max": 200,
+"step": 5,
+"default": 100,
+"info": "Set the line height of the used font."
+},
+{
+"type": "range",
+"id": "line_height_mobile",
+"label": "Line height mobile",
+"unit": "%",
+"min": 0,
+"max": 200,
+"step": 5,
+"default": 100,
+"info": "Set the line height of the used font."
+},
+{
+"type": "header",
+"content": "Advanced settings"
+},
+{
+"type": "range",
+"id": "letter_spacing",
+"label": "Letter spacing",
+"unit": "px",
+"min": -10,
+"max": 10,
+"step": 0.5,
+"default": 0,
+"info": "Set the spacing between the letters of the used font."
+},
+{
+"type": "range",
+"id": "word_spacing",
+"label": "Word spacing",
+"unit": "px",
+"min": -20,
+"max": 20,
+"step": 0.5,
+"default": 0,
+"info": "Set the spacing between the words of the used font."
+}
+]
+},
+{
+"type": "button_class",
+"name":"Button class",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Title"
+},
+{
+"type": "text",
+"id": "class_name",
+"label": "Class name",
+"placeholder": "h1",
+"info": "Name the class you want to define or overwite."
+},
+{
+"type": "radio",
+"id": "type",
+"label": "Font",
+"info": "Select if you want to use a Shopify font or a custom one.",
+"options": [
+{
+"value": "shopify",
+"label": "Shopify"
+},
+{
+"value": "custom",
+"label": "Custom"
+}
+]
+},
+{
+"type": "header",
+"content": "Shopify Font"
+},
+{
+"type": "font_picker",
+"id": "font",
+"label": "Font",
+"default": "poppins_n5"
+},
+{
+"type": "header",
+"content": "Custom Font"
+},
+{
+"type": "text",
+"id": "font_name",
+"label": "Font name",
+"info": "Set the name of the font."
+},
+{
+"type": "url",
+"id": "woff",
+"label": ".woff file",
+"info": "Upload the font as .woff to your stores files."
+},
+{
+"type": "url",
+"id": "woff2",
+"label": ".woff2 file",
+"info": "Upload the font as .woff2 to your stores files."
+},
+{
+"type": "select",
+"id": "fallback",
+"label": "Fallback family",
+"info": "Select what font is getting loaded when the custom font isn't working.",
+"options": [
+{
+"value": "serif",
+"label": "serif"
+},
+{
+"value": "sans-serif",
+"label": "sans-serif"
+}
+]
+},
+{
+"type": "range",
+"id": "weight",
+"label": "Weight",
+"min": 100,
+"max": 900,
+"step": 50,
+"default": 400,
+"info": "Set the weight of your custom font. For Reference see this site: https:\/\/developer.mozilla.org\/de\/docs\/Web\/CSS\/font-weight"
+},
+{
+"type": "select",
+"id": "style",
+"label": "Style",
+"info": "Set the syle of the used font.",
+"options": [
+{
+"value": "normal",
+"label": "normal"
+},
+{
+"value": "italic",
+"label": "italic"
+},
+{
+"value": "oblique",
+"label": "oblique"
+}
+]
+},
+{
+"type": "select",
+"id": "transform",
+"label": "Transform",
+"info": "Set the transform of the used font.",
+"options": [
+{
+"value": "none",
+"label": "none"
+},
+{
+"value": "capitalize",
+"label": "capitalize"
+},
+{
+"value": "uppercase",
+"label": "uppercase"
+},
+{
+"value": "lowercase",
+"label": "lowercase"
+}
+]
+},
+{
+"type": "select",
+"id": "decoration",
+"label": "Decoration",
+"info": "Set the decoration of the used font.",
+"options": [
+{
+"value": "none",
+"label": "none"
+},
+{
+"value": "underline",
+"label": "underline"
+},
+{
+"value": "line-through",
+"label": "line-through"
+},
+{
+"value": "overline",
+"label": "overline"
+},
+{
+"value": "underline overline",
+"label": "underline overline"
+}
+]
+},
+{
+"type": "range",
+"id": "font_size",
+"label": "Font size",
+"unit": "px",
+"min": 8,
+"max": 80,
+"step": 1,
+"default": 16,
+"info": "Set the font size of the used font."
+},
+{
+"type": "range",
+"id": "font_size_mobile",
+"label": "Font size",
+"unit": "px",
+"min": 8,
+"max": 80,
+"step": 1,
+"default": 16,
+"info": "Set the font size of the used font on mobile."
+},
+{
+"type": "checkbox",
+"id": "custom_line_height",
+"label": "Use custom line height",
+"default": false,
+"info": "Set if 'normal' or the cusrom line height is used."
+},
+{
+"type": "range",
+"id": "line_height",
+"label": "Line height",
+"unit": "%",
+"min": 0,
+"max": 200,
+"step": 5,
+"default": 100,
+"info": "Set the line height of the used font."
+},
+{
+"type": "range",
+"id": "line_height_mobile",
+"label": "Line height mobile",
+"unit": "%",
+"min": 0,
+"max": 200,
+"step": 5,
+"default": 100,
+"info": "Set the line height of the used font."
+},
+{
+"type": "header",
+"content": "Advanced settings"
+},
+{
+"type": "range",
+"id": "letter_spacing",
+"label": "Letter spacing",
+"unit": "px",
+"min": -10,
+"max": 10,
+"step": 0.5,
+"default": 0,
+"info": "Set the spacing between the letters of the used font."
+},
+{
+"type": "range",
+"id": "word_spacing",
+"label": "Word spacing",
+"unit": "px",
+"min": -20,
+"max": 20,
+"step": 0.5,
+"default": 0,
+"info": "Set the spacing between the words of the used font."
+},
+{
+"type": "color",
+"id": "color",
+"label": "Color"
+},
+{
+"type": "color",
+"id": "background_color",
+"label": "Background color"
+},
+{
+"type": "color",
+"id": "border_color",
+"label": "Border color"
+},
+{
+"type": "html",
+"id": "custom_css",
+"label": "Custom CSS"
+},
+{
+"type": "html",
+"id": "custom_css_hover",
+"label": "Custom CSS hover"
+}
+]
+}
+]
+}
+{% endschema %}

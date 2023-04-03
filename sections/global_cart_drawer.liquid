@@ -1,0 +1,215 @@
+{% assign id = section.id %}
+
+
+
+<style>
+    #shopify-section-{{id}}{
+        height: 0;
+        width: 100%;
+        z-index: 999;
+    }
+    #shopify-section-{{id}} .cart_wrapper{
+        background-color: white;
+      	width: 100%;
+      	max-width: 400px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        top: 0;
+        right: 0;
+        z-index: 999;
+        pointer-events: none;
+        border: 2px solid #0003;
+    }
+    #shopify-section-{{id}} .cart_wrapper.active{
+        opacity: 1;
+        pointer-events: all;
+    }
+    #cart_drawer{
+        width: 100%;
+        height: 100%;
+    }
+    #cart_drawer .items{
+        height: 100%;
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+    #cart_drawer .total{
+        border-top: 1px solid #0001;;
+        border-bottom: 1px solid #0001;
+    }
+    #cart_drawer .item{
+        padding: 12px 0;
+        border-bottom: 1px solid #0003;
+    }
+    #cart_drawer .item:first-child{
+        padding-top: 0;
+    }
+    #cart_drawer .item_image .image-wrapper{
+        background-color: #0001;
+    }
+    #cart_drawer .checkout a{
+        width: 100%;
+    }
+
+
+    #cart_drawer .price {
+        color: {{settings.color_price_cart}};
+    }
+    #cart_drawer .compare_at_price {
+        color: {{settings.color_compare_price_cart}};
+        text-decoration: line-through;
+    }
+    #cart_drawer .cart-relative-discount {
+        color: {{settings.color_discount_cart}};
+    }
+
+    #cart_drawer .col-gap {
+        gap: 16px;
+    }
+    
+    @media screen and (max-width: {{settings.breakpoint_small}}px) {
+        #cart_drawer .col-gap {
+            gap: 16px;
+        }
+    }
+</style>
+
+
+<section class="page-width">
+    <div class="flex row container is-relative">
+        <div class="spacing-m cart_wrapper is-absolute">
+            <div id="cart_drawer" class="is-relative">
+                <div section-api-replace class="items grid col-1">
+                    {% for line_item in cart.items %}
+                        {% assign is_bundle_item = false %}
+                        {% for property in line_item.properties %}
+                            {% if property.first == 'set_id' %}
+                                {% assign is_bundle_item = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% unless is_bundle_item %}
+                            <div class="item">
+                                <div class="grid col-5 col-gap">
+                                    <div class="flex col grid-item col-span-2">
+                                            <div class="flex col middle item_image">
+                                                <a href="{{line_item.product.url}}" class="flex">
+                                                    {% render 'image_element', image:line_item.product.featured_image, aspect_ratio: 0.6666 %}
+                                                </a>
+                                            </div>
+                                    </div>
+                                    <div class="flex col start grid-item col-span-3">
+                                        <p class="p  spacing-bottom-xs">{{line_item.title}}</p>
+                                        <div class="flex row middle item_quantity spacing-bottom-s">
+                                            <p>{{'cart.quantity' | t }}:&nbsp;</p><p>{{line_item.quantity}}</p>
+                                        </div>
+                                        <div class="flex row right">
+                                            <span class="price">{{line_item.final_price | money }}</span>
+                                            {% if line_item.variant.compare_at_price %}
+                                                <span class="compare_at_price spacing-left-xs">{{line_item.variant.compare_at_price | money }}</span>
+                                            {% elsif line_item.original_price != line_item.final_price %}
+                                                <span class="compare_at_price spacing-left-xs">{{line_item.variant.original_price | money }}</span>     
+                                            {% endif %}
+                                        </div>
+                                        {% if line_item.variant.compare_at_price %}
+                                            {% assign temp_final = line_item.final_price | times: 1.0 %}
+                                            {% assign temp_compare = line_item.variant.compare_at_price | times: 1.0 %}
+                                            {% assign discount = temp_final | divided_by: temp_compare | times: 100 %}
+                                            <span class="text-align-right cart-relative-discount">-{{100.0 | minus: discount | round }} %</p>
+                                        {% else %}
+                                            {% if line_item.original_price != line_item.final_price %}
+                                                {% assign temp_final = line_item.final_price | times: 1.0 %}
+                                                {% assign temp_compare = line_item.original_price | times: 1.0 %}
+                                                {% assign discount = temp_final | divided_by: temp_compare | times: 100 %}
+                                                <span class="text-align-right cart-relative-discount">-{{100.0 | minus: discount | round }} %</p>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>      
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+                <div class="checkout flex row center spacing-top-m">
+                    <a href="{{routes.cart_url}}" class="btn btn--primary">{{'cart.go_to_cart' | t }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let readyToClose = false;
+    var cartDrawerSection = document.querySelector('#shopify-section-{{id}}');
+
+    window.addEventListener('opencart', function(){
+        if (window.location.pathname.includes('{{routes.cart_url}}')) {
+            return;
+        }
+        if(!readyToClose){
+            cartDrawerSection.querySelector('.cart_wrapper').classList.add('active');
+            cartDrawerSection.style.overflow = "visible";
+            setTimeout(function(){readyToClose = true;}, 300);
+            setTimeout(closeDrawer, {{section.settings.timeout | times: 1000}});
+        }
+    });
+    document.querySelector('#shopify-section-{{id}} .cart_wrapper').addEventListener("mouseenter", function() { 
+        readyToClose = false;
+    });
+    document.querySelector('#shopify-section-{{id}} .cart_wrapper').addEventListener("mouseout", function() {
+        const element = document.querySelector('#shopify-section-{{id}} .cart_wrapper');
+        if (element.parentNode.querySelector(":hover") != element) {
+            readyToClose = true; 
+            closeDrawer();
+        }
+    });
+
+    document.querySelector('body').addEventListener('click', closeToggle);
+
+    function closeToggle(event){
+        if(!(cartDrawerSection.querySelector('.cart_wrapper').contains(event.target))){
+            closeDrawer();
+        }
+    }
+    function closeDrawer(){
+        if(readyToClose){
+            cartDrawerSection.querySelector('.cart_wrapper').classList.remove('active');
+            cartDrawerSection.style.overflow = "hidden";
+            readyToClose = false;
+        }
+    }
+
+    window.addEventListener('cartdatachanged', (e) => {
+        fetch('{{routes.cart_url}}?section_id={{section.id}}')
+        .then(resp => {
+            if(resp.ok){
+                return resp.text()
+            }
+            else{
+                throw new Error(`${response.status}: ${response.message}`);
+            }
+        })
+        .then(text => {
+            let oldSection = document.querySelector('#shopify-section-{{section.id}} [section-api-replace]');
+            let newSectionHtml = new DOMParser().parseFromString(text,'text/html').querySelector('#shopify-section-{{section.id}} [section-api-replace]').innerHTML
+            oldSection.innerHTML = newSectionHtml
+        })
+    })
+</script>
+
+{% schema %}
+{
+    "name": "Mini Cart",
+    "settings": [
+        {
+            "type": "range",
+            "id": "timeout",
+            "label": "Timeout",
+            "unit": "sec",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "default": 3
+        }
+    ]
+}
+{% endschema %}

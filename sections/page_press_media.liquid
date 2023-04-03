@@ -1,0 +1,541 @@
+{% if section.settings.title != blank %}
+                <div class="bold main_title spacing-bottom-{{section.settings.main_heading_spacing_bottom}} spacing-top-{{section.settings.spacing_top}}"><{{section.settings.main_heading_tag}} class="bold {{section.settings.main_heading_class}}" style="display: inline; cursor: pointer;">{% render 'icon' icon: 'chevron-left' %}{{ section.settings.title | escape }}</{{section.settings.main_heading_tag}}></div> 
+        {% endif %}
+<div class="press_media flex row spacing-bottom-{{section.settings.spacing_bottom}} {% if block.settings.title == blank %}spacing-top-{{section.settings.spacing_top}}{% endif %}">
+  <div class="media_tabs">
+    {% for block in section.blocks %}
+      <div class="tab_{{block.id}}">
+        {% if block.settings.title != blank %}
+                <div class="spacing-bottom-{{section.settings.heading_spacing_bottom}}"><{{section.settings.heading_tag}} class="title_{{block.id}} {{section.settings.heading_class}}" onmouseover="tabClicked('{{block.id}}')" onclick="tabClicked('{{block.id}}')" style="display: inline; cursor: pointer;">{{ block.settings.title | escape }}</{{section.settings.heading_tag}}><div class="media_type" style="pointer-events: none;">{{block.settings.media_type}}</div></div>
+        {% endif %}
+        <div  class="only_medium-down spacing-bottom-{{section.settings.heading_spacing_bottom}}">
+          <div class="pic_{{block.id}} animation on-load fade-in hidden">
+          {% if block.settings.image != blank %}
+            {% capture picture %}{%render 'image_croper', image: block.settings.image, shape: block.settings.image_shape, crop_position: block.settings.image_focal_point%}{% endcapture %}
+            <div class="image flex col">
+                <a href="{{block.settings.link}}"><img class="image" src="{{picture}}" style="width: 100%; object-fit: {{block.settings.image_fit}};"></a>
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+   {% endfor %}
+  </div>
+
+  <div class="image_field_desktop only_large flex col stretch" style="width: 100%; margin-left: 25px;">
+   {% for block in section.blocks %}
+    <div class="pic_{{block.id}} animation on-load fade-in hidden">
+    {% if block.settings.image != blank %}
+        {% capture picture %}{%render 'image_croper', image: block.settings.image, shape: block.settings.image_shape, crop_position: block.settings.image_focal_point%}{% endcapture %}
+        <div class="image flex col" style="width: 100%;">
+          <a href="{{block.settings.link}}"><img class="image" src="{{picture}}" style="width: 100%; object-fit: {{block.settings.image_fit}};"></a>
+        </div>
+    {% endif %}
+    </div>
+   {% endfor %}
+  </div>
+</div>
+
+<script>
+function tabClicked(block_id)
+{
+  if( document.querySelectorAll('#shopify-section-{{section.id}} .media_tabs .bold')[0] != document.querySelectorAll('.title_' + block_id)[0])
+  {
+    if ( document.querySelectorAll('#shopify-section-{{section.id}} .visible').length != 0)
+    {
+    document.querySelectorAll('#shopify-section-{{section.id}} .visible')[0].classList.remove('visible');
+    document.querySelectorAll('#shopify-section-{{section.id}} .visible')[0].classList.remove('visible');
+    }
+    if ( document.querySelectorAll('#shopify-section-{{section.id}} .media_tabs .bold').length != 0)
+    {
+    document.querySelectorAll('#shopify-section-{{section.id}} .media_tabs .bold')[0].classList.remove('bold');
+    }
+
+    document.querySelectorAll('.pic_' + block_id)[0].classList.add('visible');
+    document.querySelectorAll('.pic_' + block_id)[1].classList.add('visible');
+    document.querySelectorAll('.title_' + block_id)[0].classList.add('bold');
+  }
+}
+function clickFirstElement()
+{
+  if (document.querySelectorAll('.media_tabs')[0] != null)
+  {
+    tabClicked( document.querySelectorAll('.media_tabs')[0].children[0].classList[0].replace("tab_", "" ) );
+  }
+
+}
+
+    document.addEventListener("DOMContentLoaded", hangEventhandlerOnElementClick('#shopify-section-{{section.id}} .main_title', 'page_press_section', 'page_press_media_section'));
+    document.addEventListener("DOMContentLoaded", clickFirstElement());
+
+</script>
+
+<style>
+  #shopify-section-{{section.id}} .media_tabs { 
+    min-width: 200px;
+    }
+    #shopify-section-{{section.id}} .clever_icon { 
+    display: inline;
+    }
+    #shopify-section-{{section.id}} .press_media{
+      min-height: 600px;
+    }
+    #shopify-section-{{section.id}} .media_type{
+
+    display: inline;
+    font-size: 0.8em;
+    position: absolute;
+    font-family: 'Apercu Pro Bold', sans-serif;
+    }
+  @media (max-width: {{settings.breakpoint_medium }}px) {
+    #shopify-section-{{section.id}} .media_tabs {
+      width: 100%;
+    }
+    #shopify-section-{{section.id}} .press_media{
+      min-height: inherit;
+    }
+  }
+
+  @media (min-width: {{settings.breakpoint_medium }}px) {
+    #shopify-section-{{section.id}} .media_tabs .h2{
+      font-size: {{section.settings.font_size}}px;
+    }
+    #shopify-section-{{section.id}} .media_tabs .h2.bold{
+      font-size: {{section.settings.font_size}}px;
+    }
+
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Press Media",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Page title"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title",
+    "default": "lorem ipsum"
+  },
+  {
+    "type": "select",
+    "id": "main_heading_spacing_bottom",
+    "label": "Heading Spacing bottom",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "main_heading_tag",
+    "label": "Html tag",
+    "default": "p",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "small",
+            "label": "small"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "main_heading_class",
+    "label": "Font class",
+    "default": "h2",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "note",
+            "label": "note"
+        }
+    ]
+  },
+  {
+    "type": "header",
+    "content": "Section spacing"
+  },
+  {
+    "type": "select",
+    "id": "spacing_top",
+    "label": "Section Spacing top",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "spacing_bottom",
+    "label": "Section Spacing bottom",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "header",
+    "content": "Magazine titles"
+  },
+  {
+    "type": "range",
+    "id": "font_size",
+    "label": "Font size for magazin titles (only desktop)",
+    "unit": "px",
+    "min": 1,
+    "max": 50,
+    "step": 1,
+    "default": 32
+  },
+  {
+    "type": "select",
+    "id": "heading_spacing_bottom",
+    "label": "Titles Spacing",
+    "default": "xs",
+    "options": [
+        {
+            "value": "xs",
+            "label": "xs"
+        },
+        {
+            "value": "s",
+            "label": "s"
+        },
+        {
+            "value": "m",
+            "label": "m"
+        },
+        {
+            "value": "l",
+            "label": "l"
+        },
+        {
+            "value": "xl",
+            "label": "xl"
+        },
+        {
+            "value": "xxl",
+            "label": "xxl"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "heading_tag",
+    "label": "Html tag",
+    "default": "p",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "small",
+            "label": "small"
+        }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "heading_class",
+    "label": "Font class",
+    "default": "h2",
+    "options": [
+        {
+            "value": "h1",
+            "label": "h1"
+        },
+        {
+            "value": "h2",
+            "label": "h2"
+        },
+        {
+            "value": "h3",
+            "label": "h3"
+        },
+        {
+            "value": "h4",
+            "label": "h4"
+        },
+        {
+            "value": "h5",
+            "label": "h5"
+        },
+        {
+            "value": "h6",
+            "label": "h6"
+        },
+        {
+            "value": "p",
+            "label": "p"
+        },
+        {
+            "value": "note",
+            "label": "note"
+        }
+    ]
+  }
+
+  ],
+  "blocks": [
+    {
+        "type": "image",
+        "name": "media",
+        "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "lorem ipsum"
+                },
+                {
+                  "type": "text",
+                  "id": "media_type",
+                  "label": "Type of media",
+                  "default": "lorem ipsum"
+                },
+                {
+                  "type": "text",
+                  "id": "release_date",
+                  "label": "Release date",
+                  "default": "00.00.0000"
+                },
+                {
+                  "type": "text",
+                  "id": "link",
+                  "label": "Link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Press image"
+                },
+                {
+                    "type":      "select",
+                    "id":        "image_focal_point",
+                    "label":     "Left image focal point",
+                    "default": "center",
+                    "options": [
+                      {
+                        "value": "",
+                        "label": "center"
+                      },
+                      {
+                        "value": "left",
+                        "label": "left"
+                      },
+                      {
+                        "value": "right",
+                        "label": "right"
+                      },
+                      {
+                        "value": "top",
+                        "label": "top"
+                      },
+                      {
+                        "value": "bottom",
+                        "label": "bottom"
+                      }
+                    ],
+                    "default":   ""
+                },
+                {
+                    "type":      "select",
+                    "id":        "image_shape",
+                    "label":     "Image shape",
+                    "default": "sixteen_by_nine",
+                    "options": [
+                      {
+                        "value": "",
+                        "label": "Original"
+                      },
+                      {
+                        "value": "square",
+                        "label": "Square"
+                      },
+                      {
+                        "value": "four_by_three",
+                        "label": "4:3"
+                      },
+                      {
+                        "value": "sixteen_by_nine",
+                        "label": "16:9"
+                      }
+                    ],
+                    "default":   "square"
+                  },
+                  {
+                    "type":      "select",
+                    "id":        "image_fit",
+                    "label":     "Image fit",
+                    "default": "cover",
+                    "options": [
+                      {
+                        "value": "cover",
+                        "label": "Cover"
+                      }
+                      ,
+                      {
+                        "value": "contain",
+                        "label": "contain"
+                      }
+                    ],
+                    "default":   "contain"
+                  }
+        ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,901 @@
+<style>
+    .pagination_wrapper{
+        border: 1px solid #333333;
+    }
+    .pagination_arrow.disabled{
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    .pagination_select{
+        border-left: 1px solid #333333;
+        border-right: 1px solid #333333;
+    }
+
+      {% if collection.template_suffix == "salesTemplate" %}
+    #product_grid .container .product_price span:first-of-type{
+        color: #d16262;
+    }
+    #product_grid .tags p{
+        background-color: #d16262;
+    }
+    {% endif %}
+
+    #shopify-section-collection_product_grid .jdgm-prev-badge__text {
+      	display: none;
+    }
+    #shopify-section-collection_product_grid .tags .sales{
+        background-color: #d16262;
+    }
+    .filter-no-results a{
+        font-size: 16px;
+        text-decoration:underline;
+    }
+    #shopify-section-{{section.id}} .promotion-item-min-height{
+      min-height:350px;
+    }
+
+    #shopify-section-{{section.id}} #product_grid {
+      margin-left: -0.5px;
+    }
+
+</style>
+
+{% assign grid_size = section.settings.rows | times: section.settings.cols %}
+{% assign promotions = 0 %}
+{% for block in section.blocks %}
+    {% assign block_size = block.settings.col_span | times: block.settings.row_span %}
+    {% assign promotions = promotions | plus: block_size %}
+{% endfor %}
+{% assign grid_size = grid_size | minus: promotions %}
+{% assign paginate_by = section.settings.rows | times: section.settings.cols %}
+{% if collection.metafields.siblings.merge.value %}
+    {% assign all_siblings = '' %}
+{% endif %}
+
+
+{% assign tag_order = section.settings.tag_order | split: ',' %}
+
+{% comment %} M. Leimbach: if needs to go once the filter should go live finally{% endcomment %}
+{% if template.suffix == "new-filter" %}
+    {% render 'new_filter', tag_order: tag_order %}
+{% endif %}
+{% paginate collection.products by 250 %}
+    <div class="spacing-top-{{ section.settings.spacing_top }} spacing-bottom-{{ section.settings.spacing_bottom }}">
+        <div product-grid id="product_grid" class="grid col-{{ section.settings.cols }} medium-down_col-2">
+            {% capture sizes %}{% render 'image_sizes', small: 1, medium_up: section.settings.cols , page_width: true %}{% endcapture %}
+            {% for product in collection.products %}
+                {% comment %} {% if forloop.index == 5 %}
+                    {% break %}
+                {% endif %} {% endcomment %}
+                    {% if collection.metafields.siblings.merge.value %}
+                        {% unless all_siblings contains product.handle %}
+                            {% render 'product_grid_item': product: product, sizes: sizes, index: forloop.index, enable_alternate_image: true %}
+                            {% assign sibling_count = product.metafields.siblings | size %}
+                            {% for i in (1..sibling_count) %}
+                                {% assign sibling_key = 'sibling_' | append: i %}
+                                {% assign sibling = product.metafields.siblings[sibling_key].value %}
+                                {% assign all_siblings = all_siblings | append: ',' | append: sibling.handle %}
+                            {% endfor %}
+                        {% endunless %}
+                    {% else %}
+                        {% render 'product_grid_item': product: product, sizes: sizes, enable_alternate_image: true %}
+                    {% endif %}
+            {% endfor %}
+            {% if collection.products_count == 0 %}
+                <div class="grid-item col-span-{{ section.settings.cols }} medium-down_col-span-2 flex row center spacing-top-l spacing-bottom-l">
+                    {% assign reset_link = collection.url %}
+                    <p class="p filter-no-results">{{ 'general.filter.no_results_html' | t: link: reset_link }}</p>
+                </div>
+            {% endif %}
+
+            {% comment %} {% render 'loading_animation', css_class: 'bc_collection_loading_animation'  %} {% endcomment %}
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'promotion' %}
+                        {% if block.settings.collection == collection.handle %}
+                            <div id="promotion-{{ block.id }}" class="promotion-item promotion-item-min-height grid-item col-start-{{ block.settings.col_start }} col-span-2 row-start-{{ block.settings.row_start }} row-span-1 medium-down_col-span-2 medium-down_row-span-1 medium-down_col-start-1">
+                                <style>
+                                    #promotion-{{ block.id }} .grid .grid-item{
+                                        background-color:{{ block.settings.background_color }};
+                                    } 
+        
+                                    #promotion-{{ block.id }} .promotion_image_wrapper {
+                                        display: flex;
+                                        width:100%;
+                                        height: 100%;
+                                        background-image: url({{ block.settings.image | image_url }});
+                                        background-repeat: no-repeat;
+                                        background-size: cover;
+                                    }
+        
+                                    #promotion-{{ block.id }} .promotion-text {
+                                        bottom: 0;
+                                        color: {{ block.settings.text_color }};
+                                    }
+                                    #promotion-{{ block.id }} .promotion-text .btn {
+                                        color: {{ block.settings.text_color }};
+                                    }
+        
+        
+                                </style>
+                                <div class="is-relative container">
+                                  <a href="{{ block.settings.button_link }}" class="btn {{ block.settings.button_class }}">
+                                    <div class="grid-item promotion_image_wrapper">
+                                        {%- comment -%}
+                                            {% capture sizes %}{% render 'image_sizes', medium_down:2, large:block.settings.col_span , page_width: true %}{% endcapture %}
+                                        {% render 'image_element', image: block.settings.image, fit: 'cover', sizes:sizes %}
+                                        {%- endcomment -%}
+                                    </div>
+                                    <div class="container flex col {{ block.settings.text_align }} {{ block.settings.text_position }} spacing-{{ block.settings.spacing }} is-absolute promotion-text">
+                                        {% if block.settings.heading != blank %}
+                                            <{{ block.settings.heading_tag }} class="{{ block.settings.heading_class }} {{ block.settings.heading_weight_class }}"> {{block.settings.heading}} </{{block.settings.heading_tag}}>
+                                        {% endif %}
+                                        {% if block.settings.richtext != blank %}
+                                            <{{ block.settings.richtext_tag }} class="{{ block.settings.richtext_class }} {{ block.settings.richtext_weight_class }} spacing-top-xs"> {{block.settings.richtext}} </{{block.settings.richtext_tag}}>
+                                        {% endif %}
+                                        {% if block.settings.button_link != "" and block.settings.button_label != "" %}
+                                            <div class="btn {{ block.settings.button_class }}">
+                                              {{ block.settings.button_label }}
+                                            </div>
+                                        {% endif %}
+                                      </div>
+                                    </a>
+                                </div> 
+                            </div>
+                        {% endif %} 
+                    {% when 'usps' %}
+                        {% if block.settings.text_1 != blank and block.settings.text_2 != blank and block.settings.text_3 != blank %}
+                            <div id="shopify-section-{{ block.id }}" class="promotion-item grid-item row-start-2 medium-down_row-start-3 col-span-4 medium-down_col-span-2">
+                                {% render 'triple_usp_v2', section: block %}
+                            </div>   
+                        {% endif %}
+                {% endcase %}
+            {% endfor %}
+
+        </div>
+		<div id="pagination"></div>
+    </div>
+{% endpaginate %}
+
+<script>
+    //window.addEventListener('resize',setPromotionHeight)
+    //document.addEventListener('applyFilter',setPromotionHeight)
+    function setPromotionHeight(){
+        let width = document.querySelector('.product_grid_item-overlay').getBoundingClientRect().height;
+        document.querySelectorAll('.promotion_image_wrapper .image-wrapper').forEach(element => {
+            if (window.innerWidth <= {{ settings.breakpoint_medium }}) {
+                element.style.width = '';
+            }
+            else{
+                element.style.width = width + 'px';            
+            }
+            
+        })
+    }
+    document.dispatchEvent(new Event('section-collection_product_grid:loaded'));
+</script>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Filter"
+    },
+    {
+      "type": "textarea",
+      "id": "tag_order",
+      "label": "Tag order"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "Rows",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "cols",
+      "label": "Columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing top",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing bottom",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "xs",
+          "label": "xs"
+        },
+        {
+          "value": "s",
+          "label": "s"
+        },
+        {
+          "value": "m",
+          "label": "m"
+        },
+        {
+          "value": "l",
+          "label": "l"
+        },
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promotion",
+      "name": "Promotion",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Select the collection for this promotion."
+        },
+        {
+          "type": "range",
+          "id": "row_start",
+          "label": "Row start",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "col_start",
+          "label": "Column start",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading",
+          "default": "New arrivals"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Html tag",
+          "default": "p",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "small",
+              "label": "small"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_class",
+          "label": "Font class",
+          "default": "h4",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "heading_weight_class",
+          "label": "Weight class",
+          "default": "",
+          "options": [
+            {
+              "value": "bold",
+              "label": "bold"
+            },
+            {
+              "value": "",
+              "label": "normal"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Richtext"
+        },
+        {
+          "type": "text",
+          "id": "richtext",
+          "label": "Heading",
+          "default": "Discover now"
+        },
+        {
+          "type": "select",
+          "id": "richtext_tag",
+          "label": "Html tag",
+          "default": "p",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "small",
+              "label": "small"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "richtext_class",
+          "label": "Font class",
+          "default": "note",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "note",
+              "label": "note"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "richtext_weight_class",
+          "label": "Weight class",
+          "options": [
+            {
+              "value": "bold",
+              "label": "bold"
+            },
+            {
+              "value": "",
+              "label": "normal"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "button_class",
+          "label": "Class",
+          "default": "btn--tertiary"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Label",
+          "default": "Call to action"
+        },
+        {
+          "type": "header",
+          "content": "Styling"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text and button color",
+          "default": "#fff"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "middle",
+              "label": "Center"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "top",
+              "label": "Top"
+            }
+          ],
+          "default": "bottom"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Text position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "spacing",
+          "label": "Spacing",
+          "options": [
+            {
+              "value": "none",
+              "label": "none"
+            },
+            {
+              "value": "xs",
+              "label": "xs"
+            },
+            {
+              "value": "s",
+              "label": "s"
+            },
+            {
+              "value": "m",
+              "label": "m"
+            },
+            {
+              "value": "l",
+              "label": "l"
+            },
+            {
+              "value": "xl",
+              "label": "xl"
+            },
+            {
+              "value": "xxl",
+              "label": "xxl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+        "type": "usps",
+        "name": "USPs",
+        "limit": 1,
+        "settings": [
+            {
+                "type": "select",
+                "id": "spacing_top",
+                "label": "Spacing top",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "no spacing"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "spacing_bottom",
+                "label": "Spacing bottom",
+                "options": [
+                    {
+                        "value": "none",
+                        "label": "no spacing"
+                    },
+                    {
+                        "value": "xs",
+                        "label": "xs"
+                    },
+                    {
+                        "value": "s",
+                        "label": "s"
+                    },
+                    {
+                        "value": "m",
+                        "label": "m"
+                    },
+                    {
+                        "value": "l",
+                        "label": "l"
+                    },
+                    {
+                        "value": "xl",
+                        "label": "xl"
+                    },
+                    {
+                        "value": "xxl",
+                        "label": "xxl"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "tag",
+                "label": "Html tag",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    },
+                    {
+                        "value": "small",
+                        "label": "small"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "class",
+                "label": "Font class",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "h1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "h2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "h3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "h4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "h5"
+                    },
+                    {
+                        "value": "h6",
+                        "label": "h6"
+                    },
+                    {
+                        "value": "p",
+                        "label": "p"
+                    },
+                    {
+                        "value": "note",
+                        "label": "note"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "weight_class",
+                "label": "Weight class",
+                "options": [
+                    {
+                        "value": "bold",
+                        "label": "bold"
+                    },
+                    {
+                        "value": "",
+                        "label": "normal"
+                    }
+                ]
+            },
+            {
+                "type": "range",
+                "id": "icon_size",
+                "min": 10,
+                "max": 50,
+                "step": 1,
+                "unit": "px",
+                "label": "Icon size",
+                "default": 20
+            },
+            {
+                "type": "header",
+                "content": "USP 1"
+            },
+            {
+                "type": "url",
+                "id": "link_1",
+                "label": "Link"
+            },
+            {
+                "type": "text",
+                "id": "icon_1",
+                "label": "Icon",
+                "info": "Select the icon by the name defined in snippets/icon.liquid"
+            },
+            {
+                "type": "html",
+                "id": "html_icon_1",
+                "label": "Custom Icon",
+                "info": "Will be preferred over the icon by name"
+            },
+            {
+                "type": "text",
+                "id": "text_1",
+                "label": "Text"
+            },
+            {
+                "type": "header",
+                "content": "USP 2"
+            },
+            {
+                "type": "url",
+                "id": "link_2",
+                "label": "Link"
+            },
+            {
+                "type": "text",
+                "id": "icon_2",
+                "label": "Icon",
+                "info": "Select the icon by the name defined in snippets/icon.liquid"
+            },
+            {
+                "type": "html",
+                "id": "html_icon_2",
+                "label": "Custom Icon",
+                "info": "Will be preferred over the icon by name"
+            },
+            {
+                "type": "text",
+                "id": "text_2",
+                "label": "Text"
+            },
+            {
+                "type": "header",
+                "content": "USP 3"
+            },
+            {
+                "type": "url",
+                "id": "link_3",
+                "label": "Link"
+            },
+            {
+                "type": "text",
+                "id": "icon_3",
+                "label": "Icon",
+                "info": "Select the icon by the name defined in snippets/icon.liquid"
+            },
+            {
+                "type": "html",
+                "id": "html_icon_3",
+                "label": "Custom Icon",
+                "info": "Will be preferred over the icon by name"
+            },
+            {
+                "type": "text",
+                "id": "text_3",
+                "label": "Text"
+            }
+        ]
+    }
+  ]
+}
+{% endschema %}

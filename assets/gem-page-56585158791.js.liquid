@@ -1,0 +1,59 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+
+        jQuery(function() {
+            var $module = jQuery('#m-1588693709327').children('.module');
+
+            var mode = jQuery('.gryffeditor').hasClass('editing') ? 'dev' : 'production';
+            if(mode == 'production') { 
+                $module.find('button[type="submit"]').on('mouseover', function() {
+                    try {
+                        localStorage.setItem('gemId', '#m-1588693709327');
+                    } catch(err) {}
+                });
+
+                var gemId = '';
+                try {
+                    var gemId = localStorage.getItem('gemId');
+                } catch(err) {}
+
+                if(gemId != '') {
+                    var moduleId = '#' + $module.parent().attr('id');
+                    if(gemId == moduleId) {
+                        var cbLink = $module.find('input[name="gemcallback"]').val() != undefined ? jQuery.trim($module.find('input[name="gemcallback"]').val()) : '';
+
+                        if(cbLink && cbLink != '') {
+                            try {
+                                localStorage.setItem('gemId', 'redirected');
+                            } catch(err) {}
+
+                            window.location.href = cbLink;
+                        }
+                    }
+                } else {
+                    var cbLink = $module.find('input[name="gemcallback"]').val() != undefined ? jQuery.trim($module.find('input[name="gemcallback"]').val()) : '';
+
+                    if(cbLink && cbLink != '') {
+                        window.location.href = cbLink;
+                    }
+                }
+            } 
+        });
+    
+        jQuery(function() {
+            var $module = jQuery('#m-1588693709415').children('.module');
+            var btnLabel = $module.attr('data-btnlabel');
+            $module.gfSocialShare({
+                btnLabel: btnLabel
+            });
+        });
+    jQuery(function() {
+  var $module = jQuery('#m-1588700145465').children('.module');
+  $module.gfV1Instagram();
+});
+var gemFlag=!1;for(var i=0;i<pageLibs.length;i++){if(pageLibs[i].indexOf('gfv3product.js')!==-1){if(jQuery.gfV3Product==undefined){gemFlag=!0;break}}if(pageLibs[i].indexOf('gfv3restabs.js')!==-1){if(jQuery.gfV3ResTabs==undefined){gemFlag=!0;break}}if(pageLibs[i].indexOf('gfaccordion.js')!==-1){if(jQuery.gfAccordion==undefined){gemFlag=!0;break}}}if(gemFlag){var count=0;for(var i=0;i<pageLibs.length-1;i++){jQuery.getScript(pageLibs[i],function(){count++;if(count==pageLibs.length-1){jQuery.getScript(pageLibs[pageLibs.length-1],function(){})}})}}

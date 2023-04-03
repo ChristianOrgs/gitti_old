@@ -1,0 +1,8 @@
+{%- if predictive_search.performed -%}
+    {%- if predictive_search.resources.products.size > 0 -%}
+        {% capture sizes %}{% render 'image_sizes', small:2, medium_up:4 , page_width: true %}{% endcapture %}
+        {%- for product in predictive_search.resources.products limit: 3 -%}
+            {% render 'product_grid_item', product:product, sizes: sizes %}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endif -%}

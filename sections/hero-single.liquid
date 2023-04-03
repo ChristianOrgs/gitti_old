@@ -1,0 +1,157 @@
+{%- assign image_desktop = section.settings.image_desktop -%}
+{%- assign image_mobile = section.settings.image_mobile -%}
+{%- assign button_label = section.settings.button_label -%}
+{%- assign button_link = section.settings.button_link -%}
+{%- assign hero_title = section.settings.title -%}
+{%- assign hero_subtitle = section.settings.subtitle -%}
+
+<section class="row row-lg container-wrap hero-single-section">
+    <div class="hero-single">
+        <div class="title">
+            <h1 class="hero-single-title">{{ hero_title }}</h1>
+            <h3 class="hero-single-subtitle">{{ hero_subtitle }}</h3>
+        </div>
+
+        <a href="{{button_link.url}}" class="button mobile-full-size">{{ button_label }}</a>
+    </div>
+</section>
+
+<style>
+    .hero-single {    
+        height: 650px;
+        background-image: url('{{ image_desktop | img_url: '1440x' }}');
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        text-align: center;
+        position: relative;
+    }
+
+    .hero-single .title {
+        padding-top: 1.5em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    .hero-single .title h1 {
+        font-size: 38px;
+    }
+
+    .hero-single a {
+        color: #fff;
+        background-color: #ff8767;
+        line-height: normal;
+        border: 0;
+        height: 48px;
+        font-weight: normal;
+        font-size: 18px;
+        padding-top: .8em;
+    }
+
+    @media screen and (min-width: 992px) {
+        .hero-single .title {
+            position: absolute;
+            right: 2em;
+            top: 3em;
+            text-align: right;
+        }
+
+        .hero-single a {
+            position: absolute;
+            right: 3em;
+            top: 12em;
+            min-width: 350px;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .hero-single-section.row.row-lg {
+            padding-left: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+
+        .hero-single {
+            height: 650px;
+        }
+
+        .hero-single a {
+            position: absolute;
+            bottom: 2em;
+            left: 30vw;
+            right: 30vw;
+        }
+    }
+
+    @media screen and (max-width: 767px ) {
+        
+        .hero-single .title h1 {
+            font-size: 28px;
+        }
+        
+        .hero-single a {
+            position: absolute;
+            bottom: 2em;
+            left: 10vw;
+            right: 10vw;
+        }
+    }
+
+
+    @media screen and (max-width: 767px) {
+        .hero-single {
+            height: 500px;
+            background-image: url('{{ image_mobile | img_url: '960x' }}');
+            background-position: 50% 0%;
+        } 
+    }
+
+</style>
+
+{% comment %} Schema {% endcomment %}
+{% schema %}
+{
+	"name": "Hero Single",
+    "class": "section-hero-single header--full",
+	"settings": [
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image mobile"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+        }
+	],
+	"blocks": [
+	],
+	"presets": [
+		{
+			"name": "Hero Single",
+			"category": "image"
+		}
+	]
+}
+{% endschema %}

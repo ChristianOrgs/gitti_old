@@ -1,0 +1,158 @@
+<style>
+    #countdown-{{block.id}} {
+        background-color: {{block.settings.background_color}};
+    }
+    #countdown-{{block.id}} p.{{block.settings.countdown_text_class}}{
+      color:{{block.settings.countdown_text_color | default: settings.color_primary }}
+  }
+  #countdown-{{block.id}} p.{{block.settings.countdown_class}}{
+      color:{{block.settings.countdown_color | default: block.settings.color }}
+  }
+  #countdown-{{block.id}}  .countdown_divider{
+        padding-left:3px;
+        padding-right:3px;
+    }
+</style>
+<div
+  class="section-spacing-side"
+  {% if block.settings.link != blank %}
+    onclick="location.href='{{block.settings.link}}';"
+  {% endif %}
+>
+  <div id="countdown-{{block.id}}">
+    <div class="only_medium-up flex row center">
+      {% if block.settings.pre_text != blank %}
+        <div class="flex col center middle spacing-right-s">
+          <p class="{{block.settings.text_class}} ">{{ block.settings.pre_text }}</p>
+        </div>
+      {% endif %}
+      <div class="flex col center text-align-center">
+        <p class="{{block.settings.countdown_class}} days"></p>
+        <p class="{{block.settings.countdown_text_class}}">{{ block.settings.days }}</p>
+      </div>
+      <div class="countdown_divider flex col center text-align-center">
+        <p class="{{block.settings.countdown_class}}">:</p>
+      </div>
+      <div class="flex col center text-align-center">
+        <p class="{{block.settings.countdown_class}} hours"></p>
+        <p class="{{block.settings.countdown_text_class}}">{{ block.settings.hours }}</p>
+      </div>
+      <div class="countdown_divider flex col center text-align-center ">
+        <p class="{{block.settings.countdown_class}}">:</p>
+      </div>
+      <div class="flex col center text-align-center">
+        <p class="{{block.settings.countdown_class}} minutes"></p>
+        <p class="{{block.settings.countdown_text_class}}">{{ block.settings.minutes }}</p>
+      </div>
+      <div class="countdown_divider flex col center text-align-center">
+        <p class="{{block.settings.countdown_class}}">:</p>
+      </div>
+      <div class="flex col center text-align-center">
+        <p class="{{block.settings.countdown_class}} seconds"></p>
+        <p class="{{block.settings.countdown_text_class}}">{{ block.settings.seconds }}</p>
+      </div>
+      {% if block.settings.post_text != blank %}
+        <div class="flex col center middle spacing-left-s">
+          <p class="{{block.settings.text_class}}">{{ block.settings.post_text }}</p>
+        </div>
+      {% endif %}
+    </div>
+    <div class="only_small flex col center">
+      {% if block.settings.pre_text != blank %}
+        <div class="flex col center middle spacing-bottom-xs">
+          <p class="{{block.settings.text_class}} ">{{ block.settings.pre_text }}</p>
+        </div>
+      {% endif %}
+      <div class="flex row center">
+        <div class="flex col center text-align-center">
+          <p class="{{block.settings.countdown_class}} days"></p>
+          <p class="{{block.settings.countdown_text_class}}">{{ block.settings.days }}</p>
+        </div>
+        <div class="countdown_divider flex col center text-align-center ">
+          <p class="{{block.settings.countdown_class}}">:</p>
+        </div>
+        <div class="flex col center text-align-center">
+          <p class="{{block.settings.countdown_class}} hours"></p>
+          <p class="{{block.settings.countdown_text_class}}">{{ block.settings.hours }}</p>
+        </div>
+        <div class="countdown_divider flex col center text-align-center">
+          <p class="{{block.settings.countdown_class}}">:</p>
+        </div>
+        <div class="flex col center text-align-center ">
+          <p class="{{block.settings.countdown_class}} minutes"></p>
+          <p class="{{block.settings.countdown_text_class}}">{{ block.settings.minutes }}</p>
+        </div>
+        <div class="countdown_divider flex col center text-align-center ">
+          <p class="{{block.settings.countdown_class}}">:</p>
+        </div>
+        <div class="flex col center text-align-center ">
+          <p class="{{block.settings.countdown_class}} seconds"></p>
+          <p class="{{block.settings.countdown_text_class}}">{{ block.settings.seconds }}</p>
+        </div>
+      </div>
+      {% if block.settings.post_text != blank %}
+        <div class="flex col center middle spacing-top-xs">
+          <p class="{{block.settings.text_class}}">{{ block.settings.post_text }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('shopify:section:load', initCountdown);
+
+  initCountdown();
+
+  function initCountdown() {
+    // Set the date we're counting down to
+    var countDownDate = new Date('{{block.settings.time}}').getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (days < 10) days = '0' + days;
+      if (hours < 10) hours = '0' + hours;
+      if (minutes < 10) minutes = '0' + minutes;
+      if (seconds < 10) seconds = '0' + seconds;
+      // Display the result in the element with id="demo"
+      let countdown = document.getElementById('countdown-{{block.id}}');
+      if (!!countdown) {
+        let days_dom = countdown.querySelectorAll('.days');
+        let hours_dom = countdown.querySelectorAll('.hours');
+        let minutes_dom = countdown.querySelectorAll('.minutes');
+        let seconds_dom = countdown.querySelectorAll('.seconds');
+        days_dom.forEach((day) => {
+          day.innerHTML = days;
+        });
+        hours_dom.forEach((hour) => {
+          hour.innerHTML = hours;
+        });
+        minutes_dom.forEach((minute) => {
+          minute.innerHTML = minutes;
+        });
+        seconds_dom.forEach((second) => {
+          second.innerHTML = seconds;
+        });
+      }
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById('countdown-{{block.id}}').innerHTML =
+          '<div class="flex col center text-align-center"><p class="{{block.settings.countdown_class}}">{{block.settings.expired}}</p></div>';
+      }
+    }, 1000);
+  }
+</script>

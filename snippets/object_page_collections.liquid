@@ -1,0 +1,95 @@
+<style>
+    #shopify-section-{{section.id}} {
+        overflow: hidden;
+    }
+    #shopify-section-{{object.id}}{
+        background-color:{{object.settings.background_color}};
+    }
+</style>
+
+{% for i in (1..6) %}
+            
+    {% capture image_id %}image_{{i}}{% endcapture %}
+    {% capture colelction_id %}collection_{{i}}{% endcapture %}
+
+
+    {% if object.settings[image_id] == blank %}
+        {% if object.settings[collection_id] == blank %}
+            
+                {% capture _ %}{% increment zeroblocks %}{% endcapture %}
+            
+        {% endif %}
+    {% endif %}
+    
+    {% if forloop.last %}
+        {% if zeroblocks > 0 %}
+            {% assign blocks =  forloop.length | minus: zeroblocks %}
+        {% endif %}
+    {% endif %}
+
+{% endfor %}
+    
+    
+
+
+
+
+<div class="overhanging_slider_page-width spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+    <div class="flex col left">
+        <{{object.settings.heading_tag}} class="{{object.settings.heading_class}} {{object.settings.heading_weight_class}} spacing-bottom-xs"> {{object.settings.heading}} </{{object.settings.heading_tag}}>
+        <{{object.settings.richtext_tag}} class="{{object.settings.richtext_class}} {{object.settings.richtext_weight_class}} spacing-bottom-s"> {{object.settings.richtext}} </{{object.settings.richtext_tag}}>
+    </div>
+    
+    
+        
+        <div class="grid {% if blocks < 6 %}col-{{blocks}}{% else %}col-3{% endif %} row-gap col-gap">
+            {% for i in (1..6) %}
+                
+            {% capture image_id %}image_{{i}}{% endcapture %}
+            {% capture collection_id %}collection_{{i}}{% endcapture %}
+                    
+           
+
+            {% if object.settings[image_id] == blank %}
+                {% if object.settings[collection_id] == blank %}
+                        {% continue %}
+                    
+                {% endif %}
+            {% endif %}
+
+
+
+                    <div class="content_container grid-item " style="background-color: white;">
+                        {% unless object.settings.no_image %}
+                        <div class="upper_part">
+                            <a href="{{collections[object.settings[collection_id]].url}}">
+                                <div class="image flex col center middle">
+                                    {% if object.settings[image_id] != blank %}
+                                        {% capture picture %}{%render 'image_croper', image: object.settings[image_id], shape: object.settings.image_shape, crop_position: object.settings.image_focal_point%}{% endcapture %}
+                                        <img class="image" src="{{picture}}" style="width: 100%; object-fit: {{object.settings.image_fit}};">
+                                    {% else %}
+                                    {% render 'image_element' %}  
+                                    {% endif %}
+                                    
+                                </div>
+                            </a>
+                        </div>
+                        {% endunless %}
+                        {% if object.settings[collection_id] != blank %}
+                            <div class="bottom-part">
+                                <a href="{{collections[object.settings[collection_id]].url}}">
+                                        <{{object.settings.block_heading_tag}} class="{{object.settings.block_heading_class}} {{object.settings.block_heading_weight_class}} spacing-bottom-{{object.settings.block_heading_spacing_bottom}} {% if object.settings.underline %} btn btn--tertiary{% endif %}" style="text-align: left;">{{ collections[object.settings[collection_id]].title | escape }}</{{object.settings.block_heading_tag}}>
+                                </a>
+                            </div>
+                        {% endif %}
+                    
+                    </div>
+                    
+               
+            {% endfor %}
+        </div>
+    
+</div>
+
+
+

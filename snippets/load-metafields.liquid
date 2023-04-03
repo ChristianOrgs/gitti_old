@@ -1,0 +1,100 @@
+{% assign metafields = shop.metafields.bc_cookie %}
+{% assign data = shop.metafields.bc_cookie %}
+{% assign cookieData = data.bc_cookie_list %}
+
+{% if data.size > 0 and cookieData._bc_c_set.live == '1' and content_for_header contains 'beeclever.app\/get-script.php' %}
+    <link rel="dns-prefetch" href="https://gdpr-legal-cookie.beeclever.app/">
+    <link rel="preload" href="https://gdpr-legal-cookie.beeclever.app/get-script.php?shop={{ request.host }}" as="script">
+    <script>
+        {%- comment -%}
+        Löschen eines bereits gesetzten Consent, abhänging von der Erstellung des ersten Consent.
+        Liegt die Erstellung des Consent nach dem start_date und vor dem end_date, so werden die Vorhanden Informationen verworfen.
+        {%- endcomment -%}
+        {%- assign start_date = "2022-09-01" -%}
+        {%- assign start_time = "17:15:00" -%}
+
+        (function () {
+            if ( localStorage.hasOwnProperty('GDPR_legal_cookie') ) {
+                var lastChange = 0;
+                var data = localStorage.getItem('GDPR_legal_cookie');
+                data = JSON.parse( data );
+                for (const cookie in data ) {
+                    if ( data[ cookie ].lastChange > lastChange ) {
+                        lastChange = data[ cookie ].lastChange;
+                    }
+                }
+                if ( lastChange < (new Date ( "{{ start_date }}T{{ start_time }}" )).getTime () ) {
+                    window.localStorage.removeItem ( 'GDPR_legal_cookie' );
+                    document.cookie = '_bc_c_set=0;expires=0';
+                    console.log('clear GDPR LC Data')
+                }
+            }
+        }) ();
+    </script>
+
+    <script>
+        var sDomain = location.host;
+
+        {% render 'zload-metafields' %}
+
+        window.thirdPartyScriptDefinition = [
+            { "src" : "analytics.js", "cookie" : "_shopify_fs", "provider" : "shopify.com", "description" : "", "expires" : 0, "domain" : sDomain, "declaration" : 1, "group" : "shopify" },
+            { "src" : "doubleclick.net","cookie" : "_shopify_fs","provider" : "shopify.com","description" : "","expires" : 0,"domain" : sDomain,"declaration" : 1,"group" : "shopify" },
+            { "src" : "trekkie", "cookie" : "_shopify_fs", "provider" : "shopify.com", "description" : "", "expires" : 0, "domain" : sDomain, "declaration" : 1, "group" : "shopify" },
+            { "src" : "luckyorange", "cookie" : "_shopify_fs", "provider" : "shopify.com", "description" : "", "expires" : 0, "domain" : sDomain, "declaration" : 1, "group" : "shopify" },
+            { "src" : "getelevar", "cookie" : "elevar", "provider" : "getelevar.com", "description" : "Elevar tracking", "expires" : 0, "domain" : sDomain, "declaration" : 1, "group" : "shopify" }
+        ];
+
+        {% if false %}
+        /**************************** start custom section *******************************/
+
+        // Declaration of the cookie to be listened to
+
+        /* example start
+
+        var customCookies = {
+           "myCookie" : true,
+           "myOtherCookie" : true
+        };
+
+        example end */
+        {% endif %}
+
+        var customCookies = {
+            "testCookie" : true
+        };
+
+        function BC_GDPR_CustomScriptForShop () {
+            return [
+
+                function testCookie () {
+                    // your additional script
+                }
+
+                {% if false %}
+                /* example start
+
+                --------------------------------------------
+                **************   define function   **************
+
+                **************   the name of the function is the cookie name   **************
+                **************   Important, the use of commas as separators    **************
+
+                function myCookie () {
+                    your additional code
+                },
+
+                function myOtherCookie () {
+                    your additional code
+                }
+
+                --------------------------------------------
+                example end */
+
+                /**************************** End custom section *******************************/
+                {% endif %}
+            ];
+        }
+
+    </script>
+{% endif %}

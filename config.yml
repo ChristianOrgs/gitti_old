@@ -1,0 +1,41 @@
+add-pinterest-tracking:
+  password: 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
+  theme_id: "104996765849"
+  store: gittiberlin.myshopify.com
+development:
+  password: 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
+  theme_id: "77354041479"
+  store: gittiberlin.myshopify.com
+development-cameron:
+  password: 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
+  theme_id: "104284356761"
+  store: gittiberlin.myshopify.com
+development-christian:
+  password: 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
+  theme_id: "103579156633"
+  store: gittiberlin.myshopify.com
+development-fixes:
+  password: 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
+  theme_id: "95463538823"
+  store: gittiberlin.myshopify.com
+development-zach:
+  password: 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
+  theme_id: "110275035289"
+  store: gittiberlin.myshopify.com
+dhdl-theme:
+  password: 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
+  theme_id: "108490522777"
+  store: gittiberlin.myshopify.com
+improve-performance:
+  password: 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
+  theme_id: "104618754201"
+  store: gittiberlin.myshopify.com
+production:
+  password: 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
+  theme_id: "142633304332"
+  store: gittiberlin.myshopify.com
+  timeout: 5m0s
+sandbox:
+  password: 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
+  theme_id: "104164163749"
+  store: gittiberlindev.myshopify.com

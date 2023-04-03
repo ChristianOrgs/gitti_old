@@ -1,0 +1,104 @@
+{% comment %}
+<div class="slider_wrapper is-relative">
+    <button class="slider_nav slider_prev is-absolute">
+        {% render 'icon', icon: 'chevron-left' %}
+    </button>
+    <button class="slider_nav slider_next is-absolute">
+        {% render 'icon', icon: 'chevron-right' %}
+    </button>
+    <div class="slides_wrapper">
+        {% for slide in slides %}
+        
+        {% endfor %}
+    </div>
+</div>
+{% endcomment %}
+<style>
+    #shopify-section-{{object.id}}{
+        overflow-x: hidden;
+    }
+    #shopify-section-{{object.id}} .tns-nav > [aria-controls] {
+        width: 9px;
+        height: 9px;
+        padding: 0;
+        margin: 0 5px;
+        border-radius: 50%;
+        background: #ddd;
+        border: 0;
+    }
+    #shopify-section-{{object.id}} .tns-nav > .tns-nav-active {
+        background: #333333;
+
+    }
+    #shopify-section-{{object.id}} .tns-nav  {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+</style>
+<script type="module">
+    let slider = null;;
+    function createSlider(){
+        if(slider != null){ 
+           slider.destroy(); 
+        }
+        let offsetLeft = document.querySelector('#shopify-section-{{object.id}} {{slides_wrapper}}').getBoundingClientRect().x;
+        let sliderWidth = window.innerWidth - offsetLeft;
+        let pageWidth = Math.min({{settings.site_width}},window.innerWidth) - 2 * {{settings.site_gutter}};
+        let slideWidth = (pageWidth - {{slides_desktop }} * {{settings.grid_gap}}) / {{slides_desktop }};
+        if(window.innerWidth >= {{settings.site_width}}){
+            slideWidth = (pageWidth - {{slides_desktop | minus: 1 }} * {{settings.grid_gap}}) / {{slides_desktop }};
+        }
+        let sliderOverhang = sliderWidth - pageWidth;
+        if (window.innerWidth > {{settings.breakpoint_small}}) {
+            sliderOverhang = Math.max(sliderOverhang,{{settings.site_gutter}})
+        }
+        else{
+            sliderOverhang = Math.max(sliderOverhang,{{settings.ssite_gutter_mobile}})
+        }
+
+        let sliderOverhangItem =  Math.ceil(sliderOverhang - {{settings.grid_gap}}) / slideWidth;
+        
+        console.log(slideWidth,Math.ceil(sliderOverhang),sliderOverhangItem,sliderWidth)
+        slider = tns({
+            container: '#shopify-section-{{object.id}} {{slides_wrapper}}',
+            items: {% if items_small != blank%}{{items_small}}{% else %}1.5{% endif %},
+            autoheight: true,
+            gutter: {{settings.grid_gap}},
+            loop:false,
+            center:{% if center_small != blank%}{{center_small}}{% else %}true{% endif %},
+            controls:false,
+            nav: {% if nav != blank%}{{nav}}{% else %}true{% endif %},
+            navPosition:"bottom",
+            mouseDrag:true,
+            arrowKeys:false,
+            responsive: {
+                {{settings.breakpoint_small | plus: 1 }}: {
+                    items: {% if items_medium_down != blank%}{{items_medium_down}}{% else %}2{% endif %},
+                    center:false,
+                    arrowKeys: true
+                },
+                {{settings.breakpoint_medium | plus: 1 }}: {
+                    disable: true
+                }
+            }
+        });
+        //document.querySelector('#shopify-section-{{section.id}} .tns-outer').style.width = sliderWidth + 'px';
+        window.dispatchEvent(new Event('beelazy'));
+    }
+    window.addEventListener('load', function () {
+        createSlider();
+    });
+
+    window.addEventListener('resize',function(e){
+        createSlider();
+    })
+
+    if (Shopify.designMode) {
+        window.addEventListener('shopify:section:load', function(e){
+            createSlider();
+        });
+    }
+</script>

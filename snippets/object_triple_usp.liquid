@@ -1,0 +1,54 @@
+{% if object.settings.custom_css != blank %}
+    <style>
+        #shopify-section-{{section.id}} .clever_icon, #shopify-section-{{section.id}} .clever_icon svg{
+            height:40px;
+            width:40px;
+        }
+        #shopify-section-{{section.id}} .clever_icon.icon-shop_rating, #shopify-section-{{section.id}} .clever_icon.icon-shop_rating svg{
+            width:108px;
+        }
+
+        {{object.settings.custom_css}}
+    </style>
+{% endif %}
+
+<div class="page-width spacing-top-{{object.settings.spacing_top}} spacing-bottom-{{object.settings.spacing_bottom}}">
+    <div class="flex row between center">
+        {% if object.settings.link_1 !=blank %}
+        <a href="{{object.settings.link_1}}">
+        {% endif %}
+        <div class="flex col top center">
+            {% render 'icon' icon: object.settings.icon_1 %}
+            <{{object.settings.tag}} class="{{object.settings.class}} {{object.settings.weight_class}} spacing-xs text-align-center">
+            {{object.settings.text_1}}
+            </{{object.settings.tag}}>
+        </div>
+        {% if object.settings.link_1 !=blank %}
+    </a>
+        {% endif %}
+        {% if object.settings.link_2 !=blank %}
+        <a href="{{object.settings.link_2}}">
+        {% endif %}
+        <div class="flex col top center">
+            {% render 'icon' icon: object.settings.icon_2 %}
+            <{{object.settings.tag}} class="{{object.settings.class}} {{object.settings.weight_class}} spacing-xs text-align-center">
+            {{object.settings.text_2}}
+            </{{object.settings.tag}}>
+        </div>
+        {% if object.settings.link_2 !=blank %}
+    </a>
+        {% endif %}
+        {% if object.settings.link_3 !=blank %}
+          <a href="{{object.settings.link_3}}">
+        {% endif %}
+        <div class="flex col top center">
+            {% render 'icon' icon: object.settings.icon_3 %}
+            <{{object.settings.tag}} class="{{object.settings.class}} {{object.settings.weight_class}} spacing-xs text-align-center">
+            {{object.settings.text_3}}
+            </{{object.settings.tag}}>
+        </div>
+        {% if object.settings.link_3 !=blank %}
+            </a>
+        {% endif %}
+    </div>
+</div>

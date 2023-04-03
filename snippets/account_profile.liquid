@@ -1,0 +1,90 @@
+{% assign id = section.id %}
+
+<style>
+    #shopify-section-{{id}} #profile.active .view:not(.active){
+        display: none;
+    }
+    #shopify-section-{{id}} #profile .view{
+        background-color: white;
+    }
+    #shopify-section-{{id}} #profile .view p.h6 + p{
+        transform: translateY(-3px);
+    }
+    @media only screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{id}} #profile .view p.h6 + p{
+            transform: none;
+        }
+    }
+</style>
+
+{% assign birthday = blank  %}
+{% assign gender = blank %}
+{% for tag in customer.tags %}
+    {% if tag contains 'birthday: ' %}
+        {% assign birthday = tag | split: ': ' | last %}
+    {% elsif tag contains 'gender: ' %}
+        {% assign gender = tag | split: ': ' | last %}
+    {% endif %}
+{% endfor %}
+
+<div id="profile" class="account_tab flex col">
+    <div class="view flex col active spacing-m">
+        <div class="flex row small_col"><p>{{ 'customer.register.first_name' | t | append: ':&nbsp;' }}</p><p>{{customer.first_name}}</p></div>
+        <div class="flex row small_col"><p>{{ 'customer.register.last_name' | t | append: ':&nbsp;' }}</p><p>{{customer.last_name}}</p></div>
+        <div class="flex row small_col"><p>{{ 'customer.register.email' | t | append: ':&nbsp;' }}</p><p>{{customer.email}}</p></div>
+    </div>
+    <!-- <div class="edit flex col">
+        {% form 'customer' %}
+            <input type="hidden" name="customer[id]" value="{{ customer.id }}" />
+            <div class="flex row">
+                <label for="FirstName_{{ form.id }}" class="">{{ 'customer.register.first_name' | t | append: ': '}}</label>
+                <input type="text" name="customer[first_name]" id="FirstName_{{ form.id }}" value="{{customer.first_name}}">
+            </div>
+            <div class="flex row">
+                <label for="LastName_{{ form.id }}" class="">{{ 'customer.register.last_name' | t | append: ': '}}</label>
+                <input type="text" name="customer[last_name]" id="LastName_{{ form.id }}" value="{{customer.last_name}}">
+            </div>
+            <div class="flex row">
+                <label for="Email_{{ form.id }}" class="">{{ 'customer.register.email' | t | append: ': '}}</label>
+                <input type="text" name="customer[email]" id="Email_{{ form.id }}" value="{{customer.email}}">
+            </div>
+            <div class="flex row">
+                <label for="Phone_{{ form.id }}" class="">{{ 'customer.register.phone' | t | append: ': '}}</label>
+                <input type="tel" id="Phone_{{ form.id }}" autocomplete="phone" onchange="setTag()" >
+            </div>
+            <div class="flex row">
+                <label for="Birthday_{{ form.id }}" class="label">{{ 'customer.register.birthday' | t | append: ': '}}</label>
+                <input type="date" id="Birthday_{{ form.id }}" class="text" size="30" onchange="setTag()" />
+            </div>
+            <div class="flex row">
+                <label for="Gender_{{ form.id }}" class="label">{{ 'customer.register.gender' | t | append: ': '}}</label>
+                <select id="Gender_{{ form.id }}" onchange="setTag()" >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Diverse">Diverse</option>
+                </select>
+            </div>
+            <input type="hidden" id="CustomerTags_{{ form.id }}" name="customer[tags]" value="">
+            <div class="flex row">
+                <label for="Password_{{ form.id }}" class="label">{{ 'customer.register.password' | t | append: ': '}}</label>
+                <input type="password" value="" name="customer[password]" id="Password_{{ form.id }}" class="text" size="30"/>
+            </div>
+            <div class="flex row">
+                <label for="updateCustomer_{{ form.id }}">{{ 'customer.register.submit' | t }}</label>
+                <input id="updateCustomer_{{ form.id }}" type="submit" class="hidden">
+                <div id="Cancel" class="cancel" onclick="viewProfile()">
+                    <p>{{'customer.register.cancel' | t }}</p>
+                </div>
+            </div>
+        {% endform %}
+    </div> -->
+</div>
+
+<!-- <script>
+    function setTag(){
+        let tagInput = document.querySelector('#shopify-section-{{id}} #profile #CustomerTags_{{ form.id }}');
+        let birthdayValue = document.querySelector('#shopify-section-{{id}} #profile #Birthday_{{ form.id }}').value;
+        let genderValue = document.querySelector('#shopify-section-{{id}} #profile #Gender_{{ form.id }}').value;
+        tagInput.value = "birthday: "+birthdayValue+",gender: "+genderValue;
+    }
+</script> -->

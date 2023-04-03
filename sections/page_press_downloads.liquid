@@ -1,0 +1,791 @@
+{% comment %} FAQ Template New {% endcomment %}
+
+<div class = "spacing-top-{{section.settings.spacing_top_section}} spacing-bottom-{{section.settings.spacing_bottom_section}}" data-section-id="{{ section.id }}" data-section-type="faq-template">
+    {% unless section.settings.hide_title %}
+    <div class="page-title">
+        <{{section.settings.tag_title}} class = "{{section.settings.class_title}} {{section.settings.weight_class_title}} spacing-bottom-{{section.settings.spacing_bottom_title}}">{% render 'icon' icon: 'chevron-left' %}{{ section.settings.main_title }}</{{section.settings.tag_title}}>
+    </div>
+    {% endunless %}
+    
+    {% unless page.content == blank %}
+      <div class="text-content">
+          {{ page.content }}
+      </div>
+    {% endunless %}
+    
+    {% assign heading = section.settings.title %}
+    {% assign subheading = section.settings.subheading %}
+    {% assign is_faq_template = true %}
+       
+    {% render 'press_download_template' %}
+    
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", hangEventhandlerOnElementClick('#shopify-section-{{section.id}} .page-title', 'page_press_section', 'page_press_downloads_section'));
+</script>
+<style>
+    #shopify-section-{{section.id}} .clever_icon { 
+    display: inline;
+    cursor: pointer;
+    }
+    #shopify-section-{{section.id}} .page-title { 
+    cursor: pointer;
+    }
+</style>
+  {% schema %}
+  {
+    "name": "Press download",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "hide_title",
+        "label": "Hide page title",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "main_title",
+        "label": "Title",
+        "default": "lorem ipsum"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Questions and answers"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "titleMenu",
+        "label": "Menu title",
+        "default": "Select a topic"
+      },
+      {
+        "type": "header",
+        "content": "HTML tags"
+      },
+      {
+        "type": "select",
+        "id": "tag_title",
+        "label": "Site title",
+        "default": "h1",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "tag_header_menu",
+        "label": "Menu title header",
+        "default": "h2",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "tag_menu_topics",
+        "label": "Menu topics",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "tag_header_faq_list",
+        "label": "FAQ list header",
+        "default": "h2",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "tag_questions",
+        "label": "Questions",
+        "default": "h4",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "header",
+        "content": "Font classes"
+      },
+      {
+        "type": "select",
+        "id": "class_title",
+        "label": "Site title",
+        "default": "h1",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "class_header_menu",
+        "label": "Menu title header",
+        "default": "h2",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "class_menu_topics",
+        "label": "Title",
+        "default": "p",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "class_header_faq_list",
+        "label": "FAQ list header",
+        "default": "h2",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "select",
+        "id": "class_questions",
+        "label": "Questions",
+        "default": "h4",
+        "options": [
+            {
+                "value": "h1",
+                "label": "h1"
+            },
+            {
+                "value": "h2",
+                "label": "h2"
+            },
+            {
+                "value": "h3",
+                "label": "h3"
+            },
+            {
+                "value": "h4",
+                "label": "h4"
+            },
+            {
+                "value": "h5",
+                "label": "h5"
+            },
+            {
+                "value": "h6",
+                "label": "h6"
+            },
+            {
+                "value": "p",
+                "label": "p"
+            },
+            {
+                "value": "small",
+                "label": "small"
+            }
+          ]
+      },
+      {
+        "type": "header",
+        "content": "Weight class"
+      },
+      {
+        "type": "select",
+        "id": "weight_class_title",
+        "label": "Site title",
+        "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+      ]
+      },
+      {
+        "type": "select",
+        "id": "weight_class_header_menu",
+        "label": "Menu header",
+        "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+      ]
+      },
+      {
+        "type": "select",
+        "id": "weight_class_menu_topics",
+        "label": "Menu topics",
+        "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+      ]
+      },
+      {
+        "type": "select",
+        "id": "weight_class_header_faq_list",
+        "label": "Header faq list",
+        "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+      ]
+      },
+      {
+        "type": "select",
+        "id": "weight_class_questions",
+        "label": "Questions",
+        "options": [
+        {
+            "value": "bold",
+            "label": "bold"
+        },
+        {
+            "value": "",
+            "label": "normal"
+        }
+      ]
+      },
+      {
+          "type": "header",
+          "content": "Spacings"
+      },
+      {
+        "type": "select",
+        "id": "spacing_top_section",
+        "label": "Section spacing top",
+        "default": "m",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom_section",
+        "label": "Section spacing bottom",
+        "default": "xxl",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom_title",
+        "label": "Spacing bottom title",
+        "default": "l",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom_header",
+        "label": "Spacing bottom header",
+        "default": "m",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom_questionWrapper",
+        "label": "Spacing bottom wrapper question",
+        "default": "m",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom_question",
+        "label": "Spacing bottom question",
+        "default": "xs",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    }
+    ],
+    "blocks": [
+      {
+        "name": "Question",
+        "type": "question",
+        "settings": [
+        {
+            "type": "text",
+            "id": "headerQuestion",
+            "label": "Header",
+            "default": "Header"
+        },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question",
+            "default": "Question"
+          },
+          {
+            "type": "text",
+            "id": "link",
+            "label": "Link",
+            "default": "./"
+          }
+        ]
+      },
+      {
+          "name": "Header",
+          "type": "header",
+          "settings": [
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header",
+                "default": "Header"
+            }
+          ]
+      }
+    ]
+  }
+  {% endschema %}

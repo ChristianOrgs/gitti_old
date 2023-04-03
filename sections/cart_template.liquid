@@ -1,0 +1,598 @@
+
+<style>
+    #shopify-section-{{section.id}}{
+        position:relative;
+        z-index: 3;
+    }
+    #shopify-section-{{section.id}} .total_and_checkout {
+        position: sticky;
+        top: 86px;
+        color: #333333;
+        border: 1px solid #e8e8e8;
+    }
+    #shopify-section-{{section.id}} .estimated_delivery{
+        padding-bottom: 25px;
+        padding-top: 25px;
+        border-bottom: 1px solid #0003;
+    }
+    #shopify-section-{{section.id}} .total_and_checkout form input.btn.btn--primary{
+        padding: 15px 16px;
+    }
+    #shopify-section-{{section.id}} .line_item{
+        padding-bottom: 25px;
+        border-bottom: 1px solid #0003;
+    }
+    #shopify-section-{{section.id}} .outer_grid{
+        align-items:start;
+    }
+    #shopify-section-{{section.id}} .total_and_checkout .checkout_block_mobile{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        z-index: 10000;
+        height: 127px;
+        background-color: white;
+        border-top: 3px solid #0003;
+        transition: all 1s ease-out;
+    }
+    #shopify-section-{{section.id}} .title_bold {
+        font-weight: bold;
+        padding-bottom: 8px;
+    }
+
+    #shopify-section-{{section.id}} .snippet{
+        display:block;
+    }
+    #shopify-section-{{section.id}} .snippet.hidden{
+        display:none; 
+    }
+    @media screen and (max-width: {{settings.breakpoint_medium}}px){
+        #shopify-section-{{section.id}} .line_item:last-child{
+            border-bottom: none;
+        }
+        #shopify-section-{{section.id}} .estimated_delivery{
+            background-color: #f3f3f3;
+            border-bottom: none;
+            padding: 25px {{settings.site_gutter_mobile}}px;
+        }
+        #shopify-section-{{section.id}} .total_and_checkout{
+            border: none;
+            padding: 0;
+        }
+    }
+
+    {% comment %}
+    #shopify-section-{{section.id}} .bundle_item_cart_swatch {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    #shopify-section-{{section.id}} .bundle_item_cart_swatch span.swatch {
+        width: 10%;
+    }
+    {% endcomment %}
+
+    @media screen and (max-width: {{settings.breakpoint_small}}px){
+        #shopify-section-{{section.id}} .estimated_delivery{
+            background-color: #f3f3f3;
+            border-bottom: none;
+            width: calc(100% + {{settings.site_gutter_mobile | times: 2}}px);
+            margin-left: -{{settings.site_gutter_mobile}}px
+        }
+    }
+    #shopify-section-{{section.id}} .discount_note {
+        width: 100%;
+    }
+
+    #shopify-section-{{section.id}} .price {
+        color: {{settings.color_price_cart}};
+    }
+    #shopify-section-{{section.id}} .compare_at_price {
+        color: {{settings.color_compare_price_cart}};
+    }
+    #shopify-section-{{section.id}} .cart-relative-discount {
+        color: {{settings.color_discount_cart}};
+    }
+
+    #shopify-section-{{section.id}} .grid-gap {
+        gap: 16px;
+    }
+
+    #shopify-section-{{section.id}} .grid-gap-small {
+        gap: 16px;
+    }
+
+    @media screen and (max-width: {{settings.breakpoint_small}}px) {
+        #shopify-section-{{section.id}} .grid-gap {
+            gap: 16px;
+        }
+
+        #shopify-section-{{section.id}} .grid-gap-small {
+            gap: 16px;
+        }
+    }
+
+</style>
+
+<div class="page-width is-relative spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    <div class="flex row right middle spacing-bottom-m">
+        <a href="{{ routes.root_url }}" class="btn btn--tertiary btn--transparent">{{ 'cart.general.continue_shopping' | t }}</a>
+    </div>
+    <div class="text-align-left  spacing-bottom-l">
+        <h1 class="h1 bold">{{'cart.general.title' | t }}</h1>
+    </div>
+    <div class="is-relative outer_grid grid col-12 small_col-1 grid-gap">
+        <div class="grid-item col-span-7 small_col-span-1">
+            <div cart-loading class="spinner rotate hidden"></div>
+            <div section-api-replace-line-items class="items  grid col-1 grid-gap">
+                {% render 'loading_animation', classes: 'hidden', attr: 'cart-loading' %}
+
+                {% for line_item in cart.items %}
+                        {% render 'line_item', line_item:line_item %}
+                    {% else %}
+                        <div class="cart_empty flex col middle center spacing-m">
+                            <p class="spacing-bottom-m">{{'cart.general.empty' | t }}</p>
+                            <a href="{{ routes.root_url }}" class="btn btn--primary">{{'cart.general.continue_shopping' | t }}</a>
+                        </div>
+                {% endfor %}
+            </div>
+            <div section-api-replace-estimated-shipping class="">
+            {% if cart.item_count > 0 %}
+                    <div  class="estimated_shipping_date">
+                        {%- comment -%}Estimated Delivery{%- endcomment -%}
+                        {%- comment -%}BE/NL/PL/SI/SK/CZ{%- endcomment -%}
+                        {% assign others_1 = "BE,NL,PL,SI,SK,CZ" | split: ',' %}
+                        {%- comment -%}DK/FI/FR/IT/PT/SE/ES/HU{%- endcomment -%}
+                        {% assign others_2 = "DK,FI,FR,IT,PT,SE,ES,HU" | split: ',' %}
+                        {% if localization.country.iso_code == "CH" or localization.country.iso_code == "AT"  or localization.country.iso_code == "LI" %}
+                            {% assign ch_min_delay = section.settings.at_ch_li_min_delay %}
+                            {% assign ch_max_delay = section.settings.at_ch_li_max_delay %}
+
+                           
+                            {% if ch_min_delay > 5 %}
+                                {% assign seconds_min = ch_min_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_min = ch_min_delay  | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                            {% if ch_max_delay > 5 %}
+                                {% assign seconds_max = ch_max_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_max = ch_max_delay | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                        {% elsif others_1 contains localization.country.iso_code %}
+                            {% assign others_1_min_delay = section.settings.others_1_min_delay %}
+                            {% assign others_1_max_delay = section.settings.others_1_max_delay %}
+
+                            
+                            {% if others_1_min_delay > 5 %}
+                                {% assign seconds_min = others_1_min_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_min = others_1_min_delay  | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                            {% if others_1_max_delay > 5 %}
+                                {% assign seconds_max = others_1_max_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_max = others_1_max_delay | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                        {% elsif localization.country.iso_code == "DE" %}
+                            {% assign de_min_delay = section.settings.de_min_delay %}
+                            {% assign de_max_delay = section.settings.de_max_delay %}
+
+                           
+                            {% if de_min_delay > 5 %}
+                                {% assign seconds_min = de_min_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_min = de_min_delay  | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                            {% if de_max_delay > 5 %}
+                                {% assign seconds_max = de_max_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_max = de_max_delay | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                        {% elsif others_2 contains localization.country.iso_code  %}
+                            {% assign others_2_min_delay = section.settings.others_2_min_delay %}
+                            {% assign others_2_max_delay = section.settings.others_2_max_delay %}
+                            {% if others_2_min_delay > 5 %}
+                                {% assign seconds_min = others_2_min_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_min = others_2_min_delay  | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                            {% if others_2_max_delay > 5 %}
+                                {% assign seconds_max = others_2_max_delay | plus: 2 | times: 24 | times: 60 | times: 60 %}
+                            {% else %}
+                                {% assign seconds_max = others_2_max_delay | times: 24 | times: 60 | times: 60 %}
+                            {% endif %}
+                        {% endif %}
+
+                        {% assign min_date = "now" | date: "%s" | plus: seconds_min %}
+                        {% assign max_date = "now" | date: "%s" | plus: seconds_max %}
+                        {% assign one_day = 1 | times: 24 | times: 60 | times: 60 %}
+                        <!-- min_date {{ min_date }} max_date {{ max_date }} -->
+
+                        {% assign now_day = "now" | date: "%u" %}
+                        {% if now_day == "6" %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day %}
+                        {% elsif now_day == "5" %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day | plus: one_day %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day | plus: one_day %}
+                        {% endif %}
+                        {% assign min_date_week_day = min_date | date: "%w" %}
+                        {% assign max_date_week_day = max_date | date: "%w" %}
+                        <!-- min_date_week_day {{ min_date_week_day }} max_date_week_day {{ max_date_week_day }} -->
+                        {%- comment -%}
+                         {% if min_date_week_day == "6" %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day %}
+                        {% elsif min_date_week_day == "5" %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day | plus: one_day %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day | plus: one_day %}
+                        {% endif %}
+                        {%- endcomment -%}
+                       
+
+                        {% assign min_date_week_day = min_date | date: "%w" %}
+                        {% if min_date_week_day == "0" %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day %}
+                        {% elsif min_date_week_day == "6" %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day | plus: one_day %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day | plus: one_day %}
+                        {% endif %}
+
+                        {% assign max_date_week_day = max_date | date: "%w" %}
+                        {% if max_date_week_day == "0" %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day %}
+                        {% elsif max_date_week_day == "6" %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day | plus: one_day %}
+                        {% endif %}
+                        <!-- min_date_week_day {{ min_date_week_day }} max_date_week_day {{ max_date_week_day }} -->
+
+                        <!-- 2 min_date {{ min_date }} max_date {{ max_date }} -->
+
+                        {% comment %}
+                        {% assign now_day = "now" | date: "%u" %}
+
+                        {% if now_day == '7' %}
+
+                        {% elsif now_day >= '5' %}
+                            {% assign min_date = min_date | date: "%s" | plus: one_day | plus: one_day %} 
+                            {% assign max_date = max_date | date: "%s" | plus: one_day | plus: one_day %}
+                        {% elsif now_day >= '3' %}
+                            {% assign max_date = max_date | date: "%s" | plus: one_day %}
+                        {% endif %}
+
+                        {% endcomment %}
+                        {%- capture min_date -%}
+                            {% if localization.language.iso_code == 'de' %}
+                                {%- assign min_date_string = min_date | date: "%A, %d. %B" -%}
+                            {% else %}
+                                {%- assign min_date_string = min_date | date: "%A, %B %d" -%}
+                            {% endif %}
+                            {%- render 'date_translate', dateString: min_date_string -%}
+                        {%- endcapture -%}
+
+                        {%- capture max_date -%}
+                            {% if localization.language.iso_code == 'de' %}
+                                {%- assign max_date_string = max_date | date: "%A, %d. %B" -%}
+                            {% else %}
+                                {%- assign max_date_string = max_date | date: "%A, %B %d" -%}
+                            {% endif %}
+                            {%- render 'date_translate', dateString: max_date_string -%}
+                        {%- endcapture -%}
+
+                        {%- capture placeholder_min -%}{%- raw -%}--minimum_shipping_date--{%- endraw -%}{%- endcapture -%}
+                        {%- capture placeholder_max -%}{%- raw -%}--maxiumum_shipping_date--{%- endraw -%}{%- endcapture -%}
+
+                        <div class="flex col estimated_delivery">
+                            <p class="h4 spacing-bottom-s">{{section.settings.title}}</p>
+                            <p id='delivery_without_lip' class="p">{{ section.settings.text | replace: placeholder_min, min_date | replace: placeholder_max, max_date }}</p>
+                            <p id='delivery_with_lip' class="p"></p>
+                            {% assign todayy = "now" | date: "%a" %} 
+                        </div>
+                        {%- comment -%}End Estimated Delivery{%- endcomment -%}
+                    </div>   
+            {% endif %}
+            </div>
+           {% if section.settings.show_payment_options %}
+                {% assign pay_by = 'general.pay_by' | t %}
+                {% render 'payment_icons_cart' , pos: 'top', title: pay_by, enabled_payment_types: section.settings.enabled_payment_types, mobile_cols: 4 %}
+            {% endif %} 
+        </div>
+        <div class="grid-item col-span-5 small_col-span-1 total_and_checkout spacing-m grid col-1 grid-gap-small">
+            <div section-api-replace-price class="grid col-1 grid-gap-small">
+                <div class="flex row between">
+                    <p class="h3">{{'cart.general.subtotal' | t }}</p>
+                    <p class="h3">{{ cart.items_subtotal_price | money }}</p>    
+                </div>
+                <div class="flex row between">
+                    <p class="p">{{'cart.general.taxes_and_shipping_at_checkout' | t }}</p>
+                </div>
+
+                <div class="flex row between">
+                    <div class="discount_note"></div>
+                </div>
+
+                <div class="flex row between">
+                    <p class="h3">{{'cart.general.total' | t }}</p>
+                    <p class="h3">{{ cart.total_price | money }}</p>    
+                </div>
+            </div>
+
+            <form action="{{ routes.cart_url }}" method="post" class="flex col static_button">
+                <div class="grid col-1 grid-gap-small">
+                    <input class="btn btn--primary" type="submit" name="checkout" value="{{'cart.general.checkout' | t }}" />
+                    {% if additional_checkout_buttons %}
+                        <div class="additional-checkout-text">
+                            <p>{{section.settings.additional_checkout_text}}</p>
+                        </div>
+                        <div class="additional-checkout-buttons">
+                            {{ content_for_additional_checkout_buttons }}
+                        </div>
+                    {% endif %}
+                </div>
+            </form>
+           
+            <div class="only_small checkout_block_mobile">
+                <div class="flex row between"><h4 class="h4 bold flex" style="padding: 16px 24px;">{{'cart.general.total' | t }}<span style="padding-left: 5px;">(Inkl. MwSt.)</span></h4>
+                    <h3 class="total_price h4 bold" style="padding: 16px 24px;">{{ cart.total_price | money }} </h3>
+                </div>
+                <form action="{{ routes.cart_url }}" method="post" class="flex col page-width">
+                    <input class="btn btn--primary" type="submit" name="checkout" value="{{'cart.general.checkout' | t }}" />
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<script>
+    window.addEventListener('cartdatachanged', (e) => {
+
+        document.querySelector('[cart-loading]').classList.remove('hidden')
+        fetch(`${routes.cart_url}?section_id={{section.id}}`)
+        .then(resp => {
+            if(resp.ok){
+                return resp.text()
+            }
+            else{
+                throw new Error(`${response.status}: ${response.message}`);
+            }
+        })
+        .then(text => {
+            let oldSectionLineItems = document.querySelector('#shopify-section-{{section.id}} [section-api-replace-line-items]');
+            let oldSectionPrice = document.querySelector('#shopify-section-{{section.id}} [section-api-replace-price]');
+            let oldCheckoutBlockMobile = document.querySelector('#shopify-section-{{section.id}} .checkout_block_mobile');
+            let oldSectionShippingEstimate = document.querySelector('#shopify-section-{{section.id}} [section-api-replace-estimated-shipping]');
+
+            let div = document.createElement('div');
+            div.innerHTML = text.trim();
+            let newSectionDoc = div.firstChild
+
+            let newSectionLineItemsHtml= newSectionDoc.querySelector('[section-api-replace-line-items]')
+            let newSectionPriceHtml= newSectionDoc.querySelector('[section-api-replace-price]')
+            let newCheckoutBlockMobile= newSectionDoc.querySelector('.checkout_block_mobile')
+            let newSectionShippingEstimate = newSectionDoc.querySelector('[section-api-replace-estimated-shipping]');
+
+            function replaceElements(){
+                oldSectionLineItems.parentElement.replaceChild( newSectionLineItemsHtml, oldSectionLineItems );
+                oldSectionPrice.parentElement.replaceChild( newSectionPriceHtml, oldSectionPrice );
+                oldCheckoutBlockMobile.parentElement.replaceChild( newCheckoutBlockMobile, oldCheckoutBlockMobile );
+                oldSectionShippingEstimate.parentElement.replaceChild( newSectionShippingEstimate, oldSectionShippingEstimate );
+            }
+
+            if ( {{ settings.multi_stage_discount }} ) {
+                newSectionPriceHtml = window.updateMultiStageDiscounts( newSectionPriceHtml );
+                replaceElements()
+            } else {
+                replaceElements();
+                window.dispatchEvent( new Event( 'cartsectionapichanged' ))
+            }
+
+            document.querySelector('[cart-loading]').classList.add('hidden')
+        })
+    })
+
+    async function checkProps(property_updates){
+      if(property_updates.size > 0){
+        for (const [key, value] of property_updates) {
+          const response = await fetch(window.Shopify.routes.root + 'cart/change.js', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({"id": key, "quantity": value.quantity, "properties": value.properties})});
+          console.log('set compare_at_price_property for '+key);
+        }
+      }
+    }
+    function loadPropertyUpdates(){
+      const data = `{% render 'check_cart_properties' %}`;
+      const property_updates_json = JSON.parse(data);
+      const property_updates = new Map(Object.entries(property_updates_json));
+      if(property_updates.size > 0){
+        console.log(property_updates_json);
+      }
+      checkProps(property_updates);
+    }
+    loadPropertyUpdates();
+</script>
+
+
+
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [
+    {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing top",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "text",
+        "id": "additional_checkout_text",
+        "label": "Additional checkout text",
+        "default": "Weitere Bezahlmöglichkeiten"
+    },
+    {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing bottom",
+        "options": [
+            {
+                "value": "xs",
+                "label": "xs"
+            },
+            {
+                "value": "s",
+                "label": "s"
+            },
+            {
+                "value": "m",
+                "label": "m"
+            },
+            {
+                "value": "l",
+                "label": "l"
+            },
+            {
+                "value": "xl",
+                "label": "xl"
+            },
+            {
+                "value": "xxl",
+                "label": "xxl"
+            }
+        ]
+    },
+    {
+        "type": "checkbox",
+        "id": "show_payment_options",
+        "label": "Show payment options",
+        "default": true
+    },
+    {
+        "type": "textarea",
+        "id": "enabled_payment_types",
+        "label": "Enabled payment types",
+        "default": "american_express,apple_pay,bitcoin,google_pay,klarna,maestro,master,paypal,shopify_pay,sofort,visa",
+        "info": "https://shopify.dev/tutorials/customize-theme-add-credit-card-icons"
+    },
+    {
+        "type": "header",
+        "content": "Estimated Delivery"
+    },
+    {
+        "type": "textarea",
+        "id": "title",
+        "label": "Heading",
+        "default": "Voraussichtliches Zustelldatum"
+    },    {
+        "type": "range",
+        "id": "de_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DE minimum days of delation",
+        "default": 3
+    },
+    {
+        "type": "range",
+        "id": "de_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DE maximum days of delation",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "at_ch_li_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "AT/CH/LI minimum days of delation",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "at_ch_li_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "AT/CH/LI maximum days of delation",
+        "default": 6
+    },
+    {
+        "type": "range",
+        "id": "others_1_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "BE/NL/PL/SI/SK/CZ minimum days of delation",
+        "default": 4
+    },
+    {
+        "type": "range",
+        "id": "others_1_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "BE/NL/PL/SI/SK/CZ  maximum days of delation",
+        "default": 6
+    },
+    {
+        "type": "range",
+        "id": "others_2_min_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DK/FI/FR/IT/PT/SE/ES/HU minimum days of delation",
+        "default": 5
+    },
+    {
+        "type": "range",
+        "id": "others_2_max_delay",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "label": "DK/FI/FR/IT/PT/SE/ES/HU maximum days of delation",
+        "default": 8
+    },
+    {
+        "type": "textarea",
+        "id": "text",
+        "label": "Shipping Text",
+        "default": "Zwischen {{minimum_shipping_date}} und {{maxiumum_shipping_date}}",
+        "info": "The Placeholder for the minimum shipping date is defined as {{minimum_shipping_date}} and {{maxiumum_shipping_date}} for the maximum shipping date"
+    }
+  ],
+  "blocks": [
+    
+  ]
+}
+{% endschema %}

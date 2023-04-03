@@ -1,0 +1,630 @@
+{% capture tab_packet_station %}
+  <li class="tabs__item" role="presentation">
+    <button class="tabs__button" type="button" role="tab" aria-selected="false" aria-controls="packet-station" data-tabs-button="#packet-station">
+      <img src="{{ 'grafik_ps.png' | asset_url }}" srcset="{{ 'grafik_ps.png' | asset_url }} 1x, {{ 'grafik_ps@2x.png' | asset_url }} 2x" alt="" class="ps_icon" />
+      <svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-18 icon-svg--inline-before">
+        <use xlink:href="#pickup"></use>
+      </svg>
+      <span>Packstation</span>
+    </button>
+  </li>
+{% endcapture %}
+
+{% capture tab_packet_station_content %}
+  <div id="packet-station" class="content-box__panel hidden-if-js" aria-labelledby="packet-station" data-tabs-panel="">
+    <div class="error-msg-box hidden">
+      <div class="warning-msg">
+        <i class="fa fa-warning"></i>
+        This is a warning message.
+      </div>
+    </div>
+    <h3 class="content-box__row heading-3 hidden-if-js">Packstation</h3>
+    <div>
+      <div class="bc_packstation_availability_notice"><p>{{ 'shopify.checkout.contact.packstation_av_notice' | t }}</p></div>
+      <div class="fieldset">
+        <div class="field field--half">
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_packer_station_zip_code">{{ 'shopify.checkout.contact.zip_code_label' | t }}</label>
+            <input placeholder="{{ 'shopify.checkout.contact.zip_code_label' | t }}" class="field__input" size="10" type="text" value="" id="checkout_packer_station_zip_code">
+          </div>
+        </div>
+        <div class="field field--required field--half">
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_packet_station_city">{{ 'shopify.checkout.contact.city_label' | t }}</label>
+            <input placeholder="{{ 'shopify.checkout.contact.city_label' | t }}" class="field__input" size="80" type="text" value="" id="checkout_packet_station_city">
+          </div>
+        </div>
+        <button type="button" id="station_search_btn" class="step__footer__continue-btn btn" onclick="searchPacketStations();">
+          <span class="btn__content">{{ 'shopify.page_titles.search' | t }}</span>
+          <svg class="icon-svg icon-svg--size-18 btn__spinner icon-svg--spinner-button">
+            <use xlink:href="#spinner-button"></use>
+          </svg>
+        </button>
+        <div id="complete_data_shipping_packetstation" class="hidden" style="width:100%;display:block;">
+
+          {% comment %}
+            {%- unless customer -%}
+              <div class="field field--show-floating-label">
+                <div class="field__input-wrapper">
+                  <label class="field__label field__label--visible" for="checkout_shipping_packetstaton_email">Email</label>
+                  <input placeholder="Email" class="field__input" size="30" type="text" id="checkout_shipping_packetstaton_email">
+                </div>
+              </div>
+            {%- endunless -%}
+          {% endcomment %}
+
+          <div class="field field--show-floating-label">
+            <div class="field__input-wrapper field__input-wrapper--select">
+              <label class="field__label field__label--visible" for="checkout_shipping_packetstation_address_id">{{ 'shopify.checkout.contact.stored_addresses_label' | t }}</label>
+              <select class="field__input field__input--select" id="checkout_shipping_packetstation_address_id" onchange="packetstationSelectChange();">
+                <option selected="selected" value="">{{ 'shopify.checkout.contact.region_none' | t }}</option>
+              </select>
+              <div class="field__caret">
+                <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg" role="presentation" aria-hidden="true" focusable="false">
+                  <use xlink:href="#caret-down"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="field field--half field--show-floating-label">
+            <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_packetstaton_first_name">{{ 'shopify.checkout.contact.first_name_label' | t }}</label>
+              <input placeholder="{{ 'shopify.checkout.contact.first_name_label' | t }}" class="field__input" size="30" type="text" value="" id="checkout_shipping_packetstaton_first_name" onchange="onPacketStationInputChange(\'checkout_shipping_address_first_name\', \'checkout_shipping_packetstaton_first_name\');">
+            </div>
+          </div>
+          <div class="field field--half field--show-floating-label">
+            <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_packetstaton_last_name">{{ 'shopify.checkout.contact.last_name_label' | t }}</label>
+              <input placeholder="{{ 'shopify.checkout.contact.last_name_label' | t }}" class="field__input" size="30" type="text" value="" id="checkout_shipping_packetstaton_last_name" onchange="onPacketStationInputChange(\'checkout_shipping_address_last_name\', \'checkout_shipping_packetstaton_last_name\');">
+            </div>
+          </div>
+
+          <div class="field field--show-floating-label">
+            <div class="field__input-wrapper">
+              <label class="field__label field__label--visible" for="checkout_shipping_packetstaton_user_id">DHL Kundennummer</label>
+              <input placeholder="DHL Kundennummer" class="field__input" size="30" type="number" id="checkout_shipping_packetstaton_user_id" onchange="onPacketStationInputChange(\'checkout_shipping_address_address2\', \'checkout_shipping_packetstaton_user_id\');" onkeypress="return onlyNumberKey(event)">
+            </div>
+          </div>
+
+          <div class="field field--show-floating-label" style="display:none;">
+            <div class="field__input-wrapper">
+              <label class="field__label field__label--visible" for="checkout_shipping_packetstation_phone">{{ 'shopify.checkout.contact.phone_label' | t }}</label>
+              <input placeholder="{{ 'shopify.checkout.contact.phone_label' | t }}" class="field__input" size="30" type="number" id="checkout_shipping_packetstation_phone" onchange="onPacketStationInputChange(\'checkout_shipping_address_phone\', \'checkout_shipping_packetstation_phone\');" onkeypress="return onlyNumberKey(event)">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% capture generate_tab_container %}
+  <div class="content-box" data-tabs="">
+    <ul class="tabs__list shown-if-js">
+      <li class="tabs__item" role="presentation">
+        <button class="tabs__button tabs__button--active" type="button" role="tab" aria-selected="true" aria-controls="panel-ship" data-tabs-button="#panel-ship">
+          <img src="{{ 'grafik_sa.png' | asset_url }}" srcset="{{ 'grafik_sa.png' | asset_url }} 1x, {{ 'grafik_sa@2x.png' | asset_url }} 2x" alt="" class="ps_icon" />
+          <svg aria-hidden="true" focusable="false" class="icon-svg icon-svg--size-18 icon-svg--inline-before"> <use xlink:href="#ship"></use> </svg>
+          <span>{{ 'shopify.checkout.delivery_options.ship' | t }}</span>
+        </button>
+      </li>
+    </ul>
+    <div id="panel-ship" class="content-box__panel" aria-labelledby="panel-ship" data-tabs-panel="">
+      <h3 class="content-box__row heading-3 hidden-if-js">{{ 'shopify.checkout.delivery_options.ship' | t }}</h3>
+      <div class="fieldset-container-box">
+        <!-- Here goes the .fieldlist -->
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+<style>
+    @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+    .info-msg,
+    .success-msg,
+    .warning-msg,
+    .error-msg {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 3px 3px 3px 3px;
+    }
+    .info-msg {
+        color: #059;
+        background-color: #BEF;
+    }
+    .success-msg {
+        color: #270;
+        background-color: #DFF2BF;
+    }
+    .warning-msg {
+        color: #9F6000;
+        background-color: #FEEFB3;
+    }
+    .error-msg {
+        color: #D8000C;
+        background-color: #FFBABA;
+    }
+    #packet-station #station_search_btn {
+        margin: 0.4285714286em;
+        padding: 15px;
+    }
+    .bc_packstation_availability_notice {
+        padding: 16px;
+        background-color: #f608;
+        margin-bottom: 16px;
+        border-radius: 10px;
+    }
+    button.tabs__button {
+        display: flex;
+        flex-direction: column;
+    }
+    img.ps_icon {
+        width: 50px;
+    }
+    .main .field__input {
+        border-radius: 0;
+        height: 48px;
+    }
+    .content-box .input-checkbox, .content-box .input-radio {
+        border-radius: 0;
+    }
+    li.tabs__item {
+        width: auto;
+    }
+</style>
+
+<script>
+
+
+    let shipping_box_class = ".section__content";
+
+    if (Shopify.Checkout.step == "contact_information" ) {
+        document.querySelector("div[data-step='contact_information'] #continue_button").addEventListener("click", function(e) { validationPacketStation(e) });
+    }
+
+
+    document.addEventListener('page:change', function(){
+        if (Shopify.Checkout.step == "contact_information" ) {
+            if (document.querySelector(".section__content .section[data-delivery-shipping-info]") !== null) {
+                shipping_box_class = ".section__content .section[data-delivery-shipping-info]";
+            }
+            if(document.querySelector("button[data-tabs-button='#packet-station']") === null) {
+                if (document.querySelector(shipping_box_class + " ul.tabs__list") !== null) {
+                    document.querySelector(shipping_box_class + " ul.tabs__list").innerHTML = document.querySelector(shipping_box_class + " ul.tabs__list").innerHTML + '{{ tab_packet_station | strip_newlines }}';
+                    document.querySelector(shipping_box_class + " .content-box").innerHTML = document.querySelector(shipping_box_class + " .content-box").innerHTML + '{{ tab_packet_station_content | strip_newlines }}';
+                } else {
+                    let fieldset = document.querySelector(".section--shipping-address " + shipping_box_class).innerHTML;
+
+                    document.querySelector(".section--shipping-address " + shipping_box_class).innerHTML = '{{ generate_tab_container | strip_newlines }}';
+                    document.querySelector(".section--shipping-address " + shipping_box_class + " .fieldset-container-box").innerHTML = fieldset;
+
+                    document.querySelector(".section--shipping-address " + shipping_box_class + " ul.tabs__list").innerHTML = document.querySelector(shipping_box_class + " ul.tabs__list").innerHTML + '{{ tab_packet_station | strip_newlines }}';
+                    document.querySelector(".section--shipping-address " + shipping_box_class + " .content-box").innerHTML = document.querySelector(shipping_box_class + " .content-box").innerHTML + '{{ tab_packet_station_content | strip_newlines }}';
+
+                }
+                if (document.querySelector("#checkout_shipping_address_phone") !== null && document.querySelector("#checkout_shipping_address_phone").getAttribute('aria-required') === "true") {
+                    document.querySelector("#checkout_shipping_packetstation_phone").closest(".field").style.display = "block";
+                }
+            }
+
+            document.querySelector("div[data-step='contact_information'] #continue_button").addEventListener("click", function(e) { validationPacketStation(e) });
+        }
+    });
+
+    // changes in Contact Information
+    if (Shopify.Checkout.step == "contact_information" ) {
+        if (document.querySelector(".section__content .section[data-delivery-shipping-info]") !== null) {
+            shipping_box_class = ".section__content .section[data-delivery-shipping-info]";
+        }
+        if (document.querySelector( shipping_box_class + " ul.tabs__list") !== null) {
+            document.querySelector( shipping_box_class + " ul.tabs__list").innerHTML = document.querySelector( shipping_box_class + " ul.tabs__list").innerHTML + '{{ tab_packet_station | strip_newlines }}';
+            document.querySelector( shipping_box_class + " .content-box").innerHTML = document.querySelector( shipping_box_class + " .content-box").innerHTML + '{{ tab_packet_station_content | strip_newlines }}';
+        } else {
+            let fieldset = document.querySelector(".section--shipping-address " + shipping_box_class).innerHTML;
+
+            document.querySelector(".section--shipping-address " + shipping_box_class).innerHTML = '{{ generate_tab_container | strip_newlines }}';
+            document.querySelector(".section--shipping-address " + shipping_box_class + " .fieldset-container-box").innerHTML = fieldset;
+
+            document.querySelector(".section--shipping-address " + shipping_box_class + " ul.tabs__list").innerHTML = document.querySelector(shipping_box_class + " ul.tabs__list").innerHTML + '{{ tab_packet_station | strip_newlines }}';
+            document.querySelector(".section--shipping-address " + shipping_box_class + " .content-box").innerHTML = document.querySelector(shipping_box_class + " .content-box").innerHTML + '{{ tab_packet_station_content | strip_newlines }}';
+
+        }
+        if (document.querySelector("#checkout_shipping_address_phone") !== null && document.querySelector("#checkout_shipping_address_phone").getAttribute('aria-required') === "true") {
+            document.querySelector("#checkout_shipping_packetstation_phone").closest(".field").style.display = "block";
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+        if (Shopify.Checkout.step == "contact_information" ) {
+            //{{ checkout.shipping_address.address1 }}
+          {% if checkout.shipping_address.address1 contains "Packstation" %}
+            document.querySelector("#checkout_packer_station_zip_code").value = "{{ checkout.shipping_address.zip }}";
+            document.querySelector("#checkout_packet_station_city").value = "{{ checkout.shipping_address.city }}";
+            document.querySelector("#station_search_btn").click();
+            document.querySelector("#checkout_shipping_packetstaton_first_name").value = "{{ checkout.shipping_address.first_name  }}";
+            document.querySelector("#checkout_shipping_packetstaton_last_name").value = "{{ checkout.shipping_address.last_name  }}";
+            document.querySelector("#checkout_shipping_packetstaton_user_id").value = "{{ checkout.shipping_address.company  }}";
+            if (document.querySelector("#checkout_shipping_address_phone") !== null && document.querySelector("#checkout_shipping_address_phone").getAttribute('aria-required') === "true") {
+                document.querySelector("#checkout_shipping_packetstation_phone").value = "{{ checkout.shipping_address.phone  }}";
+            }
+            document.querySelector("button[data-tabs-button='#packet-station']").click();
+          {% endif %}
+        }
+    });
+
+    function searchPacketStations() {
+
+        document.querySelector('#packet-station .error-msg-box').classList.add('hidden');
+
+        if	(document.querySelector("#checkout_packer_station_zip_code").value === "" || document.querySelector("#checkout_packet_station_city").value === "") {
+            if (document.querySelector("#checkout_packet_station_city").value === "") {
+                if (document.querySelector('#checkout_packet_station_city').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_packet_station_city').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let city_input = document.querySelector('#checkout_packet_station_city');
+                //field--error
+                city_input.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                city_input.closest('div.field').innerHTML = city_input.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_city">{{ 'shopify.checkout.field_errors.address_city_blank' | t }}</p>';
+            }
+            if (document.querySelector("#checkout_packer_station_zip_code").value === "") {
+                if (document.querySelector('#checkout_packer_station_zip_code').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_packer_station_zip_code').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let zip_input = document.querySelector('#checkout_packer_station_zip_code');
+                //field--error
+                zip_input.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                zip_input.closest('div.field').innerHTML = zip_input.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_zip">{{ 'shopify.checkout.field_errors.address_zip_blank' | t }}</p>';
+            }
+
+            return false;
+        }
+
+        document.querySelector("#station_search_btn").classList.add("btn--loading");
+        let zipcode = encodeURI(document.querySelector("#checkout_packer_station_zip_code").value);
+        let city = encodeURI(document.querySelector("#checkout_packet_station_city").value);
+
+        fetch('https://packstations.247apps.de/api/find?city=' + city + '&zip=' + zipcode)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    return response.json();
+                } else {
+                    return response.text().then(text => {
+                        console.log("Text Response", text);
+                        document.querySelector("#complete_data_shipping_packetstation").classList.add("hidden");
+                        if (text == "Unknown address.") {
+                            document.querySelector('#packet-station .error-msg-box').innerHTML = '<div class="warning-msg"><i class="fa fa-warning"></i>{{ 'sections.map.address_error' | t }}</div>';
+                            document.querySelector('#packet-station .error-msg-box').classList.remove('hidden');
+                            throw {'error': "Text error", 'response': response};
+                        } else {
+                            document.querySelector('#packet-station .error-msg-box').innerHTML = '<div class="warning-msg"><i class="fa fa-warning"></i>An error occurred, please try again later.</div>';
+                            document.querySelector('#packet-station .error-msg-box').classList.remove('hidden');
+                            throw {'error': "Other error", 'response': response};
+                        }
+                    });
+                }
+            })
+            .then(data => {
+                //console.log(JSON.stringify(data));
+                //Check incomming information is there
+
+                //<option value="3559674478658">Wellingsweg, 12, 56072 Koblenz, Deutschland (Jurgen Feuchter)</option>
+
+                // get reference to select element
+                var sel = document.getElementById('checkout_shipping_packetstation_address_id');
+
+                sel.innerHTML = "";
+
+                var opt = document.createElement('option');
+
+                opt.appendChild( document.createTextNode("{{ 'shopify.checkout.contact.region_none' | t }}"));
+                opt.value = "";
+                opt.setAttribute("selected", "selected");
+                sel.appendChild(opt);
+
+                data.forEach(function (packetstation, index) {
+                    //console.log(packetstation);
+                    // create new option element
+                    var opt = document.createElement('option');
+
+                    // create text node to add to option element (opt)
+                    opt.appendChild( document.createTextNode("(" + packetstation.packstationId  + ") " + packetstation.address.street + ' ' + packetstation.address.streetNo + ', ' + packetstation.address.zip + ' ' + packetstation.address.city + ', ' + packetstation.address.country + (packetstation.address.district ? (' (' + packetstation.address.district + ')') : "") ) );
+
+                    // set value property of opt
+                    opt.value = packetstation.objectId;
+
+                    opt.setAttribute("data-packetstation-address1", "Packstation " + packetstation.packstationId);
+                    //opt.setAttribute("data-packetstation-address2", packetstation.address.district);
+                    opt.setAttribute("data-packetstation-address2", "");
+                    opt.setAttribute("data-packetstation-zip", packetstation.address.zip);
+                    opt.setAttribute("data-packetstation-city", packetstation.address.city);
+                    opt.setAttribute("data-packetstation-country", packetstation.address.country);
+
+                  {% if checkout.shipping_address.address1 contains "Packstation" %}
+                    if (("Packstation " + packetstation.packstationId) === "{{ checkout.shipping_address.address1 }}") {
+                        opt.selected = true;
+                    }
+                  {% endif %}
+
+                    // add opt to end of select box (sel)
+                    sel.appendChild(opt);
+                });
+
+                document.querySelector("#station_search_btn").classList.remove("btn--loading");
+                document.querySelector("#complete_data_shipping_packetstation").classList.remove("hidden");
+            }).catch(function(e) {
+            console.log("error", e);
+            if (typeof e.bodyUsed !== 'undefined') {
+                document.querySelector('#packet-station .error-msg-box').innerHTML = '<div class="warning-msg"><i class="fa fa-warning"></i>An error occurred, please try again later.</div>';
+                document.querySelector('#packet-station .error-msg-box').classList.remove('hidden');
+            }
+            document.querySelector("#station_search_btn").classList.remove("btn--loading");
+        });
+    }
+
+    function packetstationSelectChange() {
+        let spsa = document.querySelector("#checkout_shipping_packetstation_address_id option:checked");
+        if (spsa.value !== "") {
+            if (document.querySelector("#checkout_shipping_address_country option[value='Germany']") === null) {
+                document.querySelector('#packet-station .error-msg-box').innerHTML = '<div class="warning-msg"><i class="fa fa-warning"></i>This store does not have Germany active for shipping</div>';
+                document.querySelector('#packet-station .error-msg-box').classList.remove('hidden');
+                return false;
+            }
+
+          {% comment %}
+          {% unless customer %}
+            if (document.querySelector("#checkout_shipping_packetstaton_email").value === "") {
+
+                document.querySelector("#checkout_email").value = "";
+
+                if (document.querySelector('#checkout_shipping_packetstaton_email').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_email').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_email = document.querySelector('#checkout_shipping_packetstaton_email');
+                //field--error
+                user_email.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_email.closest('div.field').innerHTML = user_email.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_email">Please fill your Email</p>';
+            } else {
+                document.querySelector("#checkout_email").value = document.querySelector("#checkout_shipping_packetstaton_email").value;
+            }
+          {% endunless %}
+          {% endcomment %}
+
+          {% comment %}
+            if (document.querySelector("#checkout_shipping_packetstaton_first_name").value === "") {
+
+                document.querySelector("#checkout_shipping_address_first_name").value = "";
+
+                if (document.querySelector('#checkout_shipping_packetstaton_first_name').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_first_name').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_name = document.querySelector('#checkout_shipping_packetstaton_first_name');
+                //field--error
+                user_name.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_name.closest('div.field').innerHTML = user_name.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_first_name">{{ 'shopify.checkout.field_errors.address_first_name_blank' | t }}</p>';
+            } else {
+                document.querySelector("#checkout_shipping_address_first_name").value = document.querySelector("#checkout_shipping_packetstaton_first_name").value;
+            }
+
+            if (document.querySelector("#checkout_shipping_packetstaton_last_name").value === "") {
+
+                document.querySelector("#checkout_shipping_address_last_name").value = "";
+
+                if (document.querySelector('#checkout_shipping_packetstaton_last_name').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_last_name').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_last_name = document.querySelector('#checkout_shipping_packetstaton_last_name');
+                //field--error
+                user_last_name.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_last_name.closest('div.field').innerHTML = user_last_name.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_statio_last_name">{{ 'shopify.checkout.field_errors.address_last_name_blank' | t }}</p>';
+            } else {
+                document.querySelector("#checkout_shipping_address_last_name").value = document.querySelector("#checkout_shipping_packetstaton_last_name").value;
+            }
+
+            //checkout_shipping_address_address2 // checkout_shipping_packetstaton_user_id
+            if (document.querySelector("#checkout_shipping_packetstaton_user_id").value === "") {
+
+                document.querySelector("#checkout_shipping_address_address2").value = "";
+
+                if (document.querySelector('#checkout_shipping_packetstaton_user_id').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_user_id').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_packetstation_user_id = document.querySelector('#checkout_shipping_packetstaton_user_id');
+                //field--error
+                user_packetstation_user_id.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_packetstation_user_id.closest('div.field').innerHTML = user_packetstation_user_id.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_user_id">Gib eine Kunde Postnummer</p>';
+            } else {
+                document.querySelector("#checkout_shipping_address_address2").value = document.querySelector("#checkout_shipping_packetstaton_user_id").value;
+            }
+          {% endcomment %}
+
+            document.querySelector("#checkout_shipping_address_address1").value = spsa.getAttribute("data-packetstation-address1");
+            document.querySelector("#checkout_shipping_address_zip").value = spsa.getAttribute("data-packetstation-zip");
+            document.querySelector("#checkout_shipping_address_city").value = spsa.getAttribute("data-packetstation-city");
+
+          {% comment %}
+            let country = spsa.getAttribute("data-packetstation-country");
+            if (document.querySelector("#checkout_shipping_address_country option[text='" + country + "']") !== null)
+                document.querySelector("#checkout_shipping_address_country option[text='" + country + "']").selected = true;
+          {% endcomment %}
+
+            if (document.querySelector("#checkout_shipping_address_country option[value='Germany']") !== null)
+                document.querySelector("#checkout_shipping_address_country").value = "Germany";
+
+            if (document.querySelector("#checkout_shipping_address_address2") !== null) {
+                if (spsa.getAttribute("data-packetstation-address2") !== "undefined")
+                    document.querySelector("#checkout_shipping_address_address2").value = spsa.getAttribute("data-packetstation-address2");
+                else
+                    document.querySelector("#checkout_shipping_address_address2").value = "";
+            }
+        }
+    }
+
+    function onPacketStationInputChange(original_form_input, ps_form_input) {
+        document.querySelector("#"+original_form_input).value = document.querySelector("#"+ps_form_input).value;
+    }
+
+    function validationPacketStation(e) {
+        if(document.querySelector("button[data-tabs-button='#packet-station']") !== null && document.querySelector("button[data-tabs-button='#packet-station']").classList.contains('tabs__button--active')) {
+            let submit_flag = false;
+            let first_inputs = false;
+
+            if (document.querySelector("#checkout_packer_station_zip_code") !== null && document.querySelector("#checkout_packer_station_zip_code").value === "") {
+                if (document.querySelector('#checkout_packer_station_zip_code').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_packer_station_zip_code').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let search_zip = document.querySelector('#checkout_packer_station_zip_code');
+                //field--error
+                search_zip.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                search_zip.closest('div.field').innerHTML = search_zip.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_zip">{{ 'shopify.checkout.field_errors.address_zip_blank' | t }}</p>';
+                first_inputs = true;
+            }
+
+            if (document.querySelector("#checkout_packet_station_city") !== null && document.querySelector("#checkout_packet_station_city").value === "") {
+                if (document.querySelector('#checkout_packet_station_city').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_packet_station_city').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let search_city = document.querySelector('#checkout_packet_station_city');
+                //field--error
+                search_city.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                search_city.closest('div.field').innerHTML = search_city.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_city">{{ 'shopify.checkout.field_errors.address_city_blank' | t }}</p>';
+                first_inputs = true;
+            }
+
+            if (first_inputs) {
+                e.preventDefault();
+                return false;
+            }
+
+
+          {%- unless customer -%}
+          {% comment %}
+            if (document.querySelector("#checkout_shipping_packetstaton_email") !== null && document.querySelector("#checkout_shipping_packetstaton_email").value === "") {
+                if (document.querySelector('#checkout_shipping_packetstaton_email').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_email').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_email = document.querySelector('#checkout_shipping_packetstaton_email');
+                //field--error
+                user_email.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_email.closest('div.field').innerHTML = user_email.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_statione_email">Please fill your Email</p>';
+                submit_flag = true;
+            }
+          {% endcomment %}
+          {%- endunless -%}
+
+            if (document.querySelector("#checkout_shipping_packetstaton_first_name") !== null && document.querySelector("#checkout_shipping_packetstaton_first_name").value === "") {
+                if (document.querySelector('#checkout_shipping_packetstaton_first_name').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_first_name').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_name = document.querySelector('#checkout_shipping_packetstaton_first_name');
+                //field--error
+                user_name.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_name.closest('div.field').innerHTML = user_name.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_statione_first_name">{{ 'shopify.checkout.field_errors.address_first_name_blank' | t }}</p>';
+                submit_flag = true;
+            } else {
+                if (document.querySelector('#checkout_shipping_packetstaton_first_name').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_first_name').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                var specialchars=/[*|\":<>[\]{}`\\()';.@&$]/;
+                if (specialchars.test(document.querySelector("#checkout_shipping_packetstaton_first_name").value)) {
+                    let user_name = document.querySelector('#checkout_shipping_packetstaton_first_name');
+                    //field--error
+                    user_name.closest('div.field').classList.add('field--error');
+                    //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                    user_name.closest('div.field').innerHTML = user_name.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_statione_first_name">{{ 'shopify.checkout.field_errors.address_invalid_special_char' | t }}</p>';
+                    submit_flag = true;
+                }
+            }
+
+            if (document.querySelector("#checkout_shipping_packetstaton_last_name") !== null && document.querySelector("#checkout_shipping_packetstaton_last_name").value === "") {
+                if (document.querySelector('#checkout_shipping_packetstaton_last_name').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_last_name').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_last_name = document.querySelector('#checkout_shipping_packetstaton_last_name');
+                //field--error
+                user_last_name.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_last_name.closest('div.field').innerHTML = user_last_name.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_last_name">{{ 'shopify.checkout.field_errors.address_last_name_blank' | t }}</p>';
+                submit_flag = true;
+            } else {
+                if (document.querySelector('#checkout_shipping_packetstaton_last_name').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_last_name').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                var specialchars=/[*|\":<>[\]{}`\\()';.@&$]/;
+                if (specialchars.test(document.querySelector("#checkout_shipping_packetstaton_last_name").value)) {
+                    let user_name = document.querySelector('#checkout_shipping_packetstaton_last_name');
+                    //field--error
+                    user_name.closest('div.field').classList.add('field--error');
+                    //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                    user_name.closest('div.field').innerHTML = user_name.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_last_name">{{ 'shopify.checkout.field_errors.address_invalid_special_char' | t }}</p>';
+                    submit_flag = true;
+                }
+            }
+
+            if (document.querySelector("#checkout_shipping_packetstaton_user_id") !== null && document.querySelector("#checkout_shipping_packetstaton_user_id").value === "") {
+                if (document.querySelector('#checkout_shipping_packetstaton_user_id').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstaton_user_id').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let user_packetstation_user_id = document.querySelector('#checkout_shipping_packetstaton_user_id');
+                //field--error
+                user_packetstation_user_id.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                user_packetstation_user_id.closest('div.field').innerHTML = user_packetstation_user_id.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_user_id">DHL Kundennummer / Postnummer</p>';
+                submit_flag = true;
+            }
+
+            if (document.querySelector("#checkout_shipping_packetstation_address_id") !== null && document.querySelector("#checkout_shipping_packetstation_address_id").value === "") {
+                if (document.querySelector('#checkout_shipping_packetstation_address_id').closest('div.field').querySelector('.field__message--error') !== null) {
+                    document.querySelector('#checkout_shipping_packetstation_address_id').closest('div.field').querySelector('.field__message--error').remove();
+                }
+                let packetstation_address = document.querySelector('#checkout_shipping_packetstation_address_id');
+                //field--error
+                packetstation_address.closest('div.field').classList.add('field--error');
+                //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                packetstation_address.closest('div.field').innerHTML = packetstation_address.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_address">Bitte wählen Sie eine Packstation-Adresse</p>';
+                submit_flag = true;
+            }
+
+            if (document.querySelector("#checkout_shipping_address_phone") !== null && document.querySelector("#checkout_shipping_address_phone").getAttribute('aria-required') === "true") {
+                if (document.querySelector("#checkout_shipping_packetstation_phone") !== null && document.querySelector("#checkout_shipping_packetstation_phone").value === "") {
+                    if (document.querySelector('#checkout_shipping_packetstation_phone').closest('div.field').querySelector('.field__message--error') !== null) {
+                        document.querySelector('#checkout_shipping_packetstation_phone').closest('div.field').querySelector('.field__message--error').remove();
+                    }
+                    let packetstation_address = document.querySelector('#checkout_shipping_packetstation_phone');
+                    //field--error
+                    packetstation_address.closest('div.field').classList.add('field--error');
+                    //<p class="field__message field__message--error" id="error-for-address1">Gib eine Adresse ein</p>
+                    packetstation_address.closest('div.field').innerHTML = packetstation_address.closest('div.field').innerHTML + '<p class="field__message field__message--error" id="error-for-packet_station_address">{{ 'shopify.checkout.field_errors.address_phone_blank' | t }}</p>';
+                    submit_flag = true;
+                }
+            }
+
+            if (submit_flag) {
+                e.preventDefault();
+            }
+        }
+    }
+
+    function onlyNumberKey(evt) {
+        // Only ASCII charactar in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+</script>

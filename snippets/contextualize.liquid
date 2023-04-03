@@ -1,0 +1,91 @@
+{%- comment -%}
+Contextualization by beeclever
+Required:
+- content: Captured content that will be contextualized
+- whitelist: Comma separated list of country isocodes, that should be activated
+- blacklist: Comma separated list of country isocodes, that should be deactivated
+{%- endcomment -%}
+{%- comment -%}
+{% capture design_mode_helper %}
+    {% assign id = id | default: section.id  %}
+    <style>
+        #shopify-section-{{id}}{
+            position:relative;
+        }
+        .beeclever-markets-overlay-{{id}}{
+            position: absolute;
+            bottom:0;
+            left:0;
+            display:flex;
+            padding:5px;
+            z-index: 1;
+            flex-direction: row;
+            gap:5px;
+        }
+        .beeclever-markets-overlay-{{id}} svg{
+            width:20px;
+        }
+        .beeclever-markets-overlay-{{id}} .all-markets-label{
+            background-color: #fff;
+            padding:2px 5px;
+        }
+    </style>
+    <div class="beeclever-markets-overlay-{{id}}" title="Beeclever Markets Overlay (Only visible in Theme Editor)">
+        {% if blacklist == blank and whitelist == blank %}
+            <p class="note all-markets-label">All markets enabled</p>
+        {% else %}
+            {% for country in localization.available_countries %}
+                {% if whitelist contains country.iso_code
+                or whitelist == blank %}
+                    {% unless blacklist contains country.iso_code %}
+                        {% render 'flags', flag: country.iso_code %}
+                    {% endunless %}
+                {% endif %}    
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endcapture %}
+{%- endcomment -%}
+{%- comment -%}Markets switch{%- endcomment -%}
+{% assign section_enabled = false %}
+{%- comment -%}Section is whitelisted for this country{%- endcomment -%}
+{% if whitelist contains localization.country.iso_code
+   or whitelist == blank %}
+   {%- comment -%}Section is not blacklisted for this country{%- endcomment -%}
+   {% unless blacklist contains localization.country.iso_code %}
+      {% assign section_enabled = true %}
+   {% endunless %}
+{% endif %}
+{%- comment -%}Inject helper when in design_mode 
+{% if request.design_mode and settings.markets_overlay %}
+    {% assign replacement = '>' | append: design_mode_helper %}
+    {% assign content = content | replace_first: '>', replacement  %}
+{% endif %}{%- endcomment -%}
+{%- comment -%}If section is enabled for this region{%- endcomment -%}
+{% if section_enabled or request.design_mode %}
+    {{content }}
+{% endif %}
+
+{%- comment -%}
+Schema: 
+      {
+        "type": "header",
+        "content": "Markets"
+      },
+      {
+        "type": "paragraph",
+        "content": "You can set up markets [here](\/admin\/settings\/markets)."
+      },
+      {
+        "type": "textarea",
+        "id": "whitelist",
+        "label": "Whitelist",
+        "info": "Define countries in which this section should appear. Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+      },
+      {
+        "type": "textarea",
+        "id": "blacklist",
+        "label": "Blacklist",
+        "info": "Define countries in which this section should not appear.  Add them by their [ISO code](https:\/\/en.wikipedia.org\/wiki\/ISO_3166-1_alpha-2), separated by comma. Leave blank to show it everywhere."
+      },
+{%- endcomment -%}

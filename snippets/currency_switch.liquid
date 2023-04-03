@@ -1,0 +1,36 @@
+{% assign currency_count = shop.enabled_currencies | size %}
+{% if currency_count > 1 %}{% endif %}
+  {% form 'currency' %}
+  {%- comment -%}
+    <select name="currency">
+        {% for currency in shop.enabled_currencies %}
+            {% if currency == cart.currency %}
+            <option selected="true">{{currency.iso_code}} {{currency.symbol}}</option>
+            {% else %}
+            <option>{{currency.iso_code}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+  {%- endcomment -%}
+  {% assign currencies = ''%}
+  {% for currency in shop.enabled_currencies %}
+      {% if currency == cart.currency %}
+      {% assign currencies = currencies | append: currency.iso_code | append: ' ' | append: currency.symbol %}
+      {% assign current_currency = currency.iso_code | append: ' ' | append: currency.symbol %}
+      {% else %}
+      {% assign currencies = currencies | append: currency.iso_code %}
+      {% endif %}
+      {% unless forloop.last %}
+      {% assign currencies = currencies | append: ',' %}
+      {% endunless %}
+  {% endfor %}
+  {% assign currencies = currencies | split: ',' %}
+  {% render 'select', option_name:'currency', option_values:currencies, selected_value:current_currency, color:color %}
+  {% endform %}
+  <script>
+    function currencyFormSubmit(event) {
+      event.target.form.submit();
+    }
+    document.querySelector('#currency').addEventListener('selectChanged', currencyFormSubmit);
+  </script>  
+

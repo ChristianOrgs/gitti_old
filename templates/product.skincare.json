@@ -1,0 +1,107 @@
+{
+  "sections": {
+    "product_template_default_expanded": {
+      "type": "product_template_default_expanded",
+      "settings": {
+        "gallery_spacing": 2,
+        "slider_preview": 60,
+        "gallery_dot_outline": "#a6a6a6",
+        "gallery_dot_fill": "#FFF",
+        "gallery_dot_fill_selected": "#a6a6a6",
+        "gallery_dot_opacity": 80,
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "title_tag": "p",
+        "title_class": "h1",
+        "title_weight_class": "bold",
+        "price_tag": "p",
+        "price_class": "h1",
+        "price_weight_class": "bold",
+        "price_font_size": 20,
+        "shipping_note": "Delivery in 3-5 working days"
+      }
+    },
+    "index_info_slider_makeup_product_template": {
+      "type": "index_info_slider_makeup_product_template",
+      "settings": {}
+    },
+    "product_instagram_skincare": {
+      "type": "product_instagram_skincare",
+      "settings": {}
+    },
+    "index_community_testimonials": {
+      "type": "index_community_testimonials",
+      "settings": {}
+    },
+    "product_video": {
+      "type": "product_video",
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-4",
+        "layout_mobile": "small_row-start-1",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "product_recommended_products": {
+      "type": "product_recommended_products",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Das könnte dir auch gefallen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_sets": {
+      "type": "product_sets",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Save on Sets.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Alles für deine Maniküre in einem Set.",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_reviews": {
+      "type": "product_reviews",
+      "settings": {}
+    },
+    "product_judge-me": {
+      "type": "product_judge-me",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product_template_default_expanded",
+    "index_info_slider_makeup_product_template",
+    "product_video",
+    "product_instagram_skincare",
+    "index_community_testimonials",
+    "product_recommended_products",
+    "product_sets",
+    "product_reviews",
+    "product_judge-me"
+  ]
+}

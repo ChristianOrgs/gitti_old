@@ -1,0 +1,13 @@
+ {%- comment -%}Custom Breadcrumbs{%- endcomment -%}
+ <style>
+    .collection-breadcrumb-link{
+        color:#757575;
+    }
+</style>
+ <p class="p collection-breadcrumbs">
+    {% if collection.metafields.collection.parent_collection.value != blank %}
+        {% assign parent_collection = collections[collection.metafields.collection.parent_collection.value] %}
+        <a keep-filter href="{{ parent_collection.url }}" class="collection-breadcrumb-link">{% if parent_collection.metafields.collection.parent_collection.value != blank %}/{% endif %}{{ parent_collection.title }}&nbsp;/</a>
+    {% endif %}
+    {{ collection.title }}
+</p>

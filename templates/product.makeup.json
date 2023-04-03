@@ -1,0 +1,793 @@
+{
+  "sections": {
+    "product_template": {
+      "type": "product_template",
+      "blocks": {
+        "90495664-6a4a-4d10-8b82-ca0705e9a2ec": {
+          "type": "voucher",
+          "disabled": true,
+          "settings": {
+            "collections": [
+              "all-products"
+            ],
+            "products": [],
+            "full_width": true,
+            "background": "#f3f3f3",
+            "icon": "",
+            "text_richtext": "<p>Happy Women's Day! -20% mit dem Code*: <a href=\"#copy\" title=\"#copy\"><strong>POWER20<\/strong><\/a><\/p><p><a href=\"#TermsOfService\" title=\"#TermsOfService\"><span style=\"text-decoration:underline\">AGB<\/span><\/a><\/p>",
+            "text_liquid": "",
+            "terms_and_conditions": "voucher-tc"
+          }
+        }
+      },
+      "block_order": [
+        "90495664-6a4a-4d10-8b82-ca0705e9a2ec"
+      ],
+      "settings": {
+        "gallery_spacing": 1,
+        "slider_preview": 60,
+        "gallery_dot_outline": "#757575",
+        "gallery_dot_fill": "#ffffff",
+        "gallery_dot_fill_selected": "#757575",
+        "gallery_dot_opacity": 80,
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "title_tag": "h1",
+        "title_class": "h2",
+        "title_weight_class": "bold",
+        "price_tag": "p",
+        "price_class": "h4",
+        "price_weight_class": "bold",
+        "price_font_size": 20,
+        "shipping_note": "Lieferung in 3-5 Werktagen"
+      }
+    },
+    "index_info_slider_makeup_product_template": {
+      "type": "index_info_slider_makeup_product_template",
+      "blocks": {
+        "9c866a8c-9ab3-4243-9317-efb2499fb1f2": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "product_header": "test-makeup-no-01",
+            "image_1": "shopify:\/\/shop_images\/Bildschirmfoto_2021-10-20_um_10.02.41.jpg",
+            "heading_1": "Veniam enim mollit amet ut mollit.",
+            "url_1": "",
+            "text_1": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/Bildschirmfoto_2021-10-20_um_09.54.31.png",
+            "heading_2": "Veniam enim mollit amet ut mollit.",
+            "url_2": "",
+            "text_2": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/Bildschirmfoto_2021-10-20_um_10.02.41.png",
+            "heading_3": "Veniam enim mollit amet ut mollit.",
+            "url_3": "",
+            "text_3": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>"
+          }
+        },
+        "a2a8041d-342a-4290-a931-b3274fa67327": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "eye-level-no-01-black",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricinusol.jpg",
+            "heading_1": "Rizinusöl-Derivat",
+            "url_1": "",
+            "text_1": "<p>Feuchtigkeitsspendende und pflegende Eigenschaften für geschmeidige und gesünder aussehende Wimpern. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_SHEABUTTER.jpg",
+            "heading_2": "Shea Butter",
+            "url_2": "",
+            "text_2": "<p>Zeichnet sich besonders durch ihre reizlindernden und entzündungshemmenden Eigenschaften aus. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_VEGANWAX.jpg",
+            "heading_3": "Vegane Wachse",
+            "url_3": "",
+            "text_3": "<p>Sorgt für eine cremige und langanhaltende Textur, die sich leicht auftragen lässt. <\/p>"
+          }
+        },
+        "6188dafa-ad07-49f2-b2fa-361ae472a5c5": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "eye-level-no-02-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricinusol.jpg",
+            "heading_1": "Rizinusöl-Derivat",
+            "url_1": "",
+            "text_1": "<p>Feuchtigkeitsspendende und pflegende Eigenschaften für geschmeidige und gesünder aussehende Wimpern. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_SHEABUTTER.jpg",
+            "heading_2": "Shea Butter",
+            "url_2": "",
+            "text_2": "<p>Zeichnet sich besonders durch ihre reizlindernden und entzündungshemmenden Eigenschaften aus. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_VEGANWAX.jpg",
+            "heading_3": "Vegane Wachse",
+            "url_3": "",
+            "text_3": "<p>Sorgen für eine cremige und langanhaltende Textur, die sich leicht auftragen lässt. <\/p>"
+          }
+        },
+        "c0db699e-e0d5-4439-8729-a144e9195200": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "eye-level-no-03-blue",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricinusol.jpg",
+            "heading_1": "Rizinusöl-Derivat",
+            "url_1": "",
+            "text_1": "<p>Feuchtigkeitsspendende und pflegende Eigenschaften für geschmeidige und gesünder aussehende Wimpern. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_SHEABUTTER.jpg",
+            "heading_2": "Shea Butter",
+            "url_2": "",
+            "text_2": "<p>Zeichnet sich besonders durch ihre reizlindernden und entzündungshemmenden Eigenschaften aus. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_VEGANWAX.jpg",
+            "heading_3": "Vegane Wachse",
+            "url_3": "",
+            "text_3": "<p>Sorgen für eine cremige und langanhaltende Textur, die sich leicht auftragen lässt. <\/p>"
+          }
+        },
+        "915f77cb-37ff-4816-8c21-76b1771f027e": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "everyblush-no-01-deep-mulberry",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_mossextract_1.jpg",
+            "heading_1": "Moos-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Stärkt die Hautbarriere, verbessert die Hautfeuchtigkeit und sorgt für ein angenehmes Hautgefühl. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_lactobacillus_ferment_1.jpg",
+            "heading_2": "Lactobacillus Ferment",
+            "url_2": "",
+            "text_2": "<p>Bewahrt das natürliche Hautmikrobiom, beruhigt die Haut und reduziert Trockenheit. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_broccoliseedoil-1_1_1.jpg",
+            "heading_3": "Brokkolisamenöl",
+            "url_3": "",
+            "text_3": "<p>Unterstützt die Regeneration der Haut und sorgt für ein gepflegtes, weiches Hautgefühl.<\/p>"
+          }
+        },
+        "890f5164-375f-4bca-bdf9-abcb7dcafb31": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "everyblush-no-02-sunny-coral",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_mossextract_1.jpg",
+            "heading_1": "Moos-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Stärkt die Hautbarriere, verbessert die Hautfeuchtigkeit und sorgt für ein angenehmes Hautgefühl. <br\/><\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_lactobacillus_ferment_1.jpg",
+            "heading_2": "Lactobacillus Ferment",
+            "url_2": "",
+            "text_2": "<p>Bewahrt das natürliche Hautmikrobiom, beruhigt die Haut und reduziert Trockenheit. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_broccoliseedoil-1_1_1.jpg",
+            "heading_3": "Brokkolisamenöl",
+            "url_3": "",
+            "text_3": "<p>Unterstützt die Regeneration der Haut und sorgt für ein gepflegtes, weiches Hautgefühl.<\/p>"
+          }
+        },
+        "aafd1e9f-60d8-4e61-acf0-0485d4ab8541": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "everyblush-no-03-blossom-pink",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_mossextract_1.jpg",
+            "heading_1": "Moos-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Stärkt die Hautbarriere, verbessert die Hautfeuchtigkeit und sorgt für ein angenehmes Hautgefühl. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_lactobacillus_ferment_1.jpg",
+            "heading_2": "Lactobacillus Ferment",
+            "url_2": "",
+            "text_2": "<p>Bewahrt das natürliche Hautmikrobiom, beruhigt die Haut und reduziert Trockenheit. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_broccoliseedoil-1_1_1.jpg",
+            "heading_3": "Brokkolisamenöl",
+            "url_3": "",
+            "text_3": "<p>Unterstützt die Regeneration der Haut und sorgt für ein gepflegtes, weiches Hautgefühl.<\/p>"
+          }
+        },
+        "ad1a8747-b36f-4068-b1dc-36ab8bcbfa32": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "visionist-no-01-metallic-mauve",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_honokiol_extract_1.jpg",
+            "heading_1": "Honokiolextrakt",
+            "url_1": "",
+            "text_1": "<p>Reduziert Rötungen und feine Linien an den Augenlidern und sorgt für ein frisches Aussehen. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_cornflowerwater_1.jpg",
+            "heading_2": "Kornblumenwasser",
+            "url_2": "",
+            "text_2": "<p>Vereint feuchtigkeitsspendende, beruhigende und energiespendende Eigenschaften<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_orangefruitextract_1.jpg",
+            "heading_3": "Orangenfruchtextrakt",
+            "url_3": "",
+            "text_3": "<p>Schützt als Antioxidans vor freien Radikalen und versorgt die Haut mit Feuchtigkeit. <\/p>"
+          }
+        },
+        "3ef261eb-11bb-4307-a370-6548ac9a1ec3": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "visionist-no-02-copper-sheen",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_honokiol_extract_1.jpg",
+            "heading_1": "Honokiolextrakt",
+            "url_1": "",
+            "text_1": "<p>Reduziert Rötungen und feine Linien an den Augenlidern und sorgt für ein frisches Aussehen. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_cornflowerwater_1.jpg",
+            "heading_2": "Kornblumenwasser",
+            "url_2": "",
+            "text_2": "<p>Vereint feuchtigkeitsspendende, beruhigende und energiespendende Eigenschaften<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_orangefruitextract_1.jpg",
+            "heading_3": "Orangenfruchtextrakt",
+            "url_3": "",
+            "text_3": "<p>Schützt als Antioxidans vor freien Radikalen und versorgt die Haut mit Feuchtigkeit. <\/p>"
+          }
+        },
+        "45af22ba-943b-4d5b-9efb-acabb74d3678": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "visionist-no-03-golden-pearl",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_honokiol_extract_1.jpg",
+            "heading_1": "Honokiolextrakt",
+            "url_1": "",
+            "text_1": "<p>Reduziert Rötungen und feine Linien an den Augenlidern und sorgt für ein frisches Aussehen. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_cornflowerwater_1.jpg",
+            "heading_2": "Kornblumenwasser",
+            "url_2": "",
+            "text_2": "<p>Vereint feuchtigkeitsspendende, beruhigende und energiespendende Eigenschaften. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_visionist_ingredient_landigpage_square_orangefruitextract_1.jpg",
+            "heading_3": "Orangenfruchtextrakt",
+            "url_3": "",
+            "text_3": "<p>Schützt als Antioxidans vor freien Radikalen und versorgt die Haut mit Feuchtigkeit. <\/p>"
+          }
+        },
+        "3d9ce2db-12b4-452f-9233-eb3bd412060c": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "lip-sync-refill-no-01-disco",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricebranwax_ebecf696-0152-4bea-9327-03fdf97c90cd.jpg",
+            "heading_1": "Reisölwachs",
+            "url_1": "",
+            "text_1": "<p>Sorgt als vegane Wachsalternative für ein gepflegtes, weiches Hautgefühl.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_watermelonseedoil_514e89c3-1bf1-4b94-b302-c4be055ab5b1.jpg",
+            "heading_2": "Wassermelonenkernöl",
+            "url_2": "",
+            "text_2": "<p>Schützt vor trockenen, rissigen Lippen. Reich an Vitamin A und E.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_hyaluronicacid_805e6525-4bad-4f9d-95a4-f9b97b58eb05.jpg",
+            "heading_3": "Hyaluronsäure",
+            "url_3": "",
+            "text_3": "<p>Spendet Feuchtigkeit, sorgt für Spannkraft und Elastizität.<\/p>"
+          }
+        },
+        "d0d1357f-050e-4a9e-a21f-0189ef26e00d": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "lip-sync-refill-no-02-dance-floor",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricebranwax_ebecf696-0152-4bea-9327-03fdf97c90cd.jpg",
+            "heading_1": "Reisölwachs",
+            "url_1": "",
+            "text_1": "<p>Sorgt als vegane Wachsalternative für ein gepflegtes, weiches Hautgefühl.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_watermelonseedoil_514e89c3-1bf1-4b94-b302-c4be055ab5b1.jpg",
+            "heading_2": "Wassermelonenkernöl",
+            "url_2": "",
+            "text_2": "<p>Schützt vor trockenen, rissigen Lippen. Reich an Vitamin A und E.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_hyaluronicacid_805e6525-4bad-4f9d-95a4-f9b97b58eb05.jpg",
+            "heading_3": "Hyaluronsäure",
+            "url_3": "",
+            "text_3": "<p>Spendet Feuchtigkeit, sorgt für Spannkraft und Elastizität.<\/p>"
+          }
+        },
+        "e8c2d79e-ef66-44df-81f0-71d83d140ba7": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "lip-sync-refill-no-03-rhapsody",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricebranwax_ebecf696-0152-4bea-9327-03fdf97c90cd.jpg",
+            "heading_1": "Reisölwachs",
+            "url_1": "",
+            "text_1": "<p>Sorgt als vegane Wachsalternative für ein gepflegtes, weiches Hautgefühl.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_watermelonseedoil_514e89c3-1bf1-4b94-b302-c4be055ab5b1.jpg",
+            "heading_2": "Wassermelonenkernöl",
+            "url_2": "",
+            "text_2": "<p>Schützt vor trockenen, rissigen Lippen. Reich an Vitamin A und E.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_hyaluronicacid_805e6525-4bad-4f9d-95a4-f9b97b58eb05.jpg",
+            "heading_3": "Hyaluronsäure",
+            "url_3": "",
+            "text_3": "<p>Spendet Feuchtigkeit, sorgt für Spannkraft und Elastizität.<\/p>"
+          }
+        },
+        "63c6e0e5-42ad-4489-b3bb-6eeaa8d05871": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "lip-sync-refill-no-04-stereo",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_ricebranwax_ebecf696-0152-4bea-9327-03fdf97c90cd.jpg",
+            "heading_1": "Reisölwachs",
+            "url_1": "",
+            "text_1": "<p>Sorgt als vegane Wachsalternative für ein gepflegtes, weiches Hautgefühl.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_watermelonseedoil_514e89c3-1bf1-4b94-b302-c4be055ab5b1.jpg",
+            "heading_2": "Wassermelonenkernöl",
+            "url_2": "",
+            "text_2": "<p>Schützt vor trockenen, rissigen Lippen. Reich an Vitamin A und E.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_hyaluronicacid_805e6525-4bad-4f9d-95a4-f9b97b58eb05.jpg",
+            "heading_3": "Hyaluronsäure",
+            "url_3": "",
+            "text_3": "<p>Spendet Feuchtigkeit, sorgt für Spannkraft und Elastizität.<\/p>"
+          }
+        },
+        "08533548-fa31-4144-b93a-fdf06fa7400e": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "joy-joba-no-01-rosewood",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Oil",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen.  <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört. <\/p>"
+          }
+        },
+        "c776f442-ec22-4a64-ab98-870415831a75": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "joy-joba-no-02-vibrant-cherry",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Öl",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen.  <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört. <\/p>"
+          }
+        },
+        "5af52499-53e0-4b33-a997-45d44d055a77": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "joy-joba-no-03-subtle-raspberry",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Öl",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen.  <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört. <\/p>"
+          }
+        },
+        "db1ad441-b064-4316-ac17-27069c5fd9b5": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "joy-joba-no-04-juicy-peach",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Öl",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen. <em> <\/em><\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört. <\/p>"
+          }
+        },
+        "361ff1c4-73af-4bee-acf5-3f56632c8306": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "summer-glow-duo",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Öl",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört.<\/p>"
+          }
+        },
+        "f025e3f1-201c-4539-b887-930cb5888773": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "everyday-glow-duo",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Öl",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört.<\/p>"
+          }
+        },
+        "84f711a3-b4c6-44e7-9cca-3151c266d529": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "natural-glow-look",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil.jpg",
+            "heading_1": "Jojoba Öl",
+            "url_1": "",
+            "text_1": "<p>Das pflanzliches Öl bildet eine Barriere, die die Lippen pflegt und vor dem Austrocknen schützt.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_stjohnsworth.jpg",
+            "heading_2": "Johanniskraut Extrakt",
+            "url_2": "",
+            "text_2": "<p>Antioxidativer Inhaltsstoff, wodurch sich die Lippen beruhigt und weicher anfühlen. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_veganlanolin.jpg",
+            "heading_3": "Veganes Lanolin",
+            "url_3": "",
+            "text_3": "<p>Pflanzlicher Ersatz für Lanolin, der einen natürlichen Glanz verleiht, ohne dass ein klebriger Film stört.<\/p>"
+          }
+        },
+        "39b2dcac-a04c-4a49-ad86-f436c948447b": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "softening-mask-arc",
+            "image_1": "shopify:\/\/shop_images\/gitti_shop_landigpage_square_jojobaoil_1211x675_crop_center_c9582f85-b726-4716-9551-2d0ca86906fe.webp",
+            "heading_1": "Ceramide",
+            "url_1": "",
+            "text_1": "<p>Hilft, die natürliche Hautbarriere aufzubauen und die Widerstandsfähigkeit zu verbessern.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_lactobacillus_ferment_1_739x414_crop_center_8116892c-2313-408b-beac-50bf959b7d36.webp",
+            "heading_2": "Lactobacillus Ferment",
+            "url_2": "",
+            "text_2": "<p>Bewahrt das natürliche Hautmikrobiom, beruhigt die Haut und reduziert Trockenheit. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_shop_everyblush_ingredient_landigpage_square_mossextract_1_884x495_crop_center_2fb155f7-18b6-4902-a16f-53e40ce08aeb.webp",
+            "heading_3": "Birnenextrakt",
+            "url_3": "",
+            "text_3": "<p>Unterstützt die Regeneration der Haut und hat antioxidative Eigenschaften<em>. <\/em><\/p>"
+          }
+        },
+        "fe65ad04-e834-4c45-b638-c07641f9f986": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-01-clear",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_nettle.jpg",
+            "heading_1": "Brennnessel-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Ein Kräuterextrakt mit antioxidativen und pflegenden Eigenschaften, für gesund aussehende Brauen. Bekannt für ihre beruhigenden Eigenschaften. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_browgel_clear_ingredient_brow-care-complex_red-clover.jpg",
+            "heading_2": "Intensivpflege-Komplex",
+            "url_2": "",
+            "text_2": "<p>Die Kombination aus biomimetischem Peptid und Rotklee-Extrakt lässt die Brauen voller und dichter aussehen. Sorgt für gesünder und kräftiger aussehende Brauen. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_browgel_clear_ingredient_sugar.jpg",
+            "heading_3": "Zuckerkomplex",
+            "url_3": "",
+            "text_3": "<p>Die innovative Zuckermischung dient als Filmbildner, um die Brauen langanhaltend zu fixieren. Der Formel wird eine starke Haftkraft verliehen.<\/p>"
+          }
+        },
+        "269e1c3d-acd4-425e-8551-c3bc1a1db8d3": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-02-dark-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_nettle_1.jpg",
+            "heading_1": "Brennessel-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Ein Kräuterextrakt mit antioxidativen und pflegenden Eigenschaften, der die Brauen weicher und voller aussehen lässt. Bekannt für ihre beruhigenden Eigenschaften.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_lactobacillusferment.jpg",
+            "heading_2": "Lactobacillus-Ferment",
+            "url_2": "",
+            "text_2": "<p>Ein beruhigendes und ausgleichendes Probiotikum, für gepflegt aussehende Augenbrauen. Dient gleichzeitig als Konservierungsmittel, um die Langlebigkeit der Formel zu gewährleisten. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_raddish.jpg",
+            "heading_3": "Radieschenwurzel-Ferment",
+            "url_3": "",
+            "text_3": "<p>Ein Konservierungsmittel auf natürlicher Basis, das gleichzeitig pflegende Eigenschaften bietet.<em> <\/em>Wird durch ein innovatives biotechnologisches Verfahren aus der Fermentation von Rettichwurzeln gewonnen.<\/p>"
+          }
+        },
+        "de1fd0f3-1300-418b-8dad-8204178c9e72": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-03-mid-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_nettle_1.jpg",
+            "heading_1": "Brennessel-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Ein Kräuterextrakt mit antioxidativen und pflegenden Eigenschaften, der die Brauen weicher und voller aussehen lässt. Bekannt für ihre beruhigenden Eigenschaften.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_lactobacillusferment.jpg",
+            "heading_2": "Lactobacillus-Ferment",
+            "url_2": "",
+            "text_2": "<p>Ein beruhigendes und ausgleichendes Probiotikum, für gepflegt aussehende Augenbrauen.<em> <\/em>Dient gleichzeitig als Konservierungsmittel, um die Langlebigkeit der Formel zu gewährleisten.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_raddish.jpg",
+            "heading_3": "Radieschenwurzel-Ferment",
+            "url_3": "",
+            "text_3": "<p>Ein Konservierungsmittel auf natürlicher Basis, das gleichzeitig pflegende Eigenschaften bietet.<em> <\/em>Wird durch ein innovatives biotechnologisches Verfahren aus der Fermentation von Rettichwurzeln gewonnen.<\/p>"
+          }
+        },
+        "053b4db0-45a1-4a17-9984-cdefd12c17a5": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-04-light-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_nettle_1.jpg",
+            "heading_1": "Brennessel-Extrakt",
+            "url_1": "",
+            "text_1": "<p>Ein Kräuterextrakt mit antioxidativen und pflegenden Eigenschaften, der die Brauen weicher und voller aussehen lässt. Bekannt für ihre beruhigenden Eigenschaften.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_lactobacillusferment.jpg",
+            "heading_2": "Lactobacillus-Ferment",
+            "url_2": "",
+            "text_2": "<p>Ein beruhigendes und ausgleichendes Probiotikum, für gepflegt aussehende Augenbrauen.<em> <\/em>Dient gleichzeitig als Konservierungsmittel, um die Langlebigkeit der Formel zu gewährleisten. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_browgel_tinted_ingredient_raddish.jpg",
+            "heading_3": "Radieschenwurzel-Ferment",
+            "url_3": "",
+            "text_3": "<p>Ein Konservierungsmittel auf natürlicher Basis, das gleichzeitig pflegende Eigenschaften bietet.<em> <\/em>Wird durch ein innovatives biotechnologisches Verfahren aus der Fermentation von Rettichwurzeln gewonnen.<\/p>"
+          }
+        },
+        "a014a0d8-110b-477a-98d5-b2d47929e069": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-definer-01-dark-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_panthenol.jpg",
+            "heading_1": "D-Panthenol",
+            "url_1": "",
+            "text_1": "<p>Provitamin B5 ergänzt den Augenbrauenstift mit pflegenden und beruhigenden Eigenschaften. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_grapes.jpg",
+            "heading_2": "Trauben-Extrakt",
+            "url_2": "",
+            "text_2": "<p>Ein beruhigender, aktiver Inhaltsstoff aus Trauben, der die Brauen weich und geschmeidig wirken lässt. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_vegan_waxes.jpg",
+            "heading_3": "Natürliche Wachse und Pflanzenöl",
+            "url_3": "",
+            "text_3": "<p>Ermöglichen ein geschmeidiges Auftragen und das Schichten der Farbe bis zur gewünschten Intensität.<\/p>"
+          }
+        },
+        "fd112e30-4dee-4554-b82c-8dacdafdfc3f": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-definer-02-mid-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_panthenol.jpg",
+            "heading_1": "D-Panthenol",
+            "url_1": "",
+            "text_1": "<p>Provitamin B5 ergänzt den Augenbrauenstift mit pflegenden und beruhigenden Eigenschaften. <\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_grapes.jpg",
+            "heading_2": "Trauben-Extrakt",
+            "url_2": "",
+            "text_2": "<p>Ein beruhigender, aktiver Inhaltsstoff aus Trauben, der die Brauen weich und geschmeidig wirken lässt.<\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_vegan_waxes.jpg",
+            "heading_3": "Natürliche Wachse und Pflanzenöl",
+            "url_3": "",
+            "text_3": "<p>Ermöglichen ein geschmeidiges Auftragen und das Schichten der Farbe bis zur gewünschten Intensität.<\/p>"
+          }
+        },
+        "d90c2517-5523-4c65-858b-18544c37d172": {
+          "type": "testimonial",
+          "settings": {
+            "product_header": "berlin-brow-definer-03-light-brown",
+            "image_1": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_panthenol.jpg",
+            "heading_1": "D-Panthenol",
+            "url_1": "",
+            "text_1": "<p>Provitamin B5 ergänzt den Augenbrauenstift mit pflegenden und beruhigenden Eigenschaften.<\/p>",
+            "image_2": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_grapes.jpg",
+            "heading_2": "Trauben-Extrakt",
+            "url_2": "",
+            "text_2": "<p>Ein beruhigender, aktiver Inhaltsstoff aus Trauben, der die Brauen weich und geschmeidig wirken lässt. <\/p>",
+            "image_3": "shopify:\/\/shop_images\/gitti_SHOP_ingredient_browdefiner_vegan_waxes.jpg",
+            "heading_3": "Natürliche Wachse und Pflanzenöl",
+            "url_3": "",
+            "text_3": "<p>Ermöglichen ein geschmeidiges Auftragen und das Schichten der Farbe bis zur gewünschten Intensität.<\/p>"
+          }
+        },
+        "e6d894fa-c1d0-465f-95b5-856aba5893c2": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "product_header": "",
+            "heading_1": "Veniam enim mollit amet ut mollit.",
+            "url_1": "",
+            "text_1": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+            "heading_2": "Veniam enim mollit amet ut mollit.",
+            "url_2": "",
+            "text_2": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>",
+            "heading_3": "Veniam enim mollit amet ut mollit.",
+            "url_3": "",
+            "text_3": "<p>Qui consectetur consequat adipisicing labore officia mollit anim culpa labore anim fugiat occaecat proident deserunt. Fugiat sunt laboris voluptate quis. Nisi aliquip fugiat fugiat velit.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "9c866a8c-9ab3-4243-9317-efb2499fb1f2",
+        "a2a8041d-342a-4290-a931-b3274fa67327",
+        "6188dafa-ad07-49f2-b2fa-361ae472a5c5",
+        "c0db699e-e0d5-4439-8729-a144e9195200",
+        "915f77cb-37ff-4816-8c21-76b1771f027e",
+        "890f5164-375f-4bca-bdf9-abcb7dcafb31",
+        "aafd1e9f-60d8-4e61-acf0-0485d4ab8541",
+        "ad1a8747-b36f-4068-b1dc-36ab8bcbfa32",
+        "3ef261eb-11bb-4307-a370-6548ac9a1ec3",
+        "45af22ba-943b-4d5b-9efb-acabb74d3678",
+        "3d9ce2db-12b4-452f-9233-eb3bd412060c",
+        "d0d1357f-050e-4a9e-a21f-0189ef26e00d",
+        "e8c2d79e-ef66-44df-81f0-71d83d140ba7",
+        "63c6e0e5-42ad-4489-b3bb-6eeaa8d05871",
+        "08533548-fa31-4144-b93a-fdf06fa7400e",
+        "c776f442-ec22-4a64-ab98-870415831a75",
+        "5af52499-53e0-4b33-a997-45d44d055a77",
+        "db1ad441-b064-4316-ac17-27069c5fd9b5",
+        "361ff1c4-73af-4bee-acf5-3f56632c8306",
+        "f025e3f1-201c-4539-b887-930cb5888773",
+        "84f711a3-b4c6-44e7-9cca-3151c266d529",
+        "39b2dcac-a04c-4a49-ad86-f436c948447b",
+        "fe65ad04-e834-4c45-b638-c07641f9f986",
+        "269e1c3d-acd4-425e-8551-c3bc1a1db8d3",
+        "de1fd0f3-1300-418b-8dad-8204178c9e72",
+        "053b4db0-45a1-4a17-9984-cdefd12c17a5",
+        "a014a0d8-110b-477a-98d5-b2d47929e069",
+        "fd112e30-4dee-4554-b82c-8dacdafdfc3f",
+        "d90c2517-5523-4c65-858b-18544c37d172",
+        "e6d894fa-c1d0-465f-95b5-856aba5893c2"
+      ],
+      "settings": {
+        "no_image": false,
+        "background_color": "#ffffff",
+        "spacing_top": "xs",
+        "spacing_bottom": "xs",
+        "heading": "3 Superpower Inhaltsstoffe.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "bold",
+        "block_heading_spacing_bottom": "xs",
+        "block_heading_tag": "p",
+        "block_heading_class": "h3",
+        "block_heading_weight_class": "bold",
+        "block_text_spacing_bottom": "xs",
+        "block_text_tag": "p",
+        "block_text_class": "p",
+        "block_text_weight_class": "",
+        "image_shape": "sixteen_by_nine",
+        "image_fit": "contain",
+        "image_focal_point": ""
+      }
+    },
+    "product_video": {
+      "type": "product_video",
+      "settings": {
+        "section_border_desktop": false,
+        "section_border_mobile": false,
+        "background_color": "",
+        "spacing_top": "",
+        "spacing_bottom": "",
+        "layout": "medium-up_col-start-4",
+        "layout_mobile": "small_row-start-1",
+        "text_align": "left",
+        "vertical_align": "middle",
+        "heading_spacing_bottom": "xs",
+        "heading_tag": "p",
+        "heading_class": "h1",
+        "heading_weight_class": "bold",
+        "richtext_spacing_bottom": "s",
+        "richtext_tag": "p",
+        "button_class": "btn--tertiary"
+      }
+    },
+    "product_instagram": {
+      "type": "product_instagram",
+      "blocks": {
+        "98bc8b54-f7af-4b03-a365-f99f898b0cbc": {
+          "type": "post",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRLpb147_pb150-2.jpg"
+          }
+        },
+        "5c228299-3caf-4a68-ad67-a79ccaaebe89": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_0269-min_1_-min.jpg"
+          }
+        },
+        "fea805bc-c4dd-479f-8072-c0af39ca0b37": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IRL_pb_119_1_f7c0cabd-80b4-42d7-88b6-3b7a2c20b099.jpg"
+          }
+        },
+        "262d1088-8780-4417-a357-5fb7a8f290be": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRL_pb145-2_6951f1fe-0839-46b3-b28c-192f7ec29e50.jpg"
+          }
+        },
+        "1f4fefee-5015-4bfa-b0df-1bded25a04c7": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_2243_2_-min.jpg"
+          }
+        },
+        "0aa5510e-dab7-4253-af7d-125279cc8a74": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/gitti_shop_IRLpb148_pb149-1.jpg"
+          }
+        },
+        "e002ad7d-7dc4-47d1-b15f-c12ebe006986": {
+          "type": "post",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_2259_1.jpg"
+          }
+        },
+        "11a8c6a0-76ed-4591-97f2-089a44d125d2": {
+          "type": "post",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "98bc8b54-f7af-4b03-a365-f99f898b0cbc",
+        "5c228299-3caf-4a68-ad67-a79ccaaebe89",
+        "fea805bc-c4dd-479f-8072-c0af39ca0b37",
+        "262d1088-8780-4417-a357-5fb7a8f290be",
+        "1f4fefee-5015-4bfa-b0df-1bded25a04c7",
+        "0aa5510e-dab7-4253-af7d-125279cc8a74",
+        "e002ad7d-7dc4-47d1-b15f-c12ebe006986",
+        "11a8c6a0-76ed-4591-97f2-089a44d125d2"
+      ],
+      "settings": {
+        "background_color": "#f3f3f3",
+        "spacing_top": "xl",
+        "spacing_bottom": "xl",
+        "heading": "@gittibeauty community - in real life.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": "",
+        "image_shape": "square",
+        "image_fit": "cover"
+      }
+    },
+    "product_recommended_products": {
+      "type": "product_recommended_products",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Das könnte dir auch gefallen.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_sets": {
+      "type": "product_sets",
+      "settings": {
+        "spacing_top": "l",
+        "spacing_bottom": "l",
+        "heading": "Save on Sets.",
+        "heading_tag": "p",
+        "heading_class": "h2",
+        "heading_weight_class": "bold",
+        "richtext": "Alles für deine Maniküre in einem Set.",
+        "richtext_tag": "p",
+        "richtext_class": "p",
+        "richtext_weight_class": ""
+      }
+    },
+    "product_reviews": {
+      "type": "product_reviews",
+      "settings": {}
+    },
+    "product_judge-me": {
+      "type": "product_judge-me",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product_template",
+    "index_info_slider_makeup_product_template",
+    "product_video",
+    "product_instagram",
+    "product_recommended_products",
+    "product_sets",
+    "product_reviews",
+    "product_judge-me"
+  ]
+}

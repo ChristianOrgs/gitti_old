@@ -1,0 +1,69 @@
+<style>
+    #shopify-section-{{section.id}} .clever_icon, #shopify-section-{{section.id}} .clever_icon svg{
+        height:{{section.settings.icon_size}}px;
+        width:{{section.settings.icon_size}}px;
+    }
+</style>
+{% assign icon_count = 0 %}
+{% if section.settings.text_1  %}
+    {% assign icon_count = icon_count | plus: 1 %}
+{% endif %}
+{% if section.settings.text_2  %}
+    {% assign icon_count = icon_count | plus: 1 %}
+{% endif %}
+{% if section.settings.text_3  %}
+    {% assign icon_count = icon_count | plus: 1 %}
+{% endif %}
+<div class="spacing-top-{{section.settings.spacing_top}} spacing-bottom-{{section.settings.spacing_bottom}}">
+    <div class="grid col-{{icon_count}}">
+        {% if section.settings.link_1 !=blank %}
+        <a href="{{section.settings.link_1}}">
+        {% endif %}
+        <div class="flex col top center">
+            {% if section.settings.html_icon_1 != blank %}
+                {{section.settings.html_icon_1}}
+             {% else %}
+                 {% render 'icon', icon: section.settings.icon_1 %}     
+             {% endif %}
+            <{{section.settings.tag}} class="{{section.settings.class}} {{section.settings.weight_class}} spacing-xs spacing-bottom-none text-align-center">
+            {{section.settings.text_1}}
+            </{{section.settings.tag}}>
+        </div>
+        {% if section.settings.link_1 !=blank %}
+    </a>
+        {% endif %}
+        {% if section.settings.link_2 !=blank %}
+        <a href="{{section.settings.link_2}}">
+        {% endif %}
+        <div class="flex col top center">
+            {% if section.settings.html_icon_2 != blank %}
+                {{section.settings.html_icon_2}}
+             {% else %}
+                 {% render 'icon', icon: section.settings.icon_2 %}     
+             {% endif %}
+            <{{section.settings.tag}} class="{{section.settings.class}} {{section.settings.weight_class}} spacing-xs spacing-bottom-none text-align-center">
+            {{section.settings.text_2}}
+            </{{section.settings.tag}}>
+        </div>
+        {% if section.settings.link_2 !=blank %}
+    </a>
+        {% endif %}
+        {% if section.settings.link_3 !=blank %}
+          <a href="{{section.settings.link_3}}">
+        {% endif %}
+        <div class="flex col top center">
+            {% if section.settings.html_icon_3 != blank %}
+               {{section.settings.html_icon_3}}
+            {% else %}
+                {% render 'icon', icon: section.settings.icon_3 %}     
+            {% endif %}
+            <{{section.settings.tag}} class="{{section.settings.class}} {{section.settings.weight_class}} spacing-xs spacing-bottom-none text-align-center">
+            {{section.settings.text_3}}
+            </{{section.settings.tag}}>
+        </div>
+        {% if section.settings.link_3 !=blank %}
+            </a>
+        {% endif %}
+    </div>
+</div>
+

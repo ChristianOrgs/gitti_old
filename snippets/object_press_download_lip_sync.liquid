@@ -1,0 +1,399 @@
+<div class = "spacing-top-{{object.settings.spacing_top_section}} spacing-bottom-{{object.settings.spacing_bottom_section}}" data-section-id="{{ object.id }}" data-section-type="faq-template">
+    {% unless object.settings.hide_title %}
+    <div class="page-title">
+        <{{object.settings.tag_title}} class = "{{object.settings.class_title}} {{object.settings.weight_class_title}} spacing-bottom-{{object.settings.spacing_bottom_title}}">{{ object.settings.main_title }}</{{object.settings.tag_title}}>
+    </div>
+    {%- if object.settings.text != blank -%}
+    <div class="page-text">
+        <{{object.settings.tag_questions}} class = "{{object.settings.class_questions}} {{object.settings.weight_class_questions}} spacing-bottom-{{object.settings.spacing_bottom_title}}">{{ object.settings.text }}</{{object.settings.tag_questions}}>
+    </div>
+    {%- endif -%}
+    {% endunless %}
+    
+    {% unless page.content == blank %}
+      <div class="text-content">
+          {{ page.content }}
+      </div>
+    {% endunless %}
+    
+    {% assign heading = object.settings.title %}
+    {% assign subheading = object.settings.subheading %}
+    {% assign is_faq_template = true %}
+       
+    <style>
+        .faq-menu{
+          position: sticky;
+          top: 86px;
+        }
+      </style>
+      
+      {%- unless heading == blank and subheading == blank and text == blank and object.blocks.size == 0 -%}
+        <div class="faq-section faq-section-content desktop_page only_medium-up">
+          {%- unless heading == blank and subheading == blank and text == blank -%}
+            <div class="page-title">
+              <div class="container">
+                  {%- if heading != blank -%}
+                    <h1 class="page-title__heading">{{ heading }}</h1>
+                  {%- endif -%}
+      
+                  {%- if subheading != blank -%}
+                    <h4 class="page-title__subheading subheading-text spacing-bottom-s">{{ subheading }}</h4>
+                  {%- endif -%}
+      
+                {%- if text != blank -%}
+                  <div class="text-content">
+                      {{ text }}
+                  </div>
+                  {%- endif -%}
+              </div>
+            </div>
+          {% endunless %}
+    
+          <div class="faq-content">
+            <div class="container">
+              <div class="flex row between">
+                
+                <div class = "faq-menu animation on-load fade-in">
+                  {%- if object.settings.titleMenu != blank -%}
+                  <{{object.settings.tag_header_menu}} class = "{{object.settings.class_header_menu}} {{object.settings.weight_class_header_menu}}">{{object.settings.titleMenu}}</{{object.settings.tag_header_menu}}>
+                  {% endif %}
+                  {% for e in object.settings %}
+                  {% assign titleHeader = object.settings[e] %} 
+                  {% if e contains 'FAQ_' and titleHeader != blank %}
+       
+                  <li  class = "faq-menu__element {{titleHeader | handle}} {% if forloop.first %} active {% endif %}  " data-faq-group-name = {{titleHeader | handle}}>
+                    <{{object.settings.tag_menu_topics}} class = "faq-menu__item-topic no_decorations {{object.settings.class_menu_topics}}">{{ titleHeader }}</{{object.settings.tag_menu_topics}}>
+                    {% render 'icon', icon: 'chevron-right' %}
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+    
+                <ul class = "faq-list animation on-load fade-in">
+                    {% for FAQ in object.settings %}
+                    {% if FAQ contains 'FAQ_' %}
+                    {% assign titleHeaderFirst = object.settings[FAQ] %}  
+                    {% endif %}
+                    <div  class = "subContainer {{titleHeaderFirst | handle}}   {% if forloop.first %} show{% endif %}">
+                     {% if FAQ contains 'FAQ_' %}
+                      <{{object.settings.tag_header_faq_list}} class = "{{object.settings.class_header_faq_list}} {{object.settings.weight_class_header_faq_list}} spacing-bottom-{{object.settings.spacing_bottom_header}}">{{ titleHeaderFirst }}</{{object.settings.tag_header_faq_list}}>
+                      {% endif %}
+                      {% if FAQ contains 'questionandanswer' %}
+                      {% assign text_content_first = object.settings[FAQ] %}
+                      {% assign faq = text_content_first | split: '[Q]' %}
+                      {{ faq | first }}
+                          {% for qa in faq offset: 1 %}
+                              {% assign uid = "now" | date: "%6N" %}
+                              {% assign question = qa | split: '[A]' | first | strip_html %}
+                              {% assign answer = qa | split: '[A]' | last %}
+                              <li class = "faq-list__item animation on-load fade-in medium-up only_medium-up spacing-bottom-{{object.settings.spacing_bottom_questionWrapper}}" {{object.shopify_attributes}}>
+                                <{{object.settings.tag_questions}} class = "faq-list__item-question is-relative {{object.settings.class_questions}} bold spacing-bottom-{{object.settings.spacing_bottom_question}}">{{ question }}</{{object.settings.tag_questions}}>
+                                {% unless answer == blank %}
+                                  <div class = "faq-list__item-answer">{{ answer }}</div>
+                                {% endunless %}
+                              </li>
+                          {% endfor %}
+                        {% endif %}  
+                    </div>
+            
+                    {% endfor %}
+                </ul>
+    
+    
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+        <div class="faq-section faq-section-content mobile_page only_small">
+            {%- unless heading == blank and subheading == blank and text == blank -%}
+              <div class="page-title">
+                <div class="container">
+                    {%- if heading != blank -%}
+                      <h1 class="page-title__heading">{{ heading }}</h1>
+                    {%- endif -%}
+        
+                    {%- if subheading != blank -%}
+                      <h4 class="page-title__subheading subheading-text spacing-bottom-s">{{ subheading }}</h4>
+                    {%- endif -%}
+        
+                  {%- if text != blank -%}
+                    <div class="text-content">
+                        {{ text }}
+                    </div>
+                    {%- endif -%}
+                </div>
+              </div>
+            {% endunless %}
+              <div class="faq-content">
+                <div class="container">
+                  <div class="flex row between">
+                    
+                    <div class = "faq-menu animation on-load fade-in">
+                      {%- if object.settings.titleMenu != blank -%}
+                      <{{object.settings.tag_header_menu}} class = "{{object.settings.class_header_menu}} {{object.settings.weight_class_header_menu}}">{{object.settings.titleMenu}}</{{object.settings.tag_header_menu}}>
+                      {% endif %}
+                        {% for e in object.settings %}
+                        {% if e contains 'FAQ_' %}
+                        {% assign titleHeader = object.settings[e] %}  
+                        {% endif %}
+                        {% if e contains 'press_questionandanswer_' %}
+                        {% assign press_questionandanswer = object.settings[e] %}  
+                        {% endif %}
+                        {% if e contains 'FAQ_' and titleHeader != blank %}
+                        <li class = "faq-menu__element {{titleHeader | handle}}" onclick="toggleMobileLayout()"   data-faq-group-name = {{titleHeader | handle}} >
+                          <{{object.settings.tag_menu_topics}} class = "faq-menu__item-topic no_decorations {{object.settings.class_menu_topics}}">{{ titleHeader }}</{{object.settings.tag_menu_topics}}>
+                          {% render 'icon', icon: 'chevron-right' %}
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+        
+                    
+                    <ul class = "faq-list hidden animation on-load fade-in">
+        
+                      {% for FAQ in object.settings %}
+                      {% if FAQ contains 'FAQ_' %}
+                      {% assign titleHeader1 = object.settings[FAQ] %}  
+                       {% endif %}
+
+                        <div id={{forloop.index}} class = "subContainer {{titleHeader1 | handle}}{% if forloop.first %} show{% endif %}">
+                            {% if FAQ contains 'FAQ_' %}
+                          <{{object.settings.tag_title}} class = "{{object.settings.class_title}} {{object.settings.weight_class_title}} spacing-bottom-{{object.settings.spacing_bottom_title}}" onclick="toggleMobileLayout()">{% render 'icon' icon: 'chevron-left' %}{{ titleHeader1 }}  </{{object.settings.tag_title}}>
+                          {% endif %}
+
+                          {% if FAQ contains 'press_questionandanswer_' %}
+                              {% assign text_content = object.settings[FAQ] %}
+                              {% assign faq = text_content | split: '[Q]' %}
+                              {{ faq | first }}
+                                  {% for qa in faq offset: 1 %}
+                                      {% assign uid = "now" | date: "%6N" %}
+                                      {% assign question = qa | split: '[A]' | first | strip_html %}
+                                      {% assign answer = qa | split: '[A]' | last %}
+
+
+
+                                      <li class = "faq-list__item only_small spacing-bottom-{{object.settings.spacing_bottom_questionWrapper}} spacing-top-{{object.settings.spacing_bottom_questionWrapper}}" onclick="toggleAnswer('{{uid}}')" uid {{object.shopify_attributes}}>
+                                       
+                                       
+                                        
+        
+                                        <{{object.settings.tag_questions}} id="question_mobile_{{uid}}" class = "faq-list__item-question is-relative {{object.settings.class_questions}} spacing-bottom-{{object.settings.spacing_bottom_question}}">{{ question }}</{{object.settings.tag_questions}}>
+                                        
+                                        <div id="question_arrow_{{uid}}" class="tab_toggle is-absolute button_icon"></div>
+                                        
+                                        {% unless answer == blank %}
+                                          <div id="answer_mobile_{{uid}}" class = "faq-list__item-answer spacing-top-{{object.settings.spacing_bottom_questionWrapper}} spacing-bottom-{{object.settings.spacing_bottom_questionWrapper}} hidden animation on-load fade-in">{{ answer }}</div>
+                                        {% endunless %}
+                                        
+        
+                                        
+                                      </li>
+                                  {% endfor %}
+                             {% endif %}
+                        </div>
+                     
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+      {% endunless %}
+    
+  </div>
+  <script>
+    //document.addEventListener("DOMContentLoaded", hangEventhandlerOnElementClick('#shopify-section-{{section.id}} .page-title', 'page_press_section', 'page_press_downloads_section'));
+</script>
+<style>
+    #shopify-section-{{object.id}} .clever_icon { 
+    display: inline;
+    cursor: pointer;
+    }
+    #shopify-section-{{object.id}} .page-title { 
+    cursor: pointer;
+    }
+    #shopify-section-{{object.id}} .text-content { 
+    display: none;
+    }
+</style>
+
+<style>
+#shopify-section-{{object.id}} .button_icon{
+  top:22px;
+  right:0;
+}
+#shopify-section-{{object.id}} .tab_toggle{
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: 0.3s transform ease;
+}
+
+
+#shopify-section-{{object.id}} .active.tab_toggle{
+  transform: translate(-50%, -50%) rotate(225deg);
+}
+ 
+#shopify-section-{{object.id}} .clever_icon svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+#shopify-section-{{object.id}} .animation.on-load.fade-in {
+  animation-name: text_appear;
+  animation-duration: 0.7s;
+  animation-delay: 0s;
+}
+  #shopify-section-{{object.id}} .faq-section .faq-menu { 
+    width: 28%;
+    border: 1px solid #a6a6a6;
+    padding: 30px;
+    height: fit-content;
+  }
+  #shopify-section-{{object.id}} .faq-section .faq-menu h2{ 
+    padding: 20px 0;
+    color: #333333;
+  }
+  #shopify-section-{{object.id}} .faq-section .faq-menu .faq-menu__item-topic { 
+    padding: 8px 30px 8px 0px;
+    color: #333333;
+    cursor: pointer;
+  }
+  #shopify-section-{{object.id}} .faq-menu .clever_icon {
+    cursor: pointer;
+  }
+  #shopify-section-{{object.id}} .faq-section .faq-list { 
+    width: 62%;
+    margin: initial;
+  }
+  #shopify-section-{{object.id}} .faq-section .faq-list .subContainer { 
+    display: none;
+  }
+  
+  #shopify-section-{{object.id}} .active .faq-menu__item-topic{
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  #shopify-section-{{object.id}} .active .faq-menu__item-topic.no_decorations{
+    font-weight: initial;
+    text-decoration: initial;
+  }
+  #shopify-section-{{object.id}} .faq-section .faq-list .show{
+    display: block;
+  }
+  #shopify-section-{{object.id}} .faq-menu li {
+    list-style-type: none;
+  }
+  #shopify-section-{{object.id}} .faq-menu__element {
+      display: flex;
+      justify-content: space-between;
+  }
+  #shopify-section-{{object.id}} .faq-menu__element p {
+      flex: 0 1 93%;
+  }
+  #shopify-section-{{object.id}} .faq-menu__element i {
+    flex: 0 1 5%;
+  }
+  #shopify-section-{{object.id}} .faq-list__item {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid #D7DAE0;
+    margin-bottom: 30px;
+  }
+  #shopify-section-{{object.id}} .faq-list__item.medium-up{
+    position: relative;
+    cursor: initial;
+    border-bottom: 0px solid #D7DAE0;
+  }
+  #shopify-section-{{object.id}} .faq-list__item .download_link {
+    position: absolute;
+    right: 0;
+  }
+  
+  @media(max-width: 750px) {
+    #shopify-section-{{object.id}} .faq-section .row {
+        flex-direction: column-reverse;
+    }
+    #shopify-section-{{object.id}} .faq-section .faq-menu { 
+      width: 100%;
+      border: none;
+      border-top: 1px solid #e4e4e4;
+      padding: 30px 0;
+    }
+    #shopify-section-{{object.id}} .faq-section .subContainer h2{ 
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    #shopify-section-{{object.id}} .faq-section .faq-list { 
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    #shopify-section-{{object.id}} .faq-section .faq-list .faq-list__item { 
+      
+      margin-bottom: 0;
+    }
+    #shopify-section-{{object.id}} .clever_icon svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+</style>
+
+<script>
+  let menu_elements = document.querySelectorAll('#shopify-section-{{object.id}} .faq-section .faq-menu .faq-menu__element');
+  let question_elements = document.querySelectorAll('#shopify-section-{{object.id}} .faq-section .faq-list .subContainer');
+  menu_elements.forEach(menu_element => {
+    menu_elements[0].click();
+    menu_element.addEventListener("click", function(){
+      let titleValue = menu_element.dataset.faqGroupName;
+
+      question_elements.forEach(question_element => {
+        if(question_element.classList.contains(titleValue)) {
+          question_element.classList.add("show");
+
+        } else {
+          question_element.classList.remove("show");
+        }
+      });
+
+      menu_elements.forEach(menu_element => {
+        if(menu_element.classList.contains(titleValue)) {
+          menu_element.classList.add("active");
+        } else {
+          menu_element.classList.remove("active");
+        }
+      });
+    });
+  });
+
+  function toggleAnswer(elementID){
+      console.log(elementID)
+    document.getElementById('question_mobile_' + elementID).classList.toggle('bold');
+    document.getElementById('answer_mobile_' + elementID).classList.toggle('visible');
+    document.querySelector('#question_arrow_' + elementID).classList.toggle('active');
+  }
+
+  function toggleMobileLayout(){
+    document.querySelector('.mobile_page .faq-list').classList.toggle('hidden');
+    document.querySelector('.mobile_page .faq-menu').classList.toggle('hidden');
+    document.querySelector('.page-title').classList.toggle('hidden');
+    document.querySelector('.page-text').classList.toggle('hidden');
+  }
+
+
+  </script>
+

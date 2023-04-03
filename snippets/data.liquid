@@ -1,0 +1,46 @@
+{% assign threshold = settings.threshold_progressBar | times: 100.00 %}
+{% assign textShippingFree = settings.textShippingFree %}
+{% assign textShippingOne = settings.textShippingOne %}
+{% assign textShippingTwo = settings.textShippingTwo %}
+
+<script id="shopify-data" type="application/json">
+    {
+        "placeholderImage": "{{ 'placeholder-pattern.png' | asset_url }}",
+        "products": {
+            "shop_bar": {
+                "buy_label": {{ 'products.shop_bar.buy_label' | t | json }}
+            },
+            "form": {
+                "success": {{ 'products.form.success' | t | json }},
+                "submit": {{ 'products.form.submit' | t | json }},
+                "submit_error_details": {{ 'products.form.submit_error_details' | t | json }},
+                "submit_error": {{ 'products.form.submit_error' | t | json }},
+                "qty": "{{ "products.form.qty" | t }}",
+                "sold_out": {{ 'products.form.sold_out' | t | json }}
+            },
+            "labels": {
+                "sold_out": {{ 'products.labels.sold_out' | t | json }},
+                "unavailable": {{ 'products.labels.unavailable' | t | json }}
+            }
+        },
+        "cart": {
+            "labels": {
+                "empty_cart": {{ 'cart.labels.empty_cart' | t | json }},
+                "unavailable": {{ 'products.labels.unavailable' | t | json }}
+            }
+        },
+        "settings": {
+            "enable_progressBar": {{ settings.enable_progressBar }},
+            "textShippingFree": "{{ settings.textShippingFree }}",
+            "textShippingOne": "{{ settings.textShippingOne }}",         
+            "textShippingTwo": "{{ settings.textShippingTwo }}",
+            "show_multiple_currencies": {{ settings.show_multiple_currencies }}
+        },
+        "assigned": {
+            "threshold": {{ threshold }}
+        },
+        "shop": {
+            "money_format": "{{ shop.money_format }}"
+        }
+    }
+</script>

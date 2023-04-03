@@ -1,0 +1,72 @@
+{%- comment -%}
+Required arguments:
+- product : product
+{%- endcomment -%}
+
+{% style %}
+.product_price{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+.product_price .price_spacing{
+    padding-left:10px;
+    font-size: {{price_font_size | default: 18 }}px;
+}
+.product_price .price_spacing-compare-at{
+    padding-left:10px;
+    font-size: {{price_font_size | minus: 2 | default: 16 }}px;
+}
+.product_price .price_spacing-saving{
+    padding-left:10px;
+    font-size: {{price_font_size | minus: 4 | default: 14 }}px;
+    color:{{settings.color_discount_pdp}};
+}
+.product_price .price_spacing:first-child{
+    padding-left:0;
+}
+
+.product_price.price {
+    color: {{settings.color_price_pdp}}
+}
+.product_price .compare_at_price{
+    text-decoration:line-through;
+    color: {{settings.color_compare_price_pdp}};
+}
+.product_price .sold_out{
+    font-weight:bold;
+}
+
+.product_price.flex.baseline{
+    align-items: baseline;
+}
+
+{% endstyle %}
+{% assign show_saved = true %}
+{% if product.compare_at_price != blank %}
+    {% assign sale = 'sale' %}
+{% else %}
+    {% assign sale = '' %}   
+{% endif %}
+
+<{{price_tag}} class="{{price_class}} {{price_weight_class}} product_price flex row baseline">
+    {% comment %}{% if product.available %}{% endif %}{% endcomment %}
+        {% if product.price_varies %}
+            <span class="{{price_class}} from price_spacing">ab</span>
+        {% endif %}
+        <span class="{{price_class}} price price_spacing {{sale}}">{{product.price_min | money}}</span>
+        {% if product.compare_at_price != blank and product.compare_at_price_min > product.price_min %}
+            <span class="{{price_class}} compare_at_price price_spacing-compare-at">{{product.compare_at_price_min | money}}</span>
+        {% endif %}
+        {% if product.compare_at_price != blank and product.compare_at_price > product.price and show_saved %}
+            {% assign temp_final = product.price | times: 1.0 %}
+            {% assign temp_compare = product.compare_at_price | times: 1.0 %}
+            {% assign discount = temp_final | divided_by: temp_compare | times: 100 %}
+            <span class="{{price_class}} saved_amount price_spacing-saving"> -{{100 | minus: discount | round }}% </span>
+        {% endif %}
+    {% comment %}
+    {% else %}
+        <span class="{{price_class}} sold_out price_spacing">Sold out</span>
+    {% endif %}
+    {% endcomment %}
+</{{price_tag}}>

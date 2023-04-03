@@ -1,0 +1,557 @@
+{
+  "sections": {
+    "page_plant_b_vs_water_b": {
+      "type": "page_plant_b_vs_water_b",
+      "disabled": true,
+      "blocks": {
+        "187f2105-fac2-46d7-8c37-e6d6a28c193b": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": true,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "m",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "p",
+            "preheading_weight_class": "",
+            "heading": "Nagelfarben-Revolution.",
+            "heading_spacing_bottom": "s",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>gitti ist eine Innovation in der Nagellack-Industrie. Unsere Nagelfarben sind 19-free, vegan und eco-friendly. <br\/>'19-free' bedeutet, wir verzichten auf 19 bedenkliche Inhaltsstoffe, die in einigen herkömmlichen Nagellacken enthalten sind, und ersetzen sie durch bessere Alternativen.<br\/>Wir haben zwei innovative Alternativen zu herkömmlichen Nagellacken entwickelt: Eine pflanzenbasierte Formel für lange Haltbarkeit und höchste Leistungsansprüche und eine wasserbasierte Formel, die geruchsneutral ist und sich bestens für den schnelllebigen Alltag eignet.<\/p>",
+            "text_split": "<p><\/p>",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "43cac343-1fad-4175-a135-a8b4dd23f4c9": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-2",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/Bildschirmfoto_2021-06-01_um_15.37.28.png",
+            "image_width": 80,
+            "image_shape": "four_by_three",
+            "image_fit": "contain",
+            "image_focal_point": "right",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "gitti langanhaltend und 19-free* - bis zu 82% pflanzenbasiert.",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "h2",
+            "preheading_weight_class": "bold",
+            "heading": "Unser Favorit für höchste Leistungsansprüche",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "text": "<p>- besonders langanhaltend - bis zu 7 Tage <br\/>- leuchtende Farben mit hoher Deckkraft<br\/>- einfache Anwendung dank innovativem Pinsel<\/p>",
+            "text_split": "<p>Du beanspruchst deine Hände viel? Dann sind unsere pflanzenbasierten Nagelfarben genau richtig für dich! Denn diese Variante besticht durch extra langen Halt. Je nach Farbton lässt sich die Deckkraft durch zwei Schichten verdoppeln. Das Ergebnis: ultraglänzende und intensive Farbpower. <br\/>Die pflanzlichen Stoffe werden gemäß der ISO-Norm 16128 (anerkannte Naturkosmetik-Norm) angebaut und stammen unter anderem von Pflanzen wie Maniok, Zuckerrohr, Mais und Weizen.<br\/><br\/>Alle pflanzenbasierten Nagelfarben erkennst du an ihrer dreistelligen Nummer. Bei 'gitti 101' handelt es sich also um die Farbe Feuerrot, pflanzenbasiert.<br\/><br\/>Du willst mehr über die Inhaltsstoffe erfahren? <a href=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\" title=\"https:\/\/www.gitticonsciousbeauty.de\/pages\/inhaltsstoffe\">Hier entlang.<\/a><\/p>",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "bf845b40-3964-4cea-ae1f-8bc6786352a7": {
+          "type": "single_tab",
+          "settings": {
+            "title": "Entdecke unsere pflanzenbasierten Nagelfarben.",
+            "collection_handle": "alle-produkte-alt",
+            "spacing_top": "l",
+            "spacing_bottom": "xl"
+          }
+        },
+        "9c156984-fdd7-43ac-943b-b9bed6b2ed03": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-2",
+            "spacing_bottom": "m",
+            "spacing_top": "m",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/gitti_shop_page_pb_vs_wb_WB05.jpg",
+            "image_width": 80,
+            "image_shape": "four_by_three",
+            "image_fit": "contain",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "gitti geruchsneutral und 19-free* - mit 55% Wasser.",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "h2",
+            "preheading_class": "h2",
+            "preheading_weight_class": "bold",
+            "heading": "Unsere innovative Wahl für den schnelllebigen Alltag",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "h4",
+            "heading_class": "h4",
+            "heading_weight_class": "bold",
+            "text": "<p>- geruchsneutral<br\/>- Ø 3-4 Tage Halt <br\/>- optimaler Halt mit Water-based Top Coat <\/p>",
+            "text_split": "<p><br\/>Du passt die Farbe deiner Nägel am liebsten an deine Stimmungslage oder dein Outfit an? Dann ist unsere wasserbasierte Nagelfarbe das perfekte Match für dich. Denn mit dieser Formel kannst du deine Maniküre quasi überall ändern: Sie ist geruchsneutral und trocknet in dünner Schicht aufgetragen superschnell.<br\/><br\/>Alle wasserbasierten Nagelfarben erkennst du an ihrer zweistelligen Nummer. Bei 'gitti 01' handelt es sich also um die Farbe Feuerrot, wasserbasiert.<br\/><br\/>Du willst mehr über die Inhaltsstoffe erfahren? Hier entlang.<\/p>",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "a34b5b65-a79d-4b8f-abbd-00b058b8f992": {
+          "type": "single_tab",
+          "settings": {
+            "title": "<b h3>Entdecke unsere wasserbasierten Nagelfarben.<\/b>",
+            "collection_handle": "wasserbasierter-nagellack",
+            "spacing_top": "l",
+            "spacing_bottom": "xl"
+          }
+        }
+      },
+      "block_order": [
+        "187f2105-fac2-46d7-8c37-e6d6a28c193b",
+        "43cac343-1fad-4175-a135-a8b4dd23f4c9",
+        "bf845b40-3964-4cea-ae1f-8bc6786352a7",
+        "9c156984-fdd7-43ac-943b-b9bed6b2ed03",
+        "a34b5b65-a79d-4b8f-abbd-00b058b8f992"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    },
+    "5877ae5e-486d-438a-818c-b1aa15915fff": {
+      "type": "page_glossary",
+      "blocks": {
+        "9dfad00a-309e-4db8-943a-b8a6520653b8": {
+          "type": "header",
+          "settings": {
+            "header": "Smalto"
+          }
+        },
+        "5c423768-ec6f-4843-8964-124727407d7c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Plant-based Nail Polish",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "37efee04-cfd1-4eee-ab4c-d46837dbb132": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Plant-based Top&Base Coat",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "f0571446-0027-4b77-a4e1-c9c0dfd651af": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Matte Top&Base Coat",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "766980f4-8f01-444a-b176-649f94503f85": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Nail Highlighter",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "1c38174e-be2d-4a42-bf1a-11b3c8d17107": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Water-based Nail Polish",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "1a8c5991-0b6a-435d-827a-67225a15b879": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Water-based Top&Base Coat",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "20c122d1-2a6a-44bd-b79d-21f6a74c0cd3": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Smalto",
+            "title": "Crystal Nail Hardener",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "77ccba14-b798-4692-a91d-69db035577a5": {
+          "type": "header",
+          "settings": {
+            "header": "Make-up"
+          }
+        },
+        "02fac6c0-dd53-4989-b6b5-7c9cb62af036": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Visionist",
+            "answer": "<p><b>FLACONE: <\/b>C\/GL 95 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+HDPE+TPU< --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.\t\t\t\t<\/p>"
+          }
+        },
+        "8371d217-7e9f-4bed-8b5e-99647f9eeb1c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Eye Level",
+            "answer": "<p><b>FLACONE: <\/b>C\/GL 95 --> Vetro<br>\n<b>TAPPO CON APPLICATORE: <\/b>C\/POM90 --> Plastica<br>\n<b>ASTUCCIO: <\/b>PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta     <\/p>"
+          }
+        },
+        "094c2d38-d7fa-4001-8213-849592ef074c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Joy Joba",
+            "answer": "<p><b>FLACONE:<\/b> C\/GL 95 --> Vetro<br>\n<b>TAPPO CON APPLICATORE: <\/b>C\/POM90 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta     <\/p>"
+          }
+        },
+        "43fa6a9d-15db-4404-ba2a-a3dfa89dd11a": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Everyblush",
+            "answer": "<p><b>TUBETTO:<\/b> ALU 41 --> Alluminio<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.    \t<\/p>"
+          }
+        },
+        "4a561d82-9fc8-41d1-9628-c4bdb8d34258": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Eye Spy",
+            "answer": "<p><b>FLACONE:<\/b> GL 70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE: <\/b>C\/PP90 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta     <\/p>"
+          }
+        },
+        "89d85d16-7ba0-4827-ba42-13c9a918b40b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Lip Sync",
+            "answer": "<p>\n<\/p><h3>Lip Sync Refill<\/h3><br><br>\n<p><b>FLACONE:<\/b> C\/POM92 --> Plastica<br>\n<b>TAPPO:<\/b> 7 PETG --> Plastica<br>\n<b>ASTUCCIO: <\/b>PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.\n<\/p><p><br>\n<\/p><h3>Lip Sync Case<\/h3><br><p>\n<b>ASTUCCIO: <\/b>PAP 21 --> Carta\n<\/p><p><br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta     <\/p>"
+          }
+        },
+        "787249c6-9a0c-40e6-8b26-6cf0abea7380": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Berlin Brow Gel",
+            "answer": "<p><b>BERLIN BROW GEL<\/b><br><b>FLACONE:<\/b> 7 >R-PET+LLDHPE+HDPE< --> Plastica<br><b>TAPPO CON APPLICATORE:<\/b> 7 >ABS+PCR+POM+PA6< --> Plastica<br><b>ASTUCCIO:<\/b> PAP 21 --> Carta<br><br>Raccolta differenziata. Verifica le disposizioni del tuo Comune.<br>Separa le componenti e conferiscile in modo corretto.<br>Svuota l'imballaggio prima di conferirlo in raccolta.<br>Riduci il volume dell'imballaggio prima di conferirlo in raccolta.<\/p>"
+          }
+        },
+        "8e120ee6-0e7a-4bbe-8729-dcb868402aa6": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Make-up",
+            "title": "Berlin Brow Definer",
+            "answer": "<p><b>BERLIN BROW DEFINER<\/b><br><b>CORPO:<\/b> 7 >ABS+POK+PBT< --> Plastica<br><b>TAPPO:<\/b> 7 ABS --> Plastica<br><b>ASTUCCIO:<\/b> PAP 21 --> Carta<br><br>Raccolta differenziata. Verifica le disposizioni del tuo Comune.<br>Separa le componenti e conferiscile in modo corretto.<br>Svuota l'imballaggio prima di conferirlo in raccolta.\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta<\/p>"
+          }
+        },
+        "cc521ba1-7e09-4742-b980-e03ed4f74fc1": {
+          "type": "header",
+          "settings": {
+            "header": "Skincare"
+          }
+        },
+        "55bcf3e1-bd79-440c-81dc-c167091d7804": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Everybalm",
+            "answer": "<p><b>TUBETTO:<\/b> ALU 41 --> Alluminio<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.    \t<\/p>"
+          }
+        },
+        "02d5c77b-7068-4b7f-9006-34be434240a7": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Gen C",
+            "answer": "<p><b>TUBETTO:<\/b> ALU 41 --> Alluminio<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.    \t<\/p>"
+          }
+        },
+        "699539b1-2a61-4ce1-9351-71cef679bd31": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Softening Mask",
+            "answer": "<p><b>TUBETTO:<\/b> ALU 41 --> Alluminio<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.    \t<\/p>"
+          }
+        },
+        "da40a967-e26c-4887-ae9b-b8367ade4833": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Skin Rhythm Moisturiser Light",
+            "answer": "<p><b>BARATTOLO: <\/b>GL 70 --> Vetro<br>\n<b>CHIUSURA\/SOTTO-TAPPO:<\/b> HDPE 2<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO: <\/b>PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.     <\/p>"
+          }
+        },
+        "922bd3d7-0426-411f-8af2-988756d8fb51": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Skin Rhythm Moisturiser Rich",
+            "answer": "<p><b>TUBETTO: <\/b> 7 >LDPE+HDPE< --> Plastica<br>\n<b>TAPPO: <\/b>PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta     \t<\/p>"
+          }
+        },
+        "a67beb37-f4fe-4e6c-8584-4b55b87e3355": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Skin Balance Essence",
+            "answer": "<p><b>FLACONE:<\/b> 7 >R-PET+LDPE< --> Plastica<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO: <\/b>PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.     <\/p>"
+          }
+        },
+        "2b78e743-e26a-46a3-b854-665244f71936": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Skincare",
+            "title": "Skin-Refining Exfoliator",
+            "answer": "<p><b>FLACONE: <\/b>HDPE 2 --> Plastica<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.     <\/p>"
+          }
+        },
+        "42ef0bf2-9028-4a39-ab9c-e543225dd78a": {
+          "type": "header",
+          "settings": {
+            "header": "Nail Care"
+          }
+        },
+        "698f314a-d191-46da-a033-e993bf16d71d": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Nutritious Oil",
+            "answer": "<p><b>FLACONE:<\/b> GL70 --> Vetro<br>\n<b>CONTAGOCCE:<\/b> C\/PP 95 --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "b1ae3b84-6dd2-4f29-8336-898067f50cf0": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Soothing Rosewater",
+            "answer": "<p><b>FLACONE:<\/b> GL70 --> Vetro<br>\n<b>CONTAGOCCE:<\/b> C\/PP 95 --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "e290eece-3275-4154-9056-7b9de6af758c": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Quick Dry Solution",
+            "answer": "<p><b>FLACONE:<\/b> GL70 --> Vetro<br>\n<b>CONTAGOCCE:<\/b> C\/PP 95 --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "bc8f0a03-1066-4064-990f-63b2c2e47ddc": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Natural Remover",
+            "answer": "<p><b>FLACONE:<\/b> GL70 --> Vetro<br>\n<b>TAPPO:<\/b> PP 5 --> Plastica<br>\n<b>ASTUCCIO:<\/b> PAP 21 --> Carta\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.<br>\nRiduci il volume dell'imballaggio prima di conferirlo in raccolta.     <\/p>"
+          }
+        },
+        "e54641dd-0bbd-4a2a-8a37-033ded12648b": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Restorative Base",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "f984fda9-edcb-4577-a090-3db571a32767": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Conditioning Aloe Gel",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "fad92481-79ee-447d-a07c-55d6d87762cc": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Smoothing Oil",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "9de41885-e0f2-4832-ad6e-0f9157f2833f": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Probiotic Serum",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "d522ade3-f101-4f0a-8520-3c04efa9897e": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "AHA Nail Treament",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        },
+        "dd268655-33ad-4cf0-91f9-eac939e84ce7": {
+          "type": "question",
+          "settings": {
+            "headerQuestion": "Nail Care",
+            "title": "Purifying Scrub",
+            "answer": "<p><b>FLACONE: <\/b>GL70 --> Vetro<br>\n<b>TAPPO CON APPLICATORE:<\/b> 7 >PP+LDPE+PA6< --> Plastica\n<\/p><p><br>\nRaccolta differenziata. Verifica le disposizioni del tuo Comune.<br>\nSepara le componenti e conferiscile in modo corretto.<br>\nSvuota l'imballaggio prima di conferirlo in raccolta.  <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "9dfad00a-309e-4db8-943a-b8a6520653b8",
+        "5c423768-ec6f-4843-8964-124727407d7c",
+        "37efee04-cfd1-4eee-ab4c-d46837dbb132",
+        "f0571446-0027-4b77-a4e1-c9c0dfd651af",
+        "766980f4-8f01-444a-b176-649f94503f85",
+        "1c38174e-be2d-4a42-bf1a-11b3c8d17107",
+        "1a8c5991-0b6a-435d-827a-67225a15b879",
+        "20c122d1-2a6a-44bd-b79d-21f6a74c0cd3",
+        "77ccba14-b798-4692-a91d-69db035577a5",
+        "02fac6c0-dd53-4989-b6b5-7c9cb62af036",
+        "8371d217-7e9f-4bed-8b5e-99647f9eeb1c",
+        "094c2d38-d7fa-4001-8213-849592ef074c",
+        "43fa6a9d-15db-4404-ba2a-a3dfa89dd11a",
+        "4a561d82-9fc8-41d1-9628-c4bdb8d34258",
+        "89d85d16-7ba0-4827-ba42-13c9a918b40b",
+        "787249c6-9a0c-40e6-8b26-6cf0abea7380",
+        "8e120ee6-0e7a-4bbe-8729-dcb868402aa6",
+        "cc521ba1-7e09-4742-b980-e03ed4f74fc1",
+        "55bcf3e1-bd79-440c-81dc-c167091d7804",
+        "02d5c77b-7068-4b7f-9006-34be434240a7",
+        "699539b1-2a61-4ce1-9351-71cef679bd31",
+        "da40a967-e26c-4887-ae9b-b8367ade4833",
+        "922bd3d7-0426-411f-8af2-988756d8fb51",
+        "a67beb37-f4fe-4e6c-8584-4b55b87e3355",
+        "2b78e743-e26a-46a3-b854-665244f71936",
+        "42ef0bf2-9028-4a39-ab9c-e543225dd78a",
+        "698f314a-d191-46da-a033-e993bf16d71d",
+        "b1ae3b84-6dd2-4f29-8336-898067f50cf0",
+        "e290eece-3275-4154-9056-7b9de6af758c",
+        "bc8f0a03-1066-4064-990f-63b2c2e47ddc",
+        "e54641dd-0bbd-4a2a-8a37-033ded12648b",
+        "f984fda9-edcb-4577-a090-3db571a32767",
+        "fad92481-79ee-447d-a07c-55d6d87762cc",
+        "9de41885-e0f2-4832-ad6e-0f9157f2833f",
+        "d522ade3-f101-4f0a-8520-3c04efa9897e",
+        "dd268655-33ad-4cf0-91f9-eac939e84ce7"
+      ],
+      "settings": {
+        "hide_title": false,
+        "main_title": "Disposizioni di smaltimento",
+        "subheading": "",
+        "text": "<p>Verifica qui sotto le informazioni relative allo smaltimento dei nostri prodotti.<\/p>",
+        "titleMenu": "",
+        "tag_title": "h1",
+        "tag_header_menu": "h2",
+        "tag_menu_topics": "p",
+        "tag_header_faq_list": "h2",
+        "tag_questions": "h4",
+        "class_title": "h1",
+        "class_header_menu": "h2",
+        "class_menu_topics": "p",
+        "class_header_faq_list": "h2",
+        "class_questions": "h4",
+        "weight_class_title": "",
+        "weight_class_header_menu": "",
+        "weight_class_menu_topics": "",
+        "weight_class_header_faq_list": "",
+        "weight_class_questions": "",
+        "spacing_page_text": "m",
+        "spacing_top_section": "m",
+        "spacing_bottom_section": "xxl",
+        "spacing_bottom_title": "l",
+        "spacing_bottom_header": "m",
+        "spacing_bottom_questionWrapper": "m",
+        "spacing_bottom_question": "xs"
+      }
+    }
+  },
+  "order": [
+    "page_plant_b_vs_water_b",
+    "5877ae5e-486d-438a-818c-b1aa15915fff"
+  ]
+}

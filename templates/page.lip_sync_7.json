@@ -1,0 +1,913 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "page-lip-sync-sections-template": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "8b537f82-0ed7-4a55-8132-af55c0624a30": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": true,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-2",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "xs",
+            "spacing_top": "xs",
+            "image_spacing_between_right": "m",
+            "image_spacing_between_left": "m",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/bathroom_shot_gitti_xmas_everyblush_visionist_lipsync_eyelevel_nail_remover44.jpg",
+            "image_width": 100,
+            "image_shape": "",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "Neu",
+            "preheading_spacing_bottom": "xs",
+            "preheading_tag": "p",
+            "preheading_class": "p",
+            "preheading_weight_class": "bold",
+            "heading": "Astro Gift Guide",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h1",
+            "heading_weight_class": "bold",
+            "text": "<p>Finde mit dem gitti Astro Gift Guide heraus, welche Farben und welche Produkte am besten zu den 12 Sternzeichen passen. Verleihe deinem Look einen extra Hauch Sternenstaub und Astropower!<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "p",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        },
+        "281282ed-2aac-4429-ac2c-f868f77cd08d": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>Entdecke jetzt das perfekte Geschenk für jedes Sternzeichen <b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "m",
+            "spacing_bottom": "xs"
+          }
+        },
+        "ac1967c2-ca9f-43c1-aac3-40ad3cee08b2": {
+          "type": "html_content",
+          "settings": {
+            "custom_html": "<u> <a style=\"font-size:20px\" href=\"#Widder\">Widder<\/a><\/u>  \n <u><a style=\"font-size:20px\" href=\"#Stier\">Stier<\/a><\/u>   <u><a style=\"font-size:20px\" href=\"#Zwillinge\">Zwillinge<\/a><\/u>   <u> <a style=\"font-size:20px\" href=\"#Krebs\">Krebs<\/a><\/u>   <u> <a style=\"font-size:20px\" href=\"#L%C3%B6we\">Löwe<\/a><\/u>   <u><a style=\"font-size:20px\" href=\"#Jungfrau\">Jungfrau<\/a><\/u>  <u><a style=\"font-size:20px\" href=\"#Wage\">Wage<\/a><\/u>  <u><a style=\"font-size:20px\" href=\"#Skorpion\">Skorpion<\/a><\/u>   <u> <a style=\"font-size:20px\" href=\"#Sch%C3%BCtze\">Schütze<\/a> <\/u> <br> <u> <a style=\"font-size:20px\" href=\"#Steinbock\">Steinbock<\/a><\/u>   <u> <a style=\"font-size:20px\" href=\"#Wassermann\">Wassermann<\/a><\/u>   <u> <a style=\"font-size:20px\" href=\"#Fische\">Fische<\/a> <\/u>",
+            "spacing_top": "m",
+            "spacing_bottom": "xs"
+          }
+        },
+        "709bfef4-63ff-4bff-9f4f-256cc39eecc6": {
+          "type": "heading",
+          "settings": {
+            "title": "<b> Aufteilung nach den vier Elementen: <b><\/b><\/b>",
+            "class": "h3",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "f7e1c054-b9e5-4be0-9931-41e114de9558": {
+          "type": "html_content",
+          "settings": {
+            "custom_html": "<u> <a style=\"font-size:20px\" href=\"#Feuerzeichen\">Feuerzeichen<\/a><\/u>  <u> <a style=\"font-size:20px\" href=\"#Wasserzeichen\">Wasserzeichen<\/a><\/u>  <u> <a style=\"font-size:20px\" href=\"#Luftzeichen\">Luftzeichen<\/a><\/u>  <u> <a style=\"font-size:20px\" href=\"#Erdzeichen\">Erdzeichen<\/a><\/u>",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "36600176-350d-4eb9-8a01-934dfb78a158": {
+          "type": "heading",
+          "settings": {
+            "title": "<b> <a id=\"Feuerzeichen\"><\/a>Feuerzeichen<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "52249a0c-9a90-4b28-af70-abea0a915fcc": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Feuerzeichen wie der Widder, Löwe oder Schütze sind leidenschaftlich, mutig und impulsiv. Ebenso impulsiv wollen sie auf ihren vielen Abenteuern und ehrgeizigen Missionen im Alltag ihre Nagellackfarben je nach Lust und Laune schnell mal wechseln können. Daher bietet sich ein Set mit Nagellackentferner und zwei unterschiedlichen, auffallenden Feuerfarben an. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "9c4f5ae4-b445-46c3-9a23-cc2288f2d312": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "plant-duo-remover"
+          }
+        },
+        "35ab674d-6d50-4596-8a31-2a7872873642": {
+          "type": "heading",
+          "settings": {
+            "title": "<b> <a id=\"Wasserzeichen\"><\/a>Wasserzeichen<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "b52972a6-08c6-418e-acad-a3a426e803f4": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die Wasserzeichen Krebs, Skorpion und Fische sind geheimnisvoll, empfindsam und intuitiv. Da die Augen das Fenster zur Seele sind, ist diese Partie bei den Wasserzeichen besonders wichtig und sollte daher ins richtige magische Licht gerückt werden. Mit einer Mascara in schwarz oder dunkelblau, die zudem auch noch elfenhafte Länge, Fülle & Halt verspricht, können die Wasserzeichen ihre magischen Augen wunderbar betonen und der verwunschene Augenaufschlag ist in einem Nu perfekt. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "e8e87d88-29f3-447e-bd0f-540df73c25aa": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "eye-level-no-01-black"
+          }
+        },
+        "e34dd256-c7a3-4b6f-b769-02d4463a6930": {
+          "type": "heading",
+          "settings": {
+            "title": "<b> <a id=\"Luftzeichen\"><\/a>Luftzeichen<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "e2a02d24-1ab7-4c60-bc50-1402aca5b551": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Das Element Luft ist das am schwersten zu fassende Element des Tierkreises. Luft ist überall und unsichtbar. Die Luftzeichen Zwillinge, Waage und Wassermann tun sich  gerade wegen der Undurchsichtigkeit ihres Elements Luft manchmal schwer ihre sieben Sachen in Ordnung zu halten und sind mit ein paar Ausnahmen häufig für ihr lebendes Chaos in ihren Handtaschen bekannt. Daher ist das griffige Lip Sync ideal, um den Lieblingslippenstift ordentlich zu verstauen und dann aufgrund des Case schnell in den Tiefen der Tasche wieder zu finden. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "af0f1e9a-caa1-4020-82e5-1fd00f897e52": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "nails-lips-in-sync"
+          }
+        },
+        "819b6c08-8de3-4ce0-9ccf-48db169a4111": {
+          "type": "heading",
+          "settings": {
+            "title": "<b> <a id=\"Erdzeichen\"><\/a>Erdzeichen<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "afc1ace9-9b53-4510-acdc-75a8a3154937": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Erdzeichen wie der Stier, die Jungfrau oder der Steinbock konzentrieren sich grundsätzlich auf alltägliche, körperliche Themen und Werte. Auch sind sie in der Regel sehr naturverbunden. Die Dinge, die sie tun, brauchen ein festes Fundament. Bei der Nagelpflege fängt das mit der Base an. Daher wird sich jedes Erdzeichen über einen reichhaltigen Basecoat für natürlich glänzende Nägel freuen. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "f29ab078-1d4b-47d9-9d1a-eb9659ef2f65": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "restorative-base"
+          }
+        },
+        "da06400c-8f8d-4274-b4ca-4732f2c550bd": {
+          "type": "heading",
+          "settings": {
+            "title": "<b><a id=\"Widder\"><\/a>Widder (Feuerzeichen)<\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "0b0e70ef-e9c9-42d3-af6b-71235ef745cb": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Das wunderbare Feuer, das du in dir trägst, bringt Pioniergeist und Siegeswillen in die Welt. So ist Rot als kraftvolle Farbe auch genau die richtige für dich und wird am häufigsten mit dir und deinem inneren Feuer in Verbindung gebracht. Du bist energiegeladen und leidenschaftlich. Widder sind von Haus aus ungeduldig, langweilt sich schnell und verkörpert einen Beginnergeist. Weil auch bei der Ungeduld mal was daneben gehen kann beim Lackieren und du mit deiner Nagellackfarbe schnell beim Farbton umentscheiden willst, ist der Natural Remover perfekt für dich! <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "26974200-34fb-44e1-8ac4-a84c3f3e2272": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "plant-duo-remover"
+          }
+        },
+        "2a81f5ea-2e21-409e-b86e-0374f1ee6dcb": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekten Nagelfarben für Widder: 101 Feuerrot, 139 Feuriges Orangerot <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "7bfcc966-5160-44fa-8142-bfe4acb2922d": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Stier\"><\/a>Stier (Erdzeichen) <b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "314dd8b3-5d23-455f-b7a6-fdec050fc88d": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Der Stier steht für natürliche Schönheit. Grüntöne erinnern an das Wachstum in der Natur, Braun an die stiertypische Erdung, während Rot und Rosa Liebe, Sinnlichkeit und Schönheit ausstrahlen. Daher ist die Farbpalette der Stiere breit aufgestellt und wirkt aber gar nicht bunt aufgeregt, sondern eher ruhig und aufgeräumt. Warm, gemütlich und sicherheitsorientiert ist das, was die Stierpersönlichkeit perfekt beschreibt. Sanftes Braun und erdige Grautöne passen am besten zum Stier nach dem Motto: „I want it all“- kann ein Stier, der den Luxus häufig sehr liebt, gar nicht genug besitzen an schönen Dingen.  <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "08f625d5-e225-438a-9bd9-49a278473a08": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "gitti-look"
+          }
+        },
+        "1fbe21db-aa8b-44df-a619-2d57a49eeae9": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Stiere: 13 Sandgrau, alle Grüntöne, erdige Brauntöne, Rot– und Rosatöne Siehe auch Erdzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "6702ea09-8fcf-41de-ba22-083352994a89": {
+          "type": "heading",
+          "settings": {
+            "title": "<b> <a id=\"Zwillinge\"><\/a>Zwillinge (Luftzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "b408a833-0c06-424f-b928-272158dd799e": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Zwillinge werden meist mit der Farbe Gelb in Verbindung gebracht und das auch aus gutem Grund. Die helle, leichte, sonnige Persönlichkeit der Zwillinge und ihre Fröhlichkeit erhellt jeden Raum, in dem Sie sich aufhalten. Gelb steht nicht nur für Glück und Optimismus, sondern hilft dem quirligen Zwilling auch bei all den vielen Gedanken und Ideen im Kopf, sich besser zu konzentrieren. Zwillinge scheinen oft äußerlich kaum zu altern und unterstreichen stolz gerne ihren frischen jugendlichen Look. Ihr freundliches Lachen können sie am besten mit dem Everyblush in Blossom Pink mit einem hellen rosigen Pink betonen! <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "8b372bad-80f0-4af7-8bf6-7ae11c3c2adb": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "everyblush-no-03-blossom-pink"
+          }
+        },
+        "94999af7-0905-42ef-a156-2584a95d0228": {
+          "type": "heading",
+          "settings": {
+            "title": "Die perfekte Nagelfarbe für Zwillinge:  14 Rosa, 137 Leuchtendes Gelb, alle hellen Töne, Gelb, sonnig aber auch beruhigend neutrale Töne Siehe auch Luftzeichen <p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "0a986e22-0a60-4a05-b9b8-a602f87e1c05": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Krebs\"><\/a>Krebs (Wasserzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "334643c5-bc75-4721-8843-fc31349132c3": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Krebse besitzen meist eine fürsorgliche, sensible und tröstliche Ausstrahlung. Sie wollen ganz einfach, dass sich andere bei Ihnen zu Hause fühlen und sind daher häufig von einer beruhigenden Aura umgeben, obwohl in ihnen vielleicht gerade ein Ozean an Emotionen tobt. Es überrascht daher nicht, dass der Krebs eher zu helleren, kühleren ozeanischen Tönen tendiert. Oftmals vergisst der Krebs sich leider selbst bei all der Fürsorge für andere. Daher ist es so wichtig, dass er sich auch immer wieder selbst umhegt und pflegt vielleicht mit dem Hand Spa Set, einer umfassenden und effektive Hand- und Nagelpflege für zu Hause. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "d80b7f7d-c23c-4fb7-88cf-4bf0d959a222": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "hand-spa"
+          }
+        },
+        "b56170e5-4827-4ea9-bc46-0db1b1c798f6": {
+          "type": "heading",
+          "settings": {
+            "title": "Die perfekte Nagelfarbe für Krebse: 05 Blaugrau, alle Blau und Metallig\/<p> Silbertöne Siehe auch Wasserzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "0cc00dfe-3a31-47dd-90c1-c4e12e00a36f": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Löwe\"><\/a>Löwe (Feuerzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "1d1c2de2-a084-4ebb-b377-08d7313ce04e": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Das Zeichen Löwe, dessen Herrscher die Sonne ist, zieht gerne die Aufmerksamkeit auf sich, egal auf welcher Bühne er gerade stehen mag. Wenn es um ihren Auftritt geht, wollen Löwen, dass sie bestens repräsentiert werden und vor ihrem meist bewundernden Publikum als Star glänzen dürfen. Deswegen fühlt sich der mutige Löwe sich häufig von kräftigen Farben angezogen, die sein strahlendes Charisma transportieren. Daher sind kräftige Orangetöne mit gelben oder orangenen und warmen Aspekten oder sogar majestätisches Gold für den König der Tiere ideal, da sie auch die Sonne repräsentieren. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "0e06c515-9edb-4b91-82f8-63da60a5364c": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "visionist-no-02-copper-sheen"
+          }
+        },
+        "c5584502-2f3d-4f54-9709-f79ccde0374f": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Löwen: 06 Koralle, alle Orange-, Kupfer-, Gelbgold-und Goldtöne aber auch kräftiges, mutiges Rot  Siehe auch Feuerzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "25b498ec-85dd-400f-ab33-5a38ba2dcce6": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Jungfrau\"><\/a>Jungfrau (Erdzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "837d4b52-db7d-42cf-ae82-223ebec45f9e": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Jungfrauen sind bekannt für ihre pedantische Detailliebe und ihren Fleiß. Als realistisches Erdzeichen bist du als Jungfrau möglicherweise eher nicht daran interessiert, mit auffälligen Farben oder Konzepten um deiner selbst Willen all zu krass aufzufallen und eher bewusst natürlich. Daher greift eine typische Jungfrau eher zu erdigen Tönen wie Waldgrün oder Dunkelbraun, um dich daran zu erinnern, dass es auch chaotischen Zeiten einen Anschein von Ruhe und Stabilität geben kann. Die Jungfrau liebt nicht nur Ordnung, sondern braucht sie auch. Das fängt selbstverständlich mit der Pflege der so fleißigen Hände an! <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "49fd9469-1ce1-4429-810d-8580a08da80d": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "conscious-care-set"
+          }
+        },
+        "c5a86f0f-0c87-4879-841b-53b681a3c59d": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Jungfrauen: 08 Salbei, alle erdigen Töne, Grüntöne, Beige, Braun und neutrale Farben Siehe auch Erdzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "1d58587a-401c-4876-a615-5fc76be09438": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Wage\"><\/a>Wage (Luftzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "6d933cd0-5055-4338-8999-ee74685aca30": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Das Sternzeichen Waage gilt als das Zeichen der Beziehungen, Schöngeistigkeit und Ästhetik. Waage Geborene besitzen einen hohen ästhetischen Anspruch und verkörpern Harmonie und Frieden. Sie streben danach stets schick und elegant zu sein. Schattierungen von sanften Lila, Rosa, zusammen mit einem Hauch von Creme. Lila und Lavendel steht für die Liebe zu schönen Dingen und drückt Sensibilität aus. Rosa strahlt Einfühlungsvermögen und Romantik aus und hebt die Stimmung. Waagen lieben es, eine gewisse Kultiviertheit in ihrem Look auszudrücken. Für Waagen ist das Lip Sync Kit mit dem ästhetischen Case ideal! Ihre schöne Ausstrahlung können Waagen mit einem edlen Farbton auf den Lippen harmonisch ergänzen. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "98af8664-65b8-4277-aca0-960f85fc134a": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "lip-sync-kit"
+          }
+        },
+        "339da07b-7910-41e4-b84b-daf6e346e05c": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Waagen: 07 Zartrosa, Lila, Rosa, Creme, Helle, sanfte und harmonische Farben Siehe auch Luftzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "38548448-a5d2-4880-b43a-c46f02e379c2": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Skorpion\"><\/a>Skorpion (Wasserzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "b75b2ce7-bb06-4e53-ad97-b10d95fa1fd2": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Du bist so mystisch und geheimnisvoll lieber Skorpion! Du wendest dich nicht nur leidenschaftlich gerne den geheimen Lehren und der Spiritualität zu, sondern vielleicht auch den eher dunkleren Farben. Pluto, der Herrscher des Skorpions, wird auch nicht zufällig als Herrscher der Unterwelt bezeichnet. Durch deine machtvolle Ausstrahlung gibst du oft ungewollt den Ton an, ohne dabei zu sehr aufzufallen. Kein Wunder, dass sich Skorpione von dunklen Tönen angezogen fühlen, die eine machtvolle Atmosphäre ausstrahlen. Skorpione besitzen eine magnetische Ausstrahlung, die bekanntermaßen oft aus ihren geheimnisvollen Augen hervorgeht. Diese betont ein Skorpion am besten mit getuschten, dunkeln und vollen Wimpern in Schwarz, mithilfe des Eye Level no. 01. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "48491f63-f4ae-497b-a2a1-933d2856b4eb": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "eye-level-no-01-black"
+          }
+        },
+        "6cdeaa09-3322-4d2e-948f-5e5933013a5c": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Skorpione: 03 Aubergine, alle dunkle Farben, dunkle Rottöne und natürlich Schwarz Siehe auch Wasserzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "13995374-9253-4ff7-a74a-784ae1b2f4de": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Schütze\"><\/a>Schütze (Feuerzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        }
+      },
+      "block_order": [
+        "8b537f82-0ed7-4a55-8132-af55c0624a30",
+        "281282ed-2aac-4429-ac2c-f868f77cd08d",
+        "ac1967c2-ca9f-43c1-aac3-40ad3cee08b2",
+        "709bfef4-63ff-4bff-9f4f-256cc39eecc6",
+        "f7e1c054-b9e5-4be0-9931-41e114de9558",
+        "36600176-350d-4eb9-8a01-934dfb78a158",
+        "52249a0c-9a90-4b28-af70-abea0a915fcc",
+        "9c4f5ae4-b445-46c3-9a23-cc2288f2d312",
+        "35ab674d-6d50-4596-8a31-2a7872873642",
+        "b52972a6-08c6-418e-acad-a3a426e803f4",
+        "e8e87d88-29f3-447e-bd0f-540df73c25aa",
+        "e34dd256-c7a3-4b6f-b769-02d4463a6930",
+        "e2a02d24-1ab7-4c60-bc50-1402aca5b551",
+        "af0f1e9a-caa1-4020-82e5-1fd00f897e52",
+        "819b6c08-8de3-4ce0-9ccf-48db169a4111",
+        "afc1ace9-9b53-4510-acdc-75a8a3154937",
+        "f29ab078-1d4b-47d9-9d1a-eb9659ef2f65",
+        "da06400c-8f8d-4274-b4ca-4732f2c550bd",
+        "0b0e70ef-e9c9-42d3-af6b-71235ef745cb",
+        "26974200-34fb-44e1-8ac4-a84c3f3e2272",
+        "2a81f5ea-2e21-409e-b86e-0374f1ee6dcb",
+        "7bfcc966-5160-44fa-8142-bfe4acb2922d",
+        "314dd8b3-5d23-455f-b7a6-fdec050fc88d",
+        "08f625d5-e225-438a-9bd9-49a278473a08",
+        "1fbe21db-aa8b-44df-a619-2d57a49eeae9",
+        "6702ea09-8fcf-41de-ba22-083352994a89",
+        "b408a833-0c06-424f-b928-272158dd799e",
+        "8b372bad-80f0-4af7-8bf6-7ae11c3c2adb",
+        "94999af7-0905-42ef-a156-2584a95d0228",
+        "0a986e22-0a60-4a05-b9b8-a602f87e1c05",
+        "334643c5-bc75-4721-8843-fc31349132c3",
+        "d80b7f7d-c23c-4fb7-88cf-4bf0d959a222",
+        "b56170e5-4827-4ea9-bc46-0db1b1c798f6",
+        "0cc00dfe-3a31-47dd-90c1-c4e12e00a36f",
+        "1d1c2de2-a084-4ebb-b377-08d7313ce04e",
+        "0e06c515-9edb-4b91-82f8-63da60a5364c",
+        "c5584502-2f3d-4f54-9709-f79ccde0374f",
+        "25b498ec-85dd-400f-ab33-5a38ba2dcce6",
+        "837d4b52-db7d-42cf-ae82-223ebec45f9e",
+        "49fd9469-1ce1-4429-810d-8580a08da80d",
+        "c5a86f0f-0c87-4879-841b-53b681a3c59d",
+        "1d58587a-401c-4876-a615-5fc76be09438",
+        "6d933cd0-5055-4338-8999-ee74685aca30",
+        "98af8664-65b8-4277-aca0-960f85fc134a",
+        "339da07b-7910-41e4-b84b-daf6e346e05c",
+        "38548448-a5d2-4880-b43a-c46f02e379c2",
+        "b75b2ce7-bb06-4e53-ad97-b10d95fa1fd2",
+        "48491f63-f4ae-497b-a2a1-933d2856b4eb",
+        "6cdeaa09-3322-4d2e-948f-5e5933013a5c",
+        "13995374-9253-4ff7-a74a-784ae1b2f4de"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    },
+    "page-lip-sync-sections-template_2": {
+      "type": "page-lip-sync-sections-template",
+      "blocks": {
+        "7bc621f7-1313-46f1-8c49-a42276a6f540": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Ein echter Schütze liebt es, draußen in der Welt unterwegs zu sein und neugierig auf Abenteuer zu gehen. Alle Farben, die kraftvoll sind und spannungsvoll haben es dem Schützen angetan. Das Skincare Mini Set aus Mini-Cleanser (Gen C), Mini-Multibalm (Everybalm) und Everyblush ist ideal für den abenteuerlichen Schützen, um es mit auf Reisen zu nehmen. Die verschiedenen kleinen Probiergrößen regen zudem seinen Entdeckergeist an. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "01eed752-c92f-430e-b7a3-716635466906": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "on-the-go-set"
+          }
+        },
+        "efeb582d-8c80-4f18-bca4-c383e50f0463": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Schützen: 09 Beerenrot, alle satten, kräftigen Farben, wie Marineblau, kräftiges Grün oder auch Rot  Siehe auch Feuerzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "596b2bfe-5bbc-40dc-8a43-601eb65703aa": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Steinbock\"><\/a>Steinbock (Erdzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "0c0a931d-a8b6-453a-9d00-323ce599aadc": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Keep it simple: Ein Steinbock hält die Dinge gerne einfach und arbeitet bei seinem Styling am liebsten mit Farben, die sich leicht mit anderen kombinieren lassen. Denn sie vermitteln ein ruhiges Auftreten und deuten darauf hin, dass sich der Steinbock sowohl bei seinen Gefühlen als auch bei seinen Entscheidungen, wie er den Tag und seinen Look kreiert, auf eine Art sicher ist und möglicherweise auch etwas konservativ. Steinböcke lieben eine gute Struktur, daher sollte auch ihr Nagel fest und gepflegt sein. Damit ist der Nagelhärter Crystal Nail Hardener für extra starke Nägel ein geniales Produkt um die Festigkeit der Nägel zu sichern. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "b870e05d-2f28-4e37-a3cc-aaccb67b89f8": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "crystal-nail-hardener"
+          }
+        },
+        "4f581dfb-2dce-45b9-a893-d9e4df746575": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Steinböcke: 11 Mocha, Klarlack oder neutrale Farben wie Weiß, Grau, Schwarz, Braun, Elfenbein oder Beige Siehe auch Erdzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "93ba4901-9412-406b-b8b7-713c658641cd": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Wassermann\"><\/a>Wassermann (Luftzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "61d62c8b-05c3-47e5-949a-e3b88e957902": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Der Wassermann ist der freigeistige Rebell im astrologischen Tierkreis und hält sich ungern an traditionellen Regeln oder Normen. Die Kreativität eines Wassermanns kennt keine Grenzen und der Look eines Wassermanns muss richtig knallen und darf bunt sein wie sein Wesen. Knallende Farben wie Pink, Türkis, alle krachenden Blauttöne, aber ebenso frische Farben wie Minze passen daher gut. Damit auch stets etwas buntes und Auffallendes an den Händen schimmert, bietet sich ein Nagellack Set auf Pflanzenbasis an. Wie wäre es da mit dem Set: Plant Do und zwei richtigen Knallerfarben wie no. 105 Minze und no 141 Digital Dance? <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "de66874c-35a0-4c2b-b8bb-1ab3eb37ba9a": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "plant-duo"
+          }
+        },
+        "6bfdeb3c-d11b-49c1-9d5a-fc61118f2264": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Wassermänner: 12 Pink, alle knallenden Farben, gerne auch in Richtung Neongelb, Minze, Blau Siehe auch Luftzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "l"
+          }
+        },
+        "a884d624-bf8b-4548-a49f-18576873d37e": {
+          "type": "heading",
+          "settings": {
+            "title": "<b>  <a id=\"Fische\"><\/a>Fische (Wasserzeichen)<b><\/b><\/b>",
+            "class": "h2",
+            "tag": "h2",
+            "text-color": "",
+            "spacing_top": "l",
+            "spacing_bottom": "xs"
+          }
+        },
+        "43ec646d-a54f-4f63-b2db-c491a0605378": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Als Fisch ist man ein geborener Romantiker und unglaublich fantasievoll. Als feinfühliger Fisch magst du sanfte Farbtöne und vor allem solche, die dir das Gefühl schenken, frei und mit der Welt um dich herum verbunden zu sein. Du magst Farben und Looks, die sich offen und sorglos anfühlen, aber auch die tagträumerische Mystik, die deine Persönlichkeit so gut beschreibt. Du liebst es, wenn sich die Dinge vermischen, daher verleihen Akzente in Grautönen oder sogar unterschiedliche Nagelfarben an den Händen dir ein stimmiges und gutes Gefühl. Daher sind die Geruchsneutralen, wasserbasierten Nagellacke perfekt für dich. Beispielsweise das Set Water Duo in no. 30 und no. 35. <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "m"
+          }
+        },
+        "38a89d42-1282-48ce-8445-c884bb758dbe": {
+          "type": "feature_product",
+          "settings": {
+            "spacing_top": "xs",
+            "spacing_bottom": "xs",
+            "add_to_cart_btn": true,
+            "add_to_cart_btn_mo": true,
+            "more_btn_mo": false,
+            "product": "water-duo"
+          }
+        },
+        "f7b58b60-5326-4034-b135-cf86438787e1": {
+          "type": "heading",
+          "settings": {
+            "title": "<p> Die perfekte Nagelfarbe für Fische: 015 Lavendel, 030 Blue Cashmere, 35 Dusk Dance, Helle Grüntöne, Metallic, Silber, Schimmernde Farben Siehe auch Wasserzeichen <\/p><p><\/p>",
+            "class": "",
+            "tag": "p",
+            "text-color": "",
+            "spacing_top": "xs",
+            "spacing_bottom": "xs"
+          }
+        },
+        "345bae1a-8aba-423b-a007-92a4b86e334e": {
+          "type": "image_text_alt",
+          "settings": {
+            "tab_container": "",
+            "tab": "",
+            "no_image": false,
+            "is_sticky": false,
+            "is_hero": false,
+            "dislocate_text": false,
+            "smaller": false,
+            "background_color": "",
+            "background_color_2": "",
+            "split_at": 20,
+            "layout": "medium-up_col-start-1",
+            "layout_mobile": "small_row-start-1",
+            "spacing_bottom": "l",
+            "spacing_top": "xxl",
+            "image_spacing_between_right": "l",
+            "image_spacing_between_left": "",
+            "vertical_align": "middle",
+            "text_align": "left",
+            "image": "shopify:\/\/shop_images\/DSC04686_f5df29ee-f463-4961-908d-670aaafc426c.jpg",
+            "image_width": 100,
+            "image_shape": "square",
+            "image_fit": "cover",
+            "image_focal_point": "",
+            "image_position": "center",
+            "image_width_mobile": 100,
+            "image_shape_mobile": "square",
+            "image_fit_mobile": "cover",
+            "image_focal_point_mobile": "",
+            "image_position_mobile": "center",
+            "preheading": "",
+            "preheading_spacing_bottom": "m",
+            "preheading_tag": "p",
+            "preheading_class": "h4",
+            "preheading_weight_class": "",
+            "heading": "Über mich",
+            "heading_spacing_bottom": "xs",
+            "heading_tag": "p",
+            "heading_class": "h2",
+            "heading_weight_class": "bold",
+            "text": "<p>Ich bin <a href=\"https:\/\/www.lofficiel.at\/astrologie\/astrologin-ueber-wassermann-zeitalter-2022\" title=\"https:\/\/www.lofficiel.at\/astrologie\/astrologin-ueber-wassermann-zeitalter-2022\">Tanja Brock<\/a> und bezeichne mich als moderne Astrologin und möchte die Weisheitslehre des Kosmos, die <a href=\"https:\/\/www.lofficiel.at\/kategorie\/astrologie\" target=\"_blank\">Astrologie<\/a> unverstaubt, modern und lebensnah in die Welt vermitteln. Über mein Instagramaccount <a href=\"https:\/\/www.instagram.com\/_innerwisdom_\/\" target=\"_blank\">@_innerwisdom_ <\/a> und meine Website: <a href=\"https:\/\/seelemondundsterne.com\/\" target=\"_blank\">www.<\/a><a href=\"http:\/\/tanjabrock.de\/\" target=\"_blank\">tanjabrock.de<\/a> liefere ich regelmäßig Kosmische Wetterberichte und schreibe über astrologische sowie spirituelle Themen. Liebevoll berate ich Menschen astrologisch zu ihrem Geburtshoroskop, dabei biete ich u.a. persönliche Horoskopberatungen, Partnerhoroskope, Karmahoroskope und seit neuesten auch Ortshoroskope (Astrokartographie) an. Mein erstes Buch <a href=\"https:\/\/amzn.to\/2WyJnCu\" target=\"_blank\">\"Mein Mondjournal\"<\/a> ist im Juni 2021 im mvg Verlag, München erschienen.<\/p>",
+            "text_split": "",
+            "text_spacing_bottom": "xs",
+            "text_tag": "p",
+            "text_class": "h4",
+            "text_weight_class": "",
+            "button_label": "",
+            "button_link": "",
+            "button_class": "btn"
+          }
+        }
+      },
+      "block_order": [
+        "7bc621f7-1313-46f1-8c49-a42276a6f540",
+        "01eed752-c92f-430e-b7a3-716635466906",
+        "efeb582d-8c80-4f18-bca4-c383e50f0463",
+        "596b2bfe-5bbc-40dc-8a43-601eb65703aa",
+        "0c0a931d-a8b6-453a-9d00-323ce599aadc",
+        "b870e05d-2f28-4e37-a3cc-aaccb67b89f8",
+        "4f581dfb-2dce-45b9-a893-d9e4df746575",
+        "93ba4901-9412-406b-b8b7-713c658641cd",
+        "61d62c8b-05c3-47e5-949a-e3b88e957902",
+        "de66874c-35a0-4c2b-b8bb-1ab3eb37ba9a",
+        "6bfdeb3c-d11b-49c1-9d5a-fc61118f2264",
+        "a884d624-bf8b-4548-a49f-18576873d37e",
+        "43ec646d-a54f-4f63-b2db-c491a0605378",
+        "38a89d42-1282-48ce-8445-c884bb758dbe",
+        "f7b58b60-5326-4034-b135-cf86438787e1",
+        "345bae1a-8aba-423b-a007-92a4b86e334e"
+      ],
+      "settings": {
+        "text-color-heading": "",
+        "padding-top-heading": 5,
+        "padding-bottom-heading": 5,
+        "text-color-text": "",
+        "padding-top-text": 5,
+        "padding-bottom-text": 5
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page-lip-sync-sections-template",
+    "page-lip-sync-sections-template_2"
+  ]
+}
